@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokemon-XD-GUI", "Pokemon-XD-Tool\Pokemon-XD-GUI.csproj", "{C8D16CAC-5278-44AA-A5F3-2AD2FF72E9EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GUI", "Pokemon-XD-Tool\GUI.csproj", "{C8D16CAC-5278-44AA-A5F3-2AD2FF72E9EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokemon-XD-Common", "Pokemon-XD-Common\Pokemon-XD-Common.csproj", "{62176DD4-EB69-4C24-8D06-B31116566B8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Pokemon-XD-Common\Common.csproj", "{62176DD4-EB69-4C24-8D06-B31116566B8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLI", "CLITool\CLI.csproj", "{477C9D10-DF62-4D1D-B90A-C5F7B7E83D2B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{62176DD4-EB69-4C24-8D06-B31116566B8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62176DD4-EB69-4C24-8D06-B31116566B8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62176DD4-EB69-4C24-8D06-B31116566B8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{477C9D10-DF62-4D1D-B90A-C5F7B7E83D2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{477C9D10-DF62-4D1D-B90A-C5F7B7E83D2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{477C9D10-DF62-4D1D-B90A-C5F7B7E83D2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{477C9D10-DF62-4D1D-B90A-C5F7B7E83D2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

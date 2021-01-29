@@ -23,45 +23,45 @@ namespace XDCommon.Contracts
 
 		static void DocumentEnumerationData()
 		{
-			var folder = XGFolders.NameAndFolder("Enumerations", .Reference);
-			folder.CreateDirectory();
-			var file = XGFiles.NameAndFolder(EnumerableClassName + ".txt", folder);
+			//var folder = XGFolders.NameAndFolder("Enumerations", .Reference);
+			//folder.CreateDirectory();
+			//var file = XGFiles.NameAndFolder(EnumerableClassName + ".txt", folder);
 
-			var text = $"{EnumerableClassName} - count: {AllValues.Count}\n";
-			foreach(var value in AllValues) {
-				text += $"\n{value.EnumerableName}";
-			}
+			//var text = $"{EnumerableClassName} - count: {AllValues.Count}\n";
+			//foreach(var value in AllValues) {
+			//	text += $"\n{value.EnumerableName}";
+			//}
 
-			XGUtility.saveString(text, file);
+			//XGUtility.saveString(text, file);
 		}
 
-		public static XGFolders EncodedDataFolder() {
-			var encodingFolder = XGFolders.nameAndFolder("Raw Data", .Reference);
-			return XGFolders.nameAndFolder(EnumerableClassName, encodingFolder);
-		}
+		//public static XGFolders EncodedDataFolder() {
+		//	var encodingFolder = XGFolders.nameAndFolder("Raw Data", .Reference);
+		//	return XGFolders.nameAndFolder(EnumerableClassName, encodingFolder);
+		//}
 	
-		public static IEnumerable<XGFiles> EncodedJSONFiles() {
-			return EncodedDataFolder().files.Where(f => f.fileType == ".json");
-		}
+		//public static IEnumerable<XGFiles> EncodedJSONFiles() {
+		//	return EncodedDataFolder().files.Where(f => f.fileType == ".json");
+		//}
 	
-		public static IEnumerable<Encodable> EncodableValues() {
-			return (AllValues as IEnumerable<Encodable>) ?? Enumerable.Empty<Encodable>();
-		}
+		//public static IEnumerable<Encodable> EncodableValues() {
+		//	return (AllValues as IEnumerable<Encodable>) ?? Enumerable.Empty<Encodable>();
+		//}
 	
-		public static void EncodeData(Func<Encodable, string> filename) {
-			var folder = EncodedDataFolder();
-			folder.CreateDirectory();
+		//public static void EncodeData(Func<Encodable, string> filename) {
+		//	var folder = EncodedDataFolder();
+		//	folder.CreateDirectory();
 		
-			foreach(var value in EncodableValues()) {
-				var file = XGFiles.nameAndFolder(filename(value) + ".json", folder);
-				value.WriteJSON(to: file);
-			}
-		}
+		//	foreach(var value in EncodableValues()) {
+		//		var file = XGFiles.nameAndFolder(filename(value) + ".json", folder);
+		//		value.WriteJSON(to: file);
+		//	}
+		//}
 	
-		public static IEnumerable<XGFiles> EncodedData() {
-			if(!EncodedDataFolder().exists) { return Enumerable.Empty<XGFiles>(); }
+		//public static IEnumerable<XGFiles> EncodedData() {
+		//	if(!EncodedDataFolder().exists) { return Enumerable.Empty<XGFiles>(); }
 
-			return EncodedJSONFiles();
-		}
+		//	return EncodedJSONFiles();
+		//}
 	}
 }

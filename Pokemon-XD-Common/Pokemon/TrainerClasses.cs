@@ -61,9 +61,9 @@ namespace XDCommon.Pokemon
 			SimTrainer2 = 0x32
 		}
 
-        public static XGTrainerClass GetTrainerClass(this TrainerClasses trainerClass)
-        {
-            return new XGTrainerClass(trainerClass);
-        }
+        //public static TrainerClass GetTrainerClass(this TrainerClasses trainerClass)
+        //{
+        //    return new TrainerClass(trainerClass);
+        //}
     }
 }

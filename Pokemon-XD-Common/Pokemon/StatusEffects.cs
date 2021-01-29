@@ -110,19 +110,20 @@ namespace XDCommon.Pokemon
 			return (int)(kFirstStatusEffectOffset + ((int)effect * kSizeOfStatusEffect));
 		}
 
-		public static int NameID(this StatusEffects effect)
+		public static int NameID(this StatusEffects effect, ISOExtractor file)
 		{
-			return (int)XGFiles.Dol.Data!.GetWordAtOffset(effect.StartOffset() + kStatusEffectNameIDOffset);
+			return file.ISOStream.GetUShortAtOffset(effect.StartOffset() + kStatusEffectNameIDOffset);
 		}
 
-		public static int Duration(this StatusEffects effect)
+		public static int Duration(this StatusEffects effect, ISOExtractor file)
 		{
-			return XGFiles.Dol.Data!.GetByteAtOffset(effect.StartOffset() + kStatusEffectDurationOffset);
+			return file.ISOStream.GetByteAtOffset(effect.StartOffset() + kStatusEffectDurationOffset);
 		}
 
-		public static void SetDuration(this StatusEffects effect, int turns)
+		public static void SetDuration(this StatusEffects effect, ISOExtractor file, int turns)
 		{
-			XGFiles.Dol.Data!.ReplaceByteAtOffset(effect.StartOffset() + kStatusEffectDurationOffset, turns);
+			var newBytes = BitConverter.GetBytes(turns);
+			file.ISOStream.Write(newBytes, effect.StartOffset() + kStatusEffectDurationOffset, newBytes.Length);
 		}
     }
 }

@@ -5,4 +5,9 @@
     <RootNamespace>XDCommon</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Utility\Files\ExtractedTypes\Colosseum\" />
+    <Folder Include="Utility\Files\ExtractedTypes\XD\" />
+  </ItemGroup>
+
 </Project>

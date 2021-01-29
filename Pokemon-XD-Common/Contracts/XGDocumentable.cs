@@ -33,13 +33,13 @@ namespace XDCommon.Contracts
 			return $"{DocumentableName}\n" + DocumentableFields();
 		}
 	
-		public void SaveDocumentedData() {
-			var documentationFolder = XGFolders.NameAndFolder("Documentation", .Reference);
-			var folder = XGFolders.NameAndFolder(DocumentableClassName, documentationFolder);
-			folder.CreateDirectory();
+		//public void SaveDocumentedData() {
+		//	var documentationFolder = XGFolders.NameAndFolder("Documentation", .Reference);
+		//	var folder = XGFolders.NameAndFolder(DocumentableClassName, documentationFolder);
+		//	folder.CreateDirectory();
 
-			var file = XGFiles.NameAndFolder(DocumentableName + ".txt", folder);
-			XGUtility.SaveString(DocumentableData(), file);
-		}
+		//	var file = XGFiles.NameAndFolder(DocumentableName + ".txt", folder);
+		//	XGUtility.SaveString(DocumentableData(), file);
+		//}
     }
 }

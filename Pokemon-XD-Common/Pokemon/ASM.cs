@@ -218,9 +218,5 @@ namespace XDCommon.Utility
 
     public static class ASMInstructions
     {
-        public static uint Add()
-        {
-
-        }
     }
 }
