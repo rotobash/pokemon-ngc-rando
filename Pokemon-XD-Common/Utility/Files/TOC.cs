@@ -35,13 +35,13 @@ namespace XDCommon.Utility
         public TOC(string pathToExtractDirectory, ISOExtractor extractor)
         {
             var fileName = $"{pathToExtractDirectory}/Game.toc";
-            TOCStream = File.Open(fileName, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            TOCStream = fileName.GetNewStream();
 
             // load toc
             Offset = (int)extractor.ISOStream.GetUIntAtOffset(kTOCStartOffsetLocation);
             Size = (int)extractor.ISOStream.GetUIntAtOffset(kTOCFileSizeLocation);
 
-            if (true)
+            if (Configuration.Verbose)
             {
                 Console.WriteLine("Reading TOC from ISO");
                 Console.WriteLine($"TOC Start: {Offset:X}");
@@ -61,7 +61,16 @@ namespace XDCommon.Utility
                 throw new ArgumentException("ISOExtractor must be provided if file doesn't exist.");
             }
 
-            TOCStream = File.Open(fileName, FileMode.Open, FileAccess.ReadWrite);
+            var file = File.Open(fileName, FileMode.Open, FileAccess.ReadWrite);
+            if (Configuration.UseMemoryStreams)
+            {
+                TOCStream = new MemoryStream();
+                file.CopyTo(TOCStream);
+            }
+            else
+            {
+                TOCStream = file;
+            }
             Offset = offset;
             Size = (int)TOCStream.Length;
         }
@@ -75,7 +84,7 @@ namespace XDCommon.Utility
         public void Load(DOL dolFile, bool verbose)
         {
 
-            if (verbose)
+            if (Configuration.Verbose)
             {
                 Console.WriteLine($"Extracting TOC.");
             }
@@ -114,7 +123,7 @@ namespace XDCommon.Utility
             FilesOrdered = new List<string>(AllFileNames);
             FilesOrdered.Sort((s1, s2) => LocationForFile(s1) - LocationForFile(s2));
 
-            if (verbose)
+            if (Configuration.Verbose)
             {
                 Console.WriteLine($"Finished reading FST.");
             }

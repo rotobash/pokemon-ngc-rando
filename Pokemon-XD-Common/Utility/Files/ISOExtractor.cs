@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace XDCommon.Utility
         public TOC TOC { get; }
         DOL dol;
 
-        Dictionary<string, FSys> extractedFiles = new Dictionary<string, FSys>();
+        List<FSys> fSysFiles = new List<FSys>();
 
         ConcurrentQueue<Func<Task>> extractTasks = new ConcurrentQueue<Func<Task>>();
         Task[] executors;
@@ -27,11 +28,12 @@ namespace XDCommon.Utility
         public Region Region { get; }
         public Game Game { get; }
 
-        public ISOExtractor(string extractPathDirectory, string pathToISO, bool verbose = false, int threadCount = 4)
+        public ISOExtractor(string pathToISO, bool verbose = false)
         {
-            ExtractPath = extractPathDirectory;
             ISOStream = File.Open(pathToISO, FileMode.Open, FileAccess.ReadWrite);
-            executors = new Task[threadCount];
+            ExtractPath = Configuration.ExtractDirectory;
+            
+            executors = new Task[Configuration.ThreadCount];
             tokenSource = new CancellationTokenSource();
 
             var _ = ISOStream.ReadByte();
@@ -71,6 +73,7 @@ namespace XDCommon.Utility
             {
                 Thread.Sleep(1000);
             }
+
         }
 
         public void ExtractFiles(params string[] fileNames)
@@ -82,15 +85,14 @@ namespace XDCommon.Utility
 
                 if (fileName.Contains("fsys", StringComparison.InvariantCultureIgnoreCase))
                 {
-                    extractTasks.Enqueue(() =>
-                        new Task(() =>
-                        {
-                            var fsys = new FSys(fileName, this);
-                            FSysExtractor.ExtractFSys(fsys, true);
-                            extractedFiles.Add(fileName, fsys);
-                        })
-                    );
+                    var fsys = new FSys(fileName, this);
+                    fSysFiles.Add(fsys);
                 }
+            }
+
+            foreach (var fsysFile in fSysFiles)
+            {
+                extractTasks.Enqueue(() => new Task(() => FSysExtractor.ExtractFSys(fsysFile, true)));
             }
 
             for (int i = 0; i < executors.Length; i++)
@@ -99,10 +101,16 @@ namespace XDCommon.Utility
                 {
                     while (!tokenSource.Token.IsCancellationRequested)
                     {
-                        extractTasks.TryDequeue(out var extractTask);
-                        var t = extractTask();
-                        t.Start();
-                        await t;
+                        if (extractTasks.TryDequeue(out var extractTask))
+                        {
+                            var t = extractTask();
+                            t.Start();
+                            await t;
+                        }
+                        else
+                        {
+                            await Task.Delay(TimeSpan.FromSeconds(10));
+                        }
                     }
                 }, tokenSource.Token);
 

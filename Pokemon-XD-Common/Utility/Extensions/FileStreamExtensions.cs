@@ -1,5 +1,6 @@
 ﻿using System;
-using System.Collections;
+using System.Configuration;
+using System.Collections.Specialized;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,6 +9,18 @@ namespace XDCommon.Utility
 {
     public static class StreamExtensions
     {
+        public static Stream GetNewStream(this string fullPath)
+        {
+            if (Configuration.UseMemoryStreams)
+            {
+                return new MemoryStream();
+            }
+            else
+            {
+                return File.Open(fullPath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            }
+        }
+
         public static byte[] GetBytesAtOffset(this Stream stream, int offset, int length)
         {
             byte[] bytes = new byte[length];
@@ -108,7 +121,7 @@ namespace XDCommon.Utility
         {
             // you can't really insert into a stream without pulling it entirely into memory, so cheat a bit
             var streamFileName = stream.Name;
-            var newStream = File.Create($"{streamFileName}.bak");
+            var newStream = $"{streamFileName}.bak".GetNewStream();
 
             // write any pending changes
             // copy old stream into new stream up to offset
@@ -128,10 +141,13 @@ namespace XDCommon.Utility
             newStream.Flush();
             newStream.Dispose();
 
-            File.Delete(streamFileName);
-            File.Move($"{streamFileName}.bak", streamFileName);
+            if (!Configuration.UseMemoryStreams)
+            {
+                File.Delete(streamFileName);
+                File.Move($"{streamFileName}.bak", streamFileName);
+            }
 
-            return File.Open(streamFileName, FileMode.Append);
+            return streamFileName.GetNewStream();
         }
         
         public static Stream DeleteFromStream(this FileStream stream, int offset, int length)
@@ -153,10 +169,13 @@ namespace XDCommon.Utility
             newStream.Flush();
             newStream.Dispose();
 
-            File.Delete(streamFileName);
-            File.Move($"{streamFileName}.bak", streamFileName);
+            if (!Configuration.UseMemoryStreams)
+            {
+                File.Delete(streamFileName);
+                File.Move($"{streamFileName}.bak", streamFileName);
+            }
 
-            return File.Open(streamFileName, FileMode.Open, FileAccess.ReadWrite);
+            return streamFileName.GetNewStream();
         }
 
         public static List<IUnicodeCharacters> GetStringAtOffset(this Stream stream, int offset)

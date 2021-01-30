@@ -28,9 +28,9 @@ namespace XDCommon.Utility
                 fileName = $"{fileName.Split(".")[0]}{fileType.FileTypeName()}";
             }
 
-            if (true)
+            if (Configuration.Verbose)
             {
-                Console.WriteLine($"Extracting {fSys.Filename}: {fileName}");
+                Console.WriteLine($"Extracting {fileName}");
             }
 
             if (fileName == "common_rel")
@@ -39,17 +39,16 @@ namespace XDCommon.Utility
             }
 
             var safeFileName = fileName.GetSafeFileName(extractDir, fileType);
-            var extractedFile = File.Open($"{extractDir}/{safeFileName}", FileMode.Create);
+            var extractedFile = $"{extractDir}/{safeFileName}".GetNewStream();
             fSys.fileStream.CopySubStream(extractedFile, offset, size);
             extractedFile.Flush();
 
             if (isCompressed)
             {
-                if (true)
+                if (Configuration.Verbose)
                 {
                     Console.WriteLine($"Decoding {fileName}");
                 }
-                extractedFile = (FileStream)extractedFile.DeleteFromStream(0, kSizeOfLZSSHeader);
                 extractedFile = LZSSDecoder.Decode(extractedFile);
             }
 

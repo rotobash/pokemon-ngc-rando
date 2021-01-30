@@ -27,7 +27,7 @@ namespace XDCommon.Utility
                         Path = extractDir,
                         FileName = fileName,
                         FileType = FileTypes.REL,
-                        ExtractedFile = File.Open($"{extractDir}/{fileName}", FileMode.Create, FileAccess.ReadWrite)
+                        ExtractedFile = $"{extractDir}/{fileName}".GetNewStream()
                     };
                 }
             }

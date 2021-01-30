@@ -8,12 +8,15 @@ namespace XDCommon.Utility
     {
         public static void ExtractFSys(FSys sys, bool decode)
         {
+            if (sys.NumberOfEntries <= 0)
+                return;
+
             var extractDir = $"{sys.Path}/{sys.Filename.RemoveFileExtensions()}";
             if (!Directory.Exists(extractDir))
             {
                 Directory.CreateDirectory(extractDir);
             }
-            else
+            else 
             {
                 Directory.Delete(extractDir, true);
                 Directory.CreateDirectory(extractDir);

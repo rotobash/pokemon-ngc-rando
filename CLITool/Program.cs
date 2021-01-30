@@ -13,7 +13,7 @@ namespace CLITool
             {
                 Directory.CreateDirectory(directoryName);
             }
-            var iso = new ISOExtractor(directoryName, "Pokemon XD - Gale of Darkness (USA).iso", true);
+            var iso = new ISOExtractor("Pokemon XD - Gale of Darkness (USA).iso", true);
             
             
             Console.Read();

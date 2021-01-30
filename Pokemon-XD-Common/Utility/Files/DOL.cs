@@ -33,7 +33,16 @@ namespace XDCommon.Utility
                 throw new ArgumentException("ISOExtractor must be provided if file doesn't exist.");
             }
 
-            dolStream = File.Open(fileName, FileMode.Open, FileAccess.ReadWrite);
+            var file = File.Open(fileName, FileMode.Open, FileAccess.ReadWrite);
+            if (Configuration.UseMemoryStreams)
+            {
+                dolStream = new MemoryStream();
+                file.CopyTo(dolStream);
+            }
+            else
+            {
+                dolStream = file;
+            }
             Offset = offset;
             Size = (int)dolStream.Length;
         }
@@ -41,7 +50,7 @@ namespace XDCommon.Utility
         public DOL(string pathToExtractDirectory, ISOExtractor extractor)
         {
             var fileName = $"{pathToExtractDirectory}/Start.dol";
-            dolStream = File.Open(fileName, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            dolStream = fileName.GetNewStream();
             Offset = (int)extractor.ISOStream.GetUIntAtOffset(kDOLStartOffsetLocation);
 
             var size = kDolHeaderSize;
@@ -52,7 +61,7 @@ namespace XDCommon.Utility
             }
             Size = size;
 
-            if (true)
+            if (Configuration.Verbose)
             {
                 Console.WriteLine($"DOL Size: {Size:X}");
             }

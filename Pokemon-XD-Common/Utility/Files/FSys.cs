@@ -93,7 +93,12 @@ namespace XDCommon.Utility
             Region = extractor.Region;
             Game = extractor.Game;
 
-            fileStream = File.Open($"{Path}/{Filename}", FileMode.Open, FileAccess.ReadWrite);
+            if (Configuration.Verbose)
+            {
+                Console.WriteLine($"Extracting {fileName}");
+            }
+
+            fileStream = File.Open($"{Path}/{Filename}", FileMode.OpenOrCreate, FileAccess.ReadWrite);
             extractor.ISOStream.CopySubStream(fileStream, offset, size);
         }
         public bool IsCompressed(int index)

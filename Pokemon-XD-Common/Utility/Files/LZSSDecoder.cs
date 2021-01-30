@@ -10,15 +10,23 @@ namespace XDCommon.Utility
         const int N = 4096;
         const int F = 18;
         const byte P = 2;
-        public static FileStream Decode(FileStream file)
+        public static Stream Decode(Stream file)
         {
-            var slidingWindowSize = N - F;
             var slidingWindow = new byte[N];
+
+            Stream outputStream;
+            string filename = string.Empty;
+            string outputFilename = string.Empty;
+            if (file is FileStream fs)
+            {
+                filename = fs.Name;
+                outputFilename = $"{filename}.bak";
+            }
+            outputStream = outputFilename.GetNewStream();
 
             // setup output stream
             file.Flush();
             file.Seek(0, SeekOrigin.Begin);
-            var outputStream = File.Open(file.Name + ".bak", FileMode.OpenOrCreate, FileAccess.Write);
 
             int r = N - F;
             int flags = 0;
@@ -64,10 +72,13 @@ namespace XDCommon.Utility
             outputStream.Dispose();
             file.Dispose();
 
-            File.Delete(file.Name);
-            File.Move(outputStream.Name, file.Name);
+            if (file is FileStream)
+            {
+                File.Delete(filename);
+                File.Move(outputFilename, filename);
+            }
             
-            return File.Open(file.Name, FileMode.Open, FileAccess.ReadWrite);
+            return filename.GetNewStream();
         }
     }
 }
