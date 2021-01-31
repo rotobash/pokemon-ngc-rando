@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace XDCommon.Pokemon
+namespace XDCommon.PokemonDefinitions
 {
     public static partial class Pokemon
     {

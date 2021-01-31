@@ -38,7 +38,7 @@ namespace XDCommon.Utility
 
         public Stream fileStream;
 
-        public List<FSysFileEntry> extractedEntries = new List<FSysFileEntry>();
+        public List<IExtractedFile> ExtractedEntries = new List<IExtractedFile>();
 
         public int GroupID
         {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace XDCommon.Utility
+namespace XDCommon.Contracts
 {
     public enum FileTypes
     {

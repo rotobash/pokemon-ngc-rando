@@ -16,7 +16,7 @@ namespace XDCommon.Utility
 
         public string ExtractPath { get; }
         public Stream ISOStream { get; }
-        public TOC TOC { get; }
+        public FST TOC { get; }
         DOL dol;
 
         List<FSys> fSysFiles = new List<FSys>();
@@ -64,7 +64,7 @@ namespace XDCommon.Utility
             }
 
             dol = new DOL(ExtractPath, this);
-            TOC = new TOC(ExtractPath, this);
+            TOC = new FST(ExtractPath, this);
             TOC.Load(dol, verbose);
 
             //ExtractFiles("B1_1.fsys");

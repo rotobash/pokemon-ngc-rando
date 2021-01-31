@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
+using XDCommon.Contracts;
 
 namespace XDCommon.Utility
 {
-    public class FSysFileEntry
+    public class FSysFileEntry: IExtractedFile
     {
         const byte kSizeOfLZSSHeader = 0x10;
         public string Path { get; set; }
         public string FileName { get; set; }
         public FileTypes FileType { get; set; }
-        public Stream ExtractedFile;
+        public Stream ExtractedFile { get; internal set; }
         
-        public static FSysFileEntry ExtractFromFSys(FSys fSys, int index)
+        public static IExtractedFile ExtractFromFSys(FSys fSys, int index)
         {
             var offset = fSys.GetStartOffsetForFile(index);
             var size = fSys.GetSizeForFile(index);
@@ -52,13 +52,67 @@ namespace XDCommon.Utility
                 extractedFile = LZSSDecoder.Decode(extractedFile);
             }
 
-            return new FSysFileEntry
+            switch (fileType)
             {
-                FileType = fSys.GetFileTypeForFile(index),
-                Path = extractDir,
-                FileName = fileName,
-                ExtractedFile = extractedFile
-            };
+                case FileTypes.GTX:
+                case FileTypes.ATX:
+                case FileTypes.GSW:
+                    {
+                        if (fileType == FileTypes.GSW)
+                        {
+                            return new GSWTexture
+                            {
+                                Path = extractDir,
+                                FileName = fileName,
+                                ExtractedFile = extractedFile
+                            };
+                        }
+                        else
+                        {
+                            return new Texture
+                            {
+                                FileType = fileType,
+                                Path = extractDir,
+                                FileName = fileName,
+                                ExtractedFile = extractedFile
+                            };
+                        }
+                    }
+
+                case FileTypes.PKX:
+                    return new PKX
+                    {
+                        Path = extractDir,
+                        FileName = fileName,
+                        ExtractedFile = extractedFile
+                    };
+
+                case FileTypes.MSG:
+                    return new StringTable
+                    {
+                        Path = extractDir,
+                        FileName = fileName,
+                        ExtractedFile = extractedFile
+                    };
+
+                case FileTypes.SCD:
+                    return new SCD
+                    {
+                        Path = extractDir,
+                        FileName = fileName,
+                        ExtractedFile = extractedFile
+                    };
+                default:
+                    return new FSysFileEntry
+                    {
+                        FileType = fileType,
+                        Path = extractDir,
+                        FileName = fileName,
+                        ExtractedFile = extractedFile
+                    };
+            }
+
+            
         }
     }
 }

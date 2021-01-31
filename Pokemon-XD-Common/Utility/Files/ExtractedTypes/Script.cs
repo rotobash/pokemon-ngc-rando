@@ -4,11 +4,16 @@ using System.Text;
 
 namespace XDCommon.Utility
 {
-    public class Script
+    public class Script: FSysFileEntry
     {
-        public Script(FSysFileEntry data)
+        public Script()
         {
-            if (data.FileName.Contains("common"))
+        }
+
+        public void BuildScriptData()
+        {
+
+            if (FileName.Contains("common"))
             {
 
             }

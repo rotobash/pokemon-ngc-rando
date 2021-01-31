@@ -1,38 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
+using XDCommon.Contracts;
 
 namespace XDCommon.Utility
 {
-    public class SCD
+    public class SCD : FSysFileEntry
     {
-        FSysFileEntry entry;
-        public SCD(FSysFileEntry data)
+        public SCD()
         {
-            entry = data;
+            FileType = FileTypes.SCD;
         }
-
         public void WriteScriptData(FSys fSysFile)
         {
-            FSysFileEntry rel = null;
-            if (entry.FileType != FileTypes.REL)
+            IExtractedFile rel = null;
+            if (FileType != FileTypes.REL)
             {
-                rel = fSysFile.extractedEntries.Find(f => f.FileType == FileTypes.REL && entry.FileName.RemoveFileExtensions() == f.FileName.RemoveFileExtensions());
+                rel = fSysFile.ExtractedEntries.Find(f => f.FileType == FileTypes.REL && FileName.RemoveFileExtensions() == f.FileName.RemoveFileExtensions());
                 if (rel == null)
                 {
-                    var extractDir = $"{fSysFile.Path}/{fSysFile.Filename.RemoveFileExtensions()}";
-                    var fileName = entry.FileName.GetSafeFileName(extractDir, FileTypes.REL);
-                    rel = new FSysFileEntry
+                    var fileName = FileName.GetSafeFileName(Path, FileTypes.REL);
+                    var relFile = $"{Path}/{fileName}".GetNewStream();
+                    rel = new REL
                     {
-                        Path = extractDir,
+                        Path = Path,
                         FileName = fileName,
                         FileType = FileTypes.REL,
-                        ExtractedFile = $"{extractDir}/{fileName}".GetNewStream()
+                        ExtractedFile = relFile
                     };
+                    fSysFile.ExtractedEntries.Add(rel);
                 }
+
+                
             }
 
-            var scriptData = new Script(entry);
+
+            var scriptData = new Script
+            {
+                
+            };
+
             if (rel != null)
             {
                 // maprel

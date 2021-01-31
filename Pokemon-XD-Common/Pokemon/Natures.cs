@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using XDCommon.Contracts;
 
-namespace XDCommon.Pokemon
+namespace XDCommon.PokemonDefinitions
 {
 	public static partial class Pokemon 
 	{

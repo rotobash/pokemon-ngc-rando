@@ -24,7 +24,7 @@ namespace XDCommon.Utility
         public static byte[] GetBytesAtOffset(this Stream stream, int offset, int length)
         {
             byte[] bytes = new byte[length];
-            if (offset >= 0 && length + offset < stream.Length)
+            if (offset >= 0 && length + offset <= stream.Length)
             {
                 stream.Seek(offset, SeekOrigin.Begin);
                 stream.Read(bytes);

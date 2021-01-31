@@ -69,16 +69,16 @@ namespace XDCommon.Utility
             }
 
             outputStream.Flush();
-            outputStream.Dispose();
             file.Dispose();
 
             if (file is FileStream)
             {
+                outputStream.Dispose();
                 File.Delete(filename);
                 File.Move(outputFilename, filename);
+                return filename.GetNewStream();
             }
-            
-            return filename.GetNewStream();
+            return outputStream;
         }
     }
 }

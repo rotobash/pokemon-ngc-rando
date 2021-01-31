@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using XDCommon.Contracts;
 
 namespace XDCommon.Utility
 {
@@ -24,63 +25,52 @@ namespace XDCommon.Utility
 
             for (int i = 0; i < sys.NumberOfEntries; i++)
             {
-                sys.extractedEntries.Add(FSysFileEntry.ExtractFromFSys(sys, i));
+                var entry = FSysFileEntry.ExtractFromFSys(sys, i);
+                sys.ExtractedEntries.Add(entry);
+                switch (entry.FileType)
+                {
+                        case FileTypes.GSW:
+                        {
+                            var gswTex = (GSWTexture)entry;
+                            var texData = gswTex.ExtractTextureData();
+                            sys.ExtractedEntries.AddRange(texData);
+                        }
+                        break;
+
+                }
             }
 
             if (decode)
             {
-                var textures = new List<Texture>();
-                foreach (var entry in sys.extractedEntries)
+                var extraData = new List<IExtractedFile>();
+                for (int i = 0; i < sys.ExtractedEntries.Count; i++)
                 {
-                    switch (entry.FileType)
-                    {
-                        case FileTypes.GTX:
-                        case FileTypes.ATX:
-                        case FileTypes.GSW:
-                        {
-                            if (entry.FileType == FileTypes.GSW)
-                            {
-                                textures.AddRange(
-                                    new GSWTexture(entry).ExtractTextureData()
-                                );
-                            }
-                            else
-                            {
-                                textures.Add(new Texture(entry));
-                            }
-                            break;
-                        }
-
-                        case FileTypes.PKX:
-                            // pkxextractor
-                            break;
-
-                        case FileTypes.MSG:
-                            // string table
-                            break;
-
-                        case FileTypes.SCD:
-                            new SCD(entry).WriteScriptData(sys);
-                            break;
-
-                        case FileTypes.THH:
-                        {
-                            var thdData = sys.extractedEntries.Find(f =>
-                            {
-                                var entryFileName = f.FileName.Split(".")[0];
-                                return f.FileType == FileTypes.THD && f.FileName.Contains(entryFileName);
-                            });
-                            var thp = new THP();
-                            break;
-                        }
-                    }
-                }
-
-                if (textures.Count > 0)
-                {
-                    foreach (var tex in textures)
+                    var entry = sys.ExtractedEntries[i];
+                    if (entry is Texture tex)
                     {
                         tex.WritePNGData();
+                    }
+                    else if (entry is PKX pk)
+                    {
+                        sys.ExtractedEntries.Add(pk.ExtractDat());
+                    }
+                    else if (entry is StringTable tbl)
+                    {
+
+                    }
+                    else if (entry is SCD scr)
+                    {
+                        scr.WriteScriptData(sys);
+                    }
+                    else if (entry.FileType == FileTypes.THH)
+                    {
+                        var thdData = sys.ExtractedEntries.Find(f =>
+                        {
+                            var entryFileName = f.FileName.Split(".")[0];
+                            return f.FileType == FileTypes.THD && f.FileName.Contains(entryFileName);
+                        });
+                        var thp = new THP();
+                        sys.ExtractedEntries.Add(thp);
                     }
                 }
             }

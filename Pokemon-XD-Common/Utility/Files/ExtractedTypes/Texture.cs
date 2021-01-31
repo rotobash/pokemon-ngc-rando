@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using XDCommon.Contracts;
 
 namespace XDCommon.Utility
 {
-    public class Texture
+    public class Texture : FSysFileEntry
     {
-        public Texture(FSysFileEntry data)
+        public Texture()
         {
-
         }
 
         public void WritePNGData()
@@ -24,14 +24,13 @@ namespace XDCommon.Utility
         public int DataSize;
     }
 
-    public class GSWTexture
+    public class GSWTexture: FSysFileEntry
     {
-        FSysFileEntry fileData;
         List<GSWMetadata> metadata;
-        public GSWTexture(FSysFileEntry data)
+        public GSWTexture()
         {
-            var numberOfIds = data.ExtractedFile.GetUShortAtOffset(0x18);
-            fileData = data;
+            FileType = FileTypes.GSW;
+            var numberOfIds = ExtractedFile.GetUShortAtOffset(0x18);
             metadata = new List<GSWMetadata>();
 
             for (int i = 1; i < numberOfIds && i <= 0xFF; i++)
@@ -47,14 +46,14 @@ namespace XDCommon.Utility
         GSWMetadata? SearchForID(int id)
         {
             var headerMarker = new byte[] { 3, 0, 0, (byte)id };
-            var offsets = fileData.ExtractedFile.OccurencesOfBytes(BitConverter.ToInt32(headerMarker));
+            var offsets = ExtractedFile.OccurencesOfBytes(BitConverter.ToInt32(headerMarker));
             foreach (var offset in offsets)
             {
-                if (fileData.ExtractedFile.GetUShortAtOffset(offset + 0x24) == 0x0801)
+                if (ExtractedFile.GetUShortAtOffset(offset + 0x24) == 0x0801)
                 {
-                    var formatID = fileData.ExtractedFile.GetIntAtOffset(offset + 0x28);
+                    var formatID = ExtractedFile.GetIntAtOffset(offset + 0x28);
 
-                    var palletteSize = fileData.ExtractedFile.GetIntAtOffset(offset + 0x68);
+                    var palletteSize = ExtractedFile.GetIntAtOffset(offset + 0x68);
                     var textureSize = palletteSize + 0x200;
                     var textureStart = offset + 0x20;
                     return new GSWMetadata
@@ -73,19 +72,19 @@ namespace XDCommon.Utility
             var textures = new List<Texture>();
             foreach (var info in metadata)
             {
-                var filename = $"{fileData.Path}/{fileData.FileName.RemoveFileExtensions()}{info.Id}.gtx";
+                var filename = $"{Path}/{FileName.RemoveFileExtensions()}{info.Id}.gtx";
                 var extractedFile = File.Open(filename, FileMode.Create, FileAccess.ReadWrite);
-                fileData.ExtractedFile.CopySubStream(extractedFile, info.StartOffset, info.DataSize);
+                ExtractedFile.CopySubStream(extractedFile, info.StartOffset, info.DataSize);
                 extractedFile.Flush();
                 
-                var entry = new FSysFileEntry
+                var entry = new Texture
                 {
-                    Path = fileData.Path,
+                    Path = Path,
                     FileName = filename,
                     FileType = FileTypes.GTX,
                     ExtractedFile = extractedFile
                 };
-                textures.Add(new Texture(entry));
+                textures.Add(entry);
             }
             return textures;
         }

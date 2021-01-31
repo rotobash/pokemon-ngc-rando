@@ -5,11 +5,11 @@ using XDCommon.Contracts;
 
 namespace XDCommon.Utility
 {
-    public class THP : FSysFileEntry
+    public class REL: FSysFileEntry
     {
-        public THP()
+        public REL()
         {
-            FileType = FileTypes.THP;
+            FileType = FileTypes.REL;
         }
     }
 }

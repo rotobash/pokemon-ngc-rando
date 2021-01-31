@@ -4,7 +4,7 @@ using System.IO;
 
 namespace XDCommon.Utility
 {
-    public class TOC
+    public class FST
     {
         const int kTOCStartOffsetLocation = 0x424;
         const int kTOCFileSizeLocation = 0x428;
@@ -32,7 +32,7 @@ namespace XDCommon.Utility
             private set;
         }
 
-        public TOC(string pathToExtractDirectory, ISOExtractor extractor)
+        public FST(string pathToExtractDirectory, ISOExtractor extractor)
         {
             var fileName = $"{pathToExtractDirectory}/Game.toc";
             TOCStream = fileName.GetNewStream();
@@ -53,7 +53,7 @@ namespace XDCommon.Utility
             TOCStream.Flush();
         }
         
-        public TOC(string pathToExtractDirectory, int offset)
+        public FST(string pathToExtractDirectory, int offset)
         {
             var fileName = $"{pathToExtractDirectory}/Game.toc";
             if (!File.Exists(fileName))
@@ -75,7 +75,7 @@ namespace XDCommon.Utility
             Size = (int)TOCStream.Length;
         }
 
-        ~TOC()
+        ~FST()
         {
             TOCStream.Flush();
             TOCStream.Dispose();
