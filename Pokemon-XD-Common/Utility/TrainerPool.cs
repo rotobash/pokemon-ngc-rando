@@ -6,7 +6,7 @@ using XDCommon.PokemonDefinitions;
 
 namespace XDCommon.Utility
 {
-    public class TrainerPool : FSysFileEntry
+    public class TrainerPool
     {
         static byte[] kOffensiveDTAI = new byte[] { 0x0F, 0x3A, 0x00, 0x00, 0x73, 0x73, 0x74, 0x73, 0x73, 0x74, 0x82, 0x00, 0x2C, 0x27, 0x50, 0x00, 0x50, 0x32, 0x14, 0x0A, 0x09, 0x09, 0x32, 0x32, 0x00, 0x09, 0x00, 0x09, 0x32, 0x32, 0x08, 00 };
         static byte[] kDefensiveDTAI = new byte[] { 0x0F, 0x3A, 0x00, 0x00, 0x73, 0x73, 0x74, 0x73, 0x73, 0x74, 0x82, 0x00, 0x2C, 0x27, 0x50, 0x00, 0x50, 0x1E, 0x00, 0x0A, 0x07, 0x09, 0x4B, 0x32, 0x00, 0x03, 0x00, 0x01, 0x4B, 0x19, 0x04, 0x00 };
@@ -29,8 +29,12 @@ namespace XDCommon.Utility
         public IEnumerable<TrainerPokemonPool> AllPokemon { get; }
         public IEnumerable<TrainerPokemon> AllTrainerPokemon { get; }
 
-        public TrainerPool(Pokemon.TrainerTeamTypes teamType)
+        public Stream ExtractedFile;
+        public FileTypes FileType;
+
+        public TrainerPool(Pokemon.TrainerTeamTypes teamType, IExtractedFile fileEntry)
         {
+            ExtractedFile = fileEntry.ExtractedFile;
             FileType = FileTypes.BIN;
             TeamType = teamType;
 
@@ -89,18 +93,6 @@ namespace XDCommon.Utility
             ExtractedFile.Write(kCycleDTAI);
 
             ExtractedFile.Flush();
-        }
-
-        public static TrainerPool GetTrainerTeamById(int id)
-        {
-            foreach (var team in Pokemon.Trainers)
-            {
-                if ((int)team == id)
-                {
-                    return new TrainerPool(team); 
-                }
-            }
-            return null;
         }
     }
 }
