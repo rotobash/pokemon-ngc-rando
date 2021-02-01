@@ -6,7 +6,7 @@ using XDCommon.PokemonDefinitions;
 
 namespace XDCommon.Utility
 {
-    public class Trainer: FSysFileEntry
+    public class Trainer
     {
         internal const byte kSizeOfTrainerData = 0x38;
         internal const byte kSizeOfAIData = 0x20;
@@ -37,8 +37,8 @@ namespace XDCommon.Utility
 
         TrainerPokemonPool[] pokemon = new TrainerPokemonPool[6];
         Pokemon.TrainerClasses trainerClass = Pokemon.TrainerClasses.Michael1;
-
-        //object trainerModel = XGTrainerModels.michael1WithoutSnagMachine;
+        Pokemon.TrainerModels trainerModel = Pokemon.TrainerModels.Michael1WithoutSnagMachine;
+        
         ushort AI = 0;
         ushort cameraEffects = 0; // some models have unique animations at the start of battle which require special camera movements
 
@@ -98,7 +98,7 @@ namespace XDCommon.Utility
             var tModel = pool.ExtractedFile.GetByteAtOffset(start + kTrainerClassModelOffset);
 
             trainerClass = (Pokemon.TrainerClasses)tClass;
-            //trainerModel = (Pokemon.TrainerModels)trainerModel;
+            trainerModel = (Pokemon.TrainerModels)tModel;
             AI = pool.ExtractedFile.GetUShortAtOffset(start + kTrainerAIOffset);
             cameraEffects = pool.ExtractedFile.GetUShortAtOffset(start + kTrainerCameraEffectOffset);
         }
