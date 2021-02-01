@@ -16,13 +16,13 @@ namespace XDCommon.PokemonDefinitions
         
         public enum TrainerTeamTypes
         {
-            DarkPokemon,
-            Story,
             Bingo,
             Colosseum,
+            DarkPokemon,
             Hundred,
             Imasugu,
             Sample,
+            Story,
             Virtual
         }
 

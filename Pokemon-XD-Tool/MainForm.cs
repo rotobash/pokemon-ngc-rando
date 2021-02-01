@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Randomizer.Colosseum;
+using Randomizer.XD;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -42,20 +44,27 @@ namespace Randomizer
                 {
                     Directory.CreateDirectory(Configuration.ExtractDirectory);
                 }
-                var isoExtract = new ISOExtractor(openFileDialog.FileName);
-                iso = isoExtract.ExtractISO();
-
+                var iso = new ISOExtractor(openFileDialog.FileName).ExtractISO();
+                IGameExtractor ex ;
                 switch (iso.Game)
                 {
                     case Game.Colosseum:
                         gamePictureBox.Image = new Bitmap("Images/colo-logo.jpg");
+                        ex = new ColoExtractor();
                         break;
                     case Game.XD:
                         gamePictureBox.Image = new Bitmap("Images/xd-logo.jpg");
+                        ex = new XDExtractor(iso);
                         break;
+                    default:
+                        MessageBox.Show("Game not recognized!");
+                        return;
                 }
                 gameLabel.Text = iso.Game.ToString();
                 regionLabel.Text = iso.Region.ToString();
+
+                var tPools = ex.ExtractPools();
+                var t = true;
             }
         }
 

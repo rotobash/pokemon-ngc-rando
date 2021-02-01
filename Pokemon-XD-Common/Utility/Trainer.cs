@@ -61,14 +61,15 @@ namespace XDCommon.Utility
             var name = "";
             var currentChar = 0x1;
 
-            trainers.ExtractedFile.Seek(TrainerPool.DSTRDataOffset + trainerStringID, SeekOrigin.Begin);
+            var offset = TrainerPool.DSTRDataOffset + trainerStringID;
             while (currentChar != 0)
             {
-                currentChar = trainers.ExtractedFile.ReadByte();
+                currentChar = trainers.ExtractedFile.GetByteAtOffset(offset);
                 if (currentChar != 0)
                 {
                     name += new UnicodeCharacters(currentChar);
                 }
+                offset++;
             }
 
             trainerString = name;

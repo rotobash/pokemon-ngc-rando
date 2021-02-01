@@ -10,15 +10,15 @@ using XDCommon.Utility;
 
 namespace Randomizer.XD
 {
-    class XDExtractor
-    {
+    public class XDExtractor: IGameExtractor
+	{
         ISO iso;
         public XDExtractor(ISO iso)
         {
             this.iso = iso;
         }
 
-        public TrainerPool[] ExtractPool()
+        public TrainerPool[] ExtractPools()
         {
 			var poolFsys = iso.Files["deck_archive.fsys"];
 			var poolTypes = Enum.GetValues<Pokemon.TrainerTeamTypes>();
