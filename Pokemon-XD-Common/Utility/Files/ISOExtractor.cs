@@ -14,28 +14,21 @@ namespace XDCommon.Utility
         const int kISOFirstFileOffsetLocation = 0x434; // The "user data" start offset. Basically all the game specific files
         const int kISOFilesTotalSizeLocation = 0x438; // The size of the game specific files, so everything after dol and toc
 
-        public string ExtractPath { get; }
         public Stream ISOStream { get; }
-        public FST TOC { get; }
-        DOL dol;
+        public string ExtractPath { get; private set; }
+        internal FST TOC { get; private set; }
 
-        List<FSys> fSysFiles = new List<FSys>();
-
-        ConcurrentQueue<Func<Task>> extractTasks = new ConcurrentQueue<Func<Task>>();
-        Task[] executors;
-        CancellationTokenSource tokenSource;
-
-        public Region Region { get; }
-        public Game Game { get; }
-
-        public ISOExtractor(string pathToISO, bool verbose = false)
+        public ISOExtractor(string pathToISO)
         {
-            ISOStream = File.Open(pathToISO, FileMode.Open, FileAccess.ReadWrite);
             ExtractPath = Configuration.ExtractDirectory;
-            
-            executors = new Task[Configuration.ThreadCount];
-            tokenSource = new CancellationTokenSource();
+            ISOStream = File.Open(pathToISO, FileMode.Open, FileAccess.ReadWrite);
+        }
 
+        public ISO ExtractISO()
+        {
+            var iso = new ISO();
+
+            ISOStream.Seek(0, SeekOrigin.Begin);
             var _ = ISOStream.ReadByte();
             int gamecode2 = ISOStream.ReadByte() << 8;
             int gamecode1 = ISOStream.ReadByte();
@@ -46,7 +39,7 @@ namespace XDCommon.Utility
             {
                 case (ushort)Game.Colosseum:
                 case (ushort)Game.XD:
-                    Game = (Game)game;
+                    iso.Game = (Game)game;
                     break;
                 default:
                     throw new Exception("Unsupported game!");
@@ -57,28 +50,24 @@ namespace XDCommon.Utility
                 case (byte)Region.US:
                 case (byte)Region.Europe:
                 case (byte)Region.Japan:
-                    Region = (Region)region;
+                    iso.Region = (Region)region;
                     break;
                 default:
                     throw new Exception("Unknown region!");
             }
 
-            dol = new DOL(ExtractPath, this);
-            TOC = new FST(ExtractPath, this);
-            TOC.Load(dol, verbose);
-
-            //ExtractFiles("B1_1.fsys");
-            ExtractFiles(TOC.AllFileNames.ToArray());
-            while (!extractTasks.IsEmpty)
+            ExtractPath = $"{Configuration.ExtractDirectory}/{iso.Game}-{iso.Region}";
+            if (!Directory.Exists(ExtractPath) && !Configuration.UseMemoryStreams)
             {
-                Thread.Sleep(1000);
+                Directory.CreateDirectory(ExtractPath);
             }
 
-        }
+            iso.DOL = new DOL(ExtractPath, this);
+            TOC = new FST(ExtractPath, this);
+            TOC.Load(iso.DOL);
+            iso.TOC = TOC;
 
-        public void ExtractFiles(params string[] fileNames)
-        {
-            foreach (string fileName in fileNames)
+            foreach (string fileName in iso.TOC.AllFileNames)
             {
                 if (fileName == "Start.dol" || fileName == "Game.toc")
                     continue;
@@ -86,45 +75,16 @@ namespace XDCommon.Utility
                 if (fileName.Contains("fsys", StringComparison.InvariantCultureIgnoreCase))
                 {
                     var fsys = new FSys(fileName, this);
-                    fSysFiles.Add(fsys);
+                    iso.Files.Add(fsys.Filename, fsys);
                 }
             }
 
-            foreach (var fsysFile in fSysFiles)
-            {
-                extractTasks.Enqueue(() => new Task(() => FSysExtractor.ExtractFSys(fsysFile, true)));
-            }
-
-            for (int i = 0; i < executors.Length; i++)
-            {
-                executors[i] = new Task(async () =>
-                {
-                    while (!tokenSource.Token.IsCancellationRequested)
-                    {
-                        if (extractTasks.TryDequeue(out var extractTask))
-                        {
-                            var t = extractTask();
-                            t.Start();
-                            await t;
-                        }
-                        else
-                        {
-                            await Task.Delay(TimeSpan.FromSeconds(10));
-                        }
-                    }
-                }, tokenSource.Token);
-
-                executors[i].Start();
-            }
+            return iso;
         }
 
         ~ISOExtractor()
         {
-            ISOStream.Flush();
             ISOStream.Dispose();
-
-            tokenSource.Cancel();
-            Task.WaitAll(executors);
         }
     }
 }

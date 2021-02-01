@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using XDCommon.Contracts;
 
 namespace XDCommon.Utility
@@ -15,7 +16,7 @@ namespace XDCommon.Utility
             IExtractedFile rel = null;
             if (FileType != FileTypes.REL)
             {
-                rel = fSysFile.ExtractedEntries.Find(f => f.FileType == FileTypes.REL && FileName.RemoveFileExtensions() == f.FileName.RemoveFileExtensions());
+                rel = fSysFile.ExtractedEntries.Values.FirstOrDefault(f => f.FileType == FileTypes.REL && FileName.RemoveFileExtensions() == f.FileName.RemoveFileExtensions());
                 if (rel == null)
                 {
                     var fileName = FileName.GetSafeFileName(Path, FileTypes.REL);
@@ -27,10 +28,8 @@ namespace XDCommon.Utility
                         FileType = FileTypes.REL,
                         ExtractedFile = relFile
                     };
-                    fSysFile.ExtractedEntries.Add(rel);
+                    fSysFile.ExtractedEntries.Add(fileName, rel);
                 }
-
-                
             }
 
 

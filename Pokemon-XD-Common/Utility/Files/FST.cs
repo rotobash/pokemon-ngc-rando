@@ -81,7 +81,7 @@ namespace XDCommon.Utility
             TOCStream.Dispose();
         }
 
-        public void Load(DOL dolFile, bool verbose)
+        public void Load(DOL dolFile)
         {
 
             if (Configuration.Verbose)

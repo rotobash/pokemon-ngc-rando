@@ -38,7 +38,7 @@ namespace XDCommon.Utility
 
         public Stream fileStream;
 
-        public List<IExtractedFile> ExtractedEntries = new List<IExtractedFile>();
+        public Dictionary<string, IExtractedFile> ExtractedEntries = new Dictionary<string, IExtractedFile>();
 
         public int GroupID
         {
@@ -68,19 +68,15 @@ namespace XDCommon.Utility
 
         public string Filename { get; }
         public string Path { get; }
-        public Region Region { get; }
-        public Game Game { get; }
 
         public bool UsesFileExtensions => fileStream.GetByteAtOffset(0x13) == 1;
 
-        public FSys(string pathToFile, Region region, Game game)
+        public FSys(string pathToFile)
         {
             fileStream = File.Open(pathToFile, FileMode.Open, FileAccess.ReadWrite);
             var fileParts = pathToFile.Split("/");
             Filename = fileParts.Last();
             Path = string.Join("/", fileParts.Take(fileParts.Length - 1));
-            Region = region;
-            Game = game;
         }
 
         public FSys(string fileName, ISOExtractor extractor)
@@ -90,15 +86,13 @@ namespace XDCommon.Utility
 
             Filename = fileName;
             Path = extractor.ExtractPath;
-            Region = extractor.Region;
-            Game = extractor.Game;
 
             if (Configuration.Verbose)
             {
                 Console.WriteLine($"Extracting {fileName}");
             }
 
-            fileStream = File.Open($"{Path}/{Filename}", FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            fileStream = $"{Path}/{Filename}".GetNewStream();
             extractor.ISOStream.CopySubStream(fileStream, offset, size);
         }
         public bool IsCompressed(int index)

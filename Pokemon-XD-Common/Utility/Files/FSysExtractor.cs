@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using XDCommon.Contracts;
 
 namespace XDCommon.Utility
@@ -13,29 +14,35 @@ namespace XDCommon.Utility
                 return;
 
             var extractDir = $"{sys.Path}/{sys.Filename.RemoveFileExtensions()}";
-            if (!Directory.Exists(extractDir))
+            if (!Configuration.UseMemoryStreams)
             {
-                Directory.CreateDirectory(extractDir);
-            }
-            else 
-            {
-                Directory.Delete(extractDir, true);
-                Directory.CreateDirectory(extractDir);
+                if (!Directory.Exists(extractDir))
+                {
+                    Directory.CreateDirectory(extractDir);
+                }
+                else
+                {
+                    Directory.Delete(extractDir, true);
+                    Directory.CreateDirectory(extractDir);
+                }
             }
 
             for (int i = 0; i < sys.NumberOfEntries; i++)
             {
                 var entry = FSysFileEntry.ExtractFromFSys(sys, i);
-                sys.ExtractedEntries.Add(entry);
+                sys.ExtractedEntries.Add(entry.FileName, entry);
                 switch (entry.FileType)
                 {
-                        case FileTypes.GSW:
+                    case FileTypes.GSW:
+                    {
+                        var gswTex = (GSWTexture)entry;
+                        var texData = gswTex.ExtractTextureData();
+                        foreach (var tex in texData)
                         {
-                            var gswTex = (GSWTexture)entry;
-                            var texData = gswTex.ExtractTextureData();
-                            sys.ExtractedEntries.AddRange(texData);
+                            sys.ExtractedEntries.Add(tex.FileName, tex);
                         }
-                        break;
+                    }
+                    break;
 
                 }
             }
@@ -45,14 +52,14 @@ namespace XDCommon.Utility
                 var extraData = new List<IExtractedFile>();
                 for (int i = 0; i < sys.ExtractedEntries.Count; i++)
                 {
-                    var entry = sys.ExtractedEntries[i];
+                    var entry = sys.ExtractedEntries.Values.ElementAt(i);
                     if (entry is Texture tex)
                     {
                         tex.WritePNGData();
                     }
                     else if (entry is PKX pk)
                     {
-                        sys.ExtractedEntries.Add(pk.ExtractDat());
+                        sys.ExtractedEntries.Add(pk.FileName.GetSafeFileName(pk.Path, FileTypes.DAT), pk.ExtractDat());
                     }
                     else if (entry is StringTable tbl)
                     {
@@ -64,13 +71,13 @@ namespace XDCommon.Utility
                     }
                     else if (entry.FileType == FileTypes.THH)
                     {
-                        var thdData = sys.ExtractedEntries.Find(f =>
+                        var thdData = sys.ExtractedEntries.Values.First(f =>
                         {
                             var entryFileName = f.FileName.Split(".")[0];
                             return f.FileType == FileTypes.THD && f.FileName.Contains(entryFileName);
                         });
                         var thp = new THP();
-                        sys.ExtractedEntries.Add(thp);
+                        sys.ExtractedEntries.Add(entry.FileName.GetSafeFileName(entry.Path, FileTypes.THP), thp);
                     }
                 }
             }
