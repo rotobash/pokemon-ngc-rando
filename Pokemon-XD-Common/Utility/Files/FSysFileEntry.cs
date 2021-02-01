@@ -40,7 +40,7 @@ namespace XDCommon.Utility
 
             var safeFileName = fileName.GetSafeFileName(extractDir, fileType);
             var extractedFile = $"{extractDir}/{safeFileName}".GetNewStream();
-            fSys.fileStream.CopySubStream(extractedFile, offset, size);
+            fSys.ExtractedFile.CopySubStream(extractedFile, offset, size);
             extractedFile.Flush();
 
             if (isCompressed)
@@ -49,7 +49,7 @@ namespace XDCommon.Utility
                 {
                     Console.WriteLine($"Decoding {fileName}");
                 }
-                extractedFile = LZSSDecoder.Decode(extractedFile);
+                extractedFile = LZSSEncoder.Decode(extractedFile);
             }
 
             switch (fileType)
@@ -111,8 +111,17 @@ namespace XDCommon.Utility
                         ExtractedFile = extractedFile
                     };
             }
+        }
 
-            
+        public Stream Encode(bool isCompressed)
+        {
+            var entryStream = new MemoryStream();
+            ExtractedFile.CopyTo(entryStream);
+            if (isCompressed)
+            {
+                LZSSEncoder.Encode(entryStream);
+            }
+            return entryStream;
         }
     }
 }

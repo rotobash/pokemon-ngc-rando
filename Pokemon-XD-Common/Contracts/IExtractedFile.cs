@@ -10,5 +10,6 @@ namespace XDCommon.Contracts
         string Path { get; }
         FileTypes FileType { get; }
         Stream ExtractedFile { get; }
+        Stream Encode(bool isCompressed);
     }
 }

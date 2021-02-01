@@ -81,6 +81,40 @@ namespace XDCommon.Utility
 
             return iso;
         }
+        public void RepackISO(ISO iso, string savePath)
+        {
+            if (!savePath.EndsWith(".iso"))
+            {
+                savePath = $"{savePath}.iso";
+            }
+            using var isoStream = File.Open(savePath, FileMode.OpenOrCreate, FileAccess.Write);
+            // write disk size first so we can seek around the stream without hitting the end
+            ISOStream.Seek(0, SeekOrigin.Begin);
+            ISOStream.CopyTo(isoStream);
+            isoStream.Flush();
+            isoStream.Seek(0, SeekOrigin.Begin);
+
+            // pack header
+
+            //// pack dol
+            //isoStream.Seek(iso.DOL.Offset, SeekOrigin.Begin);
+            //iso.DOL.ExtractedFile.CopyTo(isoStream);
+
+            //// pack FST
+            //isoStream.Seek(TOC.Offset, SeekOrigin.Begin);
+            //iso.TOC.ExtractedFile.CopyTo(isoStream);
+
+            // pack fsys files
+            foreach (var fsys in iso.Files.Values)
+            {
+                fsys.WriteToStream(isoStream);
+            }
+
+            // pack footer
+
+
+            isoStream.Flush();
+        }
 
         ~ISOExtractor()
         {

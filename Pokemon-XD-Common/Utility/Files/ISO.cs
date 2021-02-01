@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,6 +12,7 @@ namespace XDCommon.Utility
 {
     public class ISO
     {
+        const int GCDiskSize = 1459978240;
         public Region Region { get; internal set; }
         public Game Game { get; internal set; }
         public DOL DOL { get; internal set;  }

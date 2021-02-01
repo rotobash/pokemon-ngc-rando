@@ -19,6 +19,7 @@ namespace Randomizer
     public partial class MainForm : Form
     {
         ISO iso;
+        ISOExtractor extractor;
         public MainForm()
         {
             InitializeComponent();
@@ -44,7 +45,8 @@ namespace Randomizer
                 {
                     Directory.CreateDirectory(Configuration.ExtractDirectory);
                 }
-                var iso = new ISOExtractor(openFileDialog.FileName).ExtractISO();
+                extractor = new ISOExtractor(openFileDialog.FileName);
+                iso = extractor.ExtractISO();
                 IGameExtractor ex ;
                 switch (iso.Game)
                 {
@@ -62,9 +64,6 @@ namespace Randomizer
                 }
                 gameLabel.Text = iso.Game.ToString();
                 regionLabel.Text = iso.Region.ToString();
-
-                var tPools = ex.ExtractPools();
-                var t = true;
             }
         }
 
@@ -72,6 +71,21 @@ namespace Randomizer
         {
             var options = new OptionsForm();
             options.ShowDialog();
+        }
+
+        private void randomizerButton_Click(object sender, EventArgs e)
+        {
+            saveFileDialog.FileName = $"{iso.Game}-{iso.Region}.iso";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                var path = saveFileDialog.FileName;
+                if (!path.EndsWith(".iso"))
+                {
+                    path = $"{path}.iso";
+                }
+                extractor.RepackISO(iso, path);
+            }
+            
         }
     }
 }

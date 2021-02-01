@@ -5,11 +5,17 @@ using System.IO;
 
 namespace XDCommon.Utility
 {
-    public static class LZSSDecoder
+    public static class LZSSEncoder
     {
         const int N = 4096;
         const int F = 18;
         const byte P = 2;
+
+        public static void Encode(Stream file)
+        {
+
+        }
+
         public static Stream Decode(Stream file)
         {
             var slidingWindow = new byte[N];

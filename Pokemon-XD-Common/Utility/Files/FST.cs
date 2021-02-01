@@ -18,8 +18,8 @@ namespace XDCommon.Utility
 
         public List<string> AllFileNames { get; private set; }
         public List<string> FilesOrdered { get; private set; }
-        public Stream TOCStream { get; }
-        public int TOCFirstStringOffset => (int)TOCStream.GetUIntAtOffset(kTOCNumberEntriesOffset) * kTOCEntrySize;
+        public Stream ExtractedFile { get; }
+        public int TOCFirstStringOffset => (int)ExtractedFile.GetUIntAtOffset(kTOCNumberEntriesOffset) * kTOCEntrySize;
         public int Offset
         {
             get;
@@ -35,7 +35,7 @@ namespace XDCommon.Utility
         public FST(string pathToExtractDirectory, ISOExtractor extractor)
         {
             var fileName = $"{pathToExtractDirectory}/Game.toc";
-            TOCStream = fileName.GetNewStream();
+            ExtractedFile = fileName.GetNewStream();
 
             // load toc
             Offset = (int)extractor.ISOStream.GetUIntAtOffset(kTOCStartOffsetLocation);
@@ -49,8 +49,8 @@ namespace XDCommon.Utility
             }
 
             // write to disk
-            extractor.ISOStream.CopySubStream(TOCStream, Offset, Size);
-            TOCStream.Flush();
+            extractor.ISOStream.CopySubStream(ExtractedFile, Offset, Size);
+            ExtractedFile.Flush();
         }
         
         public FST(string pathToExtractDirectory, int offset)
@@ -64,21 +64,21 @@ namespace XDCommon.Utility
             var file = File.Open(fileName, FileMode.Open, FileAccess.ReadWrite);
             if (Configuration.UseMemoryStreams)
             {
-                TOCStream = new MemoryStream();
-                file.CopyTo(TOCStream);
+                ExtractedFile = new MemoryStream();
+                file.CopyTo(ExtractedFile);
             }
             else
             {
-                TOCStream = file;
+                ExtractedFile = file;
             }
             Offset = offset;
-            Size = (int)TOCStream.Length;
+            Size = (int)ExtractedFile.Length;
         }
 
         ~FST()
         {
-            TOCStream.Flush();
-            TOCStream.Dispose();
+            ExtractedFile.Flush();
+            ExtractedFile.Dispose();
         }
 
         public void Load(DOL dolFile)
@@ -103,15 +103,15 @@ namespace XDCommon.Utility
             for (int i = 0; i * 12 < TOCFirstStringOffset; i++)
             {
                 var offset = i * 12;
-                var folder = TOCStream.GetByteAtOffset(offset) == 1;
+                var folder = ExtractedFile.GetByteAtOffset(offset) == 1;
 
                 if (!folder)
                 {
-                    var nameOffset = TOCStream.GetIntAtOffset(offset);
-                    var fileOffset = TOCStream.GetIntAtOffset(offset + 4);
-                    var fileSize = TOCStream.GetIntAtOffset(offset + 8);
+                    var nameOffset = ExtractedFile.GetIntAtOffset(offset);
+                    var fileOffset = ExtractedFile.GetIntAtOffset(offset + 4);
+                    var fileSize = ExtractedFile.GetIntAtOffset(offset + 8);
 
-                    var fileNameChars = TOCStream.GetStringAtOffset(nameOffset + TOCFirstStringOffset);
+                    var fileNameChars = ExtractedFile.GetStringAtOffset(nameOffset + TOCFirstStringOffset);
                     var fileName = string.Join("", fileNameChars);
                     AllFileNames.Add(fileName);
                     fileLocations.Add(fileName, fileOffset);

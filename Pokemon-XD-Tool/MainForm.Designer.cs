@@ -107,6 +107,7 @@ namespace Randomizer
             this.gameLabel = new System.Windows.Forms.Label();
             this.regionLabel = new System.Windows.Forms.Label();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gamePictureBox)).BeginInit();
             this.settingsTabPage.SuspendLayout();
@@ -206,6 +207,7 @@ namespace Randomizer
             this.randomizerButton.TabIndex = 2;
             this.randomizerButton.Text = "Randomize";
             this.randomizerButton.UseVisualStyleBackColor = true;
+            this.randomizerButton.Click += new System.EventHandler(this.randomizerButton_Click);
             // 
             // setSeedButton
             // 
@@ -1010,14 +1012,14 @@ namespace Randomizer
             this.regionLabel.Size = new System.Drawing.Size(0, 15);
             this.regionLabel.TabIndex = 3;
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(627, 530);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Form1";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -1138,6 +1140,7 @@ namespace Randomizer
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label gameLabel;
         private System.Windows.Forms.Label regionLabel;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }
 

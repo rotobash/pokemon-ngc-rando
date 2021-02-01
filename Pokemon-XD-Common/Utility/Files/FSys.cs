@@ -36,20 +36,20 @@ namespace XDCommon.Utility
         const ushort kUSbytes = 0x5553;
         const ushort kJPbytes = 0x4A50;
 
-        public Stream fileStream;
-
         public Dictionary<string, IExtractedFile> ExtractedEntries = new Dictionary<string, IExtractedFile>();
+
+        public Stream ExtractedFile;
 
         public int GroupID
         {
             get
             {
-                return fileStream.GetIntAtOffset(kFSYSGroupIDOffset);
+                return ExtractedFile.GetIntAtOffset(kFSYSGroupIDOffset);
             }
             set
             {
-                fileStream.Seek(kFSYSGroupIDOffset, SeekOrigin.Begin);
-                fileStream.Write(BitConverter.GetBytes(value));
+                ExtractedFile.Seek(kFSYSGroupIDOffset, SeekOrigin.Begin);
+                ExtractedFile.Write(BitConverter.GetBytes(value));
             }
         }
 
@@ -57,23 +57,25 @@ namespace XDCommon.Utility
         {
             get
             {
-                return fileStream.GetIntAtOffset(kNumberOfEntriesOffset);
+                return ExtractedFile.GetIntAtOffset(kNumberOfEntriesOffset);
             }
             set
             {
-                fileStream.Seek(kNumberOfEntriesOffset, SeekOrigin.Begin);
-                fileStream.Write(BitConverter.GetBytes(value));
+                ExtractedFile.Seek(kNumberOfEntriesOffset, SeekOrigin.Begin);
+                ExtractedFile.Write(BitConverter.GetBytes(value));
             }
         }
 
-        public string Filename { get; }
-        public string Path { get; }
+        public string Filename { get; private set; }
+        public string Path { get; private set; }
+        public int Offset { get; private set; }
+        public int Size { get; private set; }
 
-        public bool UsesFileExtensions => fileStream.GetByteAtOffset(0x13) == 1;
+        public bool UsesFileExtensions => ExtractedFile.GetByteAtOffset(0x13) == 1;
 
         public FSys(string pathToFile)
         {
-            fileStream = File.Open(pathToFile, FileMode.Open, FileAccess.ReadWrite);
+            ExtractedFile = File.Open(pathToFile, FileMode.Open, FileAccess.ReadWrite);
             var fileParts = pathToFile.Split("/");
             Filename = fileParts.Last();
             Path = string.Join("/", fileParts.Take(fileParts.Length - 1));
@@ -81,75 +83,117 @@ namespace XDCommon.Utility
 
         public FSys(string fileName, ISOExtractor extractor)
         {
-            var offset = extractor.TOC.LocationForFile(fileName);
-            var size = extractor.TOC.SizeForFile(fileName);
 
             Filename = fileName;
             Path = extractor.ExtractPath;
+            Offset = extractor.TOC.LocationForFile(fileName);
+            Size = extractor.TOC.SizeForFile(fileName);
 
             if (Configuration.Verbose)
             {
                 Console.WriteLine($"Extracting {fileName}");
             }
 
-            fileStream = $"{Path}/{Filename}".GetNewStream();
-            extractor.ISOStream.CopySubStream(fileStream, offset, size);
+            ExtractedFile = $"{Path}/{Filename}".GetNewStream();
+            extractor.ISOStream.CopySubStream(ExtractedFile, Offset, Size);
         }
         public bool IsCompressed(int index)
         {
-            var flag = fileStream.GetUIntAtOffset(GetStartOffsetForFile(index));
+            var flag = ExtractedFile.GetUIntAtOffset(GetStartOffsetForFile(index));
             return flag == kLZSSbytes;
         }
 
 
         public int GetStartOffsetForFileDetails(int index)
         {
-            return fileStream.GetIntAtOffset(kFirstFileDetailsPointerOffset + (index * 4));
+            return ExtractedFile.GetIntAtOffset(kFirstFileDetailsPointerOffset + (index * 4));
         }
 
         public int GetStartOffsetForFile(int index)
         {
             var start = GetStartOffsetForFileDetails(index) + kFileStartPointerOffset;
-            return fileStream.GetIntAtOffset(start);
+            return ExtractedFile.GetIntAtOffset(start);
         }
 
         public void SetStartOffsetForFile(int index, int newStart)
         {
             var start = GetStartOffsetForFile(index);
-            fileStream.Seek(start, SeekOrigin.Begin);
-            fileStream.Write(BitConverter.GetBytes(newStart));
+            ExtractedFile.Seek(start, SeekOrigin.Begin);
+            ExtractedFile.Write(BitConverter.GetBytes(newStart));
         }
         
         public int GetSizeForFile(int index)
         {
-            var start = GetStartOffsetForFileDetails(index) + kCompressedSizeOffset;
-            return fileStream.GetIntAtOffset(start);
+            var offset = IsCompressed(index) ? kCompressedSizeOffset : kUncompressedSizeOffset;
+            var start = GetStartOffsetForFileDetails(index) + offset;
+            return ExtractedFile.GetIntAtOffset(start);
         }
 
         public void SetSizeForFile(int index, int newSize)
         {
-            var start = GetSizeForFile(index);
-            fileStream.Seek(start, SeekOrigin.Begin);
-            fileStream.Write(BitConverter.GetBytes(newSize));
+            var offset = IsCompressed(index) ? kCompressedSizeOffset : kUncompressedSizeOffset;
+            var start = GetStartOffsetForFileDetails(index) + offset;
+            var originalSize = GetSizeForFile(index);
+
+            ExtractedFile.Seek(start, SeekOrigin.Begin);
+            ExtractedFile.Write(BitConverter.GetBytes(newSize));
+            Size += newSize - originalSize;
         }
         
         public string GetFilenameForFile(int index, bool clean = true)
         {
             var offset = UsesFileExtensions ? kFileDetailsFullFilenameOffset : kFileDetailsFilenameOffset;
-            var start = fileStream.GetIntAtOffset(GetStartOffsetForFileDetails(index) + offset);
-            return string.Join("", fileStream.GetStringAtOffset(start));
+            var start = ExtractedFile.GetIntAtOffset(GetStartOffsetForFileDetails(index) + offset);
+            return string.Join("", ExtractedFile.GetStringAtOffset(start));
         }
 
         public int GetIDForFile(int index)
         {
             var start = GetStartOffsetForFileDetails(index) + kFileIdentifierOffset;
-            return fileStream.GetIntAtOffset(start);
+            return ExtractedFile.GetIntAtOffset(start);
         }
 
         public FileTypes GetFileTypeForFile(int index)
         {
             var id = (GetIDForFile(index) & 0xFF00) >> 8;
             return (FileTypes)Enum.ToObject(typeof(FileTypes), id);
+        }
+
+        public void WriteToStream(Stream output)
+        {
+            Stream fSysStream;
+            output.Seek(Offset, SeekOrigin.Begin);
+            if (ExtractedEntries.Count > 0)
+            {
+                using (fSysStream = new MemoryStream());
+                var headerEndOffset = GetStartOffsetForFile(0);
+                // write zeros for the header for now, rewrite after we've update positions and sizes
+                fSysStream.Write(new byte[headerEndOffset]);
+
+                for (int i = 0; i < ExtractedEntries.Count; i++)
+                {
+                    // write element, update its properties
+                    var entry = ExtractedEntries.Values.ElementAt(i);
+                    SetStartOffsetForFile(i, (int)fSysStream.Position);
+                    SetSizeForFile(i, (int)entry.ExtractedFile.Length);
+                    using var stream = entry.Encode(IsCompressed(i));
+                    stream.CopyTo(fSysStream);
+                }
+
+                // write the header and footer back
+                var endIndex = ExtractedEntries.Count - 1;
+                var fileEndOffset = GetStartOffsetForFile(endIndex) + GetSizeForFile(endIndex);
+                ExtractedFile.CopySubStream(fSysStream, 0, headerEndOffset);
+                ExtractedFile.CopySubStream(fSysStream, fileEndOffset, (int)ExtractedFile.Length - fileEndOffset);
+
+                // copy to output stream
+                fSysStream.CopyTo(output);                
+            }
+            else
+            {
+                // nothing changed, just copy our existing stream back
+                ExtractedFile.CopyTo(output);
+            }
         }
     }
 }

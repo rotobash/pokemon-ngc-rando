@@ -11,7 +11,7 @@ namespace XDCommon.Utility
         const int kDolSectionSizesCount = 18;
         const int kDolHeaderSize = 0x100;
 
-        Stream dolStream;
+        public Stream ExtractedFile;
 
         public int Offset
         {
@@ -36,21 +36,21 @@ namespace XDCommon.Utility
             var file = File.Open(fileName, FileMode.Open, FileAccess.ReadWrite);
             if (Configuration.UseMemoryStreams)
             {
-                dolStream = new MemoryStream();
-                file.CopyTo(dolStream);
+                ExtractedFile = new MemoryStream();
+                file.CopyTo(ExtractedFile);
             }
             else
             {
-                dolStream = file;
+                ExtractedFile = file;
             }
             Offset = offset;
-            Size = (int)dolStream.Length;
+            Size = (int)ExtractedFile.Length;
         }
 
         public DOL(string pathToExtractDirectory, ISOExtractor extractor)
         {
             var fileName = $"{pathToExtractDirectory}/Start.dol";
-            dolStream = fileName.GetNewStream();
+            ExtractedFile = fileName.GetNewStream();
             Offset = (int)extractor.ISOStream.GetUIntAtOffset(kDOLStartOffsetLocation);
 
             var size = kDolHeaderSize;
@@ -66,8 +66,8 @@ namespace XDCommon.Utility
                 Console.WriteLine($"DOL Size: {Size:X}");
             }
 
-            extractor.ISOStream.CopySubStream(dolStream, Offset, Size);
-            dolStream.Flush();
+            extractor.ISOStream.CopySubStream(ExtractedFile, Offset, Size);
+            ExtractedFile.Flush();
         }
     }
 }
