@@ -8,6 +8,9 @@ namespace XDCommon.Utility
 {
     public class TrainerPool
     {
+        public static TrainerTeamTypes[] MainTeams = new[] { TrainerTeamTypes.Story, TrainerTeamTypes.Colosseum, TrainerTeamTypes.Hundred, TrainerTeamTypes.Virtual };
+        public static TrainerTeamTypes[] Trainers = new[] { TrainerTeamTypes.Story, TrainerTeamTypes.Colosseum, TrainerTeamTypes.Hundred, TrainerTeamTypes.Virtual, TrainerTeamTypes.Imasugu, TrainerTeamTypes.Bingo, TrainerTeamTypes.Sample };
+
         static byte[] kOffensiveDTAI = new byte[] { 0x0F, 0x3A, 0x00, 0x00, 0x73, 0x73, 0x74, 0x73, 0x73, 0x74, 0x82, 0x00, 0x2C, 0x27, 0x50, 0x00, 0x50, 0x32, 0x14, 0x0A, 0x09, 0x09, 0x32, 0x32, 0x00, 0x09, 0x00, 0x09, 0x32, 0x32, 0x08, 00 };
         static byte[] kDefensiveDTAI = new byte[] { 0x0F, 0x3A, 0x00, 0x00, 0x73, 0x73, 0x74, 0x73, 0x73, 0x74, 0x82, 0x00, 0x2C, 0x27, 0x50, 0x00, 0x50, 0x1E, 0x00, 0x0A, 0x07, 0x09, 0x4B, 0x32, 0x00, 0x03, 0x00, 0x01, 0x4B, 0x19, 0x04, 0x00 };
         static byte[] kSimpleDTAI = new byte[] { 0x4F, 0x3E, 0x00, 0x00, 0x75, 0x75, 0x75, 0x75, 0x75, 0x75, 0x75, 0x00, 0x2B, 0x29, 0x32, 0x64, 0x32, 0x32, 0x32, 0x32, 0x09, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
@@ -24,7 +27,7 @@ namespace XDCommon.Utility
         internal const int DSTRHeaderOffset = DTAIHeaderOffset + DTAIDataOffset;
         internal const int DSTRDataOffset = DSTRHeaderOffset + 0x10;
 
-        public Pokemon.TrainerTeamTypes TeamType { get; }
+        public TrainerTeamTypes TeamType { get; }
         public IEnumerable<Trainer> AllTrainers { get; }
         public IEnumerable<TrainerPokemonPool> AllPokemon { get; }
         public IEnumerable<TrainerPokemon> AllTrainerPokemon { get; }
@@ -32,7 +35,7 @@ namespace XDCommon.Utility
         public Stream ExtractedFile;
         public FileTypes FileType;
 
-        public TrainerPool(Pokemon.TrainerTeamTypes teamType, IExtractedFile fileEntry)
+        public TrainerPool(TrainerTeamTypes teamType, IExtractedFile fileEntry)
         {
             ExtractedFile = fileEntry.ExtractedFile;
             FileType = FileTypes.BIN;
@@ -57,7 +60,7 @@ namespace XDCommon.Utility
             var trainerPokemon = new List<TrainerPokemon>();
             foreach (var poke in AllPokemon)
             {
-                if (poke.PokeType == PokemonType.DPKM)
+                if (poke.PokeType == PokemonFileType.DPKM)
                 {
                     trainerPokemon.Add(new TrainerPokemon(poke));
                 }

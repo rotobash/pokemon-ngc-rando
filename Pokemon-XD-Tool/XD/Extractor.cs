@@ -21,7 +21,7 @@ namespace Randomizer.XD
         public TrainerPool[] ExtractPools()
         {
 			var poolFsys = iso.Files["deck_archive.fsys"];
-			var poolTypes = Enum.GetValues<Pokemon.TrainerTeamTypes>();
+			var poolTypes = Enum.GetValues<TrainerTeamTypes>();
 			var trainerPool = new TrainerPool[poolTypes.Length];
 
 			for (int i = 0; i < poolTypes.Length; i++)

@@ -4,23 +4,23 @@ using System.Text;
 
 namespace XDCommon.Utility
 {
-    public enum PokemonType
+    public enum PokemonFileType
     {
         DPKM,
         DDPK
     }
     public class TrainerPokemonPool
     {
-        public PokemonType PokeType;
+        public PokemonFileType PokeType;
 
         public TrainerPokemonPool(int index)
         {
-            PokeType = PokemonType.DPKM;
+            PokeType = PokemonFileType.DPKM;
         }
 
         public TrainerPokemonPool(int index, TrainerPool team)
         {
-            PokeType = PokemonType.DDPK;
+            PokeType = PokemonFileType.DDPK;
         }
     }
 }
