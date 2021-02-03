@@ -13,7 +13,8 @@ namespace XDCommon
             }
             set
             {
-                ConfigurationManager.AppSettings.Set(nameof(Verbose), value.ToString());
+                AddOrUpdateAppSettings(nameof(Verbose), value.ToString());
+                
             }
         }
         public static bool UseMemoryStreams
@@ -24,7 +25,7 @@ namespace XDCommon
             }
             set
             {
-                ConfigurationManager.AppSettings.Set(nameof(UseMemoryStreams), value.ToString());
+                AddOrUpdateAppSettings(nameof(UseMemoryStreams), value.ToString());
             }
         }
 
@@ -41,7 +42,7 @@ namespace XDCommon
             }
             set
             {
-                ConfigurationManager.AppSettings.Set(nameof(ThreadCount), value.ToString());
+                AddOrUpdateAppSettings(nameof(ThreadCount), value.ToString());
             }
         }
         public static string ExtractDirectory
@@ -52,7 +53,29 @@ namespace XDCommon
             }
             set
             {
-                ConfigurationManager.AppSettings.Set(nameof(ExtractDirectory), value.ToString());
+                AddOrUpdateAppSettings(nameof(ExtractDirectory), value.ToString());
+            }
+        }
+        static void AddOrUpdateAppSettings(string key, string value)
+        {
+            try
+            {
+                var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                var settings = configFile.AppSettings.Settings;
+                if (settings[key] == null)
+                {
+                    settings.Add(key, value);
+                }
+                else
+                {
+                    settings[key].Value = value;
+                }
+                configFile.Save(ConfigurationSaveMode.Modified);
+                ConfigurationManager.RefreshSection(configFile.AppSettings.SectionInformation.Name);
+            }
+            catch (ConfigurationErrorsException)
+            {
+                Console.WriteLine("Error writing app settings");
             }
         }
     }
