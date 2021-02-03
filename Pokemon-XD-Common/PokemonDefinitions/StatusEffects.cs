@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using XDCommon.Utility;
 
@@ -99,13 +100,6 @@ namespace XDCommon.PokemonDefinitions
 
 	public class StatusEffects
     {
-		public const uint kFirstStatusEffectOffset = 0x3f93e0;
-		public const byte kSizeOfStatusEffect = 0x14;
-		public const byte kNumberOfStatusEffects = 87;
-
-		public const byte kStatusEffectDurationOffset = 0x4;
-		public const byte kStatusEffectNameIDOffset = 0x10;
-
 		private StatusEffectTypes effect;
 
 		public StatusEffects(StatusEffectTypes effectType)
@@ -115,23 +109,24 @@ namespace XDCommon.PokemonDefinitions
 
 		public int StartOffset()
 		{
-			return (int)(kFirstStatusEffectOffset + ((int)effect * kSizeOfStatusEffect));
+			return (int)(Constants.FirstStatusEffectOffset + ((int)effect * Constants.SizeOfStatusEffect));
 		}
 
 		public int NameID(ISOExtractor file)
 		{
-			return file.ISOStream.GetUShortAtOffset(StartOffset() + kStatusEffectNameIDOffset);
+			return file.ISOStream.GetUShortAtOffset(StartOffset() + Constants.StatusEffectNameIDOffset);
 		}
 
 		public int Duration(ISOExtractor file)
 		{
-			return file.ISOStream.GetByteAtOffset(StartOffset() + kStatusEffectDurationOffset);
+			return file.ISOStream.GetByteAtOffset(StartOffset() + Constants.StatusEffectDurationOffset);
 		}
 
 		public void SetDuration(ISOExtractor file, int turns)
 		{
 			var newBytes = BitConverter.GetBytes(turns);
-			file.ISOStream.Write(newBytes, StartOffset() + kStatusEffectDurationOffset, newBytes.Length);
+			file.ISOStream.Seek(StartOffset() + Constants.StatusEffectDurationOffset, SeekOrigin.Begin);
+			file.ISOStream.Write(newBytes);
 		}
 	}
 }

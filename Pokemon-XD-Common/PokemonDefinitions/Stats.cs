@@ -17,9 +17,6 @@ namespace XDCommon.PokemonDefinitions
 
 	public class Stats
     {
-		public const int kPokemonStatsStartOffset = 0;
-		public const int kSizeOfPokemonStats = 0;
-
 		public Stats(int pokemonIndex)
         {
 

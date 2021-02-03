@@ -2,18 +2,27 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using XDCommon.Contracts;
 using XDCommon.Utility;
 
 namespace XDCommon.PokemonDefinitions
 {
     public class Pokemon
     {
-        const int NumberOfPokemon = 251;
         int dexNum;
-        StringTable commonRel;
+        REL commonRel;
+        StringTable commonRelStrTbl;
+        Game game;
         public int Index => dexNum;
-        public int StartOffset => Stats.kPokemonStatsStartOffset + (dexNum * Stats.kSizeOfPokemonStats);
-        public int NameID => commonRel.ExtractedFile.GetIntAtOffset(StartOffset + 0);
+        public int NameID => commonRelStrTbl.ExtractedFile.GetIntAtOffset(StartOffset + Constants.PokemonNameIDOFfset);
+        public uint StartOffset
+        {
+            get
+            {
+                var stats = game == Game.XD ? Constants.XDPokemonStats : Constants.ColPokemonStats;
+                return (uint)(commonRel.GetPointer(stats) + (dexNum * Constants.SizeOfPokemonStats));
+            }
+        }
 
         public Abilities Ability1
         {
@@ -89,10 +98,12 @@ namespace XDCommon.PokemonDefinitions
             get;
         }
 
-        public Pokemon(int dexNumber, StringTable commonRel)
+        public Pokemon(int dexNumber, ISO iso)
         {
             dexNum = dexNumber;
-            this.commonRel = commonRel;
+            commonRel = iso.CommonRel();
+            commonRelStrTbl = iso.CommonRelStringTable();
+            game = iso.Game;
             Stats = new Stats(dexNumber);
         }
 

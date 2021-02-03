@@ -4,7 +4,7 @@ using System.Text;
 
 namespace XDCommon.PokemonDefinitions
 {
-	public enum TrainerClasses
+	public enum XDTrainerClasses
 	{
 		None = 0x00,
 		Michael1 = 0x01,

@@ -36,8 +36,8 @@ namespace XDCommon.Utility
         byte shadowMask = 0x0;
 
         TrainerPokemonPool[] pokemon = new TrainerPokemonPool[6];
-        Pokemon.TrainerClasses trainerClass = Pokemon.TrainerClasses.Michael1;
-        Pokemon.TrainerModels trainerModel = Pokemon.TrainerModels.Michael1WithoutSnagMachine;
+        XDTrainerClasses trainerClass = XDTrainerClasses.Michael1;
+        XDTrainerModels trainerModel = XDTrainerModels.Michael1WithoutSnagMachine;
         
         ushort AI = 0;
         ushort cameraEffects = 0; // some models have unique animations at the start of battle which require special camera movements
@@ -98,8 +98,8 @@ namespace XDCommon.Utility
             var tClass = pool.ExtractedFile.GetByteAtOffset(start + kTrainerClassNameOffset);
             var tModel = pool.ExtractedFile.GetByteAtOffset(start + kTrainerClassModelOffset);
 
-            trainerClass = (Pokemon.TrainerClasses)tClass;
-            trainerModel = (Pokemon.TrainerModels)tModel;
+            trainerClass = (XDTrainerClasses)tClass;
+            trainerModel = (XDTrainerModels)tModel;
             AI = pool.ExtractedFile.GetUShortAtOffset(start + kTrainerAIOffset);
             cameraEffects = pool.ExtractedFile.GetUShortAtOffset(start + kTrainerCameraEffectOffset);
         }
