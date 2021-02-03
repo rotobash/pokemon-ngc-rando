@@ -49,7 +49,7 @@ namespace XDCommon.Utility
             set
             {
                 ExtractedFile.Seek(kFSYSGroupIDOffset, SeekOrigin.Begin);
-                ExtractedFile.Write(BitConverter.GetBytes(value));
+                ExtractedFile.Write(value.GetBytes());
             }
         }
 
@@ -62,7 +62,7 @@ namespace XDCommon.Utility
             set
             {
                 ExtractedFile.Seek(kNumberOfEntriesOffset, SeekOrigin.Begin);
-                ExtractedFile.Write(BitConverter.GetBytes(value));
+                ExtractedFile.Write(value.GetBytes());
             }
         }
 
@@ -97,12 +97,12 @@ namespace XDCommon.Utility
             ExtractedFile = $"{Path}/{Filename}".GetNewStream();
             extractor.ISOStream.CopySubStream(ExtractedFile, Offset, Size);
         }
+
         public bool IsCompressed(int index)
         {
             var flag = ExtractedFile.GetUIntAtOffset(GetStartOffsetForFile(index));
             return flag == kLZSSbytes;
         }
-
 
         public int GetStartOffsetForFileDetails(int index)
         {
@@ -119,7 +119,7 @@ namespace XDCommon.Utility
         {
             var start = GetStartOffsetForFile(index);
             ExtractedFile.Seek(start, SeekOrigin.Begin);
-            ExtractedFile.Write(BitConverter.GetBytes(newStart));
+            ExtractedFile.Write(newStart.GetBytes());
         }
         
         public int GetSizeForFile(int index)
@@ -136,7 +136,7 @@ namespace XDCommon.Utility
             var originalSize = GetSizeForFile(index);
 
             ExtractedFile.Seek(start, SeekOrigin.Begin);
-            ExtractedFile.Write(BitConverter.GetBytes(newSize));
+            ExtractedFile.Write(newSize.GetBytes());
             Size += newSize - originalSize;
         }
         
@@ -151,6 +151,20 @@ namespace XDCommon.Utility
         {
             var start = GetStartOffsetForFileDetails(index) + kFileIdentifierOffset;
             return ExtractedFile.GetIntAtOffset(start);
+        }
+
+        public int GetIndexForFileName(string fileName)
+        {
+            for (int i = 0; i < NumberOfEntries; i++)
+            {
+                var nameAtIndex = GetFilenameForFile(i);
+                var fileType = GetFileTypeForFile(i);
+                if (fileName.RemoveFileExtensions() == nameAtIndex && fileName.EndsWith(fileType.FileTypeName()))
+                {
+                    return i;
+                }
+            }
+            return -1;
         }
 
         public FileTypes GetFileTypeForFile(int index)

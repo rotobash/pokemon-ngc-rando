@@ -9,6 +9,16 @@ namespace XDCommon.Utility
 {
     public static class StreamExtensions
     {
+        public static byte[] GetBytes(this int value)
+        {
+            var valBytes = BitConverter.GetBytes(value);
+            if (BitConverter.IsLittleEndian)
+            {
+                Array.Reverse(valBytes);
+            }
+            return valBytes;
+        }
+
         public static Stream GetNewStream(this string fullPath)
         {
             if (Configuration.UseMemoryStreams)
@@ -21,13 +31,17 @@ namespace XDCommon.Utility
             }
         }
 
-        public static byte[] GetBytesAtOffset(this Stream stream, int offset, int length)
+        public static byte[] GetBytesAtOffset(this Stream stream, long offset, int length)
         {
             byte[] bytes = new byte[length];
             if (offset >= 0 && length + offset <= stream.Length)
             {
                 stream.Seek(offset, SeekOrigin.Begin);
-                stream.Read(bytes);
+                var bytesRead = 0;
+                while(bytesRead < length)
+                {
+                    bytesRead = stream.Read(bytes, bytesRead, length - bytesRead);
+                }
             }
 
             if (BitConverter.IsLittleEndian && bytes.Length > 1)
@@ -37,69 +51,70 @@ namespace XDCommon.Utility
             return bytes;
         }
 
-        public static byte[] GetNibbleAtOffset(this Stream stream, int offset, int length)
+        public static byte[] GetNibbleAtOffset(this Stream stream, long offset, int length)
         {
             byte[] bytes = new byte[length];
             if (offset > 0 && length + offset < stream.Length)
             {
-                stream.Read(bytes, offset, length);
+                stream.Seek(offset, SeekOrigin.Begin);
+                stream.Read(bytes);
             }
             return bytes;
         }
         
-        public static byte GetByteAtOffset(this Stream stream, int offset)
+        public static byte GetByteAtOffset(this Stream stream, long offset)
         {
             byte[] bytes = GetBytesAtOffset(stream, offset, 1);
             return bytes[0];
         }
         
-        public static ushort GetUShortAtOffset(this Stream stream, int offset)
+        public static ushort GetUShortAtOffset(this Stream stream, long offset)
         {
             byte[] bytes = GetBytesAtOffset(stream, offset, 4);
             return BitConverter.ToUInt16(bytes);
         }
         
-        public static uint GetUIntAtOffset(this Stream stream, int offset)
+        public static uint GetUIntAtOffset(this Stream stream, long offset)
         {
             byte[] bytes = GetBytesAtOffset(stream, offset, 4);
             return BitConverter.ToUInt32(bytes);
         }
         
-        public static ulong GetULongAtOffset(this Stream stream, int offset)
+        public static ulong GetULongAtOffset(this Stream stream, long offset)
         {
             byte[] bytes = GetBytesAtOffset(stream, offset, 8);
             return BitConverter.ToUInt64(bytes);
         }
         
-        public static sbyte GetSByteAtOffset(this Stream stream, int offset)
+        public static sbyte GetSByteAtOffset(this Stream stream, long offset)
         {
             return (sbyte)GetByteAtOffset(stream, offset);
         }
 
-        public static short GetShortAtOffset(this Stream stream, int offset)
+        public static short GetShortAtOffset(this Stream stream, long offset)
         {
             byte[] bytes = GetBytesAtOffset(stream, offset, 2);
             return BitConverter.ToInt16(bytes);
         }
         
-        public static int GetIntAtOffset(this Stream stream, int offset)
+        public static int GetIntAtOffset(this Stream stream, long offset)
         {
             byte[] bytes = GetBytesAtOffset(stream, offset, 4);
             return BitConverter.ToInt32(bytes);
         }
         
-        public static long GetLongAtOffset(this Stream stream, int offset)
+        public static long GetLongAtOffset(this Stream stream, long offset)
         {
             byte[] bytes = GetBytesAtOffset(stream, offset, 8);
             return BitConverter.ToInt64(bytes);
         }
         
-        public static char GetCharAtOffset(this Stream stream, int offset)
+        public static char GetCharAtOffset(this Stream stream, long offset)
         {
             return (char)GetByteAtOffset(stream, offset);
         }
 
-        public static void CopySubStream(this Stream input, Stream output, int start, int length)
+        public static void CopySubStream(this Stream input, Stream output, long start, long length)
         {
             var bytesReadTotal = 0;
             var bufferSize = 64 * 1024;
@@ -112,12 +127,13 @@ namespace XDCommon.Utility
                 var bytesRead = input.Read(buffer);
                 if (bytesRead == 0)
                     break;
-                output.Write(buffer);
+
+                output.Write(buffer, 0, bytesRead);
                 bytesReadTotal += bytesRead;
             } while (bytesReadTotal < length);
         }
 
-        public static Stream InsertIntoStream(this FileStream stream, int offset, byte[] data)
+        public static Stream InsertIntoStream(this FileStream stream, long offset, byte[] data)
         {
             // you can't really insert into a stream without pulling it entirely into memory, so cheat a bit
             var streamFileName = stream.Name;
@@ -130,7 +146,8 @@ namespace XDCommon.Utility
             stream.CopySubStream(newStream, 0, offset);
 
             // copy our new data
-            newStream.Write(data, offset, data.Length);
+            newStream.Seek(offset, SeekOrigin.Begin);
+            newStream.Write(data);
 
             // copy rest of oldstream
             stream.CopySubStream(newStream, offset, (int)stream.Length - offset);
@@ -150,7 +167,7 @@ namespace XDCommon.Utility
             return streamFileName.GetNewStream();
         }
         
-        public static Stream DeleteFromStream(this FileStream stream, int offset, int length)
+        public static Stream DeleteFromStream(this FileStream stream, long offset, int length)
         {
             // you can't really insert into a stream without pulling it entirely into memory, so cheat a bit
             var streamFileName = stream.Name;
@@ -178,7 +195,7 @@ namespace XDCommon.Utility
             return streamFileName.GetNewStream();
         }
 
-        public static List<IUnicodeCharacters> GetStringAtOffset(this Stream stream, int offset)
+        public static List<IUnicodeCharacters> GetStringAtOffset(this Stream stream, long offset)
         {
             byte currentByte;
             var currentOffset = offset;
@@ -195,7 +212,6 @@ namespace XDCommon.Utility
         public static IEnumerable<int> OccurencesOfBytes(this Stream stream, int marker)
         {
             var offsets = new List<int>();
-            stream.Seek(0, SeekOrigin.Begin);
             for (int i = 0; i < stream.Length; i++)
             {
                 var checkBytes = stream.GetIntAtOffset(i);

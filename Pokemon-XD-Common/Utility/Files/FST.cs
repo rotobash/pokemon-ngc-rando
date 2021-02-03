@@ -53,7 +53,7 @@ namespace XDCommon.Utility
             ExtractedFile.Flush();
         }
         
-        public FST(string pathToExtractDirectory, int offset)
+        public FST(string pathToExtractDirectory)
         {
             var fileName = $"{pathToExtractDirectory}/Game.toc";
             if (!File.Exists(fileName))
@@ -71,7 +71,7 @@ namespace XDCommon.Utility
             {
                 ExtractedFile = file;
             }
-            Offset = offset;
+            Offset = kTOCStartOffsetLocation;
             Size = (int)ExtractedFile.Length;
         }
 

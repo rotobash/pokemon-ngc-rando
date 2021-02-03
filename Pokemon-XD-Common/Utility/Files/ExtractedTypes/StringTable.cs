@@ -29,9 +29,9 @@ namespace XDCommon.Utility
 
         public int NumberOfEntries => ExtractedFile.GetUShortAtOffset(kNumberOfStringsOffset);
 
-        public StringTable()
+        public StringTable(Stream stream)
         {
-            FileType = FileTypes.MSG;
+            ExtractedFile = stream;
             GetOffsets();
         }
 
@@ -58,7 +58,8 @@ namespace XDCommon.Utility
             {
                 var id = ExtractedFile.GetIntAtOffset(currentOffset) & 0xFFFFF;
                 var offset = ExtractedFile.GetIntAtOffset(currentOffset + 4);
-                stringOffsets.Add(id, offset);
+                if (!stringOffsets.ContainsKey(id))
+                    stringOffsets.Add(id, offset);
                 currentOffset += 8;
             }
         }
@@ -86,7 +87,8 @@ namespace XDCommon.Utility
 
                     var extra = 0;
                     var bytes = new byte[extra];
-                    ExtractedFile.Read(bytes, offset, extra);
+                    ExtractedFile.Seek(currentOffset, SeekOrigin.Begin);
+                    ExtractedFile.Read(bytes);
 
                     str.Add(new SpecialUnicodeCharacters(specChar, bytes));
                 }

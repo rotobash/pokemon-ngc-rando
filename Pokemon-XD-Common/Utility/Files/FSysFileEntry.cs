@@ -33,11 +33,6 @@ namespace XDCommon.Utility
                 Console.WriteLine($"Extracting {fileName}");
             }
 
-            if (fileName == "common_rel")
-            {
-                fileName = "common";
-            }
-
             var safeFileName = fileName.GetSafeFileName(extractDir, fileType);
             var extractedFile = $"{extractDir}/{safeFileName}".GetNewStream();
             fSys.ExtractedFile.CopySubStream(extractedFile, offset, size);
@@ -88,7 +83,14 @@ namespace XDCommon.Utility
                     };
 
                 case FileTypes.MSG:
-                    return new StringTable
+                    return new StringTable(extractedFile)
+                    {
+                        Path = extractDir,
+                        FileName = fileName
+                    };
+
+                case FileTypes.REL:
+                    return new REL
                     {
                         Path = extractDir,
                         FileName = fileName,
