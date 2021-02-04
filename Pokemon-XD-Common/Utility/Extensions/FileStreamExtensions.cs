@@ -18,6 +18,24 @@ namespace XDCommon.Utility
             }
             return valBytes;
         }
+        public static byte[] GetBytes(this uint value)
+        {
+            var valBytes = BitConverter.GetBytes(value);
+            if (BitConverter.IsLittleEndian)
+            {
+                Array.Reverse(valBytes);
+            }
+            return valBytes;
+        }
+        public static byte[] GetBytes(this ushort value)
+        {
+            var valBytes = BitConverter.GetBytes(value);
+            if (BitConverter.IsLittleEndian)
+            {
+                Array.Reverse(valBytes);
+            }
+            return valBytes;
+        }
 
         public static Stream GetNewStream(this string fullPath)
         {
@@ -112,6 +130,26 @@ namespace XDCommon.Utility
         public static char GetCharAtOffset(this Stream stream, long offset)
         {
             return (char)GetByteAtOffset(stream, offset);
+        }
+        
+        public static void WriteByteAtOffset(this Stream stream, long offset, byte writeByte)
+        {
+            stream.Seek(offset, SeekOrigin.Begin);
+            stream.WriteByte(writeByte);
+        }
+        
+        public static void WriteBytesAtOffset(this Stream stream, long offset, byte[] writeBytes)
+        {
+            int bytesWrittenTotal = 0;
+            stream.Seek(offset, SeekOrigin.Begin);
+            do
+            {
+                var oldPosition = stream.Position;
+                var bytesToWrite = Math.Min(writeBytes.Length - bytesWrittenTotal, writeBytes.Length);
+                stream.Write(writeBytes, bytesWrittenTotal, bytesToWrite);
+                bytesWrittenTotal += (int)(stream.Position - oldPosition);
+
+            } while (bytesWrittenTotal < writeBytes.Length);
         }
 
         public static void CopySubStream(this Stream input, Stream output, long start, long length)

@@ -27,27 +27,7 @@ namespace XDCommon.Utility
 				(byte)specialChars
 			};
 
-            ExtraBytes = 0;
-            foreach (var byteChar in SpecialCharacterExtensions.k2ByteChars)
-            {
-                if ((byte)specialChars == byteChar)
-                {
-                    ExtraBytes = 1;
-                    break;
-                }
-            }
-
-            if (ExtraBytes == 0)
-            {
-                foreach (var byteChar in SpecialCharacterExtensions.k5ByteChars)
-                {
-                    if ((byte)specialChars == byteChar)
-                    {
-                        ExtraBytes = 4;
-                        break;
-                    }
-                }
-            }
+            ExtraBytes = unicodeBytes.Length;
 
             foreach (var uByte in unicodeBytes)
             {
@@ -77,7 +57,7 @@ namespace XDCommon.Utility
                 str += "{";
                 foreach (var hex in ByteStream)
                 {
-                    str += string.Format("%02x", hex);
+                    str += string.Format("{0:X}", hex);
                 }
                 str += "}";
             }

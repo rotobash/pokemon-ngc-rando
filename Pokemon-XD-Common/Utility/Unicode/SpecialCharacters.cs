@@ -213,7 +213,7 @@ namespace XDCommon.Utility
                 SpecialCharacters.VarAbility1D => kvarAbility1D,
                 SpecialCharacters.VarPokemon1E => kvarPokemon1E,
                 SpecialCharacters.ChangeFont => kBold,
-                _ => string.Format("%02x", (byte)specialCharacters)
+                _ => string.Format("{0:X}", (byte)specialCharacters)
             };
         }
 
@@ -265,6 +265,25 @@ namespace XDCommon.Utility
                 kBold => SpecialCharacters.ChangeFont,
                 _ => (SpecialCharacters)text.HexStringToInt()
             };
+        }
+
+        public static int ExtraBytes(this SpecialCharacters specialCharacters)
+        {
+            foreach (var byteChar in k2ByteChars)
+            {
+                if ((byte)specialCharacters == byteChar)
+                {
+                    return 1;
+                }
+            }
+            foreach (var byteChar in k5ByteChars)
+            {
+                if ((byte)specialCharacters == byteChar)
+                {
+                    return 4;
+                }
+            }
+            return 0;
         }
 
         public static int HexStringToInt(this string hex)

@@ -57,7 +57,7 @@ namespace XDCommon.Utility
             for (int i = 0; i < NumberOfEntries; i++)
             {
                 var id = ExtractedFile.GetIntAtOffset(currentOffset) & 0xFFFFF;
-                var offset = ExtractedFile.GetIntAtOffset(currentOffset + 4);
+                var offset = ExtractedFile.GetIntAtOffset(currentOffset + 4) - 2;
                 if (!stringOffsets.ContainsKey(id))
                     stringOffsets.Add(id, offset);
                 currentOffset += 8;
@@ -85,10 +85,10 @@ namespace XDCommon.Utility
                     var specChar = (SpecialCharacters)ExtractedFile.GetByteAtOffset(currentOffset);
                     currentOffset += 1;
 
-                    var extra = 0;
+                    var extra = specChar.ExtraBytes();
                     var bytes = new byte[extra];
                     ExtractedFile.Seek(currentOffset, SeekOrigin.Begin);
-                    ExtractedFile.Read(bytes);
+                    currentOffset += ExtractedFile.Read(bytes);
 
                     str.Add(new SpecialUnicodeCharacters(specChar, bytes));
                 }
@@ -120,16 +120,19 @@ namespace XDCommon.Utility
             return str ?? new UnicodeString();
         }
 
-        public IEnumerable<UnicodeString> GetAllStrings()
+        public IEnumerable<UnicodeString> GetAllStrings
         {
-            var strings = new UnicodeString[stringOffsets.Count];
-            var currentIndex = 0;
-
-            foreach (var offset in stringOffsets.Values)
+            get
             {
-                strings[currentIndex++] = GetStringAtOffset(offset);
+                var strings = new UnicodeString[stringOffsets.Count];
+                var currentIndex = 0;
+
+                foreach (var offset in stringOffsets.Values)
+                {
+                    strings[currentIndex++] = GetStringAtOffset(offset);
+                }
+                return strings;
             }
-            return strings;
         }
     }
 }

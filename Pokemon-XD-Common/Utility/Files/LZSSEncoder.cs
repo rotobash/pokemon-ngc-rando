@@ -7,8 +7,8 @@ namespace XDCommon.Utility
 {
     public static class LZSSEncoder
     {
-        const int N = 4096;
-        const int F = 18;
+        const int EI = 12;
+        const int EJ = 4;
         const byte P = 2;
 
         public static void Encode(Stream file)
@@ -18,6 +18,12 @@ namespace XDCommon.Utility
 
         public static Stream Decode(Stream file)
         {
+            uint flags = 0;
+            int N, F, rless;
+            rless = P;
+            N = 1 << EI;
+            F = 1 << EJ;
+
             var slidingWindow = new byte[N];
 
             Stream outputStream;
@@ -34,44 +40,48 @@ namespace XDCommon.Utility
             file.Flush();
             file.Seek(0, SeekOrigin.Begin);
 
-            int r = N - F;
-            int flags = 0;
+            int r = (N - F) - rless;
+            N--;
+            F--;
 
-            while (file.Position < file.Length)
+            for (flags = 0; ; flags >>= 1)
             {
                 // endianess needs to be converted
                 if ((flags & 0x100) == 0)
                 {
-                    flags = file.ReadByte();
-                    flags |= 0xFF00;
+                    var b = file.ReadByte();
+                    if (b == -1) break;
+                    flags = (uint)b | 0xFF00;
                 }
                 
                 if ((flags & 0x1) != 0)
                 {
-                    var b = (byte)file.ReadByte();
-                    outputStream.WriteByte(b);
-                    slidingWindow[r++] = b;
-                    r &= N - 1;
+                    var b = file.ReadByte();
+                    if (b == -1) break;
+                    outputStream.WriteByte((byte)b);
+                    slidingWindow[r] = (byte)b;
+                    r = (r + 1) & N;
                 } 
                 else
                 {
                     int i = file.ReadByte();
+                    if (i == -1) break;
                     int j = file.ReadByte();
+                    if (j == -1) break;
 
-                    i |= (j & 0xF0) << 4;
-                    j = (j & 0x0F) + P;
+                    i |= (j >> EJ) << 8;
+                    j = (j & F) + P;
                     var bytes = new byte[j + 1];
                     for (int k = 0; k <= j; k++)
                     {
-                        int ind = (i + k) & (N - 1);
+                        int ind = (i + k) & N;
                         var b = slidingWindow[ind];
                         bytes[k] = b;
                         slidingWindow[r++] = b;
-                        r &= N - 1;
+                        r = (r + 1) & N;
                     }
                     outputStream.Write(bytes);
                 }
-                flags >>= 1;
             }
 
             outputStream.Flush();

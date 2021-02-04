@@ -6,7 +6,7 @@ namespace XDCommon.Utility
 {
     public class DOL
     {
-        const int kDOLStartOffsetLocation = 0x420;
+        public const int kDOLStartOffsetLocation = 0x420;
         const int kDolSectionSizesStart = 0x90;
         const int kDolSectionSizesCount = 18;
         const int kDolHeaderSize = 0x100;
@@ -27,7 +27,7 @@ namespace XDCommon.Utility
 
         public DOL(string pathToExtractDirectory, int offset)
         {
-            var fileName = $"{pathToExtractDirectory}/Game.toc";
+            var fileName = $"{pathToExtractDirectory}/Start.dol";
             if (!File.Exists(fileName))
             {
                 throw new ArgumentException("ISOExtractor must be provided if file doesn't exist.");
