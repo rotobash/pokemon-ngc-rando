@@ -33,17 +33,22 @@ namespace Randomizer.Shufflers
             {
                 if (settings.RandomMovePower && move.BasePower > 0)
                 {
-                    move.BasePower = (byte)random.Sample(80, 40);
+                    move.BasePower = (byte)random.Sample(90, 70);
                 }
 
-                if (settings.RandomMoveAcc && move.EffectType != MoveEffectTypes.OHKO)
+                if (settings.RandomMoveAcc && move.Accuracy > 0)
                 {
-                    move.Accuracy = (byte)random.Next(0, 256);
+                    byte acc;
+                    do 
+                    {
+                        acc = (byte)Math.Max(100, random.Sample(70, 30));
+                    } while (move.Accuracy == 100 && move.EffectType == MoveEffectTypes.OHKO);
+                    move.Accuracy = acc;
                 }
 
                 if (settings.RandomMovePP)
                 {
-                    move.PP = (byte)(random.Next(1, 8) * 5);
+                    move.PP = (byte)Math.Min(5, random.Sample(4, 4) * 5);
                 }
 
                 if (settings.RandomMoveTypes && move.Type != PokemonTypes.None)
@@ -54,7 +59,7 @@ namespace Randomizer.Shufflers
                     {
                         newType = typesCount[random.Next(0, typesCount.Length)];
                     }
-                    while (newType != PokemonTypes.None);
+                    while (newType == PokemonTypes.None);
                     move.Type = newType;
                 }
 

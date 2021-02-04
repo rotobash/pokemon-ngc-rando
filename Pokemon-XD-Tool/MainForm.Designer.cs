@@ -29,6 +29,7 @@ namespace Randomizer
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.gamePictureBox = new System.Windows.Forms.PictureBox();
             this.loadIsoButton = new System.Windows.Forms.Button();
@@ -115,6 +116,7 @@ namespace Randomizer
             this.regionLabel = new System.Windows.Forms.Label();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.infoToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gamePictureBox)).BeginInit();
             this.settingsTab.SuspendLayout();
@@ -1246,6 +1248,7 @@ namespace Randomizer
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.CheckBox checkBox29;
+        private System.Windows.Forms.ToolTip infoToolTip;
     }
 }
 

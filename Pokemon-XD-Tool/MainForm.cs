@@ -29,6 +29,12 @@ namespace Randomizer
         public MainForm()
         {
             InitializeComponent();
+
+            infoToolTip.SetToolTip(movePowerCheck, "Randomize damaging move power. Uses a normal distribution with an average of 80 power and a variance of 70 power.");
+            infoToolTip.SetToolTip(moveAccCheck, "Randomize move accuracy between 0 and 100, ");
+            infoToolTip.SetToolTip(movePPCheck, "Randomize move PP from 5 to 40 in intervals of 5.");
+            infoToolTip.SetToolTip(moveTypeCheck, "Randomize damaging move's type, will avoid None types.");
+            infoToolTip.SetToolTip(moveCategoryCheck, "Randomize whether a move is physical or special, XD only unless you've patched Colosseum.");
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -104,7 +110,7 @@ namespace Randomizer
 
 
                 randomizer = new Randomizer(iso, gameExtractor);
-                randomizer.RandomizeMoves(new MoveShufflerSettings 
+                randomizer.RandomizeMoves(new MoveShufflerSettings
                 {
                     RandomMovePower = movePowerCheck.Checked,
                     RandomMoveAcc = moveAccCheck.Checked,
@@ -115,7 +121,6 @@ namespace Randomizer
 
                 MessageBox.Show("Done!");
             }
-            
         }
     }
 }
