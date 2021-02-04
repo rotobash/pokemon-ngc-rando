@@ -15,6 +15,11 @@ namespace Randomizer.Colosseum
             throw new NotImplementedException();
         }
 
+        public Pokemon[] ExtractPokemon()
+        {
+            throw new NotImplementedException();
+        }
+
         public TrainerPool[] ExtractPools()
         {
             throw new NotImplementedException();

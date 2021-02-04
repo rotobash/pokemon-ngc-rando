@@ -60,5 +60,10 @@ namespace Randomizer.XD
 			}
 			return moves;
 		}
+
+		public Pokemon[] ExtractPokemon()
+        {
+			return new Pokemon[0];
+        }
     }
 }

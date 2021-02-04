@@ -12,5 +12,6 @@ namespace Randomizer
     {
         TrainerPool[] ExtractPools();
         Move[] ExtractMoves();
+        Pokemon[] ExtractPokemon();
     }
 }
