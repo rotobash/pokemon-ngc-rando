@@ -11,13 +11,22 @@ using XDCommon.PokemonDefinitions;
 
 namespace XDCommon.Utility
 {
-    public class ISO
+    public class ISO : IExtractedFile
     {
+        public Stream ExtractedFile { get; }
+        public string FileName { get; }
+        public string Path { get; }
+        public FileTypes FileType { get => FileTypes.ISO; }
+
         public Region Region { get; internal set; }
         public Game Game { get; internal set; }
-        public DOL DOL { get; internal set;  }
-        public FST TOC { get; internal set;  }
-        public Dictionary<string, FSys> Files { get; } = new Dictionary<string, FSys>();
+        public DOL DOL { get; internal set; }
+        public FST TOC { get; internal set; }
+        public REL CommonRel { get; internal set; }
+        public StringTable DolStringTable { get; internal set; }
+        public StringTable DolStringTable2 { get; internal set; }
+        public StringTable CommonRelStringTable { get; internal set; }
+        public Dictionary<string, FSys> Files { get; }
 
 
         ConcurrentQueue<Func<Task>> extractTasks = new ConcurrentQueue<Func<Task>>();
@@ -27,10 +36,13 @@ namespace XDCommon.Utility
         private int tasksCompleted;
         private int taskTotal;
 
-        public ISO()
+        public ISO(Stream baseStream, string extractPath)
         {
             executors = new Task[Configuration.ThreadCount];
             tokenSource = new CancellationTokenSource();
+            Files = new Dictionary<string, FSys>();
+            ExtractedFile = baseStream;
+            Path = extractPath;
 
             for (int i = 0; i < executors.Length; i++)
             {
@@ -54,53 +66,87 @@ namespace XDCommon.Utility
 
                 executors[i].Start();
             }
+
+
+            var relStream = File.Open($"{Configuration.ExtractDirectory}/common_rel.rel", FileMode.Open, FileAccess.ReadWrite);
+
+            CommonRel = new REL()
+            {
+                FileName = "common_rel.rel",
+                ExtractedFile = relStream
+            };
+            CommonRel.LoadPointers();
+            BuildStringsTables();
         }
 
         public int ExtractionProgress => tasksCompleted;
         public int ExtractionTotal => taskTotal;
 
-        public void ExtractFiles(params string[] fileNames)
+        public FSys GetFSysFile(string fileName)
         {
-
-            foreach (var fileName in fileNames)
+            if (fileName.Contains("fsys", StringComparison.InvariantCultureIgnoreCase))
             {
                 if (Files.ContainsKey(fileName))
                 {
-                    extractTasks.Enqueue(() => new Task(() => FSysExtractor.ExtractFSys(Files[fileName], true)));
+                    return Files[fileName];
+                }
+                else
+                {
+                    var fsys = new FSys(fileName, this);
+                    Files.Add(fsys.Filename, fsys);
+                    return fsys;
                 }
             }
+            return null;
+        }
 
-            if (tasksCompleted < taskTotal)
+        public void ExtractFiles(params string[] fileNames)
+        {
+            
+            foreach (var fileName in fileNames)
             {
-                taskTotal += extractTasks.Count;
-            }
-            else
-            {
-                tasksCompleted = 0;
-                taskTotal = extractTasks.Count;
+                var fsys = GetFSysFile(fileName);
+                if (fsys != null)
+                {
+                    extractTasks.Enqueue(() => new Task(() => FSysExtractor.ExtractFSys(fsys, true)));
+                    taskTotal++;
+                }
             }
         }
 
-        public StringTable DolStringTable()
+        public void BuildStringsTables()
         {
-            var strTable = new MemoryStream();
-            int startOffset = 0;
-            int size = 0;
+            var dolStrTable = new MemoryStream();
+            var dolStrTable2 = new MemoryStream();
+            var commonRelTable = new MemoryStream();
+            int dolStartOffset, dol2StartOffset, commonRelStartOffset;
+            int dolSize, dol2Size, commonRelSize;
             if (Game == Game.XD)
             {
+                commonRelStartOffset = (int)CommonRel.GetPointer(Constants.stringTable1) + 0x68;
                 switch (Region)
                 {
+                    default:
                     case Region.US:
-                        startOffset = 0x374FC0;
-                        size = 0x178BC;
+                        dolStartOffset = 0x374FC0;
+                        dolSize = 0x178BC;
+                        dol2StartOffset = 0x38c87c;
+                        dol2Size = 0x364;
+                        commonRelSize = 0xDC70;
                         break;
                     case Region.Europe:
-                        startOffset = 0x38B0B0;
-                        size = 0x11D10;
+                        dolStartOffset = 0x38B0B0;
+                        dolSize = 0x11D10;
+                        dol2StartOffset = 0x3EA5A4;
+                        dol2Size = 0x364;
+                        commonRelSize = 0xDC70;
                         break;
                     case Region.Japan:
-                        startOffset = 0x372AD8;
-                        size = 0x17938;
+                        dolStartOffset = 0x372AD8;
+                        dolSize = 0x17938;
+                        dol2StartOffset = 0x39CDC0;
+                        dol2Size = 0x2A0;
+                        commonRelSize = 0xAC8C;
                         break;
                 }
             }
@@ -108,107 +154,42 @@ namespace XDCommon.Utility
             {
                 switch (Region)
                 {
+                    default:
                     case Region.US:
-                        startOffset = 0x2cc810;
-                        size = 0x124e0;
+                        dolStartOffset = 0x2cc810;
+                        dolSize = 0x124e0;
+                        commonRelStartOffset = 0x59890;
+                        commonRelSize = 0xC770;
                         break;
                     case Region.Europe:
-                        startOffset = 0x2c1b20;
-                        size = 0x124e0;
+                        dolStartOffset = 0x2c1b20;
+                        dolSize = 0x124e0;
+                        commonRelStartOffset = 0x5A448;
+                        commonRelSize = 0xC544;
                         break;
                     case Region.Japan:
-                        startOffset = 0x2bece0;
-                        size = 0xd850;
+                        dolStartOffset = 0x2bece0;
+                        dolSize = 0xd850;
+                        commonRelStartOffset = 0x4580;
+                        commonRelSize = 0x9cf8;
                         break;
                 }
+                dol2StartOffset = dolStartOffset;
+                dol2Size = dolSize;
             }
-            DOL.ExtractedFile.CopySubStream(strTable, startOffset, size);
-            return new StringTable(strTable);
-        }
-	
 
-        public StringTable DolStringTable2()
-        {
-            if (Game == Game.XD)
-            {
-                var strTable = new MemoryStream();
-                int startOffset = 0;
-                int size = 0;
-                switch (Region)
-                {
-                    case Region.US:
-                        startOffset = 0x38c87c;
-                        size = 0x364;
-                        break;
-                    case Region.Europe:
-                        startOffset = 0x3EA5A4;
-                        size = 0x364;
-                        break;
-                    case Region.Japan:
-                        startOffset = 0x39CDC0;
-                        size = 0x2A0;
-                        break;
-                }
-                DOL.ExtractedFile.CopySubStream(strTable, startOffset, size);
-                return new StringTable(strTable);
-            }
-            else
-            {
-                return DolStringTable();
-            }
+            DOL.ExtractedFile.CopySubStream(dolStrTable, dolStartOffset, dolSize);
+            DOL.ExtractedFile.CopySubStream(dolStrTable2, dol2StartOffset, dol2Size);
+            DOL.ExtractedFile.CopySubStream(commonRelTable, commonRelStartOffset, commonRelSize);
+
+            DolStringTable = new StringTable(dolStrTable);
+            DolStringTable2 = new StringTable(dolStrTable2);
+            CommonRelStringTable = new StringTable(commonRelTable);
         }
 
-	    public StringTable CommonRelStringTable()
+        public Stream Encode(bool _)
         {
-            var strTable = new MemoryStream();
-            uint startOffset = 0;
-            int size = 0;
-            var extractedFile = CommonRel();
-            if (Game == Game.XD)
-            {
-                startOffset = extractedFile.GetPointer(Constants.stringTable1) + 0x68;
-                switch (Region)
-                {
-                    case Region.US:
-                    case Region.Europe:
-                        size = 0xDC70;
-                        break;
-                    case Region.Japan:
-                        size = 0xAC8C;
-                        break;
-                }
-            }
-            else
-            {
-                switch (Region)
-                {
-                    case Region.US:
-                        startOffset = 0x59890;
-                        size = 0xC770;
-                        break;
-                    case Region.Europe:
-                        startOffset = 0x5A448;
-                        size = 0xC544;
-                        break;
-                    case Region.Japan:
-                        startOffset = 0x4580;
-                        size = 0x9cf8;
-                        break;
-                }
-            }
-
-            extractedFile.ExtractedFile.CopySubStream(strTable, startOffset, size);
-            return new StringTable(strTable);
-	    }
-
-        public REL CommonRel()
-        {
-            var fSys = Files["common.fsys"];
-            if (!fSys.ExtractedEntries.ContainsKey("common_rel.rel"))
-            {
-                FSysExtractor.ExtractFSys(fSys, true);
-            }
-            return fSys.ExtractedEntries["common_rel.rel"] as REL;
+            throw new NotSupportedException();
         }
 
         ~ISO()

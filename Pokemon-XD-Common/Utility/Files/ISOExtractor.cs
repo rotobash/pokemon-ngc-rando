@@ -26,7 +26,6 @@ namespace XDCommon.Utility
 
         public ISO ExtractISO()
         {
-            var iso = new ISO();
 
             ISOStream.Seek(0, SeekOrigin.Begin);
             var _ = ISOStream.ReadByte();
@@ -35,6 +34,7 @@ namespace XDCommon.Utility
             int game = gamecode2 | gamecode1;
             var region = ISOStream.ReadByte();
 
+            var iso = new ISO(ISOStream, ExtractPath);
             switch (game)
             {
                 case (ushort)Game.Colosseum:
@@ -62,22 +62,10 @@ namespace XDCommon.Utility
                 Directory.CreateDirectory(ExtractPath);
             }
 
-            iso.DOL = new DOL(ExtractPath, this);
+            iso.DOL = new DOL(ExtractPath, ISOStream.GetIntAtOffset(DOL.kDOLStartOffsetLocation));
             TOC = new FST(ExtractPath, this);
             TOC.Load(iso.DOL);
             iso.TOC = TOC;
-
-            foreach (string fileName in iso.TOC.AllFileNames)
-            {
-                if (fileName == "Start.dol" || fileName == "Game.toc")
-                    continue;
-
-                if (fileName.Contains("fsys", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    var fsys = new FSys(fileName, this);
-                    iso.Files.Add(fsys.Filename, fsys);
-                }
-            }
 
             return iso;
         }
@@ -101,8 +89,8 @@ namespace XDCommon.Utility
             //iso.DOL.ExtractedFile.CopyTo(isoStream);
 
             //// pack FST
-            //isoStream.Seek(TOC.Offset, SeekOrigin.Begin);
-            //iso.TOC.ExtractedFile.CopyTo(isoStream);
+            isoStream.Seek(TOC.Offset + 12 , SeekOrigin.Begin);
+            iso.TOC.ExtractedFile.CopyTo(isoStream);
 
             // pack fsys files
             foreach (var fsys in iso.Files.Values)

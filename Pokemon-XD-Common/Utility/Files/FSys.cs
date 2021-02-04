@@ -81,13 +81,13 @@ namespace XDCommon.Utility
             Path = string.Join("/", fileParts.Take(fileParts.Length - 1));
         }
 
-        public FSys(string fileName, ISOExtractor extractor)
+        public FSys(string fileName, ISO iso)
         {
 
             Filename = fileName;
-            Path = extractor.ExtractPath;
-            Offset = extractor.TOC.LocationForFile(fileName);
-            Size = extractor.TOC.SizeForFile(fileName);
+            Path = iso.Path;
+            Offset = iso.TOC.LocationForFile(fileName);
+            Size = iso.TOC.SizeForFile(fileName);
 
             if (Configuration.Verbose)
             {
@@ -95,7 +95,7 @@ namespace XDCommon.Utility
             }
 
             ExtractedFile = $"{Path}/{Filename}".GetNewStream();
-            extractor.ISOStream.CopySubStream(ExtractedFile, Offset, Size);
+            iso.ExtractedFile.CopySubStream(ExtractedFile, Offset, Size);
         }
 
         public bool IsCompressed(int index)

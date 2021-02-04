@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using XDCommon.Contracts;
 
 namespace XDCommon.Utility
 {
-    public class DOL
+    public class DOL: IExtractedFile
     {
         public const int kDOLStartOffsetLocation = 0x420;
         const int kDolSectionSizesStart = 0x90;
         const int kDolSectionSizesCount = 18;
         const int kDolHeaderSize = 0x100;
 
-        public Stream ExtractedFile;
+        public FileTypes FileType { get => FileTypes.DOL; }
+        public string FileName { get => "Start.dol"; }
+        public string Path { get; }
+        public Stream ExtractedFile { get; }
 
         public int Offset
         {
@@ -27,7 +31,8 @@ namespace XDCommon.Utility
 
         public DOL(string pathToExtractDirectory, int offset)
         {
-            var fileName = $"{pathToExtractDirectory}/Start.dol";
+            Path = pathToExtractDirectory;
+            var fileName = $"{Path}/{FileName}";
             if (!File.Exists(fileName))
             {
                 throw new ArgumentException("ISOExtractor must be provided if file doesn't exist.");
@@ -49,7 +54,8 @@ namespace XDCommon.Utility
 
         public DOL(string pathToExtractDirectory, ISOExtractor extractor)
         {
-            var fileName = $"{pathToExtractDirectory}/Start.dol";
+            Path = pathToExtractDirectory;
+            var fileName = $"{Path}/{FileName}";
             ExtractedFile = fileName.GetNewStream();
             Offset = (int)extractor.ISOStream.GetUIntAtOffset(kDOLStartOffsetLocation);
 
@@ -68,6 +74,11 @@ namespace XDCommon.Utility
 
             extractor.ISOStream.CopySubStream(ExtractedFile, Offset, Size);
             ExtractedFile.Flush();
+        }
+
+        public Stream Encode(bool _)
+        {
+            return ExtractedFile;
         }
     }
 }

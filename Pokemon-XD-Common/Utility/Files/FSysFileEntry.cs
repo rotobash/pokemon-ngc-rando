@@ -47,32 +47,37 @@ namespace XDCommon.Utility
                 extractedFile = LZSSEncoder.Decode(extractedFile);
             }
 
+            return CreateExtractedFile(extractDir, fileName, fileType, extractedFile);
+        }
+
+        public static IExtractedFile CreateExtractedFile(string extractDir, string fileName, FileTypes fileType, Stream extractedFile)
+        {
             switch (fileType)
             {
                 case FileTypes.GTX:
                 case FileTypes.ATX:
                 case FileTypes.GSW:
+                {
+                    if (fileType == FileTypes.GSW)
                     {
-                        if (fileType == FileTypes.GSW)
+                        return new GSWTexture
                         {
-                            return new GSWTexture
-                            {
-                                Path = extractDir,
-                                FileName = fileName,
-                                ExtractedFile = extractedFile
-                            };
-                        }
-                        else
-                        {
-                            return new Texture
-                            {
-                                FileType = fileType,
-                                Path = extractDir,
-                                FileName = fileName,
-                                ExtractedFile = extractedFile
-                            };
-                        }
+                            Path = extractDir,
+                            FileName = fileName,
+                            ExtractedFile = extractedFile
+                        };
                     }
+                    else
+                    {
+                        return new Texture
+                        {
+                            FileType = fileType,
+                            Path = extractDir,
+                            FileName = fileName,
+                            ExtractedFile = extractedFile
+                        };
+                    }
+                }
 
                 case FileTypes.PKX:
                     return new PKX
