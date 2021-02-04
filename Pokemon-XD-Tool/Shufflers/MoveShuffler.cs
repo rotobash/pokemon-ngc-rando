@@ -41,14 +41,14 @@ namespace Randomizer.Shufflers
                     byte acc;
                     do 
                     {
-                        acc = (byte)Math.Max(100, random.Sample(70, 30));
+                        acc = (byte)Math.Min(100, random.Sample(70, 30));
                     } while (move.Accuracy == 100 && move.EffectType == MoveEffectTypes.OHKO);
                     move.Accuracy = acc;
                 }
 
                 if (settings.RandomMovePP)
                 {
-                    move.PP = (byte)Math.Min(5, random.Sample(4, 4) * 5);
+                    move.PP = (byte)Math.Max(5, random.Sample(4, 4) * 5);
                 }
 
                 if (settings.RandomMoveTypes && move.Type != PokemonTypes.None)
