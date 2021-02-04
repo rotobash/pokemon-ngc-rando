@@ -42,10 +42,8 @@ namespace Randomizer
             this.trainersTabPage = new System.Windows.Forms.TabPage();
             this.trainerTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
@@ -60,14 +58,8 @@ namespace Randomizer
             this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.pokemonTabPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.checkBox9 = new System.Windows.Forms.CheckBox();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
-            this.checkBox10 = new System.Windows.Forms.CheckBox();
-            this.checkBox11 = new System.Windows.Forms.CheckBox();
-            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.checkBox12 = new System.Windows.Forms.CheckBox();
             this.tmsTabPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.checkBox13 = new System.Windows.Forms.CheckBox();
@@ -117,20 +109,32 @@ namespace Randomizer
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.infoToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.baseStatsUnchangedCheck = new System.Windows.Forms.RadioButton();
+            this.baseStatsShuffleCheck = new System.Windows.Forms.RadioButton();
+            this.baseStatsRandomCheck = new System.Windows.Forms.RadioButton();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.checkBox9 = new System.Windows.Forms.CheckBox();
+            this.checkBox10 = new System.Windows.Forms.CheckBox();
+            this.checkBox11 = new System.Windows.Forms.CheckBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.checkBox12 = new System.Windows.Forms.CheckBox();
+            this.checkBox17 = new System.Windows.Forms.CheckBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.checkBox18 = new System.Windows.Forms.CheckBox();
+            this.checkBox19 = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gamePictureBox)).BeginInit();
             this.settingsTab.SuspendLayout();
             this.trainersTabPage.SuspendLayout();
             this.trainerTableLayout.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.shadowPokeTabPage.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             this.pokemonTabPage.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
             this.tmsTabPage.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
@@ -146,6 +150,10 @@ namespace Randomizer
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown12)).BeginInit();
             this.tableLayoutPanel7.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -302,16 +310,12 @@ namespace Randomizer
             // 
             // trainerTableLayout
             // 
-            this.trainerTableLayout.ColumnCount = 4;
-            this.trainerTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
-            this.trainerTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.trainerTableLayout.ColumnCount = 2;
             this.trainerTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
             this.trainerTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.trainerTableLayout.Controls.Add(this.checkBox2, 0, 1);
-            this.trainerTableLayout.Controls.Add(this.numericUpDown1, 2, 2);
             this.trainerTableLayout.Controls.Add(this.checkBox3, 0, 2);
             this.trainerTableLayout.Controls.Add(this.checkBox4, 0, 3);
-            this.trainerTableLayout.Controls.Add(this.numericUpDown2, 2, 3);
             this.trainerTableLayout.Controls.Add(this.label1, 1, 2);
             this.trainerTableLayout.Controls.Add(this.label2, 1, 3);
             this.trainerTableLayout.Controls.Add(this.checkBox5, 0, 0);
@@ -336,13 +340,6 @@ namespace Randomizer
             this.checkBox2.Text = "Don\'t Use Legendaries";
             this.checkBox2.UseVisualStyleBackColor = true;
             // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(348, 119);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(199, 23);
-            this.numericUpDown1.TabIndex = 3;
-            // 
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
@@ -363,17 +360,10 @@ namespace Randomizer
             this.checkBox4.Text = "Add Level Boost";
             this.checkBox4.UseVisualStyleBackColor = true;
             // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Location = new System.Drawing.Point(348, 177);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(199, 23);
-            this.numericUpDown2.TabIndex = 6;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(245, 116);
+            this.label1.Location = new System.Drawing.Point(487, 116);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 15);
             this.label1.TabIndex = 7;
@@ -382,7 +372,7 @@ namespace Randomizer
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(245, 174);
+            this.label2.Location = new System.Drawing.Point(487, 174);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 15);
             this.label2.TabIndex = 8;
@@ -514,100 +504,42 @@ namespace Randomizer
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 4;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel3.Controls.Add(this.checkBox9, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.numericUpDown5, 2, 2);
-            this.tableLayoutPanel3.Controls.Add(this.checkBox10, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.checkBox11, 0, 3);
-            this.tableLayoutPanel3.Controls.Add(this.numericUpDown6, 2, 3);
-            this.tableLayoutPanel3.Controls.Add(this.label5, 1, 2);
-            this.tableLayoutPanel3.Controls.Add(this.label6, 1, 3);
-            this.tableLayoutPanel3.Controls.Add(this.checkBox12, 0, 0);
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.34384F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.9341F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.05158F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.52722F));
+            this.tableLayoutPanel3.Controls.Add(this.panel1, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.panel2, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label10, 2, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label5, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label6, 2, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 4;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.10084F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.89916F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(698, 238);
             this.tableLayoutPanel3.TabIndex = 1;
-            // 
-            // checkBox9
-            // 
-            this.checkBox9.AutoSize = true;
-            this.checkBox9.Location = new System.Drawing.Point(3, 62);
-            this.checkBox9.Name = "checkBox9";
-            this.checkBox9.Size = new System.Drawing.Size(143, 19);
-            this.checkBox9.TabIndex = 1;
-            this.checkBox9.Text = "Don\'t Use Legendaries";
-            this.checkBox9.UseVisualStyleBackColor = true;
-            // 
-            // numericUpDown5
-            // 
-            this.numericUpDown5.Location = new System.Drawing.Point(351, 121);
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(199, 23);
-            this.numericUpDown5.TabIndex = 3;
-            // 
-            // checkBox10
-            // 
-            this.checkBox10.AutoSize = true;
-            this.checkBox10.Location = new System.Drawing.Point(3, 121);
-            this.checkBox10.Name = "checkBox10";
-            this.checkBox10.Size = new System.Drawing.Size(127, 19);
-            this.checkBox10.TabIndex = 4;
-            this.checkBox10.Text = "Force Fully Evolved";
-            this.checkBox10.UseVisualStyleBackColor = true;
-            // 
-            // checkBox11
-            // 
-            this.checkBox11.AutoSize = true;
-            this.checkBox11.Location = new System.Drawing.Point(3, 180);
-            this.checkBox11.Name = "checkBox11";
-            this.checkBox11.Size = new System.Drawing.Size(111, 19);
-            this.checkBox11.TabIndex = 5;
-            this.checkBox11.Text = "Add Level Boost";
-            this.checkBox11.UseVisualStyleBackColor = true;
-            // 
-            // numericUpDown6
-            // 
-            this.numericUpDown6.Location = new System.Drawing.Point(351, 180);
-            this.numericUpDown6.Name = "numericUpDown6";
-            this.numericUpDown6.Size = new System.Drawing.Size(199, 23);
-            this.numericUpDown6.TabIndex = 6;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(247, 118);
+            this.label5.Location = new System.Drawing.Point(3, 124);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(37, 15);
+            this.label5.Size = new System.Drawing.Size(39, 15);
             this.label5.TabIndex = 7;
-            this.label5.Text = "Level:";
+            this.label5.Text = "Types:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(247, 177);
+            this.label6.Location = new System.Drawing.Point(333, 124);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 15);
+            this.label6.Size = new System.Drawing.Size(65, 15);
             this.label6.TabIndex = 8;
-            this.label6.Text = "Percent:";
-            // 
-            // checkBox12
-            // 
-            this.checkBox12.AutoSize = true;
-            this.checkBox12.Location = new System.Drawing.Point(3, 3);
-            this.checkBox12.Name = "checkBox12";
-            this.checkBox12.Size = new System.Drawing.Size(177, 19);
-            this.checkBox12.TabIndex = 9;
-            this.checkBox12.Text = "Randomize Trainer Pokemon";
-            this.checkBox12.UseVisualStyleBackColor = true;
+            this.label6.Text = "Evolutions:";
             // 
             // tmsTabPage
             // 
@@ -1108,6 +1040,172 @@ namespace Randomizer
             this.regionLabel.Size = new System.Drawing.Size(0, 15);
             this.regionLabel.TabIndex = 3;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(0, 9);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(62, 15);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "Base Stats:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(333, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(52, 15);
+            this.label10.TabIndex = 10;
+            this.label10.Text = "Abilities:";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.checkBox10);
+            this.panel1.Controls.Add(this.checkBox9);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(145, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(182, 118);
+            this.panel1.TabIndex = 11;
+            // 
+            // baseStatsUnchangedCheck
+            // 
+            this.baseStatsUnchangedCheck.AutoSize = true;
+            this.baseStatsUnchangedCheck.Location = new System.Drawing.Point(0, 34);
+            this.baseStatsUnchangedCheck.Name = "baseStatsUnchangedCheck";
+            this.baseStatsUnchangedCheck.Size = new System.Drawing.Size(86, 19);
+            this.baseStatsUnchangedCheck.TabIndex = 0;
+            this.baseStatsUnchangedCheck.TabStop = true;
+            this.baseStatsUnchangedCheck.Text = "Unchanged";
+            this.baseStatsUnchangedCheck.UseVisualStyleBackColor = true;
+            // 
+            // baseStatsShuffleCheck
+            // 
+            this.baseStatsShuffleCheck.AutoSize = true;
+            this.baseStatsShuffleCheck.Location = new System.Drawing.Point(0, 83);
+            this.baseStatsShuffleCheck.Name = "baseStatsShuffleCheck";
+            this.baseStatsShuffleCheck.Size = new System.Drawing.Size(62, 19);
+            this.baseStatsShuffleCheck.TabIndex = 1;
+            this.baseStatsShuffleCheck.TabStop = true;
+            this.baseStatsShuffleCheck.Text = "Shuffle";
+            this.baseStatsShuffleCheck.UseVisualStyleBackColor = true;
+            // 
+            // baseStatsRandomCheck
+            // 
+            this.baseStatsRandomCheck.AutoSize = true;
+            this.baseStatsRandomCheck.Location = new System.Drawing.Point(0, 58);
+            this.baseStatsRandomCheck.Name = "baseStatsRandomCheck";
+            this.baseStatsRandomCheck.Size = new System.Drawing.Size(70, 19);
+            this.baseStatsRandomCheck.TabIndex = 2;
+            this.baseStatsRandomCheck.TabStop = true;
+            this.baseStatsRandomCheck.Text = "Random";
+            this.baseStatsRandomCheck.UseVisualStyleBackColor = true;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.baseStatsUnchangedCheck);
+            this.panel2.Controls.Add(this.baseStatsShuffleCheck);
+            this.panel2.Controls.Add(this.baseStatsRandomCheck);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(136, 118);
+            this.panel2.TabIndex = 12;
+            // 
+            // checkBox9
+            // 
+            this.checkBox9.AutoSize = true;
+            this.checkBox9.Location = new System.Drawing.Point(6, 9);
+            this.checkBox9.Name = "checkBox9";
+            this.checkBox9.Size = new System.Drawing.Size(83, 19);
+            this.checkBox9.TabIndex = 3;
+            this.checkBox9.Text = "checkBox9";
+            this.checkBox9.UseVisualStyleBackColor = true;
+            // 
+            // checkBox10
+            // 
+            this.checkBox10.AutoSize = true;
+            this.checkBox10.Location = new System.Drawing.Point(6, 34);
+            this.checkBox10.Name = "checkBox10";
+            this.checkBox10.Size = new System.Drawing.Size(89, 19);
+            this.checkBox10.TabIndex = 4;
+            this.checkBox10.Text = "checkBox10";
+            this.checkBox10.UseVisualStyleBackColor = true;
+            // 
+            // checkBox11
+            // 
+            this.checkBox11.AutoSize = true;
+            this.checkBox11.Location = new System.Drawing.Point(6, 59);
+            this.checkBox11.Name = "checkBox11";
+            this.checkBox11.Size = new System.Drawing.Size(89, 19);
+            this.checkBox11.TabIndex = 4;
+            this.checkBox11.Text = "checkBox11";
+            this.checkBox11.UseVisualStyleBackColor = true;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.panel4);
+            this.panel3.Controls.Add(this.checkBox11);
+            this.panel3.Controls.Add(this.checkBox12);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(182, 118);
+            this.panel3.TabIndex = 12;
+            // 
+            // checkBox12
+            // 
+            this.checkBox12.AutoSize = true;
+            this.checkBox12.Location = new System.Drawing.Point(6, 9);
+            this.checkBox12.Name = "checkBox12";
+            this.checkBox12.Size = new System.Drawing.Size(83, 19);
+            this.checkBox12.TabIndex = 3;
+            this.checkBox12.Text = "checkBox9";
+            this.checkBox12.UseVisualStyleBackColor = true;
+            // 
+            // checkBox17
+            // 
+            this.checkBox17.AutoSize = true;
+            this.checkBox17.Location = new System.Drawing.Point(6, 58);
+            this.checkBox17.Name = "checkBox17";
+            this.checkBox17.Size = new System.Drawing.Size(89, 19);
+            this.checkBox17.TabIndex = 4;
+            this.checkBox17.Text = "checkBox17";
+            this.checkBox17.UseVisualStyleBackColor = true;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.checkBox19);
+            this.panel4.Controls.Add(this.checkBox17);
+            this.panel4.Controls.Add(this.checkBox18);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(182, 118);
+            this.panel4.TabIndex = 12;
+            // 
+            // checkBox18
+            // 
+            this.checkBox18.AutoSize = true;
+            this.checkBox18.Location = new System.Drawing.Point(6, 33);
+            this.checkBox18.Name = "checkBox18";
+            this.checkBox18.Size = new System.Drawing.Size(83, 19);
+            this.checkBox18.TabIndex = 3;
+            this.checkBox18.Text = "checkBox9";
+            this.checkBox18.UseVisualStyleBackColor = true;
+            // 
+            // checkBox19
+            // 
+            this.checkBox19.AutoSize = true;
+            this.checkBox19.Location = new System.Drawing.Point(6, 83);
+            this.checkBox19.Name = "checkBox19";
+            this.checkBox19.Size = new System.Drawing.Size(89, 19);
+            this.checkBox19.TabIndex = 5;
+            this.checkBox19.Text = "checkBox19";
+            this.checkBox19.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1124,8 +1222,6 @@ namespace Randomizer
             this.trainersTabPage.ResumeLayout(false);
             this.trainerTableLayout.ResumeLayout(false);
             this.trainerTableLayout.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.shadowPokeTabPage.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
@@ -1133,8 +1229,6 @@ namespace Randomizer
             this.pokemonTabPage.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
             this.tmsTabPage.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
@@ -1155,6 +1249,14 @@ namespace Randomizer
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown12)).EndInit();
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1182,10 +1284,8 @@ namespace Randomizer
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Label progressLabel;
         private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox checkBox5;
@@ -1196,14 +1296,8 @@ namespace Randomizer
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.CheckBox checkBox9;
-        private System.Windows.Forms.NumericUpDown numericUpDown5;
-        private System.Windows.Forms.CheckBox checkBox10;
-        private System.Windows.Forms.CheckBox checkBox11;
-        private System.Windows.Forms.NumericUpDown numericUpDown6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.CheckBox checkBox12;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.CheckBox checkBox13;
         private System.Windows.Forms.NumericUpDown numericUpDown7;
@@ -1249,6 +1343,22 @@ namespace Randomizer
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.CheckBox checkBox29;
         private System.Windows.Forms.ToolTip infoToolTip;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.CheckBox checkBox19;
+        private System.Windows.Forms.CheckBox checkBox17;
+        private System.Windows.Forms.CheckBox checkBox18;
+        private System.Windows.Forms.CheckBox checkBox11;
+        private System.Windows.Forms.CheckBox checkBox12;
+        private System.Windows.Forms.CheckBox checkBox10;
+        private System.Windows.Forms.CheckBox checkBox9;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.RadioButton baseStatsUnchangedCheck;
+        private System.Windows.Forms.RadioButton baseStatsShuffleCheck;
+        private System.Windows.Forms.RadioButton baseStatsRandomCheck;
+        private System.Windows.Forms.Label label10;
     }
 }
 

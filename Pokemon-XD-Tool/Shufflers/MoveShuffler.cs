@@ -41,7 +41,7 @@ namespace Randomizer.Shufflers
                     byte acc;
                     do 
                     {
-                        acc = (byte)Math.Min(100, random.Sample(70, 30));
+                        acc = (byte)Math.Min(100, random.Sample(90, 30));
                     } while (move.Accuracy == 100 && move.EffectType == MoveEffectTypes.OHKO);
                     move.Accuracy = acc;
                 }

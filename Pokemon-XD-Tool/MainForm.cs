@@ -24,7 +24,7 @@ namespace Randomizer
         IGameExtractor gameExtractor;
         Randomizer randomizer;
 
-        int seed;
+        int seed = -1;
 
         public MainForm()
         {
@@ -98,28 +98,32 @@ namespace Randomizer
 
         private void randomizerButton_Click(object sender, EventArgs e)
         {
-            saveFileDialog.FileName = $"{iso.Game}-{iso.Region}.iso";
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            if (iso != null)
             {
-                //var path = saveFileDialog.FileName;
-                //if (!path.EndsWith(".iso"))
-                //{
-                //    path = $"{path}.iso";
-                //}
-                //extractor.RepackISO(iso, path);
-
-
-                randomizer = new Randomizer(iso, gameExtractor);
-                randomizer.RandomizeMoves(new MoveShufflerSettings
+                saveFileDialog.FileName = $"{iso.Game}-{iso.Region}.iso";
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    RandomMovePower = movePowerCheck.Checked,
-                    RandomMoveAcc = moveAccCheck.Checked,
-                    RandomMovePP = movePPCheck.Checked,
-                    RandomMoveTypes = moveTypeCheck.Checked,
-                    RandomMoveCategory = moveCategoryCheck.Checked,
-                });
+                    randomizer = new Randomizer(gameExtractor, seed);
+                    randomizer.RandomizeMoves(new MoveShufflerSettings
+                    {
+                        RandomMovePower = movePowerCheck.Checked,
+                        RandomMoveAcc = moveAccCheck.Checked,
+                        RandomMovePP = movePPCheck.Checked,
+                        RandomMoveTypes = moveTypeCheck.Checked,
+                        RandomMoveCategory = moveCategoryCheck.Checked,
+                    });
+                    randomizer.RandomizePokemon();
 
-                MessageBox.Show("Done!");
+
+                    //var path = saveFileDialog.FileName;
+                    //if (!path.EndsWith(".iso"))
+                    //{
+                    //    path = $"{path}.iso";
+                    //}
+                    //extractor.RepackISO(iso, path);
+
+                    MessageBox.Show("Done!");
+                }
             }
         }
     }

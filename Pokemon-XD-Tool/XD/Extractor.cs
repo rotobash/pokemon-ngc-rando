@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,7 @@ namespace Randomizer.XD
 
         public TrainerPool[] ExtractPools()
         {
-			var poolFsys = iso.Files["deck_archive.fsys"];
+			var poolFsys = iso.GetFSysFile("deck_archive.fsys") ?? throw new KeyNotFoundException($"Could not extract deck_archive.fsys, it doesn't exist in the TOC.");
 			var poolTypes = Enum.GetValues<TrainerTeamTypes>();
 			var trainerPool = new TrainerPool[poolTypes.Length];
 
@@ -36,24 +37,27 @@ namespace Randomizer.XD
 				var index = (i * multiplier) + offset;
 				var fileName = poolFsys.GetFilenameForFile(index);
 
-				IExtractedFile file;
-				if (!poolFsys.ExtractedEntries.ContainsKey(fileName))
-				{
-					file = FSysFileEntry.ExtractFromFSys(poolFsys, index);
-				}
-				else
-				{
-					file = poolFsys.ExtractedEntries[fileName];
-				}
+				// stub deck data for now
+				var fStream = File.Open($"{Configuration.ExtractDirectory}/{fileName}", FileMode.Open, FileAccess.ReadWrite);
 
-				trainerPool[i] = new TrainerPool(pool, file);
+				IExtractedFile file = FSysFileEntry.CreateExtractedFile(Configuration.ExtractDirectory, fileName, FileTypes.BIN, fStream);
+				//if (!poolFsys.ExtractedEntries.ContainsKey(fileName))
+				//{
+				//	file = FSysFileEntry.ExtractFromFSys(poolFsys, index);
+				//}
+				//else
+				//{
+				//	file = poolFsys.ExtractedEntries[fileName];
+				//}
+
+				trainerPool[i] = new TrainerPool(pool, file, iso);
             }
 			return trainerPool;
 		}
 
 		public Move[] ExtractMoves()
         {
-			var moveNum = iso.CommonRel().GetValueAtPointer(Constants.XDNumberOfMoves);
+			var moveNum = iso.CommonRel.GetValueAtPointer(Constants.XDNumberOfMoves);
 			var moves = new Move[moveNum];
 			for (int i = 0; i < moveNum; i++) {
 				moves[i] = new Move(i, iso);
@@ -62,8 +66,15 @@ namespace Randomizer.XD
 		}
 
 		public Pokemon[] ExtractPokemon()
-        {
-			return new Pokemon[0];
-        }
+		{
+			var pokemonNum = iso.CommonRel.GetValueAtPointer(Constants.XDNumberOfPokemon);
+			var pokemon = new Pokemon[pokemonNum];
+			for (int i = 0; i < pokemonNum; i++)
+			{
+				pokemon[i] = new Pokemon(i, iso);
+			}
+			var p = pokemon.Where(pk => pk.Name != string.Empty);
+			return pokemon;
+		}
     }
 }

@@ -14,7 +14,7 @@ namespace Randomizer
         MoveShuffler moveShuffler;
         IGameExtractor gameExtractor;
 
-        public Randomizer(ISO iso, IGameExtractor extractor, int seed = -1)
+        public Randomizer(IGameExtractor extractor, int seed = -1)
         {
             if (seed < 0)
             {
@@ -36,11 +36,14 @@ namespace Randomizer
 
         public void RandomizePokemon()
         {
-
+            var pokemon = gameExtractor.ExtractPokemon();
+            var t = 0;
         }
 
         public void RandomizeTrainers()
         {
+            var decks = gameExtractor.ExtractPools();
+            var t = 0;
 
         }
 
