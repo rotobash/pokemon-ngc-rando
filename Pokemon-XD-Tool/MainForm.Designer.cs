@@ -37,7 +37,7 @@ namespace Randomizer
             this.optionsButton = new System.Windows.Forms.Button();
             this.loadSettingButton = new System.Windows.Forms.Button();
             this.saveSettingsButton = new System.Windows.Forms.Button();
-            this.settingsTabPage = new System.Windows.Forms.TabControl();
+            this.settingsTab = new System.Windows.Forms.TabControl();
             this.trainersTabPage = new System.Windows.Forms.TabPage();
             this.trainerTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
@@ -79,14 +79,21 @@ namespace Randomizer
             this.checkBox16 = new System.Windows.Forms.CheckBox();
             this.movesTabPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.checkBox17 = new System.Windows.Forms.CheckBox();
-            this.numericUpDown9 = new System.Windows.Forms.NumericUpDown();
-            this.checkBox18 = new System.Windows.Forms.CheckBox();
-            this.checkBox19 = new System.Windows.Forms.CheckBox();
-            this.numericUpDown10 = new System.Windows.Forms.NumericUpDown();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.checkBox20 = new System.Windows.Forms.CheckBox();
+            this.moveTypeCheck = new System.Windows.Forms.CheckBox();
+            this.moveAccCheck = new System.Windows.Forms.CheckBox();
+            this.movePPCheck = new System.Windows.Forms.CheckBox();
+            this.movePowerCheck = new System.Windows.Forms.CheckBox();
+            this.moveCategoryCheck = new System.Windows.Forms.CheckBox();
+            this.moveSetsTabPage = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.checkBox26 = new System.Windows.Forms.CheckBox();
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.checkBox27 = new System.Windows.Forms.CheckBox();
+            this.checkBox28 = new System.Windows.Forms.CheckBox();
+            this.numericUpDown13 = new System.Windows.Forms.NumericUpDown();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.checkBox29 = new System.Windows.Forms.CheckBox();
             this.fieldItemsTabPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.checkBox21 = new System.Windows.Forms.CheckBox();
@@ -110,7 +117,7 @@ namespace Randomizer
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gamePictureBox)).BeginInit();
-            this.settingsTabPage.SuspendLayout();
+            this.settingsTab.SuspendLayout();
             this.trainersTabPage.SuspendLayout();
             this.trainerTableLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -128,8 +135,10 @@ namespace Randomizer
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).BeginInit();
             this.movesTabPage.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown10)).BeginInit();
+            this.moveSetsTabPage.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown13)).BeginInit();
             this.fieldItemsTabPage.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown11)).BeginInit();
@@ -153,7 +162,7 @@ namespace Randomizer
             this.tableLayoutPanel1.Controls.Add(this.optionsButton, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.loadSettingButton, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.saveSettingsButton, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.settingsTabPage, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.settingsTab, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.progressBar, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.progressLabel, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel7, 1, 4);
@@ -168,7 +177,7 @@ namespace Randomizer
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(606, 512);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(712, 600);
             this.tableLayoutPanel1.TabIndex = 0;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
@@ -176,11 +185,11 @@ namespace Randomizer
             // 
             this.gamePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.gamePictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gamePictureBox.Location = new System.Drawing.Point(154, 2);
+            this.gamePictureBox.Location = new System.Drawing.Point(181, 2);
             this.gamePictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gamePictureBox.Name = "gamePictureBox";
             this.tableLayoutPanel1.SetRowSpan(this.gamePictureBox, 4);
-            this.gamePictureBox.Size = new System.Drawing.Size(297, 200);
+            this.gamePictureBox.Size = new System.Drawing.Size(350, 236);
             this.gamePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.gamePictureBox.TabIndex = 0;
             this.gamePictureBox.TabStop = false;
@@ -188,10 +197,10 @@ namespace Randomizer
             // loadIsoButton
             // 
             this.loadIsoButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.loadIsoButton.Location = new System.Drawing.Point(457, 2);
+            this.loadIsoButton.Location = new System.Drawing.Point(537, 2);
             this.loadIsoButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.loadIsoButton.Name = "loadIsoButton";
-            this.loadIsoButton.Size = new System.Drawing.Size(146, 47);
+            this.loadIsoButton.Size = new System.Drawing.Size(172, 56);
             this.loadIsoButton.TabIndex = 1;
             this.loadIsoButton.Text = "Load ISO";
             this.loadIsoButton.UseVisualStyleBackColor = true;
@@ -200,10 +209,10 @@ namespace Randomizer
             // randomizerButton
             // 
             this.randomizerButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.randomizerButton.Location = new System.Drawing.Point(457, 53);
+            this.randomizerButton.Location = new System.Drawing.Point(537, 62);
             this.randomizerButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.randomizerButton.Name = "randomizerButton";
-            this.randomizerButton.Size = new System.Drawing.Size(146, 47);
+            this.randomizerButton.Size = new System.Drawing.Size(172, 56);
             this.randomizerButton.TabIndex = 2;
             this.randomizerButton.Text = "Randomize";
             this.randomizerButton.UseVisualStyleBackColor = true;
@@ -212,10 +221,10 @@ namespace Randomizer
             // setSeedButton
             // 
             this.setSeedButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.setSeedButton.Location = new System.Drawing.Point(457, 104);
+            this.setSeedButton.Location = new System.Drawing.Point(537, 122);
             this.setSeedButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.setSeedButton.Name = "setSeedButton";
-            this.setSeedButton.Size = new System.Drawing.Size(146, 47);
+            this.setSeedButton.Size = new System.Drawing.Size(172, 56);
             this.setSeedButton.TabIndex = 3;
             this.setSeedButton.Text = "Set Seed";
             this.setSeedButton.UseVisualStyleBackColor = true;
@@ -223,10 +232,10 @@ namespace Randomizer
             // optionsButton
             // 
             this.optionsButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.optionsButton.Location = new System.Drawing.Point(457, 155);
+            this.optionsButton.Location = new System.Drawing.Point(537, 182);
             this.optionsButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.optionsButton.Name = "optionsButton";
-            this.optionsButton.Size = new System.Drawing.Size(146, 47);
+            this.optionsButton.Size = new System.Drawing.Size(172, 56);
             this.optionsButton.TabIndex = 4;
             this.optionsButton.Text = "Options";
             this.optionsButton.UseVisualStyleBackColor = true;
@@ -238,7 +247,7 @@ namespace Randomizer
             this.loadSettingButton.Location = new System.Drawing.Point(3, 2);
             this.loadSettingButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.loadSettingButton.Name = "loadSettingButton";
-            this.loadSettingButton.Size = new System.Drawing.Size(145, 47);
+            this.loadSettingButton.Size = new System.Drawing.Size(172, 56);
             this.loadSettingButton.TabIndex = 5;
             this.loadSettingButton.Text = "Load Settings";
             this.loadSettingButton.UseVisualStyleBackColor = true;
@@ -246,35 +255,36 @@ namespace Randomizer
             // saveSettingsButton
             // 
             this.saveSettingsButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.saveSettingsButton.Location = new System.Drawing.Point(3, 53);
+            this.saveSettingsButton.Location = new System.Drawing.Point(3, 62);
             this.saveSettingsButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.saveSettingsButton.Name = "saveSettingsButton";
-            this.saveSettingsButton.Size = new System.Drawing.Size(145, 47);
+            this.saveSettingsButton.Size = new System.Drawing.Size(172, 56);
             this.saveSettingsButton.TabIndex = 6;
             this.saveSettingsButton.Text = "Save Settings";
             this.saveSettingsButton.UseVisualStyleBackColor = true;
             // 
-            // settingsTabPage
+            // settingsTab
             // 
-            this.settingsTabPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.settingsTab.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.SetColumnSpan(this.settingsTabPage, 3);
-            this.settingsTabPage.Controls.Add(this.trainersTabPage);
-            this.settingsTabPage.Controls.Add(this.shadowPokeTabPage);
-            this.settingsTabPage.Controls.Add(this.pokemonTabPage);
-            this.settingsTabPage.Controls.Add(this.tmsTabPage);
-            this.settingsTabPage.Controls.Add(this.movesTabPage);
-            this.settingsTabPage.Controls.Add(this.fieldItemsTabPage);
-            this.settingsTabPage.Controls.Add(this.battleBingoTabPage);
-            this.settingsTabPage.Controls.Add(this.miscTabPage);
-            this.settingsTabPage.Location = new System.Drawing.Point(3, 257);
-            this.settingsTabPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.settingsTabPage.Name = "settingsTabPage";
-            this.settingsTabPage.SelectedIndex = 0;
-            this.settingsTabPage.Size = new System.Drawing.Size(600, 226);
-            this.settingsTabPage.TabIndex = 7;
-            this.settingsTabPage.SelectedIndexChanged += new System.EventHandler(this.settingsTabPage_SelectedIndexChanged);
+            this.tableLayoutPanel1.SetColumnSpan(this.settingsTab, 3);
+            this.settingsTab.Controls.Add(this.trainersTabPage);
+            this.settingsTab.Controls.Add(this.shadowPokeTabPage);
+            this.settingsTab.Controls.Add(this.pokemonTabPage);
+            this.settingsTab.Controls.Add(this.tmsTabPage);
+            this.settingsTab.Controls.Add(this.movesTabPage);
+            this.settingsTab.Controls.Add(this.moveSetsTabPage);
+            this.settingsTab.Controls.Add(this.fieldItemsTabPage);
+            this.settingsTab.Controls.Add(this.battleBingoTabPage);
+            this.settingsTab.Controls.Add(this.miscTabPage);
+            this.settingsTab.Location = new System.Drawing.Point(3, 302);
+            this.settingsTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.settingsTab.Name = "settingsTab";
+            this.settingsTab.SelectedIndex = 0;
+            this.settingsTab.Size = new System.Drawing.Size(706, 266);
+            this.settingsTab.TabIndex = 7;
+            this.settingsTab.SelectedIndexChanged += new System.EventHandler(this.settingsTabPage_SelectedIndexChanged);
             // 
             // trainersTabPage
             // 
@@ -283,7 +293,7 @@ namespace Randomizer
             this.trainersTabPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.trainersTabPage.Name = "trainersTabPage";
             this.trainersTabPage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.trainersTabPage.Size = new System.Drawing.Size(592, 198);
+            this.trainersTabPage.Size = new System.Drawing.Size(698, 238);
             this.trainersTabPage.TabIndex = 0;
             this.trainersTabPage.Text = "Trainers";
             this.trainersTabPage.UseVisualStyleBackColor = true;
@@ -311,13 +321,13 @@ namespace Randomizer
             this.trainerTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.trainerTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.trainerTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.trainerTableLayout.Size = new System.Drawing.Size(586, 194);
+            this.trainerTableLayout.Size = new System.Drawing.Size(692, 234);
             this.trainerTableLayout.TabIndex = 0;
             // 
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(3, 51);
+            this.checkBox2.Location = new System.Drawing.Point(3, 61);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(143, 19);
             this.checkBox2.TabIndex = 1;
@@ -326,7 +336,7 @@ namespace Randomizer
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(295, 99);
+            this.numericUpDown1.Location = new System.Drawing.Point(348, 119);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(199, 23);
             this.numericUpDown1.TabIndex = 3;
@@ -334,7 +344,7 @@ namespace Randomizer
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(3, 99);
+            this.checkBox3.Location = new System.Drawing.Point(3, 119);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(127, 19);
             this.checkBox3.TabIndex = 4;
@@ -344,7 +354,7 @@ namespace Randomizer
             // checkBox4
             // 
             this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(3, 147);
+            this.checkBox4.Location = new System.Drawing.Point(3, 177);
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(111, 19);
             this.checkBox4.TabIndex = 5;
@@ -353,7 +363,7 @@ namespace Randomizer
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(295, 147);
+            this.numericUpDown2.Location = new System.Drawing.Point(348, 177);
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(199, 23);
             this.numericUpDown2.TabIndex = 6;
@@ -361,7 +371,7 @@ namespace Randomizer
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(208, 96);
+            this.label1.Location = new System.Drawing.Point(245, 116);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 15);
             this.label1.TabIndex = 7;
@@ -370,7 +380,7 @@ namespace Randomizer
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(208, 144);
+            this.label2.Location = new System.Drawing.Point(245, 174);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 15);
             this.label2.TabIndex = 8;
@@ -393,7 +403,7 @@ namespace Randomizer
             this.shadowPokeTabPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.shadowPokeTabPage.Name = "shadowPokeTabPage";
             this.shadowPokeTabPage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.shadowPokeTabPage.Size = new System.Drawing.Size(592, 198);
+            this.shadowPokeTabPage.Size = new System.Drawing.Size(698, 238);
             this.shadowPokeTabPage.TabIndex = 1;
             this.shadowPokeTabPage.Text = "Shadow Pokemon";
             this.shadowPokeTabPage.UseVisualStyleBackColor = true;
@@ -420,13 +430,13 @@ namespace Randomizer
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(586, 194);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(692, 234);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // checkBox6
             // 
             this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(3, 51);
+            this.checkBox6.Location = new System.Drawing.Point(3, 61);
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.Size = new System.Drawing.Size(145, 19);
             this.checkBox6.TabIndex = 1;
@@ -435,7 +445,7 @@ namespace Randomizer
             // 
             // numericUpDown4
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(295, 147);
+            this.numericUpDown4.Location = new System.Drawing.Point(348, 177);
             this.numericUpDown4.Name = "numericUpDown4";
             this.numericUpDown4.Size = new System.Drawing.Size(199, 23);
             this.numericUpDown4.TabIndex = 6;
@@ -443,7 +453,7 @@ namespace Randomizer
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(208, 144);
+            this.label4.Location = new System.Drawing.Point(245, 174);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(50, 15);
             this.label4.TabIndex = 8;
@@ -462,7 +472,7 @@ namespace Randomizer
             // checkBox25
             // 
             this.checkBox25.AutoSize = true;
-            this.checkBox25.Location = new System.Drawing.Point(295, 51);
+            this.checkBox25.Location = new System.Drawing.Point(348, 61);
             this.checkBox25.Name = "checkBox25";
             this.checkBox25.Size = new System.Drawing.Size(101, 19);
             this.checkBox25.TabIndex = 10;
@@ -472,7 +482,7 @@ namespace Randomizer
             // checkBox7
             // 
             this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point(3, 147);
+            this.checkBox7.Location = new System.Drawing.Point(3, 177);
             this.checkBox7.Name = "checkBox7";
             this.checkBox7.Size = new System.Drawing.Size(158, 19);
             this.checkBox7.TabIndex = 4;
@@ -482,7 +492,7 @@ namespace Randomizer
             // checkBox8
             // 
             this.checkBox8.AutoSize = true;
-            this.checkBox8.Location = new System.Drawing.Point(3, 99);
+            this.checkBox8.Location = new System.Drawing.Point(3, 119);
             this.checkBox8.Name = "checkBox8";
             this.checkBox8.Size = new System.Drawing.Size(143, 19);
             this.checkBox8.TabIndex = 11;
@@ -494,7 +504,7 @@ namespace Randomizer
             this.pokemonTabPage.Controls.Add(this.tableLayoutPanel3);
             this.pokemonTabPage.Location = new System.Drawing.Point(4, 24);
             this.pokemonTabPage.Name = "pokemonTabPage";
-            this.pokemonTabPage.Size = new System.Drawing.Size(592, 198);
+            this.pokemonTabPage.Size = new System.Drawing.Size(698, 238);
             this.pokemonTabPage.TabIndex = 5;
             this.pokemonTabPage.Text = "Pokemon Traits";
             this.pokemonTabPage.UseVisualStyleBackColor = true;
@@ -522,13 +532,13 @@ namespace Randomizer
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(592, 198);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(698, 238);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // checkBox9
             // 
             this.checkBox9.AutoSize = true;
-            this.checkBox9.Location = new System.Drawing.Point(3, 52);
+            this.checkBox9.Location = new System.Drawing.Point(3, 62);
             this.checkBox9.Name = "checkBox9";
             this.checkBox9.Size = new System.Drawing.Size(143, 19);
             this.checkBox9.TabIndex = 1;
@@ -537,7 +547,7 @@ namespace Randomizer
             // 
             // numericUpDown5
             // 
-            this.numericUpDown5.Location = new System.Drawing.Point(298, 101);
+            this.numericUpDown5.Location = new System.Drawing.Point(351, 121);
             this.numericUpDown5.Name = "numericUpDown5";
             this.numericUpDown5.Size = new System.Drawing.Size(199, 23);
             this.numericUpDown5.TabIndex = 3;
@@ -545,7 +555,7 @@ namespace Randomizer
             // checkBox10
             // 
             this.checkBox10.AutoSize = true;
-            this.checkBox10.Location = new System.Drawing.Point(3, 101);
+            this.checkBox10.Location = new System.Drawing.Point(3, 121);
             this.checkBox10.Name = "checkBox10";
             this.checkBox10.Size = new System.Drawing.Size(127, 19);
             this.checkBox10.TabIndex = 4;
@@ -555,7 +565,7 @@ namespace Randomizer
             // checkBox11
             // 
             this.checkBox11.AutoSize = true;
-            this.checkBox11.Location = new System.Drawing.Point(3, 150);
+            this.checkBox11.Location = new System.Drawing.Point(3, 180);
             this.checkBox11.Name = "checkBox11";
             this.checkBox11.Size = new System.Drawing.Size(111, 19);
             this.checkBox11.TabIndex = 5;
@@ -564,7 +574,7 @@ namespace Randomizer
             // 
             // numericUpDown6
             // 
-            this.numericUpDown6.Location = new System.Drawing.Point(298, 150);
+            this.numericUpDown6.Location = new System.Drawing.Point(351, 180);
             this.numericUpDown6.Name = "numericUpDown6";
             this.numericUpDown6.Size = new System.Drawing.Size(199, 23);
             this.numericUpDown6.TabIndex = 6;
@@ -572,7 +582,7 @@ namespace Randomizer
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(210, 98);
+            this.label5.Location = new System.Drawing.Point(247, 118);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 15);
             this.label5.TabIndex = 7;
@@ -581,7 +591,7 @@ namespace Randomizer
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(210, 147);
+            this.label6.Location = new System.Drawing.Point(247, 177);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(50, 15);
             this.label6.TabIndex = 8;
@@ -603,7 +613,7 @@ namespace Randomizer
             this.tmsTabPage.Location = new System.Drawing.Point(4, 24);
             this.tmsTabPage.Name = "tmsTabPage";
             this.tmsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.tmsTabPage.Size = new System.Drawing.Size(592, 198);
+            this.tmsTabPage.Size = new System.Drawing.Size(698, 238);
             this.tmsTabPage.TabIndex = 2;
             this.tmsTabPage.Text = "TMs & Tutors";
             this.tmsTabPage.UseVisualStyleBackColor = true;
@@ -631,13 +641,13 @@ namespace Randomizer
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(586, 192);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(692, 232);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // checkBox13
             // 
             this.checkBox13.AutoSize = true;
-            this.checkBox13.Location = new System.Drawing.Point(3, 51);
+            this.checkBox13.Location = new System.Drawing.Point(3, 61);
             this.checkBox13.Name = "checkBox13";
             this.checkBox13.Size = new System.Drawing.Size(143, 19);
             this.checkBox13.TabIndex = 1;
@@ -646,7 +656,7 @@ namespace Randomizer
             // 
             // numericUpDown7
             // 
-            this.numericUpDown7.Location = new System.Drawing.Point(295, 99);
+            this.numericUpDown7.Location = new System.Drawing.Point(348, 119);
             this.numericUpDown7.Name = "numericUpDown7";
             this.numericUpDown7.Size = new System.Drawing.Size(199, 23);
             this.numericUpDown7.TabIndex = 3;
@@ -654,7 +664,7 @@ namespace Randomizer
             // checkBox14
             // 
             this.checkBox14.AutoSize = true;
-            this.checkBox14.Location = new System.Drawing.Point(3, 99);
+            this.checkBox14.Location = new System.Drawing.Point(3, 119);
             this.checkBox14.Name = "checkBox14";
             this.checkBox14.Size = new System.Drawing.Size(127, 19);
             this.checkBox14.TabIndex = 4;
@@ -664,7 +674,7 @@ namespace Randomizer
             // checkBox15
             // 
             this.checkBox15.AutoSize = true;
-            this.checkBox15.Location = new System.Drawing.Point(3, 147);
+            this.checkBox15.Location = new System.Drawing.Point(3, 177);
             this.checkBox15.Name = "checkBox15";
             this.checkBox15.Size = new System.Drawing.Size(111, 19);
             this.checkBox15.TabIndex = 5;
@@ -673,7 +683,7 @@ namespace Randomizer
             // 
             // numericUpDown8
             // 
-            this.numericUpDown8.Location = new System.Drawing.Point(295, 147);
+            this.numericUpDown8.Location = new System.Drawing.Point(348, 177);
             this.numericUpDown8.Name = "numericUpDown8";
             this.numericUpDown8.Size = new System.Drawing.Size(199, 23);
             this.numericUpDown8.TabIndex = 6;
@@ -681,7 +691,7 @@ namespace Randomizer
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(208, 96);
+            this.label7.Location = new System.Drawing.Point(245, 116);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(37, 15);
             this.label7.TabIndex = 7;
@@ -690,7 +700,7 @@ namespace Randomizer
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(208, 144);
+            this.label8.Location = new System.Drawing.Point(245, 174);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(50, 15);
             this.label8.TabIndex = 8;
@@ -712,9 +722,9 @@ namespace Randomizer
             this.movesTabPage.Location = new System.Drawing.Point(4, 24);
             this.movesTabPage.Name = "movesTabPage";
             this.movesTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.movesTabPage.Size = new System.Drawing.Size(592, 198);
+            this.movesTabPage.Size = new System.Drawing.Size(698, 238);
             this.movesTabPage.TabIndex = 3;
-            this.movesTabPage.Text = "Movesets";
+            this.movesTabPage.Text = "Moves";
             this.movesTabPage.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel5
@@ -724,14 +734,11 @@ namespace Randomizer
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel5.Controls.Add(this.checkBox17, 0, 1);
-            this.tableLayoutPanel5.Controls.Add(this.numericUpDown9, 2, 2);
-            this.tableLayoutPanel5.Controls.Add(this.checkBox18, 0, 2);
-            this.tableLayoutPanel5.Controls.Add(this.checkBox19, 0, 3);
-            this.tableLayoutPanel5.Controls.Add(this.numericUpDown10, 2, 3);
-            this.tableLayoutPanel5.Controls.Add(this.label9, 1, 2);
-            this.tableLayoutPanel5.Controls.Add(this.label10, 1, 3);
-            this.tableLayoutPanel5.Controls.Add(this.checkBox20, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.moveTypeCheck, 0, 3);
+            this.tableLayoutPanel5.Controls.Add(this.moveAccCheck, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.movePPCheck, 0, 2);
+            this.tableLayoutPanel5.Controls.Add(this.movePowerCheck, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.moveCategoryCheck, 2, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -740,80 +747,167 @@ namespace Randomizer
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(586, 192);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(692, 232);
             this.tableLayoutPanel5.TabIndex = 1;
             // 
-            // checkBox17
+            // moveTypeCheck
             // 
-            this.checkBox17.AutoSize = true;
-            this.checkBox17.Location = new System.Drawing.Point(3, 51);
-            this.checkBox17.Name = "checkBox17";
-            this.checkBox17.Size = new System.Drawing.Size(143, 19);
-            this.checkBox17.TabIndex = 1;
-            this.checkBox17.Text = "Don\'t Use Legendaries";
-            this.checkBox17.UseVisualStyleBackColor = true;
+            this.moveTypeCheck.AutoSize = true;
+            this.moveTypeCheck.Location = new System.Drawing.Point(3, 177);
+            this.moveTypeCheck.Name = "moveTypeCheck";
+            this.moveTypeCheck.Size = new System.Drawing.Size(150, 19);
+            this.moveTypeCheck.TabIndex = 10;
+            this.moveTypeCheck.Text = "Randomize Move Types";
+            this.moveTypeCheck.UseVisualStyleBackColor = true;
             // 
-            // numericUpDown9
+            // moveAccCheck
             // 
-            this.numericUpDown9.Location = new System.Drawing.Point(295, 99);
-            this.numericUpDown9.Name = "numericUpDown9";
-            this.numericUpDown9.Size = new System.Drawing.Size(199, 23);
-            this.numericUpDown9.TabIndex = 3;
+            this.moveAccCheck.AutoSize = true;
+            this.moveAccCheck.Location = new System.Drawing.Point(3, 61);
+            this.moveAccCheck.Name = "moveAccCheck";
+            this.moveAccCheck.Size = new System.Drawing.Size(170, 19);
+            this.moveAccCheck.TabIndex = 1;
+            this.moveAccCheck.Text = "Randomize Move Accuracy";
+            this.moveAccCheck.UseVisualStyleBackColor = true;
             // 
-            // checkBox18
+            // movePPCheck
             // 
-            this.checkBox18.AutoSize = true;
-            this.checkBox18.Location = new System.Drawing.Point(3, 99);
-            this.checkBox18.Name = "checkBox18";
-            this.checkBox18.Size = new System.Drawing.Size(127, 19);
-            this.checkBox18.TabIndex = 4;
-            this.checkBox18.Text = "Force Fully Evolved";
-            this.checkBox18.UseVisualStyleBackColor = true;
+            this.movePPCheck.AutoSize = true;
+            this.movePPCheck.Location = new System.Drawing.Point(3, 119);
+            this.movePPCheck.Name = "movePPCheck";
+            this.movePPCheck.Size = new System.Drawing.Size(135, 19);
+            this.movePPCheck.TabIndex = 4;
+            this.movePPCheck.Text = "Randomize Move PP";
+            this.movePPCheck.UseVisualStyleBackColor = true;
             // 
-            // checkBox19
+            // movePowerCheck
             // 
-            this.checkBox19.AutoSize = true;
-            this.checkBox19.Location = new System.Drawing.Point(3, 147);
-            this.checkBox19.Name = "checkBox19";
-            this.checkBox19.Size = new System.Drawing.Size(111, 19);
-            this.checkBox19.TabIndex = 5;
-            this.checkBox19.Text = "Add Level Boost";
-            this.checkBox19.UseVisualStyleBackColor = true;
+            this.movePowerCheck.AutoSize = true;
+            this.movePowerCheck.Location = new System.Drawing.Point(3, 3);
+            this.movePowerCheck.Name = "movePowerCheck";
+            this.movePowerCheck.Size = new System.Drawing.Size(154, 19);
+            this.movePowerCheck.TabIndex = 9;
+            this.movePowerCheck.Text = "Randomize Move Power";
+            this.movePowerCheck.UseVisualStyleBackColor = true;
             // 
-            // numericUpDown10
+            // moveCategoryCheck
             // 
-            this.numericUpDown10.Location = new System.Drawing.Point(295, 147);
-            this.numericUpDown10.Name = "numericUpDown10";
-            this.numericUpDown10.Size = new System.Drawing.Size(199, 23);
-            this.numericUpDown10.TabIndex = 6;
+            this.moveCategoryCheck.AutoSize = true;
+            this.moveCategoryCheck.Location = new System.Drawing.Point(348, 3);
+            this.moveCategoryCheck.Name = "moveCategoryCheck";
+            this.moveCategoryCheck.Size = new System.Drawing.Size(169, 19);
+            this.moveCategoryCheck.TabIndex = 5;
+            this.moveCategoryCheck.Text = "Randomize Move Category";
+            this.moveCategoryCheck.UseVisualStyleBackColor = true;
             // 
-            // label9
+            // moveSetsTabPage
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(208, 96);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(37, 15);
-            this.label9.TabIndex = 7;
-            this.label9.Text = "Level:";
+            this.moveSetsTabPage.Controls.Add(this.tableLayoutPanel8);
+            this.moveSetsTabPage.Location = new System.Drawing.Point(4, 24);
+            this.moveSetsTabPage.Name = "moveSetsTabPage";
+            this.moveSetsTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.moveSetsTabPage.Size = new System.Drawing.Size(698, 238);
+            this.moveSetsTabPage.TabIndex = 8;
+            this.moveSetsTabPage.Text = "Movesets";
+            this.moveSetsTabPage.UseVisualStyleBackColor = true;
             // 
-            // label10
+            // tableLayoutPanel8
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(208, 144);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(50, 15);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "Percent:";
+            this.tableLayoutPanel8.ColumnCount = 4;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel8.Controls.Add(this.checkBox26, 0, 1);
+            this.tableLayoutPanel8.Controls.Add(this.numericUpDown3, 2, 2);
+            this.tableLayoutPanel8.Controls.Add(this.checkBox27, 0, 2);
+            this.tableLayoutPanel8.Controls.Add(this.checkBox28, 0, 3);
+            this.tableLayoutPanel8.Controls.Add(this.numericUpDown13, 2, 3);
+            this.tableLayoutPanel8.Controls.Add(this.label14, 1, 2);
+            this.tableLayoutPanel8.Controls.Add(this.label15, 1, 3);
+            this.tableLayoutPanel8.Controls.Add(this.checkBox29, 0, 0);
+            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 4;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(692, 232);
+            this.tableLayoutPanel8.TabIndex = 2;
             // 
-            // checkBox20
+            // checkBox26
             // 
-            this.checkBox20.AutoSize = true;
-            this.checkBox20.Location = new System.Drawing.Point(3, 3);
-            this.checkBox20.Name = "checkBox20";
-            this.checkBox20.Size = new System.Drawing.Size(177, 19);
-            this.checkBox20.TabIndex = 9;
-            this.checkBox20.Text = "Randomize Trainer Pokemon";
-            this.checkBox20.UseVisualStyleBackColor = true;
+            this.checkBox26.AutoSize = true;
+            this.checkBox26.Location = new System.Drawing.Point(3, 61);
+            this.checkBox26.Name = "checkBox26";
+            this.checkBox26.Size = new System.Drawing.Size(143, 19);
+            this.checkBox26.TabIndex = 1;
+            this.checkBox26.Text = "Don\'t Use Legendaries";
+            this.checkBox26.UseVisualStyleBackColor = true;
+            // 
+            // numericUpDown3
+            // 
+            this.numericUpDown3.Location = new System.Drawing.Point(348, 119);
+            this.numericUpDown3.Name = "numericUpDown3";
+            this.numericUpDown3.Size = new System.Drawing.Size(199, 23);
+            this.numericUpDown3.TabIndex = 3;
+            // 
+            // checkBox27
+            // 
+            this.checkBox27.AutoSize = true;
+            this.checkBox27.Location = new System.Drawing.Point(3, 119);
+            this.checkBox27.Name = "checkBox27";
+            this.checkBox27.Size = new System.Drawing.Size(127, 19);
+            this.checkBox27.TabIndex = 4;
+            this.checkBox27.Text = "Force Fully Evolved";
+            this.checkBox27.UseVisualStyleBackColor = true;
+            // 
+            // checkBox28
+            // 
+            this.checkBox28.AutoSize = true;
+            this.checkBox28.Location = new System.Drawing.Point(3, 177);
+            this.checkBox28.Name = "checkBox28";
+            this.checkBox28.Size = new System.Drawing.Size(111, 19);
+            this.checkBox28.TabIndex = 5;
+            this.checkBox28.Text = "Add Level Boost";
+            this.checkBox28.UseVisualStyleBackColor = true;
+            // 
+            // numericUpDown13
+            // 
+            this.numericUpDown13.Location = new System.Drawing.Point(348, 177);
+            this.numericUpDown13.Name = "numericUpDown13";
+            this.numericUpDown13.Size = new System.Drawing.Size(199, 23);
+            this.numericUpDown13.TabIndex = 6;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(245, 116);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(37, 15);
+            this.label14.TabIndex = 7;
+            this.label14.Text = "Level:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(245, 174);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(50, 15);
+            this.label15.TabIndex = 8;
+            this.label15.Text = "Percent:";
+            // 
+            // checkBox29
+            // 
+            this.checkBox29.AutoSize = true;
+            this.checkBox29.Location = new System.Drawing.Point(3, 3);
+            this.checkBox29.Name = "checkBox29";
+            this.checkBox29.Size = new System.Drawing.Size(138, 19);
+            this.checkBox29.TabIndex = 9;
+            this.checkBox29.Text = "Randomize Movesets";
+            this.checkBox29.UseVisualStyleBackColor = true;
             // 
             // fieldItemsTabPage
             // 
@@ -821,7 +915,7 @@ namespace Randomizer
             this.fieldItemsTabPage.Location = new System.Drawing.Point(4, 24);
             this.fieldItemsTabPage.Name = "fieldItemsTabPage";
             this.fieldItemsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.fieldItemsTabPage.Size = new System.Drawing.Size(592, 198);
+            this.fieldItemsTabPage.Size = new System.Drawing.Size(698, 238);
             this.fieldItemsTabPage.TabIndex = 4;
             this.fieldItemsTabPage.Text = "Field Items";
             this.fieldItemsTabPage.UseVisualStyleBackColor = true;
@@ -849,13 +943,13 @@ namespace Randomizer
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(586, 192);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(692, 232);
             this.tableLayoutPanel6.TabIndex = 1;
             // 
             // checkBox21
             // 
             this.checkBox21.AutoSize = true;
-            this.checkBox21.Location = new System.Drawing.Point(3, 51);
+            this.checkBox21.Location = new System.Drawing.Point(3, 61);
             this.checkBox21.Name = "checkBox21";
             this.checkBox21.Size = new System.Drawing.Size(143, 19);
             this.checkBox21.TabIndex = 1;
@@ -864,7 +958,7 @@ namespace Randomizer
             // 
             // numericUpDown11
             // 
-            this.numericUpDown11.Location = new System.Drawing.Point(295, 99);
+            this.numericUpDown11.Location = new System.Drawing.Point(348, 119);
             this.numericUpDown11.Name = "numericUpDown11";
             this.numericUpDown11.Size = new System.Drawing.Size(199, 23);
             this.numericUpDown11.TabIndex = 3;
@@ -872,7 +966,7 @@ namespace Randomizer
             // checkBox22
             // 
             this.checkBox22.AutoSize = true;
-            this.checkBox22.Location = new System.Drawing.Point(3, 99);
+            this.checkBox22.Location = new System.Drawing.Point(3, 119);
             this.checkBox22.Name = "checkBox22";
             this.checkBox22.Size = new System.Drawing.Size(127, 19);
             this.checkBox22.TabIndex = 4;
@@ -882,7 +976,7 @@ namespace Randomizer
             // checkBox23
             // 
             this.checkBox23.AutoSize = true;
-            this.checkBox23.Location = new System.Drawing.Point(3, 147);
+            this.checkBox23.Location = new System.Drawing.Point(3, 177);
             this.checkBox23.Name = "checkBox23";
             this.checkBox23.Size = new System.Drawing.Size(111, 19);
             this.checkBox23.TabIndex = 5;
@@ -891,7 +985,7 @@ namespace Randomizer
             // 
             // numericUpDown12
             // 
-            this.numericUpDown12.Location = new System.Drawing.Point(295, 147);
+            this.numericUpDown12.Location = new System.Drawing.Point(348, 177);
             this.numericUpDown12.Name = "numericUpDown12";
             this.numericUpDown12.Size = new System.Drawing.Size(199, 23);
             this.numericUpDown12.TabIndex = 6;
@@ -899,7 +993,7 @@ namespace Randomizer
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(208, 96);
+            this.label11.Location = new System.Drawing.Point(245, 116);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(37, 15);
             this.label11.TabIndex = 7;
@@ -908,7 +1002,7 @@ namespace Randomizer
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(208, 144);
+            this.label12.Location = new System.Drawing.Point(245, 174);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(50, 15);
             this.label12.TabIndex = 8;
@@ -928,7 +1022,7 @@ namespace Randomizer
             // 
             this.battleBingoTabPage.Location = new System.Drawing.Point(4, 24);
             this.battleBingoTabPage.Name = "battleBingoTabPage";
-            this.battleBingoTabPage.Size = new System.Drawing.Size(592, 198);
+            this.battleBingoTabPage.Size = new System.Drawing.Size(698, 238);
             this.battleBingoTabPage.TabIndex = 6;
             this.battleBingoTabPage.Text = "Battle Bingo";
             this.battleBingoTabPage.UseVisualStyleBackColor = true;
@@ -937,7 +1031,7 @@ namespace Randomizer
             // 
             this.miscTabPage.Location = new System.Drawing.Point(4, 24);
             this.miscTabPage.Name = "miscTabPage";
-            this.miscTabPage.Size = new System.Drawing.Size(592, 198);
+            this.miscTabPage.Size = new System.Drawing.Size(698, 238);
             this.miscTabPage.TabIndex = 7;
             this.miscTabPage.Text = "Misc";
             this.miscTabPage.UseVisualStyleBackColor = true;
@@ -946,15 +1040,15 @@ namespace Randomizer
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.progressBar, 2);
             this.progressBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.progressBar.Location = new System.Drawing.Point(154, 488);
+            this.progressBar.Location = new System.Drawing.Point(181, 573);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(449, 21);
+            this.progressBar.Size = new System.Drawing.Size(528, 24);
             this.progressBar.TabIndex = 8;
             // 
             // progressLabel
             // 
             this.progressLabel.AutoSize = true;
-            this.progressLabel.Location = new System.Drawing.Point(3, 485);
+            this.progressLabel.Location = new System.Drawing.Point(3, 570);
             this.progressLabel.Name = "progressLabel";
             this.progressLabel.Size = new System.Drawing.Size(55, 15);
             this.progressLabel.TabIndex = 9;
@@ -970,12 +1064,12 @@ namespace Randomizer
             this.tableLayoutPanel7.Controls.Add(this.gameLabel, 1, 0);
             this.tableLayoutPanel7.Controls.Add(this.regionLabel, 1, 1);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(154, 207);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(181, 243);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 2;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(297, 45);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(350, 54);
             this.tableLayoutPanel7.TabIndex = 10;
             // 
             // label3
@@ -990,7 +1084,7 @@ namespace Randomizer
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(3, 22);
+            this.label13.Location = new System.Drawing.Point(3, 27);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(47, 15);
             this.label13.TabIndex = 1;
@@ -999,7 +1093,7 @@ namespace Randomizer
             // gameLabel
             // 
             this.gameLabel.AutoSize = true;
-            this.gameLabel.Location = new System.Drawing.Point(151, 0);
+            this.gameLabel.Location = new System.Drawing.Point(178, 0);
             this.gameLabel.Name = "gameLabel";
             this.gameLabel.Size = new System.Drawing.Size(0, 15);
             this.gameLabel.TabIndex = 2;
@@ -1007,7 +1101,7 @@ namespace Randomizer
             // regionLabel
             // 
             this.regionLabel.AutoSize = true;
-            this.regionLabel.Location = new System.Drawing.Point(151, 22);
+            this.regionLabel.Location = new System.Drawing.Point(178, 27);
             this.regionLabel.Name = "regionLabel";
             this.regionLabel.Size = new System.Drawing.Size(0, 15);
             this.regionLabel.TabIndex = 3;
@@ -1016,7 +1110,7 @@ namespace Randomizer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(627, 530);
+            this.ClientSize = new System.Drawing.Size(733, 618);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
@@ -1024,7 +1118,7 @@ namespace Randomizer
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gamePictureBox)).EndInit();
-            this.settingsTabPage.ResumeLayout(false);
+            this.settingsTab.ResumeLayout(false);
             this.trainersTabPage.ResumeLayout(false);
             this.trainerTableLayout.ResumeLayout(false);
             this.trainerTableLayout.PerformLayout();
@@ -1047,8 +1141,11 @@ namespace Randomizer
             this.movesTabPage.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown10)).EndInit();
+            this.moveSetsTabPage.ResumeLayout(false);
+            this.tableLayoutPanel8.ResumeLayout(false);
+            this.tableLayoutPanel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown13)).EndInit();
             this.fieldItemsTabPage.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
@@ -1070,7 +1167,7 @@ namespace Randomizer
         private System.Windows.Forms.Button optionsButton;
         private System.Windows.Forms.Button loadSettingButton;
         private System.Windows.Forms.Button saveSettingsButton;
-        private System.Windows.Forms.TabControl settingsTabPage;
+        private System.Windows.Forms.TabControl settingsTab;
         private System.Windows.Forms.TabPage trainersTabPage;
         private System.Windows.Forms.TabPage shadowPokeTabPage;
         private System.Windows.Forms.TabPage tmsTabPage;
@@ -1115,14 +1212,10 @@ namespace Randomizer
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox checkBox16;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.CheckBox checkBox17;
-        private System.Windows.Forms.NumericUpDown numericUpDown9;
-        private System.Windows.Forms.CheckBox checkBox18;
-        private System.Windows.Forms.CheckBox checkBox19;
-        private System.Windows.Forms.NumericUpDown numericUpDown10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.CheckBox checkBox20;
+        private System.Windows.Forms.CheckBox moveAccCheck;
+        private System.Windows.Forms.CheckBox movePPCheck;
+        private System.Windows.Forms.CheckBox moveCategoryCheck;
+        private System.Windows.Forms.CheckBox movePowerCheck;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.CheckBox checkBox21;
         private System.Windows.Forms.NumericUpDown numericUpDown11;
@@ -1141,6 +1234,18 @@ namespace Randomizer
         private System.Windows.Forms.Label gameLabel;
         private System.Windows.Forms.Label regionLabel;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage moveSetsTabPage;
+        private System.Windows.Forms.CheckBox moveTypeCheck;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        private System.Windows.Forms.CheckBox checkBox26;
+        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.CheckBox checkBox27;
+        private System.Windows.Forms.CheckBox checkBox28;
+        private System.Windows.Forms.NumericUpDown numericUpDown13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.CheckBox checkBox29;
     }
 }
 

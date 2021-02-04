@@ -50,5 +50,15 @@ namespace Randomizer.XD
             }
 			return trainerPool;
 		}
+
+		public Move[] ExtractMoves()
+        {
+			var moveNum = iso.CommonRel().GetValueAtPointer(Constants.XDNumberOfMoves);
+			var moves = new Move[moveNum];
+			for (int i = 0; i < moveNum; i++) {
+				moves[i] = new Move(i, iso);
+			}
+			return moves;
+		}
     }
 }

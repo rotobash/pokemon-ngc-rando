@@ -1,4 +1,5 @@
 ﻿using Randomizer.Colosseum;
+using Randomizer.Shufflers;
 using Randomizer.XD;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,12 @@ namespace Randomizer
     public partial class MainForm : Form
     {
         ISO iso;
-        ISOExtractor extractor;
+        ISOExtractor isoExtractor;
+        IGameExtractor gameExtractor;
+        Randomizer randomizer;
+
+        int seed;
+
         public MainForm()
         {
             InitializeComponent();
@@ -45,18 +51,17 @@ namespace Randomizer
                 {
                     Directory.CreateDirectory(Configuration.ExtractDirectory);
                 }
-                extractor = new ISOExtractor(openFileDialog.FileName);
-                iso = extractor.ExtractISO();
-                IGameExtractor ex ;
+                isoExtractor = new ISOExtractor(openFileDialog.FileName);
+                iso = isoExtractor.ExtractISO();
                 switch (iso.Game)
                 {
                     case Game.Colosseum:
                         gamePictureBox.Image = new Bitmap("Images/colo-logo.jpg");
-                        ex = new ColoExtractor();
+                        gameExtractor = new ColoExtractor();
                         break;
                     case Game.XD:
                         gamePictureBox.Image = new Bitmap("Images/xd-logo.jpg");
-                        ex = new XDExtractor(iso);
+                        gameExtractor = new XDExtractor(iso);
                         break;
                     default:
                         MessageBox.Show("Game not recognized!");
@@ -64,6 +69,18 @@ namespace Randomizer
                 }
                 gameLabel.Text = iso.Game.ToString();
                 regionLabel.Text = iso.Region.ToString();
+
+                //foreach (var move in moves)
+                //{
+                //    if (move.Name.ToString().IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
+                //        continue;
+
+                //    File.WriteAllText(
+                //        $"{Configuration.ExtractDirectory}/{move.Name}.txt",
+                //        $"Index: {move.MoveIndex}\nDescription: {move.MDescription}\nType: {move.Type}\nPP:{move.PP}\nPower:{move.BasePower}\nCategory: {move.Category}\nAccuracy: {move.Accuracy}\nPriority: {move.Priority}\nEffect: {move.Effect}\nEffectAccuracy{move.EffectAccuracy}"
+                //    );
+
+                //}
             }
         }
 
@@ -78,12 +95,25 @@ namespace Randomizer
             saveFileDialog.FileName = $"{iso.Game}-{iso.Region}.iso";
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                var path = saveFileDialog.FileName;
-                if (!path.EndsWith(".iso"))
+                //var path = saveFileDialog.FileName;
+                //if (!path.EndsWith(".iso"))
+                //{
+                //    path = $"{path}.iso";
+                //}
+                //extractor.RepackISO(iso, path);
+
+
+                randomizer = new Randomizer(iso, gameExtractor);
+                randomizer.RandomizeMoves(new MoveShufflerSettings 
                 {
-                    path = $"{path}.iso";
-                }
-                extractor.RepackISO(iso, path);
+                    RandomMovePower = movePowerCheck.Checked,
+                    RandomMoveAcc = moveAccCheck.Checked,
+                    RandomMovePP = movePPCheck.Checked,
+                    RandomMoveTypes = moveTypeCheck.Checked,
+                    RandomMoveCategory = moveCategoryCheck.Checked,
+                });
+
+                MessageBox.Show("Done!");
             }
             
         }
