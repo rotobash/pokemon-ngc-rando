@@ -6,7 +6,7 @@ namespace XDCommon.Utility
 {
     public class TrainerPokemon
     {
-        public TrainerPokemon(TrainerPokemonPool trainerPokemon)
+        public TrainerPokemon(TrainerPoolPokemon trainerPokemon)
         {
 
         }

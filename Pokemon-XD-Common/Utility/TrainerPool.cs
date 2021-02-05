@@ -16,26 +16,26 @@ namespace XDCommon.Utility
         static byte[] kSimpleDTAI = new byte[] { 0x4F, 0x3E, 0x00, 0x00, 0x75, 0x75, 0x75, 0x75, 0x75, 0x75, 0x75, 0x00, 0x2B, 0x29, 0x32, 0x64, 0x32, 0x32, 0x32, 0x32, 0x09, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
         static byte[] kCycleDTAI = new byte[] { 0x27, 0x2A, 0x00, 0x00, 0x73, 0x73, 0x74, 0x73, 0x73, 0x74, 0x82, 0x00, 0x2C, 0x27, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 
-        internal const int DDPKHeaderOffset = 0x10;
-        internal const int DDPKDataOffset = DDPKHeaderOffset + 0x10;
-        internal const byte DTNRHeaderOffset = 0x10;
-        internal const byte DTNRDataOffset = DTNRHeaderOffset + 0x10;
-        internal const int DPKMHeaderOffset = DTNRHeaderOffset + DTNRDataOffset;
-        internal const int DPKMDataOffset = DPKMHeaderOffset + 0x10;
-        internal const int DTAIHeaderOffset = DPKMHeaderOffset + DPKMDataOffset;
-        internal const int DTAIDataOffset = DTAIHeaderOffset + 0x10;
-        internal const int DSTRHeaderOffset = DTAIHeaderOffset + DTAIDataOffset;
-        internal const int DSTRDataOffset = DSTRHeaderOffset + 0x10;
+        internal int DDPKHeaderOffset => 0x10;
+        internal int DDPKDataOffset => DDPKHeaderOffset + 0x10;
+        internal int DTNRHeaderOffset => 0x10;
+        internal int DTNRDataOffset => DTNRHeaderOffset + 0x10;
+        internal int DPKMHeaderOffset => DTNRHeaderOffset + GetSize(DTNRHeaderOffset);
+        internal int DPKMDataOffset => DPKMHeaderOffset + 0x10;
+        internal int DTAIHeaderOffset => DPKMHeaderOffset + GetSize(DPKMHeaderOffset);
+        internal int DTAIDataOffset => DTAIHeaderOffset + 0x10;
+        internal int DSTRHeaderOffset => DTAIHeaderOffset + GetSize(DTAIHeaderOffset);
+        internal int DSTRDataOffset => DSTRHeaderOffset + 0x10;
 
         public TrainerTeamTypes TeamType { get; }
         public IEnumerable<Trainer> AllTrainers { get; }
-        public IEnumerable<TrainerPokemonPool> AllPokemon { get; }
+        public IEnumerable<TrainerPoolPokemon> AllPokemon { get; }
         public IEnumerable<TrainerPokemon> AllTrainerPokemon { get; }
 
         public Stream ExtractedFile;
         public FileTypes FileType;
 
-        public TrainerPool(TrainerTeamTypes teamType, IExtractedFile fileEntry)
+        public TrainerPool(TrainerTeamTypes teamType, IExtractedFile fileEntry, ISO iso)
         {
             ExtractedFile = fileEntry.ExtractedFile;
             FileType = FileTypes.BIN;
@@ -45,15 +45,28 @@ namespace XDCommon.Utility
             var trainers = new Trainer[trainerCount];
             for (int i = 0; i < trainerCount; i++)
             {
-                trainers[i] = new Trainer(i, this);
+                trainers[i] = new Trainer(i, this, iso);
             }
             AllTrainers = trainers;
 
-            var pokemonCount = GetEntries(DPKMHeaderOffset);
-            var pokemon = new TrainerPokemonPool[pokemonCount];
-            for (int i = 0; i < pokemonCount; i++)
+            TrainerPoolPokemon[] pokemon;
+            if (TeamType == TrainerTeamTypes.DarkPokemon) 
             {
-                pokemon[i] = new TrainerPokemonPool(i);
+                var pokemonCount = GetEntries(DDPKDataOffset);
+                pokemon = new TrainerPoolPokemon[pokemonCount];
+                for (int i = 0; i < pokemonCount; i++)
+                {
+                    pokemon[i] = new TrainerPoolPokemon(i, this, PokemonFileType.DDPK, iso);
+                }
+            }
+            else
+            {
+                var pokemonCount = GetEntries(DPKMDataOffset);
+                pokemon = new TrainerPoolPokemon[pokemonCount];
+                for (int i = 0; i < pokemonCount; i++)
+                {
+                    pokemon[i] = new TrainerPoolPokemon(i, this, PokemonFileType.DPKM, iso);
+                }
             }
             AllPokemon = pokemon;
 

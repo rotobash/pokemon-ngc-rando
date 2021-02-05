@@ -43,7 +43,7 @@ namespace XDCommon.PokemonDefinitions
         }
 
         bool AbilityListUpdated => iso.Game == Game.Colosseum ? false : iso.DOL.ExtractedFile.GetIntAtOffset(StartOffset + 8) != 0;
-        int NumberOfAbilities => AbilityListUpdated ? 0x75 : 0x4E;
+        public int NumberOfAbilities => AbilityListUpdated ? 0x75 : 0x4E;
         int AbilityNameIDOffset => AbilityListUpdated ? 0 : 4;
         int AbilityDescriptionIDOffset => AbilityListUpdated ? 4 : 8;
         int SizeOfAbilityEntry => AbilityListUpdated ? 8 : 12;

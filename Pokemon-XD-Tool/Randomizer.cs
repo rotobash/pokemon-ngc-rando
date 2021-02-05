@@ -11,7 +11,6 @@ namespace Randomizer
     public class Randomizer
     {
         Random random;
-        MoveShuffler moveShuffler;
         IGameExtractor gameExtractor;
 
         public Randomizer(IGameExtractor extractor, int seed = -1)
@@ -30,14 +29,13 @@ namespace Randomizer
         public void RandomizeMoves(MoveShufflerSettings settings)
         {
             var moves = gameExtractor.ExtractMoves();
-            moveShuffler = new MoveShuffler(random, moves);
-            moveShuffler.RandomizeMoves(settings);
+            MoveShuffler.RandomizeMoves(random, moves, settings);
         }
 
-        public void RandomizePokemon()
+        public void RandomizePokemon(PokemonTraitShufflerSettings settings)
         {
             var pokemon = gameExtractor.ExtractPokemon();
-            var t = 0;
+            PokemonTraitShuffler.RandomizePokemonTraits(random, pokemon, settings);
         }
 
         public void RandomizeTrainers()

@@ -37,16 +37,6 @@ namespace Randomizer
             infoToolTip.SetToolTip(moveCategoryCheck, "Randomize whether a move is physical or special, XD only unless you've patched Colosseum.");
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void settingsTabPage_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void loadIsoButton_Click(object sender, EventArgs e)
         {
             openFileDialog.Filter = "Colosseum or XD Game File|*.iso";
@@ -112,7 +102,30 @@ namespace Randomizer
                         RandomMoveTypes = moveTypeCheck.Checked,
                         RandomMoveCategory = moveCategoryCheck.Checked,
                     });
-                    randomizer.RandomizePokemon();
+
+
+                    randomizer.RandomizePokemon(new PokemonTraitShufflerSettings
+                    {
+                        RandomizeBaseStats = baseStatsUnchangedCheck.Checked ? 0 : baseStatsShuffleCheck.Checked ? 1 : 2,
+                        StandardizeEXPCurves = standardizeExpCureCheck.Checked,
+                        BaseStatsFollowEvolution = bstFollowEvolutionCheck.Checked,
+                        UpdateBaseStats = updateBSTCheck.Checked,
+
+                        RandomizeAbilities = randomizeAbilitiesCheck.Checked,
+                        AllowWonderGuard = allowWonderGuardCheck.Checked,
+                        AbilitiesFollowEvolution = abilitiesFollowEvolutionCheck.Checked,
+                        BanNegativeAbilities = banBadAbilitiesCheck.Checked,
+
+                        RandomizeTypes = randomizeTypesCheck.Checked,
+                        TypesFollowEvolution = typesFollowEvolutionCheck.Checked,
+
+                        RandomizeEvolutions = randomizeEvolutionsCheck.Checked,
+                        EvolutionHasSimilarStrength = evolutionSimilarStrengthCheck.Checked,
+                        EvolutionHasSameType = evolutionSameTypeCheck.Checked,
+                        ThreeStageEvolution = threeStageMaxCheck.Checked,
+                        EasyEvolutions = easyEvolutionsCheck.Checked,
+                        FixImpossibleEvolutions = fixImpossibleEvolutionsCheck.Checked,
+                    });
 
 
                     //var path = saveFileDialog.FileName;
@@ -125,6 +138,30 @@ namespace Randomizer
                     MessageBox.Show("Done!");
                 }
             }
+        }
+
+        private void randomizeTypesCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            typesFollowEvolutionCheck.Visible = randomizeTypesCheck.Checked;
+        }
+
+        private void baseStatsRandomCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            bstFollowEvolutionCheck.Visible = baseStatsRandomCheck.Checked;
+        }
+
+        private void randomizeEvolutionsCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            evolutionSameTypeCheck.Visible = randomizeEvolutionsCheck.Checked;
+            evolutionSimilarStrengthCheck.Visible = randomizeEvolutionsCheck.Checked;
+            threeStageMaxCheck.Visible = randomizeEvolutionsCheck.Checked;
+        }
+
+        private void randomizeAbilitiesCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            banBadAbilitiesCheck.Visible = randomizeAbilitiesCheck.Checked;
+            allowWonderGuardCheck.Visible = randomizeAbilitiesCheck.Checked;
+            abilitiesFollowEvolutionCheck.Visible = randomizeAbilitiesCheck.Checked;
         }
     }
 }

@@ -67,6 +67,16 @@ namespace XDCommon.Utility
             TOC.Load(iso.DOL);
             iso.TOC = TOC;
 
+            var relStream = File.Open($"{Configuration.ExtractDirectory}/common_rel.rel", FileMode.Open, FileAccess.ReadWrite);
+
+            iso.CommonRel = new REL()
+            {
+                FileName = "common_rel.rel",
+                ExtractedFile = relStream
+            };
+            iso.CommonRel.LoadPointers();
+            iso.BuildStringsTables();
+
             return iso;
         }
         public void RepackISO(ISO iso, string savePath)

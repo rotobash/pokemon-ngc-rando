@@ -16,18 +16,9 @@ namespace Randomizer.Shufflers
         public bool RandomMoveCategory;
     }
 
-    public class MoveShuffler
+    public static class MoveShuffler
     {
-        Random random;
-        Move[] moves;
-
-        public MoveShuffler(Random random, Move[] moveList)
-        {
-            this.random = random;
-            moves = moveList;
-        }
-
-        public void RandomizeMoves(MoveShufflerSettings settings)
+        public static void RandomizeMoves(Random random, Move[] moves, MoveShufflerSettings settings)
         {
             foreach (var move in moves)
             {

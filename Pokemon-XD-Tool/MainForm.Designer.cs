@@ -58,8 +58,42 @@ namespace Randomizer
             this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.pokemonTabPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.label5 = new System.Windows.Forms.Label();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.easyEvolutionsCheck = new System.Windows.Forms.CheckBox();
+            this.fixImpossibleEvolutionsCheck = new System.Windows.Forms.CheckBox();
+            this.randomizeEvolutionsCheck = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.randomizeTypesCheck = new System.Windows.Forms.CheckBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.randomizeAbilitiesCheck = new System.Windows.Forms.CheckBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.bstFollowEvolutionCheck = new System.Windows.Forms.CheckBox();
+            this.updateBSTCheck = new System.Windows.Forms.CheckBox();
+            this.standardizeExpCureCheck = new System.Windows.Forms.CheckBox();
+            this.checkBox11 = new System.Windows.Forms.CheckBox();
+            this.checkBox12 = new System.Windows.Forms.CheckBox();
+            this.checkBox10 = new System.Windows.Forms.CheckBox();
+            this.checkBox9 = new System.Windows.Forms.CheckBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.baseStatsUnchangedCheck = new System.Windows.Forms.RadioButton();
+            this.baseStatsShuffleCheck = new System.Windows.Forms.RadioButton();
+            this.baseStatsRandomCheck = new System.Windows.Forms.RadioButton();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.banBadAbilitiesCheck = new System.Windows.Forms.CheckBox();
+            this.abilitiesFollowEvolutionCheck = new System.Windows.Forms.CheckBox();
+            this.allowWonderGuardCheck = new System.Windows.Forms.CheckBox();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.typesFollowEvolutionCheck = new System.Windows.Forms.CheckBox();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.threeStageMaxCheck = new System.Windows.Forms.CheckBox();
+            this.evolutionSameTypeCheck = new System.Windows.Forms.CheckBox();
+            this.evolutionSimilarStrengthCheck = new System.Windows.Forms.CheckBox();
             this.tmsTabPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.checkBox13 = new System.Windows.Forms.CheckBox();
@@ -109,22 +143,6 @@ namespace Randomizer
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.infoToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.baseStatsUnchangedCheck = new System.Windows.Forms.RadioButton();
-            this.baseStatsShuffleCheck = new System.Windows.Forms.RadioButton();
-            this.baseStatsRandomCheck = new System.Windows.Forms.RadioButton();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.checkBox9 = new System.Windows.Forms.CheckBox();
-            this.checkBox10 = new System.Windows.Forms.CheckBox();
-            this.checkBox11 = new System.Windows.Forms.CheckBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.checkBox12 = new System.Windows.Forms.CheckBox();
-            this.checkBox17 = new System.Windows.Forms.CheckBox();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.checkBox18 = new System.Windows.Forms.CheckBox();
-            this.checkBox19 = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gamePictureBox)).BeginInit();
             this.settingsTab.SuspendLayout();
@@ -135,6 +153,16 @@ namespace Randomizer
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             this.pokemonTabPage.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.panel10.SuspendLayout();
             this.tmsTabPage.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
@@ -150,10 +178,6 @@ namespace Randomizer
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown12)).BeginInit();
             this.tableLayoutPanel7.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -189,7 +213,6 @@ namespace Randomizer
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(712, 600);
             this.tableLayoutPanel1.TabIndex = 0;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // gamePictureBox
             // 
@@ -294,7 +317,6 @@ namespace Randomizer
             this.settingsTab.SelectedIndex = 0;
             this.settingsTab.Size = new System.Drawing.Size(706, 266);
             this.settingsTab.TabIndex = 7;
-            this.settingsTab.SelectedIndexChanged += new System.EventHandler(this.settingsTabPage_SelectedIndexChanged);
             // 
             // trainersTabPage
             // 
@@ -504,42 +526,450 @@ namespace Randomizer
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 4;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.34384F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.9341F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.05158F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.52722F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.Controls.Add(this.panel9, 2, 1);
+            this.tableLayoutPanel3.Controls.Add(this.panel7, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.panel5, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.panel1, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.panel2, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label10, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label5, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.label6, 2, 1);
+            this.tableLayoutPanel3.Controls.Add(this.panel6, 3, 0);
+            this.tableLayoutPanel3.Controls.Add(this.panel8, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.panel10, 3, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.10084F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.89916F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49.57983F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.42017F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(698, 238);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
-            // label5
+            // panel9
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 124);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 15);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Types:";
+            this.panel9.Controls.Add(this.easyEvolutionsCheck);
+            this.panel9.Controls.Add(this.fixImpossibleEvolutionsCheck);
+            this.panel9.Controls.Add(this.randomizeEvolutionsCheck);
+            this.panel9.Controls.Add(this.label6);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel9.Location = new System.Drawing.Point(351, 121);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(168, 114);
+            this.panel9.TabIndex = 18;
+            // 
+            // easyEvolutionsCheck
+            // 
+            this.easyEvolutionsCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.easyEvolutionsCheck.AutoSize = true;
+            this.easyEvolutionsCheck.Location = new System.Drawing.Point(7, 84);
+            this.easyEvolutionsCheck.Name = "easyEvolutionsCheck";
+            this.easyEvolutionsCheck.Size = new System.Drawing.Size(114, 19);
+            this.easyEvolutionsCheck.TabIndex = 12;
+            this.easyEvolutionsCheck.Text = "Easier Evolutions";
+            this.easyEvolutionsCheck.UseVisualStyleBackColor = true;
+            // 
+            // fixImpossibleEvolutionsCheck
+            // 
+            this.fixImpossibleEvolutionsCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.fixImpossibleEvolutionsCheck.AutoSize = true;
+            this.fixImpossibleEvolutionsCheck.Location = new System.Drawing.Point(7, 59);
+            this.fixImpossibleEvolutionsCheck.Name = "fixImpossibleEvolutionsCheck";
+            this.fixImpossibleEvolutionsCheck.Size = new System.Drawing.Size(159, 19);
+            this.fixImpossibleEvolutionsCheck.TabIndex = 11;
+            this.fixImpossibleEvolutionsCheck.Text = "Fix Impossible Evolutions";
+            this.fixImpossibleEvolutionsCheck.UseVisualStyleBackColor = true;
+            // 
+            // randomizeEvolutionsCheck
+            // 
+            this.randomizeEvolutionsCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.randomizeEvolutionsCheck.AutoSize = true;
+            this.randomizeEvolutionsCheck.Location = new System.Drawing.Point(7, 34);
+            this.randomizeEvolutionsCheck.Name = "randomizeEvolutionsCheck";
+            this.randomizeEvolutionsCheck.Size = new System.Drawing.Size(85, 19);
+            this.randomizeEvolutionsCheck.TabIndex = 10;
+            this.randomizeEvolutionsCheck.Text = "Randomize";
+            this.randomizeEvolutionsCheck.UseVisualStyleBackColor = true;
+            this.randomizeEvolutionsCheck.CheckedChanged += new System.EventHandler(this.randomizeEvolutionsCheck_CheckedChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(333, 124);
+            this.label6.Location = new System.Drawing.Point(0, 9);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 15);
-            this.label6.TabIndex = 8;
+            this.label6.TabIndex = 9;
             this.label6.Text = "Evolutions:";
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.randomizeTypesCheck);
+            this.panel7.Controls.Add(this.label10);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel7.Location = new System.Drawing.Point(3, 121);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(168, 114);
+            this.panel7.TabIndex = 16;
+            // 
+            // randomizeTypesCheck
+            // 
+            this.randomizeTypesCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.randomizeTypesCheck.AutoSize = true;
+            this.randomizeTypesCheck.Location = new System.Drawing.Point(3, 34);
+            this.randomizeTypesCheck.Name = "randomizeTypesCheck";
+            this.randomizeTypesCheck.Size = new System.Drawing.Size(85, 19);
+            this.randomizeTypesCheck.TabIndex = 10;
+            this.randomizeTypesCheck.Text = "Randomize";
+            this.randomizeTypesCheck.UseVisualStyleBackColor = true;
+            this.randomizeTypesCheck.CheckedChanged += new System.EventHandler(this.randomizeTypesCheck_CheckedChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(0, 9);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(39, 15);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "Types:";
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.randomizeAbilitiesCheck);
+            this.panel5.Controls.Add(this.label5);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(351, 3);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(168, 112);
+            this.panel5.TabIndex = 14;
+            // 
+            // randomizeAbilitiesCheck
+            // 
+            this.randomizeAbilitiesCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.randomizeAbilitiesCheck.AutoSize = true;
+            this.randomizeAbilitiesCheck.Location = new System.Drawing.Point(7, 35);
+            this.randomizeAbilitiesCheck.Name = "randomizeAbilitiesCheck";
+            this.randomizeAbilitiesCheck.Size = new System.Drawing.Size(85, 19);
+            this.randomizeAbilitiesCheck.TabIndex = 10;
+            this.randomizeAbilitiesCheck.Text = "Randomize";
+            this.randomizeAbilitiesCheck.UseVisualStyleBackColor = true;
+            this.randomizeAbilitiesCheck.CheckedChanged += new System.EventHandler(this.randomizeAbilitiesCheck_CheckedChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(0, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(52, 15);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Abilities:";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.checkBox10);
+            this.panel1.Controls.Add(this.checkBox9);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(177, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(168, 112);
+            this.panel1.TabIndex = 11;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.panel4);
+            this.panel3.Controls.Add(this.checkBox11);
+            this.panel3.Controls.Add(this.checkBox12);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(168, 112);
+            this.panel3.TabIndex = 12;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.bstFollowEvolutionCheck);
+            this.panel4.Controls.Add(this.updateBSTCheck);
+            this.panel4.Controls.Add(this.standardizeExpCureCheck);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(168, 112);
+            this.panel4.TabIndex = 12;
+            // 
+            // bstFollowEvolutionCheck
+            // 
+            this.bstFollowEvolutionCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.bstFollowEvolutionCheck.AutoSize = true;
+            this.bstFollowEvolutionCheck.Location = new System.Drawing.Point(6, 83);
+            this.bstFollowEvolutionCheck.Name = "bstFollowEvolutionCheck";
+            this.bstFollowEvolutionCheck.Size = new System.Drawing.Size(119, 19);
+            this.bstFollowEvolutionCheck.TabIndex = 5;
+            this.bstFollowEvolutionCheck.Text = "Follow Evolutions";
+            this.bstFollowEvolutionCheck.UseVisualStyleBackColor = true;
+            this.bstFollowEvolutionCheck.Visible = false;
+            // 
+            // updateBSTCheck
+            // 
+            this.updateBSTCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateBSTCheck.AutoSize = true;
+            this.updateBSTCheck.Location = new System.Drawing.Point(6, 58);
+            this.updateBSTCheck.Name = "updateBSTCheck";
+            this.updateBSTCheck.Size = new System.Drawing.Size(119, 19);
+            this.updateBSTCheck.TabIndex = 4;
+            this.updateBSTCheck.Text = "Update BST Totals";
+            this.updateBSTCheck.UseVisualStyleBackColor = true;
+            // 
+            // standardizeExpCureCheck
+            // 
+            this.standardizeExpCureCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.standardizeExpCureCheck.AutoSize = true;
+            this.standardizeExpCureCheck.Location = new System.Drawing.Point(6, 33);
+            this.standardizeExpCureCheck.Name = "standardizeExpCureCheck";
+            this.standardizeExpCureCheck.Size = new System.Drawing.Size(142, 19);
+            this.standardizeExpCureCheck.TabIndex = 3;
+            this.standardizeExpCureCheck.Text = "Standarize EXP Curves";
+            this.standardizeExpCureCheck.UseVisualStyleBackColor = true;
+            // 
+            // checkBox11
+            // 
+            this.checkBox11.AutoSize = true;
+            this.checkBox11.Location = new System.Drawing.Point(6, 59);
+            this.checkBox11.Name = "checkBox11";
+            this.checkBox11.Size = new System.Drawing.Size(89, 19);
+            this.checkBox11.TabIndex = 4;
+            this.checkBox11.Text = "checkBox11";
+            this.checkBox11.UseVisualStyleBackColor = true;
+            // 
+            // checkBox12
+            // 
+            this.checkBox12.AutoSize = true;
+            this.checkBox12.Location = new System.Drawing.Point(6, 9);
+            this.checkBox12.Name = "checkBox12";
+            this.checkBox12.Size = new System.Drawing.Size(83, 19);
+            this.checkBox12.TabIndex = 3;
+            this.checkBox12.Text = "checkBox9";
+            this.checkBox12.UseVisualStyleBackColor = true;
+            // 
+            // checkBox10
+            // 
+            this.checkBox10.AutoSize = true;
+            this.checkBox10.Location = new System.Drawing.Point(6, 34);
+            this.checkBox10.Name = "checkBox10";
+            this.checkBox10.Size = new System.Drawing.Size(89, 19);
+            this.checkBox10.TabIndex = 4;
+            this.checkBox10.Text = "checkBox10";
+            this.checkBox10.UseVisualStyleBackColor = true;
+            // 
+            // checkBox9
+            // 
+            this.checkBox9.AutoSize = true;
+            this.checkBox9.Location = new System.Drawing.Point(6, 9);
+            this.checkBox9.Name = "checkBox9";
+            this.checkBox9.Size = new System.Drawing.Size(83, 19);
+            this.checkBox9.TabIndex = 3;
+            this.checkBox9.Text = "checkBox9";
+            this.checkBox9.UseVisualStyleBackColor = true;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.baseStatsUnchangedCheck);
+            this.panel2.Controls.Add(this.baseStatsShuffleCheck);
+            this.panel2.Controls.Add(this.baseStatsRandomCheck);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(168, 112);
+            this.panel2.TabIndex = 12;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(0, 9);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(62, 15);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "Base Stats:";
+            // 
+            // baseStatsUnchangedCheck
+            // 
+            this.baseStatsUnchangedCheck.AutoSize = true;
+            this.baseStatsUnchangedCheck.Location = new System.Drawing.Point(0, 34);
+            this.baseStatsUnchangedCheck.Name = "baseStatsUnchangedCheck";
+            this.baseStatsUnchangedCheck.Size = new System.Drawing.Size(86, 19);
+            this.baseStatsUnchangedCheck.TabIndex = 0;
+            this.baseStatsUnchangedCheck.TabStop = true;
+            this.baseStatsUnchangedCheck.Text = "Unchanged";
+            this.baseStatsUnchangedCheck.UseVisualStyleBackColor = true;
+            // 
+            // baseStatsShuffleCheck
+            // 
+            this.baseStatsShuffleCheck.AutoSize = true;
+            this.baseStatsShuffleCheck.Location = new System.Drawing.Point(0, 83);
+            this.baseStatsShuffleCheck.Name = "baseStatsShuffleCheck";
+            this.baseStatsShuffleCheck.Size = new System.Drawing.Size(62, 19);
+            this.baseStatsShuffleCheck.TabIndex = 1;
+            this.baseStatsShuffleCheck.TabStop = true;
+            this.baseStatsShuffleCheck.Text = "Shuffle";
+            this.baseStatsShuffleCheck.UseVisualStyleBackColor = true;
+            // 
+            // baseStatsRandomCheck
+            // 
+            this.baseStatsRandomCheck.AutoSize = true;
+            this.baseStatsRandomCheck.Location = new System.Drawing.Point(0, 58);
+            this.baseStatsRandomCheck.Name = "baseStatsRandomCheck";
+            this.baseStatsRandomCheck.Size = new System.Drawing.Size(70, 19);
+            this.baseStatsRandomCheck.TabIndex = 2;
+            this.baseStatsRandomCheck.TabStop = true;
+            this.baseStatsRandomCheck.Text = "Random";
+            this.baseStatsRandomCheck.UseVisualStyleBackColor = true;
+            this.baseStatsRandomCheck.CheckedChanged += new System.EventHandler(this.baseStatsRandomCheck_CheckedChanged);
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.banBadAbilitiesCheck);
+            this.panel6.Controls.Add(this.abilitiesFollowEvolutionCheck);
+            this.panel6.Controls.Add(this.allowWonderGuardCheck);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(525, 3);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(170, 112);
+            this.panel6.TabIndex = 15;
+            // 
+            // banBadAbilitiesCheck
+            // 
+            this.banBadAbilitiesCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.banBadAbilitiesCheck.AutoSize = true;
+            this.banBadAbilitiesCheck.Location = new System.Drawing.Point(4, 83);
+            this.banBadAbilitiesCheck.Name = "banBadAbilitiesCheck";
+            this.banBadAbilitiesCheck.Size = new System.Drawing.Size(114, 19);
+            this.banBadAbilitiesCheck.TabIndex = 6;
+            this.banBadAbilitiesCheck.Text = "Ban Bad Abilities";
+            this.banBadAbilitiesCheck.UseVisualStyleBackColor = true;
+            this.banBadAbilitiesCheck.Visible = false;
+            // 
+            // abilitiesFollowEvolutionCheck
+            // 
+            this.abilitiesFollowEvolutionCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.abilitiesFollowEvolutionCheck.AutoSize = true;
+            this.abilitiesFollowEvolutionCheck.Location = new System.Drawing.Point(5, 58);
+            this.abilitiesFollowEvolutionCheck.Name = "abilitiesFollowEvolutionCheck";
+            this.abilitiesFollowEvolutionCheck.Size = new System.Drawing.Size(119, 19);
+            this.abilitiesFollowEvolutionCheck.TabIndex = 5;
+            this.abilitiesFollowEvolutionCheck.Text = "Follow Evolutions";
+            this.abilitiesFollowEvolutionCheck.UseVisualStyleBackColor = true;
+            this.abilitiesFollowEvolutionCheck.Visible = false;
+            // 
+            // allowWonderGuardCheck
+            // 
+            this.allowWonderGuardCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.allowWonderGuardCheck.AutoSize = true;
+            this.allowWonderGuardCheck.Location = new System.Drawing.Point(5, 33);
+            this.allowWonderGuardCheck.Name = "allowWonderGuardCheck";
+            this.allowWonderGuardCheck.Size = new System.Drawing.Size(136, 19);
+            this.allowWonderGuardCheck.TabIndex = 4;
+            this.allowWonderGuardCheck.Text = "Allow Wonder Guard";
+            this.allowWonderGuardCheck.UseVisualStyleBackColor = true;
+            this.allowWonderGuardCheck.Visible = false;
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.typesFollowEvolutionCheck);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel8.Location = new System.Drawing.Point(177, 121);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(168, 114);
+            this.panel8.TabIndex = 17;
+            // 
+            // typesFollowEvolutionCheck
+            // 
+            this.typesFollowEvolutionCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.typesFollowEvolutionCheck.AutoSize = true;
+            this.typesFollowEvolutionCheck.Location = new System.Drawing.Point(6, 34);
+            this.typesFollowEvolutionCheck.Name = "typesFollowEvolutionCheck";
+            this.typesFollowEvolutionCheck.Size = new System.Drawing.Size(119, 19);
+            this.typesFollowEvolutionCheck.TabIndex = 4;
+            this.typesFollowEvolutionCheck.Text = "Follow Evolutions";
+            this.typesFollowEvolutionCheck.UseVisualStyleBackColor = true;
+            this.typesFollowEvolutionCheck.Visible = false;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.threeStageMaxCheck);
+            this.panel10.Controls.Add(this.evolutionSameTypeCheck);
+            this.panel10.Controls.Add(this.evolutionSimilarStrengthCheck);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel10.Location = new System.Drawing.Point(525, 121);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(170, 114);
+            this.panel10.TabIndex = 19;
+            // 
+            // threeStageMaxCheck
+            // 
+            this.threeStageMaxCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.threeStageMaxCheck.AutoSize = true;
+            this.threeStageMaxCheck.Location = new System.Drawing.Point(5, 84);
+            this.threeStageMaxCheck.Name = "threeStageMaxCheck";
+            this.threeStageMaxCheck.Size = new System.Drawing.Size(166, 19);
+            this.threeStageMaxCheck.TabIndex = 6;
+            this.threeStageMaxCheck.Text = "Three Stage Evolution Max";
+            this.threeStageMaxCheck.UseVisualStyleBackColor = true;
+            this.threeStageMaxCheck.Visible = false;
+            // 
+            // evolutionSameTypeCheck
+            // 
+            this.evolutionSameTypeCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.evolutionSameTypeCheck.AutoSize = true;
+            this.evolutionSameTypeCheck.Location = new System.Drawing.Point(5, 59);
+            this.evolutionSameTypeCheck.Name = "evolutionSameTypeCheck";
+            this.evolutionSameTypeCheck.Size = new System.Drawing.Size(82, 19);
+            this.evolutionSameTypeCheck.TabIndex = 5;
+            this.evolutionSameTypeCheck.Text = "Same Type";
+            this.evolutionSameTypeCheck.UseVisualStyleBackColor = true;
+            this.evolutionSameTypeCheck.Visible = false;
+            // 
+            // evolutionSimilarStrengthCheck
+            // 
+            this.evolutionSimilarStrengthCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.evolutionSimilarStrengthCheck.AutoSize = true;
+            this.evolutionSimilarStrengthCheck.Location = new System.Drawing.Point(5, 34);
+            this.evolutionSimilarStrengthCheck.Name = "evolutionSimilarStrengthCheck";
+            this.evolutionSimilarStrengthCheck.Size = new System.Drawing.Size(110, 19);
+            this.evolutionSimilarStrengthCheck.TabIndex = 4;
+            this.evolutionSimilarStrengthCheck.Text = "Similar Strength";
+            this.evolutionSimilarStrengthCheck.UseVisualStyleBackColor = true;
+            this.evolutionSimilarStrengthCheck.Visible = false;
             // 
             // tmsTabPage
             // 
@@ -1040,172 +1470,6 @@ namespace Randomizer
             this.regionLabel.Size = new System.Drawing.Size(0, 15);
             this.regionLabel.TabIndex = 3;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(0, 9);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(62, 15);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "Base Stats:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(333, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(52, 15);
-            this.label10.TabIndex = 10;
-            this.label10.Text = "Abilities:";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.checkBox10);
-            this.panel1.Controls.Add(this.checkBox9);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(145, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(182, 118);
-            this.panel1.TabIndex = 11;
-            // 
-            // baseStatsUnchangedCheck
-            // 
-            this.baseStatsUnchangedCheck.AutoSize = true;
-            this.baseStatsUnchangedCheck.Location = new System.Drawing.Point(0, 34);
-            this.baseStatsUnchangedCheck.Name = "baseStatsUnchangedCheck";
-            this.baseStatsUnchangedCheck.Size = new System.Drawing.Size(86, 19);
-            this.baseStatsUnchangedCheck.TabIndex = 0;
-            this.baseStatsUnchangedCheck.TabStop = true;
-            this.baseStatsUnchangedCheck.Text = "Unchanged";
-            this.baseStatsUnchangedCheck.UseVisualStyleBackColor = true;
-            // 
-            // baseStatsShuffleCheck
-            // 
-            this.baseStatsShuffleCheck.AutoSize = true;
-            this.baseStatsShuffleCheck.Location = new System.Drawing.Point(0, 83);
-            this.baseStatsShuffleCheck.Name = "baseStatsShuffleCheck";
-            this.baseStatsShuffleCheck.Size = new System.Drawing.Size(62, 19);
-            this.baseStatsShuffleCheck.TabIndex = 1;
-            this.baseStatsShuffleCheck.TabStop = true;
-            this.baseStatsShuffleCheck.Text = "Shuffle";
-            this.baseStatsShuffleCheck.UseVisualStyleBackColor = true;
-            // 
-            // baseStatsRandomCheck
-            // 
-            this.baseStatsRandomCheck.AutoSize = true;
-            this.baseStatsRandomCheck.Location = new System.Drawing.Point(0, 58);
-            this.baseStatsRandomCheck.Name = "baseStatsRandomCheck";
-            this.baseStatsRandomCheck.Size = new System.Drawing.Size(70, 19);
-            this.baseStatsRandomCheck.TabIndex = 2;
-            this.baseStatsRandomCheck.TabStop = true;
-            this.baseStatsRandomCheck.Text = "Random";
-            this.baseStatsRandomCheck.UseVisualStyleBackColor = true;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.baseStatsUnchangedCheck);
-            this.panel2.Controls.Add(this.baseStatsShuffleCheck);
-            this.panel2.Controls.Add(this.baseStatsRandomCheck);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(136, 118);
-            this.panel2.TabIndex = 12;
-            // 
-            // checkBox9
-            // 
-            this.checkBox9.AutoSize = true;
-            this.checkBox9.Location = new System.Drawing.Point(6, 9);
-            this.checkBox9.Name = "checkBox9";
-            this.checkBox9.Size = new System.Drawing.Size(83, 19);
-            this.checkBox9.TabIndex = 3;
-            this.checkBox9.Text = "checkBox9";
-            this.checkBox9.UseVisualStyleBackColor = true;
-            // 
-            // checkBox10
-            // 
-            this.checkBox10.AutoSize = true;
-            this.checkBox10.Location = new System.Drawing.Point(6, 34);
-            this.checkBox10.Name = "checkBox10";
-            this.checkBox10.Size = new System.Drawing.Size(89, 19);
-            this.checkBox10.TabIndex = 4;
-            this.checkBox10.Text = "checkBox10";
-            this.checkBox10.UseVisualStyleBackColor = true;
-            // 
-            // checkBox11
-            // 
-            this.checkBox11.AutoSize = true;
-            this.checkBox11.Location = new System.Drawing.Point(6, 59);
-            this.checkBox11.Name = "checkBox11";
-            this.checkBox11.Size = new System.Drawing.Size(89, 19);
-            this.checkBox11.TabIndex = 4;
-            this.checkBox11.Text = "checkBox11";
-            this.checkBox11.UseVisualStyleBackColor = true;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.panel4);
-            this.panel3.Controls.Add(this.checkBox11);
-            this.panel3.Controls.Add(this.checkBox12);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(182, 118);
-            this.panel3.TabIndex = 12;
-            // 
-            // checkBox12
-            // 
-            this.checkBox12.AutoSize = true;
-            this.checkBox12.Location = new System.Drawing.Point(6, 9);
-            this.checkBox12.Name = "checkBox12";
-            this.checkBox12.Size = new System.Drawing.Size(83, 19);
-            this.checkBox12.TabIndex = 3;
-            this.checkBox12.Text = "checkBox9";
-            this.checkBox12.UseVisualStyleBackColor = true;
-            // 
-            // checkBox17
-            // 
-            this.checkBox17.AutoSize = true;
-            this.checkBox17.Location = new System.Drawing.Point(6, 58);
-            this.checkBox17.Name = "checkBox17";
-            this.checkBox17.Size = new System.Drawing.Size(89, 19);
-            this.checkBox17.TabIndex = 4;
-            this.checkBox17.Text = "checkBox17";
-            this.checkBox17.UseVisualStyleBackColor = true;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.checkBox19);
-            this.panel4.Controls.Add(this.checkBox17);
-            this.panel4.Controls.Add(this.checkBox18);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(182, 118);
-            this.panel4.TabIndex = 12;
-            // 
-            // checkBox18
-            // 
-            this.checkBox18.AutoSize = true;
-            this.checkBox18.Location = new System.Drawing.Point(6, 33);
-            this.checkBox18.Name = "checkBox18";
-            this.checkBox18.Size = new System.Drawing.Size(83, 19);
-            this.checkBox18.TabIndex = 3;
-            this.checkBox18.Text = "checkBox9";
-            this.checkBox18.UseVisualStyleBackColor = true;
-            // 
-            // checkBox19
-            // 
-            this.checkBox19.AutoSize = true;
-            this.checkBox19.Location = new System.Drawing.Point(6, 83);
-            this.checkBox19.Name = "checkBox19";
-            this.checkBox19.Size = new System.Drawing.Size(89, 19);
-            this.checkBox19.TabIndex = 5;
-            this.checkBox19.Text = "checkBox19";
-            this.checkBox19.UseVisualStyleBackColor = true;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1228,7 +1492,26 @@ namespace Randomizer
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
             this.pokemonTabPage.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
             this.tmsTabPage.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
@@ -1249,14 +1532,6 @@ namespace Randomizer
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown12)).EndInit();
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1296,8 +1571,6 @@ namespace Randomizer
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.CheckBox checkBox13;
         private System.Windows.Forms.NumericUpDown numericUpDown7;
@@ -1346,19 +1619,39 @@ namespace Randomizer
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.CheckBox checkBox19;
-        private System.Windows.Forms.CheckBox checkBox17;
-        private System.Windows.Forms.CheckBox checkBox18;
+        private System.Windows.Forms.CheckBox bstFollowEvolutionCheck;
+        private System.Windows.Forms.CheckBox updateBSTCheck;
+        private System.Windows.Forms.CheckBox standardizeExpCureCheck;
         private System.Windows.Forms.CheckBox checkBox11;
         private System.Windows.Forms.CheckBox checkBox12;
         private System.Windows.Forms.CheckBox checkBox10;
         private System.Windows.Forms.CheckBox checkBox9;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.RadioButton baseStatsUnchangedCheck;
         private System.Windows.Forms.RadioButton baseStatsShuffleCheck;
         private System.Windows.Forms.RadioButton baseStatsRandomCheck;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.CheckBox typesFollowEvolutionCheck;
+        private System.Windows.Forms.CheckBox evolutionSameTypeCheck;
+        private System.Windows.Forms.CheckBox evolutionSimilarStrengthCheck;
+        private System.Windows.Forms.CheckBox threeStageMaxCheck;
+        private System.Windows.Forms.CheckBox easyEvolutionsCheck;
+        private System.Windows.Forms.CheckBox fixImpossibleEvolutionsCheck;
+        private System.Windows.Forms.CheckBox randomizeEvolutionsCheck;
+        private System.Windows.Forms.CheckBox randomizeTypesCheck;
+        private System.Windows.Forms.CheckBox randomizeAbilitiesCheck;
+        private System.Windows.Forms.RadioButton baseStatsUnchangedCheck;
+        private System.Windows.Forms.CheckBox allowWonderGuardCheck;
+        private System.Windows.Forms.CheckBox banBadAbilitiesCheck;
+        private System.Windows.Forms.CheckBox abilitiesFollowEvolutionCheck;
     }
 }
 

@@ -66,17 +66,6 @@ namespace XDCommon.Utility
 
                 executors[i].Start();
             }
-
-
-            var relStream = File.Open($"{Configuration.ExtractDirectory}/common_rel.rel", FileMode.Open, FileAccess.ReadWrite);
-
-            CommonRel = new REL()
-            {
-                FileName = "common_rel.rel",
-                ExtractedFile = relStream
-            };
-            CommonRel.LoadPointers();
-            BuildStringsTables();
         }
 
         public int ExtractionProgress => tasksCompleted;
@@ -123,7 +112,7 @@ namespace XDCommon.Utility
             int dolSize, dol2Size, commonRelSize;
             if (Game == Game.XD)
             {
-                commonRelStartOffset = (int)CommonRel.GetPointer(Constants.stringTable1) + 0x68;
+                commonRelStartOffset = (int)(CommonRel.GetPointer(Constants.stringTable1) + 0x68);
                 switch (Region)
                 {
                     default:
