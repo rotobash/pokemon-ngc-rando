@@ -14,10 +14,12 @@ namespace XDCommon.PokemonDefinitions
         public const byte EXPRateOffset = 0x00;
         public const byte CatchRateOffset = 0x01;
         public const byte GenderRatioOffset = 0x02;
-        public const byte BaseEXPOffset = 0x07;
-        public const byte BaseHappinessOffset = 0x09;
+        public const byte BaseEXPOffset = 0x05;
+        public const byte BaseHappinessOffset = 0x07;
+
         public const byte HeightOffset = 0x08;
         public const byte WeightOffset = 0x0A;
+
         public const byte NationalIndexOffset = 0x0E;
 
         public const byte Type1Offset = 0x30;
@@ -29,6 +31,7 @@ namespace XDCommon.PokemonDefinitions
         public const byte FirstTMOffset = 0x34;
         public const byte FirstEVYieldOffset = 0x9A; // 1 byte between each one.
         public const byte FirstEvolutionOffset = 0xA6;
+        public const byte FirstTutorMoveOffset = 0x6E;
         public const byte FirstLevelUpMoveOffset = 0xC4;
         public const byte FirstEggMoveOffset = 0x7E;
 
@@ -121,10 +124,6 @@ namespace XDCommon.PokemonDefinitions
 
         public const byte StatusEffectDurationOffset = 0x4;
         public const byte StatusEffectNameIDOffset = 0x10;
-
-
-        // stats
-        public const int PokemonStatsStartOffset = 0;
 
         // xd
         public const int BattleBingo = 0;

@@ -75,7 +75,7 @@ namespace XDCommon.Utility
                 ExtractedFile = relStream
             };
             iso.CommonRel.LoadPointers();
-            iso.BuildStringsTables();
+            iso.BuildStringTables();
 
             return iso;
         }

@@ -171,7 +171,7 @@ namespace XDCommon.PokemonDefinitions
             this.iso = iso;
 
             Ability1 = new Ability(iso.CommonRel.ExtractedFile.GetByteAtOffset(StartOffset + Constants.Ability1Offset), iso);
-            Ability2 = new Ability(iso.CommonRel.ExtractedFile.GetByteAtOffset(StartOffset + Constants.Ability1Offset), iso);
+            Ability2 = new Ability(iso.CommonRel.ExtractedFile.GetByteAtOffset(StartOffset + Constants.Ability2Offset), iso);
         }
 
 

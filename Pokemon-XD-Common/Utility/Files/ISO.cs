@@ -103,7 +103,7 @@ namespace XDCommon.Utility
             }
         }
 
-        public void BuildStringsTables()
+        public void BuildStringTables()
         {
             var dolStrTable = new MemoryStream();
             var dolStrTable2 = new MemoryStream();
@@ -173,7 +173,7 @@ namespace XDCommon.Utility
             DOL.ExtractedFile.CopySubStream(dolStrTable2, dol2StartOffset, dol2Size);
             DolStringTable2 = new StringTable(dolStrTable2);
 
-            DOL.ExtractedFile.CopySubStream(commonRelTable, commonRelStartOffset, commonRelSize);
+            CommonRel.ExtractedFile.CopySubStream(commonRelTable, commonRelStartOffset, commonRelSize);
             CommonRelStringTable = new StringTable(commonRelTable);
         }
 

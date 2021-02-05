@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
-using XDCommon.Contracts;
 
 namespace XDCommon.Utility
 {
@@ -124,14 +122,10 @@ namespace XDCommon.Utility
         {
             get
             {
-                var strings = new UnicodeString[stringOffsets.Count];
-                var currentIndex = 0;
-
                 foreach (var offset in stringOffsets.Values)
                 {
-                    strings[currentIndex++] = GetStringAtOffset(offset);
+                    yield return GetStringAtOffset(offset);
                 }
-                return strings;
             }
         }
     }
