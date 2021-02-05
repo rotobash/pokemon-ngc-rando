@@ -15,8 +15,8 @@ namespace XDCommon.PokemonDefinitions
         public int NameID => iso.CommonRel.ExtractedFile.GetIntAtOffset(StartOffset + Constants.PokemonNameIDOFfset);
         public string Name => iso.CommonRelStringTable.GetStringWithId(NameID).ToString();
         public int SpeciesNameID => iso.CommonRel.ExtractedFile.GetIntAtOffset(StartOffset + Constants.SpeciesNameIDOffset);
-        public int Height => iso.CommonRel.ExtractedFile.GetUShortAtOffset(StartOffset + Constants.HeightOffset) / 10;
-        public int Weight => iso.CommonRel.ExtractedFile.GetUShortAtOffset(StartOffset + Constants.WeightOffset) / 10;
+        public double Height => (double)iso.CommonRel.ExtractedFile.GetUShortAtOffset(StartOffset + Constants.HeightOffset) / 10;
+        public double Weight => (double)iso.CommonRel.ExtractedFile.GetUShortAtOffset(StartOffset + Constants.WeightOffset) / 10;
         
         public int StartOffset
         {

@@ -168,11 +168,12 @@ namespace XDCommon.Utility
             }
 
             DOL.ExtractedFile.CopySubStream(dolStrTable, dolStartOffset, dolSize);
-            DOL.ExtractedFile.CopySubStream(dolStrTable2, dol2StartOffset, dol2Size);
-            DOL.ExtractedFile.CopySubStream(commonRelTable, commonRelStartOffset, commonRelSize);
-
             DolStringTable = new StringTable(dolStrTable);
+
+            DOL.ExtractedFile.CopySubStream(dolStrTable2, dol2StartOffset, dol2Size);
             DolStringTable2 = new StringTable(dolStrTable2);
+
+            DOL.ExtractedFile.CopySubStream(commonRelTable, commonRelStartOffset, commonRelSize);
             CommonRelStringTable = new StringTable(commonRelTable);
         }
 

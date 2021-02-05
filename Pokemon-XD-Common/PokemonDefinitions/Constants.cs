@@ -8,7 +8,6 @@ namespace XDCommon.PokemonDefinitions
     {
         // pokemon
         public const byte PokemonNameIDOFfset = 0x18;
-        public const int NumberOfPokemon = 0x19D;
         public const int SizeOfPokemonStats = 0x124;
         //public const byte FirstPokemonOffset		= 0x29DA8;
 
@@ -17,8 +16,8 @@ namespace XDCommon.PokemonDefinitions
         public const byte GenderRatioOffset = 0x02;
         public const byte BaseEXPOffset = 0x07;
         public const byte BaseHappinessOffset = 0x09;
-        public const byte HeightOffset = 0x0A;
-        public const byte WeightOffset = 0x0C;
+        public const byte HeightOffset = 0x08;
+        public const byte WeightOffset = 0x0A;
         public const byte NationalIndexOffset = 0x0E;
 
         public const byte Type1Offset = 0x30;
@@ -28,22 +27,23 @@ namespace XDCommon.PokemonDefinitions
         public const byte Ability2Offset = 0x33;
 
         public const byte FirstTMOffset = 0x34;
-        public const byte FirstEVYieldOffset = 0x90; // 1 byte between each one.
-        public const byte FirstEvolutionOffset = 0x9C;
-        public const byte FirstLevelUpMoveOffset = 0xBA;
+        public const byte FirstEVYieldOffset = 0x9A; // 1 byte between each one.
+        public const byte FirstEvolutionOffset = 0xA6;
+        public const byte FirstLevelUpMoveOffset = 0xC4;
+        public const byte FirstEggMoveOffset = 0x7E;
 
-        public const byte HeldItem1Offset = 0x70;
-        public const byte HeldItem2Offset = 0x72;
+        public const byte HeldItem1Offset = 0x7A;
+        public const byte HeldItem2Offset = 0x7C;
 
-        public const byte HPOffset = 0x85;
-        public const byte AttackOffset = 0x87;
-        public const byte DefenseOffset = 0x89;
-        public const byte SpecialAttackOffset = 0x8B;
-        public const byte SpecialDefenseOffset = 0x8D;
-        public const byte SpeedOffset = 0x8F;
+        public const byte HPOffset = 0x8F;
+        public const byte AttackOffset = 091;
+        public const byte DefenseOffset = 0x93;
+        public const byte SpecialAttackOffset = 0x95;
+        public const byte SpecialDefenseOffset = 0x97;
+        public const byte SpeedOffset = 0x99;
 
         public const byte NameIDOffset = 0x18;
-        public const byte PokemonCryIndexOffset = 0x0E;
+        public const byte PokemonCryIndexOffset = 0x0C;
         public const byte SpeciesNameIDOffset = 0x1C;
 
         public const int PokemonModelIndexOffset = 0x2E; // Same as pokemon's index
