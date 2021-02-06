@@ -221,7 +221,6 @@ namespace XDCommon.PokemonDefinitions
             }
         }
 
-
         public void SetAbility1(byte abilityID)
         {
             iso.CommonRel.ExtractedFile.WriteByteAtOffset(StartOffset + Constants.Ability1Offset, abilityID);
@@ -234,22 +233,33 @@ namespace XDCommon.PokemonDefinitions
             Ability2 = new Ability(abilityID, iso);
         }
 
-        public void WriteData(string path)
+        public void SetLearnableTMS(int index, bool canLearn)
         {
-            var fileName = $"{dexNum,3}-{Name}.txt";
-            if (fileName.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
-                return;
+            iso.CommonRel.ExtractedFile.WriteByteAtOffset(StartOffset + Constants.FirstTMOffset + index, canLearn ? (byte)1 : (byte)0);
+            LearnableTMs[index] = canLearn;
+        }
 
-            using var fs = File.OpenWrite($"{path}/{fileName}");
-            using var writer = new StreamWriter(fs);
+        public void SetTutorMoves(int index, bool canLearn)
+        {
+            iso.CommonRel.ExtractedFile.WriteByteAtOffset(StartOffset + Constants.FirstTMOffset + index, canLearn ? (byte)1 : (byte)0);
+            TutorMoves[index] = canLearn;
+        }
 
-            writer.WriteLine($"{Name} - {dexNum}\n");
-            writer.WriteLine($"{nameof(Ability1)} - {Ability1.Name}\n{nameof(Ability2)} - {Ability2.Name}\n");
-            writer.WriteLine($"{nameof(Type1)} - {Type1}\n{nameof(Type2)} - {Type2}\n");
-            writer.WriteLine($"{nameof(GenderRatio)} - {GenderRatio}\n{nameof(LevelUpRate)} - {LevelUpRate}\n{nameof(CatchRate)} - {CatchRate}\n{nameof(BaseExp)} - {BaseExp}\n{nameof(BaseHappiness)} - {BaseHappiness}\n");
-            writer.WriteLine($"{nameof(HP)} - {HP}\n{nameof(Speed)} - {Speed}\n{nameof(Attack)} - {Attack}\n{nameof(Defense)} - {Defense}\n{nameof(SpecialAttack)} - {SpecialAttack}\n{nameof(SpecialDefense)} - {SpecialDefense}\n");
-            writer.WriteLine($"{nameof(HPYield)} - {HPYield}\n{nameof(SpeedYield)} - {SpeedYield}\n{nameof(AttackYield)} - {AttackYield}\n{nameof(DefenseYield)} - {DefenseYield}\n{nameof(SpecialAttackYield)} - {SpecialAttackYield}\n{nameof(SpecialDefenseYield)} - {SpecialDefenseYield}\n");
-            //writer.WriteLine($"");
+        public void SetEvolution(int index, byte method, ushort condition, ushort evolvesInto)
+        {
+            var offset = StartOffset + Constants.FirstLevelUpMoveOffset + (index * Constants.SizeOfLevelUpData);
+            iso.CommonRel.ExtractedFile.WriteByteAtOffset(offset + Constants.EvolutionMethodOffset, method);
+            iso.CommonRel.ExtractedFile.WriteBytesAtOffset(offset + Constants.EvolutionConditionOffset, condition.GetBytes());
+            iso.CommonRel.ExtractedFile.WriteBytesAtOffset(offset + Constants.EvovledFormOffset, evolvesInto.GetBytes());
+            Evolutions[index] = new Evolution(method, condition, evolvesInto);
+        }
+
+        public void SetLevelUpMove(int index, byte level, ushort move)
+        {
+            var offset = StartOffset + Constants.FirstLevelUpMoveOffset + (index * Constants.SizeOfLevelUpData);
+            iso.CommonRel.ExtractedFile.WriteByteAtOffset(offset + Constants.LevelUpMoveLevelOffset, level);
+            iso.CommonRel.ExtractedFile.WriteBytesAtOffset(offset + Constants.LevelUpMoveIndexOffset, move.GetBytes());
+            LevelUpMoves[index] = new LevelUpMove(level, move);
         }
     }
 }

@@ -81,7 +81,7 @@ namespace XDCommon.Utility
             Path = string.Join("/", fileParts.Take(fileParts.Length - 1));
         }
 
-        public FSys(string fileName, ISO iso)
+        public FSys(string path, string fileName, ISO iso)
         {
 
             Filename = fileName;

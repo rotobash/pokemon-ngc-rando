@@ -34,12 +34,14 @@ namespace XDCommon.Utility
             int game = gamecode2 | gamecode1;
             var region = ISOStream.ReadByte();
 
-            var iso = new ISO(ISOStream, ExtractPath);
+            Game gameEnum;
+            Region regionEnum;
+
             switch (game)
             {
                 case (ushort)Game.Colosseum:
                 case (ushort)Game.XD:
-                    iso.Game = (Game)game;
+                    gameEnum = (Game)game;
                     break;
                 default:
                     throw new Exception("Unsupported game!");
@@ -50,23 +52,29 @@ namespace XDCommon.Utility
                 case (byte)Region.US:
                 case (byte)Region.Europe:
                 case (byte)Region.Japan:
-                    iso.Region = (Region)region;
+                    regionEnum = (Region)region;
                     break;
                 default:
                     throw new Exception("Unknown region!");
             }
 
-            ExtractPath = $"{Configuration.ExtractDirectory}/{iso.Game}-{iso.Region}";
+            ExtractPath = $"{Configuration.ExtractDirectory}/{gameEnum}-{regionEnum}";
             if (!Directory.Exists(ExtractPath) && !Configuration.UseMemoryStreams)
             {
                 Directory.CreateDirectory(ExtractPath);
             }
 
-            iso.DOL = new DOL(ExtractPath, ISOStream.GetIntAtOffset(DOL.kDOLStartOffsetLocation));
-            TOC = new FST(ExtractPath, this);
-            TOC.Load(iso.DOL);
-            iso.TOC = TOC;
+            var iso = new ISO(ISOStream, ExtractPath)
+            {
+                Game = gameEnum,
+                Region = regionEnum,
+                DOL = new DOL(ExtractPath, this),
+                TOC =  new FST(ExtractPath, this)
+            };
+            iso.TOC.Load(iso.DOL);
 
+            //var commonFsys = iso.GetFSysFile("common.fsys");
+            //iso.CommonRel = (REL)FSysFileEntry.ExtractFromFSys(commonFsys, iso.Region == Region.Japan ? 1 : 0);
             var relStream = File.Open($"{Configuration.ExtractDirectory}/common_rel.rel", FileMode.Open, FileAccess.ReadWrite);
 
             iso.CommonRel = new REL()

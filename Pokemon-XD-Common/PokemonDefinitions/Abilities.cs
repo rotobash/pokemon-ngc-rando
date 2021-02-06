@@ -48,18 +48,18 @@ namespace XDCommon.PokemonDefinitions
         int AbilityDescriptionIDOffset => AbilityListUpdated ? 4 : 8;
         int SizeOfAbilityEntry => AbilityListUpdated ? 8 : 12;
 
-        int index;
-        public int NameIdOffset => StartOffset + (index * SizeOfAbilityEntry) + AbilityNameIDOffset;
+        public int Index { get; }
+        public int NameIdOffset => StartOffset + (Index * SizeOfAbilityEntry) + AbilityNameIDOffset;
         public int NameId => iso.DOL.ExtractedFile.GetIntAtOffset(NameIdOffset);
         public string Name => iso.CommonRelStringTable.GetStringWithId(NameId).ToString();
 
-        public int DescriptionIdOffset => StartOffset + (index * SizeOfAbilityEntry) + AbilityDescriptionIDOffset;
+        public int DescriptionIdOffset => StartOffset + (Index * SizeOfAbilityEntry) + AbilityDescriptionIDOffset;
         public int DescriptionId => iso.DOL.ExtractedFile.GetIntAtOffset(DescriptionIdOffset);
         public string Description => iso.CommonRelStringTable.GetStringWithId(DescriptionId).ToString();
 
         public Ability(int index, ISO iso)
         {
-            this.index = index;
+            Index = index;
             this.iso = iso;
         }
     }

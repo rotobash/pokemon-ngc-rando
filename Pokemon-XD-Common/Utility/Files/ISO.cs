@@ -81,7 +81,9 @@ namespace XDCommon.Utility
                 }
                 else
                 {
-                    var fsys = new FSys(fileName, this);
+                    var path = $"{Path}/{fileName.RemoveFileExtensions()}";
+                    Directory.CreateDirectory(path);
+                    var fsys = new FSys(path, fileName, this);
                     Files.Add(fsys.Filename, fsys);
                     return fsys;
                 }

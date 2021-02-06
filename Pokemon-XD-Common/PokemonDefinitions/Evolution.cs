@@ -8,9 +8,9 @@ namespace XDCommon.PokemonDefinitions
     {
         public EvolutionMethods EvolutionMethod { get; }
         public EvolutionConditionType EvolutionCondition { get; }
-        public int EvolvesInto { get; }
+        public ushort EvolvesInto { get; }
 
-        public Evolution(int method, int condition, int evolvesInto)
+        public Evolution(byte method, ushort condition, ushort evolvesInto)
         {
             EvolutionMethod = (EvolutionMethods)method;
             EvolutionCondition = (EvolutionConditionType)condition;

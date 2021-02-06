@@ -6,10 +6,10 @@ namespace XDCommon.PokemonDefinitions
 {
     public class LevelUpMove
     {
-        public int Level { get; }
-        public int Move { get; }
+        public byte Level { get; }
+        public ushort Move { get; }
 
-        public LevelUpMove(int level, int move)
+        public LevelUpMove(byte level, ushort move)
         {
             Level = level;
             Move = move;
