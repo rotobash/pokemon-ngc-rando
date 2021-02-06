@@ -50,6 +50,9 @@ namespace Randomizer.Shufflers
 
             foreach (var poke in pokemon)
             {
+                if (TeamShuffler.BannedPokemon.Contains(poke.Index))
+                    continue;
+
                 if (settings.RandomizeBaseStats > 0 && settings.BaseStatsFollowEvolution && !pokeBaseStatsRandomized.Contains(poke.Name))
                 {
                     // todo
@@ -159,22 +162,31 @@ namespace Randomizer.Shufflers
         {
 
             var types = Enum.GetValues<PokemonTypes>();
+            PokemonTypes originalType = poke.Type1;
             PokemonTypes type;
+            PokemonTypes type2 = PokemonTypes.None;
+            bool validTyping = false;
             do
             {
                 type = types[random.Next(0, types.Length)];
-            } while (type == PokemonTypes.None);
-
-            if (poke.Type2 != poke.Type1 && poke.Type2 != PokemonTypes.None)
-            {
-                PokemonTypes type2;
-                do
+                validTyping = type != PokemonTypes.None;
+                if (validTyping && poke.Type2 != PokemonTypes.None)
                 {
-                    type2 = types[random.Next(0, types.Length)];
-                } while (type2 == PokemonTypes.None || type == type2);
-                poke.Type2 = type2;
-            }
+                    if (poke.Type2 != originalType)
+                    {
+                        type2 = types[random.Next(0, types.Length)];
+                        validTyping = type != PokemonTypes.None || type == type2;
+                    }
+                    else
+                    {
+                        type2 = type;
+                    }
+                }
+            } while (!validTyping);
+
+
             poke.Type1 = type;
+            poke.Type2 = type2;
         }
 
         private static void RandomizeAbility(Random random, PokemonTraitShufflerSettings settings, Pokemon poke)
@@ -184,7 +196,7 @@ namespace Randomizer.Shufflers
             bool validAbility;
             do
             {
-                if (poke.Name.ToLower() == "shedinja")
+                if (poke.Name.ToLower() == "shedinja" || TeamShuffler.BannedPokemon.Contains(poke.Index))
                 {
                     validAbility = true;
                     continue;
@@ -194,7 +206,7 @@ namespace Randomizer.Shufflers
                 var ability1Name = poke.Ability1.Name.ToLower();
                 validAbility = CheckValidAbility(settings, ability1Name);
 
-                if (!string.IsNullOrEmpty(poke.Ability2.Name))
+                if (validAbility && !string.IsNullOrEmpty(poke.Ability2.Name))
                 {
                     poke.SetAbility2((byte)random.Next(1, numAbilities));
                     var ability2Name = poke.Ability2.Name.ToLower();
@@ -206,7 +218,7 @@ namespace Randomizer.Shufflers
 
         private static bool CheckValidAbility(PokemonTraitShufflerSettings settings, string abilityName)
         {
-            return (!settings.AllowWonderGuard && abilityName == "wonder guard") || (settings.BanNegativeAbilities && (abilityName == "truant" || abilityName == "slow start" || abilityName == "defeatist"));
+            return !((!settings.AllowWonderGuard && abilityName == "wonder guard") || (settings.BanNegativeAbilities && (abilityName == "truant" || abilityName == "slow start" || abilityName == "defeatist")));
         }
     }
 }
