@@ -29,8 +29,9 @@ namespace XDCommon.PokemonDefinitions
 
         public bool[] LearnableTMs { get; }
         public bool[] TutorMoves { get; }
+        public LevelUpMove[] LevelUpMoves { get; }
         
-        public object[] Evolutions { get; set; }
+        public Evolution[] Evolutions { get; set; }
 
         public Items HeldItem
         {
@@ -134,32 +135,31 @@ namespace XDCommon.PokemonDefinitions
             get => iso.CommonRel.ExtractedFile.GetUShortAtOffset(StartOffset + Constants.FirstEVYieldOffset);
             set => iso.CommonRel.ExtractedFile.WriteBytesAtOffset(StartOffset + Constants.FirstEVYieldOffset, value.GetBytes());
         }
-
-        public ushort SpeedYield
+        public ushort AttackYield
         {
             get => iso.CommonRel.ExtractedFile.GetUShortAtOffset(StartOffset + Constants.FirstEVYieldOffset + 0x2);
             set => iso.CommonRel.ExtractedFile.WriteBytesAtOffset(StartOffset + Constants.FirstEVYieldOffset + 0x2, value.GetBytes());
         }
 
-        public ushort AttackYield
+        public ushort DefenseYield
         {
             get => iso.CommonRel.ExtractedFile.GetUShortAtOffset(StartOffset + Constants.FirstEVYieldOffset + 0x4);
             set => iso.CommonRel.ExtractedFile.WriteBytesAtOffset(StartOffset + Constants.FirstEVYieldOffset + 0x4, value.GetBytes());
         }
 
-        public ushort DefenseYield
+        public ushort SpecialAttackYield
         {
             get => iso.CommonRel.ExtractedFile.GetUShortAtOffset(StartOffset + Constants.FirstEVYieldOffset + 0x6);
             set => iso.CommonRel.ExtractedFile.WriteBytesAtOffset(StartOffset + Constants.FirstEVYieldOffset + 0x6, value.GetBytes());
         }
 
-        public ushort SpecialAttackYield
+        public ushort SpecialDefenseYield
         {
             get => iso.CommonRel.ExtractedFile.GetUShortAtOffset(StartOffset + Constants.FirstEVYieldOffset + 0x8);
             set => iso.CommonRel.ExtractedFile.WriteBytesAtOffset(StartOffset + Constants.FirstEVYieldOffset + 0x8, value.GetBytes());
         }
 
-        public ushort SpecialDefenseYield
+        public ushort SpeedYield
         {
             get => iso.CommonRel.ExtractedFile.GetUShortAtOffset(StartOffset + Constants.FirstEVYieldOffset + 0xA);
             set => iso.CommonRel.ExtractedFile.WriteBytesAtOffset(StartOffset + Constants.FirstEVYieldOffset + 0xA, value.GetBytes());
@@ -172,6 +172,53 @@ namespace XDCommon.PokemonDefinitions
 
             Ability1 = new Ability(iso.CommonRel.ExtractedFile.GetByteAtOffset(StartOffset + Constants.Ability1Offset), iso);
             Ability2 = new Ability(iso.CommonRel.ExtractedFile.GetByteAtOffset(StartOffset + Constants.Ability2Offset), iso);
+
+            LearnableTMs = new bool[Constants.NumberOfTMsandHMs];
+            for (int i = 0; i < Constants.NumberOfTMsandHMs; i++)
+            {
+                LearnableTMs[i] = iso.CommonRel.ExtractedFile.GetByteAtOffset(StartOffset + Constants.FirstTMOffset + i) == 1;
+            }
+
+            if (iso.Game == Game.XD)
+            {
+                TutorMoves = new bool[Constants.NumberOfTutorMoves];
+                for (int i = 0; i < Constants.NumberOfTutorMoves; i++)
+                {
+                    TutorMoves[i] = iso.CommonRel.ExtractedFile.GetByteAtOffset(StartOffset + Constants.FirstTutorMoveOffset + i) == 1;
+                }
+            }
+            else
+            {
+                TutorMoves = Array.Empty<bool>();
+            }
+
+            var cuurentOffset = StartOffset + Constants.FirstLevelUpMoveOffset;
+            LevelUpMoves = new LevelUpMove[Constants.NumberOfLevelUpMoves];
+            for (int i = 0; i < Constants.NumberOfLevelUpMoves; i++)
+            {
+                var level = iso.CommonRel.ExtractedFile.GetByteAtOffset(cuurentOffset + Constants.LevelUpMoveLevelOffset);
+                var move = iso.CommonRel.ExtractedFile.GetUShortAtOffset(cuurentOffset + Constants.LevelUpMoveIndexOffset);
+                LevelUpMoves[i] = new LevelUpMove(
+                    level,
+                    move
+                );
+                cuurentOffset += Constants.SizeOfLevelUpData;
+            }
+
+            cuurentOffset = StartOffset + Constants.FirstEvolutionOffset;
+            Evolutions = new Evolution[Constants.NumberOfEvolutions];
+            for (int i = 0; i < Constants.NumberOfEvolutions; i++)
+            {
+                var method = iso.CommonRel.ExtractedFile.GetByteAtOffset(cuurentOffset + Constants.EvolutionMethodOffset);
+                var condtion = iso.CommonRel.ExtractedFile.GetUShortAtOffset(cuurentOffset + Constants.EvolutionConditionOffset);
+                var evolution = iso.CommonRel.ExtractedFile.GetUShortAtOffset(cuurentOffset + Constants.EvovledFormOffset);
+                Evolutions[i] = new Evolution(
+                    method, 
+                    condtion,
+                    evolution
+                );
+                cuurentOffset += Constants.SizeOfEvolutionData;
+            }
         }
 
 
@@ -185,6 +232,24 @@ namespace XDCommon.PokemonDefinitions
         {
             iso.CommonRel.ExtractedFile.WriteByteAtOffset(StartOffset + Constants.Ability2Offset, abilityID);
             Ability2 = new Ability(abilityID, iso);
+        }
+
+        public void WriteData(string path)
+        {
+            var fileName = $"{dexNum,3}-{Name}.txt";
+            if (fileName.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
+                return;
+
+            using var fs = File.OpenWrite($"{path}/{fileName}");
+            using var writer = new StreamWriter(fs);
+
+            writer.WriteLine($"{Name} - {dexNum}\n");
+            writer.WriteLine($"{nameof(Ability1)} - {Ability1.Name}\n{nameof(Ability2)} - {Ability2.Name}\n");
+            writer.WriteLine($"{nameof(Type1)} - {Type1}\n{nameof(Type2)} - {Type2}\n");
+            writer.WriteLine($"{nameof(GenderRatio)} - {GenderRatio}\n{nameof(LevelUpRate)} - {LevelUpRate}\n{nameof(CatchRate)} - {CatchRate}\n{nameof(BaseExp)} - {BaseExp}\n{nameof(BaseHappiness)} - {BaseHappiness}\n");
+            writer.WriteLine($"{nameof(HP)} - {HP}\n{nameof(Speed)} - {Speed}\n{nameof(Attack)} - {Attack}\n{nameof(Defense)} - {Defense}\n{nameof(SpecialAttack)} - {SpecialAttack}\n{nameof(SpecialDefense)} - {SpecialDefense}\n");
+            writer.WriteLine($"{nameof(HPYield)} - {HPYield}\n{nameof(SpeedYield)} - {SpeedYield}\n{nameof(AttackYield)} - {AttackYield}\n{nameof(DefenseYield)} - {DefenseYield}\n{nameof(SpecialAttackYield)} - {SpecialAttackYield}\n{nameof(SpecialDefenseYield)} - {SpecialDefenseYield}\n");
+            //writer.WriteLine($"");
         }
     }
 }
