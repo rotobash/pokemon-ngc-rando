@@ -88,7 +88,7 @@ namespace XDCommon.Utility
         
         public static ushort GetUShortAtOffset(this Stream stream, long offset)
         {
-            byte[] bytes = GetBytesAtOffset(stream, offset, 4);
+            byte[] bytes = GetBytesAtOffset(stream, offset, 2);
             return BitConverter.ToUInt16(bytes);
         }
         

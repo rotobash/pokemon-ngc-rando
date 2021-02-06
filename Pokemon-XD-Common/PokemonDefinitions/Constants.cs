@@ -39,7 +39,7 @@ namespace XDCommon.PokemonDefinitions
         public const byte HeldItem2Offset = 0x7C;
 
         public const byte HPOffset = 0x8F;
-        public const byte AttackOffset = 091;
+        public const byte AttackOffset = 0x91;
         public const byte DefenseOffset = 0x93;
         public const byte SpecialAttackOffset = 0x95;
         public const byte SpecialDefenseOffset = 0x97;
@@ -53,6 +53,13 @@ namespace XDCommon.PokemonDefinitions
         public const int PokemonFaceIndexOffset = 0x10E; // Same as Pokemon's national dex index
 
         public const byte ModelDictionaryModelOffset = 0x4;
+
+        // evolutions
+        public const byte NumberOfEvolutions = 0x5;
+        public const byte SizeOfEvolutionData = 0x6;
+        public const byte EvolutionMethodOffset = 0x0;
+        public const byte EvolutionConditionOffset = 0x2;
+        public const byte EvovledFormOffset = 0x4;
 
         //trainer poke
         public const byte SizeOfPokemonData = 0x20;
@@ -92,6 +99,15 @@ namespace XDCommon.PokemonDefinitions
 
         // moves
         public const byte SizeOfMoveData = 0x0038;
+
+        public const byte NumberOfTMsandHMs = 0x3A;
+
+        public const byte NumberOfTutorMoves = 0x0C; // XD only
+
+        public const byte NumberOfLevelUpMoves = 0x13;
+        public const byte SizeOfLevelUpData = 0x4;
+        public const byte LevelUpMoveLevelOffset = 0x0;
+        public const byte LevelUpMoveIndexOffset = 0x2;
 
         public const byte PriorityOffset = 0x00;
         public const byte PPOffset = 0x01;
@@ -160,7 +176,6 @@ namespace XDCommon.PokemonDefinitions
 
         public const int stringTable1 = 116;
         public const int TutorMoves = 126;
-        public const int NumberOfTutorMoves = 127;
         public const int Types = 130;
         public const int NumberOfTypes = 13;
 

@@ -73,7 +73,7 @@ namespace Randomizer.XD
 			{
 				pokemon[i] = new Pokemon(i, iso);
 			}
-			var p = pokemon.Where(pk => pk.Name != string.Empty);
+
 			return pokemon;
 		}
     }

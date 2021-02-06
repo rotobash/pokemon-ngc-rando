@@ -55,7 +55,7 @@ namespace XDCommon.Utility
             for (int i = 0; i < NumberOfEntries; i++)
             {
                 var id = ExtractedFile.GetIntAtOffset(currentOffset) & 0xFFFFF;
-                var offset = ExtractedFile.GetIntAtOffset(currentOffset + 4) - 2;
+                var offset = ExtractedFile.GetIntAtOffset(currentOffset + 4);
                 if (!stringOffsets.ContainsKey(id))
                     stringOffsets.Add(id, offset);
                 currentOffset += 8;
