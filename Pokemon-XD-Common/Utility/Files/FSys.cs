@@ -173,6 +173,29 @@ namespace XDCommon.Utility
             return (FileTypes)Enum.ToObject(typeof(FileTypes), id);
         }
 
+        public IExtractedFile ExtractEntryByFileName(string filename)
+        {
+            if (ExtractedEntries.ContainsKey(filename))
+            {
+                return ExtractedEntries[filename];
+            }
+            else
+            {
+                var index = GetIndexForFileName(filename);
+                var entry = FSysFileEntry.ExtractFromFSys(this, index);
+                ExtractedEntries.Add(entry.FileName, entry);
+                return entry;
+            }
+        }
+
+        public IExtractedFile ExtractEntryByIndex(int index)
+        {
+            if (index < 0 || index > NumberOfEntries)
+                return null;
+
+            return ExtractEntryByFileName(GetFilenameForFile(index));
+        }
+
         public void WriteToStream(Stream output)
         {
             Stream fSysStream;

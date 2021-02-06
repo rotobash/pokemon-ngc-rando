@@ -8,8 +8,8 @@ namespace XDCommon.Utility
 {
     public class TrainerPool
     {
-        public static TrainerTeamTypes[] MainTeams = new[] { TrainerTeamTypes.Story, TrainerTeamTypes.Colosseum, TrainerTeamTypes.Hundred, TrainerTeamTypes.Virtual };
-        public static TrainerTeamTypes[] Trainers = new[] { TrainerTeamTypes.Story, TrainerTeamTypes.Colosseum, TrainerTeamTypes.Hundred, TrainerTeamTypes.Virtual, TrainerTeamTypes.Imasugu, TrainerTeamTypes.Bingo, TrainerTeamTypes.Sample };
+        public static TrainerPoolType[] MainTeams = new[] { TrainerPoolType.Story, TrainerPoolType.Colosseum, TrainerPoolType.Hundred, TrainerPoolType.Virtual };
+        public static TrainerPoolType[] Trainers = new[] { TrainerPoolType.Story, TrainerPoolType.Colosseum, TrainerPoolType.Hundred, TrainerPoolType.Virtual, TrainerPoolType.Imasugu, TrainerPoolType.Bingo, TrainerPoolType.Sample };
 
         static byte[] kOffensiveDTAI = new byte[] { 0x0F, 0x3A, 0x00, 0x00, 0x73, 0x73, 0x74, 0x73, 0x73, 0x74, 0x82, 0x00, 0x2C, 0x27, 0x50, 0x00, 0x50, 0x32, 0x14, 0x0A, 0x09, 0x09, 0x32, 0x32, 0x00, 0x09, 0x00, 0x09, 0x32, 0x32, 0x08, 00 };
         static byte[] kDefensiveDTAI = new byte[] { 0x0F, 0x3A, 0x00, 0x00, 0x73, 0x73, 0x74, 0x73, 0x73, 0x74, 0x82, 0x00, 0x2C, 0x27, 0x50, 0x00, 0x50, 0x1E, 0x00, 0x0A, 0x07, 0x09, 0x4B, 0x32, 0x00, 0x03, 0x00, 0x01, 0x4B, 0x19, 0x04, 0x00 };
@@ -27,19 +27,24 @@ namespace XDCommon.Utility
         internal int DSTRHeaderOffset => DTAIHeaderOffset + GetSize(DTAIHeaderOffset);
         internal int DSTRDataOffset => DSTRHeaderOffset + 0x10;
 
-        public TrainerTeamTypes TeamType { get; }
+        public TrainerPoolType TeamType { get; }
         public IEnumerable<Trainer> AllTrainers { get; }
-        public IEnumerable<TrainerPoolPokemon> AllPokemon { get; }
-        public IEnumerable<TrainerPokemon> AllTrainerPokemon { get; }
 
         public Stream ExtractedFile;
         public FileTypes FileType;
 
-        public TrainerPool(TrainerTeamTypes teamType, IExtractedFile fileEntry, ISO iso)
+        internal Pokemon[] PokemonList { get; }
+
+        public TrainerPool(TrainerPoolType poolType, IExtractedFile fileEntry, ISO iso, Pokemon[] pokemon)
         {
+            // todo: when extracting files works remove fileEntry parameter and get it from ISO like so:
+            //var deckArchive = iso.GetFSysFile("deck_archive.fsys");
+            //var fileEntry = deckArchive.ExtractEntryByFileName($"DeckData_{poolType}.bin");
+
             ExtractedFile = fileEntry.ExtractedFile;
             FileType = FileTypes.BIN;
-            TeamType = teamType;
+            TeamType = poolType;
+            PokemonList = pokemon;
 
             var trainerCount = GetEntries(DTNRHeaderOffset);
             var trainers = new Trainer[trainerCount];
@@ -48,37 +53,6 @@ namespace XDCommon.Utility
                 trainers[i] = new Trainer(i, this, iso);
             }
             AllTrainers = trainers;
-
-            TrainerPoolPokemon[] pokemon;
-            if (TeamType == TrainerTeamTypes.DarkPokemon) 
-            {
-                var pokemonCount = GetEntries(DDPKDataOffset);
-                pokemon = new TrainerPoolPokemon[pokemonCount];
-                for (int i = 0; i < pokemonCount; i++)
-                {
-                    pokemon[i] = new TrainerPoolPokemon(i, this, PokemonFileType.DDPK, iso);
-                }
-            }
-            else
-            {
-                var pokemonCount = GetEntries(DPKMDataOffset);
-                pokemon = new TrainerPoolPokemon[pokemonCount];
-                for (int i = 0; i < pokemonCount; i++)
-                {
-                    pokemon[i] = new TrainerPoolPokemon(i, this, PokemonFileType.DPKM, iso);
-                }
-            }
-            AllPokemon = pokemon;
-
-            var trainerPokemon = new List<TrainerPokemon>();
-            foreach (var poke in AllPokemon)
-            {
-                if (poke.PokeType == PokemonFileType.DPKM)
-                {
-                    trainerPokemon.Add(new TrainerPokemon(poke));
-                }
-            }
-            AllTrainerPokemon = trainerPokemon;
         }
 
         internal int GetSize(int headerOffset)

@@ -26,9 +26,9 @@ namespace XDCommon.Utility
 
         int index = 0x0;
         TrainerPool pool;
-        TrainerPoolPokemon[] pokemon = new TrainerPoolPokemon[6];
         ISO iso;
 
+        public TrainerPokemon[] Pokemon { get; }
         public int NameID
         {
             get => pool.ExtractedFile.GetIntAtOffset(StartOffset + kTrainerNameIDOffset);
@@ -116,18 +116,19 @@ namespace XDCommon.Utility
             }
             TrainerString = name;
 
+            Pokemon = new TrainerPokemon[6];
             var mask = ShadowMask;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < Pokemon.Length; i++)
             {
                 var id = pool.ExtractedFile.GetUShortAtOffset(StartOffset + kFirstTrainerPokemonOffset + (i * 2));
                 var m = mask % 2;
                 if (m == 1)
                 {
-                    pokemon[i] = new TrainerPoolPokemon(id, pool, PokemonFileType.DDPK, iso);
+                    Pokemon[i] = new TrainerPokemon(id, pool, PokemonFileType.DDPK);
                 } 
                 else
                 {
-                    pokemon[i] = new TrainerPoolPokemon(id, pool, PokemonFileType.DPKM, iso);
+                    Pokemon[i] = new TrainerPokemon(id, pool, PokemonFileType.DPKM);
                 }
                 mask >>= 1;
             }

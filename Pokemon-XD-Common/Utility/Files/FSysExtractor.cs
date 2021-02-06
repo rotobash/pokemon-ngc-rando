@@ -13,20 +13,6 @@ namespace XDCommon.Utility
             if (sys.NumberOfEntries <= 0)
                 return;
 
-            var extractDir = $"{sys.Path}/{sys.Filename.RemoveFileExtensions()}";
-            if (!Configuration.UseMemoryStreams)
-            {
-                if (!Directory.Exists(extractDir))
-                {
-                    Directory.CreateDirectory(extractDir);
-                }
-                else
-                {
-                    Directory.Delete(extractDir, true);
-                    Directory.CreateDirectory(extractDir);
-                }
-            }
-
             for (int i = 0; i < sys.NumberOfEntries; i++)
             {
                 var entry = FSysFileEntry.ExtractFromFSys(sys, i);
@@ -43,7 +29,6 @@ namespace XDCommon.Utility
                         }
                     }
                     break;
-
                 }
             }
 

@@ -12,7 +12,7 @@ namespace XDCommon.PokemonDefinitions
         Cycle
     }
 
-    public enum TrainerTeamTypes
+    public enum TrainerPoolType
     {
         Bingo,
         Colosseum,
