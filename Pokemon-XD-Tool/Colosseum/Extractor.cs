@@ -20,7 +20,7 @@ namespace Randomizer.Colosseum
             throw new NotImplementedException();
         }
 
-        public TrainerPool[] ExtractPools()
+        public TrainerPool[] ExtractPools(Pokemon[] pokemon)
         {
             throw new NotImplementedException();
         }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XDCommon.PokemonDefinitions;
 using XDCommon.Utility;
 
 namespace Randomizer
@@ -12,6 +13,8 @@ namespace Randomizer
     {
         Random random;
         IGameExtractor gameExtractor;
+        Move[] moves;
+        Pokemon[] pokemon;
 
         public Randomizer(IGameExtractor extractor, int seed = -1)
         {
@@ -24,25 +27,24 @@ namespace Randomizer
                 random = new Random(seed);
             }
             gameExtractor = extractor;
+            moves = gameExtractor.ExtractMoves();
+            pokemon = gameExtractor.ExtractPokemon();
         }
 
         public void RandomizeMoves(MoveShufflerSettings settings)
         {
-            var moves = gameExtractor.ExtractMoves();
             MoveShuffler.RandomizeMoves(random, moves, settings);
         }
 
         public void RandomizePokemon(PokemonTraitShufflerSettings settings)
         {
-            var pokemon = gameExtractor.ExtractPokemon();
             PokemonTraitShuffler.RandomizePokemonTraits(random, pokemon, settings);
         }
 
-        public void RandomizeTrainers()
+        public void RandomizeTrainers(TeamShufflerSettings settings)
         {
-            var decks = gameExtractor.ExtractPools();
-            var t = 0;
-
+            var decks = gameExtractor.ExtractPools(pokemon);
+            TeamShuffler.ShuffleTeams(random, settings, decks, pokemon);
         }
 
         public void RandomizeTMs()

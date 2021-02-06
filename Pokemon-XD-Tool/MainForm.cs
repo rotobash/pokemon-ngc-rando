@@ -25,10 +25,14 @@ namespace Randomizer
         Randomizer randomizer;
 
         int seed = -1;
+        int moveSteps = 3;
 
         public MainForm()
         {
             InitializeComponent();
+
+            backgroundWorker.DoWork += randomizeTask;
+            backgroundWorker.RunWorkerCompleted += onRandomizeTaskComplete;
 
             infoToolTip.SetToolTip(movePowerCheck, "Randomize damaging move power. Uses a normal distribution with an average of 80 power and a variance of 70 power.");
             infoToolTip.SetToolTip(moveAccCheck, "Randomize move accuracy between 0 and 100, ");
@@ -43,6 +47,7 @@ namespace Randomizer
             openFileDialog.CheckFileExists = true;
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
+                progressMessageLabel.Text = "Reading ISO...";
                 if (!Directory.Exists(Configuration.ExtractDirectory))
                 {
                     Directory.CreateDirectory(Configuration.ExtractDirectory);
@@ -66,17 +71,7 @@ namespace Randomizer
                 gameLabel.Text = iso.Game.ToString();
                 regionLabel.Text = iso.Region.ToString();
 
-                //foreach (var move in moves)
-                //{
-                //    if (move.Name.ToString().IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
-                //        continue;
-
-                //    File.WriteAllText(
-                //        $"{Configuration.ExtractDirectory}/{move.Name}.txt",
-                //        $"Index: {move.MoveIndex}\nDescription: {move.MDescription}\nType: {move.Type}\nPP:{move.PP}\nPower:{move.BasePower}\nCategory: {move.Category}\nAccuracy: {move.Accuracy}\nPriority: {move.Priority}\nEffect: {move.Effect}\nEffectAccuracy{move.EffectAccuracy}"
-                //    );
-
-                //}
+                progressMessageLabel.Text = "Successfully read ISO";
             }
         }
 
@@ -93,6 +88,8 @@ namespace Randomizer
                 saveFileDialog.FileName = $"{iso.Game}-{iso.Region}.iso";
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
+                    progressBar.Value = 0;
+                    progressMessageLabel.Text = "Randomizing Moves...";
                     randomizer = new Randomizer(gameExtractor, seed);
                     randomizer.RandomizeMoves(new MoveShufflerSettings
                     {
@@ -103,6 +100,7 @@ namespace Randomizer
                         RandomMoveCategory = moveCategoryCheck.Checked,
                     });
 
+                    progressMessageLabel.Text = "Randomizing Pokemon Traits...";
 
                     randomizer.RandomizePokemon(new PokemonTraitShufflerSettings
                     {
@@ -127,6 +125,13 @@ namespace Randomizer
                         FixImpossibleEvolutions = fixImpossibleEvolutionsCheck.Checked,
                     });
 
+                    progressMessageLabel.Text = "Randomizing Trainers...";
+                    randomizer.RandomizeTrainers(new TeamShufflerSettings
+                    {
+                        RandomizePokemon = randomizeTrainerPokeCheck.Checked
+                    });
+
+
 
                     //var path = saveFileDialog.FileName;
                     //if (!path.EndsWith(".iso"))
@@ -135,9 +140,25 @@ namespace Randomizer
                     //}
                     //extractor.RepackISO(iso, path);
 
+                    progressMessageLabel.Text = "Finished.";
                     MessageBox.Show("Done!");
                 }
             }
+        }
+
+        private void randomizeTask(object? sender, DoWorkEventArgs e)
+        {
+            e.Result = true;
+        }
+
+        private void progressChanged(object? sender, ProgressChangedEventArgs e)
+        {
+            progressBar.Value = e.ProgressPercentage;
+        }
+
+        private void onRandomizeTaskComplete(object? sender, RunWorkerCompletedEventArgs e)
+        {
+            MessageBox.Show("Done!");
         }
 
         private void randomizeTypesCheck_CheckedChanged(object sender, EventArgs e)

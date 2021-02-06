@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using XDCommon.PokemonDefinitions;
+using XDCommon.Utility;
 
 namespace Randomizer.Shufflers
 {
@@ -34,9 +35,22 @@ namespace Randomizer.Shufflers
     {
         public static void RandomizePokemonTraits(Random random, Pokemon[] pokemon, PokemonTraitShufflerSettings settings)
         {
+            // store pokemon we've randomized already in a list, for follows evolution
+            var pokeBaseStatsRandomized = new List<string>();
+            var pokeAbilitiesRandomized = new List<string>();
+            var pokeTypesRandomized = new List<string>();
+
+            // do this first for "follow evolution" checks
+            if (settings.RandomizeEvolutions)
+            {
+                foreach (var poke in pokemon)
+                {
+                }
+            }
+
             foreach (var poke in pokemon)
             {
-                if (settings.RandomizeBaseStats > 0)
+                if (settings.RandomizeBaseStats > 0 && settings.BaseStatsFollowEvolution && !pokeBaseStatsRandomized.Contains(poke.Name))
                 {
                     // todo
 
@@ -56,65 +70,67 @@ namespace Randomizer.Shufflers
                     poke.LevelUpRate = ExpRate.Fast;
                 }
 
-                if (settings.RandomizeAbilities)
+                if (settings.RandomizeAbilities && !pokeAbilitiesRandomized.Contains(poke.Name))
                 {
-                    // yes I know but it's easier to set it there because it needs to know what game we're extracting
-                    var numAbilities = pokemon[0].Ability1.NumberOfAbilities;
-                    bool validAbility;
-                    do
-                    {
-                        if (poke.Name != "Shedinja")
-                        {
-                            validAbility = true;
-                            continue;
-                        }
-
-                        poke.SetAbility1((byte)random.Next(1, numAbilities));
-                        validAbility = !settings.AllowWonderGuard && poke.Ability1.Name == "Wonder Guard";
-                        validAbility |= settings.BanNegativeAbilities && (poke.Ability1.Name == "Truant" || poke.Ability1.Name == "Slow Start" || poke.Ability1.Name == "Defeatist");
-                    } while (!validAbility);
+                    RandomizeAbility(random, settings, poke);
 
                     if (settings.AbilitiesFollowEvolution)
                     {
-                        // do something here
+                        var endOrSplitEvolution = false;
+                        Pokemon currentPoke = poke;
+                        while (!endOrSplitEvolution)
+                        {
+                            endOrSplitEvolution = CheckForSplitOrEndEvolution(endOrSplitEvolution, currentPoke);
+
+                            if (!endOrSplitEvolution)
+                            {
+                                var evoPoke = pokemon[currentPoke.Evolutions[0].EvolvesInto];
+                                pokeAbilitiesRandomized.Add(currentPoke.Name);
+                                evoPoke.SetAbility1((byte)poke.Ability1.Index);
+                                evoPoke.SetAbility2((byte)poke.Ability2.Index);
+                                currentPoke = evoPoke;
+                            }
+                        }
                     }
 
                 }
 
-                if (settings.RandomizeTypes)
+                if (settings.RandomizeTypes && !pokeTypesRandomized.Contains(poke.Name))
                 {
-                    var types = Enum.GetValues<PokemonTypes>();
-                    PokemonTypes type;
-                    do
-                    {
-                        type = types[random.Next(0, types.Length)];
-                    } while (type == PokemonTypes.None);
-
-                    if (poke.Type2 != poke.Type1 && poke.Type2 != PokemonTypes.None)
-                    {
-                        PokemonTypes type2;
-                        do
-                        {
-                            type2 = types[random.Next(0, types.Length)];
-                        } while (type2 == PokemonTypes.None || type == type2);
-                        poke.Type2 = type2;
-                    }
-                    poke.Type1 = type;
+                    RandomizeTypes(random, settings, poke);
 
                     if (settings.TypesFollowEvolution)
                     {
-                        // do something here
-                    }
-                }
+                        var endOrSplitEvolution = false;
+                        Pokemon currentPoke = poke;
+                        while (!endOrSplitEvolution)
+                        {
+                            endOrSplitEvolution = CheckForSplitOrEndEvolution(endOrSplitEvolution, currentPoke);
 
-                if (settings.RandomizeEvolutions)
-                {
-                    // todoS
+                            if (!endOrSplitEvolution)
+                            {
+                                var evoPoke = pokemon[currentPoke.Evolutions[0].EvolvesInto];
+                                pokeTypesRandomized.Add(currentPoke.Name);
+                                evoPoke.Type1 = currentPoke.Type1;
+                                evoPoke.Type2 = currentPoke.Type2;
+                                currentPoke = evoPoke;
+                            }
+                        }
+                    }
                 }
 
                 if (settings.FixImpossibleEvolutions)
                 {
                     // todoS
+                    for (int i = 0; i < poke.Evolutions.Length; i++)
+                    {
+                        var method = poke.Evolutions[i].EvolutionMethod;
+                        if (method == EvolutionMethods.TradeWithItem || method == EvolutionMethods.Trade || method == EvolutionMethods.HappinessDay || method == EvolutionMethods.HappinessNight)
+                        {
+                            poke.SetEvolution(i, (byte)EvolutionMethods.LevelUp, (ushort)EvolutionConditionType.Level, poke.Evolutions[i].EvolvesInto);
+                            break;
+                        }
+                    }
                 }
 
                 if (settings.EasyEvolutions)
@@ -122,6 +138,75 @@ namespace Randomizer.Shufflers
                     // todoS
                 }
             }
+        }
+
+        private static bool CheckForSplitOrEndEvolution(bool endOrSplitEvolution, Pokemon currentPoke)
+        {
+            for (int i = 0; i < currentPoke.Evolutions.Length; i++)
+            {
+                if (i == 0 && currentPoke.Evolutions[i].EvolutionMethod == EvolutionMethods.None
+                    || currentPoke.Evolutions[i].EvolutionMethod != EvolutionMethods.None && i > 0)
+                {
+                    endOrSplitEvolution = true;
+                    break;
+                }
+            }
+
+            return endOrSplitEvolution;
+        }
+
+        private static void RandomizeTypes(Random random, PokemonTraitShufflerSettings settings, Pokemon poke)
+        {
+
+            var types = Enum.GetValues<PokemonTypes>();
+            PokemonTypes type;
+            do
+            {
+                type = types[random.Next(0, types.Length)];
+            } while (type == PokemonTypes.None);
+
+            if (poke.Type2 != poke.Type1 && poke.Type2 != PokemonTypes.None)
+            {
+                PokemonTypes type2;
+                do
+                {
+                    type2 = types[random.Next(0, types.Length)];
+                } while (type2 == PokemonTypes.None || type == type2);
+                poke.Type2 = type2;
+            }
+            poke.Type1 = type;
+        }
+
+        private static void RandomizeAbility(Random random, PokemonTraitShufflerSettings settings, Pokemon poke)
+        {
+            // yes I know but it's easier to set it there because it needs to know what game we're extracting
+            var numAbilities = poke.Ability1.NumberOfAbilities;
+            bool validAbility;
+            do
+            {
+                if (poke.Name.ToLower() == "shedinja")
+                {
+                    validAbility = true;
+                    continue;
+                }
+
+                poke.SetAbility1((byte)random.Next(1, numAbilities));
+                var ability1Name = poke.Ability1.Name.ToLower();
+                validAbility = CheckValidAbility(settings, ability1Name);
+
+                if (!string.IsNullOrEmpty(poke.Ability2.Name))
+                {
+                    poke.SetAbility2((byte)random.Next(1, numAbilities));
+                    var ability2Name = poke.Ability2.Name.ToLower();
+                    validAbility |= CheckValidAbility(settings, ability2Name);
+                }
+
+            } while (!validAbility);
+        }
+
+        private static bool CheckValidAbility(PokemonTraitShufflerSettings settings, string abilityName)
+        {
+            return (!settings.AllowWonderGuard && abilityName == "wonder guard") || (settings.BanNegativeAbilities && (abilityName == "truant" || abilityName == "slow start" || abilityName == "defeatist"));
         }
     }
 }

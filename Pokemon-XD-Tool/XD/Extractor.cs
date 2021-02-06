@@ -19,10 +19,10 @@ namespace Randomizer.XD
             this.iso = iso;
         }
 
-        public TrainerPool[] ExtractPools()
+        public TrainerPool[] ExtractPools(Pokemon[] pokemon)
         {
 			var poolFsys = iso.GetFSysFile("deck_archive.fsys") ?? throw new KeyNotFoundException($"Could not extract deck_archive.fsys, it doesn't exist in the TOC.");
-			var poolTypes = Enum.GetValues<TrainerTeamTypes>();
+			var poolTypes = Enum.GetValues<TrainerPoolType>();
 			var trainerPool = new TrainerPool[poolTypes.Length];
 
 			for (int i = 0; i < poolTypes.Length; i++)
@@ -50,7 +50,7 @@ namespace Randomizer.XD
 				//	file = poolFsys.ExtractedEntries[fileName];
 				//}
 
-				trainerPool[i] = new TrainerPool(pool, file, iso);
+				trainerPool[i] = new TrainerPool(pool, file, iso, pokemon);
             }
 			return trainerPool;
 		}

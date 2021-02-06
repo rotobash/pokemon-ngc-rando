@@ -32,8 +32,8 @@ namespace Randomizer.Shufflers
                     byte acc;
                     do 
                     {
-                        acc = (byte)Math.Min(100, random.Sample(90, 30));
-                    } while (move.Accuracy == 100 && move.EffectType == MoveEffectTypes.OHKO);
+                        acc = (byte)Math.Min(100, random.Sample(80, 30));
+                    } while (acc == 100 && move.EffectType == MoveEffectTypes.OHKO);
                     move.Accuracy = acc;
                 }
 
