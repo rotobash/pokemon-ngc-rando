@@ -42,11 +42,12 @@ namespace Randomizer.Shufflers
         public MoveCompatibility TutorCompatibility;
 
         public bool NoEXP;
+        public bool RandomizeMovesets;
     }
 
     public static class PokemonTraitShuffler
     {
-        public static void RandomizePokemonTraits(Random random, Pokemon[] pokemon, PokemonTraitShufflerSettings settings)
+        public static void RandomizePokemonTraits(Random random, Pokemon[] pokemon, Move[] moves, PokemonTraitShufflerSettings settings)
         {
             // store pokemon we've randomized already in a list, for follows evolution
             var pokeBaseStatsRandomized = new List<string>();
@@ -161,6 +162,17 @@ namespace Randomizer.Shufflers
                 if (settings.NoEXP)
                 {
                     poke.BaseExp = 0;
+                }
+
+                if (settings.RandomizeMovesets)
+                {
+                    for (int i = 0; i < poke.LevelUpMoves.Length; i++)
+                    {
+                        var move = poke.LevelUpMoves[i];
+                        if (move.Level == 0)
+                            continue;
+                        poke.SetLevelUpMove(i, move.Level, (ushort)random.Next(0, moves.Length));
+                    }
                 }
             }
         }
