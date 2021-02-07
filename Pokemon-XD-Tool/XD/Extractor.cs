@@ -19,22 +19,28 @@ namespace Randomizer.XD
             this.iso = iso;
         }
 
-        public TrainerPool[] ExtractPools(Pokemon[] pokemon)
+        public TrainerPool[] ExtractPools(Pokemon[] pokemon, Move[] moves)
         {
 			var poolFsys = iso.GetFSysFile("deck_archive.fsys") ?? throw new KeyNotFoundException($"Could not extract deck_archive.fsys, it doesn't exist in the TOC.");
-			var poolTypes = Enum.GetValues<TrainerPoolType>();
-			var trainerPool = new TrainerPool[poolTypes.Length];
+			var poolTypes = Enum.GetValues<TrainerPoolType>().ToList();
+			var trainerPool = new TrainerPool[TrainerPool.MainTeams.Length + 1];
 
-			for (int i = 0; i < poolTypes.Length; i++)
+			var sStream = File.Open($"{Configuration.ExtractDirectory}/DeckData_DarkPokemon.bin", FileMode.Open, FileAccess.ReadWrite);
+			var shadowPokemonPool = FSysFileEntry.CreateExtractedFile(Configuration.ExtractDirectory, "DeckData_DarkPokemon.bin", FileTypes.BIN, sStream);
+
+			trainerPool[0] = new ShadowTrainerPool(shadowPokemonPool, iso, pokemon, moves);
+
+			for (int i = 0; i < TrainerPool.MainTeams.Length; i++)
             {
-				var pool = poolTypes[i];
+
+				var pool = TrainerPool.MainTeams[i];
 				if (Configuration.Verbose) 
 				{
 					Console.WriteLine($"Extracting deck: {pool}");
 				}
 				var multiplier = iso.Region == Region.Japan ? 1 : 2;
 				var offset = iso.Region == Region.Europe ? 1 : 0;
-				var index = (i * multiplier) + offset;
+				var index = (poolTypes.IndexOf(pool) * multiplier) + offset;
 				var fileName = poolFsys.GetFilenameForFile(index);
 
 				// stub deck data for now
@@ -50,7 +56,9 @@ namespace Randomizer.XD
 				//	file = poolFsys.ExtractedEntries[fileName];
 				//}
 
-				trainerPool[i] = new TrainerPool(pool, file, iso, pokemon);
+				trainerPool[i + 1] = new TrainerPool(pool, file, pokemon, moves);
+				trainerPool[i + 1].SetShadowPokemon(trainerPool[0] as ShadowTrainerPool);
+				trainerPool[i + 1].LoadTrainers(iso);
             }
 			return trainerPool;
 		}

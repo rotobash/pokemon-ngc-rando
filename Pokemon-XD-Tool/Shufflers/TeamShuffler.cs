@@ -55,6 +55,9 @@ namespace Randomizer.Shufflers
                 // yikes
                 foreach (var pool in trainerPools)
                 {
+                    if (pool.TeamType == TrainerPoolType.DarkPokemon)
+                        continue;
+
                     foreach (var trainer in pool.AllTrainers)
                     {
                         if (trainer.TrainerClass == 0)

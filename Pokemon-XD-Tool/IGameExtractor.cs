@@ -10,7 +10,7 @@ namespace Randomizer
 {
     public interface IGameExtractor
     {
-        TrainerPool[] ExtractPools(Pokemon[] pokemon);
+        TrainerPool[] ExtractPools(Pokemon[] pokemon, Move[] moves);
         Move[] ExtractMoves();
         Pokemon[] ExtractPokemon();
     }

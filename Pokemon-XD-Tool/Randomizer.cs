@@ -43,7 +43,7 @@ namespace Randomizer
 
         public void RandomizeTrainers(TeamShufflerSettings settings)
         {
-            var decks = gameExtractor.ExtractPools(pokemon);
+            var decks = gameExtractor.ExtractPools(pokemon, moves);
             TeamShuffler.ShuffleTeams(random, settings, decks, pokemon);
         }
 
