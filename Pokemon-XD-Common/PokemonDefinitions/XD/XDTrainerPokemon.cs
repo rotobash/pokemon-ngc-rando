@@ -1,30 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using XDCommon.PokemonDefinitions;
+using XDCommon.Utility;
 
-namespace XDCommon.Utility
+namespace XDCommon.PokemonDefinitions
 {
     public enum PokemonFileType
     {
         DPKM,
         DDPK
     }
-    public class TrainerPokemon
+    public class XDTrainerPokemon : ITrainerPokemon
     {
         PokemonFileType pokeType;
-        TrainerPool pool;
+        XDTrainerPool pool;
 
         public bool IsShadow => pokeType == PokemonFileType.DDPK;
         public bool IsSet => Index > 0;
 
         public int StartOffset
         {
-            get => pool.DPKMDataOffset + (Index * Constants.SizeOfPokemonData);
+            get => pool.DPKMDataOffset + Index * Constants.SizeOfPokemonData;
         }
         public int ShadowStartOffset
         {
-            get => pool.DarkPokemon.DDPKHeaderOffset + (Index * Constants.SizeOfShadowData);
+            get => pool.DarkPokemon.DDPKHeaderOffset + Index * Constants.SizeOfShadowData;
         }
 
         public int Index
@@ -72,7 +72,7 @@ namespace XDCommon.Utility
         }
         public Genders Gender
         {
-            get => (Genders)((pool.ExtractedFile.GetByteAtOffset(StartOffset + Constants.PokemonPIDOffset) / 4) % 2);
+            get => (Genders)(pool.ExtractedFile.GetByteAtOffset(StartOffset + Constants.PokemonPIDOffset) / 4 % 2);
             set
             {
                 var pid = ((byte)Nature << 3) + ((byte)value << 1) + Ability;
@@ -104,18 +104,18 @@ namespace XDCommon.Utility
             get;
         }
 
-        public TrainerPokemon(int index, TrainerPool team, PokemonFileType type)
+        public XDTrainerPokemon(int index, XDTrainerPool team, PokemonFileType type)
         {
             pool = team;
             pokeType = type;
             Index = index;
-            var num = pool.DPKMDataOffset + (index * Constants.SizeOfPokemonData);
+            var num = pool.DPKMDataOffset + index * Constants.SizeOfPokemonData;
             pokemon = team.PokemonList[pool.ExtractedFile.GetUShortAtOffset(num)];
 
             Moves = new Move[4];
             for (int i = 0; i < Moves.Length; i++)
             {
-                Moves[i] = pool.MoveList[pool.ExtractedFile.GetUShortAtOffset(StartOffset + Constants.FirstPokemonMoveOffset + (i * 2))];
+                Moves[i] = pool.MoveList[pool.ExtractedFile.GetUShortAtOffset(StartOffset + Constants.FirstPokemonMoveOffset + i * 2)];
             }
 
             if (IsShadow)
@@ -123,25 +123,25 @@ namespace XDCommon.Utility
                 ShadowMoves = new Move[4];
                 for (int i = 0; i < Moves.Length; i++)
                 {
-                    ShadowMoves[i] = pool.MoveList[pool.DarkPokemon.ExtractedFile.GetUShortAtOffset(StartOffset + Constants.FirstShadowMoveOFfset + (i * 2))];
+                    ShadowMoves[i] = pool.MoveList[pool.DarkPokemon.ExtractedFile.GetUShortAtOffset(StartOffset + Constants.FirstShadowMoveOFfset + i * 2)];
                 }
             }
         }
 
         public void SetPokemon(ushort dexNum)
         {
-            var num = pool.DPKMDataOffset + (Index * Constants.SizeOfPokemonData);
+            var num = pool.DPKMDataOffset + Index * Constants.SizeOfPokemonData;
             pool.ExtractedFile.WriteBytesAtOffset(num, dexNum.GetBytes());
             pokemon = pool.PokemonList[dexNum];
         }
         public void SetMove(int index, ushort moveNum)
         {
-            pool.ExtractedFile.WriteBytesAtOffset(StartOffset + Constants.FirstPokemonMoveOffset + (index * 2), moveNum.GetBytes());
+            pool.ExtractedFile.WriteBytesAtOffset(StartOffset + Constants.FirstPokemonMoveOffset + index * 2, moveNum.GetBytes());
             Moves[index] = pool.MoveList[moveNum];
         }
         public void SetShadowMove(int index, ushort moveNum)
         {
-            pool.DarkPokemon.ExtractedFile.WriteBytesAtOffset(StartOffset + Constants.FirstShadowMoveOFfset + (index * 2), moveNum.GetBytes());
+            pool.DarkPokemon.ExtractedFile.WriteBytesAtOffset(StartOffset + Constants.FirstShadowMoveOFfset + index * 2, moveNum.GetBytes());
             ShadowMoves[index] = pool.MoveList[moveNum];
         }
 

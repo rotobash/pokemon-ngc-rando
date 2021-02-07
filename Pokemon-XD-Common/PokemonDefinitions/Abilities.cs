@@ -42,7 +42,7 @@ namespace XDCommon.PokemonDefinitions
             }
         }
 
-        bool AbilityListUpdated => iso.Game == Game.Colosseum ? false : iso.DOL.ExtractedFile.GetIntAtOffset(StartOffset + 8) != 0;
+        bool AbilityListUpdated => iso.Game != Game.Colosseum && iso.DOL.ExtractedFile.GetIntAtOffset(StartOffset + 8) != 0;
         public int NumberOfAbilities => AbilityListUpdated ? 0x75 : 0x4E;
         int AbilityNameIDOffset => AbilityListUpdated ? 0 : 4;
         int AbilityDescriptionIDOffset => AbilityListUpdated ? 4 : 8;

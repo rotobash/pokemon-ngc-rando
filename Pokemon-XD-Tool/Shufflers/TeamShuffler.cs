@@ -63,7 +63,7 @@ namespace Randomizer.Shufflers
         };
 
 
-        public static void ShuffleTeams(Random random, TeamShufflerSettings settings, TrainerPool[] trainerPools, Pokemon[] pokemonList)
+        public static void ShuffleTeams(Random random, TeamShufflerSettings settings, ITrainerPool[] trainerPools, Pokemon[] pokemonList)
         {
             // yikes
             foreach (var pool in trainerPools)
@@ -73,7 +73,7 @@ namespace Randomizer.Shufflers
 
                 foreach (var trainer in pool.AllTrainers)
                 {
-                    if (trainer.TrainerClass == 0)
+                    if (!trainer.IsSet)
                         continue;
 
                     foreach (var pokemon in trainer.Pokemon)
@@ -118,7 +118,7 @@ namespace Randomizer.Shufflers
             }
         }
 
-        public static void BoostCatchRate(float boostPercent, TrainerPokemon poke)
+        public static void BoostCatchRate(float boostPercent, ITrainerPokemon poke)
         {
             if (poke.ShadowCatchRate == 0)
             {
@@ -133,7 +133,7 @@ namespace Randomizer.Shufflers
             poke.ShadowCatchRate = (byte)catchRateIncrease;
         }
 
-        public static void BoostLevel(float boostPercent, TrainerPokemon poke)
+        public static void BoostLevel(float boostPercent, ITrainerPokemon poke)
         {
             var level = poke.Level;
             var levelIncrease = level + level * boostPercent;

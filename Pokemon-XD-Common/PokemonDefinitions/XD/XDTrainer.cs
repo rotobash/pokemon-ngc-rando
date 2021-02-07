@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using XDCommon.PokemonDefinitions;
+using XDCommon.Utility;
 
-namespace XDCommon.Utility
+namespace XDCommon.PokemonDefinitions
 {
-    public class Trainer
+    public class XDTrainer : ITrainer
     {
         internal const byte kSizeOfTrainerData = 0x38;
         internal const byte kSizeOfAIData = 0x20;
@@ -25,10 +25,10 @@ namespace XDCommon.Utility
         const ushort kTrainerAIOffset = 0x28;
 
         int index = 0x0;
-        TrainerPool pool;
+        XDTrainerPool pool;
         ISO iso;
 
-        public TrainerPokemon[] Pokemon { get; }
+        public ITrainerPokemon[] Pokemon { get; }
         public int NameID
         {
             get => pool.ExtractedFile.GetIntAtOffset(StartOffset + kTrainerNameIDOffset);
@@ -89,14 +89,15 @@ namespace XDCommon.Utility
         {
             get
             {
-                return pool.DTNRDataOffset + (index * kSizeOfTrainerData);
+                return pool.DTNRDataOffset + index * kSizeOfTrainerData;
             }
         }
 
         public string Name => iso.CommonRelStringTable.GetStringWithId(NameID).ToString();
 
+        public bool IsSet => TrainerClass != XDTrainerClasses.None;
 
-        public Trainer(int index, TrainerPool trainers, ISO iso)
+        public XDTrainer(int index, XDTrainerPool trainers, ISO iso)
         {
             this.index = index;
             pool = trainers;
@@ -116,19 +117,19 @@ namespace XDCommon.Utility
             }
             TrainerString = name;
 
-            Pokemon = new TrainerPokemon[6];
+            Pokemon = new ITrainerPokemon[6];
             var mask = ShadowMask;
             for (int i = 0; i < Pokemon.Length; i++)
             {
-                var id = pool.ExtractedFile.GetUShortAtOffset(StartOffset + kFirstTrainerPokemonOffset + (i * 2));
+                var id = pool.ExtractedFile.GetUShortAtOffset(StartOffset + kFirstTrainerPokemonOffset + i * 2);
                 var m = mask % 2;
                 if (m == 1)
                 {
-                    Pokemon[i] = new TrainerPokemon(id, pool, PokemonFileType.DDPK);
-                } 
+                    Pokemon[i] = new XDTrainerPokemon(id, pool, PokemonFileType.DDPK);
+                }
                 else
                 {
-                    Pokemon[i] = new TrainerPokemon(id, pool, PokemonFileType.DPKM);
+                    Pokemon[i] = new XDTrainerPokemon(id, pool, PokemonFileType.DPKM);
                 }
                 mask >>= 1;
             }

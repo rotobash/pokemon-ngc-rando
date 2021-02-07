@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using XDCommon.PokemonDefinitions;
-using XDCommon.Utility;
 
 namespace Randomizer
 {
     public interface IGameExtractor
     {
-        TrainerPool[] ExtractPools(Pokemon[] pokemon, Move[] moves);
+        ITrainerPool[] ExtractPools(Pokemon[] pokemon, Move[] moves);
         Move[] ExtractMoves();
         Pokemon[] ExtractPokemon();
     }

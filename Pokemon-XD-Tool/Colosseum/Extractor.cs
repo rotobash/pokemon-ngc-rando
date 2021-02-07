@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using XDCommon.PokemonDefinitions;
-using XDCommon.Utility;
 
 namespace Randomizer.Colosseum
 {
@@ -20,7 +19,7 @@ namespace Randomizer.Colosseum
             throw new NotImplementedException();
         }
 
-        public TrainerPool[] ExtractPools(Pokemon[] pokemon, Move[] moves)
+        public ITrainerPool[] ExtractPools(Pokemon[] pokemon, Move[] moves)
         {
             throw new NotImplementedException();
         }
