@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Randomizer.Shufflers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,5 +13,6 @@ namespace Randomizer
         ITrainerPool[] ExtractPools(Pokemon[] pokemon, Move[] moves);
         Move[] ExtractMoves();
         Pokemon[] ExtractPokemon();
+        void RandomizeStatics(StaticPokemonShufflerSettings settings, Random random, Pokemon[] pokemon, Move[] moves);
     }
 }

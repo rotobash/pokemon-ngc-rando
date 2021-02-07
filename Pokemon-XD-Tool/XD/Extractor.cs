@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Randomizer.Shufflers;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,7 +12,7 @@ using XDCommon.Utility;
 
 namespace Randomizer.XD
 {
-    public class XDExtractor: IGameExtractor
+    public class XDExtractor : IGameExtractor
 	{
         ISO iso;
         public XDExtractor(ISO iso)
@@ -83,6 +84,11 @@ namespace Randomizer.XD
 			}
 
 			return pokemon;
+		}
+
+        public void RandomizeStatics(StaticPokemonShufflerSettings settings, Random random, Pokemon[] pokemon, Move[] moves)
+        {
+			StaticPokemonShuffler.RandomizeXDStatics(random, settings, new XDStarterPokemon(iso), Array.Empty<IGiftPokemon>(), pokemon, moves);
 		}
     }
 }

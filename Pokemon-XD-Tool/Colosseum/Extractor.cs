@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Randomizer.Shufflers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,11 @@ namespace Randomizer.Colosseum
         }
 
         public ITrainerPool[] ExtractPools(Pokemon[] pokemon, Move[] moves)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RandomizeStatics(StaticPokemonShufflerSettings settings, Random random, Pokemon[] pokemon, Move[] moves)
         {
             throw new NotImplementedException();
         }

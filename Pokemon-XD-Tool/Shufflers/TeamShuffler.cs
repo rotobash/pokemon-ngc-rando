@@ -22,7 +22,8 @@ namespace Randomizer.Shufflers
 
         public bool RandomizeHeldItems;
         public bool BanBadItems;
-        //public bool RandomizeAbilities;
+        public bool RandomizeMovesets;
+        public bool UseLevelUpMoves;
     }
 
     public static class TeamShuffler
@@ -63,7 +64,7 @@ namespace Randomizer.Shufflers
         };
 
 
-        public static void ShuffleTeams(Random random, TeamShufflerSettings settings, ITrainerPool[] trainerPools, Pokemon[] pokemonList)
+        public static void ShuffleTeams(Random random, TeamShufflerSettings settings, ITrainerPool[] trainerPools, Pokemon[] pokemonList, Move[] moves)
         {
             // yikes
             foreach (var pool in trainerPools)
@@ -111,6 +112,25 @@ namespace Randomizer.Shufflers
                             else if (count == 1)
                             {
                                 pokemon.SetPokemon(pokemon.Pokemon.Evolutions[0].EvolvesInto);
+                            }
+                        }
+
+                        if (settings.RandomizeMovesets)
+                        {
+                            if (settings.UseLevelUpMoves)
+                            {
+                                var learnableMoves = pokemon.Pokemon.CurrentLevelMoves(pokemon.Level, moves);
+                                for (int i = 0; i < Constants.NumberOfPokemonMoves; i++)
+                                {
+                                    pokemon.SetMove(i, learnableMoves.ElementAt(i).Move);
+                                }
+                            }
+                            else
+                            {
+                                for (int i = 0; i < Constants.NumberOfPokemonMoves; i++)
+                                {
+                                    pokemon.SetMove(i, (ushort)random.Next(0, moves.Length));
+                                }
                             }
                         }
                     }

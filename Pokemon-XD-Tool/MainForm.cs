@@ -102,7 +102,7 @@ namespace Randomizer
 
                     progressMessageLabel.Text = "Randomizing Pokemon Traits...";
 
-                    randomizer.RandomizePokemon(new PokemonTraitShufflerSettings
+                    randomizer.RandomizePokemonTraits(new PokemonTraitShufflerSettings
                     {
                         RandomizeBaseStats = baseStatsUnchangedCheck.Checked ? 0 : baseStatsShuffleCheck.Checked ? 1 : 2,
                         StandardizeEXPCurves = standardizeExpCureCheck.Checked,
@@ -155,8 +155,30 @@ namespace Randomizer
 
                         RandomizeHeldItems = randomShadowHeldItemCheck.Checked,
                         BanBadItems = banBadShadowHeldItemsCheck.Checked,
+
+                        RandomizeMovesets = randomizeMovesets.Checked,
+                        UseLevelUpMoves = true,
                     });
 
+                    randomizer.RandomizeStatics(new StaticPokemonShufflerSettings
+                    {
+                        RandomizeMovesets = randomizeMovesets.Checked,
+                        UseLevelUpMoves = true,
+
+                        Starter = randomStarterCheck.Checked ? StarterRandomSetting.Random
+                            : (customStarterCheck.Checked ? StarterRandomSetting.Custom
+                            : (randomStarterThreeStageCheck.Checked ? StarterRandomSetting.Unchanged
+                            : (randomStarterTwoStageCheck.Checked ? StarterRandomSetting.RandomTwoStage
+                            : (randomStarterSingleStageCheck.Checked ? StarterRandomSetting.RandomSingleStage
+                            : StarterRandomSetting.Unchanged)))),
+
+                        Starter1 = starterComboBox.Text,
+                        Starter2 = starter2ComboBox.Text,
+
+                        Trade = tradeBothRandomCheck.Checked ? TradeRandomSetting.Both 
+                            : (tradeRandomGivenCheck.Checked ? TradeRandomSetting.Given 
+                            : TradeRandomSetting.Unchanged)
+                    });
 
 
                     //var path = saveFileDialog.FileName;
@@ -257,6 +279,14 @@ namespace Randomizer
         private void forceGoodDamagingTutorMoveCheck_CheckedChanged(object sender, EventArgs e)
         {
             forceGoodDamagingTutorMovePercent.Enabled = forceGoodDamagingTutorMoveCheck.Checked;
+        }
+
+        private void customStarterCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            starterLabel.Enabled = customStarterCheck.Checked;
+            starterComboBox.Enabled = customStarterCheck.Checked;
+            starter2Label.Enabled = customStarterCheck.Checked;
+            starter2ComboBox.Enabled = customStarterCheck.Checked;
         }
     }
 }

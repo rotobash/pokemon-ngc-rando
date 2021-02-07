@@ -36,15 +36,15 @@ namespace Randomizer
             MoveShuffler.RandomizeMoves(random, moves, settings);
         }
 
-        public void RandomizePokemon(PokemonTraitShufflerSettings settings)
+        public void RandomizePokemonTraits(PokemonTraitShufflerSettings settings)
         {
-            PokemonTraitShuffler.RandomizePokemonTraits(random, pokemon, settings);
+            PokemonTraitShuffler.RandomizePokemonTraits(random, pokemon, moves, settings);
         }
 
         public void RandomizeTrainers(TeamShufflerSettings settings)
         {
             var decks = gameExtractor.ExtractPools(pokemon, moves);
-            TeamShuffler.ShuffleTeams(random, settings, decks, pokemon);
+            TeamShuffler.ShuffleTeams(random, settings, decks, pokemon, moves);
         }
 
         public void RandomizeTMs()
@@ -52,9 +52,9 @@ namespace Randomizer
 
         }
 
-        public void RandomizeTraits()
+        public void RandomizeStatics(StaticPokemonShufflerSettings settings)
         {
-
+            gameExtractor.RandomizeStatics(settings, random, pokemon, moves);
         }
 
         public void RandomizeBattleBingo()
