@@ -4,21 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using XDCommon.PokemonDefinitions;
-using XDCommon.Utility;
 
 namespace Randomizer.Shufflers
 {
     public struct TeamShufflerSettings
     {
         public bool RandomizePokemon;
+        public bool AllowSpecialPokemon;
+        public bool DontUseLegendaries;
+
+        public bool BoostShadowCatchRate;
+        public float BoostShadowCatchRatePercent;
+        public bool BoostTrainerLevel;
+        public float BoostTrainerLevelPercent;
+        public bool ForceFullyEvolved;
+        public int ForceFullyEvolvedLevel;
+
+        public bool RandomizeHeldItems;
+        public bool BanBadItems;
+        //public bool RandomizeAbilities;
     }
 
     public static class TeamShuffler
     {
         // invalid pokemon
-        public static readonly List<int> BannedPokemon = new List<int>
+        public static readonly List<int> SpecialPokemon = new List<int>
         {
-            0,
             252,
             253,
             254,
@@ -47,38 +58,89 @@ namespace Randomizer.Shufflers
             412
         };
 
+        public static readonly List<int> Legendaries = new List<int>
+        {
+        };
+
 
         public static void ShuffleTeams(Random random, TeamShufflerSettings settings, TrainerPool[] trainerPools, Pokemon[] pokemonList)
         {
-            if (settings.RandomizePokemon)
+            // yikes
+            foreach (var pool in trainerPools)
             {
-                // yikes
-                foreach (var pool in trainerPools)
+                if (pool.TeamType == TrainerPoolType.DarkPokemon)
+                    continue;
+
+                foreach (var trainer in pool.AllTrainers)
                 {
-                    if (pool.TeamType == TrainerPoolType.DarkPokemon)
+                    if (trainer.TrainerClass == 0)
                         continue;
 
-                    foreach (var trainer in pool.AllTrainers)
+                    foreach (var pokemon in trainer.Pokemon)
                     {
-                        if (trainer.TrainerClass == 0)
+                        if (pokemon.Pokemon.Index == 0)
                             continue;
 
-                        foreach (var pokemon in trainer.Pokemon)
+                        if (settings.RandomizePokemon)
                         {
-                            if (pokemon.Pokemon.Index == 0)
-                                continue;
-
                             var index = 0;
-                            while (BannedPokemon.Contains(index))
+                            while (index == 0 || (!settings.AllowSpecialPokemon && SpecialPokemon.Contains(index)) || (settings.DontUseLegendaries && Legendaries.Contains(index)))
                             {
                                 index = random.Next(1, pokemonList.Length);
                             }
                             pokemon.SetPokemon((ushort)index);
                         }
+
+                        if (settings.BoostShadowCatchRate)
+                        {
+                            BoostCatchRate(settings.BoostShadowCatchRatePercent, pokemon);
+                        }
+
+                        if (settings.BoostTrainerLevel)
+                        {
+                            BoostLevel(settings.BoostTrainerLevelPercent, pokemon);
+                        }
+
+                        if (settings.ForceFullyEvolved && pokemon.Level < settings.ForceFullyEvolvedLevel)
+                        {
+                            if (PokemonTraitShuffler.CheckForSplitOrEndEvolution(pokemon.Pokemon, out var count) && count > 0)
+                            {
+                                var evoInd = random.Next(0, count);
+                                pokemon.SetPokemon(pokemon.Pokemon.Evolutions[evoInd].EvolvesInto);
+                            } 
+                            else if (count == 1)
+                            {
+                                pokemon.SetPokemon(pokemon.Pokemon.Evolutions[0].EvolvesInto);
+                            }
+                        }
                     }
                 }
             }
+        }
 
+        public static void BoostCatchRate(float boostPercent, TrainerPokemon poke)
+        {
+            if (poke.ShadowCatchRate == 0)
+            {
+                poke.ShadowCatchRate = poke.Pokemon.CatchRate;
+            }
+
+            var catchRate = poke.ShadowCatchRate;
+            var catchRateIncrease = catchRate + catchRate * boostPercent;
+            if (catchRateIncrease > byte.MaxValue)
+                catchRateIncrease = byte.MaxValue;
+
+            poke.ShadowCatchRate = (byte)catchRateIncrease;
+        }
+
+        public static void BoostLevel(float boostPercent, TrainerPokemon poke)
+        {
+            var level = poke.Level;
+            var levelIncrease = level + level * boostPercent;
+            if (levelIncrease > 100)
+                levelIncrease = 100;
+
+            poke.Level = (byte)levelIncrease;
         }
     }
 }

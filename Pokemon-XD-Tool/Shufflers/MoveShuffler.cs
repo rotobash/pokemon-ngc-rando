@@ -39,7 +39,7 @@ namespace Randomizer.Shufflers
 
                 if (settings.RandomMovePP)
                 {
-                    move.PP = (byte)Math.Max(5, random.Sample(4, 4) * 5);
+                    move.PP = (byte)Math.Max(5, Math.Round(random.Sample(4, 4)) * 5);
                 }
 
                 if (settings.RandomMoveTypes && move.Type != PokemonTypes.None)

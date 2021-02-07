@@ -8,6 +8,14 @@ using XDCommon.Utility;
 
 namespace Randomizer.Shufflers
 {
+    public enum MoveCompatibility
+    {
+        Unchanged,
+        RandomPreferType,
+        Random,
+        Full
+    }
+
     public struct PokemonTraitShufflerSettings
     {
         public int RandomizeBaseStats;
@@ -29,6 +37,11 @@ namespace Randomizer.Shufflers
         public bool ThreeStageEvolution;
         public bool EasyEvolutions;
         public bool FixImpossibleEvolutions;
+
+        public MoveCompatibility TMCompatibility;
+        public MoveCompatibility TutorCompatibility;
+
+        public bool NoEXP;
     }
 
     public static class PokemonTraitShuffler
@@ -45,13 +58,17 @@ namespace Randomizer.Shufflers
             {
                 foreach (var poke in pokemon)
                 {
+
                 }
             }
 
             foreach (var poke in pokemon)
             {
-                if (TeamShuffler.BannedPokemon.Contains(poke.Index))
+                if (TeamShuffler.SpecialPokemon.Contains(poke.Index))
                     continue;
+
+                ChangeCompatibility(random, settings.TMCompatibility, poke, true);
+                ChangeCompatibility(random, settings.TutorCompatibility, poke, false);
 
                 if (settings.RandomizeBaseStats > 0 && settings.BaseStatsFollowEvolution && !pokeBaseStatsRandomized.Contains(poke.Name))
                 {
@@ -75,7 +92,7 @@ namespace Randomizer.Shufflers
 
                 if (settings.RandomizeAbilities && !pokeAbilitiesRandomized.Contains(poke.Name))
                 {
-                    RandomizeAbility(random, settings, poke);
+                    RandomizeAbility(random, settings.AllowWonderGuard, settings.BanNegativeAbilities, poke);
 
                     if (settings.AbilitiesFollowEvolution)
                     {
@@ -83,7 +100,7 @@ namespace Randomizer.Shufflers
                         Pokemon currentPoke = poke;
                         while (!endOrSplitEvolution)
                         {
-                            endOrSplitEvolution = CheckForSplitOrEndEvolution(endOrSplitEvolution, currentPoke);
+                            endOrSplitEvolution = CheckForSplitOrEndEvolution(currentPoke, out var _);
 
                             if (!endOrSplitEvolution)
                             {
@@ -108,7 +125,7 @@ namespace Randomizer.Shufflers
                         Pokemon currentPoke = poke;
                         while (!endOrSplitEvolution)
                         {
-                            endOrSplitEvolution = CheckForSplitOrEndEvolution(endOrSplitEvolution, currentPoke);
+                            endOrSplitEvolution = CheckForSplitOrEndEvolution(currentPoke, out var _);
 
                             if (!endOrSplitEvolution)
                             {
@@ -140,19 +157,26 @@ namespace Randomizer.Shufflers
                 {
                     // todoS
                 }
+
+                if (settings.NoEXP)
+                {
+                    poke.BaseExp = 0;
+                }
             }
         }
 
-        private static bool CheckForSplitOrEndEvolution(bool endOrSplitEvolution, Pokemon currentPoke)
+        public static bool CheckForSplitOrEndEvolution(Pokemon currentPoke, out int count)
         {
+            bool endOrSplitEvolution = false;
+            count = 0;
             for (int i = 0; i < currentPoke.Evolutions.Length; i++)
             {
                 if (i == 0 && currentPoke.Evolutions[i].EvolutionMethod == EvolutionMethods.None
                     || currentPoke.Evolutions[i].EvolutionMethod != EvolutionMethods.None && i > 0)
-                {
                     endOrSplitEvolution = true;
-                    break;
-                }
+
+                if (currentPoke.Evolutions[i].EvolutionMethod != EvolutionMethods.None)
+                    count++;
             }
 
             return endOrSplitEvolution;
@@ -165,14 +189,15 @@ namespace Randomizer.Shufflers
             PokemonTypes originalType = poke.Type1;
             PokemonTypes type;
             PokemonTypes type2 = PokemonTypes.None;
-            bool validTyping = false;
+            bool validTyping;
             do
             {
                 type = types[random.Next(0, types.Length)];
                 validTyping = type != PokemonTypes.None;
-                if (validTyping && poke.Type2 != PokemonTypes.None)
+                var forceSecondType = random.Next(0, 10) > 6;
+                if ((validTyping && poke.Type2 != PokemonTypes.None) || forceSecondType)
                 {
-                    if (poke.Type2 != originalType)
+                    if (poke.Type2 != originalType || forceSecondType)
                     {
                         type2 = types[random.Next(0, types.Length)];
                         validTyping = type != PokemonTypes.None || type == type2;
@@ -189,14 +214,14 @@ namespace Randomizer.Shufflers
             poke.Type2 = type2;
         }
 
-        private static void RandomizeAbility(Random random, PokemonTraitShufflerSettings settings, Pokemon poke)
+        public static void RandomizeAbility(Random random, bool allowWonderGuard, bool negativeAbility, Pokemon poke)
         {
             // yes I know but it's easier to set it there because it needs to know what game we're extracting
             var numAbilities = poke.Ability1.NumberOfAbilities;
             bool validAbility;
             do
             {
-                if (poke.Name.ToLower() == "shedinja" || TeamShuffler.BannedPokemon.Contains(poke.Index))
+                if (poke.Name.ToLower() == "shedinja")
                 {
                     validAbility = true;
                     continue;
@@ -204,21 +229,86 @@ namespace Randomizer.Shufflers
 
                 poke.SetAbility1((byte)random.Next(1, numAbilities));
                 var ability1Name = poke.Ability1.Name.ToLower();
-                validAbility = CheckValidAbility(settings, ability1Name);
+                validAbility = CheckValidAbility(allowWonderGuard, negativeAbility, ability1Name);
 
                 if (validAbility && !string.IsNullOrEmpty(poke.Ability2.Name))
                 {
                     poke.SetAbility2((byte)random.Next(1, numAbilities));
                     var ability2Name = poke.Ability2.Name.ToLower();
-                    validAbility |= CheckValidAbility(settings, ability2Name);
+                    validAbility |= CheckValidAbility(allowWonderGuard, negativeAbility, ability2Name);
                 }
 
             } while (!validAbility);
         }
 
-        private static bool CheckValidAbility(PokemonTraitShufflerSettings settings, string abilityName)
+        private static bool CheckValidAbility(bool allowWonderGuard, bool negativeAbility, string abilityName)
         {
-            return !((!settings.AllowWonderGuard && abilityName == "wonder guard") || (settings.BanNegativeAbilities && (abilityName == "truant" || abilityName == "slow start" || abilityName == "defeatist")));
+            return !((!allowWonderGuard && abilityName == "wonder guard") || (negativeAbility && (abilityName == "truant" || abilityName == "slow start" || abilityName == "defeatist")));
+        }
+
+        private static void ChangeCompatibility(Random random, MoveCompatibility moveCompatibility, Pokemon pokemon, bool tms)
+        {
+            switch (moveCompatibility)
+            {
+                case MoveCompatibility.Full:
+                    {
+                        if (tms)
+                        {
+                            for (int i = 0; i < pokemon.LearnableTMs.Length; i++)
+                            {
+                                pokemon.SetLearnableTMS(i, true);
+                            }
+                        }
+                        else
+                        {
+                            for (int i = 0; i < pokemon.TutorMoves.Length; i++)
+                            {
+                                pokemon.SetTutorMoves(i, true);
+                            }
+                        }
+                    }
+                    break;
+                case MoveCompatibility.Random:
+                    {
+                        if (tms)
+                        {
+                            for (int i = 0; i < pokemon.LearnableTMs.Length; i++)
+                            {
+                                pokemon.SetLearnableTMS(i, random.Next(0, 2) > 0);
+                            }
+                        }
+                        else
+                        {
+                            for (int i = 0; i < pokemon.TutorMoves.Length; i++)
+                            {
+                                pokemon.SetTutorMoves(i, random.Next(0, 2) > 0);
+                            }
+                        }
+                    }
+                    break;
+                case MoveCompatibility.RandomPreferType:
+                    {
+                        if (tms)
+                        {
+                            // todo lookup TM to see type
+                            for (int i = 0; i < pokemon.LearnableTMs.Length; i++)
+                            {
+                                pokemon.SetLearnableTMS(i, random.Next(0, 2) > 0);
+                            }
+                        }
+                        else
+                        {
+                            for (int i = 0; i < pokemon.TutorMoves.Length; i++)
+                            {
+                                pokemon.SetTutorMoves(i, random.Next(0, 2) > 0);
+                            }
+                        }
+                    }
+                    break;
+                default:
+                case MoveCompatibility.Unchanged:
+                    break;
+            }
         }
     }
 }

@@ -123,12 +123,38 @@ namespace Randomizer
                         ThreeStageEvolution = threeStageMaxCheck.Checked,
                         EasyEvolutions = easyEvolutionsCheck.Checked,
                         FixImpossibleEvolutions = fixImpossibleEvolutionsCheck.Checked,
+
+                        TMCompatibility = tmFullCompatibilityCheck.Checked 
+                            ? MoveCompatibility.Full : (tmCompatibilityRandomCheck.Checked 
+                            ? MoveCompatibility.Random : (tmCompatibilityPreferTypeCheck.Checked 
+                            ? MoveCompatibility.RandomPreferType
+                            : MoveCompatibility.Unchanged)),
+                        
+                        TutorCompatibility = tutorFullCompatibilityCheck.Checked 
+                            ? MoveCompatibility.Full : (tutorCompatibilityRandomCheck.Checked 
+                            ? MoveCompatibility.Random : (tutorCompatibilityPreferTypeCheck.Checked 
+                            ? MoveCompatibility.RandomPreferType
+                            : MoveCompatibility.Unchanged)),
+
+                        NoEXP = noEXPCheck.Checked,
                     });
 
                     progressMessageLabel.Text = "Randomizing Trainers...";
                     randomizer.RandomizeTrainers(new TeamShufflerSettings
                     {
-                        RandomizePokemon = true
+                        RandomizePokemon = randomizeTrainerPokemonCheck.Checked,
+                        AllowSpecialPokemon = allowSpecialPokemonCheck.Checked,
+                        DontUseLegendaries = noLegendaryOnTrainerCheck.Checked,
+
+                        BoostShadowCatchRate = boostShadowCatchRateCheck.Checked,
+                        BoostShadowCatchRatePercent = (float)(shadowCatchBoostPercent.Value / 100),
+                        BoostTrainerLevel = boostTrainerLevelCheck.Checked,
+                        BoostTrainerLevelPercent = (float)(boostTrainerLevelPercent.Value / 100),
+                        ForceFullyEvolved = forceFullyEvovledLevelCheck.Checked,
+                        ForceFullyEvolvedLevel = (int)forceFullyEvolvedLevel.Value,
+
+                        RandomizeHeldItems = randomShadowHeldItemCheck.Checked,
+                        BanBadItems = banBadShadowHeldItemsCheck.Checked,
                     });
 
 
@@ -161,7 +187,18 @@ namespace Randomizer
             MessageBox.Show("Done!");
         }
 
-
+        private void forceFullyEvovledLevelCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            forceFullyEvolvedLevel.Enabled = forceFullyEvovledLevelCheck.Checked;
+        }
+        private void boostTrainerLevelCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            boostTrainerLevelPercent.Enabled = boostTrainerLevelCheck.Checked;
+        }
+        private void boostPokeSpotLevelCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            boostPokeSpotLevelPercent.Enabled = boostPokeSpotLevelCheck.Checked;
+        }
         private void boostShadowCatchRateCheck_CheckedChanged(object sender, EventArgs e)
         {
             shadowCatchBoostPercent.Enabled = boostShadowCatchRateCheck.Checked;
@@ -170,6 +207,7 @@ namespace Randomizer
         {
             pokeSpotCatchBoostPercent.Enabled = boostPokeSpotCatchRate.Checked;
         }
+
         private void randomizeTypesCheck_CheckedChanged(object sender, EventArgs e)
         {
             typesFollowEvolutionCheck.Enabled = randomizeTypesCheck.Checked;
@@ -193,6 +231,7 @@ namespace Randomizer
             allowWonderGuardCheck.Enabled = randomizeAbilitiesCheck.Checked;
             abilitiesFollowEvolutionCheck.Enabled = randomizeAbilitiesCheck.Checked;
         }
+
 
         private void randomizeTMsCheck_CheckedChanged(object sender, EventArgs e)
         {
