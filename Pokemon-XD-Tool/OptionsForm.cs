@@ -22,8 +22,10 @@ namespace Randomizer
         {
             extractDirLabel.Text = Configuration.ExtractDirectory;
             threadCountSelector.Value = Configuration.ThreadCount;
+            movePower.Value = Configuration.GoodDamagingMovePower;
             memoryStreamCheck.Checked = Configuration.UseMemoryStreams;
             verboseLogCheck.Checked = Configuration.Verbose;
+            browseForDirButton.Enabled = !memoryStreamCheck.Checked;
         }
 
         private void threadCountSelector_ValueChanged(object sender, EventArgs e)
@@ -43,11 +45,17 @@ namespace Randomizer
         private void memoryStreamCheck_CheckedChanged(object sender, EventArgs e)
         {
             Configuration.UseMemoryStreams = memoryStreamCheck.Checked;
+            browseForDirButton.Enabled = !memoryStreamCheck.Checked;
         }
 
         private void verboseLogCheck_CheckedChanged(object sender, EventArgs e)
         {
             Configuration.Verbose = verboseLogCheck.Checked;
+        }
+
+        private void movePower_ValueChanged(object sender, EventArgs e)
+        {
+            Configuration.GoodDamagingMovePower = (int)movePower.Value;
         }
     }
 }

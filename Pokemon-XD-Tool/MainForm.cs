@@ -128,7 +128,7 @@ namespace Randomizer
                     progressMessageLabel.Text = "Randomizing Trainers...";
                     randomizer.RandomizeTrainers(new TeamShufflerSettings
                     {
-                        RandomizePokemon = randomizeTrainerPokeCheck.Checked
+                        RandomizePokemon = true
                     });
 
 
@@ -146,43 +146,78 @@ namespace Randomizer
             }
         }
 
-        private void randomizeTask(object? sender, DoWorkEventArgs e)
+        private void randomizeTask(object sender, DoWorkEventArgs e)
         {
             e.Result = true;
         }
 
-        private void progressChanged(object? sender, ProgressChangedEventArgs e)
+        private void progressChanged(object sender, ProgressChangedEventArgs e)
         {
             progressBar.Value = e.ProgressPercentage;
         }
 
-        private void onRandomizeTaskComplete(object? sender, RunWorkerCompletedEventArgs e)
+        private void onRandomizeTaskComplete(object sender, RunWorkerCompletedEventArgs e)
         {
             MessageBox.Show("Done!");
         }
 
+
+        private void boostShadowCatchRateCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            shadowCatchBoostPercent.Enabled = boostShadowCatchRateCheck.Checked;
+        }
+        private void boostPokeSpotCatchRate_CheckedChanged(object sender, EventArgs e)
+        {
+            pokeSpotCatchBoostPercent.Enabled = boostPokeSpotCatchRate.Checked;
+        }
         private void randomizeTypesCheck_CheckedChanged(object sender, EventArgs e)
         {
-            typesFollowEvolutionCheck.Visible = randomizeTypesCheck.Checked;
+            typesFollowEvolutionCheck.Enabled = randomizeTypesCheck.Checked;
         }
 
         private void baseStatsRandomCheck_CheckedChanged(object sender, EventArgs e)
         {
-            bstFollowEvolutionCheck.Visible = baseStatsRandomCheck.Checked;
+            bstFollowEvolutionCheck.Enabled = baseStatsRandomCheck.Checked;
         }
 
         private void randomizeEvolutionsCheck_CheckedChanged(object sender, EventArgs e)
         {
-            evolutionSameTypeCheck.Visible = randomizeEvolutionsCheck.Checked;
-            evolutionSimilarStrengthCheck.Visible = randomizeEvolutionsCheck.Checked;
-            threeStageMaxCheck.Visible = randomizeEvolutionsCheck.Checked;
+            evolutionSameTypeCheck.Enabled = randomizeEvolutionsCheck.Checked;
+            evolutionSimilarStrengthCheck.Enabled = randomizeEvolutionsCheck.Checked;
+            threeStageMaxCheck.Enabled = randomizeEvolutionsCheck.Checked;
         }
 
         private void randomizeAbilitiesCheck_CheckedChanged(object sender, EventArgs e)
         {
-            banBadAbilitiesCheck.Visible = randomizeAbilitiesCheck.Checked;
-            allowWonderGuardCheck.Visible = randomizeAbilitiesCheck.Checked;
-            abilitiesFollowEvolutionCheck.Visible = randomizeAbilitiesCheck.Checked;
+            banBadAbilitiesCheck.Enabled = randomizeAbilitiesCheck.Checked;
+            allowWonderGuardCheck.Enabled = randomizeAbilitiesCheck.Checked;
+            abilitiesFollowEvolutionCheck.Enabled = randomizeAbilitiesCheck.Checked;
+        }
+
+        private void randomizeTMsCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            forceGoodDamagingTMsCheck.Enabled = randomizeTMsCheck.Checked;
+            tmCompatibilityPreferTypeCheck.Enabled = randomizeTMsCheck.Checked;
+            if (tmCompatibilityPreferTypeCheck.Checked)
+                tmCompatibilityUnchangedCheck.Checked = true;
+        }
+
+        private void randomizeTutorMoveCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            forceGoodDamagingTutorMoveCheck.Enabled = randomizeTutorMoveCheck.Checked;
+            tutorCompatibilityPreferTypeCheck.Enabled = randomizeTutorMoveCheck.Checked;
+            if (tutorCompatibilityPreferTypeCheck.Checked)
+                tutorCompatibilityUnchangedCheck.Checked = true;
+        }
+
+        private void forceGoodDamagingTMsCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            forceGoodDamagingTMPercent.Enabled = forceGoodDamagingTMsCheck.Checked;
+        }
+
+        private void forceGoodDamagingTutorMoveCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            forceGoodDamagingTutorMovePercent.Enabled = forceGoodDamagingTutorMoveCheck.Checked;
         }
     }
 }

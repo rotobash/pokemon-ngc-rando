@@ -45,6 +45,23 @@ namespace XDCommon
                 AddOrUpdateAppSettings(nameof(ThreadCount), value.ToString());
             }
         }
+
+        public static int GoodDamagingMovePower 
+        {
+            get
+            {
+                var movePower = 0;
+                if (!int.TryParse(ConfigurationManager.AppSettings.Get(nameof(GoodDamagingMovePower)), out movePower))
+                {
+                    GoodDamagingMovePower = 60;
+                }
+                return movePower;
+            }
+            set
+            {
+                AddOrUpdateAppSettings(nameof(GoodDamagingMovePower), value.ToString());
+            }
+        }
         public static string ExtractDirectory
         {
             get
