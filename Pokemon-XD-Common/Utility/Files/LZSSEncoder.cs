@@ -7,8 +7,8 @@ namespace XDCommon.Utility
 {
     public static class LZSSEncoder
     {
-        const int EI = 12;
-        const int EJ = 4;
+        const byte EI = 12;
+        const byte EJ = 4;
         const byte P = 2;
 
         public static void Encode(Stream file)
@@ -34,24 +34,22 @@ namespace XDCommon.Utility
                 filename = fs.Name;
                 outputFilename = $"{filename}.bak";
             }
-            outputStream = outputFilename.GetNewStream();
 
             // setup output stream
-            file.Flush();
-            file.Seek(0, SeekOrigin.Begin);
+            outputStream = outputFilename.GetNewStream();
 
             int r = (N - F) - rless;
             N--;
             F--;
 
-            for (flags = 0; ; flags >>= 1)
+            while (true)
             {
-                // endianess needs to be converted
+                flags >>= 1;
                 if ((flags & 0x100) == 0)
                 {
                     var b = file.ReadByte();
                     if (b == -1) break;
-                    flags = (uint)b | 0xFF00;
+                    flags = (uint)(b | 0xFF00);
                 }
                 
                 if ((flags & 0x1) != 0)
@@ -59,8 +57,8 @@ namespace XDCommon.Utility
                     var b = file.ReadByte();
                     if (b == -1) break;
                     outputStream.WriteByte((byte)b);
-                    slidingWindow[r] = (byte)b;
-                    r = (r + 1) & N;
+                    slidingWindow[r++] = (byte)b;
+                    r &= N;
                 } 
                 else
                 {
@@ -71,16 +69,13 @@ namespace XDCommon.Utility
 
                     i |= (j >> EJ) << 8;
                     j = (j & F) + P;
-                    var bytes = new byte[j + 1];
                     for (int k = 0; k <= j; k++)
                     {
-                        int ind = (i + k) & N;
-                        var b = slidingWindow[ind];
-                        bytes[k] = b;
+                        var b = slidingWindow[((i + k) & N)];
+                        outputStream.WriteByte(b);
                         slidingWindow[r++] = b;
-                        r = (r + 1) & N;
+                        r &= N;
                     }
-                    outputStream.Write(bytes);
                 }
             }
 

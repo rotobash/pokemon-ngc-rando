@@ -25,7 +25,7 @@ namespace XDCommon.Utility
 
             if (!fSys.UsesFileExtensions || fileName == fileName.Split(".")[0])
             {
-                fileName = $"{fileName.Split(".")[0]}{fileType.FileTypeName()}";
+                fileName = $"{fileName}{fileType.FileTypeName()}";
             }
 
             if (Configuration.Verbose)
@@ -44,6 +44,7 @@ namespace XDCommon.Utility
                 {
                     Console.WriteLine($"Decoding {fileName}");
                 }
+                extractedFile.Seek(kSizeOfLZSSHeader, SeekOrigin.Begin);
                 extractedFile = LZSSEncoder.Decode(extractedFile);
             }
 
