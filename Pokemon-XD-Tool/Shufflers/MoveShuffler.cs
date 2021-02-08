@@ -64,7 +64,7 @@ namespace Randomizer.Shufflers
 
         public static IEnumerable<LevelUpMove> CurrentLevelMoves(this Pokemon pokemon, int level, Move[] moveList)
         {
-            return pokemon.LevelUpMoves.Where(m => m.Level <= level).TakeLast(Constants.NumberOfPokemonMoves);
+            return pokemon.LevelUpMoves.Where(m => m.Level != 0 && m.Level <= level).TakeLast(Constants.NumberOfPokemonMoves);
         }
     }
 }

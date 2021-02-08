@@ -24,6 +24,7 @@ namespace Randomizer.Shufflers
         public bool BanBadItems;
         public bool RandomizeMovesets;
         public bool UseLevelUpMoves;
+        public bool ForceFourMoves;
     }
 
     public static class TeamShuffler
@@ -119,10 +120,13 @@ namespace Randomizer.Shufflers
                         {
                             if (settings.UseLevelUpMoves)
                             {
-                                var learnableMoves = pokemon.Pokemon.CurrentLevelMoves(pokemon.Level, moves);
+                                var learnableMoves = pokemon.Pokemon.CurrentLevelMoves(pokemon.Level, moves).ToArray();
                                 for (int i = 0; i < Constants.NumberOfPokemonMoves; i++)
                                 {
-                                    pokemon.SetMove(i, learnableMoves.ElementAt(i).Move);
+                                    if (i > learnableMoves.Length - 1 && settings.ForceFourMoves)
+                                        pokemon.SetMove(i, (ushort)random.Next(1, moves.Length));
+                                    else if (i < learnableMoves.Length)
+                                        pokemon.SetMove(i, learnableMoves.ElementAt(i).Move);
                                 }
                             }
                             else
