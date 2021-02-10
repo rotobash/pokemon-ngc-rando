@@ -25,7 +25,7 @@ namespace XDCommon.Utility
 
             if (!fSys.UsesFileExtensions || fileName == fileName.Split(".")[0])
             {
-                fileName = $"{fileName}{fileType.FileTypeName()}";
+                fileName = $"{fileName.RemoveFileExtensions()}{fileType.FileTypeName()}";
             }
 
             if (Configuration.Verbose)
@@ -95,6 +95,7 @@ namespace XDCommon.Utility
                         FileName = fileName
                     };
 
+                case FileTypes.FNT:
                 case FileTypes.REL:
                     return new REL
                     {

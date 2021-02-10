@@ -159,7 +159,7 @@ namespace XDCommon.Utility
             {
                 var nameAtIndex = GetFilenameForFile(i);
                 var fileType = GetFileTypeForFile(i);
-                if (fileName.RemoveFileExtensions() == nameAtIndex && fileName.EndsWith(fileType.FileTypeName()))
+                if (fileName.RemoveFileExtensions() == nameAtIndex.RemoveFileExtensions() && fileName.EndsWith(fileType.FileTypeName()))
                 {
                     return i;
                 }
@@ -183,6 +183,7 @@ namespace XDCommon.Utility
             {
                 var index = GetIndexForFileName(filename);
                 var entry = FSysFileEntry.ExtractFromFSys(this, index);
+                if (entry is REL rel) rel.LoadPointers();
                 ExtractedEntries.Add(entry.FileName, entry);
                 return entry;
             }

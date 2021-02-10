@@ -14,11 +14,8 @@ namespace XDCommon.PokemonDefinitions
         public override XDShadowTrainerPool DarkPokemon => this;
 
 
-        public XDShadowTrainerPool(IExtractedFile fileEntry, ISO iso, Pokemon[] pokemon, Move[] moveList) : base(TrainerPoolType.DarkPokemon, fileEntry, pokemon, moveList)
+        public XDShadowTrainerPool(ISO iso, Pokemon[] pokemon, Move[] moveList) : base(TrainerPoolType.DarkPokemon, iso, pokemon, moveList)
         {
-            // todo: when extracting files works remove fileEntry parameter and get it from ISO like so:
-            //var deckArchive = iso.GetFSysFile("deck_archive.fsys");
-            //var fileEntry = deckArchive.ExtractEntryByFileName($"DeckData_DarkPokemon.bin");
         }
     }
 }

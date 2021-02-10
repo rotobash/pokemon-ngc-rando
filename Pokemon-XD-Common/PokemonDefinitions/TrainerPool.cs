@@ -10,6 +10,5 @@ namespace XDCommon.PokemonDefinitions
         TrainerPoolType TeamType { get; }
         IEnumerable<ITrainer> AllTrainers { get; }
         void SetShadowPokemon(ITrainerPool shadowPool);
-        void LoadTrainers(ISO iso);
     }
 }

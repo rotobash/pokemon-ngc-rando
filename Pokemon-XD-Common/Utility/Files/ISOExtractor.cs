@@ -20,8 +20,18 @@ namespace XDCommon.Utility
 
         public ISOExtractor(string pathToISO)
         {
+            if (!Configuration.UseMemoryStreams)
+            {
+                Directory.CreateDirectory(Configuration.ExtractDirectory);
+            }
             ExtractPath = Configuration.ExtractDirectory;
             ISOStream = File.Open(pathToISO, FileMode.Open, FileAccess.ReadWrite);
+        }
+
+        public ISOExtractor(Stream isoStream)
+        {
+            ExtractPath = Configuration.ExtractDirectory;
+            ISOStream = isoStream;
         }
 
         public ISO ExtractISO()
@@ -73,15 +83,8 @@ namespace XDCommon.Utility
             };
             iso.TOC.Load(iso.DOL);
 
-            //var commonFsys = iso.GetFSysFile("common.fsys");
-            //iso.CommonRel = (REL)FSysFileEntry.ExtractFromFSys(commonFsys, iso.Region == Region.Japan ? 1 : 0);
-            var relStream = File.Open($"{Configuration.ExtractDirectory}/common_rel.rel", FileMode.Open, FileAccess.ReadWrite);
-
-            iso.CommonRel = new REL()
-            {
-                FileName = "common_rel.rel",
-                ExtractedFile = relStream
-            };
+            var commonFsys = iso.GetFSysFile("common.fsys");
+            iso.CommonRel = (REL)FSysFileEntry.ExtractFromFSys(commonFsys, iso.Region == Region.Japan ? 1 : 0);
             iso.CommonRel.LoadPointers();
             iso.BuildStringTables();
 
