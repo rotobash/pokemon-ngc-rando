@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,35 +44,89 @@ namespace Randomizer
 
         private void loadIsoButton_Click(object sender, EventArgs e)
         {
-            openFileDialog.Filter = "Colosseum or XD Game File|*.iso";
+            openFileDialog.Filter = "Colosseum or XD Game File|*.iso;*.zip";
             openFileDialog.CheckFileExists = true;
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 progressMessageLabel.Text = "Reading ISO...";
-                if (!Directory.Exists(Configuration.ExtractDirectory))
-                {
-                    Directory.CreateDirectory(Configuration.ExtractDirectory);
-                }
-                isoExtractor = new ISOExtractor(openFileDialog.FileName);
-                iso = isoExtractor.ExtractISO();
-                switch (iso.Game)
-                {
-                    case Game.Colosseum:
-                        gamePictureBox.Image = new Bitmap("Images/colo-logo.jpg");
-                        gameExtractor = new ColoExtractor();
-                        break;
-                    case Game.XD:
-                        gamePictureBox.Image = new Bitmap("Images/xd-logo.jpg");
-                        gameExtractor = new XDExtractor(iso);
-                        break;
-                    default:
-                        MessageBox.Show("Game not recognized!");
-                        return;
-                }
-                gameLabel.Text = iso.Game.ToString();
-                regionLabel.Text = iso.Region.ToString();
 
-                progressMessageLabel.Text = "Successfully read ISO";
+                if (OpenFile())
+                {
+
+                    iso = isoExtractor.ExtractISO();
+                    switch (iso.Game)
+                    {
+                        case Game.Colosseum:
+                            gamePictureBox.Image = new Bitmap("Images/colo-logo.jpg");
+                            gameExtractor = new ColoExtractor();
+                            break;
+                        case Game.XD:
+                            gamePictureBox.Image = new Bitmap("Images/xd-logo.jpg");
+                            gameExtractor = new XDExtractor(iso);
+                            break;
+                        default:
+                            return;
+                    }
+                    gameLabel.Text = iso.Game.ToString();
+                    regionLabel.Text = iso.Region.ToString();
+
+                    progressMessageLabel.Text = "Successfully read ISO";
+
+                }
+            }
+        }
+
+        private bool OpenFile()
+        {
+            // did they give us crap?
+            try
+            {
+                if (openFileDialog.FileName.EndsWith("zip"))
+                {
+                    if (!Configuration.UseMemoryStreams)
+                    {
+                        var dialogResult = MessageBox.Show(
+                            "Selecting zip files was intended for people using memory stream but you have disabled this option. Hitting Ok will extract the ISO to your disk.",
+                            "Just so you know...",
+                            MessageBoxButtons.OKCancel
+                        );
+                        if (dialogResult != DialogResult.OK)
+                            return false;
+                    }
+
+                    // keep this one open
+                    var extractStream = $"{Configuration.ExtractDirectory}/{openFileDialog.SafeFileName}.iso".GetNewStream();
+                    using var fileStream = File.OpenRead(openFileDialog.FileName);
+                    using var zip = new ZipArchive(fileStream);
+                    foreach (var entry in zip.Entries)
+                    {
+                        if (entry.Name.EndsWith(".iso"))
+                        {
+                            using var entryStream = entry.Open();
+                            entryStream.CopyTo(extractStream);
+                            break;
+                        }
+                    }
+                    isoExtractor = new ISOExtractor(extractStream);
+                }
+                else
+                {
+                    isoExtractor = new ISOExtractor(openFileDialog.FileName);
+                }
+                return true;
+            }
+            catch
+            {
+                // aha!
+                MessageBox.Show("Game not recognized!");
+                progressMessageLabel.Text = "Failed";
+                if (iso != null || isoExtractor != null)
+                {
+                    // dereference the iso, the GC will call it's destructor which will free the streams
+                    iso = null;
+                    isoExtractor = null;
+                }
+                return false;
             }
         }
 
@@ -86,6 +141,7 @@ namespace Randomizer
             if (iso != null)
             {
                 saveFileDialog.FileName = $"{iso.Game}-{iso.Region}.iso";
+                saveFileDialog.Filter = "Randomized game file|*.iso";
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     progressBar.Value = 0;
@@ -182,6 +238,10 @@ namespace Randomizer
 
                     randomizer.RandomizeTMs(new ItemShufflerSettings());
                     randomizer.RandomizeOverworldItems(new ItemShufflerSettings());
+
+                    // will only do something if game is XD
+                    randomizer.RandomizeBattleBingo();
+                    randomizer.RandomizePokeSpots();
 
 
                     //var path = saveFileDialog.FileName;
