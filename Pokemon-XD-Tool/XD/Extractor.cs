@@ -20,22 +20,21 @@ namespace Randomizer.XD
             this.iso = iso;
         }
 
-        public ITrainerPool[] ExtractPools(Pokemon[] pokemon, Move[] moves)
-        {
+		public ITrainerPool[] ExtractPools(Pokemon[] pokemon, Move[] moves)
+		{
 			var poolFsys = iso.GetFSysFile("deck_archive.fsys") ?? throw new KeyNotFoundException($"Could not extract deck_archive.fsys, it doesn't exist in the TOC.");
 			var poolTypes = Enum.GetValues<TrainerPoolType>().ToList();
 			var trainerPool = new ITrainerPool[XDTrainerPool.MainTeams.Length + 1];
 
-			var sStream = File.Open($"{Configuration.ExtractDirectory}/DeckData_DarkPokemon.bin", FileMode.Open, FileAccess.ReadWrite);
-			var shadowPokemonPool = FSysFileEntry.CreateExtractedFile(Configuration.ExtractDirectory, "DeckData_DarkPokemon.bin", FileTypes.BIN, sStream);
+			var shadowPokemonPool = poolFsys.ExtractEntryByFileName("DeckData_DarkPokemon.bin");
 
 			trainerPool[0] = new XDShadowTrainerPool(shadowPokemonPool, iso, pokemon, moves);
 
 			for (int i = 0; i < XDTrainerPool.MainTeams.Length; i++)
-            {
+			{
 
 				var pool = XDTrainerPool.MainTeams[i];
-				if (Configuration.Verbose) 
+				if (Configuration.Verbose)
 				{
 					Console.WriteLine($"Extracting deck: {pool}");
 				}
@@ -45,23 +44,65 @@ namespace Randomizer.XD
 				var fileName = poolFsys.GetFilenameForFile(index);
 
 				// stub deck data for now
-				var fStream = File.Open($"{Configuration.ExtractDirectory}/{fileName}", FileMode.Open, FileAccess.ReadWrite);
+				//var fStream = File.Open($"{Configuration.ExtractDirectory}/{fileName}", FileMode.Open, FileAccess.ReadWrite);
 
-				IExtractedFile file = FSysFileEntry.CreateExtractedFile(Configuration.ExtractDirectory, fileName, FileTypes.BIN, fStream);
-				//if (!poolFsys.ExtractedEntries.ContainsKey(fileName))
-				//{
-				//	file = FSysFileEntry.ExtractFromFSys(poolFsys, index);
-				//}
-				//else
-				//{
-				//	file = poolFsys.ExtractedEntries[fileName];
-				//}
+				IExtractedFile file = poolFsys.ExtractEntryByFileName(fileName);
 
 				trainerPool[i + 1] = new XDTrainerPool(pool, file, pokemon, moves);
 				trainerPool[i + 1].SetShadowPokemon(trainerPool[0] as XDShadowTrainerPool);
 				trainerPool[i + 1].LoadTrainers(iso);
-            }
+			}
 			return trainerPool;
+		}
+
+		public Items[] ExtractItems()
+		{
+			var numItems = (int)iso.CommonRel.GetValueAtPointer(Constants.NumberOfItems);
+			var items = new Items[numItems + Constants.NumberOfTutorMoves];
+			for (int i = 0; i < numItems; i++)
+            {
+				if (i <= 12)
+                {
+					items[i] = new Pokeballs(i, iso);
+                }
+				else if (i >= Constants.FirstTMItemIndex && i < Constants.FirstTMItemIndex + Constants.NumberOfTMsAndHMs)
+                {
+					items[i] = new TM(i, iso);
+                }
+				else
+                {
+					items[i] = new Items(i, iso);
+                }
+            }
+			for (int i = numItems; i < items.Length; i++)
+            {
+				items[i] = new TutorMove(i - numItems, iso);
+            }
+
+			return items;
+		}
+
+		public OverworldItem[] ExtractOverworldItems()
+		{
+			var numItems = iso.CommonRel.GetValueAtPointer(Constants.XDNumberTreasureBoxes);
+			var items = new OverworldItem[numItems];
+			for (int i = 0;  i < numItems; i++)
+            {
+				items[i] = new OverworldItem(i, iso);
+            }
+			return items;
+		}
+
+		public Pokemarts[] ExtractPokemarts()
+		{
+			var pocket = iso.GetFSysFile("pocket_menu.fsys").ExtractEntryByFileName("pocket_menu.rel") as REL;
+			var numMarts = pocket.GetValueAtPointer(Constants.NumberOfMarts);
+			var marts = new Pokemarts[numMarts];
+			for (int i = 0;  i < numMarts; i++)
+            {
+				marts[i] = new Pokemarts(i, iso);
+            }
+			return marts;
 		}
 
 		public Move[] ExtractMoves()
@@ -90,5 +131,33 @@ namespace Randomizer.XD
         {
 			StaticPokemonShuffler.RandomizeXDStatics(random, settings, new XDStarterPokemon(iso), Array.Empty<IGiftPokemon>(), pokemon, moves);
 		}
-    }
+
+		public BattleBingoCard[] ExtractBattleBingoCards()
+		{
+			var numCards = Constants.NumberOfBingoCards;
+			var cards = new BattleBingoCard[numCards];
+			for (int i = 0; i < numCards; i++)
+			{
+				cards[i] = new BattleBingoCard(i, iso);
+			}
+			return cards;
+		}
+
+		public PokeSpotPokemon[] ExtractPokeSpotPokemon()
+		{
+			var pokeSpots = Enum.GetValues<PokeSpotType>();
+			var pokemon = new List<PokeSpotPokemon>();
+			
+			foreach (var pokeSpotType in pokeSpots)
+            {
+				var pokeSpot = new PokeSpot(pokeSpotType, iso);
+				for (int i = 0; i < pokeSpot.NumberOfEntries; i++)
+                {
+					pokemon.Add(new PokeSpotPokemon(i, pokeSpot, iso));
+                }
+            }
+
+			return pokemon.ToArray();
+		}
+	}
 }

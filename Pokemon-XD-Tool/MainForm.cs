@@ -180,6 +180,9 @@ namespace Randomizer
                             : TradeRandomSetting.Unchanged)
                     });
 
+                    randomizer.RandomizeTMs(new ItemShufflerSettings());
+                    randomizer.RandomizeOverworldItems(new ItemShufflerSettings());
+
 
                     //var path = saveFileDialog.FileName;
                     //if (!path.EndsWith(".iso"))

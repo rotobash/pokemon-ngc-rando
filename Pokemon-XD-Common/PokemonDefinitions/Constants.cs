@@ -141,10 +141,82 @@ namespace XDCommon.PokemonDefinitions
         public const byte StatusEffectDurationOffset = 0x4;
         public const byte StatusEffectNameIDOffset = 0x10;
 
+        // items
+        public const byte SizeOfItemData = 0x28;
+        public const byte NumberOfFriendshipEffects = 0x03;
+
+        public const byte BagSlotOffset = 0x00;
+        public const byte ItemCantBeHeldOffset = 0x01; // also can't be thrown away?
+        public const byte InBattleUseItemIDOffset = 0x04;// really more like a functional id which is compared with items that can be used rather than having passive uses
+        public const byte ItemPriceOffset = 0x06;
+        public const byte ItemCouponCostOffset = 0x08;
+        public const byte ItemBattleHoldItemIDOffset = 0x0B;
+        public const byte ItemNameIDOffset = 0x10;
+        public const byte ItemDescriptionIDOffset = 0x14;
+        public const byte ItemParameterOffset = 0x1B;
+        public const byte FirstFriendshipEffectOffset = 0x24; // Signed Int
+        public const byte SizeOfTMEntry = 0x08;
+        public const int FirstTMItemIndex = 0x121;
+        public const byte NumberOfTMsAndHMs = 0x3A;
+        public const byte NumberOfTMs = 0x32;
+
+        public const byte SizeOfTutorMoveEntry = 0x0C;
+        public const byte TutorMoveMoveIndexOffset = 0x00;
+        public const byte AvailabilityFlagOffset = 0x07;
+
+        // overworld items
+
+        public const byte SizeOfTreasure = 0x1c;
+        public const byte TreasureModelIDOffset = 0x0;
+        public const byte TreasureQuantityOffset = 0x1;
+        public const byte TreasureAngleOffset = 0x2;
+        public const byte TreasureRoomIDOffset = 0x4;
+        public const byte TreasureFlagOffset = 0x6;
+        public const byte TreasureItemIDOffset = 0xE;
+        public const byte TreasureXCoordOffset = 0x10;
+        public const byte TreasureYCoordOffset = 0x14;
+        public const byte TreasureZCoordOffset = 0x18;
+
         // xd
-        public const int BattleBingo = 0;
-        public const int NumberOfBingoCards = 1;
-        public const int numberOfPokespots = 11;
+        public const byte BattleBingo = 0x0;
+        public const byte NumberOfBingoCouponRewards = 0x0A;
+        public const byte NumberOfBingoCards = 0x0B;
+        public const byte NumberOfPanels = 0x10;
+        public const byte SizeOfBingoCardData = 0xB8;
+
+        public const byte NumberOfMysteryPanels = 0x03;
+        public const byte NumberOfPokemonPanels = 0x0D;
+
+        public const byte BingoCardIndexOffset = 0x00;
+        public const byte BingoCardDifficultyLevelOffset = 0x01;
+        public const byte BingoCardSubIndexOffset = 0x02;
+        public const byte BingoCardPokemonLevelOffset = 0x03;
+        public const byte BingoCardPokemonCountOffset = 0x06;
+        public const byte BingoCardMysteryPanelCountOffset = 0x07;
+        public const byte BingoCardNameIDOffset = 0x08;
+        public const byte BingoCardDetailsIDOffset = 0x0C;
+        public const byte BingoCardFirstCouponsRewardOffset = 0x10;
+        public const byte BingoCardFirstPokemonOffset = 0x24;
+        public const byte BingoCardFirstMysteryPanelOffset = 0xB0;
+
+        public const byte SizeOfBattleBingoPokemonData = 0x0A;
+        public const byte BattleBingoPokemonPanelTypeOffset = 0x00;
+        public const byte BattleBingoPokemonAbilityOffset = 0x01;
+        public const byte BattleBingoPokemonNatureOffset = 0x02;
+        public const byte BattleBingoPokemonGenderOffset = 0x03;
+        public const byte BattleBingoPokemonSpeciesOffset = 0x04;
+        public const byte BattleBingoPokemonMoveOffset = 0x06;
+
+        public const int FirstPokeSpotOffset = 0x2FAC;
+        public const byte SizeOfPokeSpotData = 0x0C;
+        public const byte NumberOfPokeSpotEntries = 0x0B;
+        public const byte MinLevelOffset = 0x00;
+        public const byte MaxLevelOffset = 0x01;
+        public const byte PokeSpotSpeciesOffset = 0x02;
+        public const byte EncounterPercentageOffset = 0x07;
+        public const byte StepsPerPokeSnackOffset = 0x0A;
+
+        public const int NumberOfPokespots = 11;
         public const int PokespotRock = 12;
         public const int PokespotRockEntries = 13;
         public const int PokespotOasis = 15;
@@ -153,6 +225,7 @@ namespace XDCommon.PokemonDefinitions
         public const int PokespotCaveEntries = 19;
         public const int PokespotAll = 21;
         public const int PokespotAllEntries = 22;
+
         public const int BattleCDs = 24;
         public const int NumberBattleCDs = 25;
         public const int BattleFields = 28;
@@ -253,6 +326,14 @@ namespace XDCommon.PokemonDefinitions
 
         public const int XDMoves = 124;
         public const int XDNumberOfMoves = 125;
+
+        // Pocket
+        public const int MartStartIndexes = 0;
+        public const int NumberOfMarts = 1;
+        public const int MartGreetings = 2;
+        public const int NumberOfMartGreetingSections = 3; // 0x4c bytes each
+        public const int MartItems = 4;
+        public const int NumberOfMartItems = 5;
 
         // COLO
         public const int ColNumberRelPointers = 0x6C;

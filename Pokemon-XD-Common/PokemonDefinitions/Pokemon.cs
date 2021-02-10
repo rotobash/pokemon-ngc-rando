@@ -94,6 +94,11 @@ namespace XDCommon.PokemonDefinitions
         }
 
 
+        public int BST
+        {
+            get => Attack + Defense + SpecialAttack + SpecialDefense + Speed;
+        }
+
         public byte HP
         {
             get => iso.CommonRel.ExtractedFile.GetByteAtOffset(StartOffset + Constants.HPOffset);

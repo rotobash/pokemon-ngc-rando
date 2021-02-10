@@ -11,6 +11,9 @@ namespace Randomizer
     public interface IGameExtractor
     {
         ITrainerPool[] ExtractPools(Pokemon[] pokemon, Move[] moves);
+        Items[] ExtractItems();
+        OverworldItem[] ExtractOverworldItems();
+        Pokemarts[] ExtractPokemarts();
         Move[] ExtractMoves();
         Pokemon[] ExtractPokemon();
         void RandomizeStatics(StaticPokemonShufflerSettings settings, Random random, Pokemon[] pokemon, Move[] moves);

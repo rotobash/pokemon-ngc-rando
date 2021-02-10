@@ -10,6 +10,16 @@ namespace Randomizer.Colosseum
 {
     public class ColoExtractor : IGameExtractor
     {
+        public Items[] ExtractItems()
+        {
+            throw new NotImplementedException();
+        }
+
+        public OverworldItem[] ExtractOverworldItems()
+        {
+            throw new NotImplementedException();
+        }
+
         public Move[] ExtractMoves()
         {
             throw new NotImplementedException();
@@ -26,6 +36,11 @@ namespace Randomizer.Colosseum
         }
 
         public void RandomizeStatics(StaticPokemonShufflerSettings settings, Random random, Pokemon[] pokemon, Move[] moves)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Pokemarts[] ExtractPokemarts()
         {
             throw new NotImplementedException();
         }
