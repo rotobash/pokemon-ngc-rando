@@ -39,37 +39,37 @@ namespace XDCommon.PokemonDefinitions
 
         public ushort Exp
         {
-            get => iso.DOL.ExtractedFile.GetByteAtOffset(StartOffset + ExpValueOffset);
+            get => iso.DOL.ExtractedFile.GetUShortAtOffset(StartOffset + ExpValueOffset);
             set => iso.DOL.ExtractedFile.WriteBytesAtOffset(StartOffset + ExpValueOffset, value.GetBytes());
         }
 
         public ushort Pokemon
         {
-            get => iso.DOL.ExtractedFile.GetByteAtOffset(StartOffset + SpeciesOffset);
+            get => iso.DOL.ExtractedFile.GetUShortAtOffset(StartOffset + SpeciesOffset);
             set => iso.DOL.ExtractedFile.WriteBytesAtOffset(StartOffset + SpeciesOffset, value.GetBytes());
         }
 
         public ushort Move1
         {
-            get => iso.DOL.ExtractedFile.GetByteAtOffset(StartOffset + Move1Offset);
+            get => iso.DOL.ExtractedFile.GetUShortAtOffset(StartOffset + Move1Offset);
             set => iso.DOL.ExtractedFile.WriteBytesAtOffset(StartOffset + Move1Offset, value.GetBytes());
         }
 
         public ushort Move2
         {
-            get => iso.DOL.ExtractedFile.GetByteAtOffset(StartOffset + Move2Offset);
+            get => iso.DOL.ExtractedFile.GetUShortAtOffset(StartOffset + Move2Offset);
             set => iso.DOL.ExtractedFile.WriteBytesAtOffset(StartOffset + Move2Offset, value.GetBytes());
         }
 
         public ushort Move3
         {
-            get => iso.DOL.ExtractedFile.GetByteAtOffset(StartOffset + Move3Offset);
+            get => iso.DOL.ExtractedFile.GetUShortAtOffset(StartOffset + Move3Offset);
             set => iso.DOL.ExtractedFile.WriteBytesAtOffset(StartOffset + Move3Offset, value.GetBytes());
         }
 
         public ushort Move4
         {
-            get => iso.DOL.ExtractedFile.GetByteAtOffset(StartOffset + Move4Offset);
+            get => iso.DOL.ExtractedFile.GetUShortAtOffset(StartOffset + Move4Offset);
             set => iso.DOL.ExtractedFile.WriteBytesAtOffset(StartOffset + Move4Offset, value.GetBytes());
         }
 

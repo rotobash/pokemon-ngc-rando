@@ -213,13 +213,13 @@ namespace Randomizer
                         BanBadItems = banBadShadowHeldItemsCheck.Checked,
 
                         RandomizeMovesets = randomizeMovesets.Checked,
-                        UseLevelUpMoves = true,
+                        UseLevelUpMoves = false,
                     });
 
                     randomizer.RandomizeStatics(new StaticPokemonShufflerSettings
                     {
                         RandomizeMovesets = randomizeMovesets.Checked,
-                        UseLevelUpMoves = true,
+                        UseLevelUpMoves = false,
 
                         Starter = randomStarterCheck.Checked ? StarterRandomSetting.Random
                             : (customStarterCheck.Checked ? StarterRandomSetting.Custom
