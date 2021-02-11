@@ -219,13 +219,16 @@ namespace Randomizer
                         BanBadItems = banBadShadowHeldItemsCheck.Checked,
 
                         RandomizeMovesets = randomizeMovesets.Checked,
-                        UseLevelUpMoves = false,
+                        ForceFourMoves = forceFourMoveCheck.Checked,
+                        ForceGoodDamagingMoves = movesetsForceGoodDamagingMoveCheck.Checked,
+                        ForceGoodDamagingMovesCount = (int)movesetsForceGoodDamagingMovePercent.Value,
+                        MetronomeOnly = movesetsMetronomeOnlyCheck.Checked
                     });
 
                     randomizer.RandomizeStatics(new StaticPokemonShufflerSettings
                     {
                         RandomizeMovesets = randomizeMovesets.Checked,
-                        UseLevelUpMoves = false,
+                        ForceFourMoves = forceFourMoveCheck.Checked,
 
                         Starter = randomStarterCheck.Checked ? StarterRandomSetting.Random
                             : (customStarterCheck.Checked ? StarterRandomSetting.Custom
@@ -355,6 +358,11 @@ namespace Randomizer
             starterComboBox.Enabled = customStarterCheck.Checked;
             starter2Label.Enabled = customStarterCheck.Checked;
             starter2ComboBox.Enabled = customStarterCheck.Checked;
+        }
+
+        private void movesetsForceGoodDamagingMoveCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            movesetsForceGoodDamagingMovePercent.Enabled = movesetsForceGoodDamagingMoveCheck.Checked;
         }
     }
 }

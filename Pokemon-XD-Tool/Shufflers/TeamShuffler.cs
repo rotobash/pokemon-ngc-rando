@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XDCommon;
 using XDCommon.PokemonDefinitions;
 
 namespace Randomizer.Shufflers
@@ -24,8 +25,9 @@ namespace Randomizer.Shufflers
         public bool BanBadItems;
         public bool RandomizeMovesets;
         public bool MetronomeOnly;
-        public bool UseLevelUpMoves;
         public bool ForceFourMoves;
+        public bool ForceGoodDamagingMoves;
+        public int ForceGoodDamagingMovesCount;
     }
 
     public static class TeamShuffler
@@ -136,33 +138,44 @@ namespace Randomizer.Shufflers
                             }
                         }
 
+                        var moveSet = new HashSet<ushort>();
                         if (settings.RandomizeMovesets)
                         {
-                            if (settings.MetronomeOnly)
+                            if (settings.ForceGoodDamagingMoves)
                             {
-                                var metronomeMove = moves.Single(m => m.Name.ToLower() == "metronome");
-                                for (int i = 0; i < Constants.NumberOfPokemonMoves; i++)
-                                    pokemon.SetMove(i, (ushort)metronomeMove.MoveIndex);
-                            }
-                            else if (settings.UseLevelUpMoves)
-                            {
-                                var learnableMoves = pokemon.Pokemon.CurrentLevelMoves(pokemon.Level).ToArray();
-                                for (int i = 0; i < Constants.NumberOfPokemonMoves; i++)
+                                var potentialMoves = moves.Where(m => m.BasePower >= Configuration.GoodDamagingMovePower).ToArray();
+                                while (moveSet.Count < settings.ForceGoodDamagingMovesCount)
                                 {
-                                    // the pokemon is too low level/doesn't learn enough moves
-                                    // if forcing 4 moves, randomly pick some to fill the gaps
-                                    if (i > learnableMoves.Length - 1 && settings.ForceFourMoves)
-                                        pokemon.SetMove(i, (ushort)random.Next(1, moves.Length));
-                                    else if (i < learnableMoves.Length)
-                                        pokemon.SetMove(i, learnableMoves.ElementAt(i).Move);
+                                    var potentialMove = potentialMoves[(ushort)random.Next(0, potentialMoves.Length)];
+                                    moveSet.Add((ushort)potentialMove.MoveIndex);
                                 }
                             }
-                            else
+
+                            while (moveSet.Count < Constants.NumberOfPokemonMoves)
+                                moveSet.Add((ushort)random.Next(0, moves.Length));
+
+                            for (int i = 0; i < Constants.NumberOfPokemonMoves; i++)
                             {
-                                for (int i = 0; i < Constants.NumberOfPokemonMoves; i++)
-                                {
-                                    pokemon.SetMove(i, (ushort)random.Next(0, moves.Length));
-                                }
+                                pokemon.SetMove(i, moveSet.ElementAt(i));
+                            }
+                        }
+                        else if (settings.MetronomeOnly)
+                        {
+                            var metronomeMove = moves.Single(m => m.Name.ToLower() == "metronome");
+                            for (int i = 0; i < Constants.NumberOfPokemonMoves; i++)
+                                pokemon.SetMove(i, (ushort)metronomeMove.MoveIndex);
+                        }
+                        else
+                        {
+                            var learnableMoves = pokemon.Pokemon.CurrentLevelMoves(pokemon.Level).ToArray();
+                            for (int i = 0; i < Constants.NumberOfPokemonMoves; i++)
+                            {
+                                // the pokemon is too low level/doesn't learn enough moves
+                                // if forcing 4 moves, randomly pick some to fill the gaps
+                                if (i > learnableMoves.Length - 1 && settings.ForceFourMoves)
+                                    pokemon.SetMove(i, (ushort)random.Next(1, moves.Length));
+                                else if (i < learnableMoves.Length)
+                                    pokemon.SetMove(i, learnableMoves.ElementAt(i).Move);
                             }
                         }
                     }

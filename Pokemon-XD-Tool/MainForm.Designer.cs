@@ -159,7 +159,7 @@ namespace Randomizer
             this.randomizeMovesets = new System.Windows.Forms.RadioButton();
             this.randomizeMovesetsPreferType = new System.Windows.Forms.RadioButton();
             this.panel19 = new System.Windows.Forms.Panel();
-            this.checkBox20 = new System.Windows.Forms.CheckBox();
+            this.forceFourMoveCheck = new System.Windows.Forms.CheckBox();
             this.movesetsForceGoodDamagingMoveCheck = new System.Windows.Forms.CheckBox();
             this.movesetsForceGoodDamagingMovePercent = new System.Windows.Forms.NumericUpDown();
             this.panel20 = new System.Windows.Forms.Panel();
@@ -2570,7 +2570,7 @@ namespace Randomizer
             // 
             // panel19
             // 
-            this.panel19.Controls.Add(this.checkBox20);
+            this.panel19.Controls.Add(this.forceFourMoveCheck);
             this.panel19.Controls.Add(this.movesetsForceGoodDamagingMoveCheck);
             this.panel19.Controls.Add(this.movesetsForceGoodDamagingMovePercent);
             this.panel19.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -2579,26 +2579,26 @@ namespace Randomizer
             this.panel19.Size = new System.Drawing.Size(350, 131);
             this.panel19.TabIndex = 2;
             // 
-            // checkBox20
+            // forceFourMoveCheck
             // 
-            this.checkBox20.AutoSize = true;
-            this.checkBox20.Location = new System.Drawing.Point(11, 27);
-            this.checkBox20.Name = "checkBox20";
-            this.checkBox20.Size = new System.Drawing.Size(215, 19);
-            this.checkBox20.TabIndex = 20;
-            this.checkBox20.Text = "Every Pokemon Starts With 4 Moves";
-            this.checkBox20.UseVisualStyleBackColor = true;
+            this.forceFourMoveCheck.AutoSize = true;
+            this.forceFourMoveCheck.Location = new System.Drawing.Point(11, 27);
+            this.forceFourMoveCheck.Name = "forceFourMoveCheck";
+            this.forceFourMoveCheck.Size = new System.Drawing.Size(215, 19);
+            this.forceFourMoveCheck.TabIndex = 20;
+            this.forceFourMoveCheck.Text = "Every Pokemon Starts With 4 Moves";
+            this.forceFourMoveCheck.UseVisualStyleBackColor = true;
             // 
             // movesetsForceGoodDamagingMoveCheck
             // 
             this.movesetsForceGoodDamagingMoveCheck.AutoSize = true;
-            this.movesetsForceGoodDamagingMoveCheck.Enabled = false;
             this.movesetsForceGoodDamagingMoveCheck.Location = new System.Drawing.Point(11, 52);
             this.movesetsForceGoodDamagingMoveCheck.Name = "movesetsForceGoodDamagingMoveCheck";
             this.movesetsForceGoodDamagingMoveCheck.Size = new System.Drawing.Size(183, 19);
             this.movesetsForceGoodDamagingMoveCheck.TabIndex = 22;
             this.movesetsForceGoodDamagingMoveCheck.Text = "Force Good Damaging Moves";
             this.movesetsForceGoodDamagingMoveCheck.UseVisualStyleBackColor = true;
+            this.movesetsForceGoodDamagingMoveCheck.CheckedChanged += new System.EventHandler(this.movesetsForceGoodDamagingMoveCheck_CheckedChanged);
             // 
             // movesetsForceGoodDamagingMovePercent
             // 
@@ -2990,7 +2990,7 @@ namespace Randomizer
         private System.Windows.Forms.CheckBox moveAccCheck;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.CheckBox movePowerCheck;
-        private System.Windows.Forms.CheckBox checkBox20;
+        private System.Windows.Forms.CheckBox forceFourMoveCheck;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.RadioButton movesetsMetronomeOnlyCheck;
         private System.Windows.Forms.RadioButton randomizeMovesets;

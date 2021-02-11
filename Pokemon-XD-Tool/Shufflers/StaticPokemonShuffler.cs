@@ -33,7 +33,7 @@ namespace Randomizer.Shufflers
         public TradeRandomSetting Trade;
 
         public bool RandomizeMovesets;
-        public bool UseLevelUpMoves;
+        public bool ForceFourMoves;
     }
 
     public static class StaticPokemonShuffler
@@ -46,32 +46,33 @@ namespace Randomizer.Shufflers
             switch (settings.Starter)
             {
                 case StarterRandomSetting.Custom:
-                    {
-                        index = pokemon.FirstOrDefault(p => p.Name.ToLower() == settings.Starter1)?.Index ?? starter.Pokemon;
-                    }
-                    break;
+                {
+                    index = pokemon.FirstOrDefault(p => p.Name.ToLower() == settings.Starter1.ToLower())?.Index ?? starter.Pokemon;
+                }
+                break;
                 case StarterRandomSetting.Random:
+                {
+                    while (index == 0 || TeamShuffler.SpecialPokemon.Contains(index))
                     {
-                        while (index == 0 || TeamShuffler.SpecialPokemon.Contains(index))
-                        {
-                            index = random.Next(1, pokemon.Length);
-                        }
+                        index = random.Next(1, pokemon.Length);
                     }
-                    break;
+                }
+                break;
                 case StarterRandomSetting.RandomThreeStage:
                     while (!condition)
                     {
                         index = random.Next(1, pokemon.Length);
-                        condition = index != 0 || TeamShuffler.SpecialPokemon.Contains(index)
-                            && ((secondStage = pokemon[index].Evolutions[0]).EvolutionMethod != EvolutionMethods.None
-                            && pokemon[secondStage.EvolvesInto].Evolutions[0].EvolutionMethod != EvolutionMethods.None);
+                        condition = (index != 0 || TeamShuffler.SpecialPokemon.Contains(index))
+                            && (secondStage = pokemon[index].Evolutions[0]).EvolutionMethod != EvolutionMethods.None
+                            && pokemon[secondStage.EvolvesInto].Evolutions[0].EvolutionMethod != EvolutionMethods.None
+                            && !PokemonTraitShuffler.CheckForSplitOrEndEvolution(pokemon[index], out int _);
                     }
                     break;
                 case StarterRandomSetting.RandomTwoStage:
                     while (!condition)
                     {
                         index = random.Next(1, pokemon.Length);
-                        condition = index != 0 || TeamShuffler.SpecialPokemon.Contains(index)
+                        condition = (index != 0 || TeamShuffler.SpecialPokemon.Contains(index))
                             && (secondStage = pokemon[index].Evolutions[0]).EvolutionMethod != EvolutionMethods.None
                             && pokemon[secondStage.EvolvesInto].Evolutions[0].EvolutionMethod == EvolutionMethods.None;
                     }
@@ -80,7 +81,7 @@ namespace Randomizer.Shufflers
                     while (!condition)
                     {
                         index = random.Next(1, pokemon.Length);
-                        condition = index != 0 || TeamShuffler.SpecialPokemon.Contains(index)
+                        condition = (index != 0 || TeamShuffler.SpecialPokemon.Contains(index))
                             && pokemon[index].Evolutions[0].EvolutionMethod == EvolutionMethods.None;
                     }
                     break;
@@ -91,23 +92,34 @@ namespace Randomizer.Shufflers
             }
             starter.Pokemon = (ushort)index;
 
+            var moveSet = new HashSet<ushort>();
             if (settings.RandomizeMovesets)
             {
-                if (settings.UseLevelUpMoves)
+                while (moveSet.Count < Constants.NumberOfPokemonMoves)
+                    moveSet.Add((ushort)random.Next(0, moves.Length));
+
+                for (int i = 0; i < Constants.NumberOfPokemonMoves; i++)
                 {
-                    var learnableMoves = pokemon[starter.Pokemon].CurrentLevelMoves(starter.Level).ToArray();
-                    // this is really unsafe 
-                    starter.Move1 = learnableMoves[0].Move;
-                    starter.Move2 = learnableMoves[1].Move;
-                    starter.Move3 = learnableMoves[2].Move;
-                    starter.Move4 = learnableMoves[3].Move;
+                    starter.SetMove(i, moveSet.ElementAt(i));
                 }
-                else
+            }
+            else
+            {
+                foreach (var levelUpMove in pokemon[starter.Pokemon].CurrentLevelMoves(starter.Level))
                 {
-                    starter.Move1 = (ushort)random.Next(0, moves.Length);
-                    starter.Move2 = (ushort)random.Next(0, moves.Length);
-                    starter.Move3 = (ushort)random.Next(0, moves.Length);
-                    starter.Move4 = (ushort)random.Next(0, moves.Length);
+                    moveSet.Add(levelUpMove.Move);
+                }
+
+                if (settings.ForceFourMoves && moveSet.Count < Constants.NumberOfPokemonMoves)
+                {
+                    var total = moveSet.Count;
+                    while (moveSet.Count < Constants.NumberOfPokemonMoves)
+                        moveSet.Add((ushort)random.Next(0, moves.Length));
+                }
+
+                for (int i = 0; i < moveSet.Count; i++)
+                {
+                    starter.SetMove(i, moveSet.ElementAt(i));
                 }
             }
 
