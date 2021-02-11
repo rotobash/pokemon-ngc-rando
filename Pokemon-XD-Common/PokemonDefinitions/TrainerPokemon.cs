@@ -10,6 +10,7 @@ namespace XDCommon.PokemonDefinitions
         bool IsShadow { get; }
         byte ShadowCatchRate { get; set; }
         byte Level { get; set; }
+        ushort Item { get; set; }
         void SetPokemon(ushort dexNum);
         void SetMove(int index, ushort moveNum);
         void SetShadowMove(int index, ushort moveNum);

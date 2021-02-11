@@ -8,8 +8,10 @@ using XDCommon.Utility;
 namespace XDCommon.PokemonDefinitions
 {
     public class Move
-	{
-		int FirstShadowMoveIndex;
+    {
+        public const int MetronomeOffset = 118;
+
+        int FirstShadowMoveIndex;
 		int LastShadowMoveIndex;
 		int FirstMoveOffset;
 		int MoveCategoryOffset; // added through hacking in colosseum

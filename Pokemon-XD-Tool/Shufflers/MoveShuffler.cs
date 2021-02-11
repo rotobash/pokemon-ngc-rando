@@ -24,7 +24,7 @@ namespace Randomizer.Shufflers
             {
                 if (settings.RandomMovePower && move.BasePower > 0)
                 {
-                    move.BasePower = (byte)random.Sample(90, 70);
+                    move.BasePower = (byte)random.Sample(80, 70);
                 }
 
                 if (settings.RandomMoveAcc && move.Accuracy > 0)
@@ -54,17 +54,13 @@ namespace Randomizer.Shufflers
                     move.Type = newType;
                 }
 
+                // I don't know if this will work for colo, probably not
                 if (settings.RandomMoveCategory && move.Category != MoveCategories.None)
                 {
                     var newCategory = (MoveCategories)random.Next(1, 3);
                     move.Category = newCategory;
                 }
             }
-        }
-
-        public static IEnumerable<LevelUpMove> CurrentLevelMoves(this Pokemon pokemon, int level, Move[] moveList)
-        {
-            return pokemon.LevelUpMoves.Where(m => m.Level != 0 && m.Level <= level).TakeLast(Constants.NumberOfPokemonMoves);
         }
     }
 }

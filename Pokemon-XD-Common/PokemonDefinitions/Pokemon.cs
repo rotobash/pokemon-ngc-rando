@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using XDCommon.Contracts;
 using XDCommon.Utility;
@@ -265,6 +266,11 @@ namespace XDCommon.PokemonDefinitions
             iso.CommonRel.ExtractedFile.WriteByteAtOffset(offset + Constants.LevelUpMoveLevelOffset, level);
             iso.CommonRel.ExtractedFile.WriteBytesAtOffset(offset + Constants.LevelUpMoveIndexOffset, move.GetBytes());
             LevelUpMoves[index] = new LevelUpMove(level, move);
+        }
+
+        public IEnumerable<LevelUpMove> CurrentLevelMoves(int level)
+        {
+            return LevelUpMoves.Where(m => m.Level != 0 && m.Level <= level).TakeLast(Constants.NumberOfPokemonMoves);
         }
     }
 }
