@@ -44,7 +44,7 @@ namespace XDCommon.Utility
                     }
                     else if (entry is PKX pk)
                     {
-                        sys.ExtractedEntries.Add(pk.FileName.GetSafeFileName(pk.Path, FileTypes.DAT), pk.ExtractDat());
+                        sys.ExtractedEntries.Add($"{pk.FileName.RemoveFileExtensions()}.dat", pk.ExtractDat());
                     }
                     else if (entry is REL rel)
                     {
@@ -66,7 +66,7 @@ namespace XDCommon.Utility
                             return f.FileType == FileTypes.THD && f.FileName.Contains(entryFileName);
                         });
                         var thp = new THP();
-                        sys.ExtractedEntries.Add(entry.FileName.GetSafeFileName(entry.Path, FileTypes.THP), thp);
+                        sys.ExtractedEntries.Add($"{entry.FileName}.thp", thp);
                     }
                 }
             }

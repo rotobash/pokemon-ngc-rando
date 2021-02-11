@@ -49,42 +49,27 @@ namespace XDCommon.PokemonDefinitions
             set => iso.DOL.ExtractedFile.WriteBytesAtOffset(StartOffset + SpeciesOffset, value.GetBytes());
         }
 
-        public ushort Move1
+        public ushort[] Moves
         {
-            get => iso.DOL.ExtractedFile.GetUShortAtOffset(StartOffset + Move1Offset);
-            set => iso.DOL.ExtractedFile.WriteBytesAtOffset(StartOffset + Move1Offset, value.GetBytes());
-        }
-
-        public ushort Move2
-        {
-            get => iso.DOL.ExtractedFile.GetUShortAtOffset(StartOffset + Move2Offset);
-            set => iso.DOL.ExtractedFile.WriteBytesAtOffset(StartOffset + Move2Offset, value.GetBytes());
-        }
-
-        public ushort Move3
-        {
-            get => iso.DOL.ExtractedFile.GetUShortAtOffset(StartOffset + Move3Offset);
-            set => iso.DOL.ExtractedFile.WriteBytesAtOffset(StartOffset + Move3Offset, value.GetBytes());
-        }
-
-        public ushort Move4
-        {
-            get => iso.DOL.ExtractedFile.GetUShortAtOffset(StartOffset + Move4Offset);
-            set => iso.DOL.ExtractedFile.WriteBytesAtOffset(StartOffset + Move4Offset, value.GetBytes());
+            get;
         }
 
         public string GiftType => "Starter";
-
-        public bool UseLevelUpMoves
-        {
-            get;
-            set;
-        }
 
         ISO iso;
         public XDStarterPokemon(ISO iso)
         {
             this.iso = iso;
+            Moves = new ushort[Constants.NumberOfPokemonMoves];
+            for (int i = 0; i < Moves.Length; i++)
+            {
+                Moves[i] = iso.DOL.ExtractedFile.GetUShortAtOffset(StartOffset + Move1Offset + (i * Constants.SizeOfLevelUpData));
+            }
+        }
+
+        public void SetMove(int index, ushort move)
+        {
+            iso.DOL.ExtractedFile.WriteBytesAtOffset(StartOffset + Move1Offset + (index * Constants.SizeOfLevelUpData), move.GetBytes());
         }
     }
 }

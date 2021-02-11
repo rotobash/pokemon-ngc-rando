@@ -11,11 +11,7 @@ namespace XDCommon.PokemonDefinitions
         byte Level { get; }
         ushort Exp { get; }
         ushort Pokemon { get; }
-        ushort Move1 { get; }
-        ushort Move2 { get; }
-        ushort Move3 { get; }
-        ushort Move4 { get; }
+        ushort[] Moves { get; }
         string GiftType { get; }
-        bool UseLevelUpMoves { get; }
     }
 }

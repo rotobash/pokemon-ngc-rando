@@ -33,8 +33,7 @@ namespace XDCommon.Utility
                 Console.WriteLine($"Extracting {fileName}");
             }
 
-            var safeFileName = fileName.GetSafeFileName(extractDir, fileType);
-            var extractedFile = $"{extractDir}/{safeFileName}".GetNewStream();
+            var extractedFile = $"{extractDir}/{fileName}".GetNewStream();
             fSys.ExtractedFile.CopySubStream(extractedFile, offset, size);
             extractedFile.Flush();
 
