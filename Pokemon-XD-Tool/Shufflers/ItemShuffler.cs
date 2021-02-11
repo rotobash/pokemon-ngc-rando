@@ -35,6 +35,7 @@ namespace Randomizer.Shufflers
             if (settings.RandomizeTMs) 
             {
                 var tms = items.Where(x => x is TM).Select(x => x as TM).ToArray();
+                // use set to avoid dupes
                 var newTMSet = new HashSet<ushort>();
 
                 if (settings.TMForceGoodDamagingMove)
@@ -51,8 +52,10 @@ namespace Randomizer.Shufflers
                     }
                 }
 
-                // keep picking while we haven't picked enough TMs or we picked a dupe
-                while (newTMSet.Count < tms.Length && !newTMSet.Add((ushort)random.Next(0, moveList.Length)));
+                // keep picking while we haven't picked enough TMs
+                while (newTMSet.Count < tms.Length)
+                    newTMSet.Add((ushort)random.Next(0, moveList.Length));
+
                 // set them to the actual TM item
                 for (int i = 0; i < tms.Length; i++)
                 {
@@ -83,7 +86,9 @@ namespace Randomizer.Shufflers
                 }
 
                 // keep picking while we haven't picked enough TMs or we picked a dupe
-                while (newTutorMoveSet.Count < tutorMoves.Length && !newTutorMoveSet.Add((ushort)random.Next(0, moves.Length))) ;
+                while (newTutorMoveSet.Count < tutorMoves.Length)
+                    newTutorMoveSet.Add((ushort)random.Next(0, moves.Length));
+
                 // set them to the actual TM item
                 for (int i = 0; i < tutorMoves.Length; i++)
                 {

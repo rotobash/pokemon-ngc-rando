@@ -113,11 +113,6 @@ namespace Randomizer.XD
 			return pokemon;
 		}
 
-        public void RandomizeStatics(StaticPokemonShufflerSettings settings, Random random, Pokemon[] pokemon, Move[] moves)
-        {
-			StaticPokemonShuffler.RandomizeXDStatics(random, settings, new XDStarterPokemon(iso), Array.Empty<IGiftPokemon>(), pokemon, moves);
-		}
-
 		public BattleBingoCard[] ExtractBattleBingoCards()
 		{
 			var numCards = Constants.NumberOfBingoCards;
@@ -144,6 +139,11 @@ namespace Randomizer.XD
             }
 
 			return pokemon.ToArray();
+		}
+
+		public XDStarterPokemon GetStarter()
+        {
+			return new XDStarterPokemon(iso);
 		}
 	}
 }

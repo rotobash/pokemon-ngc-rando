@@ -41,21 +41,24 @@ namespace Randomizer.Shufflers
                         IEnumerable<Pokemon> potentialPokes = pokemon;
                         if (settings.ForceStrongPokemon)
                         {
-                            potentialPokes = potentialPokes.Where(p => p.BST >= 300);
+                            potentialPokes = potentialPokes.Where(p => p.BST >= Configuration.StrongPokemonBST);
                         }
                         var newPoke = potentialPokes.ElementAt(random.Next(0, potentialPokes.Count()));
                         panel.BingoPokemon.Pokemon = (ushort)newPoke.Index;
                         // write type to card?
 
+                        // pick good moves
                         var potentialMoves = moves.Where(m => m.BasePower > 0);
                         if (settings.ForceGoodDamagingMove)
                         {
                             potentialMoves = potentialMoves.Where(m => m.BasePower >= Configuration.GoodDamagingMovePower);
                         }
 
+                        // filter again by stab moves
                         if (settings.ForceSTABMove)
                         {
                             var stabMoves = potentialMoves.Where(m => m.Type == newPoke.Type1 || m.Type == newPoke.Type2);
+                            // don't use stab moves if there aren't any that match
                             if (stabMoves.Any())
                                 potentialMoves = stabMoves;
                         }

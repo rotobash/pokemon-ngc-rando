@@ -143,7 +143,7 @@ namespace Randomizer.Shufflers
 
                 if (settings.FixImpossibleEvolutions)
                 {
-                    // todoS
+                    // todo, set level?
                     for (int i = 0; i < poke.Evolutions.Length; i++)
                     {
                         var method = poke.Evolutions[i].EvolutionMethod;
@@ -160,11 +160,13 @@ namespace Randomizer.Shufflers
                     // todoS
                 }
 
+                // so I heard you like a challenge...
                 if (settings.NoEXP)
                 {
                     poke.BaseExp = 0;
                 }
 
+                // randomize level up moves
                 if (settings.RandomizeMovesets)
                 {
                     for (int i = 0; i < poke.LevelUpMoves.Length; i++)

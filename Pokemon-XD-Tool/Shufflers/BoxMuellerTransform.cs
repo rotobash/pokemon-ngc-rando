@@ -13,6 +13,7 @@ namespace Randomizer.Shufflers
             var u1 = random.NextDouble();
             var u2 = random.NextDouble();
 
+            // this equation is approximately normally distributed
             var nSample = Math.Sqrt(-2 * Math.Log(u1)) * Math.Cos(2 * Math.PI * u2);
             return (Math.Sqrt(sigma2) * nSample) + mean;
         }

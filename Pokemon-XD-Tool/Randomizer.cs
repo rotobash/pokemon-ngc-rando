@@ -70,7 +70,16 @@ namespace Randomizer
 
         public void RandomizeStatics(StaticPokemonShufflerSettings settings)
         {
-            gameExtractor.RandomizeStatics(settings, random, pokemon, moves);
+            if (gameExtractor is XDExtractor xd)
+            {
+                var starter = xd.GetStarter();
+                StaticPokemonShuffler.RandomizeXDStatics(random, settings, starter, Array.Empty<IGiftPokemon>(), pokemon, moves);
+            }
+            else
+            {
+                StaticPokemonShuffler.RandomizeColoStarters(random, settings, null, null, pokemon);
+            }
+            
         }
 
         public void RandomizeBattleBingo(BingoCardShufflerSettings settings)

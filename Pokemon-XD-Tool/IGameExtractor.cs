@@ -16,6 +16,5 @@ namespace Randomizer
         Pokemarts[] ExtractPokemarts();
         Move[] ExtractMoves();
         Pokemon[] ExtractPokemon();
-        void RandomizeStatics(StaticPokemonShufflerSettings settings, Random random, Pokemon[] pokemon, Move[] moves);
     }
 }

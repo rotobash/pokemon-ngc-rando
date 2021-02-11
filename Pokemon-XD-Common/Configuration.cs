@@ -33,8 +33,7 @@ namespace XDCommon
         {
             get
             {
-                var threadCount = 0;
-                if (!int.TryParse(ConfigurationManager.AppSettings.Get(nameof(ThreadCount)), out threadCount))
+                if (!int.TryParse(ConfigurationManager.AppSettings.Get(nameof(ThreadCount)), out int threadCount))
                 {
                     threadCount = 1;
                 }
@@ -50,8 +49,7 @@ namespace XDCommon
         {
             get
             {
-                var movePower = 0;
-                if (!int.TryParse(ConfigurationManager.AppSettings.Get(nameof(GoodDamagingMovePower)), out movePower))
+                if (!int.TryParse(ConfigurationManager.AppSettings.Get(nameof(GoodDamagingMovePower)), out int movePower))
                 {
                     GoodDamagingMovePower = 60;
                 }
@@ -62,6 +60,23 @@ namespace XDCommon
                 AddOrUpdateAppSettings(nameof(GoodDamagingMovePower), value.ToString());
             }
         }
+
+        public static int StrongPokemonBST 
+        {
+            get
+            {
+                if (!int.TryParse(ConfigurationManager.AppSettings.Get(nameof(StrongPokemonBST)), out int bstTotal))
+                {
+                    StrongPokemonBST = 300;
+                }
+                return bstTotal;
+            }
+            set
+            {
+                AddOrUpdateAppSettings(nameof(StrongPokemonBST), value.ToString());
+            }
+        }
+
         public static string ExtractDirectory
         {
             get

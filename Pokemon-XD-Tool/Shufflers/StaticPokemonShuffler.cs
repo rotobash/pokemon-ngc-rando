@@ -43,6 +43,8 @@ namespace Randomizer.Shufflers
             int index = 0;
             Evolution secondStage;
             bool condition = false;
+            // pick starters
+            // basically set a condition based on the setting, keep looping till you meet it
             switch (settings.Starter)
             {
                 case StarterRandomSetting.Custom:
@@ -92,6 +94,8 @@ namespace Randomizer.Shufflers
             }
             starter.Pokemon = (ushort)index;
 
+            // instance pokemon have separate movesets than the pool
+            // i.e. if you don't update the moveset than your starter will have Eevee's move set
             var moveSet = new HashSet<ushort>();
             if (settings.RandomizeMovesets)
             {
@@ -105,6 +109,7 @@ namespace Randomizer.Shufflers
             }
             else
             {
+                // not randomizing moves? pick level up moves then
                 foreach (var levelUpMove in pokemon[starter.Pokemon].CurrentLevelMoves(starter.Level))
                 {
                     moveSet.Add(levelUpMove.Move);

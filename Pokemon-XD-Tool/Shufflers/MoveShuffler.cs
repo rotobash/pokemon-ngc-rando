@@ -24,11 +24,14 @@ namespace Randomizer.Shufflers
             {
                 if (settings.RandomMovePower && move.BasePower > 0)
                 {
+                    // sample move power with the power of math!!
+                    // basically moves will average at 80 power but can be from 10 to 150
                     move.BasePower = (byte)random.Sample(80, 70);
                 }
 
                 if (settings.RandomMoveAcc && move.Accuracy > 0)
                 {
+                    // randomize accuracy, repick if the moves is OHKO and 100% accurate cause that's a yikes
                     byte acc;
                     do 
                     {
@@ -39,6 +42,7 @@ namespace Randomizer.Shufflers
 
                 if (settings.RandomMovePP)
                 {
+                    // pick from 1, 8, multiply by 5 to get the 5 - 40 range for PP
                     move.PP = (byte)Math.Max(5, Math.Round(random.Sample(4, 4)) * 5);
                 }
 
@@ -46,6 +50,7 @@ namespace Randomizer.Shufflers
                 {
                     var typesCount = Enum.GetValues<PokemonTypes>();
                     PokemonTypes newType;
+                    // pick new move type but not the none type
                     do
                     {
                         newType = typesCount[random.Next(0, typesCount.Length)];
