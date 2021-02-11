@@ -73,11 +73,13 @@ namespace Randomizer
             gameExtractor.RandomizeStatics(settings, random, pokemon, moves);
         }
 
-        public void RandomizeBattleBingo()
+        public void RandomizeBattleBingo(BingoCardShufflerSettings settings)
         {
             if (gameExtractor is XDExtractor xd)
             {
                 var bCards = xd.ExtractBattleBingoCards();
+                var bingoShuffler = new BingoCardShuffler(random, bCards, pokemon, moves);
+                bingoShuffler.ShuffleCards(settings);
             }
         }
 

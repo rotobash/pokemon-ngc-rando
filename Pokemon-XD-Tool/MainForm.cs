@@ -167,7 +167,7 @@ namespace Randomizer
                     randomizer.RandomizePokemonTraits(new PokemonTraitShufflerSettings
                     {
                         RandomizeBaseStats = baseStatsUnchangedCheck.Checked ? 0 : baseStatsShuffleCheck.Checked ? 1 : 2,
-                        StandardizeEXPCurves = standardizeExpCureCheck.Checked,
+                        StandardizeEXPCurves = standardizeExpCurveCheck.Checked,
                         BaseStatsFollowEvolution = bstFollowEvolutionCheck.Checked,
                         UpdateBaseStats = updateBSTCheck.Checked,
 
@@ -208,8 +208,8 @@ namespace Randomizer
                         AllowSpecialPokemon = allowSpecialPokemonCheck.Checked,
                         DontUseLegendaries = noLegendaryOnTrainerCheck.Checked,
 
-                        BoostShadowCatchRate = boostShadowCatchRateCheck.Checked,
-                        BoostShadowCatchRatePercent = (float)(shadowCatchBoostPercent.Value / 100),
+                        SetMinimumShadowCatchRate = minimumShadowCatchRateCheck.Checked,
+                        ShadowCatchRateMinimum = (float)(shadowCatchMinimum.Value / 100),
                         BoostTrainerLevel = boostTrainerLevelCheck.Checked,
                         BoostTrainerLevelPercent = (float)(boostTrainerLevelPercent.Value / 100),
                         ForceFullyEvolved = forceFullyEvovledLevelCheck.Checked,
@@ -232,7 +232,7 @@ namespace Randomizer
 
                         Starter = randomStarterCheck.Checked ? StarterRandomSetting.Random
                             : (customStarterCheck.Checked ? StarterRandomSetting.Custom
-                            : (randomStarterThreeStageCheck.Checked ? StarterRandomSetting.Unchanged
+                            : (randomStarterThreeStageCheck.Checked ? StarterRandomSetting.RandomThreeStage
                             : (randomStarterTwoStageCheck.Checked ? StarterRandomSetting.RandomTwoStage
                             : (randomStarterSingleStageCheck.Checked ? StarterRandomSetting.RandomSingleStage
                             : StarterRandomSetting.Unchanged)))),
@@ -245,10 +245,24 @@ namespace Randomizer
                             : TradeRandomSetting.Unchanged)
                     });
 
-                    randomizer.RandomizeItems(new ItemShufflerSettings());
+                    randomizer.RandomizeItems(new ItemShufflerSettings 
+                    {
+                        RandomizeTMs = randomizeTMsCheck.Checked,
+                        TMForceGoodDamagingMove = forceGoodDamagingTMsCheck.Checked,
+                        TMGoodDamagingMovePercent = (float)(forceGoodDamagingTMPercent.Value / 100),
+
+                        RandomizeTutorMoves = randomizeTutorMoveCheck.Checked,
+                        TutorForceGoodDamagingMove = forceGoodDamagingTutorMoveCheck.Checked,
+                        TutorGoodDamagingMovePercent = (float)(forceGoodDamagingTutorMovePercent.Value / 100)
+                    });
 
                     // will only do something if game is XD
-                    randomizer.RandomizeBattleBingo();
+                    randomizer.RandomizeBattleBingo(new BingoCardShufflerSettings
+                    {
+                        ForceGoodDamagingMove = bingoUseDamagingMoveCheck.Checked,
+                        ForceSTABMove = bingoUseStabMoveCheck.Checked,
+                        ForceStrongPokemon = bingoUseStrongPokemon.Checked
+                    });
                     randomizer.RandomizePokeSpots();
 
 
@@ -294,11 +308,11 @@ namespace Randomizer
         }
         private void boostShadowCatchRateCheck_CheckedChanged(object sender, EventArgs e)
         {
-            shadowCatchBoostPercent.Enabled = boostShadowCatchRateCheck.Checked;
+            shadowCatchMinimum.Enabled = minimumShadowCatchRateCheck.Checked;
         }
         private void boostPokeSpotCatchRate_CheckedChanged(object sender, EventArgs e)
         {
-            pokeSpotCatchBoostPercent.Enabled = boostPokeSpotCatchRate.Checked;
+            pokeSpotCatchMinimum.Enabled = minimumPokeSpotCatchRate.Checked;
         }
 
         private void randomizeTypesCheck_CheckedChanged(object sender, EventArgs e)

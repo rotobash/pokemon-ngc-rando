@@ -10,7 +10,6 @@ namespace Randomizer.Shufflers
 {
     public struct BingoCardShufflerSettings
     {
-        public bool RandomizeBingoPokemon;
         public bool ForceStrongPokemon;
         public bool ForceGoodDamagingMove;
         public bool ForceSTABMove;
