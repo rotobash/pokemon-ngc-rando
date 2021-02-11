@@ -59,10 +59,15 @@ namespace Randomizer
                         case Game.Colosseum:
                             gamePictureBox.Image = new Bitmap("Images/colo-logo.jpg");
                             gameExtractor = new ColoExtractor();
+                            starterComboBox.SelectedItem = "ESPEON";
+                            starter2ComboBox.SelectedItem = "UMBREON";
                             break;
                         case Game.XD:
                             gamePictureBox.Image = new Bitmap("Images/xd-logo.jpg");
                             gameExtractor = new XDExtractor(iso);
+                            starterComboBox.SelectedItem = "EEVEE";
+                            starter2Label.Visible = false;
+                            starter2ComboBox.Visible = false;
                             break;
                         default:
                             return;
@@ -144,6 +149,7 @@ namespace Randomizer
                 saveFileDialog.Filter = "Randomized game file|*.iso";
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
+                    // todo: offload this work onto a thread
                     progressBar.Value = 0;
                     progressMessageLabel.Text = "Randomizing Moves...";
                     randomizer = new Randomizer(gameExtractor, seed);
@@ -236,8 +242,7 @@ namespace Randomizer
                             : TradeRandomSetting.Unchanged)
                     });
 
-                    randomizer.RandomizeTMs(new ItemShufflerSettings());
-                    randomizer.RandomizeOverworldItems(new ItemShufflerSettings());
+                    randomizer.RandomizeItems(new ItemShufflerSettings());
 
                     // will only do something if game is XD
                     randomizer.RandomizeBattleBingo();

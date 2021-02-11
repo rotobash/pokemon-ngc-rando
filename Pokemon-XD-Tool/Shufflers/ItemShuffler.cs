@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XDCommon;
 using XDCommon.PokemonDefinitions;
 
 namespace Randomizer.Shufflers
@@ -10,6 +11,13 @@ namespace Randomizer.Shufflers
     public struct ItemShufflerSettings
     {
         public bool RandomizeItems;
+        public bool RandomizeTMs;
+        public bool RandomizeTutorMoves;
+
+        public bool TMForceGoodDamagingMove;
+        public float TMGoodDamagingMovePercent;
+        public bool TutorForceGoodDamagingMove;
+        public float TutorGoodDamagingMovePercent;
     }
 
     public static class ItemShuffler
@@ -24,10 +32,63 @@ namespace Randomizer.Shufflers
 
         public static void ShuffleTMs(Random random, ItemShufflerSettings settings, Items[] items, Move[] moveList)
         {
-            var tms = items.Where(x => x is TM).Select(x => x as TM);
-            foreach (var tm in tms)
+            if (settings.RandomizeTMs) 
             {
-                tm.Move = (ushort)random.Next(0, moveList.Length);
+                var tms = items.Where(x => x is TM).Select(x => x as TM).ToArray();
+                var newTMSet = new HashSet<ushort>();
+
+                if (settings.TMForceGoodDamagingMove)
+                {
+                    // determine what percent of TMs should be good
+                    var count = (int)Math.Round(settings.TMGoodDamagingMovePercent * tms.Length);
+                    // filter the move list by moves that are deemed good
+                    var goodMoves = moveList.Where(m => m.BasePower >= Configuration.GoodDamagingMovePower).ToList();
+                    for (int i = 0; i < count; i++)
+                    {
+                        // keep picking until it's not a dupe
+                        // this could probably be done smarterly
+                        while (!newTMSet.Add((ushort)random.Next(0, moveList.Length)));
+                    }
+                }
+
+                // keep picking while we haven't picked enough TMs or we picked a dupe
+                while (newTMSet.Count < tms.Length && !newTMSet.Add((ushort)random.Next(0, moveList.Length)));
+                // set them to the actual TM item
+                for (int i = 0; i < tms.Length; i++)
+                {
+                    tms[i].Move = newTMSet.ElementAt(i);
+                }
+            }
+        }
+
+        public static void ShuffleTutorMoves(Random random, ItemShufflerSettings settings, TutorMove[] tutorMoves, Move[] moves)
+        {
+
+            if (settings.RandomizeTutorMoves)
+            {
+                var newTutorMoveSet = new HashSet<ushort>();
+
+                if (settings.TutorForceGoodDamagingMove)
+                {
+                    // determine what percent of TMs should be good
+                    var count = (int)Math.Round(settings.TutorGoodDamagingMovePercent * tutorMoves.Length);
+                    // filter the move list by moves that are deemed good
+                    var goodMoves = moves.Where(m => m.BasePower >= Configuration.GoodDamagingMovePower).ToList();
+                    for (int i = 0; i < count; i++)
+                    {
+                        // keep picking until it's not a dupe
+                        // this could probably be done smarterly
+                        while (!newTutorMoveSet.Add((ushort)random.Next(0, moves.Length))) ;
+                    }
+                }
+
+                // keep picking while we haven't picked enough TMs or we picked a dupe
+                while (newTutorMoveSet.Count < tutorMoves.Length && !newTutorMoveSet.Add((ushort)random.Next(0, moves.Length))) ;
+                // set them to the actual TM item
+                for (int i = 0; i < tutorMoves.Length; i++)
+                {
+                    tutorMoves[i].Move = newTutorMoveSet.ElementAt(i);
+                }
             }
         }
 

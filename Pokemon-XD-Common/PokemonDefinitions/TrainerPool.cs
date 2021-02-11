@@ -9,6 +9,7 @@ namespace XDCommon.PokemonDefinitions
     {
         TrainerPoolType TeamType { get; }
         IEnumerable<ITrainer> AllTrainers { get; }
+        void LoadTrainers();
         void SetShadowPokemon(ITrainerPool shadowPool);
     }
 }

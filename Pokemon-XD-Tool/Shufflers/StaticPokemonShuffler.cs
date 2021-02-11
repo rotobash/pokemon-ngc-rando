@@ -95,7 +95,8 @@ namespace Randomizer.Shufflers
             {
                 if (settings.UseLevelUpMoves)
                 {
-                    var learnableMoves = pokemon[starter.Pokemon].CurrentLevelMoves(starter.Level, moves).ToArray();
+                    var learnableMoves = pokemon[starter.Pokemon].CurrentLevelMoves(starter.Level).ToArray();
+                    // this is really unsafe 
                     starter.Move1 = learnableMoves[0].Move;
                     starter.Move2 = learnableMoves[1].Move;
                     starter.Move3 = learnableMoves[2].Move;

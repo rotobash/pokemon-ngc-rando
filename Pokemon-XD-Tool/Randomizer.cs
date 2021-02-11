@@ -17,6 +17,7 @@ namespace Randomizer
         Move[] moves;
         Pokemon[] pokemon;
         Items[] items;
+        TutorMove[] tutorMoves;
 
         public Randomizer(IGameExtractor extractor, int seed = -1)
         {
@@ -50,18 +51,21 @@ namespace Randomizer
             TeamShuffler.ShuffleTeams(random, settings, decks, pokemon, moves);
         }
 
-        public void RandomizeTMs(ItemShufflerSettings settings)
-        {
-        }
-        
-        public void RandomizeOverworldItems(ItemShufflerSettings settings)
+        public void RandomizeItems(ItemShufflerSettings settings)
         {
             ItemShuffler.ShuffleTMs(random, settings, items, moves);
+
             var overworldItems = gameExtractor.ExtractOverworldItems();
             ItemShuffler.ShuffleOverworldItems(random, settings, overworldItems, items);
 
             var marts = gameExtractor.ExtractPokemarts();
             ItemShuffler.UpdatePokemarts(settings, marts, items);
+
+            if (gameExtractor is XDExtractor xd)
+            {
+                var tutorMoves = xd.ExtractTutorMoves();
+                ItemShuffler.ShuffleTutorMoves(random, settings, tutorMoves, moves);
+            }
         }
 
         public void RandomizeStatics(StaticPokemonShufflerSettings settings)
@@ -74,8 +78,6 @@ namespace Randomizer
             if (gameExtractor is XDExtractor xd)
             {
                 var bCards = xd.ExtractBattleBingoCards();
-                var bs = bCards.SelectMany(c => c.Panels).Where(p => p.BingoPokemon != null && p.BingoPokemon.Ability > 1);
-                var t = 0;
             }
         }
 

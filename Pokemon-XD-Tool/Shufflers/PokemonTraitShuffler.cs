@@ -43,6 +43,7 @@ namespace Randomizer.Shufflers
 
         public bool NoEXP;
         public bool RandomizeMovesets;
+        public bool MetronomeOnly;
     }
 
     public static class PokemonTraitShuffler
@@ -171,7 +172,15 @@ namespace Randomizer.Shufflers
                         var move = poke.LevelUpMoves[i];
                         if (move.Level == 0)
                             continue;
-                        poke.SetLevelUpMove(i, move.Level, (ushort)random.Next(0, moves.Length));
+
+                        if (settings.MetronomeOnly)
+                        {
+                            poke.SetLevelUpMove(i, move.Level, Move.MetronomeOffset);
+                        }
+                        else
+                        {
+                            poke.SetLevelUpMove(i, move.Level, (ushort)random.Next(0, moves.Length));
+                        }
                     }
                 }
             }

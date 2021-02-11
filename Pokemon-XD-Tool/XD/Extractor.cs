@@ -28,8 +28,9 @@ namespace Randomizer.XD
 			for (int i = 1; i <= XDTrainerPool.MainTeams.Length; i++)
             {
 				var pool = XDTrainerPool.MainTeams[i - 1];
-                trainerPool[i + 1] = new XDTrainerPool(pool, iso, pokemon, moves);
-				trainerPool[i + 1].SetShadowPokemon(trainerPool[0] as XDShadowTrainerPool);
+                trainerPool[i] = new XDTrainerPool(pool, iso, pokemon, moves);
+				trainerPool[i].SetShadowPokemon(trainerPool[0] as XDShadowTrainerPool);
+				trainerPool[i].LoadTrainers();
             }
 			return trainerPool;
 		}
@@ -37,7 +38,7 @@ namespace Randomizer.XD
 		public Items[] ExtractItems()
 		{
 			var numItems = (int)iso.CommonRel.GetValueAtPointer(Constants.NumberOfItems);
-			var items = new Items[numItems + Constants.NumberOfTutorMoves];
+			var items = new Items[numItems];
 			for (int i = 0; i < numItems; i++)
             {
 				if (i <= 12)
@@ -53,12 +54,18 @@ namespace Randomizer.XD
 					items[i] = new Items(i, iso);
                 }
             }
-			for (int i = numItems; i < items.Length; i++)
-            {
-				items[i] = new TutorMove(i - numItems, iso);
-            }
 
 			return items;
+		}
+
+		public TutorMove[] ExtractTutorMoves()
+		{
+			var tutorMoves = new TutorMove[Constants.NumberOfTutorMoves];
+			for (int i = 0; i < tutorMoves.Length; i++)
+			{
+				tutorMoves[i] = new TutorMove(i, iso);
+			}
+			return tutorMoves;
 		}
 
 		public OverworldItem[] ExtractOverworldItems()

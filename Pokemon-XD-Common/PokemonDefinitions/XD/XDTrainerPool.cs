@@ -36,17 +36,23 @@ namespace XDCommon.PokemonDefinitions
 
         public virtual XDShadowTrainerPool DarkPokemon { get; private set; }
 
+        private ISO iso;
         public XDTrainerPool(TrainerPoolType poolType, ISO iso, Pokemon[] pokemon, Move[] moveList)
         {
             var deckArchive = iso.GetFSysFile("deck_archive.fsys");
             var fileEntry = deckArchive.ExtractEntryByFileName($"DeckData_{poolType}.bin");
+            this.iso = iso;
 
             ExtractedFile = fileEntry.ExtractedFile;
             FileType = FileTypes.BIN;
             TeamType = poolType;
             PokemonList = pokemon;
             MoveList = moveList;
+        }
 
+        // load trainers separately because they might need the shadow deck
+        public void LoadTrainers()
+        {
             var trainerCount = GetEntries(DTNRHeaderOffset);
             var trainers = new ITrainer[trainerCount];
             for (int i = 0; i < trainerCount; i++)
