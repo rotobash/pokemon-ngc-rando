@@ -94,15 +94,8 @@ namespace XDCommon.Utility
                         FileName = fileName
                     };
 
-                case FileTypes.FNT:
                 case FileTypes.REL:
-                    return new REL
-                    {
-                        Path = extractDir,
-                        FileName = fileName,
-                        ExtractedFile = extractedFile
-                    };
-
+                    return new REL(fileName, extractDir, extractedFile);
                 case FileTypes.SCD:
                     return new SCD
                     {

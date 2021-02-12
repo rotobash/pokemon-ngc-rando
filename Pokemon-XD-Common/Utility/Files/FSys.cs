@@ -183,7 +183,6 @@ namespace XDCommon.Utility
             {
                 var index = GetIndexForFileName(filename);
                 var entry = FSysFileEntry.ExtractFromFSys(this, index);
-                if (entry is REL rel) rel.LoadPointers();
                 ExtractedEntries.Add(entry.FileName, entry);
                 return entry;
             }

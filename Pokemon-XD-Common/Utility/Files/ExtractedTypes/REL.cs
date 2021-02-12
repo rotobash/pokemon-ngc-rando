@@ -24,13 +24,13 @@ namespace XDCommon.Utility
         uint firstPointer;
         int numberOfPointers;
 
-        public REL()
+        public REL(string fileName, string path, Stream extractedFile)
         {
+            FileName = fileName;
+            Path = path;
             FileType = FileTypes.REL;
-        }
+            ExtractedFile = extractedFile;
 
-        public void LoadPointers()
-        {
             if (FileName.Contains("common_rel"))
             {
                 dataStart = ExtractedFile.GetUIntAtOffset(kCommonRELDataStartOffsetLocation);

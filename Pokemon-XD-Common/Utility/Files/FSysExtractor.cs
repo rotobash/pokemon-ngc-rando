@@ -46,10 +46,6 @@ namespace XDCommon.Utility
                     {
                         sys.ExtractedEntries.Add($"{pk.FileName.RemoveFileExtensions()}.dat", pk.ExtractDat());
                     }
-                    else if (entry is REL rel)
-                    {
-                        rel.LoadPointers();
-                    }
                     else if (entry is StringTable tbl)
                     {
 

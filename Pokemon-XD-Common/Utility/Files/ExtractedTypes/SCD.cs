@@ -16,19 +16,7 @@ namespace XDCommon.Utility
             IExtractedFile rel = null;
             if (FileType != FileTypes.REL)
             {
-                rel = fSysFile.ExtractedEntries.Values.FirstOrDefault(f => f.FileType == FileTypes.REL && FileName.RemoveFileExtensions() == f.FileName.RemoveFileExtensions());
-                if (rel == null)
-                {
-                    var relFile = $"{Path}/{FileName}".GetNewStream();
-                    rel = new REL
-                    {
-                        Path = Path,
-                        FileName = FileName,
-                        FileType = FileTypes.REL,
-                        ExtractedFile = relFile
-                    };
-                    fSysFile.ExtractedEntries.Add(FileName, rel);
-                }
+                rel = fSysFile.ExtractEntryByFileName($"{Path}/{FileName.RemoveFileExtensions()}.rel") as REL;
             }
 
 

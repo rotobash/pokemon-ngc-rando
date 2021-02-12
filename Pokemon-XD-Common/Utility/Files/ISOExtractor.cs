@@ -84,8 +84,7 @@ namespace XDCommon.Utility
             iso.TOC.Load(iso.DOL);
 
             var commonFsys = iso.GetFSysFile("common.fsys");
-            iso.CommonRel = (REL)FSysFileEntry.ExtractFromFSys(commonFsys, iso.Region == Region.Japan ? 1 : 0);
-            iso.CommonRel.LoadPointers();
+            iso.CommonRel = FSysFileEntry.ExtractFromFSys(commonFsys, iso.Region == Region.Japan ? 1 : 0) as REL;
             iso.BuildStringTables();
 
             return iso;
@@ -119,7 +118,7 @@ namespace XDCommon.Utility
                 fsys.WriteToStream(isoStream);
             }
 
-            // pack footer
+            // pack padding
 
 
             isoStream.Flush();

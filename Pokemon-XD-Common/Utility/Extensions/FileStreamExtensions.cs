@@ -237,17 +237,18 @@ namespace XDCommon.Utility
 
             // dispose of old stream
             stream.Dispose();
-            // flush new stream and close it
             newStream.Flush();
-            newStream.Dispose();
 
             if (!Configuration.UseMemoryStreams)
             {
+                // flush new stream and close it
+                newStream.Dispose();
                 File.Delete(streamFileName);
                 File.Move($"{streamFileName}.bak", streamFileName);
+                // bypass GetNewStream because it'll overwrite files
+                return File.Open(streamFileName, FileMode.Open, FileAccess.ReadWrite);
             }
-
-            return streamFileName.GetNewStream();
+            return newStream;
         }
 
         /// <summary>
@@ -275,15 +276,16 @@ namespace XDCommon.Utility
             stream.Dispose();
             // flush new stream and close it
             newStream.Flush();
-            newStream.Dispose();
 
             if (!Configuration.UseMemoryStreams)
             {
+                newStream.Dispose();
                 File.Delete(streamFileName);
                 File.Move($"{streamFileName}.bak", streamFileName);
+                // bypass GetNewStream because it'll overwrite files
+                return File.Open(streamFileName, FileMode.Open, FileAccess.ReadWrite);
             }
-
-            return streamFileName.GetNewStream();
+            return newStream;
         }
 
         /// <summary>
