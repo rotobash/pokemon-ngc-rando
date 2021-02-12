@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using XDCommon.Contracts;
+using XDCommon.Utility;
 
 namespace XDCommon.PokemonDefinitions
 {
     public static class Constants
     {
+        // shamelessly copied from Stars because holy fuck have you seen how many there are??
+        // kudos to him
+
         // pokemon
         public const byte PokemonNameIDOFfset = 0x18;
         public const int SizeOfPokemonStats = 0x124;
@@ -299,6 +304,16 @@ namespace XDCommon.PokemonDefinitions
 
         public const int StringTableB = 101;
 
+        // Marts
+        public const int MartStartIndexes = 0;
+        public const int NumberOfMarts = 1;
+        public const int MartGreetings = 2;
+        public const int NumberOfMartGreetingSections = 3; // 0x4c bytes each
+        public const int MartItems = 4;
+        public const int NumberOfMartItems = 5;
+
+        // todo: turn these into functions that take the game enum and returns the correct offset
+
         // XD
         public const int XDNumberRelPointers = 0x84;
         public const int XDPeopleIDs = 2; // 2 bytes at offset 0 person id 4 bytes at offset 4 string id for character name;
@@ -327,14 +342,6 @@ namespace XDCommon.PokemonDefinitions
         public const int XDMoves = 124;
         public const int XDNumberOfMoves = 125;
 
-        // Pocket
-        public const int MartStartIndexes = 0;
-        public const int NumberOfMarts = 1;
-        public const int MartGreetings = 2;
-        public const int NumberOfMartGreetingSections = 3; // 0x4c bytes each
-        public const int MartItems = 4;
-        public const int NumberOfMartItems = 5;
-
         // COLO
         public const int ColNumberRelPointers = 0x6C;
         public const int ColPeopleIDs = 6; // 2 bytes at offset 0 person id 4 bytes at offset 4 string id for character name
@@ -361,5 +368,59 @@ namespace XDCommon.PokemonDefinitions
         public const int ColNumberOfNatures = 65;
         public const int ColMoves = 62;
         public const int ColNumberOfMoves = 6;
+
+        public static int AbilityStartOffset(ISO iso)
+        {
+            if (iso.Game == Game.XD)
+            {
+                switch (iso.Region)
+                {
+                    case Region.US:
+                        return 0x3FCC50;
+                    case Region.Europe:
+                        return 0x437530;
+                    case Region.Japan:
+                        return 0x3DA310;
+                }
+            }
+            else
+            {
+                switch (iso.Region)
+                {
+                    case Region.US:
+                        return 0x35C5E0;
+                    case Region.Europe:
+                        return 0x3A9688;
+                    case Region.Japan:
+                        return 0x348D20;
+                }
+            }
+            return 0;
+        }
+
+        public static bool AbilityListUpdated(ISO iso)
+        {
+            return iso.Game != Game.Colosseum && iso.DOL.ExtractedFile.GetIntAtOffset(AbilityStartOffset(iso) + 8) != 0;
+        }
+
+        public static int NumberOfAbilities(ISO iso)
+        {
+            return AbilityListUpdated(iso) ? 0x75 : 0x4E;
+        }
+
+        public static int AbilityNameIDOffset(ISO iso)
+        {
+            return AbilityListUpdated(iso) ? 0 : 4;
+        }
+
+        public static int AbilityDescriptionIDOffset(ISO iso)
+        {
+            return AbilityListUpdated(iso) ? 4 : 8;
+        }
+
+        public static int SizeOfAbilityEntry(ISO iso)
+        {
+            return AbilityListUpdated(iso) ? 8 : 12;
+        }
     }
 }

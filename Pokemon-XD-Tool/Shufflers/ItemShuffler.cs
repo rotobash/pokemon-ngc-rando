@@ -10,19 +10,11 @@ namespace Randomizer.Shufflers
 {
     public static class ItemShuffler
     {
-        public static void ShuffleItems(Random random, ItemShufflerSettings settings, Items[] items)
-        {
-            if (settings.RandomizeItems)
-            {
-
-            }
-        }
-
-        public static void ShuffleTMs(Random random, ItemShufflerSettings settings, Items[] items, Move[] moveList)
+        public static void ShuffleTMs(Random random, ItemShufflerSettings settings, ExtractedGame extractedGame)
         {
             if (settings.RandomizeTMs) 
             {
-                var tms = items.Where(x => x is TM).Select(x => x as TM).ToArray();
+                var tms = extractedGame.ItemList.Where(x => x is TM).Select(x => x as TM).ToArray();
                 // use set to avoid dupes
                 var newTMSet = new HashSet<ushort>();
 
@@ -31,18 +23,18 @@ namespace Randomizer.Shufflers
                     // determine what percent of TMs should be good
                     var count = (int)Math.Round(settings.TMGoodDamagingMovePercent * tms.Length);
                     // filter the move list by moves that are deemed good
-                    var goodMoves = moveList.Where(m => m.BasePower >= Configuration.GoodDamagingMovePower).ToList();
+                    var goodMoves = extractedGame.MoveList.Where(m => m.BasePower >= Configuration.GoodDamagingMovePower).ToList();
                     for (int i = 0; i < count; i++)
                     {
                         // keep picking until it's not a dupe
                         // this could probably be done smarterly
-                        while (!newTMSet.Add((ushort)random.Next(0, moveList.Length)));
+                        while (!newTMSet.Add((ushort)random.Next(0, extractedGame.MoveList.Length)));
                     }
                 }
 
                 // keep picking while we haven't picked enough TMs
                 while (newTMSet.Count < tms.Length)
-                    newTMSet.Add((ushort)random.Next(0, moveList.Length));
+                    newTMSet.Add((ushort)random.Next(0, extractedGame.MoveList.Length));
 
                 // set them to the actual TM item
                 for (int i = 0; i < tms.Length; i++)
@@ -52,7 +44,7 @@ namespace Randomizer.Shufflers
             }
         }
 
-        public static void ShuffleTutorMoves(Random random, ItemShufflerSettings settings, TutorMove[] tutorMoves, Move[] moves)
+        public static void ShuffleTutorMoves(Random random, ItemShufflerSettings settings, TutorMove[] tutorMoves, ExtractedGame extractedGame)
         {
 
             if (settings.RandomizeTutorMoves)
@@ -64,18 +56,18 @@ namespace Randomizer.Shufflers
                     // determine what percent of TMs should be good
                     var count = (int)Math.Round(settings.TutorGoodDamagingMovePercent * tutorMoves.Length);
                     // filter the move list by moves that are deemed good
-                    var goodMoves = moves.Where(m => m.BasePower >= Configuration.GoodDamagingMovePower).ToList();
+                    var goodMoves = extractedGame.MoveList.Where(m => m.BasePower >= Configuration.GoodDamagingMovePower).ToList();
                     for (int i = 0; i < count; i++)
                     {
                         // keep picking until it's not a dupe
                         // this could probably be done smarterly
-                        while (!newTutorMoveSet.Add((ushort)random.Next(0, moves.Length))) ;
+                        while (!newTutorMoveSet.Add((ushort)random.Next(0, extractedGame.MoveList.Length))) ;
                     }
                 }
 
                 // keep picking while we haven't picked enough TMs or we picked a dupe
                 while (newTutorMoveSet.Count < tutorMoves.Length)
-                    newTutorMoveSet.Add((ushort)random.Next(0, moves.Length));
+                    newTutorMoveSet.Add((ushort)random.Next(0, extractedGame.MoveList.Length));
 
                 // set them to the actual TM item
                 for (int i = 0; i < tutorMoves.Length; i++)
@@ -85,17 +77,22 @@ namespace Randomizer.Shufflers
             }
         }
 
-        public static void ShuffleOverworldItems(Random random, ItemShufflerSettings settings, OverworldItem[] overworldItems, Items[] items)
+        public static void ShuffleOverworldItems(Random random, ItemShufflerSettings settings, ExtractedGame extractedGame)
         {
-            var itemsFilter = items.Where(i => !RandomizerConstants.InvalidItemList.Contains(i.Index) || RandomizerConstants.KeyItems.Contains(i.Index));
+            var itemsFilter = extractedGame.ItemList .Where(
+                i => extractedGame.ItemList[i.Index].BagSlot != BagSlots.KeyItems 
+                && extractedGame.ItemList[i.Index].BagSlot != BagSlots.None
+            );
+
             if (settings.BanBadItems)
-                itemsFilter = itemsFilter.Where(i => RandomizerConstants.BadItemList.Contains(i.Index));
+                // we could check if it's a berry but meh, we have to check for other bad items anyway
+                itemsFilter = itemsFilter.Where(i => !RandomizerConstants.BadItemList.Contains(i.Index));
 
             var potentialItems = itemsFilter.ToArray();
-            foreach (var item in overworldItems)
+            foreach (var item in extractedGame.OverworldItemList)
             {
                 // i'm *assuming* the devs didn't place any invalid items on the overworld
-                if (RandomizerConstants.KeyItems.Contains(item.Item) || (!settings.RandomizeNonEssentialKeyItems && RandomizerConstants.NonEssentialKeyItems.Contains(item.Item)))
+                if (item.Item > extractedGame.ItemList.Length || extractedGame.ItemList[item.Item].BagSlot == BagSlots.KeyItems)
                     continue;
 
                 if (settings.RandomizeItems)
@@ -110,9 +107,9 @@ namespace Randomizer.Shufflers
             }
         }
 
-        public static void UpdatePokemarts(ItemShufflerSettings settings, Pokemarts[] marts, Items[] items)
+        public static void UpdatePokemarts(Random random, ItemShufflerSettings settings, ExtractedGame extractedGame)
         {
-            foreach (var mart in marts)
+            foreach (var mart in extractedGame.Pokemarts)
             {
                 
             }

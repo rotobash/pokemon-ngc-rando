@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Randomizer.Shufflers
+﻿namespace Randomizer.Shufflers
 {
     public class Settings
     {
@@ -106,6 +100,19 @@ namespace Randomizer.Shufflers
         public bool ForceSTABMove { get; set; }
         public bool AllowTrolls { get; set; }
     }
+
+    public struct StaticPokemonShufflerSettings
+    {
+        public StarterRandomSetting Starter { get; set; }
+        public string Starter1 { get; set; }
+        public string Starter2 { get; set; }
+
+        public TradeRandomSetting Trade { get; set; }
+
+        public bool RandomizeMovesets { get; set; }
+        public bool ForceFourMoves { get; set; }
+    }
+
     public enum MoveCompatibility
     {
         Unchanged,
@@ -123,22 +130,11 @@ namespace Randomizer.Shufflers
         RandomTwoStage,
         RandomSingleStage
     }
+
     public enum TradeRandomSetting
     {
         Unchanged,
         Given,
         Both,
-    }
-
-    public struct StaticPokemonShufflerSettings
-    {
-        public StarterRandomSetting Starter { get; set; }
-        public string Starter1 { get; set; }
-        public string Starter2 { get; set; }
-
-        public TradeRandomSetting Trade { get; set; }
-
-        public bool RandomizeMovesets { get; set; }
-        public bool ForceFourMoves { get; set; }
     }
 }

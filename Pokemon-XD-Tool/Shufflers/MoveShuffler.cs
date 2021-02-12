@@ -9,9 +9,9 @@ namespace Randomizer.Shufflers
 {
     public static class MoveShuffler
     {
-        public static void RandomizeMoves(Random random, Move[] moves, MoveShufflerSettings settings)
+        public static void RandomizeMoves(Random random, MoveShufflerSettings settings, ExtractedGame extractedGame)
         {
-            foreach (var move in moves)
+            foreach (var move in extractedGame.MoveList)
             {
                 if (settings.RandomMovePower && move.BasePower > 0)
                 {

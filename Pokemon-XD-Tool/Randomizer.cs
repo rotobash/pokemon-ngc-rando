@@ -14,10 +14,7 @@ namespace Randomizer
     {
         Random random;
         IGameExtractor gameExtractor;
-        Move[] moves;
-        Pokemon[] pokemon;
-        Items[] items;
-        TutorMove[] tutorMoves;
+        ExtractedGame extractedGameStructures;
 
         public Randomizer(IGameExtractor extractor, int seed = -1)
         {
@@ -29,42 +26,36 @@ namespace Randomizer
             {
                 random = new Random(seed);
             }
+
+            extractedGameStructures = new ExtractedGame(extractor);
             gameExtractor = extractor;
-            moves = gameExtractor.ExtractMoves();
-            pokemon = gameExtractor.ExtractPokemon();
-            items = gameExtractor.ExtractItems();
         }
 
         public void RandomizeMoves(MoveShufflerSettings settings)
         {
-            MoveShuffler.RandomizeMoves(random, moves, settings);
+            MoveShuffler.RandomizeMoves(random, settings, extractedGameStructures);
         }
 
         public void RandomizePokemonTraits(PokemonTraitShufflerSettings settings)
         {
-            PokemonTraitShuffler.RandomizePokemonTraits(random, pokemon, moves, settings);
+            PokemonTraitShuffler.RandomizePokemonTraits(random, settings, extractedGameStructures);
         }
 
         public void RandomizeTrainers(TeamShufflerSettings settings)
         {
-            var decks = gameExtractor.ExtractPools(pokemon, moves);
-            TeamShuffler.ShuffleTeams(random, settings, decks, pokemon, moves);
+            TeamShuffler.ShuffleTeams(random, settings, extractedGameStructures);
         }
 
         public void RandomizeItems(ItemShufflerSettings settings)
         {
-            ItemShuffler.ShuffleTMs(random, settings, items, moves);
-
-            var overworldItems = gameExtractor.ExtractOverworldItems();
-            ItemShuffler.ShuffleOverworldItems(random, settings, overworldItems, items);
-
-            var marts = gameExtractor.ExtractPokemarts();
-            ItemShuffler.UpdatePokemarts(settings, marts, items);
+            ItemShuffler.ShuffleTMs(random, settings, extractedGameStructures);
+            ItemShuffler.ShuffleOverworldItems(random, settings, extractedGameStructures);
+            ItemShuffler.UpdatePokemarts(random, settings, extractedGameStructures);
 
             if (gameExtractor is XDExtractor xd)
             {
                 var tutorMoves = xd.ExtractTutorMoves();
-                ItemShuffler.ShuffleTutorMoves(random, settings, tutorMoves, moves);
+                ItemShuffler.ShuffleTutorMoves(random, settings, tutorMoves, extractedGameStructures);
             }
         }
 
@@ -73,13 +64,12 @@ namespace Randomizer
             if (gameExtractor is XDExtractor xd)
             {
                 var starter = xd.GetStarter();
-                StaticPokemonShuffler.RandomizeXDStatics(random, settings, starter, Array.Empty<IGiftPokemon>(), pokemon, moves);
+                StaticPokemonShuffler.RandomizeXDStatics(random, settings, starter, Array.Empty<IGiftPokemon>(), extractedGameStructures);
             }
             else
             {
-                StaticPokemonShuffler.RandomizeColoStarters(random, settings, null, null, pokemon);
+                StaticPokemonShuffler.RandomizeColoStarters(random, settings, null, extractedGameStructures.PokemonList);
             }
-            
         }
 
         public void RandomizeBattleBingo(BingoCardShufflerSettings settings)
@@ -87,8 +77,7 @@ namespace Randomizer
             if (gameExtractor is XDExtractor xd)
             {
                 var bCards = xd.ExtractBattleBingoCards();
-                var bingoShuffler = new BingoCardShuffler(random, bCards, pokemon, moves);
-                bingoShuffler.ShuffleCards(settings);
+                BingoCardShuffler.ShuffleCards(random, settings, bCards, extractedGameStructures);
             }
         }
 
@@ -100,7 +89,5 @@ namespace Randomizer
                 var t = 0;
             }
         }
-
-
     }
 }

@@ -10,7 +10,7 @@ namespace Randomizer.Shufflers
 {
     public static class PokemonTraitShuffler
     {
-        public static void RandomizePokemonTraits(Random random, Pokemon[] pokemon, Move[] moves, PokemonTraitShufflerSettings settings)
+        public static void RandomizePokemonTraits(Random random, PokemonTraitShufflerSettings settings, ExtractedGame extractedGame)
         {
             // store pokemon we've randomized already in a list, for follows evolution
             var pokeBaseStatsRandomized = new List<string>();
@@ -20,13 +20,13 @@ namespace Randomizer.Shufflers
             // do this first for "follow evolution" checks
             if (settings.RandomizeEvolutions)
             {
-                foreach (var poke in pokemon)
+                foreach (var poke in extractedGame.PokemonList)
                 {
 
                 }
             }
 
-            foreach (var poke in pokemon)
+            foreach (var poke in extractedGame.PokemonList)
             {
                 if (RandomizerConstants.SpecialPokemon.Contains(poke.Index))
                     continue;
@@ -56,7 +56,7 @@ namespace Randomizer.Shufflers
 
                 if (settings.RandomizeAbilities && !pokeAbilitiesRandomized.Contains(poke.Name))
                 {
-                    RandomizeAbility(random, settings.AllowWonderGuard, settings.BanNegativeAbilities, poke);
+                    RandomizeAbility(random, settings.AllowWonderGuard, settings.BanNegativeAbilities, extractedGame.Abilities, poke);
 
                     if (settings.AbilitiesFollowEvolution)
                     {
@@ -68,7 +68,7 @@ namespace Randomizer.Shufflers
 
                             if (!endOrSplitEvolution)
                             {
-                                var evoPoke = pokemon[currentPoke.Evolutions[0].EvolvesInto];
+                                var evoPoke = extractedGame.PokemonList[currentPoke.Evolutions[0].EvolvesInto];
                                 pokeAbilitiesRandomized.Add(currentPoke.Name);
                                 evoPoke.SetAbility1((byte)poke.Ability1.Index);
                                 evoPoke.SetAbility2((byte)poke.Ability2.Index);
@@ -93,7 +93,7 @@ namespace Randomizer.Shufflers
 
                             if (!endOrSplitEvolution)
                             {
-                                var evoPoke = pokemon[currentPoke.Evolutions[0].EvolvesInto];
+                                var evoPoke = extractedGame.PokemonList[currentPoke.Evolutions[0].EvolvesInto];
                                 pokeTypesRandomized.Add(currentPoke.Name);
                                 evoPoke.Type1 = currentPoke.Type1;
                                 evoPoke.Type2 = currentPoke.Type2;
@@ -143,7 +143,7 @@ namespace Randomizer.Shufflers
                         }
                         else
                         {
-                            poke.SetLevelUpMove(i, move.Level, (ushort)random.Next(0, moves.Length));
+                            poke.SetLevelUpMove(i, move.Level, (ushort)random.Next(0, extractedGame.MoveList.Length));
                         }
                     }
                 }
@@ -199,36 +199,41 @@ namespace Randomizer.Shufflers
             poke.Type2 = type2;
         }
 
-        public static void RandomizeAbility(Random random, bool allowWonderGuard, bool negativeAbility, Pokemon poke)
+        public static void RandomizeAbility(Random random, bool allowWonderGuard, bool banNegativeAbility, Ability[] abilities, Pokemon poke)
         {
-            // yes I know but it's easier to set it there because it needs to know what game we're extracting
-            var numAbilities = poke.Ability1.NumberOfAbilities;
-            bool validAbility;
-            do
+            // don't do my boy shedinja dirty like this
+            if (poke.Name.ToLower() == "shedinja")
             {
-                // don't do my boy shedinja dirty like this
-                if (poke.Name.ToLower() == "shedinja")
+                return;
+            }
+
+            var numAbilities = abilities.Length;
+            IEnumerable<Ability> abilitiesFilter = abilities;            
+
+            if (!allowWonderGuard)
+            {
+                abilitiesFilter = abilitiesFilter.Where(a => a.Index != RandomizerConstants.WonderGuardIndex);
+            }
+
+            if (banNegativeAbility)
+            {
+                abilitiesFilter = abilitiesFilter.Where(a => !RandomizerConstants.BadAbilityList.Contains(a.Index));
+
+            }
+
+            var potentialAbilities = abilitiesFilter.ToArray();
+            var firstAbility = (byte)potentialAbilities[random.Next(0, potentialAbilities.Length)].Index;
+            poke.SetAbility1(firstAbility);
+
+            if (!string.IsNullOrEmpty(poke.Ability2.Name))
+            {
+                var newAbility = firstAbility;
+                while (newAbility != firstAbility)
                 {
-                    validAbility = true;
-                    continue;
+                    newAbility = (byte)potentialAbilities[random.Next(0, potentialAbilities.Length)].Index;
                 }
-
-                poke.SetAbility1((byte)random.Next(1, numAbilities));
-                validAbility = CheckValidAbility(allowWonderGuard, negativeAbility, poke.Ability1.Index);
-
-                if (validAbility && !string.IsNullOrEmpty(poke.Ability2.Name))
-                {
-                    poke.SetAbility2((byte)random.Next(1, numAbilities));
-                    validAbility |= CheckValidAbility(allowWonderGuard, negativeAbility, poke.Ability2.Index);
-                }
-
-            } while (!validAbility);
-        }
-
-        private static bool CheckValidAbility(bool allowWonderGuard, bool negativeAbility, int abilityName)
-        {
-            return !((!allowWonderGuard && abilityName == RandomizerConstants.WonderGuardIndex) 
-                || (negativeAbility && RandomizerConstants.BadAbilityList.Contains(abilityName)));
+                poke.SetAbility2(newAbility);
+            }
         }
 
         private static void ChangeCompatibility(Random random, MoveCompatibility moveCompatibility, Pokemon pokemon, bool tms)

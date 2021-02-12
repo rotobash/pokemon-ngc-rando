@@ -8,29 +8,17 @@ using XDCommon.PokemonDefinitions;
 
 namespace Randomizer.Shufflers
 {
-    public class BingoCardShuffler
+    public static class BingoCardShuffler
     {
-        BattleBingoCard[] cards;
-        Random random;
-        Move[] moves;
-        Pokemon[] pokemon;
-        public BingoCardShuffler(Random random, BattleBingoCard[] bingoCards, Pokemon[] pokemon, Move[] moves)
+        public static void ShuffleCards(Random random, BingoCardShufflerSettings settings, BattleBingoCard[] bingoCards, ExtractedGame extractedGame)
         {
-            this.random = random;
-            cards = bingoCards;
-            this.pokemon = pokemon;
-            this.moves = moves;
-        }
-
-        public void ShuffleCards(BingoCardShufflerSettings settings)
-        {
-            foreach (var card in cards)
+            foreach (var card in bingoCards)
             {
                 foreach (var panel in card.Panels)
                 {
                     if (panel.PanelType == BattleBingoPanelType.Pokemon)
                     {
-                        IEnumerable<Pokemon> potentialPokes = pokemon;
+                        IEnumerable<Pokemon> potentialPokes = extractedGame.PokemonList;
                         if (settings.ForceStrongPokemon)
                         {
                             potentialPokes = potentialPokes.Where(p => p.BST >= Configuration.StrongPokemonBST);
@@ -40,7 +28,7 @@ namespace Randomizer.Shufflers
                         // write type to card?
 
                         // pick good moves
-                        var potentialMoves = moves.Where(m => m.BasePower > 0);
+                        var potentialMoves = extractedGame.MoveList.Where(m => m.BasePower > 0);
                         if (settings.ForceGoodDamagingMove)
                         {
                             potentialMoves = potentialMoves.Where(m => m.BasePower >= Configuration.GoodDamagingMovePower);

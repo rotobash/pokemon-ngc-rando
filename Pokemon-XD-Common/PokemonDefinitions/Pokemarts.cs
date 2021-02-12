@@ -25,6 +25,9 @@ namespace XDCommon.PokemonDefinitions
             Items = new List<ushort>();
             ushort nextItem;
             var nextItemOffset = StartOffset;
+
+            // todo: mart has crazy items indices but all the offsets are correct...
+            // am I reading the wrong file??
             while ((nextItem = pocket.ExtractedFile.GetUShortAtOffset(nextItemOffset)) != 0) 
             {
                 Items.Add(nextItem);

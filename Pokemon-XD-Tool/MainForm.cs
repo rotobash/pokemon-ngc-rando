@@ -26,7 +26,6 @@ namespace Randomizer
         IGameExtractor gameExtractor;
 
         int seed = -1;
-        int moveSteps = 3;
 
         public MainForm()
         {
@@ -35,12 +34,6 @@ namespace Randomizer
             backgroundWorker.DoWork += StartRandomizing;
             backgroundWorker.ProgressChanged += reportProgress;
             backgroundWorker.RunWorkerCompleted += doneTask;
-
-            infoToolTip.SetToolTip(movePowerCheck, "Randomize damaging move power. Uses a normal distribution with an average of 80 power and a variance of 70 power.");
-            infoToolTip.SetToolTip(moveAccCheck, "Randomize move accuracy between 0 and 100, ");
-            infoToolTip.SetToolTip(movePPCheck, "Randomize move PP from 5 to 40 in intervals of 5.");
-            infoToolTip.SetToolTip(moveTypeCheck, "Randomize damaging move's type, will avoid None types.");
-            infoToolTip.SetToolTip(moveCategoryCheck, "Randomize whether a move is physical or special, XD only unless you've patched Colosseum.");
         }
 
         private void loadIsoButton_Click(object sender, EventArgs e)
@@ -49,11 +42,13 @@ namespace Randomizer
             openISODialog.CheckFileExists = true;
             if (openISODialog.ShowDialog() == DialogResult.OK)
             {
+                iso?.Dispose();
+                isoExtractor?.Dispose();
+
                 progressMessageLabel.Text = "Reading ISO...";
 
                 if (OpenFile())
                 {
-
                     iso = isoExtractor.ExtractISO();
                     switch (iso.Game)
                     {
@@ -126,12 +121,8 @@ namespace Randomizer
                 // aha!
                 MessageBox.Show("Game not recognized!");
                 progressMessageLabel.Text = "Failed";
-                if (iso != null || isoExtractor != null)
-                {
-                    // dereference the iso, the GC will call it's destructor which will free the streams
-                    iso = null;
-                    isoExtractor = null;
-                }
+                iso?.Dispose();
+                isoExtractor?.Dispose();
                 return false;
             }
         }
@@ -351,8 +342,8 @@ namespace Randomizer
             abilitiesFollowEvolutionCheck.Checked = settings.PokemonTraitShufflerSettings.AbilitiesFollowEvolution;
             banBadAbilitiesCheck.Checked = settings.PokemonTraitShufflerSettings.BanNegativeAbilities;
 
-            typesFollowEvolutionCheck.Checked = settings.PokemonTraitShufflerSettings.RandomizeTypes;
-            banBadAbilitiesCheck.Checked = settings.PokemonTraitShufflerSettings.TypesFollowEvolution;
+            randomizeTypesCheck.Checked = settings.PokemonTraitShufflerSettings.RandomizeTypes;
+            typesFollowEvolutionCheck.Checked = settings.PokemonTraitShufflerSettings.TypesFollowEvolution;
 
             randomizeEvolutionsCheck.Checked = settings.PokemonTraitShufflerSettings.RandomizeEvolutions;
             evolutionSimilarStrengthCheck.Checked = settings.PokemonTraitShufflerSettings.EvolutionHasSimilarStrength;

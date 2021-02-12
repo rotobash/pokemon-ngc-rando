@@ -44,5 +44,10 @@ namespace Randomizer.Colosseum
         {
             throw new NotImplementedException();
         }
+
+        public Ability[] ExtractAbilities()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

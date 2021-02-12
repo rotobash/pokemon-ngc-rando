@@ -145,5 +145,16 @@ namespace Randomizer.XD
         {
 			return new XDStarterPokemon(iso);
 		}
-	}
+
+        public Ability[] ExtractAbilities()
+        {
+			var numAbilities = Constants.NumberOfAbilities(iso);
+			var abilities = new Ability[numAbilities];
+			for (int i = 0; i < abilities.Length; i++)
+            {
+				abilities[i] = new Ability(i, iso);
+            }
+			return abilities;
+        }
+    }
 }
