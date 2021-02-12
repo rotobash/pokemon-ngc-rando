@@ -188,14 +188,16 @@ namespace Randomizer
             this.label13 = new System.Windows.Forms.Label();
             this.gameLabel = new System.Windows.Forms.Label();
             this.regionLabel = new System.Windows.Forms.Label();
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.openISODialog = new System.Windows.Forms.OpenFileDialog();
+            this.saveISODialog = new System.Windows.Forms.SaveFileDialog();
             this.infoToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.tmGroupBox = new System.Windows.Forms.GroupBox();
             this.panel20 = new System.Windows.Forms.Panel();
             this.moveTypeCheck = new System.Windows.Forms.CheckBox();
             this.moveCategoryCheck = new System.Windows.Forms.CheckBox();
+            this.openSettingsDialog = new System.Windows.Forms.OpenFileDialog();
+            this.saveSettingsDialog = new System.Windows.Forms.SaveFileDialog();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gamePictureBox)).BeginInit();
             this.settingsTab.SuspendLayout();
@@ -347,6 +349,7 @@ namespace Randomizer
             this.setSeedButton.TabIndex = 3;
             this.setSeedButton.Text = "Set Seed";
             this.setSeedButton.UseVisualStyleBackColor = true;
+            this.setSeedButton.Click += new System.EventHandler(this.setSeedButton_Click);
             // 
             // optionsButton
             // 
@@ -370,6 +373,7 @@ namespace Randomizer
             this.loadSettingButton.TabIndex = 5;
             this.loadSettingButton.Text = "Load Settings";
             this.loadSettingButton.UseVisualStyleBackColor = true;
+            this.loadSettingButton.Click += new System.EventHandler(this.loadSettingButton_Click);
             // 
             // saveSettingsButton
             // 
@@ -381,6 +385,7 @@ namespace Randomizer
             this.saveSettingsButton.TabIndex = 6;
             this.saveSettingsButton.Text = "Save Settings";
             this.saveSettingsButton.UseVisualStyleBackColor = true;
+            this.saveSettingsButton.Click += new System.EventHandler(this.saveSettingsButton_Click);
             // 
             // settingsTab
             // 
@@ -805,6 +810,7 @@ namespace Randomizer
             this.randomizeAbilitiesCheck.TabIndex = 10;
             this.randomizeAbilitiesCheck.Text = "Randomize";
             this.randomizeAbilitiesCheck.UseVisualStyleBackColor = true;
+            this.randomizeAbilitiesCheck.CheckedChanged += new System.EventHandler(this.randomizeAbilitiesCheck_CheckedChanged);
             // 
             // banBadAbilitiesCheck
             // 
@@ -1088,6 +1094,7 @@ namespace Randomizer
             this.baseStatsRandomCheck.TabIndex = 9;
             this.baseStatsRandomCheck.Text = "Randomize";
             this.baseStatsRandomCheck.UseVisualStyleBackColor = true;
+            this.baseStatsRandomCheck.CheckedChanged += new System.EventHandler(this.baseStatsRandomCheck_CheckedChanged);
             // 
             // typesGroupBox
             // 
@@ -1131,6 +1138,7 @@ namespace Randomizer
             this.randomizeTypesCheck.TabIndex = 10;
             this.randomizeTypesCheck.Text = "Randomize";
             this.randomizeTypesCheck.UseVisualStyleBackColor = true;
+            this.randomizeTypesCheck.CheckedChanged += new System.EventHandler(this.randomizeTypesCheck_CheckedChanged);
             // 
             // typesFollowEvolutionCheck
             // 
@@ -3137,6 +3145,10 @@ namespace Randomizer
             this.regionLabel.Size = new System.Drawing.Size(0, 15);
             this.regionLabel.TabIndex = 3;
             // 
+            // backgroundWorker
+            // 
+            this.backgroundWorker.WorkerReportsProgress = true;
+            // 
             // tmGroupBox
             // 
             this.tmGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -3176,6 +3188,16 @@ namespace Randomizer
             this.moveCategoryCheck.TabIndex = 15;
             this.moveCategoryCheck.Text = "Randomize Move Category";
             this.moveCategoryCheck.UseVisualStyleBackColor = true;
+            // 
+            // openSettingsDialog
+            // 
+            this.openSettingsDialog.DefaultExt = "settings";
+            this.openSettingsDialog.Filter = "Settings File|*.settings";
+            // 
+            // saveSettingsDialog
+            // 
+            this.saveSettingsDialog.DefaultExt = "settings";
+            this.saveSettingsDialog.Filter = "Settings File|*.settings";
             // 
             // MainForm
             // 
@@ -3301,8 +3323,8 @@ namespace Randomizer
         private System.Windows.Forms.TabPage miscTabPage;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.OpenFileDialog openFileDialog;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.OpenFileDialog openISODialog;
+        private System.Windows.Forms.SaveFileDialog saveISODialog;
         private System.Windows.Forms.TabPage moveSetsTabPage;
         private System.Windows.Forms.ToolTip infoToolTip;
         private System.Windows.Forms.CheckBox evolutionSameTypeCheck;
@@ -3450,6 +3472,8 @@ namespace Randomizer
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel28;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel29;
         private System.Windows.Forms.GroupBox pokeSpotGroupBox;
+        private System.Windows.Forms.OpenFileDialog openSettingsDialog;
+        private System.Windows.Forms.SaveFileDialog saveSettingsDialog;
     }
 }
 

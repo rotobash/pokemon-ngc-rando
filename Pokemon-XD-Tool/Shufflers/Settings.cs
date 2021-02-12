@@ -17,99 +17,94 @@ namespace Randomizer.Shufflers
 
     }
 
-    [Serializable]
     public struct PokemonTraitShufflerSettings
     {
-        public int RandomizeBaseStats;
-        public bool StandardizeEXPCurves;
-        public bool BaseStatsFollowEvolution;
-        public bool UpdateBaseStats;
+        public int RandomizeBaseStats { get; set; }
+        public bool StandardizeEXPCurves { get; set; }
+        public bool BaseStatsFollowEvolution { get; set; }
+        public bool UpdateBaseStats { get; set; }
 
-        public bool RandomizeAbilities;
-        public bool AllowWonderGuard;
-        public bool AbilitiesFollowEvolution;
-        public bool BanNegativeAbilities;
+        public bool RandomizeAbilities { get; set; }
+        public bool AllowWonderGuard { get; set; }
+        public bool AbilitiesFollowEvolution { get; set; }
+        public bool BanNegativeAbilities { get; set; }
 
-        public bool RandomizeTypes;
-        public bool TypesFollowEvolution;
+        public bool RandomizeTypes { get; set; }
+        public bool TypesFollowEvolution { get; set; }
 
-        public bool RandomizeEvolutions;
-        public bool EvolutionHasSimilarStrength;
-        public bool EvolutionHasSameType;
-        public bool ThreeStageEvolution;
-        public bool EasyEvolutions;
-        public bool FixImpossibleEvolutions;
+        public bool RandomizeEvolutions { get; set; }
+        public bool EvolutionHasSimilarStrength { get; set; }
+        public bool EvolutionHasSameType { get; set; }
+        public bool ThreeStageEvolution { get; set; }
+        public bool EasyEvolutions { get; set; }
+        public bool FixImpossibleEvolutions { get; set; }
 
-        public MoveCompatibility TMCompatibility;
-        public MoveCompatibility TutorCompatibility;
+        public MoveCompatibility TMCompatibility { get; set; }
+        public MoveCompatibility TutorCompatibility { get; set; }
 
-        public bool NoEXP;
-        public bool RandomizeMovesets;
-        public bool MetronomeOnly;
+        public bool NoEXP { get; set; }
+        public bool RandomizeMovesets { get; set; }
+        public bool MetronomeOnly { get; set; }
     }
 
-    [Serializable]
     public struct TeamShufflerSettings
     {
-        public bool RandomizePokemon;
-        public bool DontUseLegendaries;
+        public bool RandomizePokemon { get; set; }
+        public bool DontUseLegendaries { get; set; }
 
-        public bool SetMinimumShadowCatchRate;
-        public float ShadowCatchRateMinimum;
-        public bool BoostTrainerLevel;
-        public float BoostTrainerLevelPercent;
-        public bool ForceFullyEvolved;
-        public int ForceFullyEvolvedLevel;
+        public bool SetMinimumShadowCatchRate { get; set; }
+        public int ShadowCatchRateMinimum { get; set; }
+        public bool BoostTrainerLevel { get; set; }
+        public float BoostTrainerLevelPercent { get; set; }
+        public bool ForceFullyEvolved { get; set; }
+        public int ForceFullyEvolvedLevel { get; set; }
 
-        public bool RandomizeHeldItems;
-        public bool BanBadItems;
-        public bool RandomizeMovesets;
-        public bool MetronomeOnly;
-        public bool ForceFourMoves;
-        public bool ForceGoodDamagingMoves;
-        public int ForceGoodDamagingMovesCount;
+        public bool RandomizeHeldItems { get; set; }
+        public bool BanBadItems { get; set; }
+        public bool RandomizeMovesets { get; set; }
+        public bool MetronomeOnly { get; set; }
+        public bool ForceFourMoves { get; set; }
+        public bool ForceGoodDamagingMoves { get; set; }
+        public int ForceGoodDamagingMovesCount { get; set; }
     }
 
-    [Serializable]
     public struct MoveShufflerSettings
     {
-        public bool RandomMovePower;
-        public bool RandomMoveAcc;
-        public bool RandomMovePP;
-        public bool RandomMoveTypes;
-        public bool RandomMoveCategory;
+        public bool RandomMovePower { get; set; }
+        public bool RandomMoveAcc { get; set; }
+        public bool RandomMovePP { get; set; }
+        public bool RandomMoveTypes { get; set; }
+        public bool RandomMoveCategory { get; set; }
     }
 
-    [Serializable]
     public struct ItemShufflerSettings
     {
-        public bool RandomizeItems;
-        public bool RandomizeNonEssentialKeyItems;
-        public bool RandomizeItemQuantity;
-        public bool RandomizeTMs;
-        public bool RandomizeTutorMoves;
-        public bool RandomizeMarts;
+        public bool RandomizeItems { get; set; }
+        public bool RandomizeNonEssentialKeyItems { get; set; }
+        public bool RandomizeItemQuantity { get; set; }
+        public bool RandomizeTMs { get; set; }
+        public bool RandomizeTutorMoves { get; set; }
+        public bool RandomizeMarts { get; set; }
 
-        public bool BanBadItems;
-        public bool MakeItemsSparkles;
-        public bool MakeItemsBoxes;
+        public bool BanBadItems { get; set; }
+        public bool MakeItemsSparkles { get; set; }
+        public bool MakeItemsBoxes { get; set; }
 
-        public bool TMForceGoodDamagingMove;
-        public float TMGoodDamagingMovePercent;
-        public bool TutorForceGoodDamagingMove;
-        public float TutorGoodDamagingMovePercent;
+        public bool TMForceGoodDamagingMove { get; set; }
+        public float TMGoodDamagingMovePercent { get; set; }
+        public bool TutorForceGoodDamagingMove { get; set; }
+        public float TutorGoodDamagingMovePercent { get; set; }
 
-        public bool MartsSellXItems;
-        public bool MartsSellEvoStones;
+        public bool MartsSellXItems { get; set; }
+        public bool MartsSellEvoStones { get; set; }
     }
 
-    [Serializable]
     public struct BingoCardShufflerSettings
     {
-        public bool ForceStrongPokemon;
-        public bool ForceGoodDamagingMove;
-        public bool ForceSTABMove;
-        public bool AllowTrolls;
+        public bool ForceStrongPokemon { get; set; }
+        public bool ForceGoodDamagingMove { get; set; }
+        public bool ForceSTABMove { get; set; }
+        public bool AllowTrolls { get; set; }
     }
     public enum MoveCompatibility
     {
@@ -135,16 +130,15 @@ namespace Randomizer.Shufflers
         Both,
     }
 
-    [Serializable]
     public struct StaticPokemonShufflerSettings
     {
-        public StarterRandomSetting Starter;
-        public string Starter1;
-        public string Starter2;
+        public StarterRandomSetting Starter { get; set; }
+        public string Starter1 { get; set; }
+        public string Starter2 { get; set; }
 
-        public TradeRandomSetting Trade;
+        public TradeRandomSetting Trade { get; set; }
 
-        public bool RandomizeMovesets;
-        public bool ForceFourMoves;
+        public bool RandomizeMovesets { get; set; }
+        public bool ForceFourMoves { get; set; }
     }
 }

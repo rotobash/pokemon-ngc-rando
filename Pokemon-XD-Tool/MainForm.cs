@@ -10,6 +10,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using XDCommon;
@@ -32,6 +33,8 @@ namespace Randomizer
             InitializeComponent();
 
             backgroundWorker.DoWork += StartRandomizing;
+            backgroundWorker.ProgressChanged += reportProgress;
+            backgroundWorker.RunWorkerCompleted += doneTask;
 
             infoToolTip.SetToolTip(movePowerCheck, "Randomize damaging move power. Uses a normal distribution with an average of 80 power and a variance of 70 power.");
             infoToolTip.SetToolTip(moveAccCheck, "Randomize move accuracy between 0 and 100, ");
@@ -42,9 +45,9 @@ namespace Randomizer
 
         private void loadIsoButton_Click(object sender, EventArgs e)
         {
-            openFileDialog.Filter = "Colosseum or XD Game File|*.iso;*.zip";
-            openFileDialog.CheckFileExists = true;
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            openISODialog.Filter = "Colosseum or XD Game File|*.iso;*.zip";
+            openISODialog.CheckFileExists = true;
+            if (openISODialog.ShowDialog() == DialogResult.OK)
             {
                 progressMessageLabel.Text = "Reading ISO...";
 
@@ -84,7 +87,7 @@ namespace Randomizer
             // did they give us crap?
             try
             {
-                if (openFileDialog.FileName.EndsWith("zip"))
+                if (openISODialog.FileName.EndsWith("zip"))
                 {
                     if (!Configuration.UseMemoryStreams)
                     {
@@ -98,8 +101,8 @@ namespace Randomizer
                     }
 
                     // keep this one open
-                    var extractStream = $"{Configuration.ExtractDirectory}/{openFileDialog.SafeFileName}.iso".GetNewStream();
-                    using var fileStream = File.OpenRead(openFileDialog.FileName);
+                    var extractStream = $"{Configuration.ExtractDirectory}/{openISODialog.SafeFileName}.iso".GetNewStream();
+                    using var fileStream = File.OpenRead(openISODialog.FileName);
                     using var zip = new ZipArchive(fileStream);
                     foreach (var entry in zip.Entries)
                     {
@@ -114,7 +117,7 @@ namespace Randomizer
                 }
                 else
                 {
-                    isoExtractor = new ISOExtractor(openFileDialog.FileName);
+                    isoExtractor = new ISOExtractor(openISODialog.FileName);
                 }
                 return true;
             }
@@ -143,11 +146,11 @@ namespace Randomizer
         {
             if (iso != null)
             {
-                saveFileDialog.FileName = $"{iso.Game}-{iso.Region}.iso";
-                saveFileDialog.Filter = "Randomized game file|*.iso";
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                saveISODialog.FileName = $"{iso.Game}-{iso.Region}.iso";
+                saveISODialog.Filter = "Randomized game file|*.iso";
+                if (saveISODialog.ShowDialog() == DialogResult.OK)
                 {
-                    backgroundWorker.RunWorkerAsync(saveFileDialog.FileName);
+                    backgroundWorker.RunWorkerAsync(saveISODialog.FileName);
                 }
             }
         }
@@ -208,9 +211,10 @@ namespace Randomizer
             backgroundWorker.ReportProgress(100);
         }
 
+        #region Settings Save/Load
+        // sorry
         private Settings CreateRandoSettings()
         {
-            // sorry
             return new Settings
             {
                 PokemonTraitShufflerSettings = new PokemonTraitShufflerSettings
@@ -279,7 +283,7 @@ namespace Randomizer
                     DontUseLegendaries = noLegendaryOnTrainerCheck.Checked,
 
                     SetMinimumShadowCatchRate = minimumShadowCatchRateCheck.Checked,
-                    ShadowCatchRateMinimum = (float)(shadowCatchMinimum.Value / 100),
+                    ShadowCatchRateMinimum = (int)shadowCatchMinimum.Value,
                     BoostTrainerLevel = boostTrainerLevelCheck.Checked,
                     BoostTrainerLevelPercent = (float)(boostTrainerLevelPercent.Value / 100),
                     ForceFullyEvolved = forceFullyEvovledLevelCheck.Checked,
@@ -322,12 +326,173 @@ namespace Randomizer
             };
         }
 
+        private void LoadSettings(Settings settings)
+        {
+            // pokemon settings
+            switch (settings.PokemonTraitShufflerSettings.RandomizeBaseStats)
+            {
+                case 1:
+                    baseStatsShuffleCheck.Checked = true;
+                    break;
+                case 2:
+                    baseStatsRandomCheck.Checked = true;
+                    break;
+                default:
+                    baseStatsUnchangedCheck.Checked = true;
+                    break;
+            }
+
+            standardizeExpCurveCheck.Checked = settings.PokemonTraitShufflerSettings.StandardizeEXPCurves;
+            bstFollowEvolutionCheck.Checked = settings.PokemonTraitShufflerSettings.BaseStatsFollowEvolution;
+            updateBSTCheck.Checked = settings.PokemonTraitShufflerSettings.UpdateBaseStats;
+
+            randomizeAbilitiesCheck.Checked = settings.PokemonTraitShufflerSettings.RandomizeAbilities;
+            allowWonderGuardCheck.Checked = settings.PokemonTraitShufflerSettings.AllowWonderGuard;
+            abilitiesFollowEvolutionCheck.Checked = settings.PokemonTraitShufflerSettings.AbilitiesFollowEvolution;
+            banBadAbilitiesCheck.Checked = settings.PokemonTraitShufflerSettings.BanNegativeAbilities;
+
+            typesFollowEvolutionCheck.Checked = settings.PokemonTraitShufflerSettings.RandomizeTypes;
+            banBadAbilitiesCheck.Checked = settings.PokemonTraitShufflerSettings.TypesFollowEvolution;
+
+            randomizeEvolutionsCheck.Checked = settings.PokemonTraitShufflerSettings.RandomizeEvolutions;
+            evolutionSimilarStrengthCheck.Checked = settings.PokemonTraitShufflerSettings.EvolutionHasSimilarStrength;
+            evolutionSameTypeCheck.Checked = settings.PokemonTraitShufflerSettings.EvolutionHasSameType;
+            threeStageMaxCheck.Checked = settings.PokemonTraitShufflerSettings.ThreeStageEvolution;
+            easyEvolutionsCheck.Checked = settings.PokemonTraitShufflerSettings.EasyEvolutions;
+            fixImpossibleEvolutionsCheck.Checked = settings.PokemonTraitShufflerSettings.FixImpossibleEvolutions;
+
+            switch (settings.PokemonTraitShufflerSettings.TMCompatibility)
+            {
+                case MoveCompatibility.Full:
+                    tmFullCompatibilityCheck.Checked = true;
+                    break;
+                case MoveCompatibility.Random:
+                    tmCompatibilityRandomCheck.Checked = true;
+                    break;
+                case MoveCompatibility.RandomPreferType:
+                    tmCompatibilityPreferTypeCheck.Checked = true;
+                    break;
+                default:
+                    tmCompatibilityUnchangedCheck.Checked = true;
+                    break;
+            }
+
+            switch (settings.PokemonTraitShufflerSettings.TutorCompatibility)
+            {
+                case MoveCompatibility.Full:
+                    tutorFullCompatibilityCheck.Checked = true;
+                    break;
+                case MoveCompatibility.Random:
+                    tutorCompatibilityRandomCheck.Checked = true;
+                    break;
+                case MoveCompatibility.RandomPreferType:
+                    tutorCompatibilityPreferTypeCheck.Checked = true;
+                    break;
+                default:
+                    tutorCompatibilityUnchangedCheck.Checked = true;
+                    break;
+            }
+
+            noEXPCheck.Checked = settings.PokemonTraitShufflerSettings.NoEXP;
+
+            // moves
+             movePowerCheck.Checked= settings.MoveShufflerSettings.RandomMovePower;
+             moveAccCheck.Checked= settings.MoveShufflerSettings.RandomMoveAcc;
+             movePPCheck.Checked = settings.MoveShufflerSettings.RandomMovePP;
+             moveTypeCheck.Checked= settings.MoveShufflerSettings.RandomMoveTypes;
+             moveCategoryCheck.Checked= settings.MoveShufflerSettings.RandomMoveCategory;
+
+            // items
+            randomizeOverworldItemsCheck.Checked = settings.ItemShufflerSettings.RandomizeItems;
+            randomizeItemQuantityCheck.Checked = settings.ItemShufflerSettings.RandomizeItemQuantity;
+            randomizeMartItems.Checked = settings.ItemShufflerSettings.RandomizeMarts;
+            martsSellEvoStonesCheck.Checked = settings.ItemShufflerSettings.MartsSellEvoStones;
+            martsSellXItemsCheck.Checked = settings.ItemShufflerSettings.MartsSellXItems;
+
+            // tms/tutors
+            randomizeTMsCheck.Checked= settings.ItemShufflerSettings.RandomizeTMs;
+            forceGoodDamagingTMsCheck.Checked= settings.ItemShufflerSettings.TMForceGoodDamagingMove;
+            forceGoodDamagingTMPercent.Value = (int)(settings.ItemShufflerSettings.TMGoodDamagingMovePercent * 100);
+            
+            randomizeTutorMoveCheck.Checked= settings.ItemShufflerSettings.RandomizeTutorMoves;
+            forceGoodDamagingTutorMoveCheck.Checked= settings.ItemShufflerSettings.TutorForceGoodDamagingMove;
+            forceGoodDamagingTutorMovePercent.Value= (int)(settings.ItemShufflerSettings.TutorGoodDamagingMovePercent * 100);
+            
+            // trainers
+            randomizeTrainerPokemonCheck.Checked= settings.TeamShufflerSettings.RandomizePokemon;
+            noLegendaryOnTrainerCheck.Checked= settings.TeamShufflerSettings.DontUseLegendaries;
+
+            minimumShadowCatchRateCheck.Checked= settings.TeamShufflerSettings.SetMinimumShadowCatchRate;
+            shadowCatchMinimum.Value = Math.Clamp(settings.TeamShufflerSettings.ShadowCatchRateMinimum, 0, 255);
+            boostTrainerLevelCheck.Checked = settings.TeamShufflerSettings.BoostTrainerLevel;
+            boostTrainerLevelPercent.Value = (int)(settings.TeamShufflerSettings.BoostTrainerLevelPercent * 100);
+            forceFullyEvovledLevelCheck.Checked = settings.TeamShufflerSettings.ForceFullyEvolved;
+            forceFullyEvolvedLevel.Value = settings.TeamShufflerSettings.ForceFullyEvolvedLevel;
+            
+            randomShadowHeldItemCheck.Checked = settings.TeamShufflerSettings.RandomizeHeldItems;
+            banBadShadowHeldItemsCheck.Checked = settings.TeamShufflerSettings.BanBadItems;
+            
+            // movesets
+            randomizeMovesets.Checked= settings.TeamShufflerSettings.RandomizeMovesets;
+            forceFourMoveCheck.Checked = settings.TeamShufflerSettings.ForceFourMoves;
+            movesetsForceGoodDamagingMoveCheck.Checked = settings.TeamShufflerSettings.ForceGoodDamagingMoves;
+            movesetsForceGoodDamagingMovePercent.Value = settings.TeamShufflerSettings.ForceGoodDamagingMovesCount;
+            movesetsMetronomeOnlyCheck.Checked = settings.TeamShufflerSettings.MetronomeOnly;
+
+            randomizeMovesets.Checked = settings.StaticPokemonShufflerSettings.RandomizeMovesets;
+            forceFourMoveCheck.Checked = settings.StaticPokemonShufflerSettings.ForceFourMoves;
+
+            // starters
+            switch (settings.StaticPokemonShufflerSettings.Starter)
+            {
+                case StarterRandomSetting.Custom:
+                    customStarterCheck.Checked = true;
+                    break;
+                case StarterRandomSetting.Random:
+                    randomStarterCheck.Checked = true;
+                    break;
+                case StarterRandomSetting.RandomThreeStage:
+                    randomStarterThreeStageCheck.Checked = true;
+                    break;
+                case StarterRandomSetting.RandomTwoStage:
+                    randomStarterTwoStageCheck.Checked = true;
+                    break;
+                case StarterRandomSetting.RandomSingleStage:
+                    randomStarterSingleStageCheck.Checked = true;
+                    break;
+                default:
+                    unchangedStarterCheck.Checked = true;
+                    break;
+            }
+
+            starterComboBox.Text = settings.StaticPokemonShufflerSettings.Starter1;
+            starter2ComboBox.Text = settings.StaticPokemonShufflerSettings.Starter2;
+
+            switch (settings.StaticPokemonShufflerSettings.Trade)
+            {
+                case TradeRandomSetting.Given:
+                    tradeRandomGivenCheck.Checked = true;
+                    break;
+                case TradeRandomSetting.Both:
+                    tradeBothRandomCheck.Checked = true;
+                    break;
+                default:
+                    tradeUnchangedCheck.Checked = true;
+                    break;
+            }
+
+            bingoUseDamagingMoveCheck.Checked = settings.BingoCardShufflerSettings.ForceGoodDamagingMove;
+            bingoUseStabMoveCheck.Checked = settings.BingoCardShufflerSettings.ForceSTABMove;
+            bingoUseStrongPokemon.Checked = settings.BingoCardShufflerSettings.ForceStrongPokemon;
+        }
+        #endregion
+
         #region Control Event Listeners
         private void reportProgress(object sender, ProgressChangedEventArgs e)
         {
             progressBar.Value = e.ProgressPercentage;
         }
-        private void doneTask(object sender, ProgressChangedEventArgs e)
+        private void doneTask(object sender, RunWorkerCompletedEventArgs e)
         {
             MessageBox.Show("Done!");
         }
@@ -415,6 +580,35 @@ namespace Randomizer
         private void movesetsForceGoodDamagingMoveCheck_CheckedChanged(object sender, EventArgs e)
         {
             movesetsForceGoodDamagingMovePercent.Enabled = movesetsForceGoodDamagingMoveCheck.Checked;
+        }
+
+        private void setSeedButton_Click(object sender, EventArgs e)
+        {
+            var seedForm = new SetSeedForm();
+            if (seedForm.ShowDialog() == DialogResult.OK)
+            {
+                seed = seedForm.NewSeed;
+            }
+        }
+
+        private void saveSettingsButton_Click(object sender, EventArgs e)
+        {
+            if (saveSettingsDialog.ShowDialog() == DialogResult.OK)
+            {
+                var settings = CreateRandoSettings();
+                var json = JsonSerializer.Serialize(settings);
+                File.WriteAllText(saveSettingsDialog.FileName, json);
+            }
+        }
+
+        private void loadSettingButton_Click(object sender, EventArgs e)
+        {
+            if (openSettingsDialog.ShowDialog() == DialogResult.OK)
+            {
+                var json = File.ReadAllText(openSettingsDialog.FileName);
+                var settings = JsonSerializer.Deserialize<Settings>(json);
+                LoadSettings(settings);
+            }
         }
         #endregion
     }
