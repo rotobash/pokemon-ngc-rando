@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Configuration;
-using System.Collections.Specialized;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace XDCommon.Utility
 {
     public static class StreamExtensions
     {
+        // helper methods to convert endianess
         public static byte[] GetBytes(this int value)
         {
             var valBytes = BitConverter.GetBytes(value);
@@ -37,6 +35,17 @@ namespace XDCommon.Utility
             return valBytes;
         }
 
+        /// <summary>
+        /// Get a new stream depending on what the value of Configuration.UseMemoryStreams is
+        /// If true, use RAM to do processing, else write to disk.
+        /// </summary>
+        /// <remarks>
+        /// Useful for extracting files too.
+        /// </remarks>
+        /// <param name="fullPath">Full path to file if above is false, else irrelevant</param>
+        /// <returns>
+        /// An empty open stream.
+        /// </returns>
         public static Stream GetNewStream(this string fullPath)
         {
             if (Configuration.UseMemoryStreams)
@@ -45,10 +54,14 @@ namespace XDCommon.Utility
             }
             else
             {
-                return File.Open(fullPath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+                // use create instead of open in cases where we crash and wrote junk the stream
+                // if you didn't want this to happen why did you have files named exactly the same
+                // and picked the same directory??
+                return File.Open(fullPath, FileMode.Create, FileAccess.ReadWrite);
             }
         }
 
+        // helper methods to get data types at offsets
         public static byte[] GetBytesAtOffset(this Stream stream, long offset, int length)
         {
             byte[] bytes = new byte[length];
@@ -131,7 +144,22 @@ namespace XDCommon.Utility
         {
             return (char)GetByteAtOffset(stream, offset);
         }
-        
+
+        public static List<IUnicodeCharacters> GetStringAtOffset(this Stream stream, long offset)
+        {
+            byte currentByte;
+            var currentOffset = offset;
+            List<IUnicodeCharacters> chars = new List<IUnicodeCharacters>();
+
+            while ((currentByte = GetByteAtOffset(stream, currentOffset)) != 0)
+            {
+                chars.Add(new UnicodeCharacters(currentByte));
+                currentOffset += 1;
+            }
+            return chars;
+        }
+
+        // write helpers
         public static void WriteByteAtOffset(this Stream stream, long offset, byte writeByte)
         {
             stream.Seek(offset, SeekOrigin.Begin);
@@ -152,6 +180,13 @@ namespace XDCommon.Utility
             } while (bytesWrittenTotal < writeBytes.Length);
         }
 
+        /// <summary>
+        /// Copy a chunk of a stream into another.
+        /// </summary>
+        /// <param name="input">Stream to read from.</param>
+        /// <param name="output">Stream to write to.</param>
+        /// <param name="start">The offset in the input stream to read at.</param>
+        /// <param name="length">Amount of bytes to write.</param>
         public static void CopySubStream(this Stream input, Stream output, long start, long length)
         {
             var bytesReadTotal = 0;
@@ -171,11 +206,21 @@ namespace XDCommon.Utility
             } while (bytesReadTotal < length);
         }
 
-        public static Stream InsertIntoStream(this FileStream stream, long offset, byte[] data)
+        /// <summary>
+        /// Insert bytes into a stream.
+        /// Note: this closes the input stream and returns a new stream.
+        /// </summary>
+        /// <param name="stream">Input stream to read from.</param>
+        /// <param name="offset">The offset to insert the data at.</param>
+        /// <param name="data">The bytes to insert.</param>
+        /// <returns>The new stream with inserted data.</returns>
+        public static Stream InsertIntoStream(this Stream stream, long offset, byte[] data)
         {
             // you can't really insert into a stream without pulling it entirely into memory, so cheat a bit
-            var streamFileName = stream.Name;
-            var newStream = $"{streamFileName}.bak".GetNewStream();
+            string streamFileName = stream is FileStream fs
+                ? $"{fs.Name}.bak"
+                : string.Empty;
+            var newStream = streamFileName.GetNewStream();
 
             // write any pending changes
             // copy old stream into new stream up to offset
@@ -204,7 +249,15 @@ namespace XDCommon.Utility
 
             return streamFileName.GetNewStream();
         }
-        
+
+        /// <summary>
+        /// Deletes bytes into a stream.
+        /// Note: this closes the input stream and returns a new stream.
+        /// </summary>
+        /// <param name="stream">Input stream to read from.</param>
+        /// <param name="offset">The offset to delete the data at.</param>
+        /// <param name="length">The amount bytes to delete.</param>
+        /// <returns>The new stream with deleted data.</returns>
         public static Stream DeleteFromStream(this FileStream stream, long offset, int length)
         {
             // you can't really insert into a stream without pulling it entirely into memory, so cheat a bit
@@ -233,20 +286,12 @@ namespace XDCommon.Utility
             return streamFileName.GetNewStream();
         }
 
-        public static List<IUnicodeCharacters> GetStringAtOffset(this Stream stream, long offset)
-        {
-            byte currentByte;
-            var currentOffset = offset;
-            List<IUnicodeCharacters> chars = new List<IUnicodeCharacters>();
-
-            while ((currentByte = GetByteAtOffset(stream, currentOffset)) != 0)
-            {
-                chars.Add(new UnicodeCharacters(currentByte));
-                currentOffset += 1;
-            }
-            return chars;
-        }
-
+        /// <summary>
+        /// Get a list of offsets where a given "marker" appears.
+        /// </summary>
+        /// <param name="stream">Stream to search in.</param>
+        /// <param name="marker">The marker to look for.</param>
+        /// <returns>List of offsets found.</returns>
         public static IEnumerable<int> OccurencesOfBytes(this Stream stream, int marker)
         {
             var offsets = new List<int>();
