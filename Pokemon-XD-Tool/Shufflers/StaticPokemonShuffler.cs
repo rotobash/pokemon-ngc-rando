@@ -8,34 +8,6 @@ using XDCommon.Utility;
 
 namespace Randomizer.Shufflers
 {
-    public enum StarterRandomSetting
-    {
-        Unchanged,
-        Custom,
-        Random,
-        RandomThreeStage,
-        RandomTwoStage,
-        RandomSingleStage
-    }
-    public enum TradeRandomSetting
-    {
-        Unchanged,
-        Given,
-        Both,
-    }
-
-    public struct StaticPokemonShufflerSettings
-    {
-        public StarterRandomSetting Starter;
-        public string Starter1;
-        public string Starter2;
-
-        public TradeRandomSetting Trade;
-
-        public bool RandomizeMovesets;
-        public bool ForceFourMoves;
-    }
-
     public static class StaticPokemonShuffler
     {
         public static void RandomizeXDStatics(Random random, StaticPokemonShufflerSettings settings, XDStarterPokemon starter, IGiftPokemon[] trades, Pokemon[] pokemon, Move[] moves)
@@ -54,7 +26,7 @@ namespace Randomizer.Shufflers
                 break;
                 case StarterRandomSetting.Random:
                 {
-                    while (index == 0 || TeamShuffler.SpecialPokemon.Contains(index))
+                    while (index == 0 || RandomizerConstants.SpecialPokemon.Contains(index))
                     {
                         index = random.Next(1, pokemon.Length);
                     }
@@ -64,7 +36,7 @@ namespace Randomizer.Shufflers
                     while (!condition)
                     {
                         index = random.Next(1, pokemon.Length);
-                        condition = (index != 0 || TeamShuffler.SpecialPokemon.Contains(index))
+                        condition = (index != 0 || RandomizerConstants.SpecialPokemon.Contains(index))
                             && (secondStage = pokemon[index].Evolutions[0]).EvolutionMethod != EvolutionMethods.None
                             && pokemon[secondStage.EvolvesInto].Evolutions[0].EvolutionMethod != EvolutionMethods.None
                             && !PokemonTraitShuffler.CheckForSplitOrEndEvolution(pokemon[index], out int _);
@@ -74,7 +46,7 @@ namespace Randomizer.Shufflers
                     while (!condition)
                     {
                         index = random.Next(1, pokemon.Length);
-                        condition = (index != 0 || TeamShuffler.SpecialPokemon.Contains(index))
+                        condition = (index != 0 || RandomizerConstants.SpecialPokemon.Contains(index))
                             && (secondStage = pokemon[index].Evolutions[0]).EvolutionMethod != EvolutionMethods.None
                             && pokemon[secondStage.EvolvesInto].Evolutions[0].EvolutionMethod == EvolutionMethods.None;
                     }
@@ -83,7 +55,7 @@ namespace Randomizer.Shufflers
                     while (!condition)
                     {
                         index = random.Next(1, pokemon.Length);
-                        condition = (index != 0 || TeamShuffler.SpecialPokemon.Contains(index))
+                        condition = (index != 0 || RandomizerConstants.SpecialPokemon.Contains(index))
                             && pokemon[index].Evolutions[0].EvolutionMethod == EvolutionMethods.None;
                     }
                     break;

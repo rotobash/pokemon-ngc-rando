@@ -8,44 +8,6 @@ using XDCommon.Utility;
 
 namespace Randomizer.Shufflers
 {
-    public enum MoveCompatibility
-    {
-        Unchanged,
-        RandomPreferType,
-        Random,
-        Full
-    }
-
-    public struct PokemonTraitShufflerSettings
-    {
-        public int RandomizeBaseStats;
-        public bool StandardizeEXPCurves;
-        public bool BaseStatsFollowEvolution;
-        public bool UpdateBaseStats;
-
-        public bool RandomizeAbilities;
-        public bool AllowWonderGuard;
-        public bool AbilitiesFollowEvolution;
-        public bool BanNegativeAbilities;
-
-        public bool RandomizeTypes;
-        public bool TypesFollowEvolution;
-
-        public bool RandomizeEvolutions;
-        public bool EvolutionHasSimilarStrength;
-        public bool EvolutionHasSameType;
-        public bool ThreeStageEvolution;
-        public bool EasyEvolutions;
-        public bool FixImpossibleEvolutions;
-
-        public MoveCompatibility TMCompatibility;
-        public MoveCompatibility TutorCompatibility;
-
-        public bool NoEXP;
-        public bool RandomizeMovesets;
-        public bool MetronomeOnly;
-    }
-
     public static class PokemonTraitShuffler
     {
         public static void RandomizePokemonTraits(Random random, Pokemon[] pokemon, Move[] moves, PokemonTraitShufflerSettings settings)
@@ -66,7 +28,7 @@ namespace Randomizer.Shufflers
 
             foreach (var poke in pokemon)
             {
-                if (TeamShuffler.SpecialPokemon.Contains(poke.Index))
+                if (RandomizerConstants.SpecialPokemon.Contains(poke.Index))
                     continue;
 
                 ChangeCompatibility(random, settings.TMCompatibility, poke, true);
@@ -177,7 +139,7 @@ namespace Randomizer.Shufflers
 
                         if (settings.MetronomeOnly)
                         {
-                            poke.SetLevelUpMove(i, move.Level, Move.MetronomeOffset);
+                            poke.SetLevelUpMove(i, move.Level, RandomizerConstants.MetronomeIndex);
                         }
                         else
                         {
@@ -244,6 +206,7 @@ namespace Randomizer.Shufflers
             bool validAbility;
             do
             {
+                // don't do my boy shedinja dirty like this
                 if (poke.Name.ToLower() == "shedinja")
                 {
                     validAbility = true;
@@ -251,22 +214,21 @@ namespace Randomizer.Shufflers
                 }
 
                 poke.SetAbility1((byte)random.Next(1, numAbilities));
-                var ability1Name = poke.Ability1.Name.ToLower();
-                validAbility = CheckValidAbility(allowWonderGuard, negativeAbility, ability1Name);
+                validAbility = CheckValidAbility(allowWonderGuard, negativeAbility, poke.Ability1.Index);
 
                 if (validAbility && !string.IsNullOrEmpty(poke.Ability2.Name))
                 {
                     poke.SetAbility2((byte)random.Next(1, numAbilities));
-                    var ability2Name = poke.Ability2.Name.ToLower();
-                    validAbility |= CheckValidAbility(allowWonderGuard, negativeAbility, ability2Name);
+                    validAbility |= CheckValidAbility(allowWonderGuard, negativeAbility, poke.Ability2.Index);
                 }
 
             } while (!validAbility);
         }
 
-        private static bool CheckValidAbility(bool allowWonderGuard, bool negativeAbility, string abilityName)
+        private static bool CheckValidAbility(bool allowWonderGuard, bool negativeAbility, int abilityName)
         {
-            return !((!allowWonderGuard && abilityName == "wonder guard") || (negativeAbility && (abilityName == "truant" || abilityName == "slow start" || abilityName == "defeatist")));
+            return !((!allowWonderGuard && abilityName == RandomizerConstants.WonderGuardIndex) 
+                || (negativeAbility && RandomizerConstants.BadAbilityList.Contains(abilityName)));
         }
 
         private static void ChangeCompatibility(Random random, MoveCompatibility moveCompatibility, Pokemon pokemon, bool tms)

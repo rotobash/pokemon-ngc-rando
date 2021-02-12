@@ -49,7 +49,6 @@ namespace Randomizer
             this.randomizeTrainerPokemonCheck = new System.Windows.Forms.CheckBox();
             this.forceFullyEvovledLevelCheck = new System.Windows.Forms.CheckBox();
             this.shadowCatchMinimum = new System.Windows.Forms.NumericUpDown();
-            this.allowSpecialPokemonCheck = new System.Windows.Forms.CheckBox();
             this.minimumShadowCatchRateCheck = new System.Windows.Forms.CheckBox();
             this.noLegendaryOnTrainerCheck = new System.Windows.Forms.CheckBox();
             this.randomShadowHeldItemCheck = new System.Windows.Forms.CheckBox();
@@ -459,7 +458,6 @@ namespace Randomizer
             this.tableLayoutPanel28.Controls.Add(this.randomizeTrainerPokemonCheck, 1, 0);
             this.tableLayoutPanel28.Controls.Add(this.forceFullyEvovledLevelCheck, 4, 1);
             this.tableLayoutPanel28.Controls.Add(this.shadowCatchMinimum, 5, 0);
-            this.tableLayoutPanel28.Controls.Add(this.allowSpecialPokemonCheck, 1, 3);
             this.tableLayoutPanel28.Controls.Add(this.minimumShadowCatchRateCheck, 4, 0);
             this.tableLayoutPanel28.Controls.Add(this.noLegendaryOnTrainerCheck, 1, 1);
             this.tableLayoutPanel28.Controls.Add(this.randomShadowHeldItemCheck, 1, 2);
@@ -539,17 +537,6 @@ namespace Randomizer
             this.shadowCatchMinimum.Name = "shadowCatchMinimum";
             this.shadowCatchMinimum.Size = new System.Drawing.Size(64, 23);
             this.shadowCatchMinimum.TabIndex = 19;
-            // 
-            // allowSpecialPokemonCheck
-            // 
-            this.allowSpecialPokemonCheck.AutoSize = true;
-            this.allowSpecialPokemonCheck.Location = new System.Drawing.Point(38, 84);
-            this.allowSpecialPokemonCheck.Name = "allowSpecialPokemonCheck";
-            this.allowSpecialPokemonCheck.Size = new System.Drawing.Size(150, 19);
-            this.allowSpecialPokemonCheck.TabIndex = 11;
-            this.allowSpecialPokemonCheck.Text = "Allow Special Pokemon";
-            this.infoToolTip.SetToolTip(this.allowSpecialPokemonCheck, "Allow Pokemon like Robo Groudon and XD001 to be used in the Pokemon pool.");
-            this.allowSpecialPokemonCheck.UseVisualStyleBackColor = true;
             // 
             // minimumShadowCatchRateCheck
             // 
@@ -3379,7 +3366,6 @@ namespace Randomizer
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.NumericUpDown boostPokeSpotLevelPercent;
         private System.Windows.Forms.CheckBox randomizePokeSpotsCheck;
-        private System.Windows.Forms.CheckBox allowSpecialPokemonCheck;
         private System.Windows.Forms.CheckBox noEXPCheck;
         private System.Windows.Forms.CheckBox boostTrainerLevelCheck;
         private System.Windows.Forms.CheckBox forceFullyEvovledLevelCheck;

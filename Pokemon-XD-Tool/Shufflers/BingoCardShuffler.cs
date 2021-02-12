@@ -8,14 +8,6 @@ using XDCommon.PokemonDefinitions;
 
 namespace Randomizer.Shufflers
 {
-    public struct BingoCardShufflerSettings
-    {
-        public bool ForceStrongPokemon;
-        public bool ForceGoodDamagingMove;
-        public bool ForceSTABMove;
-        public bool AllowTrolls;
-    }
-
     public class BingoCardShuffler
     {
         BattleBingoCard[] cards;

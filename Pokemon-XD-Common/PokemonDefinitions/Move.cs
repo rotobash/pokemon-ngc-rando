@@ -9,8 +9,6 @@ namespace XDCommon.PokemonDefinitions
 {
     public class Move
     {
-        public const int MetronomeOffset = 118;
-
         int FirstShadowMoveIndex;
 		int LastShadowMoveIndex;
 		int FirstMoveOffset;

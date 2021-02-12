@@ -8,18 +8,6 @@ using XDCommon.PokemonDefinitions;
 
 namespace Randomizer.Shufflers
 {
-    public struct ItemShufflerSettings
-    {
-        public bool RandomizeItems;
-        public bool RandomizeTMs;
-        public bool RandomizeTutorMoves;
-
-        public bool TMForceGoodDamagingMove;
-        public float TMGoodDamagingMovePercent;
-        public bool TutorForceGoodDamagingMove;
-        public float TutorGoodDamagingMovePercent;
-    }
-
     public static class ItemShuffler
     {
         public static void ShuffleItems(Random random, ItemShufflerSettings settings, Items[] items)
@@ -99,9 +87,26 @@ namespace Randomizer.Shufflers
 
         public static void ShuffleOverworldItems(Random random, ItemShufflerSettings settings, OverworldItem[] overworldItems, Items[] items)
         {
+            var itemsFilter = items.Where(i => !RandomizerConstants.InvalidItemList.Contains(i.Index) || RandomizerConstants.KeyItems.Contains(i.Index));
+            if (settings.BanBadItems)
+                itemsFilter = itemsFilter.Where(i => RandomizerConstants.BadItemList.Contains(i.Index));
+
+            var potentialItems = itemsFilter.ToArray();
             foreach (var item in overworldItems)
             {
-                item.Item = (ushort)random.Next(0, items.Length);
+                // i'm *assuming* the devs didn't place any invalid items on the overworld
+                if (RandomizerConstants.KeyItems.Contains(item.Item) || (!settings.RandomizeNonEssentialKeyItems && RandomizerConstants.NonEssentialKeyItems.Contains(item.Item)))
+                    continue;
+
+                if (settings.RandomizeItems)
+                {
+                    item.Item = (ushort)potentialItems[random.Next(0, potentialItems.Length)].Index;
+                }
+                if (settings.RandomizeItemQuantity)
+                {
+                    item.Quantity = (byte)random.Next(1, 6);
+                }
+
             }
         }
 

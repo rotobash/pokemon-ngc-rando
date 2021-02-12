@@ -7,15 +7,6 @@ using XDCommon.PokemonDefinitions;
 
 namespace Randomizer.Shufflers
 {
-    public struct MoveShufflerSettings
-    {
-        public bool RandomMovePower;
-        public bool RandomMoveAcc;
-        public bool RandomMovePP;
-        public bool RandomMoveTypes;
-        public bool RandomMoveCategory;
-    }
-
     public static class MoveShuffler
     {
         public static void RandomizeMoves(Random random, Move[] moves, MoveShufflerSettings settings)

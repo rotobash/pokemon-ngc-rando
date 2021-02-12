@@ -8,70 +8,8 @@ using XDCommon.PokemonDefinitions;
 
 namespace Randomizer.Shufflers
 {
-    public struct TeamShufflerSettings
-    {
-        public bool RandomizePokemon;
-        public bool AllowSpecialPokemon;
-        public bool DontUseLegendaries;
-
-        public bool SetMinimumShadowCatchRate;
-        public float ShadowCatchRateMinimum;
-        public bool BoostTrainerLevel;
-        public float BoostTrainerLevelPercent;
-        public bool ForceFullyEvolved;
-        public int ForceFullyEvolvedLevel;
-
-        public bool RandomizeHeldItems;
-        public bool BanBadItems;
-        public bool RandomizeMovesets;
-        public bool MetronomeOnly;
-        public bool ForceFourMoves;
-        public bool ForceGoodDamagingMoves;
-        public int ForceGoodDamagingMovesCount;
-    }
-
     public static class TeamShuffler
     {
-        // invalid pokemon
-        public static readonly List<int> SpecialPokemon = new List<int>
-        {
-            252,
-            253,
-            254,
-            255,
-            256,
-            257,
-            258,
-            259,
-            260,
-            261,
-            262,
-            263,
-            264,
-            265,
-            266,
-            267,
-            268,
-            269,
-            270,
-            271,
-            272,
-            273,
-            274,
-            275,
-            276,
-            412
-        };
-
-        public static readonly List<int> Legendaries = new List<int>
-        {
-        };
-
-        public static readonly List<int> BadItemList = new List<int>
-        {
-        };
-
-
         public static void ShuffleTeams(Random random, TeamShufflerSettings settings, ITrainerPool[] trainerPools, Pokemon[] pokemonList, Move[] moves)
         {
             // yikes
@@ -93,7 +31,7 @@ namespace Randomizer.Shufflers
                         if (settings.RandomizePokemon)
                         {
                             var index = 0;
-                            while (index == 0 || (!settings.AllowSpecialPokemon && SpecialPokemon.Contains(index)) || (settings.DontUseLegendaries && Legendaries.Contains(index)))
+                            while (index == 0 || RandomizerConstants.SpecialPokemon.Contains(index) ||  (settings.DontUseLegendaries && RandomizerConstants.Legendaries.Contains(index)))
                             {
                                 index = random.Next(1, pokemonList.Length);
                             }
@@ -115,7 +53,7 @@ namespace Randomizer.Shufflers
                             var newItemInd = (ushort)random.Next(0, Constants.TotalNumberOfItems);
                             if (settings.BanBadItems)
                             {
-                                while (BadItemList.Contains(newItemInd))
+                                while (RandomizerConstants.BadItemList.Contains(newItemInd))
                                 {
                                     newItemInd = (ushort)random.Next(0, Constants.TotalNumberOfItems);
                                 }
@@ -143,7 +81,7 @@ namespace Randomizer.Shufflers
                         {
                             if (settings.ForceGoodDamagingMoves)
                             {
-                                // find all moves that meet our criteria a sample from there
+                                // find all moves that meet our criteria and sample from there
                                 var potentialMoves = moves.Where(m => m.BasePower >= Configuration.GoodDamagingMovePower).ToArray();
                                 while (moveSet.Count < settings.ForceGoodDamagingMovesCount)
                                 {
@@ -163,9 +101,8 @@ namespace Randomizer.Shufflers
                         }
                         else if (settings.MetronomeOnly)
                         {
-                            var metronomeMove = moves.Single(m => m.Name.ToLower() == "metronome");
                             for (int i = 0; i < Constants.NumberOfPokemonMoves; i++)
-                                pokemon.SetMove(i, (ushort)metronomeMove.MoveIndex);
+                                pokemon.SetMove(i, RandomizerConstants.MetronomeIndex);
                         }
                         else
                         {
