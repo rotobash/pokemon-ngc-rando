@@ -11,12 +11,9 @@ using XDCommon.PokemonDefinitions;
 
 namespace XDCommon.Utility
 {
-    public class ISO : IExtractedFile
+    public class ISO : BaseExtractedFile
     {
-        public Stream ExtractedFile { get; }
-        public string FileName { get; }
-        public string Path { get; }
-        public FileTypes FileType { get => FileTypes.ISO; }
+        public override FileTypes FileType { get => FileTypes.ISO; }
 
         public Region Region { get; internal set; }
         public Game Game { get; internal set; }
@@ -84,7 +81,7 @@ namespace XDCommon.Utility
                     var path = $"{Path}/{fileName.RemoveFileExtensions()}";
                     Directory.CreateDirectory(path);
                     var fsys = new FSys(path, fileName, this);
-                    Files.Add(fsys.Filename, fsys);
+                    Files.Add(fsys.FileName, fsys);
                     return fsys;
                 }
             }
@@ -179,15 +176,38 @@ namespace XDCommon.Utility
             CommonRelStringTable = new StringTable(commonRelTable);
         }
 
-        public Stream Encode(bool _)
+        public override Stream Encode(bool _)
         {
             throw new NotSupportedException();
         }
 
-        ~ISO()
+        protected override void Dispose(bool isDisposing)
         {
-            tokenSource.Cancel();
-            Task.WaitAll(executors);
+            if (!disposedValue)
+            {
+                TOC.Dispose();
+                TOC = null;
+                DOL.Dispose();
+                DOL = null;
+                
+                CommonRel.Dispose();
+                CommonRel = null;
+                CommonRelStringTable.Dispose();
+                CommonRelStringTable = null;
+
+                DolStringTable.Dispose();
+                DolStringTable = null;
+                DolStringTable2.Dispose();
+                DolStringTable2 = null;
+
+                foreach (var fsys in Files.Values)
+                {
+                    fsys.Dispose();
+                }
+                Files.Clear();
+
+                base.Dispose(isDisposing);
+            }
         }
     }
 }

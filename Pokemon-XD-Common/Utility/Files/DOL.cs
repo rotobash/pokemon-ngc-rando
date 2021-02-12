@@ -5,17 +5,15 @@ using XDCommon.Contracts;
 
 namespace XDCommon.Utility
 {
-    public class DOL: IExtractedFile
+    public class DOL : BaseExtractedFile
     {
         public const int kDOLStartOffsetLocation = 0x420;
         const int kDolSectionSizesStart = 0x90;
         const int kDolSectionSizesCount = 18;
         const int kDolHeaderSize = 0x100;
 
-        public FileTypes FileType { get => FileTypes.DOL; }
-        public string FileName { get => "Start.dol"; }
-        public string Path { get; }
-        public Stream ExtractedFile { get; }
+        public override FileTypes FileType => FileTypes.DOL;
+        public override string FileName => "Start.dol"; 
 
         public int Offset
         {
@@ -76,7 +74,7 @@ namespace XDCommon.Utility
             ExtractedFile.Flush();
         }
 
-        public Stream Encode(bool _)
+        public override Stream Encode(bool _)
         {
             return ExtractedFile;
         }

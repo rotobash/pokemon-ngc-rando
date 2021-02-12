@@ -9,14 +9,12 @@ using XDCommon.Contracts;
 
 namespace XDCommon.Utility
 {
-    public class ISOExtractor
+    public class ISOExtractor : IDisposable
     {
-        const int kISOFirstFileOffsetLocation = 0x434; // The "user data" start offset. Basically all the game specific files
-        const int kISOFilesTotalSizeLocation = 0x438; // The size of the game specific files, so everything after dol and toc
+        private bool disposedValue;
 
         public Stream ISOStream { get; }
         public string ExtractPath { get; private set; }
-        internal FST TOC { get; private set; }
 
         public ISOExtractor(string pathToISO)
         {
@@ -36,12 +34,9 @@ namespace XDCommon.Utility
 
         public ISO ExtractISO()
         {
-
+            // read game and region
             ISOStream.Seek(0, SeekOrigin.Begin);
-            var _ = ISOStream.ReadByte();
-            int gamecode2 = ISOStream.ReadByte() << 8;
-            int gamecode1 = ISOStream.ReadByte();
-            int game = gamecode2 | gamecode1;
+            int game = ISOStream.GetUShortAtOffset(1);
             var region = ISOStream.ReadByte();
 
             Game gameEnum;
@@ -95,7 +90,7 @@ namespace XDCommon.Utility
             {
                 savePath = $"{savePath}.iso";
             }
-            using var isoStream = File.Open(savePath, FileMode.OpenOrCreate, FileAccess.Write);
+            using var isoStream = File.Open(savePath, FileMode.Create, FileAccess.Write);
             // write disk size first so we can seek around the stream without hitting the end
             ISOStream.Seek(0, SeekOrigin.Begin);
             ISOStream.CopyTo(isoStream);
@@ -109,13 +104,17 @@ namespace XDCommon.Utility
             //iso.DOL.ExtractedFile.CopyTo(isoStream);
 
             //// pack FST
-            isoStream.Seek(TOC.Offset + 12 , SeekOrigin.Begin);
-            iso.TOC.ExtractedFile.CopyTo(isoStream);
+            isoStream.Seek(iso.TOC.Offset + 12 , SeekOrigin.Begin);
+            using var tocstream = iso.TOC.Encode();
+            tocstream.CopyTo(isoStream);
 
             // pack fsys files
             foreach (var fsys in iso.Files.Values)
             {
-                fsys.WriteToStream(isoStream);
+                using var fsysStream = fsys.Encode();
+                var fsysStartOffset = iso.TOC.LocationForFile(fsys.FileName);
+                isoStream.Seek(fsysStartOffset + fsys.Offset, SeekOrigin.Begin);
+                fsysStream.CopyTo(isoStream);
             }
 
             // pack padding
@@ -124,9 +123,26 @@ namespace XDCommon.Utility
             isoStream.Flush();
         }
 
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                ISOStream.Dispose();
+                disposedValue = true;
+            }
+        }
+
         ~ISOExtractor()
         {
-            ISOStream.Dispose();
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
     }
 }

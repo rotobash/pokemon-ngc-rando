@@ -7,7 +7,7 @@ using XDCommon.Contracts;
 
 namespace XDCommon.Utility
 {
-    public class FSys
+    public class FSys : BaseExtractedFile
     {
         const byte kFSYSGroupIDOffset = 0x08;
         const byte kNumberOfEntriesOffset = 0x0C;
@@ -38,7 +38,6 @@ namespace XDCommon.Utility
 
         public Dictionary<string, IExtractedFile> ExtractedEntries = new Dictionary<string, IExtractedFile>();
 
-        public Stream ExtractedFile;
 
         public int GroupID
         {
@@ -66,8 +65,8 @@ namespace XDCommon.Utility
             }
         }
 
-        public string Filename { get; private set; }
-        public string Path { get; private set; }
+        public override FileTypes FileType => FileTypes.FSYS;
+
         public int Offset { get; private set; }
         public int Size { get; private set; }
 
@@ -77,14 +76,14 @@ namespace XDCommon.Utility
         {
             ExtractedFile = File.Open(pathToFile, FileMode.Open, FileAccess.ReadWrite);
             var fileParts = pathToFile.Split("/");
-            Filename = fileParts.Last();
+            FileName = fileParts.Last();
             Path = string.Join("/", fileParts.Take(fileParts.Length - 1));
         }
 
         public FSys(string path, string fileName, ISO iso)
         {
 
-            Filename = fileName;
+            FileName = fileName;
             Path = iso.Path;
             Offset = iso.TOC.LocationForFile(fileName);
             Size = iso.TOC.SizeForFile(fileName);
@@ -94,7 +93,7 @@ namespace XDCommon.Utility
                 Console.WriteLine($"Extracting {fileName}");
             }
 
-            ExtractedFile = $"{Path}/{Filename}".GetNewStream();
+            ExtractedFile = $"{Path}/{FileName}".GetNewStream();
             iso.ExtractedFile.CopySubStream(ExtractedFile, Offset, Size);
         }
 
@@ -196,17 +195,13 @@ namespace XDCommon.Utility
             return ExtractEntryByFileName(GetFilenameForFile(index));
         }
 
-        public void WriteToStream(Stream output)
+        public override Stream Encode(bool _ = false)
         {
-            Stream fSysStream;
-            output.Seek(Offset, SeekOrigin.Begin);
+            Stream fSysStream = new MemoryStream();
+            // copy the existing stream back, 
+            ExtractedFile.CopyTo(fSysStream);
             if (ExtractedEntries.Count > 0)
             {
-                using (fSysStream = new MemoryStream());
-                var headerEndOffset = GetStartOffsetForFile(0);
-                // write zeros for the header for now, rewrite after we've update positions and sizes
-                fSysStream.Write(new byte[headerEndOffset]);
-
                 for (int i = 0; i < ExtractedEntries.Count; i++)
                 {
                     // write element, update its properties
@@ -215,21 +210,21 @@ namespace XDCommon.Utility
                     SetSizeForFile(i, (int)entry.ExtractedFile.Length);
                     using var stream = entry.Encode(IsCompressed(i));
                     stream.CopyTo(fSysStream);
-                }
-
-                // write the header and footer back
-                var endIndex = ExtractedEntries.Count - 1;
-                var fileEndOffset = GetStartOffsetForFile(endIndex) + GetSizeForFile(endIndex);
-                ExtractedFile.CopySubStream(fSysStream, 0, headerEndOffset);
-                ExtractedFile.CopySubStream(fSysStream, fileEndOffset, (int)ExtractedFile.Length - fileEndOffset);
-
-                // copy to output stream
-                fSysStream.CopyTo(output);                
+                }  
             }
-            else
+            return fSysStream;
+        }
+
+        protected override void Dispose(bool isDisposing)
+        {
+            if (!disposedValue)
             {
-                // nothing changed, just copy our existing stream back
-                ExtractedFile.CopyTo(output);
+                foreach (var file in ExtractedEntries.Values)
+                {
+                    file.Dispose();
+                }
+                ExtractedEntries.Clear();
+                base.Dispose(isDisposing);
             }
         }
     }

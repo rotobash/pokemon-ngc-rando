@@ -4,7 +4,7 @@ using System.IO;
 
 namespace XDCommon.Contracts
 {
-    public interface IExtractedFile
+    public interface IExtractedFile : IDisposable
     {
         string FileName { get; }
         string Path { get; }

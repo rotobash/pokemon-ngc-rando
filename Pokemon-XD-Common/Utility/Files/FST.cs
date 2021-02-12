@@ -4,7 +4,7 @@ using System.IO;
 
 namespace XDCommon.Utility
 {
-    public class FST
+    public class FST : BaseExtractedFile
     {
         const int kTOCStartOffsetLocation = 0x424;
         const int kTOCFileSizeLocation = 0x428;
@@ -18,7 +18,6 @@ namespace XDCommon.Utility
 
         public List<string> AllFileNames { get; private set; }
         public List<string> FilesOrdered { get; private set; }
-        public Stream ExtractedFile { get; }
         public int TOCFirstStringOffset => (int)ExtractedFile.GetUIntAtOffset(kTOCNumberEntriesOffset) * kTOCEntrySize;
         public int Offset
         {
@@ -73,12 +72,6 @@ namespace XDCommon.Utility
             }
             Offset = kTOCStartOffsetLocation;
             Size = (int)ExtractedFile.Length;
-        }
-
-        ~FST()
-        {
-            ExtractedFile.Flush();
-            ExtractedFile.Dispose();
         }
 
         public void Load(DOL dolFile)
@@ -145,6 +138,14 @@ namespace XDCommon.Utility
                 return fileSizes[fileName];
             }
             return 0;
+        }
+
+        public override Stream Encode(bool _ = false)
+        {
+            var streamCopy = new MemoryStream();
+            ExtractedFile.Seek(Offset, SeekOrigin.Begin);
+            ExtractedFile.CopyTo(streamCopy);
+            return streamCopy;
         }
     }
 }

@@ -5,19 +5,15 @@ using XDCommon.Contracts;
 
 namespace XDCommon.Utility
 {
-    public class FSysFileEntry: IExtractedFile
+    public class FSysFileEntry : BaseExtractedFile
     {
         const byte kSizeOfLZSSHeader = 0x10;
-        public string Path { get; set; }
-        public string FileName { get; set; }
-        public FileTypes FileType { get; set; }
-        public Stream ExtractedFile { get; internal set; }
         
         public static IExtractedFile ExtractFromFSys(FSys fSys, int index)
         {
             var offset = fSys.GetStartOffsetForFile(index);
             var size = fSys.GetSizeForFile(index);
-            var noExtFsysName = fSys.Filename.RemoveFileExtensions();
+            var noExtFsysName = fSys.FileName.RemoveFileExtensions();
             var extractDir = $"{fSys.Path}/{noExtFsysName}";
             var fileName = string.Join("", fSys.GetFilenameForFile(index));
             var isCompressed = fSys.IsCompressed(index);
@@ -114,7 +110,7 @@ namespace XDCommon.Utility
             }
         }
 
-        public Stream Encode(bool isCompressed)
+        public override Stream Encode(bool isCompressed)
         {
             var entryStream = new MemoryStream();
             ExtractedFile.CopyTo(entryStream);
