@@ -20,11 +20,12 @@ namespace XDCommon.PokemonDefinitions
 
         public int StartOffset
         {
-            get => pool.DPKMDataOffset + Index * Constants.SizeOfPokemonData;
+            get => pool.DPKMDataOffset + DPKMIndex * Constants.SizeOfPokemonData;
         }
+        
         public int ShadowStartOffset
         {
-            get => pool.DarkPokemon.DDPKHeaderOffset + Index * Constants.SizeOfShadowData;
+            get => pool.DarkPokemon.DDPKDataOffset + Index * Constants.SizeOfShadowData;
         }
 
         public int Index
@@ -35,19 +36,33 @@ namespace XDCommon.PokemonDefinitions
 
         public int DPKMIndex
         {
-            get => IsShadow ? pool.DarkPokemon.ExtractedFile.GetUShortAtOffset(StartOffset + Constants.ShadowStoryIndexOffset) : Index;
+            get => IsShadow switch
+            {
+                true => pool.DarkPokemon.ExtractedFile.GetUShortAtOffset(ShadowStartOffset + Constants.ShadowStoryIndexOffset),
+                false => Index,
+            };
         }
 
-        Pokemon pokemon;
-        public Pokemon Pokemon
+        public ushort Pokemon
         {
-            get => pokemon;
+            get => pool.ExtractedFile.GetUShortAtOffset((pool.DPKMDataOffset + DPKMIndex * Constants.SizeOfPokemonData) + Constants.PokemonIndexOffset);
+            set => pool.ExtractedFile.WriteBytesAtOffset((pool.DPKMDataOffset + DPKMIndex * Constants.SizeOfPokemonData) + Constants.PokemonIndexOffset, value.GetBytes());
         }
 
         public byte Level
         {
-            get => pool.ExtractedFile.GetByteAtOffset(StartOffset + Constants.PokemonLevelOffset);
-            set => pool.ExtractedFile.WriteByteAtOffset(StartOffset + Constants.PokemonLevelOffset, value);
+            get => IsShadow switch
+            {
+                true => pool.DarkPokemon.ExtractedFile.GetByteAtOffset(ShadowStartOffset + Constants.ShadowLevelOffset),
+                false => pool.ExtractedFile.GetByteAtOffset(StartOffset + Constants.PokemonLevelOffset)
+            };
+            set
+            {
+                if (IsShadow)
+                    pool.DarkPokemon.ExtractedFile.WriteByteAtOffset(ShadowStartOffset + Constants.ShadowLevelOffset, value);
+                else
+                    pool.ExtractedFile.WriteByteAtOffset(StartOffset + Constants.PokemonLevelOffset, value);
+            }
         }
 
         public byte Happiness
@@ -57,8 +72,8 @@ namespace XDCommon.PokemonDefinitions
         }
         public ushort Item
         {
-            get => pool.ExtractedFile.GetUShortAtOffset(StartOffset + Constants.ShadowCounterOffset);
-            set => pool.ExtractedFile.WriteBytesAtOffset(StartOffset + Constants.ShadowCounterOffset, value.GetBytes());
+            get => pool.ExtractedFile.GetUShortAtOffset(StartOffset + Constants.PokemonItemOffset);
+            set => pool.ExtractedFile.WriteBytesAtOffset(StartOffset + Constants.PokemonItemOffset, value.GetBytes());
         }
 
         public byte Ability
@@ -109,8 +124,6 @@ namespace XDCommon.PokemonDefinitions
             pool = team;
             pokeType = type;
             Index = index;
-            var num = pool.DPKMDataOffset + index * Constants.SizeOfPokemonData;
-            pokemon = team.PokemonList[pool.ExtractedFile.GetUShortAtOffset(num)];
 
             Moves = new Move[4];
             for (int i = 0; i < Moves.Length; i++)
@@ -123,17 +136,12 @@ namespace XDCommon.PokemonDefinitions
                 ShadowMoves = new Move[4];
                 for (int i = 0; i < Moves.Length; i++)
                 {
-                    ShadowMoves[i] = pool.MoveList[pool.DarkPokemon.ExtractedFile.GetUShortAtOffset(StartOffset + Constants.FirstShadowMoveOFfset + i * 2)];
+                    var moveIndex = pool.DarkPokemon.ExtractedFile.GetUShortAtOffset(StartOffset + Constants.FirstShadowMoveOFfset + i * 2);
+                    ShadowMoves[i] = pool.MoveList[moveIndex];
                 }
             }
         }
 
-        public void SetPokemon(ushort dexNum)
-        {
-            var num = pool.DPKMDataOffset + Index * Constants.SizeOfPokemonData;
-            pool.ExtractedFile.WriteBytesAtOffset(num, dexNum.GetBytes());
-            pokemon = pool.PokemonList[dexNum];
-        }
         public void SetMove(int index, ushort moveNum)
         {
             pool.ExtractedFile.WriteBytesAtOffset(StartOffset + Constants.FirstPokemonMoveOffset + index * 2, moveNum.GetBytes());
@@ -147,33 +155,33 @@ namespace XDCommon.PokemonDefinitions
 
         public byte ShadowCatchRate
         {
-            get => pool.DarkPokemon.ExtractedFile.GetByteAtOffset(StartOffset + Constants.ShadowCatchRateOFfset);
-            set => pool.DarkPokemon.ExtractedFile.WriteByteAtOffset(StartOffset + Constants.ShadowCatchRateOFfset, value);
+            get => pool.DarkPokemon.ExtractedFile.GetByteAtOffset(ShadowStartOffset + Constants.ShadowCatchRateOFfset);
+            set => pool.DarkPokemon.ExtractedFile.WriteByteAtOffset(ShadowStartOffset + Constants.ShadowCatchRateOFfset, value);
         }
         public ushort ShadowCounter
         {
-            get => pool.DarkPokemon.ExtractedFile.GetUShortAtOffset(StartOffset + Constants.ShadowCounterOffset);
-            set => pool.DarkPokemon.ExtractedFile.WriteBytesAtOffset(StartOffset + Constants.ShadowCounterOffset, value.GetBytes());
+            get => pool.DarkPokemon.ExtractedFile.GetUShortAtOffset(ShadowStartOffset + Constants.ShadowCounterOffset);
+            set => pool.DarkPokemon.ExtractedFile.WriteBytesAtOffset(ShadowStartOffset + Constants.ShadowCounterOffset, value.GetBytes());
         }
         public bool ShadowDataInUse
         {
-            get => pool.DarkPokemon.ExtractedFile.GetByteAtOffset(StartOffset + Constants.ShadowInUseFlagOffset) == 0x80;
-            set => pool.DarkPokemon.ExtractedFile.WriteByteAtOffset(StartOffset + Constants.ShadowInUseFlagOffset, value ? (byte)0x80 : (byte)0);
+            get => pool.DarkPokemon.ExtractedFile.GetByteAtOffset(ShadowStartOffset + Constants.ShadowInUseFlagOffset) == 0x80;
+            set => pool.DarkPokemon.ExtractedFile.WriteByteAtOffset(ShadowStartOffset + Constants.ShadowInUseFlagOffset, value ? (byte)0x80 : (byte)0);
         }
         public byte ShadowFleeValue
         {
-            get => pool.DarkPokemon.ExtractedFile.GetByteAtOffset(StartOffset + Constants.FleeAfterBattleOffset);
-            set => pool.DarkPokemon.ExtractedFile.WriteByteAtOffset(StartOffset + Constants.FleeAfterBattleOffset, value);
+            get => pool.DarkPokemon.ExtractedFile.GetByteAtOffset(ShadowStartOffset + Constants.FleeAfterBattleOffset);
+            set => pool.DarkPokemon.ExtractedFile.WriteByteAtOffset(ShadowStartOffset + Constants.FleeAfterBattleOffset, value);
         }
         public byte ShadowAgression
         {
-            get => pool.DarkPokemon.ExtractedFile.GetByteAtOffset(StartOffset + Constants.ShadowAggressionOffset);
-            set => pool.DarkPokemon.ExtractedFile.WriteByteAtOffset(StartOffset + Constants.ShadowAggressionOffset, value);
+            get => pool.DarkPokemon.ExtractedFile.GetByteAtOffset(ShadowStartOffset + Constants.ShadowAggressionOffset);
+            set => pool.DarkPokemon.ExtractedFile.WriteByteAtOffset(ShadowStartOffset + Constants.ShadowAggressionOffset, value);
         }
         public byte ShadowAlwaysFlee
         {
-            get => pool.DarkPokemon.ExtractedFile.GetByteAtOffset(StartOffset + Constants.ShadowAlwaysFleeOffset);
-            set => pool.DarkPokemon.ExtractedFile.WriteByteAtOffset(StartOffset + Constants.ShadowAlwaysFleeOffset, value);
+            get => pool.DarkPokemon.ExtractedFile.GetByteAtOffset(ShadowStartOffset + Constants.ShadowAlwaysFleeOffset);
+            set => pool.DarkPokemon.ExtractedFile.WriteByteAtOffset(ShadowStartOffset + Constants.ShadowAlwaysFleeOffset, value);
         }
     }
 }
