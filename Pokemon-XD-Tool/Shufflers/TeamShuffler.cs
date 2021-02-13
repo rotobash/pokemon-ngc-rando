@@ -97,57 +97,25 @@ namespace Randomizer.Shufflers
 
         public static void RandomizeMoveSet(Random random, TeamShufflerSettings settings, ITrainerPokemon pokemon, ExtractedGame extractedGame)
         {
-            var moveSet = new HashSet<ushort>();
-            if (settings.RandomizeMovesets)
+            ushort[] moveSet;
+            if (settings.RandomizeMovesets && !settings.UseLevelUpMoves)
             {
-                if (settings.ForceGoodDamagingMoves)
-                {
-                    var goodDamagingMoves = extractedGame.GoodDamagingMoves;
-                    // find all moves that meet our criteria and sample from there
-                    while (moveSet.Count < settings.ForceGoodDamagingMovesCount)
-                    {
-                        var potentialMove = goodDamagingMoves[(ushort)random.Next(0, goodDamagingMoves.Length)];
-                        moveSet.Add((ushort)potentialMove.MoveIndex);
-                    }
-                }
-
-                // fill the rest of the move set
-                while (moveSet.Count < Constants.NumberOfPokemonMoves)
-                    moveSet.Add((ushort)random.Next(1, extractedGame.MoveList.Length));
-
-                for (int i = 0; i < Constants.NumberOfPokemonMoves; i++)
-                {
-                    pokemon.SetMove(i, moveSet.ElementAt(i));
-                }
+                moveSet = MoveShuffler.GetRandomMoveset(random, settings.BanShadowMoves, settings.MovePreferType, settings.ForceGoodDamagingMovesCount, pokemon.Pokemon, extractedGame);
             }
             else if (settings.MetronomeOnly)
             {
                 for (int i = 0; i < Constants.NumberOfPokemonMoves; i++)
                     pokemon.SetMove(i, RandomizerConstants.MetronomeIndex);
+                return;
             }
             else
             {
-                var learnableMoves = extractedGame.PokemonList[pokemon.Pokemon]
-                    .CurrentLevelMoves(pokemon.Level)
-                    .Select(m => extractedGame.MoveList[m.Move]).ToArray();
+                moveSet = MoveShuffler.GetLevelUpMoveset(random, pokemon.Pokemon, pokemon.Level, settings.ForceFourMoves, settings.BanShadowMoves, extractedGame);
+            }
 
-                // well fuck
-                if (learnableMoves.Length == 0)
-                {
-                    // pick one at random I guess?
-                    pokemon.SetMove(0, (ushort)random.Next(1, extractedGame.MoveList.Length));
-                    return;
-                }
-
-                for (int i = 0; i < Constants.NumberOfPokemonMoves; i++)
-                {
-                    // the pokemon is too low level/doesn't learn enough moves
-                    // if forcing 4 moves, randomly pick some to fill the gaps
-                    if (i > learnableMoves.Length - 1 && settings.ForceFourMoves)
-                        pokemon.SetMove(i, (ushort)random.Next(1, extractedGame.MoveList.Length));
-                    else if (i < learnableMoves.Length)
-                        pokemon.SetMove(i, (ushort)learnableMoves.ElementAt(i).MoveIndex);
-                }
+            for (int i = 0; i < Constants.NumberOfPokemonMoves; i++)
+            {
+                pokemon.SetMove(i, moveSet.ElementAt(i));
             }
         }
     }

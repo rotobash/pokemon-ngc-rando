@@ -20,6 +20,13 @@ namespace Randomizer.Shufflers
             var pokeEvosRandomized = new List<int>();
             var easyEvolutions = new List<string>();
 
+            // set up filtered list here to avoid recalculating it every loop
+            IEnumerable<Move> movefilter = extractedGame.MoveList;
+            if (settings.BanShadowMoves)
+            {
+                movefilter = movefilter.Where(m => !m.IsShadowMove);
+            }
+
             // do this first for "follow evolution" checks
             if (settings.RandomizeEvolutions)
             {
@@ -68,8 +75,9 @@ namespace Randomizer.Shufflers
                 if (RandomizerConstants.SpecialPokemon.Contains(poke.Index))
                     continue;
 
-                ChangeCompatibility(random, settings.TMCompatibility, poke, true);
-                ChangeCompatibility(random, settings.TutorCompatibility, poke, false);
+                ChangeCompatibility(random, settings.TMCompatibility, poke, extractedGame, true);                
+                if (extractedGame.TutorMoves.Length > 0)
+                    ChangeCompatibility(random, settings.TutorCompatibility, poke, extractedGame, false);
 
                 if (settings.RandomizeBaseStats > 0 && settings.BaseStatsFollowEvolution && !pokeBaseStatsRandomized.Contains(poke.Name))
                 {
@@ -196,6 +204,16 @@ namespace Randomizer.Shufflers
                 // randomize level up moves
                 if (settings.RandomizeMovesets)
                 {
+                    var typeFilter = movefilter;
+                    if (settings.LevelUpMovePreferType)
+                    {
+                        // allow 20% chance for move to not be same type
+                        typeFilter = typeFilter.Where(m => m.Type == poke.Type1 || m.Type == poke.Type2 || random.Next(0, 10) >= 8).ToArray();
+                        if (!typeFilter.Any())
+                            typeFilter = movefilter;
+                    }
+
+                    var potentialMoves = typeFilter.ToArray();
                     for (int i = 0; i < poke.LevelUpMoves.Length; i++)
                     {
                         var move = poke.LevelUpMoves[i];
@@ -208,7 +226,8 @@ namespace Randomizer.Shufflers
                         }
                         else
                         {
-                            poke.SetLevelUpMove(i, move.Level, (ushort)random.Next(1, extractedGame.MoveList.Length));
+                            var newMove = potentialMoves[random.Next(0, potentialMoves.Length)];
+                            poke.SetLevelUpMove(i, move.Level, (ushort)newMove.MoveIndex);
                         }
                     }
                 }
@@ -301,7 +320,7 @@ namespace Randomizer.Shufflers
             }
         }
 
-        private static void ChangeCompatibility(Random random, MoveCompatibility moveCompatibility, Pokemon pokemon, bool tms)
+        private static void ChangeCompatibility(Random random, MoveCompatibility moveCompatibility, Pokemon pokemon, ExtractedGame extractedGame, bool tms)
         {
             switch (moveCompatibility)
             {
@@ -345,17 +364,20 @@ namespace Randomizer.Shufflers
                     {
                         if (tms)
                         {
-                            // todo lookup TM to see type
+                            var tmMoves = extractedGame.TMs.Select(t => extractedGame.MoveList[t.Move]).ToArray();
                             for (int i = 0; i < pokemon.LearnableTMs.Length; i++)
                             {
-                                pokemon.SetLearnableTMS(i, random.Next(0, 2) > 0);
+                                var isCompatible = tmMoves[i].Type == pokemon.Type1 || tmMoves[i].Type == pokemon.Type2 || random.Next(0, 10) >= 8;
+                                pokemon.SetLearnableTMS(i, isCompatible);
                             }
                         }
                         else
                         {
+                            var tutorMoves = extractedGame.TutorMoves.Select(t => extractedGame.MoveList[t.Move]).ToArray();
                             for (int i = 0; i < pokemon.TutorMoves.Length; i++)
                             {
-                                pokemon.SetTutorMoves(i, random.Next(0, 2) > 0);
+                                var isCompatible = tutorMoves[i].Type == pokemon.Type1 || tutorMoves[i].Type == pokemon.Type2 || random.Next(0, 10) >= 8;
+                                pokemon.SetTutorMoves(i, isCompatible);
                             }
                         }
                     }

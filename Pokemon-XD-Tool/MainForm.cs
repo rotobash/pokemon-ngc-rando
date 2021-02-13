@@ -251,6 +251,8 @@ namespace Randomizer
 
                     NoEXP = noEXPCheck.Checked,
                     RandomizeMovesets = randomizeMovesets.Checked,
+                    ForceGoodDamagingMovesCount = (int)movesetsForceGoodDamagingMovePercent.Value,
+                    LevelUpMovePreferType = randomizeMovesetsPreferType.Checked,
                     MetronomeOnly = movesetsMetronomeOnlyCheck.Checked,                    
                 },
                 MoveShufflerSettings = new MoveShufflerSettings
@@ -293,6 +295,7 @@ namespace Randomizer
                     BanBadItems = banBadShadowHeldItemsCheck.Checked,
 
                     RandomizeMovesets = randomizeMovesets.Checked,
+                    MovePreferType = randomizeMovesetsPreferType.Checked,
                     ForceFourMoves = forceFourMoveCheck.Checked,
                     ForceGoodDamagingMoves = movesetsForceGoodDamagingMoveCheck.Checked,
                     ForceGoodDamagingMovesCount = (int)movesetsForceGoodDamagingMovePercent.Value,
@@ -301,6 +304,8 @@ namespace Randomizer
                 StaticPokemonShufflerSettings = new StaticPokemonShufflerSettings
                 {
                     RandomizeMovesets = randomizeMovesets.Checked,
+                    MovePreferType = randomizeMovesetsPreferType.Checked,
+                    ForceGoodDamagingMovesCount = (int)movesetsForceGoodDamagingMovePercent.Value,
                     ForceFourMoves = forceFourMoveCheck.Checked,
 
                     Starter = randomStarterCheck.Checked ? StarterRandomSetting.Random

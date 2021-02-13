@@ -17,10 +17,16 @@ namespace Randomizer.Shufflers
             {
                 potentialPokes = potentialPokes.Where(p => p.BST >= Configuration.StrongPokemonBST);
             }
+
             var potentialMoves = extractedGame.MoveList.Where(m => m.BasePower > 0);
             if (settings.ForceGoodDamagingMove)
             {
                 potentialMoves = potentialMoves.Where(m => m.BasePower >= Configuration.GoodDamagingMovePower);
+            }
+
+            if (settings.BanShadowMoves)
+            {
+                potentialMoves = potentialMoves.Where(m => !m.IsShadowMove);
             }
 
             foreach (var card in bingoCards)

@@ -68,37 +68,18 @@ namespace Randomizer.Shufflers
 
             // instance pokemon have separate movesets than the pool
             // i.e. if you don't update the moveset than your starter will have Eevee's move set
-            var moveSet = new HashSet<ushort>();
-            if (settings.RandomizeMovesets)
+            ushort[] moves;
+            if (settings.RandomizeMovesets && !settings.UseLevelUpMoves)
             {
-                while (moveSet.Count < Constants.NumberOfPokemonMoves)
-                    moveSet.Add((ushort)random.Next(0, extractedGame.MoveList.Length));
-
-                for (int i = 0; i < Constants.NumberOfPokemonMoves; i++)
-                {
-                    starter.SetMove(i, moveSet.ElementAt(i));
-                }
+                moves = MoveShuffler.GetRandomMoveset(random, settings.BanShadowMoves, settings.MovePreferType, settings.ForceGoodDamagingMovesCount, starter.Pokemon, extractedGame);
             }
             else
             {
-                // not randomizing moves? pick level up moves then
-                foreach (var levelUpMove in extractedGame.PokemonList[starter.Pokemon].CurrentLevelMoves(starter.Level))
-                {
-                    moveSet.Add(levelUpMove.Move);
-                }
-
-                if (settings.ForceFourMoves && moveSet.Count < Constants.NumberOfPokemonMoves)
-                {
-                    var total = moveSet.Count;
-                    while (moveSet.Count < Constants.NumberOfPokemonMoves)
-                        moveSet.Add((ushort)random.Next(0, extractedGame.MoveList.Length));
-                }
-
-                for (int i = 0; i < moveSet.Count; i++)
-                {
-                    starter.SetMove(i, moveSet.ElementAt(i));
-                }
+                moves = MoveShuffler.GetLevelUpMoveset(random, starter.Pokemon, starter.Level, settings.ForceFourMoves, settings.BanShadowMoves, extractedGame);
             }
+
+            for (int i = 0; i < moves.Length; i++)
+                starter.SetMove(i, moves[i]);
 
             switch (settings.Trade)
             {

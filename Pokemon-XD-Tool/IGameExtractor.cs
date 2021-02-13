@@ -1,4 +1,5 @@
 ﻿using Randomizer.Shufflers;
+using Randomizer.XD;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +39,10 @@ namespace Randomizer
         public Items[] NonKeyItems => ItemList.Where(i => i.BagSlot != BagSlots.KeyItems || i.BagSlot != BagSlots.None).ToArray();
         public Items[] GoodItems => NonKeyItems.Where(i => !RandomizerConstants.BadItemList.Contains(i.Index)).ToArray();
 
+        public TM[] TMs => ItemList.Where(i => i is TM).Select(i => i as TM).ToArray();
+        public TutorMove[] TutorMoves { get; }
+
+        bool isXD;
 
         public ExtractedGame(IGameExtractor extractor)
         {
@@ -48,6 +53,17 @@ namespace Randomizer
             OverworldItemList = extractor.ExtractOverworldItems();
             Pokemarts = extractor.ExtractPokemarts();
             TrainerPools = extractor.ExtractPools(PokemonList, MoveList);
+
+            if (extractor is XDExtractor xd)
+            {
+                isXD = true;
+                TutorMoves = xd.ExtractTutorMoves();
+            }
+            else
+            {
+                isXD = false;
+                TutorMoves = Array.Empty<TutorMove>();
+            }
         }
     }
 }

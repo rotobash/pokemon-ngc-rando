@@ -39,7 +39,10 @@
 
         public bool NoEXP { get; set; }
         public bool RandomizeMovesets { get; set; }
+        public bool BanShadowMoves { get; set; }
+        public int ForceGoodDamagingMovesCount { get; set; }
         public bool MetronomeOnly { get; set; }
+        public bool LevelUpMovePreferType { get; set; }
     }
 
     public struct TeamShufflerSettings
@@ -57,10 +60,13 @@
         public bool RandomizeHeldItems { get; set; }
         public bool BanBadItems { get; set; }
         public bool RandomizeMovesets { get; set; }
+        public bool UseLevelUpMoves { get; set; }
+        public bool MovePreferType { get; set; }
+        public bool BanShadowMoves { get; set; }
         public bool MetronomeOnly { get; set; }
-        public bool ForceFourMoves { get; set; }
         public bool ForceGoodDamagingMoves { get; set; }
         public int ForceGoodDamagingMovesCount { get; set; }
+        public bool ForceFourMoves { get; set; }
     }
 
     public struct MoveShufflerSettings
@@ -100,6 +106,7 @@
         public bool ForceGoodDamagingMove { get; set; }
         public bool ForceSTABMove { get; set; }
         public bool AllowTrolls { get; set; }
+        public bool BanShadowMoves { get; set; }
     }
 
     public struct StaticPokemonShufflerSettings
@@ -111,7 +118,11 @@
         public TradeRandomSetting Trade { get; set; }
 
         public bool RandomizeMovesets { get; set; }
+        public bool BanShadowMoves { get; set; }
+        public bool UseLevelUpMoves { get; set; }
+        public bool MovePreferType { get; set; }
         public bool ForceFourMoves { get; set; }
+        public int ForceGoodDamagingMovesCount { get; set; }
     }
 
     public enum MoveCompatibility
