@@ -57,7 +57,7 @@ namespace Randomizer.Shufflers
                 if (settings.SetMinimumCatchRate)
                 {
                     var poke = extractedGame.PokemonList[pokeSpotPoke.Pokemon];
-                    var catchRate = Math.Min(poke.CatchRate, settings.MinimumCatchRate);
+                    var catchRate = Math.Max(poke.CatchRate, settings.MinimumCatchRate);
                     var catchRateIncrease = (byte)Math.Clamp(catchRate, 0, byte.MaxValue);
                     poke.CatchRate = catchRateIncrease;
                 }
