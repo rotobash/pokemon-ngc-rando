@@ -34,10 +34,10 @@ namespace XDCommon.PokemonDefinitions
         
         public Evolution[] Evolutions { get; set; }
 
-        public Items HeldItem
+        public ushort HeldItem
         {
-            get => null;//(Items)commonRel.ExtractedFile.GetUshortAtOffset(StartOffset + Constants.HeldItem1Offset);
-            set => iso.CommonRel.ExtractedFile.WriteBytesAtOffset(StartOffset + Constants.HeldItem1Offset, Array.Empty<byte>());
+            get => iso.CommonRel.ExtractedFile.GetUShortAtOffset(StartOffset + Constants.HeldItem1Offset);
+            set => iso.CommonRel.ExtractedFile.WriteBytesAtOffset(StartOffset + Constants.HeldItem1Offset, value.GetBytes());
         }
 
         public Ability Ability1

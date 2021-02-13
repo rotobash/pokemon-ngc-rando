@@ -22,19 +22,19 @@ namespace Randomizer.Shufflers
                 {
                     // determine what percent of TMs should be good
                     var count = (int)Math.Round(settings.TMGoodDamagingMovePercent * tms.Length);
-                    // filter the move list by moves that are deemed good
-                    var goodMoves = extractedGame.MoveList.Where(m => m.BasePower >= Configuration.GoodDamagingMovePower).ToList();
-                    for (int i = 0; i < count; i++)
+                    // keep picking until it's not a dupe
+                    // this could probably be done smarterly
+                    var goodDamagingMoves = extractedGame.GoodDamagingMoves;
+                    while (newTMSet.Count < count)
                     {
-                        // keep picking until it's not a dupe
-                        // this could probably be done smarterly
-                        while (!newTMSet.Add((ushort)random.Next(0, extractedGame.MoveList.Length)));
+                        var newMove = goodDamagingMoves[random.Next(0, goodDamagingMoves.Length)];
+                        newTMSet.Add((ushort)newMove.MoveIndex);
                     }
                 }
 
                 // keep picking while we haven't picked enough TMs
                 while (newTMSet.Count < tms.Length)
-                    newTMSet.Add((ushort)random.Next(0, extractedGame.MoveList.Length));
+                    newTMSet.Add((ushort)random.Next(1, extractedGame.MoveList.Length));
 
                 // set them to the actual TM item
                 for (int i = 0; i < tms.Length; i++)
@@ -56,18 +56,17 @@ namespace Randomizer.Shufflers
                     // determine what percent of TMs should be good
                     var count = (int)Math.Round(settings.TutorGoodDamagingMovePercent * tutorMoves.Length);
                     // filter the move list by moves that are deemed good
-                    var goodMoves = extractedGame.MoveList.Where(m => m.BasePower >= Configuration.GoodDamagingMovePower).ToList();
-                    for (int i = 0; i < count; i++)
+                    var goodDamagingMoves = extractedGame.GoodDamagingMoves;
+                    while (newTutorMoveSet.Count < count)
                     {
-                        // keep picking until it's not a dupe
-                        // this could probably be done smarterly
-                        while (!newTutorMoveSet.Add((ushort)random.Next(0, extractedGame.MoveList.Length))) ;
+                        var newMove = goodDamagingMoves[random.Next(0, goodDamagingMoves.Length)];
+                        newTutorMoveSet.Add((ushort)newMove.MoveIndex);
                     }
                 }
 
                 // keep picking while we haven't picked enough TMs or we picked a dupe
                 while (newTutorMoveSet.Count < tutorMoves.Length)
-                    newTutorMoveSet.Add((ushort)random.Next(0, extractedGame.MoveList.Length));
+                    newTutorMoveSet.Add((ushort)random.Next(1, extractedGame.MoveList.Length));
 
                 // set them to the actual TM item
                 for (int i = 0; i < tutorMoves.Length; i++)
@@ -79,16 +78,8 @@ namespace Randomizer.Shufflers
 
         public static void ShuffleOverworldItems(Random random, ItemShufflerSettings settings, ExtractedGame extractedGame)
         {
-            var itemsFilter = extractedGame.ItemList .Where(
-                i => extractedGame.ItemList[i.Index].BagSlot != BagSlots.KeyItems 
-                && extractedGame.ItemList[i.Index].BagSlot != BagSlots.None
-            );
+            var potentialItems = settings.BanBadItems ? extractedGame.NonKeyItems : extractedGame.GoodItems;
 
-            if (settings.BanBadItems)
-                // we could check if it's a berry but meh, we have to check for other bad items anyway
-                itemsFilter = itemsFilter.Where(i => !RandomizerConstants.BadItemList.Contains(i.Index));
-
-            var potentialItems = itemsFilter.ToArray();
             foreach (var item in extractedGame.OverworldItemList)
             {
                 // i'm *assuming* the devs didn't place any invalid items on the overworld

@@ -11,7 +11,15 @@ namespace Randomizer.Shufflers
     public static class TeamShuffler
     {
         public static void ShuffleTeams(Random random, TeamShufflerSettings settings, ExtractedGame extractedGame)
-        {// yikes
+        {
+            var potentialItems = settings.BanBadItems ? extractedGame.GoodItems : extractedGame.NonKeyItems;
+            var potentialMoves = extractedGame.MoveList;
+            if (settings.RandomizeMovesets && settings.ForceGoodDamagingMoves)
+            {
+                potentialMoves = potentialMoves.Where(m => m.BasePower >= Configuration.GoodDamagingMovePower).ToArray();
+            }
+            
+            // yikes
             foreach (var pool in extractedGame.TrainerPools)
             {
                 if (pool.TeamType == TrainerPoolType.DarkPokemon)
@@ -28,7 +36,11 @@ namespace Randomizer.Shufflers
                             continue;
 
                         RandomizePokemon(random, settings, pokemon, extractedGame.PokemonList);
-                        RandomizeHeldItem(random, settings, pokemon, extractedGame.ItemList);
+
+                        if (settings.RandomizeHeldItems)
+                        {
+                            pokemon.Item = (ushort)potentialItems[random.Next(0, potentialItems.Length)].Index;
+                        }
 
                         if (settings.SetMinimumShadowCatchRate)
                         {
@@ -39,7 +51,7 @@ namespace Randomizer.Shufflers
                             BoostLevel(settings.BoostTrainerLevelPercent, pokemon);
                         }
 
-                        RandomizeMoveSet(random, settings, pokemon, extractedGame.MoveList);
+                        RandomizeMoveSet(random, settings, pokemon, extractedGame);
                     }
                 }
             }
@@ -56,6 +68,7 @@ namespace Randomizer.Shufflers
                 }
                 pokemon.SetPokemon((ushort)index);
             }
+
             if (settings.ForceFullyEvolved && pokemon.Level >= settings.ForceFullyEvolvedLevel)
             {
                 if (PokemonTraitShuffler.CheckForSplitOrEndEvolution(pokemon.Pokemon, out var count) && count > 0)
@@ -72,40 +85,25 @@ namespace Randomizer.Shufflers
             }
         }
 
-        public static void RandomizeHeldItem(Random random, TeamShufflerSettings settings, ITrainerPokemon pokemon, Items[] items)
-        {
-            if (settings.RandomizeHeldItems)
-            {
-                var filteredItems = items.Where(i => i.BagSlot != BagSlots.None || i.BagSlot != BagSlots.KeyItems);
-                if (settings.BanBadItems)
-                {
-                    filteredItems = filteredItems.Where(i => !RandomizerConstants.BadItemList.Contains(i.Index));
-                }
-
-                var potentialItems = filteredItems.ToArray();
-                pokemon.Item = (ushort)potentialItems[random.Next(0, potentialItems.Length)].Index;
-            }
-        }
-
-        public static void RandomizeMoveSet(Random random, TeamShufflerSettings settings, ITrainerPokemon pokemon, Move[] moves)
+        public static void RandomizeMoveSet(Random random, TeamShufflerSettings settings, ITrainerPokemon pokemon, ExtractedGame extractedGame)
         {
             var moveSet = new HashSet<ushort>();
             if (settings.RandomizeMovesets)
             {
                 if (settings.ForceGoodDamagingMoves)
                 {
+                    var goodDamagingMoves = extractedGame.GoodDamagingMoves;
                     // find all moves that meet our criteria and sample from there
-                    var potentialMoves = moves.Where(m => m.BasePower >= Configuration.GoodDamagingMovePower).ToArray();
                     while (moveSet.Count < settings.ForceGoodDamagingMovesCount)
                     {
-                        var potentialMove = potentialMoves[(ushort)random.Next(0, potentialMoves.Length)];
+                        var potentialMove = goodDamagingMoves[(ushort)random.Next(0, goodDamagingMoves.Length)];
                         moveSet.Add((ushort)potentialMove.MoveIndex);
                     }
                 }
 
                 // fill the rest of the move set
                 while (moveSet.Count < Constants.NumberOfPokemonMoves)
-                    moveSet.Add((ushort)random.Next(0, moves.Length));
+                    moveSet.Add((ushort)random.Next(1, extractedGame.MoveList.Length));
 
                 for (int i = 0; i < Constants.NumberOfPokemonMoves; i++)
                 {
@@ -119,13 +117,13 @@ namespace Randomizer.Shufflers
             }
             else
             {
-                var learnableMoves = pokemon.Pokemon.CurrentLevelMoves(pokemon.Level).Select(m => moves[m.Move]).ToArray();
+                var learnableMoves = pokemon.Pokemon.CurrentLevelMoves(pokemon.Level).Select(m => extractedGame.MoveList[m.Move]).ToArray();
 
                 // well fuck
                 if (learnableMoves.Length == 0)
                 {
                     // pick one at random I guess?
-                    pokemon.SetMove(0, (ushort)random.Next(1, moves.Length));
+                    pokemon.SetMove(0, (ushort)random.Next(1, extractedGame.MoveList.Length));
                     return;
                 }
 
@@ -134,7 +132,7 @@ namespace Randomizer.Shufflers
                     // the pokemon is too low level/doesn't learn enough moves
                     // if forcing 4 moves, randomly pick some to fill the gaps
                     if (i > learnableMoves.Length - 1 && settings.ForceFourMoves)
-                        pokemon.SetMove(i, (ushort)random.Next(1, moves.Length));
+                        pokemon.SetMove(i, (ushort)random.Next(1, extractedGame.MoveList.Length));
                     else if (i < learnableMoves.Length)
                         pokemon.SetMove(i, (ushort)learnableMoves.ElementAt(i).MoveIndex);
                 }

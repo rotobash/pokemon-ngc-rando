@@ -8,6 +8,7 @@
         public ItemShufflerSettings ItemShufflerSettings { get; set; }
         public StaticPokemonShufflerSettings StaticPokemonShufflerSettings { get; set; }
         public BingoCardShufflerSettings BingoCardShufflerSettings { get; set; }
+        public PokeSpotShufflerSettings PokeSpotShufflerSettings { get; set; }
 
     }
 

@@ -53,18 +53,25 @@ namespace Randomizer
                     switch (iso.Game)
                     {
                         case Game.Colosseum:
+                        {
                             gamePictureBox.Image = new Bitmap("Images/colo-logo.jpg");
                             gameExtractor = new ColoExtractor();
                             starterComboBox.SelectedItem = "ESPEON";
                             starter2ComboBox.SelectedItem = "UMBREON";
+                            // disable XD only options
+                            foreach (Control ctrl in battleBingoTabPage.Controls) ctrl.Enabled = false;
+                            pokeSpotGroupBox.Enabled = false;
                             break;
+                        }
                         case Game.XD:
+                        {
                             gamePictureBox.Image = new Bitmap("Images/xd-logo.jpg");
                             gameExtractor = new XDExtractor(iso);
                             starterComboBox.SelectedItem = "EEVEE";
                             starter2Label.Visible = false;
                             starter2ComboBox.Visible = false;
                             break;
+                        }
                         default:
                             return;
                     }
@@ -185,7 +192,7 @@ namespace Randomizer
 
                 backgroundWorker.ReportProgress(70);
                 progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Randomizing PokeSpots..."));
-                randomizer.RandomizePokeSpots();
+                randomizer.RandomizePokeSpots(settings.PokeSpotShufflerSettings);
 
                 backgroundWorker.ReportProgress(80);
                 progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Packing ISO..."));
@@ -243,6 +250,8 @@ namespace Randomizer
                             : MoveCompatibility.Unchanged)),
 
                     NoEXP = noEXPCheck.Checked,
+                    RandomizeMovesets = randomizeMovesets.Checked,
+                    MetronomeOnly = movesetsMetronomeOnlyCheck.Checked,                    
                 },
                 MoveShufflerSettings = new MoveShufflerSettings
                 {
@@ -314,6 +323,17 @@ namespace Randomizer
                     ForceSTABMove = bingoUseStabMoveCheck.Checked,
                     ForceStrongPokemon = bingoUseStrongPokemon.Checked
                 },
+                PokeSpotShufflerSettings = new PokeSpotShufflerSettings
+                {
+                    RandomizeHeldItems = randomPokespotHeldItemCheck.Checked,
+                    RandomizePokeSpotPokemon = randomizePokeSpotsCheck.Checked,
+                    SetMinimumCatchRate = minimumPokeSpotCatchRate.Checked,
+                    MinimumCatchRate = (int)pokeSpotCatchMinimum.Value,
+                    BoostPokeSpotLevel = boostPokeSpotLevelCheck.Checked,
+                    BoostPokeSpotLevelPercent = (float)(boostPokeSpotLevelPercent.Value / 100),
+                    BanBadHeldItems = banBadPokespotHeldItemCheck.Checked,
+                    EasyBonsly = easyBonslyCheck.Checked
+                }
             };
         }
 
@@ -475,6 +495,17 @@ namespace Randomizer
             bingoUseDamagingMoveCheck.Checked = settings.BingoCardShufflerSettings.ForceGoodDamagingMove;
             bingoUseStabMoveCheck.Checked = settings.BingoCardShufflerSettings.ForceSTABMove;
             bingoUseStrongPokemon.Checked = settings.BingoCardShufflerSettings.ForceStrongPokemon;
+
+            randomizePokeSpotsCheck.Checked = settings.PokeSpotShufflerSettings.RandomizePokeSpotPokemon;
+            randomPokespotHeldItemCheck.Checked = settings.PokeSpotShufflerSettings.RandomizeHeldItems;
+            banBadPokespotHeldItemCheck.Checked = settings.PokeSpotShufflerSettings.BanBadHeldItems;
+            easyBonslyCheck.Checked = settings.PokeSpotShufflerSettings.EasyBonsly;
+
+            minimumPokeSpotCatchRate.Checked = settings.PokeSpotShufflerSettings.SetMinimumCatchRate;
+            pokeSpotCatchMinimum.Value = settings.PokeSpotShufflerSettings.MinimumCatchRate;
+
+            boostPokeSpotLevelCheck.Checked = settings.PokeSpotShufflerSettings.BoostPokeSpotLevel;
+            boostPokeSpotLevelPercent.Value = (int)(settings.PokeSpotShufflerSettings.BoostPokeSpotLevelPercent * 100);
         }
         #endregion
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XDCommon;
 using XDCommon.PokemonDefinitions;
 using XDCommon.Utility;
 
@@ -16,13 +17,49 @@ namespace Randomizer.Shufflers
             var pokeBaseStatsRandomized = new List<string>();
             var pokeAbilitiesRandomized = new List<string>();
             var pokeTypesRandomized = new List<string>();
+            var pokeEvosRandomized = new List<int>();
+            var easyEvolutions = new List<string>();
 
             // do this first for "follow evolution" checks
             if (settings.RandomizeEvolutions)
             {
                 foreach (var poke in extractedGame.PokemonList)
                 {
+                    // prevent loops and multiple pokemon evolving into the same pokemon
+                    pokeEvosRandomized.Add(poke.Index);
+                    var pokeFilter = extractedGame.PokemonList.Where(p => !pokeEvosRandomized.Contains(p.Index));
 
+                    if (settings.EvolutionHasSameType)
+                    {
+                        pokeFilter = pokeFilter.Where(p => p.Type1 == poke.Type1 || p.Type2 == poke.Type2 || p.Type1 == poke.Type2); 
+                    }
+                    
+                    var potentialPokes = pokeFilter.ToArray();
+                    for (int i = 0; i < poke.Evolutions.Length; i++)
+                    {
+                        var evolution = poke.Evolutions[i];
+                        if (evolution.EvolutionMethod == EvolutionMethods.None) continue;
+
+                        if (settings.EvolutionHasSimilarStrength)
+                        {
+                            var similarStrengths = potentialPokes.Where(p => p.BST >= poke.BST - 50 && p.BST <= poke.BST + 50).ToArray();
+                            if (similarStrengths.Length > 0)
+                                potentialPokes = similarStrengths;
+                        }
+
+                        if (potentialPokes.Length == 0)
+                        {
+                            // null it out
+                            poke.SetEvolution(i, 0, 0, 0);
+                        }
+                        else
+                        {
+                            var newPoke = potentialPokes[random.Next(0, potentialPokes.Length)];
+                            // same evolution, just evolves into something else
+                            poke.SetEvolution(i, (byte)evolution.EvolutionMethod, evolution.EvolutionCondition, (ushort)newPoke.Index);
+                            pokeEvosRandomized.Add(newPoke.Index);
+                        }
+                    }
                 }
             }
 
@@ -38,9 +75,18 @@ namespace Randomizer.Shufflers
                 {
                     // todo
 
+                    if (settings.RandomizeBaseStats == 1)
+                    {
+                        // shuffle
+                    }
+                    else
+                    {
+                        // random within total
+                    }
+
                     if (settings.BaseStatsFollowEvolution)
                     {
-
+                        pokeBaseStatsRandomized.Add(poke.Name);
                     }
                 }
 
@@ -103,23 +149,42 @@ namespace Randomizer.Shufflers
                     }
                 }
 
-                if (settings.FixImpossibleEvolutions)
+                if (settings.FixImpossibleEvolutions || settings.EasyEvolutions)
                 {
-                    // todo, set level?
                     for (int i = 0; i < poke.Evolutions.Length; i++)
                     {
-                        var method = poke.Evolutions[i].EvolutionMethod;
-                        if (method == EvolutionMethods.TradeWithItem || method == EvolutionMethods.Trade || method == EvolutionMethods.HappinessDay || method == EvolutionMethods.HappinessNight)
+                        if (settings.FixImpossibleEvolutions)
                         {
-                            poke.SetEvolution(i, (byte)EvolutionMethods.LevelUp, (ushort)EvolutionConditionType.Level, poke.Evolutions[i].EvolvesInto);
-                            break;
+                            var method = poke.Evolutions[i].EvolutionMethod;
+                            if (method == EvolutionMethods.TradeWithItem || method == EvolutionMethods.Trade || method == EvolutionMethods.HappinessDay || method == EvolutionMethods.HappinessNight)
+                            {
+                                poke.SetEvolution(i, (byte)EvolutionMethods.LevelUp, (ushort)Configuration.TradePokemonEvolutionLevel, poke.Evolutions[i].EvolvesInto);
+                                break;
+                            }
+                        }
+
+                        if (settings.EasyEvolutions)
+                        {
+                            // todoS
+                            //var checkPoke = poke;
+                            //int count = 0;
+                            //while (!CheckForSplitOrEndEvolution(checkPoke, out int _))
+                            //{
+                            //    if (count == 1)
+                            //    {
+                            //        checkPoke.SetEvolution(0, checkPoke.Evolutions[0].EvolutionCondition, (ushort)random.Next(30, 40), checkPoke.Evolutions[0].EvolvesInto);
+                            //    }
+                            //    else if (count > 1)
+                            //    {
+                            //        checkPoke.SetEvolution(0, (byte)EvolutionMethods.LevelUp, (ushort)random.Next(40, 50), checkPoke.Evolutions[0].EvolvesInto);
+                            //    }
+
+                            //    easyEvolutions.Add(checkPoke.Name);
+                            //    checkPoke = extractedGame.PokemonList[checkPoke.Evolutions[0].EvolvesInto];
+                            //    count++;
+                            //}
                         }
                     }
-                }
-
-                if (settings.EasyEvolutions)
-                {
-                    // todoS
                 }
 
                 // so I heard you like a challenge...
@@ -143,7 +208,7 @@ namespace Randomizer.Shufflers
                         }
                         else
                         {
-                            poke.SetLevelUpMove(i, move.Level, (ushort)random.Next(0, extractedGame.MoveList.Length));
+                            poke.SetLevelUpMove(i, move.Level, (ushort)random.Next(1, extractedGame.MoveList.Length));
                         }
                     }
                 }

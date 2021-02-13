@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XDCommon;
 using XDCommon.PokemonDefinitions;
 
 namespace Randomizer
@@ -28,6 +29,15 @@ namespace Randomizer
         public Items[] ItemList { get; }
         public OverworldItem[] OverworldItemList { get; }
         public Pokemarts[] Pokemarts { get; }
+
+        public Move[] GoodDamagingMoves => MoveList.Where(m => m.BasePower >= Configuration.GoodDamagingMovePower).ToArray();
+
+        public Pokemon[] ValidPokemon => PokemonList.Where(p => !RandomizerConstants.SpecialPokemon.Contains(p.Index)).ToArray();
+        public Pokemon[] GoodPokemon => PokemonList.Where(p => p.BST >= Configuration.StrongPokemonBST).ToArray();
+
+        public Items[] NonKeyItems => ItemList.Where(i => i.BagSlot != BagSlots.KeyItems || i.BagSlot != BagSlots.None).ToArray();
+        public Items[] GoodItems => NonKeyItems.Where(i => !RandomizerConstants.BadItemList.Contains(i.Index)).ToArray();
+
 
         public ExtractedGame(IGameExtractor extractor)
         {

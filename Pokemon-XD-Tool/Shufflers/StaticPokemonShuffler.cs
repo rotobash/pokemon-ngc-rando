@@ -36,7 +36,7 @@ namespace Randomizer.Shufflers
                     while (!condition)
                     {
                         index = random.Next(1, extractedGame.PokemonList.Length);
-                        condition = (index != 0 || RandomizerConstants.SpecialPokemon.Contains(index))
+                        condition = (RandomizerConstants.SpecialPokemon.Contains(index))
                             && (secondStage = extractedGame.PokemonList[index].Evolutions[0]).EvolutionMethod != EvolutionMethods.None
                             && extractedGame.PokemonList[secondStage.EvolvesInto].Evolutions[0].EvolutionMethod != EvolutionMethods.None
                             && !PokemonTraitShuffler.CheckForSplitOrEndEvolution(extractedGame.PokemonList[index], out int _);
@@ -46,7 +46,7 @@ namespace Randomizer.Shufflers
                     while (!condition)
                     {
                         index = random.Next(1, extractedGame.PokemonList.Length);
-                        condition = (index != 0 || RandomizerConstants.SpecialPokemon.Contains(index))
+                        condition = (RandomizerConstants.SpecialPokemon.Contains(index))
                             && (secondStage = extractedGame.PokemonList[index].Evolutions[0]).EvolutionMethod != EvolutionMethods.None
                             && extractedGame.PokemonList[secondStage.EvolvesInto].Evolutions[0].EvolutionMethod == EvolutionMethods.None;
                     }
@@ -55,7 +55,7 @@ namespace Randomizer.Shufflers
                     while (!condition)
                     {
                         index = random.Next(1, extractedGame.PokemonList.Length);
-                        condition = (index != 0 || RandomizerConstants.SpecialPokemon.Contains(index))
+                        condition = (RandomizerConstants.SpecialPokemon.Contains(index))
                             && extractedGame.PokemonList[index].Evolutions[0].EvolutionMethod == EvolutionMethods.None;
                     }
                     break;

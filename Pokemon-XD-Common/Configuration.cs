@@ -77,6 +77,22 @@ namespace XDCommon
             }
         }
 
+        public static int TradePokemonEvolutionLevel 
+        {
+            get
+            {
+                if (!int.TryParse(ConfigurationManager.AppSettings.Get(nameof(TradePokemonEvolutionLevel)), out int evoLevel))
+                {
+                    TradePokemonEvolutionLevel = 40;
+                }
+                return evoLevel;
+            }
+            set
+            {
+                AddOrUpdateAppSettings(nameof(TradePokemonEvolutionLevel), value.ToString());
+            }
+        }
+
         public static string ExtractDirectory
         {
             get

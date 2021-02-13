@@ -42,5 +42,6 @@ namespace Randomizer
 
         public const int MetronomeIndex = 118;
         public const int WonderGuardIndex = 25;
+        public const int BonslyIndex = 413;
     }
 }

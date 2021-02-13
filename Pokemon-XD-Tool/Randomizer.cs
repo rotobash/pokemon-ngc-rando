@@ -81,12 +81,12 @@ namespace Randomizer
             }
         }
 
-        public void RandomizePokeSpots()
+        public void RandomizePokeSpots(PokeSpotShufflerSettings settings)
         {
             if (gameExtractor is XDExtractor xd)
             {
                 var pokespots = xd.ExtractPokeSpotPokemon();
-                var t = 0;
+                PokeSpotShuffler.ShufflePokeSpots(random, settings, pokespots, extractedGameStructures);
             }
         }
     }
