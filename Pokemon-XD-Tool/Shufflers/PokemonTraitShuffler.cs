@@ -81,16 +81,55 @@ namespace Randomizer.Shufflers
 
                 if (settings.RandomizeBaseStats > 0 && settings.BaseStatsFollowEvolution && !pokeBaseStatsRandomized.Contains(poke.Name))
                 {
-                    // todo
-
+                    IList<byte> newBsts;
                     if (settings.RandomizeBaseStats == 1)
                     {
                         // shuffle
+                        newBsts = new List<byte>
+                        {
+                            poke.HP,
+                            poke.Attack,
+                            poke.Defense,
+                            poke.SpecialAttack,
+                            poke.SpecialDefense,
+                            poke.Speed
+                        };
+
+                        // everyone do the the fisher-yates shuffle
+                        for (int i = newBsts.Count; i > 0; i--)
+                        {
+                            var j = random.Next(0, i + 1);
+                            // xor swap
+                            newBsts[i] ^= newBsts[j];
+                            newBsts[j] ^= newBsts[i];
+                            newBsts[i] ^= newBsts[j];
+                        }
                     }
                     else
                     {
                         // random within total
+                        var bstRemaining = poke.BST;
+                        newBsts = new byte[6];
+                        for (int i = 0; i < newBsts.Count; i++)
+                        {
+                            var newBst = random.Next(1, bstRemaining) % 255;
+                            bstRemaining -= newBst;
+                            newBsts[i] = (byte)newBst;
+                        }
+
+                        if (bstRemaining > 0)
+                        {
+                            // we have some left over, plop into a stat somewhere
+                            newBsts[random.Next(0, newBsts.Count)] += (byte)bstRemaining;
+                        }
                     }
+
+                    poke.HP = newBsts[0];
+                    poke.Attack = newBsts[1];
+                    poke.Defense = newBsts[2];
+                    poke.SpecialAttack = newBsts[3];
+                    poke.SpecialDefense = newBsts[4];
+                    poke.Speed = newBsts[5];
 
                     if (settings.BaseStatsFollowEvolution)
                     {
@@ -105,7 +144,9 @@ namespace Randomizer.Shufflers
 
                 if (settings.StandardizeEXPCurves)
                 {
-                    poke.LevelUpRate = ExpRate.Fast;
+                    poke.LevelUpRate = RandomizerConstants.Legendaries.Contains(poke.Index) 
+                        ? ExpRate.Slow
+                        : ExpRate.Fast;
                 }
 
                 if (settings.RandomizeAbilities && !pokeAbilitiesRandomized.Contains(poke.Name))
@@ -173,24 +214,29 @@ namespace Randomizer.Shufflers
 
                         if (settings.EasyEvolutions)
                         {
-                            // todoS
-                            //var checkPoke = poke;
-                            //int count = 0;
-                            //while (!CheckForSplitOrEndEvolution(checkPoke, out int _))
-                            //{
-                            //    if (count == 1)
-                            //    {
-                            //        checkPoke.SetEvolution(0, checkPoke.Evolutions[0].EvolutionCondition, (ushort)random.Next(30, 40), checkPoke.Evolutions[0].EvolvesInto);
-                            //    }
-                            //    else if (count > 1)
-                            //    {
-                            //        checkPoke.SetEvolution(0, (byte)EvolutionMethods.LevelUp, (ushort)random.Next(40, 50), checkPoke.Evolutions[0].EvolvesInto);
-                            //    }
+                            if (!CheckForSplitOrEndEvolution(poke, out int _))
+                            {
+                                var evolution = poke.Evolutions[0];
+                                var evoPoke = extractedGame.PokemonList[evolution.EvolvesInto];
 
-                            //    easyEvolutions.Add(checkPoke.Name);
-                            //    checkPoke = extractedGame.PokemonList[checkPoke.Evolutions[0].EvolvesInto];
-                            //    count++;
-                            //}
+                                // check if we evolve into something else
+                                // i.e. if three stage
+                                if (!CheckForSplitOrEndEvolution(evoPoke, out int count))
+                                {
+                                    var evoPokeEvolution = evoPoke.Evolutions[0];
+                                    if (evoPokeEvolution.EvolutionMethod == EvolutionMethods.LevelUp && evoPokeEvolution.EvolutionCondition > 40)
+                                    {
+                                        // make a bold assumption that if the third stage evolves by level up then the second does too
+                                        evoPoke.SetEvolution(0, (byte)evoPokeEvolution.EvolutionMethod, 40, evoPokeEvolution.EvolvesInto);
+                                        poke.SetEvolution(0, (byte)evolution.EvolutionMethod, 30, evolution.EvolvesInto);
+                                    }                                    
+                                }
+                                else if (count == 0 && evolution.EvolutionMethod == EvolutionMethods.LevelUp && evolution.EvolutionCondition > 40)
+                                {
+                                    // this is the last stage
+                                    poke.SetEvolution(0, (byte)evolution.EvolutionMethod, 40, evolution.EvolvesInto);
+                                }
+                            }
                         }
                     }
                 }
@@ -240,10 +286,12 @@ namespace Randomizer.Shufflers
             count = 0;
             for (int i = 0; i < currentPoke.Evolutions.Length; i++)
             {
+                // if more than one definition found or the first evolution is none
                 if (i == 0 && currentPoke.Evolutions[i].EvolutionMethod == EvolutionMethods.None
                     || currentPoke.Evolutions[i].EvolutionMethod != EvolutionMethods.None && i > 0)
                     endOrSplitEvolution = true;
 
+                // keep count for split evos
                 if (currentPoke.Evolutions[i].EvolutionMethod != EvolutionMethods.None)
                     count++;
             }

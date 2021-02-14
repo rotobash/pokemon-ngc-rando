@@ -97,7 +97,7 @@ namespace XDCommon.PokemonDefinitions
 
         public int BST
         {
-            get => Attack + Defense + SpecialAttack + SpecialDefense + Speed;
+            get => HP + Attack + Defense + SpecialAttack + SpecialDefense + Speed;
         }
 
         public byte HP
