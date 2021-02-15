@@ -8,8 +8,10 @@ namespace XDCommon.PokemonDefinitions
 {
     public class TM : Items
     {
+        const byte SizeOfTMEntry = 0x08;
+
         public int TMIndex => (Index + 1) - Constants.FirstTMItemIndex;
-        public uint TMStartOffset => (uint)(FirstTMListOffset + 6 + ((TMIndex - 1) * Constants.SizeOfTMEntry));
+        public uint TMStartOffset => (uint)(FirstTMListOffset + 6 + ((TMIndex - 1) * SizeOfTMEntry));
         public TM(int index, ISO iso) : base(index, iso)
         {
 
@@ -31,17 +33,22 @@ namespace XDCommon.PokemonDefinitions
 
     public class TutorMove : Items
     {
+        const int TutorMoves = 126;
+        const byte SizeOfTutorMoveEntry = 0x0C;
+        const byte TutorMoveMoveIndexOffset = 0x00;
+        const byte AvailabilityFlagOffset = 0x07;
+
         public TutorMove(int index, ISO iso) : base(index, iso)
         {
 
         }
 
-        public uint TutorStartOffset => (uint)(iso.CommonRel.GetPointer(Constants.TutorMoves) + ((Index - 1) * Constants.SizeOfTutorMoveEntry));
+        public uint TutorStartOffset => (uint)(iso.CommonRel.GetPointer(TutorMoves) + ((Index - 1) * SizeOfTutorMoveEntry));
 
         public int Move
         {
-            get => iso.CommonRel.ExtractedFile.GetUShortAtOffset(TutorStartOffset + Constants.TutorMoveMoveIndexOffset);
-            set => iso.CommonRel.ExtractedFile.WriteBytesAtOffset(TutorStartOffset + Constants.TutorMoveMoveIndexOffset, value.GetBytes());
+            get => iso.CommonRel.ExtractedFile.GetUShortAtOffset(TutorStartOffset + TutorMoveMoveIndexOffset);
+            set => iso.CommonRel.ExtractedFile.WriteBytesAtOffset(TutorStartOffset + TutorMoveMoveIndexOffset, value.GetBytes());
         }
     }
 }

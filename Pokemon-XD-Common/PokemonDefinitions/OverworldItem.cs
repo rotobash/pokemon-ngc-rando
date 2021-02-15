@@ -8,25 +8,35 @@ namespace XDCommon.PokemonDefinitions
 {
     public class OverworldItem
     {
+        const byte TreasureModelIDOffset = 0x0;
+        const byte TreasureQuantityOffset = 0x1;
+        const byte TreasureAngleOffset = 0x2;
+        const byte TreasureRoomIDOffset = 0x4;
+        const byte TreasureFlagOffset = 0x6;
+        const byte TreasureItemIDOffset = 0xE;
+        const byte TreasureXCoordOffset = 0x10;
+        const byte TreasureYCoordOffset = 0x14;
+        const byte TreasureZCoordOffset = 0x18;
+
         int index;
         ISO iso;
         public int StartOffset => (int)(iso.CommonRel.GetPointer(iso.Game == Game.XD ? Constants.XDTreasureBoxData : Constants.ColTreasureBoxData) + index * Constants.SizeOfTreasure);
 
         public byte Quantity
         {
-            get => iso.CommonRel.ExtractedFile.GetByteAtOffset(StartOffset + Constants.TreasureQuantityOffset);
-            set => iso.CommonRel.ExtractedFile.WriteByteAtOffset(StartOffset + Constants.TreasureQuantityOffset, value);
+            get => iso.CommonRel.ExtractedFile.GetByteAtOffset(StartOffset + TreasureQuantityOffset);
+            set => iso.CommonRel.ExtractedFile.WriteByteAtOffset(StartOffset + TreasureQuantityOffset, value);
         }
 
         public byte Model
         {
-            get => iso.CommonRel.ExtractedFile.GetByteAtOffset(StartOffset + Constants.TreasureModelIDOffset);
-            set => iso.CommonRel.ExtractedFile.WriteByteAtOffset(StartOffset + Constants.TreasureModelIDOffset, value);
+            get => iso.CommonRel.ExtractedFile.GetByteAtOffset(StartOffset + TreasureModelIDOffset);
+            set => iso.CommonRel.ExtractedFile.WriteByteAtOffset(StartOffset + TreasureModelIDOffset, value);
         }
         public ushort Item
         {
-            get => iso.CommonRel.ExtractedFile.GetUShortAtOffset(StartOffset + Constants.TreasureItemIDOffset);
-            set => iso.CommonRel.ExtractedFile.WriteBytesAtOffset(StartOffset + Constants.TreasureItemIDOffset, value.GetBytes());
+            get => iso.CommonRel.ExtractedFile.GetUShortAtOffset(StartOffset + TreasureItemIDOffset);
+            set => iso.CommonRel.ExtractedFile.WriteBytesAtOffset(StartOffset + TreasureItemIDOffset, value.GetBytes());
         }
 
         public OverworldItem(int index, ISO iso)
