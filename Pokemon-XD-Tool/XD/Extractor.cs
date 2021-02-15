@@ -141,6 +141,29 @@ namespace Randomizer.XD
 			return pokemon.ToArray();
 		}
 
+		public IGiftPokemon[] ExtractGiftPokemon()
+        {
+			var giftPokemon = new IGiftPokemon[8];
+			for (int i = 0; i < giftPokemon.Length; i++)
+            {
+				if (i < 4)
+                {
+					giftPokemon[i] = new XDTradePokemon((byte)i, iso);
+                }
+				else if (i == 4)
+                {
+					giftPokemon[i] = new XDShadowGiftPokemon(iso);
+                }
+				else
+                {
+					// have to fiddle with the index
+					var index = giftPokemon.Length - 1 - i;
+					giftPokemon[i] = new XDMtBattlePokemon((byte)index, iso);
+                }
+            }
+			return giftPokemon;
+		}
+
 		public XDStarterPokemon GetStarter()
         {
 			return new XDStarterPokemon(iso);

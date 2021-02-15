@@ -1,4 +1,5 @@
-﻿using Randomizer.Shufflers;
+﻿using Randomizer.Colosseum;
+using Randomizer.Shufflers;
 using Randomizer.XD;
 using System;
 using System.Collections.Generic;
@@ -64,11 +65,11 @@ namespace Randomizer
             if (gameExtractor is XDExtractor xd)
             {
                 var starter = xd.GetStarter();
-                StaticPokemonShuffler.RandomizeXDStatics(random, settings, starter, Array.Empty<IGiftPokemon>(), extractedGameStructures);
+                StaticPokemonShuffler.RandomizeXDStatics(random, settings, starter, extractedGameStructures);
             }
-            else
+            else if (gameExtractor is ColoExtractor colo)
             {
-                StaticPokemonShuffler.RandomizeColoStarters(random, settings, null, extractedGameStructures.PokemonList);
+                StaticPokemonShuffler.RandomizeColoStatics(random, settings, null, extractedGameStructures);
             }
         }
 

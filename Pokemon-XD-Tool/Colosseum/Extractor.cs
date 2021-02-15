@@ -49,5 +49,10 @@ namespace Randomizer.Colosseum
         {
             throw new NotImplementedException();
         }
+
+        public IGiftPokemon[] ExtractGiftPokemon()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -19,6 +19,7 @@ namespace Randomizer
         Pokemarts[] ExtractPokemarts();
         Move[] ExtractMoves();
         Pokemon[] ExtractPokemon();
+        IGiftPokemon[] ExtractGiftPokemon();
     }
 
     public class ExtractedGame
@@ -27,6 +28,7 @@ namespace Randomizer
         public Move[] MoveList { get; }
         public Ability[] Abilities { get; }
         public Pokemon[] PokemonList { get; }
+        public IGiftPokemon[] GiftPokemonList { get; }
         public Items[] ItemList { get; }
         public OverworldItem[] OverworldItemList { get; }
         public Pokemarts[] Pokemarts { get; }
@@ -49,6 +51,7 @@ namespace Randomizer
             MoveList = extractor.ExtractMoves();
             Abilities = extractor.ExtractAbilities();
             PokemonList = extractor.ExtractPokemon();
+            GiftPokemonList = extractor.ExtractGiftPokemon();
             ItemList = extractor.ExtractItems();
             OverworldItemList = extractor.ExtractOverworldItems();
             Pokemarts = extractor.ExtractPokemarts();

@@ -7,11 +7,12 @@ namespace XDCommon.PokemonDefinitions
     public interface IGiftPokemon
     {
         byte Index { get; }
-
-        byte Level { get; }
         ushort Exp { get; }
-        ushort Pokemon { get; }
         ushort[] Moves { get; }
         string GiftType { get; }
+
+        byte Level { get; set; }
+        ushort Pokemon { get; set; }
+        void SetMove(int i, ushort move);
     }
 }

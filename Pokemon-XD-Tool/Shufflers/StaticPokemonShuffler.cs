@@ -10,7 +10,7 @@ namespace Randomizer.Shufflers
 {
     public static class StaticPokemonShuffler
     {
-        public static void RandomizeXDStatics(Random random, StaticPokemonShufflerSettings settings, XDStarterPokemon starter, IGiftPokemon[] trades, ExtractedGame extractedGame)
+        public static void RandomizeXDStatics(Random random, StaticPokemonShufflerSettings settings, XDStarterPokemon starter, ExtractedGame extractedGame)
         {
             int index = 0;
             Evolution secondStage;
@@ -85,9 +85,26 @@ namespace Randomizer.Shufflers
             {
                 case TradeRandomSetting.Given:
                 case TradeRandomSetting.Both:
-                    for (int i = 0; i < trades.Length; i++)
+                    var pokemon = extractedGame.ValidPokemon;
+                    for (int i = 0; i < extractedGame.GiftPokemonList.Length; i++)
                     {
-                        // do stuff
+                        var newPoke = (ushort)pokemon[random.Next(0, pokemon.Length)].Index;
+                        extractedGame.GiftPokemonList[i].Pokemon = newPoke;
+
+                        ushort[] newMoveSet;
+                        if (settings.RandomizeMovesets && !settings.UseLevelUpMoves)
+                        {
+                            newMoveSet = MoveShuffler.GetRandomMoveset(random, settings.BanShadowMoves, settings.MovePreferType, settings.ForceGoodDamagingMovesCount, newPoke, extractedGame);
+                        }
+                        else
+                        {
+                            newMoveSet = MoveShuffler.GetLevelUpMoveset(random, newPoke, extractedGame.GiftPokemonList[i].Level, settings.ForceFourMoves, settings.BanShadowMoves, extractedGame);
+                        }
+
+                        for (int j = 0; j < newMoveSet.Length; j++)
+                        {
+                            extractedGame.GiftPokemonList[i].SetMove(j, newMoveSet[j]);
+                        }
                     }
                     break;
                 default:
@@ -96,7 +113,7 @@ namespace Randomizer.Shufflers
             }
         }
 
-        public static void RandomizeColoStarters(Random random, StaticPokemonShufflerSettings settings, IGiftPokemon[] starters, Pokemon[] pokemon)
+        public static void RandomizeColoStatics(Random random, StaticPokemonShufflerSettings settings, IGiftPokemon[] starters, ExtractedGame extractedGame)
         {
         }
     }
