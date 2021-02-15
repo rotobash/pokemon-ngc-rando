@@ -21,16 +21,16 @@ namespace Randomizer
         private void OptionsForm_Load(object sender, EventArgs e)
         {
             extractDirLabel.Text = Configuration.ExtractDirectory;
-            threadCountSelector.Value = Configuration.ThreadCount;
+            pokemonBSTSelector.Value = Configuration.StrongPokemonBST;
             movePower.Value = Configuration.GoodDamagingMovePower;
-            memoryStreamCheck.Checked = Configuration.UseMemoryStreams;
+            fileStreamCheck.Checked = !Configuration.UseMemoryStreams;
             verboseLogCheck.Checked = Configuration.Verbose;
-            browseForDirButton.Enabled = !memoryStreamCheck.Checked;
+            browseForDirButton.Enabled = !fileStreamCheck.Checked;
         }
 
         private void threadCountSelector_ValueChanged(object sender, EventArgs e)
         {
-            Configuration.ThreadCount = (int)threadCountSelector.Value;
+            Configuration.StrongPokemonBST = (int)pokemonBSTSelector.Value;
         }
 
         private void browseForDirButton_Click(object sender, EventArgs e)
@@ -44,8 +44,8 @@ namespace Randomizer
 
         private void memoryStreamCheck_CheckedChanged(object sender, EventArgs e)
         {
-            Configuration.UseMemoryStreams = memoryStreamCheck.Checked;
-            browseForDirButton.Enabled = !memoryStreamCheck.Checked;
+            Configuration.UseMemoryStreams = !fileStreamCheck.Checked;
+            browseForDirButton.Enabled = fileStreamCheck.Checked;
         }
 
         private void verboseLogCheck_CheckedChanged(object sender, EventArgs e)

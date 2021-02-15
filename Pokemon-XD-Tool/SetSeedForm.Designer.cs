@@ -29,11 +29,13 @@ namespace Randomizer
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.newSeed = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.cancelButton = new System.Windows.Forms.Button();
             this.okButton = new System.Windows.Forms.Button();
+            this.infoToolTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.newSeed)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -43,9 +45,22 @@ namespace Randomizer
             this.tableLayoutPanel1.SetColumnSpan(this.newSeed, 2);
             this.newSeed.Dock = System.Windows.Forms.DockStyle.Fill;
             this.newSeed.Location = new System.Drawing.Point(76, 87);
+            this.newSeed.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.newSeed.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
             this.newSeed.Name = "newSeed";
             this.newSeed.Size = new System.Drawing.Size(212, 23);
             this.newSeed.TabIndex = 0;
+            this.infoToolTip.SetToolTip(this.newSeed, "Set a new seed for the RNG, this will cause the game to be randomized the same ev" +
+        "erytime.\r\nIf you set the seed and want to unset it (i.e. have the computer gener" +
+        "ate one for you), set this to -1. ");
             // 
             // tableLayoutPanel1
             // 
@@ -75,9 +90,9 @@ namespace Randomizer
             this.tableLayoutPanel1.SetColumnSpan(this.label1, 2);
             this.label1.Location = new System.Drawing.Point(76, 42);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 15);
+            this.label1.Size = new System.Drawing.Size(89, 15);
             this.label1.TabIndex = 1;
-            this.label1.Text = "New Random Seed:";
+            this.label1.Text = "New RNG Seed:";
             // 
             // cancelButton
             // 
@@ -124,5 +139,6 @@ namespace Randomizer
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button okButton;
+        private System.Windows.Forms.ToolTip infoToolTip;
     }
 }

@@ -57,4 +57,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="banBadItemsCheck.ToolTip" xml:space="preserve">
+    <value>Bans items that aren't very useful in Colo/XD. 
+This includes all berries, contest items, shards (except moon and sun), 
+and items that have to do with wild pokemon (e.g. repels, pokedolls, smoke ball, etc.)
+</value>
+  </data>
 </root>

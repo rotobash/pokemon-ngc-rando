@@ -251,9 +251,10 @@ namespace Randomizer
 
                     NoEXP = noEXPCheck.Checked,
                     RandomizeMovesets = randomizeMovesets.Checked,
+                    BanShadowMoves = banShadowMovesCheck.Checked,
                     ForceGoodDamagingMovesCount = (int)movesetsForceGoodDamagingMovePercent.Value,
                     LevelUpMovePreferType = randomizeMovesetsPreferType.Checked,
-                    MetronomeOnly = movesetsMetronomeOnlyCheck.Checked,                    
+                    MetronomeOnly = movesetsMetronomeOnlyCheck.Checked,
                 },
                 MoveShufflerSettings = new MoveShufflerSettings
                 {
@@ -291,10 +292,12 @@ namespace Randomizer
                     ForceFullyEvolved = forceFullyEvovledLevelCheck.Checked,
                     ForceFullyEvolvedLevel = (int)forceFullyEvolvedLevel.Value,
 
-                    RandomizeHeldItems = randomShadowHeldItemCheck.Checked,
-                    BanBadItems = banBadShadowHeldItemsCheck.Checked,
+                    RandomizeHeldItems = randomHeldItemCheck.Checked,
+                    BanBadItems = banBadItemsCheck.Checked,
 
                     RandomizeMovesets = randomizeMovesets.Checked,
+                    BanShadowMoves = banShadowMovesCheck.Checked,
+                    UseLevelUpMoves = pokemonShareMovesetsCheck.Checked,
                     MovePreferType = randomizeMovesetsPreferType.Checked,
                     ForceFourMoves = forceFourMoveCheck.Checked,
                     ForceGoodDamagingMoves = movesetsForceGoodDamagingMoveCheck.Checked,
@@ -304,6 +307,8 @@ namespace Randomizer
                 StaticPokemonShufflerSettings = new StaticPokemonShufflerSettings
                 {
                     RandomizeMovesets = randomizeMovesets.Checked,
+                    BanShadowMoves = banShadowMovesCheck.Checked,
+                    UseLevelUpMoves = pokemonShareMovesetsCheck.Checked,
                     MovePreferType = randomizeMovesetsPreferType.Checked,
                     ForceGoodDamagingMovesCount = (int)movesetsForceGoodDamagingMovePercent.Value,
                     ForceFourMoves = forceFourMoveCheck.Checked,
@@ -320,23 +325,24 @@ namespace Randomizer
 
                     Trade = tradeBothRandomCheck.Checked ? TradeRandomSetting.Both
                             : (tradeRandomGivenCheck.Checked ? TradeRandomSetting.Given
-                            : TradeRandomSetting.Unchanged)
+                            : TradeRandomSetting.Unchanged),
                 },
                 BingoCardShufflerSettings = new BingoCardShufflerSettings
                 {
                     ForceGoodDamagingMove = bingoUseDamagingMoveCheck.Checked,
                     ForceSTABMove = bingoUseStabMoveCheck.Checked,
-                    ForceStrongPokemon = bingoUseStrongPokemon.Checked
+                    ForceStrongPokemon = bingoUseStrongPokemon.Checked,
+                    BanShadowMoves = bingoBanShadowMovesCheck.Checked
                 },
                 PokeSpotShufflerSettings = new PokeSpotShufflerSettings
                 {
-                    RandomizeHeldItems = randomPokespotHeldItemCheck.Checked,
+                    RandomizeHeldItems = randomHeldItemCheck.Checked,
                     RandomizePokeSpotPokemon = randomizePokeSpotsCheck.Checked,
                     SetMinimumCatchRate = minimumPokeSpotCatchRate.Checked,
                     MinimumCatchRate = (int)pokeSpotCatchMinimum.Value,
                     BoostPokeSpotLevel = boostPokeSpotLevelCheck.Checked,
                     BoostPokeSpotLevelPercent = (float)(boostPokeSpotLevelPercent.Value / 100),
-                    BanBadHeldItems = banBadPokespotHeldItemCheck.Checked,
+                    BanBadHeldItems = banBadItemsCheck.Checked,
                     EasyBonsly = easyBonslyCheck.Checked
                 }
             };
@@ -412,11 +418,11 @@ namespace Randomizer
             noEXPCheck.Checked = settings.PokemonTraitShufflerSettings.NoEXP;
 
             // moves
-             movePowerCheck.Checked= settings.MoveShufflerSettings.RandomMovePower;
-             moveAccCheck.Checked= settings.MoveShufflerSettings.RandomMoveAcc;
-             movePPCheck.Checked = settings.MoveShufflerSettings.RandomMovePP;
-             moveTypeCheck.Checked= settings.MoveShufflerSettings.RandomMoveTypes;
-             moveCategoryCheck.Checked= settings.MoveShufflerSettings.RandomMoveCategory;
+            movePowerCheck.Checked = settings.MoveShufflerSettings.RandomMovePower;
+            moveAccCheck.Checked = settings.MoveShufflerSettings.RandomMoveAcc;
+            movePPCheck.Checked = settings.MoveShufflerSettings.RandomMovePP;
+            moveTypeCheck.Checked = settings.MoveShufflerSettings.RandomMoveTypes;
+            moveCategoryCheck.Checked = settings.MoveShufflerSettings.RandomMoveCategory;
 
             // items
             randomizeOverworldItemsCheck.Checked = settings.ItemShufflerSettings.RandomizeItems;
@@ -426,30 +432,32 @@ namespace Randomizer
             martsSellXItemsCheck.Checked = settings.ItemShufflerSettings.MartsSellXItems;
 
             // tms/tutors
-            randomizeTMsCheck.Checked= settings.ItemShufflerSettings.RandomizeTMs;
-            forceGoodDamagingTMsCheck.Checked= settings.ItemShufflerSettings.TMForceGoodDamagingMove;
+            randomizeTMsCheck.Checked = settings.ItemShufflerSettings.RandomizeTMs;
+            forceGoodDamagingTMsCheck.Checked = settings.ItemShufflerSettings.TMForceGoodDamagingMove;
             forceGoodDamagingTMPercent.Value = (int)(settings.ItemShufflerSettings.TMGoodDamagingMovePercent * 100);
-            
-            randomizeTutorMoveCheck.Checked= settings.ItemShufflerSettings.RandomizeTutorMoves;
-            forceGoodDamagingTutorMoveCheck.Checked= settings.ItemShufflerSettings.TutorForceGoodDamagingMove;
-            forceGoodDamagingTutorMovePercent.Value= (int)(settings.ItemShufflerSettings.TutorGoodDamagingMovePercent * 100);
-            
-            // trainers
-            randomizeTrainerPokemonCheck.Checked= settings.TeamShufflerSettings.RandomizePokemon;
-            noLegendaryOnTrainerCheck.Checked= settings.TeamShufflerSettings.DontUseLegendaries;
 
-            minimumShadowCatchRateCheck.Checked= settings.TeamShufflerSettings.SetMinimumShadowCatchRate;
+            randomizeTutorMoveCheck.Checked = settings.ItemShufflerSettings.RandomizeTutorMoves;
+            forceGoodDamagingTutorMoveCheck.Checked = settings.ItemShufflerSettings.TutorForceGoodDamagingMove;
+            forceGoodDamagingTutorMovePercent.Value = (int)(settings.ItemShufflerSettings.TutorGoodDamagingMovePercent * 100);
+
+            // trainers
+            randomizeTrainerPokemonCheck.Checked = settings.TeamShufflerSettings.RandomizePokemon;
+            noLegendaryOnTrainerCheck.Checked = settings.TeamShufflerSettings.DontUseLegendaries;
+
+            minimumShadowCatchRateCheck.Checked = settings.TeamShufflerSettings.SetMinimumShadowCatchRate;
             shadowCatchMinimum.Value = Math.Clamp(settings.TeamShufflerSettings.ShadowCatchRateMinimum, 0, 255);
             boostTrainerLevelCheck.Checked = settings.TeamShufflerSettings.BoostTrainerLevel;
             boostTrainerLevelPercent.Value = (int)(settings.TeamShufflerSettings.BoostTrainerLevelPercent * 100);
             forceFullyEvovledLevelCheck.Checked = settings.TeamShufflerSettings.ForceFullyEvolved;
             forceFullyEvolvedLevel.Value = settings.TeamShufflerSettings.ForceFullyEvolvedLevel;
-            
-            randomShadowHeldItemCheck.Checked = settings.TeamShufflerSettings.RandomizeHeldItems;
-            banBadShadowHeldItemsCheck.Checked = settings.TeamShufflerSettings.BanBadItems;
-            
+
+            randomHeldItemCheck.Checked = settings.TeamShufflerSettings.RandomizeHeldItems;
+            banBadItemsCheck.Checked = settings.TeamShufflerSettings.BanBadItems;
+
             // movesets
-            randomizeMovesets.Checked= settings.TeamShufflerSettings.RandomizeMovesets;
+            randomizeMovesets.Checked = settings.TeamShufflerSettings.RandomizeMovesets;
+            banShadowMovesCheck.Checked = settings.TeamShufflerSettings.BanShadowMoves;
+            pokemonShareMovesetsCheck.Checked = settings.TeamShufflerSettings.UseLevelUpMoves;
             forceFourMoveCheck.Checked = settings.TeamShufflerSettings.ForceFourMoves;
             movesetsForceGoodDamagingMoveCheck.Checked = settings.TeamShufflerSettings.ForceGoodDamagingMoves;
             movesetsForceGoodDamagingMovePercent.Value = settings.TeamShufflerSettings.ForceGoodDamagingMovesCount;
@@ -500,10 +508,9 @@ namespace Randomizer
             bingoUseDamagingMoveCheck.Checked = settings.BingoCardShufflerSettings.ForceGoodDamagingMove;
             bingoUseStabMoveCheck.Checked = settings.BingoCardShufflerSettings.ForceSTABMove;
             bingoUseStrongPokemon.Checked = settings.BingoCardShufflerSettings.ForceStrongPokemon;
+            bingoBanShadowMovesCheck.Checked = settings.BingoCardShufflerSettings.BanShadowMoves;
 
             randomizePokeSpotsCheck.Checked = settings.PokeSpotShufflerSettings.RandomizePokeSpotPokemon;
-            randomPokespotHeldItemCheck.Checked = settings.PokeSpotShufflerSettings.RandomizeHeldItems;
-            banBadPokespotHeldItemCheck.Checked = settings.PokeSpotShufflerSettings.BanBadHeldItems;
             easyBonslyCheck.Checked = settings.PokeSpotShufflerSettings.EasyBonsly;
 
             minimumPokeSpotCatchRate.Checked = settings.PokeSpotShufflerSettings.SetMinimumCatchRate;
@@ -607,6 +614,24 @@ namespace Randomizer
         private void movesetsForceGoodDamagingMoveCheck_CheckedChanged(object sender, EventArgs e)
         {
             movesetsForceGoodDamagingMovePercent.Enabled = movesetsForceGoodDamagingMoveCheck.Checked;
+        }
+
+        private void randomizeMovesets_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!randomizeMovesetsPreferType.Checked)
+            {
+                banShadowMovesCheck.Enabled = randomizeMovesets.Checked;
+                pokemonShareMovesetsCheck.Enabled = randomizeMovesets.Checked;
+            }
+        }
+
+        private void randomizeMovesetsPreferType_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!randomizeMovesets.Checked)
+            {
+                banShadowMovesCheck.Enabled = randomizeMovesetsPreferType.Checked;
+                pokemonShareMovesetsCheck.Enabled = randomizeMovesetsPreferType.Checked;
+            }
         }
 
         private void setSeedButton_Click(object sender, EventArgs e)
