@@ -12,10 +12,10 @@ namespace Randomizer.Shufflers
     {
         public static void ShuffleCards(Random random, BingoCardShufflerSettings settings, BattleBingoCard[] bingoCards, ExtractedGame extractedGame)
         {
-            IEnumerable<Pokemon> potentialPokes = extractedGame.PokemonList;
+            var potentialPokes = extractedGame.PokemonList;
             if (settings.ForceStrongPokemon)
             {
-                potentialPokes = potentialPokes.Where(p => p.BST >= Configuration.StrongPokemonBST);
+                potentialPokes = potentialPokes.Where(p => p.BST >= Configuration.StrongPokemonBST).ToArray();
             }
 
             var potentialMoves = extractedGame.MoveList.Where(m => m.BasePower > 0);
@@ -31,37 +31,38 @@ namespace Randomizer.Shufflers
 
             foreach (var card in bingoCards)
             {
-                // randomize starter
-                ShufflePokemonAndMove(random, potentialPokes, potentialMoves, extractedGame.PokemonList, card.StartingPokemon, settings.ForceSTABMove);
-
-                foreach (var panel in card.Panels)
+                for (int i = 0; i <= card.Panels.Length; i++)
                 {
-                    if (panel.PanelType == BattleBingoPanelType.Pokemon)
+                    BattleBingoPokemon battleBingoPokemon;
+                    if (i == card.Panels.Length)
                     {
-                        // randomize panel pokemon
-                        ShufflePokemonAndMove(random, potentialPokes, potentialMoves, extractedGame.PokemonList, panel.BingoPokemon, settings.ForceSTABMove);
+                        // randomize starter
+                        battleBingoPokemon = card.StartingPokemon;
                     }
+                    else
+                    {
+                        var panel = card.Panels[i];
+                        if (panel.PanelType != BattleBingoPanelType.Pokemon) continue;
+                        battleBingoPokemon = panel.BingoPokemon;
+                    }
+
+                    var newPoke = potentialPokes[random.Next(0, potentialPokes.Length)];
+                    battleBingoPokemon.Pokemon = (ushort)newPoke.Index;
+
+                    // filter again by stab moves
+                    var movePool = potentialMoves;
+                    if (settings.ForceSTABMove)
+                    {
+                        var stabMoves = potentialMoves.Where(m => m.Type == newPoke.Type1 || m.Type == newPoke.Type2);
+                        // don't use stab moves if there aren't any that match
+                        if (stabMoves.Any())
+                            movePool = stabMoves;
+                    }
+                    // pick good moves
+                    battleBingoPokemon.Move = (ushort)movePool.ElementAt(random.Next(0, movePool.Count())).MoveIndex;
                 }
                 // if you shuffle the panels do you have to write back the offset?
             }
-        }
-
-        private static void ShufflePokemonAndMove(Random random, IEnumerable<Pokemon> potentialPokemon, IEnumerable<Move> potentialMoves, Pokemon[] pokemonList, BattleBingoPokemon bingoPokemon, bool forceSTABMove)
-        {
-            var starterPoke = pokemonList[potentialPokemon.ElementAt(random.Next(0, potentialPokemon.Count())).Index];
-            bingoPokemon.Pokemon = (ushort)starterPoke.Index;
-
-            // filter again by stab moves
-            var movePool = potentialMoves;
-            if (forceSTABMove)
-            {
-                var stabMoves = potentialMoves.Where(m => m.Type == starterPoke.Type1 || m.Type == starterPoke.Type2);
-                // don't use stab moves if there aren't any that match
-                if (stabMoves.Any())
-                    movePool = stabMoves;
-            }
-            // pick good moves
-            bingoPokemon.Move = (ushort)movePool.ElementAt(random.Next(0, movePool.Count())).MoveIndex;
         }
     }
 }

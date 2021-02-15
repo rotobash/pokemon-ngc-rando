@@ -111,7 +111,7 @@ namespace Randomizer.Shufflers
                 var total = moveSet.Count;
                 while (moveSet.Count < Constants.NumberOfPokemonMoves)
                 {
-                    var newMove = extractedGame.MoveList[random.Next(0, potentialMoves.Length)];
+                    var newMove = potentialMoves[random.Next(0, potentialMoves.Length)];
                     moveSet.Add((ushort)newMove.MoveIndex);
                 }
             }

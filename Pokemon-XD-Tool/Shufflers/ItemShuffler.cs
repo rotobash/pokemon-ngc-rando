@@ -14,7 +14,7 @@ namespace Randomizer.Shufflers
         {
             if (settings.RandomizeTMs) 
             {
-                var tms = extractedGame.ItemList.Where(x => x is TM).Select(x => x as TM).ToArray();
+                var tms = extractedGame.TMs;
                 // use set to avoid dupes
                 var newTMSet = new HashSet<ushort>();
 

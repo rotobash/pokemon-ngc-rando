@@ -11,6 +11,7 @@ namespace Randomizer.Shufflers
 {
     public static class PokemonTraitShuffler
     {
+        const int BSTRange = 50;
         public static void RandomizePokemonTraits(Random random, PokemonTraitShufflerSettings settings, ExtractedGame extractedGame)
         {
             // store pokemon we've randomized already in a list, for follows evolution
@@ -20,11 +21,22 @@ namespace Randomizer.Shufflers
             var pokeEvosRandomized = new List<int>();
             var easyEvolutions = new List<string>();
 
-            // set up filtered list here to avoid recalculating it every loop
+            // set up filtered lists here to avoid recalculating it every loop
             IEnumerable<Move> movefilter = extractedGame.MoveList;
             if (settings.BanShadowMoves)
             {
                 movefilter = movefilter.Where(m => !m.IsShadowMove);
+            }
+
+            IEnumerable<Ability> abilitiesFilter = extractedGame.Abilities;
+            if (!settings.AllowWonderGuard)
+            {
+                abilitiesFilter = abilitiesFilter.Where(a => a.Index != RandomizerConstants.WonderGuardIndex);
+            }
+
+            if (settings.BanNegativeAbilities)
+            {
+                abilitiesFilter = abilitiesFilter.Where(a => !RandomizerConstants.BadAbilityList.Contains(a.Index));
             }
 
             // do this first for "follow evolution" checks
@@ -38,10 +50,9 @@ namespace Randomizer.Shufflers
 
                     if (settings.EvolutionHasSameType)
                     {
-                        pokeFilter = pokeFilter.Where(p => p.Type1 == poke.Type1 || p.Type2 == poke.Type2 || p.Type1 == poke.Type2); 
+                        pokeFilter = pokeFilter.Where(p => p.Type1 == poke.Type1 || p.Type2 == poke.Type2 || p.Type1 == poke.Type2);
                     }
-                    
-                    var potentialPokes = pokeFilter.ToArray();
+
                     for (int i = 0; i < poke.Evolutions.Length; i++)
                     {
                         var evolution = poke.Evolutions[i];
@@ -49,11 +60,17 @@ namespace Randomizer.Shufflers
 
                         if (settings.EvolutionHasSimilarStrength)
                         {
-                            var similarStrengths = potentialPokes.Where(p => p.BST >= poke.BST - 50 && p.BST <= poke.BST + 50).ToArray();
-                            if (similarStrengths.Length > 0)
-                                potentialPokes = similarStrengths;
+                            var count = 1;
+                            var similarStrengths = pokeFilter.Where(p => p.BST >= poke.BST - BSTRange && p.BST <= poke.BST + BSTRange);
+                            while (!similarStrengths.Any() || count > 3)
+                            {
+                                // anybody? hello?
+                                similarStrengths = pokeFilter.Where(p => p.BST >= poke.BST - (++count * BSTRange) && p.BST <= poke.BST + (++count * BSTRange));
+                            }
+                            pokeFilter = similarStrengths;
                         }
 
+                        var potentialPokes = pokeFilter.ToArray();
                         if (potentialPokes.Length == 0)
                         {
                             // null it out
@@ -75,10 +92,11 @@ namespace Randomizer.Shufflers
                 if (RandomizerConstants.SpecialPokemon.Contains(poke.Index))
                     continue;
 
-                ChangeCompatibility(random, settings.TMCompatibility, poke, extractedGame, true);                
+                ChangeCompatibility(random, settings.TMCompatibility, poke, extractedGame, true);
                 if (extractedGame.TutorMoves.Length > 0)
                     ChangeCompatibility(random, settings.TutorCompatibility, poke, extractedGame, false);
 
+                // todo: use enum for bst option
                 if (settings.RandomizeBaseStats > 0 && settings.BaseStatsFollowEvolution && !pokeBaseStatsRandomized.Contains(poke.Name))
                 {
                     IList<byte> newBsts;
@@ -99,10 +117,12 @@ namespace Randomizer.Shufflers
                         for (int i = newBsts.Count; i > 0; i--)
                         {
                             var j = random.Next(0, i + 1);
-                            // xor swap
-                            newBsts[i] ^= newBsts[j];
-                            newBsts[j] ^= newBsts[i];
-                            newBsts[i] ^= newBsts[j];
+
+                            // apparently xor swapping is slower than using a temp variable
+                            // take that john mcaffee
+                            var temp = newBsts[j];
+                            newBsts[j] = newBsts[i];
+                            newBsts[i] = temp;
                         }
                     }
                     else
@@ -112,7 +132,9 @@ namespace Randomizer.Shufflers
                         newBsts = new byte[6];
                         for (int i = 0; i < newBsts.Count; i++)
                         {
-                            var newBst = random.Next(1, bstRemaining) % 255;
+                            // pick a number between 1 and the amount of bst remaining, this is our stat
+                            // keep it within a byte
+                            var newBst = random.Next(1, bstRemaining) & 0xFF;
                             bstRemaining -= newBst;
                             newBsts[i] = (byte)newBst;
                         }
@@ -140,18 +162,20 @@ namespace Randomizer.Shufflers
                 if (settings.UpdateBaseStats)
                 {
                     // todo
+                    // need some way of loading them without doing something... regrettable
                 }
 
                 if (settings.StandardizeEXPCurves)
                 {
-                    poke.LevelUpRate = RandomizerConstants.Legendaries.Contains(poke.Index) 
+                    poke.LevelUpRate = RandomizerConstants.Legendaries.Contains(poke.Index)
                         ? ExpRate.Slow
                         : ExpRate.Fast;
                 }
 
                 if (settings.RandomizeAbilities && !pokeAbilitiesRandomized.Contains(poke.Name))
                 {
-                    RandomizeAbility(random, settings.AllowWonderGuard, settings.BanNegativeAbilities, extractedGame.Abilities, poke);
+                    var abilities = abilitiesFilter.ToArray();
+                    RandomizeAbility(random, abilities, poke);
 
                     if (settings.AbilitiesFollowEvolution)
                     {
@@ -165,8 +189,8 @@ namespace Randomizer.Shufflers
                             {
                                 var evoPoke = extractedGame.PokemonList[currentPoke.Evolutions[0].EvolvesInto];
                                 pokeAbilitiesRandomized.Add(currentPoke.Name);
-                                evoPoke.SetAbility1((byte)poke.Ability1.Index);
-                                evoPoke.SetAbility2((byte)poke.Ability2.Index);
+                                evoPoke.Ability1 = poke.Ability1;
+                                evoPoke.Ability2 = poke.Ability2;
                                 currentPoke = evoPoke;
                             }
                         }
@@ -176,7 +200,7 @@ namespace Randomizer.Shufflers
 
                 if (settings.RandomizeTypes && !pokeTypesRandomized.Contains(poke.Name))
                 {
-                    RandomizeTypes(random, settings, poke);
+                    RandomizeTypes(random, poke);
 
                     if (settings.TypesFollowEvolution)
                     {
@@ -229,7 +253,7 @@ namespace Randomizer.Shufflers
                                         // make a bold assumption that if the third stage evolves by level up then the second does too
                                         evoPoke.SetEvolution(0, (byte)evoPokeEvolution.EvolutionMethod, 40, evoPokeEvolution.EvolvesInto);
                                         poke.SetEvolution(0, (byte)evolution.EvolutionMethod, 30, evolution.EvolvesInto);
-                                    }                                    
+                                    }
                                 }
                                 else if (count == 0 && evolution.EvolutionMethod == EvolutionMethods.LevelUp && evolution.EvolutionCondition > 40)
                                 {
@@ -280,26 +304,7 @@ namespace Randomizer.Shufflers
             }
         }
 
-        public static bool CheckForSplitOrEndEvolution(Pokemon currentPoke, out int count)
-        {
-            bool endOrSplitEvolution = false;
-            count = 0;
-            for (int i = 0; i < currentPoke.Evolutions.Length; i++)
-            {
-                // if more than one definition found or the first evolution is none
-                if (i == 0 && currentPoke.Evolutions[i].EvolutionMethod == EvolutionMethods.None
-                    || currentPoke.Evolutions[i].EvolutionMethod != EvolutionMethods.None && i > 0)
-                    endOrSplitEvolution = true;
-
-                // keep count for split evos
-                if (currentPoke.Evolutions[i].EvolutionMethod != EvolutionMethods.None)
-                    count++;
-            }
-
-            return endOrSplitEvolution;
-        }
-
-        private static void RandomizeTypes(Random random, PokemonTraitShufflerSettings settings, Pokemon poke)
+        private static void RandomizeTypes(Random random, Pokemon poke)
         {
 
             var types = Enum.GetValues<PokemonTypes>();
@@ -331,40 +336,25 @@ namespace Randomizer.Shufflers
             poke.Type2 = type2;
         }
 
-        public static void RandomizeAbility(Random random, bool allowWonderGuard, bool banNegativeAbility, Ability[] abilities, Pokemon poke)
+        public static void RandomizeAbility(Random random, Ability[] potentialAbilities, Pokemon poke)
         {
             // don't do my boy shedinja dirty like this
-            if (poke.Name.ToLower() == "shedinja")
+            if (poke.Index == RandomizerConstants.ShedinjaIndex)
             {
                 return;
             }
 
-            var numAbilities = abilities.Length;
-            IEnumerable<Ability> abilitiesFilter = abilities;            
-
-            if (!allowWonderGuard)
-            {
-                abilitiesFilter = abilitiesFilter.Where(a => a.Index != RandomizerConstants.WonderGuardIndex);
-            }
-
-            if (banNegativeAbility)
-            {
-                abilitiesFilter = abilitiesFilter.Where(a => !RandomizerConstants.BadAbilityList.Contains(a.Index));
-
-            }
-
-            var potentialAbilities = abilitiesFilter.ToArray();
             var firstAbility = (byte)potentialAbilities[random.Next(0, potentialAbilities.Length)].Index;
-            poke.SetAbility1(firstAbility);
+            poke.Ability1 = firstAbility;
 
-            if (!string.IsNullOrEmpty(poke.Ability2.Name))
+            if (poke.Ability2 > 0)
             {
                 var newAbility = firstAbility;
                 while (newAbility != firstAbility)
                 {
                     newAbility = (byte)potentialAbilities[random.Next(0, potentialAbilities.Length)].Index;
                 }
-                poke.SetAbility2(newAbility);
+                poke.Ability2 = newAbility;
             }
         }
 
@@ -373,67 +363,86 @@ namespace Randomizer.Shufflers
             switch (moveCompatibility)
             {
                 case MoveCompatibility.Full:
+                {
+                    if (tms)
                     {
-                        if (tms)
+                        for (int i = 0; i < pokemon.LearnableTMs.Length; i++)
                         {
-                            for (int i = 0; i < pokemon.LearnableTMs.Length; i++)
-                            {
-                                pokemon.SetLearnableTMS(i, true);
-                            }
-                        }
-                        else
-                        {
-                            for (int i = 0; i < pokemon.TutorMoves.Length; i++)
-                            {
-                                pokemon.SetTutorMoves(i, true);
-                            }
+                            pokemon.SetLearnableTMS(i, true);
                         }
                     }
-                    break;
+                    else
+                    {
+                        for (int i = 0; i < pokemon.TutorMoves.Length; i++)
+                        {
+                            pokemon.SetTutorMoves(i, true);
+                        }
+                    }
+                }
+                break;
                 case MoveCompatibility.Random:
+                {
+                    if (tms)
                     {
-                        if (tms)
+                        for (int i = 0; i < pokemon.LearnableTMs.Length; i++)
                         {
-                            for (int i = 0; i < pokemon.LearnableTMs.Length; i++)
-                            {
-                                pokemon.SetLearnableTMS(i, random.Next(0, 2) > 0);
-                            }
-                        }
-                        else
-                        {
-                            for (int i = 0; i < pokemon.TutorMoves.Length; i++)
-                            {
-                                pokemon.SetTutorMoves(i, random.Next(0, 2) > 0);
-                            }
+                            pokemon.SetLearnableTMS(i, random.Next(0, 2) == 0);
                         }
                     }
-                    break;
+                    else
+                    {
+                        for (int i = 0; i < pokemon.TutorMoves.Length; i++)
+                        {
+                            pokemon.SetTutorMoves(i, random.Next(0, 2) == 0);
+                        }
+                    }
+                }
+                break;
                 case MoveCompatibility.RandomPreferType:
+                {
+                    if (tms)
                     {
-                        if (tms)
+                        var tmMoves = extractedGame.TMs.Select(t => extractedGame.MoveList[t.Move]).ToArray();
+                        for (int i = 0; i < pokemon.LearnableTMs.Length; i++)
                         {
-                            var tmMoves = extractedGame.TMs.Select(t => extractedGame.MoveList[t.Move]).ToArray();
-                            for (int i = 0; i < pokemon.LearnableTMs.Length; i++)
-                            {
-                                var isCompatible = tmMoves[i].Type == pokemon.Type1 || tmMoves[i].Type == pokemon.Type2 || random.Next(0, 10) >= 8;
-                                pokemon.SetLearnableTMS(i, isCompatible);
-                            }
-                        }
-                        else
-                        {
-                            var tutorMoves = extractedGame.TutorMoves.Select(t => extractedGame.MoveList[t.Move]).ToArray();
-                            for (int i = 0; i < pokemon.TutorMoves.Length; i++)
-                            {
-                                var isCompatible = tutorMoves[i].Type == pokemon.Type1 || tutorMoves[i].Type == pokemon.Type2 || random.Next(0, 10) >= 8;
-                                pokemon.SetTutorMoves(i, isCompatible);
-                            }
+                            var isCompatible = tmMoves[i].Type == pokemon.Type1 || tmMoves[i].Type == pokemon.Type2 || random.Next(0, 10) >= 8;
+                            pokemon.SetLearnableTMS(i, isCompatible);
                         }
                     }
-                    break;
+                    else
+                    {
+                        var tutorMoves = extractedGame.TutorMoves.Select(t => extractedGame.MoveList[t.Move]).ToArray();
+                        for (int i = 0; i < pokemon.TutorMoves.Length; i++)
+                        {
+                            var isCompatible = tutorMoves[i].Type == pokemon.Type1 || tutorMoves[i].Type == pokemon.Type2 || random.Next(0, 10) >= 8;
+                            pokemon.SetTutorMoves(i, isCompatible);
+                        }
+                    }
+                }
+                break;
                 default:
                 case MoveCompatibility.Unchanged:
                     break;
             }
+        }
+
+        public static bool CheckForSplitOrEndEvolution(Pokemon currentPoke, out int count)
+        {
+            bool endOrSplitEvolution = false;
+            count = 0;
+            for (int i = 0; i < currentPoke.Evolutions.Length; i++)
+            {
+                // if more than one definition found or the first evolution is none
+                if (i == 0 && currentPoke.Evolutions[i].EvolutionMethod == EvolutionMethods.None
+                    || currentPoke.Evolutions[i].EvolutionMethod != EvolutionMethods.None && i > 0)
+                    endOrSplitEvolution = true;
+
+                // keep count for split evos
+                if (currentPoke.Evolutions[i].EvolutionMethod != EvolutionMethods.None)
+                    count++;
+            }
+
+            return endOrSplitEvolution;
         }
     }
 }
