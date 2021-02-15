@@ -81,7 +81,7 @@ namespace Randomizer.XD
 
 		public Pokemarts[] ExtractPokemarts()
 		{
-			var pocket = iso.GetFSysFile("pocket_menu.fsys").ExtractEntryByFileName("pocket_menu.rel") as REL;
+			var pocket = iso.GetFSysFile("pocket_menu.fsys").GetEntryByFileName("pocket_menu.rel") as REL;
 			var numMarts = pocket.GetValueAtPointer(Constants.NumberOfMarts);
 			var marts = new Pokemarts[numMarts];
 			for (int i = 0;  i < numMarts; i++)

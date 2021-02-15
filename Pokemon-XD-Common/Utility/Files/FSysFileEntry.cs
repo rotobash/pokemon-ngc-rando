@@ -112,11 +112,20 @@ namespace XDCommon.Utility
 
         public override Stream Encode(bool isCompressed)
         {
-            var entryStream = new MemoryStream();
+            Stream entryStream = new MemoryStream();
+            ExtractedFile.Seek(0, SeekOrigin.Begin);
             ExtractedFile.CopyTo(entryStream);
+            entryStream.Flush();
+            entryStream.Seek(0, SeekOrigin.Begin);
+
             if (isCompressed)
             {
-                LZSSEncoder.Encode(entryStream);
+                var encoder = new LZSSEncoder();
+                entryStream = encoder.Encode(entryStream);
+                entryStream.Seek(0, SeekOrigin.Begin);
+                using var newFile = File.Open(Configuration.ExtractDirectory + "/" + FileName, FileMode.Create, FileAccess.ReadWrite);
+                entryStream.CopyTo(newFile);
+                entryStream.Seek(0, SeekOrigin.Begin);
             }
             return entryStream;
         }

@@ -6,11 +6,11 @@ namespace XDCommon.Utility
 {
     public class FST : BaseExtractedFile
     {
-        const int kTOCStartOffsetLocation = 0x424;
-        const int kTOCFileSizeLocation = 0x428;
-        const int kTOCMaxFileSizeLocation = 0x42C;
-        const int kTOCNumberEntriesOffset = 0x8;
-        const int kTOCEntrySize = 0xC;
+        const int TOCStartOffsetLocation = 0x424;
+        const int TOCFileSizeLocation = 0x428;
+        const int TOCMaxFileSizeLocation = 0x42C;
+        const int TOCNumberEntriesOffset = 0x8;
+        const int TOCEntrySize = 0xC;
 
         private Dictionary<string, int> fileLocations = new Dictionary<string, int>();
         private Dictionary<string, int> fileSizes = new Dictionary<string, int>();
@@ -18,7 +18,7 @@ namespace XDCommon.Utility
 
         public List<string> AllFileNames { get; private set; }
         public List<string> FilesOrdered { get; private set; }
-        public int TOCFirstStringOffset => (int)ExtractedFile.GetUIntAtOffset(kTOCNumberEntriesOffset) * kTOCEntrySize;
+        public int TOCFirstStringOffset => (int)ExtractedFile.GetUIntAtOffset(TOCNumberEntriesOffset) * TOCEntrySize;
         public int Offset
         {
             get;
@@ -37,8 +37,8 @@ namespace XDCommon.Utility
             ExtractedFile = fileName.GetNewStream();
 
             // load toc
-            Offset = (int)extractor.ISOStream.GetUIntAtOffset(kTOCStartOffsetLocation);
-            Size = (int)extractor.ISOStream.GetUIntAtOffset(kTOCFileSizeLocation);
+            Offset = (int)extractor.ISOStream.GetUIntAtOffset(TOCStartOffsetLocation);
+            Size = (int)extractor.ISOStream.GetUIntAtOffset(TOCFileSizeLocation);
 
             if (Configuration.Verbose)
             {
@@ -70,7 +70,7 @@ namespace XDCommon.Utility
             {
                 ExtractedFile = file;
             }
-            Offset = kTOCStartOffsetLocation;
+            Offset = TOCStartOffsetLocation;
             Size = (int)ExtractedFile.Length;
         }
 
@@ -143,8 +143,9 @@ namespace XDCommon.Utility
         public override Stream Encode(bool _ = false)
         {
             var streamCopy = new MemoryStream();
-            ExtractedFile.Seek(Offset, SeekOrigin.Begin);
+            ExtractedFile.Seek(0, SeekOrigin.Begin);
             ExtractedFile.CopyTo(streamCopy);
+            streamCopy.Seek(0, SeekOrigin.Begin);
             return streamCopy;
         }
     }

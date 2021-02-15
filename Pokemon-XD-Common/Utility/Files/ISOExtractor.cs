@@ -100,11 +100,12 @@ namespace XDCommon.Utility
             // pack header
 
             //// pack dol
-            //isoStream.Seek(iso.DOL.Offset, SeekOrigin.Begin);
-            //iso.DOL.ExtractedFile.CopyTo(isoStream);
+            isoStream.Seek(iso.DOL.Offset, SeekOrigin.Begin);
+            using var dolStream = iso.DOL.Encode();
+            dolStream.CopyTo(isoStream);
 
             //// pack FST
-            isoStream.Seek(iso.TOC.Offset + 12 , SeekOrigin.Begin);
+            isoStream.Seek(iso.TOC.Offset, SeekOrigin.Begin);
             using var tocstream = iso.TOC.Encode();
             tocstream.CopyTo(isoStream);
 
@@ -113,7 +114,7 @@ namespace XDCommon.Utility
             {
                 using var fsysStream = fsys.Encode();
                 var fsysStartOffset = iso.TOC.LocationForFile(fsys.FileName);
-                isoStream.Seek(fsysStartOffset + fsys.Offset, SeekOrigin.Begin);
+                isoStream.Seek(fsysStartOffset, SeekOrigin.Begin);
                 fsysStream.CopyTo(isoStream);
             }
 

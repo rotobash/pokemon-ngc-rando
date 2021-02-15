@@ -162,8 +162,11 @@ namespace Randomizer
                 var randoInvoke = BeginInvoke(new Func<Randomizer>(() => new Randomizer(gameExtractor, seed)));
                 var settingsInvoke = BeginInvoke(new Func<Settings>(() => CreateRandoSettings()));
                 var extractorInvoke = BeginInvoke(new Func<ISOExtractor>(() => isoExtractor));
+                var isoInvoke = BeginInvoke(new Func<ISO>(() => iso));
                 var settings = EndInvoke(settingsInvoke) as Settings;
                 var randomizer = EndInvoke(randoInvoke) as Randomizer;
+                var extractor = EndInvoke(extractorInvoke) as ISOExtractor;
+                var gameFile = EndInvoke(isoInvoke) as ISO;
 
                 backgroundWorker.ReportProgress(10);
                 progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Randomizing Moves..."));
@@ -197,12 +200,11 @@ namespace Randomizer
                 backgroundWorker.ReportProgress(80);
                 progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Packing ISO..."));
 
-                //if (!path.EndsWith(".iso"))
-                //{
-                //    path = $"{path}.iso";
-                //}
-                //extractor.RepackISO(iso, path);
-
+                if (!path.EndsWith(".iso"))
+                {
+                    path = $"{path}.iso";
+                }
+                extractor.RepackISO(gameFile, path);
             }
 
             progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Finished."));

@@ -5,166 +5,241 @@ using System.IO;
 
 namespace XDCommon.Utility
 {
-    public struct BinaryTreeMatch
+    public class LZSSEncoder
     {
-        public int Length;
-        public int Value;
-    }
+		// ported directly from the original C implementation with minor adjustments
+		// including the header here for reference
+		// I wonder how many projects this has been used in...
+		
+		/**************************************************************
+			LZSS.C -- A Data Compression Program
+			(tab = 4 spaces)
+		***************************************************************
+			4/6/1989 Haruhiko Okumura
+			Use, distribute, and modify this program freely.
+			Please send me your improved versions.
+				PC-VAN      SCIENCE
+				NIFTY-Serve PAF01022
+				CompuServe  74050,1022
+		**************************************************************/
 
-    public static class LZSSEncoder
-    {
-        const byte EI = 12; // offset bits
+		const byte EI = 12; // offset bits
         const byte EJ = 4; // length bits
         const byte P = 2; // threshold
+        const int UncodedF = 1 << EJ;
+        const int EncodedF = 18;
+
         public const int N = 1 << EI; // window size
-        const int F = 1 << EJ; // buffer size
-        const int Uncoded = 1;
-        const int Encoded = 0;
+        public const uint LZSSbytes = 0x4C5A5353;
+		const byte LZSSUncompressedSizeOffset = 0x04;
+		const byte LZSSCompressedSizeOffset = 0x08;
+		const byte LZSSUnkownOffset = 0x0C;// PBR only, unused in Colo/XD
 
-        private static BinaryTreeMatch FindMatch(
-            BinaryTree root, int bufferPos, byte[] buffer, byte[] slidingWindow
-        )
-        {
-            int length, compare;
-            length = 0;
+		int[] lson;
+        int[] rson;
+        int[] dad;
+        int matchLength, matchValue;
 
-            var match = new BinaryTreeMatch
-            {
-                Length = 0,
-                Value = 0
-            };
+		void InitTree()  /* initialize trees */
+		{
+			int i;
 
-            var offset = root;
-            while (offset != null)
-            {
-                compare = slidingWindow[offset.Value] - buffer[bufferPos];
-                if (compare == 0)
-                {
-                    while (compare == 0 && length < buffer.Length)
-                    {
-                        length++;
-                        compare = slidingWindow[(offset.Value + length) % slidingWindow.Length] - buffer[(bufferPos + length) % buffer.Length];
+			/* For i = 0 to N - 1, rson[i] and lson[i] will be the right and
+			 left children of node i.  These nodes need not be initialized.
+			 Also, dad[i] is the parent of node i.  These are initialized to
+			 N (= N), which stands for 'not used.'
+			 For i = 0 to 255, rson[N + i + 1] is the root of the tree
+			 for strings that begin with character i.  These are initialized
+			 to N.  Note there are 256 trees. */
 
-                    }
+			for (i = N + 1; i <= N + 256; i++) rson[i] = N;
+			for (i = 0; i < N; i++) dad[i] = N;
+		}
 
-                    if (length > match.Length)
-                    {
-                        match.Length = length;
-                        match.Value = offset.Value;
-                    }
-                }
+		void InsertNode(int r, byte[] slidingWindow)
+		/* Inserts string of length F, text_buf[r..r+F-1], into one of the
+		 trees (text_buf[r]'th tree) and returns the longest-match position
+		 and length via the global variables matchValue and matchLength.
+		 If matchLength = F, then removes the old node in favor of the new
+		 one, because the old one will be deleted sooner.
+		 Note r plays double role, as tree node and position in buffer. */
+		{
+			int i, p, cmp;
+			int key;
 
-                if (length >= buffer.Length)
-                {
-                    match.Length = buffer.Length;
-                }
+			cmp = 1; key = r; p = N + 1 + slidingWindow[key];
+			rson[r] = lson[r] = N; matchLength = 0;
+			for (; ; )
+			{
+				if (cmp >= 0)
+				{
+					if (rson[p] != N) p = rson[p];
+					else { rson[p] = r; dad[r] = p; return; }
+				}
+				else
+				{
+					if (lson[p] != N) p = lson[p];
+					else { lson[p] = r; dad[r] = p; return; }
+				}
+				for (i = 1; i < EncodedF; i++)
+					if ((cmp = slidingWindow[key + i] - slidingWindow[p + i]) != 0) break;
+				if (i > matchLength)
+				{
+					matchValue = p;
+					if ((matchLength = i) >= EncodedF) break;
+				}
+			}
+			dad[r] = dad[p]; lson[r] = lson[p]; rson[r] = rson[p];
+			dad[lson[p]] = r; dad[rson[p]] = r;
+			if (rson[dad[p]] == p) rson[dad[p]] = r;
+			else lson[dad[p]] = r;
+			dad[p] = N;  /* remove p */
+		}
 
-                offset = compare > 0 ? offset.Left : offset.Right;
-            }
+		void DeleteNode(int p)  /* deletes node p from tree */
+		{
+			int q;
 
-            return match;
-        }
+			if (dad[p] == N) return;  /* not in tree */
+			if (rson[p] == N) q = lson[p];
+			else if (lson[p] == N) q = rson[p];
+			else
+			{
+				q = lson[p];
+				if (rson[q] != N)
+				{
+					do { q = rson[q]; } while (rson[q] != N);
+					rson[dad[q]] = lson[q]; dad[lson[q]] = dad[q];
+					lson[q] = lson[p]; dad[lson[p]] = q;
+				}
+				rson[q] = rson[p]; dad[rson[p]] = q;
+			}
+			dad[q] = dad[p];
+			if (rson[dad[p]] == p) rson[dad[p]] = q; else lson[dad[p]] = q;
+			dad[p] = N;
+		}
 
-        private static void ReplaceByte(this BinaryTree root, byte[] slidingWindow, int index, byte replacement)
-        {
-            var firstIndex = index < F + P
-                ? (slidingWindow.Length + index) - (F + P)
-                : index - (F + P);
+		public Stream Encode(Stream file)
+		{
+			// setup output stream
+			string filename = string.Empty;
+			string outputFilename = string.Empty;
+			if (file is FileStream fs)
+			{
+				filename = fs.Name;
+				outputFilename = $"{filename}.bak";
+			}
+			var outputStream = outputFilename.GetNewStream();
+            outputStream.Write(LZSSbytes.GetBytes());
+            outputStream.Write(((int)file.Length).GetBytes());
+            outputStream.Write(0.GetBytes());
+            outputStream.Write(0.GetBytes());
 
-            for (int i = 0; i <= F + P; i++)
-            {
-                var windowIndex = (firstIndex + i) % slidingWindow.Length;
-                if (root?.Search(windowIndex) != null)
-                {
-                    root = root.Delete(windowIndex);
-                }
-            }
+            int i, c, len, r, s, last_matchLength, code_buf_ptr, codesize;
+			byte[] slidingWindow, code_buf;
+			byte mask;
 
-            slidingWindow[index] = replacement;
+			code_buf = new byte[17];
+			slidingWindow = new byte[N + EncodedF - 1];
+			lson = new int[N + 1];
+			rson = new int[N + 257];
+			dad = new int[N + 1];
 
-            for (int i = 0; i <= F + P; i++)
-            {
-                var windowIndex = (index + i) % slidingWindow.Length;
-                root.Insert(windowIndex);
-            }
-        }
+			InitTree();  /* initialize trees */
+			code_buf[0] = 0;  /* code_buf[1..16] saves eight units of code, and
+					   code_buf[0] works as eight flags, "1" representing that the unit
+					   is an unencoded letter (1 byte), "0" a position-and-length pair
+					   (2 bytes).  Thus, eight units require at most 16 bytes of code. */
+			code_buf_ptr = mask = 1;
+			codesize = 0;
+			s = 0; r = N - EncodedF;
+			for (i = s; i < r; i++) slidingWindow[i] = 0;  /* Clear the buffer with
+													  any character that will appear often. */
+			for (len = 0; len < EncodedF && (c = file.ReadByte()) >= 0; len++)
+				slidingWindow[r + len] = (byte)c;  /* Read F bytes into the last F bytes of
+							 the buffer */
+			if (len == 0) return outputStream;  /* text of size zero */
+			for (i = 1; i <= EncodedF; i++) InsertNode(r - i, slidingWindow);  /* Insert the F strings,
+												  each of which begins with one or more 'space' characters.  Note
+												  the order in which these strings are inserted.  This way,
+												  degenerate trees will be less likely to occur. */
+			InsertNode(r, slidingWindow);  /* Finally, insert the whole string just read.  The
+					 global variables matchLength and matchValue are set. */
+			do
+			{
+				if (matchLength > len) matchLength = len;  /* matchLength
+													  may be spuriously long near the end of text. */
+				if (matchLength <= P)
+				{
+					matchLength = 1;  /* Not long enough match.  Send one byte. */
+					code_buf[0] |= mask;  /* 'send one byte' flag */
+					code_buf[code_buf_ptr++] = slidingWindow[r];  /* Send uncoded. */
+				}
+				else
+				{
+					code_buf[code_buf_ptr++] = (byte) matchValue;
+					code_buf[code_buf_ptr++] = (byte)
+			(((matchValue >> 4) & 0xf0)
+			 | (matchLength - (P + 1)));  /* Send position and
+													length pair. Note matchLength > THRESHOLD. */
+				}
+				if ((mask <<= 1) == 0)
+				{  /* Shift mask left one bit. */
+					for (i = 0; i < code_buf_ptr ; i++)  /* Send at most 8 units of */
+						outputStream.WriteByte(code_buf[i]);     /* code together */
+					codesize += code_buf_ptr;
 
-        public static Stream Encode(Stream file)
-        {
-            int i, len, windowPos, bufferPos, lastMatchLen;
-            byte[] slidingWindow = new byte[N];
-            byte[] buffer = new byte[F + P];
-            bufferPos = windowPos = 0;
+					code_buf = new byte[17]; code_buf_ptr = mask = 1;
+				}
+				last_matchLength = matchLength;
+				for (i = 0; i < last_matchLength &&
+					 (c = file.ReadByte()) >= 0; i++)
+				{
+					DeleteNode(s);      /* Delete old strings and */
+					slidingWindow[s] = (byte)c;    /* read new bytes */
+					if (s < EncodedF - 1) slidingWindow[s + N] = (byte)c;  /* If the position is
+												  near the end of buffer, extend the buffer to make
+												  string comparison easier. */
+					s = (s + 1) & (N - 1); r = (r + 1) & (N - 1);
+					/* Since this is a ring buffer, increment the position
+					 modulo N. */
+					InsertNode(r, slidingWindow);  /* Register the string in text_buf[r..r+F-1] */
+				}
+				while (i++ < last_matchLength)
+				{   /* After the end of text, */
+					DeleteNode(s);                  /* no need to read, but */
+					s = (s + 1) & (N - 1); r = (r + 1) & (N - 1);
+					if (--len != 0) InsertNode(r, slidingWindow);       /* buffer may not be empty. */
+				}
+			} while (len > 0);  /* until length of string to be processed is zero */
 
-            // setup output stream
-            Stream outputStream;
-            string filename = string.Empty;
-            string outputFilename = string.Empty;
-            if (file is FileStream fs)
-            {
-                filename = fs.Name;
-                outputFilename = $"{filename}.bak";
-            }
-            outputStream = outputFilename.GetNewStream();
+			if (code_buf_ptr > 1)
+			{       /* Send remaining code. */
+				for (i = 0; i < code_buf_ptr; i++) outputStream.WriteByte(code_buf[i]);
+				codesize += code_buf_ptr;
+			}
 
-            for (len = 0; len < F + P; len++)
-            {
-                var b = file.ReadByte();
-                if (b < 0) break;
-                buffer[len] = (byte)b;
-            }
+			// write the output size in the header
+			outputStream.WriteBytesAtOffset(LZSSCompressedSizeOffset, (codesize + 0x10).GetBytes());
 
-            if (len == 0) return outputStream;
+			if (file is FileStream)
+			{
+				outputStream.Dispose();
+				File.Delete(filename);
+				File.Move(outputFilename, filename);
+				// bypass GetNewStream because it'll overwrite files
+				return File.Open(filename, FileMode.Open, FileAccess.ReadWrite);
+			}
 
-            var bTree = new BinaryTree();
-            do
-            {
-                var match = FindMatch(bTree, bufferPos, buffer, slidingWindow);
-                if (match.Length > len)
-                {
-                    match.Length = len;
-                }
+			return outputStream;
+		}
 
-                if (match.Length <= P)
-                {
-                    match.Length = 1;
-                }
-                else
-                {
-                }
-
-
-                lastMatchLen = match.Length;
-                for (i = 0; i < lastMatchLen; i++)
-                {
-                    var b = file.ReadByte();
-                    if (b < 0) break;
-                    ReplaceByte(bTree, slidingWindow, windowPos, buffer[bufferPos]);
-                    slidingWindow[windowPos] = (byte)b;
-                    windowPos = (windowPos + 1) % slidingWindow.Length;
-                    bufferPos = (bufferPos + 1) % buffer.Length;
-                }
-
-                while (i < lastMatchLen)
-                {
-                    ReplaceByte(bTree, slidingWindow, windowPos, buffer[bufferPos]);
-
-                    windowPos = (windowPos + 1) % slidingWindow.Length;
-                    bufferPos = (bufferPos + 1) % buffer.Length;
-                    len--;
-                    i++;
-                }
-
-            } while (len > 0);
-            return outputStream;
-        }
-
-        public static Stream Decode(Stream file)
+		public static Stream Decode(Stream file)
         {
             uint flags = 0;
             int n, f, rless;
             n = N;
-            f = F;
+            f = UncodedF;
             rless = P;
 
             var slidingWindow = new byte[n];

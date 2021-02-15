@@ -9,32 +9,27 @@ namespace XDCommon.Utility
 {
     public class FSys : BaseExtractedFile
     {
-        const byte kFSYSGroupIDOffset = 0x08;
-        const byte kNumberOfEntriesOffset = 0x0C;
-        const byte kFSYSFileSizeOffset = 0x20;
-        const byte kFirstFileNamePointerOffset = 0x44;
-        const byte kFirstFileOffset = 0x48;
-        const byte kFirstFileDetailsPointerOffset = 0x60;
-        const byte kFirstFileNameOffset = 0x70;
+        const byte FSYSGroupIDOffset = 0x08;
+        const byte NumberOfEntriesOffset = 0x0C;
+        const byte FSYSFileSizeOffset = 0x20;
+        const byte FirstFileNamePointerOffset = 0x44;
+        const byte FirstFileOffset = 0x48;
+        const byte FirstFileDetailsPointerOffset = 0x60;
+        const byte FirstFileNameOffset = 0x70;
 
-        const byte kFileIdentifierOffset = 0x00; // 3rd byte is the file format, 1st half is an arbitrary identifier
-        const byte kFileFormatOffset = 0x02;
-        const byte kFileStartPointerOffset = 0x04;
-        const byte kUncompressedSizeOffset = 0x08;
-        const byte kCompressedSizeOffset = 0x14;
-        const byte kFileDetailsFullFilenameOffset = 0x1C; // includes file extension. Not always used.
-        const byte kFileFormatIndexOffset = 0x20; // half of value in byte 3
-        const byte kFileDetailsFilenameOffset = 0x24;
+        const byte FileIdentifierOffset = 0x00; // 3rd byte is the file format, 1st half is an arbitrary identifier
+        const byte FileFormatOffset = 0x02;
+        const byte FileStartPointerOffset = 0x04;
+        const byte UncompressedSizeOffset = 0x08;
+        const byte CompressedSizeOffset = 0x14;
+        const byte FileDetailsFullFilenameOffset = 0x1C; // includes file extension. Not always used.
+        const byte FileFormatIndexOffset = 0x20; // half of value in byte 3
+        const byte FileDetailsFilenameOffset = 0x24;
 
-        const byte kLZSSUncompressedSizeOffset = 0x04;
-        const byte kLZSSCompressedSizeOffset = 0x08;
-        const byte kLZSSUnkownOffset = 0x0C;// PBR only, unused in Colo/XD
-
-        const uint kLZSSbytes = 0x4C5A5353;
-        const uint kTCODbytes = 0x54434F44;
-        const uint kFSYSbytes = 0x46535953;
-        const ushort kUSbytes = 0x5553;
-        const ushort kJPbytes = 0x4A50;
+        const uint TCODbytes = 0x54434F44;
+        const uint FSYSbytes = 0x46535953;
+        const ushort USbytes = 0x5553;
+        const ushort JPbytes = 0x4A50;
 
         public Dictionary<string, IExtractedFile> ExtractedEntries = new Dictionary<string, IExtractedFile>();
 
@@ -43,11 +38,11 @@ namespace XDCommon.Utility
         {
             get
             {
-                return ExtractedFile.GetIntAtOffset(kFSYSGroupIDOffset);
+                return ExtractedFile.GetIntAtOffset(FSYSGroupIDOffset);
             }
             set
             {
-                ExtractedFile.Seek(kFSYSGroupIDOffset, SeekOrigin.Begin);
+                ExtractedFile.Seek(FSYSGroupIDOffset, SeekOrigin.Begin);
                 ExtractedFile.Write(value.GetBytes());
             }
         }
@@ -56,11 +51,11 @@ namespace XDCommon.Utility
         {
             get
             {
-                return ExtractedFile.GetIntAtOffset(kNumberOfEntriesOffset);
+                return ExtractedFile.GetIntAtOffset(NumberOfEntriesOffset);
             }
             set
             {
-                ExtractedFile.Seek(kNumberOfEntriesOffset, SeekOrigin.Begin);
+                ExtractedFile.Seek(NumberOfEntriesOffset, SeekOrigin.Begin);
                 ExtractedFile.Write(value.GetBytes());
             }
         }
@@ -100,17 +95,17 @@ namespace XDCommon.Utility
         public bool IsCompressed(int index)
         {
             var flag = ExtractedFile.GetUIntAtOffset(GetStartOffsetForFile(index));
-            return flag == kLZSSbytes;
+            return flag == LZSSEncoder.LZSSbytes;
         }
 
         public int GetStartOffsetForFileDetails(int index)
         {
-            return ExtractedFile.GetIntAtOffset(kFirstFileDetailsPointerOffset + (index * 4));
+            return ExtractedFile.GetIntAtOffset(FirstFileDetailsPointerOffset + (index * 4));
         }
 
         public int GetStartOffsetForFile(int index)
         {
-            var start = GetStartOffsetForFileDetails(index) + kFileStartPointerOffset;
+            var start = GetStartOffsetForFileDetails(index) + FileStartPointerOffset;
             return ExtractedFile.GetIntAtOffset(start);
         }
 
@@ -123,14 +118,14 @@ namespace XDCommon.Utility
         
         public int GetSizeForFile(int index)
         {
-            var offset = IsCompressed(index) ? kCompressedSizeOffset : kUncompressedSizeOffset;
+            var offset = IsCompressed(index) ? CompressedSizeOffset : UncompressedSizeOffset;
             var start = GetStartOffsetForFileDetails(index) + offset;
             return ExtractedFile.GetIntAtOffset(start);
         }
 
         public void SetSizeForFile(int index, int newSize)
         {
-            var offset = IsCompressed(index) ? kCompressedSizeOffset : kUncompressedSizeOffset;
+            var offset = IsCompressed(index) ? CompressedSizeOffset : UncompressedSizeOffset;
             var start = GetStartOffsetForFileDetails(index) + offset;
             var originalSize = GetSizeForFile(index);
 
@@ -141,14 +136,14 @@ namespace XDCommon.Utility
         
         public string GetFilenameForFile(int index, bool clean = true)
         {
-            var offset = UsesFileExtensions ? kFileDetailsFullFilenameOffset : kFileDetailsFilenameOffset;
+            var offset = UsesFileExtensions ? FileDetailsFullFilenameOffset : FileDetailsFilenameOffset;
             var start = ExtractedFile.GetIntAtOffset(GetStartOffsetForFileDetails(index) + offset);
             return string.Join("", ExtractedFile.GetStringAtOffset(start));
         }
 
         public int GetIDForFile(int index)
         {
-            var start = GetStartOffsetForFileDetails(index) + kFileIdentifierOffset;
+            var start = GetStartOffsetForFileDetails(index) + FileIdentifierOffset;
             return ExtractedFile.GetIntAtOffset(start);
         }
 
@@ -172,7 +167,7 @@ namespace XDCommon.Utility
             return (FileTypes)Enum.ToObject(typeof(FileTypes), id);
         }
 
-        public IExtractedFile ExtractEntryByFileName(string filename)
+        public IExtractedFile GetEntryByFileName(string filename)
         {
             if (ExtractedEntries.ContainsKey(filename))
             {
@@ -187,18 +182,19 @@ namespace XDCommon.Utility
             }
         }
 
-        public IExtractedFile ExtractEntryByIndex(int index)
+        public IExtractedFile GetEntryByIndex(int index)
         {
             if (index < 0 || index > NumberOfEntries)
                 return null;
 
-            return ExtractEntryByFileName(GetFilenameForFile(index));
+            return GetEntryByFileName(GetFilenameForFile(index));
         }
 
         public override Stream Encode(bool _ = false)
         {
             Stream fSysStream = new MemoryStream();
-            // copy the existing stream back, 
+            // copy the existing stream back,
+            ExtractedFile.Seek(0, SeekOrigin.Begin);
             ExtractedFile.CopyTo(fSysStream);
             if (ExtractedEntries.Count > 0)
             {
@@ -206,12 +202,24 @@ namespace XDCommon.Utility
                 {
                     // write element, update its properties
                     var entry = ExtractedEntries.Values.ElementAt(i);
-                    SetStartOffsetForFile(i, (int)fSysStream.Position);
-                    SetSizeForFile(i, (int)entry.ExtractedFile.Length);
-                    using var stream = entry.Encode(IsCompressed(i));
-                    stream.CopyTo(fSysStream);
+                    var index = GetIndexForFileName(entry.FileName);
+                    var offset = GetStartOffsetForFile(index);
+                    var size = GetSizeForFile(index);
+
+                    using var encodeStream = entry.Encode(IsCompressed(index));
+                    fSysStream.Seek(offset, SeekOrigin.Begin);
+                    encodeStream.CopyTo(fSysStream);
+
+                    // don't mess up our offsets, not sure if this is a good idea or not...
+                    int padBytes = (int)encodeStream.Position;
+                    while (padBytes < size)
+                    {
+                        fSysStream.WriteByte(0);
+                        padBytes++;
+                    }
                 }  
             }
+            fSysStream.Seek(0, SeekOrigin.Begin);
             return fSysStream;
         }
 

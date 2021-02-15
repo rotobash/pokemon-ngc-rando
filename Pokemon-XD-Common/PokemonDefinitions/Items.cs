@@ -44,7 +44,7 @@ namespace XDCommon.PokemonDefinitions
         {
             this.index = index;
             this.iso = iso;
-            pocketMenu = iso.GetFSysFile("pocket_menu.fsys").ExtractEntryByFileName("pocket_menu.msg") as StringTable;
+            pocketMenu = iso.GetFSysFile("pocket_menu.fsys").GetEntryByFileName("pocket_menu.msg") as StringTable;
         }
 
         public BagSlots BagSlot
