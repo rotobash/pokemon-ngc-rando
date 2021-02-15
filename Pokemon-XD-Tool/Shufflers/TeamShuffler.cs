@@ -108,9 +108,13 @@ namespace Randomizer.Shufflers
                     pokemon.SetMove(i, RandomizerConstants.MetronomeIndex);
                 return;
             }
-            else
+            else if (settings.RandomizePokemon)
             {
                 moveSet = MoveShuffler.GetLevelUpMoveset(random, pokemon.Pokemon, pokemon.Level, settings.ForceFourMoves, settings.BanShadowMoves, extractedGame);
+            }
+            else
+            {
+                moveSet = pokemon.Moves;
             }
 
             for (int i = 0; i < moveSet.Length; i++)

@@ -73,9 +73,13 @@ namespace Randomizer.Shufflers
             {
                 moves = MoveShuffler.GetRandomMoveset(random, settings.BanShadowMoves, settings.MovePreferType, settings.ForceGoodDamagingMovesCount, starter.Pokemon, extractedGame);
             }
-            else
+            else if (settings.Starter != StarterRandomSetting.Unchanged)
             {
                 moves = MoveShuffler.GetLevelUpMoveset(random, starter.Pokemon, starter.Level, settings.ForceFourMoves, settings.BanShadowMoves, extractedGame);
+            }
+            else
+            {
+                moves = starter.Moves;
             }
 
             for (int i = 0; i < moves.Length; i++)

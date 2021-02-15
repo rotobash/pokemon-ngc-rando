@@ -110,11 +110,11 @@ namespace XDCommon.PokemonDefinitions
             set => pool.ExtractedFile.WriteBytesAtOffset(StartOffset + Constants.PokemonLevelOffset, value);
         }
 
-        public Move[] Moves
+        public ushort[] Moves
         {
             get;
         }
-        public Move[] ShadowMoves
+        public ushort[] ShadowMoves
         {
             get;
         }
@@ -125,19 +125,18 @@ namespace XDCommon.PokemonDefinitions
             pokeType = type;
             Index = index;
 
-            Moves = new Move[4];
+            Moves = new ushort[Constants.NumberOfPokemonMoves];
             for (int i = 0; i < Moves.Length; i++)
             {
-                Moves[i] = pool.MoveList[pool.ExtractedFile.GetUShortAtOffset(StartOffset + Constants.FirstPokemonMoveOffset + i * 2)];
+                Moves[i] = pool.ExtractedFile.GetUShortAtOffset(StartOffset + Constants.FirstPokemonMoveOffset + i * 2);
             }
 
             if (IsShadow)
             {
-                ShadowMoves = new Move[4];
+                ShadowMoves = new ushort[Constants.NumberOfPokemonMoves];
                 for (int i = 0; i < Moves.Length; i++)
                 {
-                    var moveIndex = pool.DarkPokemon.ExtractedFile.GetUShortAtOffset(StartOffset + Constants.FirstShadowMoveOFfset + i * 2);
-                    ShadowMoves[i] = pool.MoveList[moveIndex];
+                    ShadowMoves[i] = pool.DarkPokemon.ExtractedFile.GetUShortAtOffset(StartOffset + Constants.FirstShadowMoveOFfset + i * 2); 
                 }
             }
         }
@@ -145,12 +144,12 @@ namespace XDCommon.PokemonDefinitions
         public void SetMove(int index, ushort moveNum)
         {
             pool.ExtractedFile.WriteBytesAtOffset(StartOffset + Constants.FirstPokemonMoveOffset + index * 2, moveNum.GetBytes());
-            Moves[index] = pool.MoveList[moveNum];
+            Moves[index] = moveNum;
         }
         public void SetShadowMove(int index, ushort moveNum)
         {
             pool.DarkPokemon.ExtractedFile.WriteBytesAtOffset(StartOffset + Constants.FirstShadowMoveOFfset + index * 2, moveNum.GetBytes());
-            ShadowMoves[index] = pool.MoveList[moveNum];
+            ShadowMoves[index] = moveNum;
         }
 
         public byte ShadowCatchRate
