@@ -64,7 +64,7 @@ namespace Randomizer.Shufflers
         {
             var poke = extractedGame.PokemonList[pokemon];
             var moveSet = new HashSet<ushort>();
-            var moveFilter = banShadowMoves ? extractedGame.MoveList.Where(m => !m.IsShadowMove) : extractedGame.MoveList;
+            var moveFilter = banShadowMoves ? extractedGame.ValidMoves.Where(m => !m.IsShadowMove) : extractedGame.ValidMoves;
 
             var typeFilter = moveFilter;
             if (preferType)
@@ -81,14 +81,14 @@ namespace Randomizer.Shufflers
                 var goodMoves = potentialMoves.Where(m => m.BasePower >= Configuration.GoodDamagingMovePower).ToArray();
                 while (moveSet.Count < minimumGoodMoves)
                 {
-                    var newMove = extractedGame.MoveList[random.Next(0, goodMoves.Length)];
+                    var newMove = goodMoves[random.Next(0, goodMoves.Length)];
                     moveSet.Add((ushort)newMove.MoveIndex);
                 }
             }
 
             while (moveSet.Count < Constants.NumberOfPokemonMoves)
             {
-                var newMove = extractedGame.MoveList[random.Next(0, potentialMoves.Length)];
+                var newMove = potentialMoves[random.Next(0, potentialMoves.Length)];
                 moveSet.Add((ushort)newMove.MoveIndex);
             }
 
@@ -98,7 +98,7 @@ namespace Randomizer.Shufflers
         public static ushort[] GetLevelUpMoveset(Random random, ushort pokemon, ushort level, bool forceFourMoves, bool banShadowMoves, ExtractedGame extractedGame)
         {
             var moveSet = new HashSet<ushort>();
-            var potentialMoves = banShadowMoves ? extractedGame.MoveList.Where(m => !m.IsShadowMove).ToArray() : extractedGame.MoveList;
+            var potentialMoves = banShadowMoves ? extractedGame.ValidMoves.Where(m => !m.IsShadowMove).ToArray() : extractedGame.ValidMoves;
 
             // not randomizing moves? pick level up moves then
             foreach (var levelUpMove in extractedGame.PokemonList[pokemon].CurrentLevelMoves(level))
