@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Configuration;
 using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
+using System.Linq;
 using XDCommon.Contracts;
 
 namespace XDCommon.Utility
@@ -15,6 +12,10 @@ namespace XDCommon.Utility
 
         public Stream ISOStream { get; }
         public string ExtractPath { get; private set; }
+
+
+        // keep a list of the original offsets in the ISO stream in case we just need to copy something back
+        private Dictionary<string, uint> oldOffsets;
 
         public ISOExtractor(string pathToISO)
         {
@@ -76,10 +77,9 @@ namespace XDCommon.Utility
                 DOL = new DOL(ExtractPath, this),
                 TOC =  new FST(ExtractPath, this)
             };
-            iso.TOC.Load(iso.DOL);
 
-            var commonFsys = iso.GetFSysFile("common.fsys");
-            iso.CommonRel = FSysFileEntry.ExtractFromFSys(commonFsys, iso.Region == Region.Japan ? 1 : 0) as REL;
+            oldOffsets = iso.TOC.GetFlattenedFST().ToDictionary(k => k.Name.ToString(), v => v is FSTFileEntry fe ? fe.FileDataOffset : 0);
+            iso.CommonRel = iso.GetFSysFile("common.fsys").GetEntryByFileName("common_rel.rel") as REL; 
             iso.BuildStringTables();
 
             return iso;
@@ -91,44 +91,96 @@ namespace XDCommon.Utility
                 savePath = $"{savePath}.iso";
             }
             using var isoStream = File.Open(savePath, FileMode.Create, FileAccess.Write);
-            // write disk size first so we can seek around the stream without hitting the end
+
+            // boot.bin, bi2.bin, appldr.bin
             ISOStream.Seek(0, SeekOrigin.Begin);
-            ISOStream.CopyTo(isoStream);
-            isoStream.Flush();
-            isoStream.Seek(0, SeekOrigin.Begin);
+            ISOStream.CopySubStream(isoStream, 0, iso.DOL.Offset);
 
-            // pack header
-
-            //// pack dol
+            // pack dol
             isoStream.Seek(iso.DOL.Offset, SeekOrigin.Begin);
             using var dolStream = iso.DOL.Encode();
             dolStream.CopyTo(isoStream);
+            int alignment = AlignByteCount(iso.DOL.Offset + (int)iso.DOL.ExtractedFile.Length);
+            isoStream.WriteBytesAtOffset(isoStream.Position, new byte[alignment]);
 
-            //// pack FST
+            if (iso.TOC.StartDataOffset == uint.MaxValue)
+            {
+                throw new Exception("This is awkward... For some reason the TOC was never loaded.");
+            }
+
+            // pack fsys files
+            isoStream.Seek(iso.TOC.StartDataOffset, SeekOrigin.Begin);
+
+            iso.TOC.ReorderFST();
+            var fileEntries = iso.TOC.GetFlattenedFST().OrderBy(f => f is FSTFileEntry fe ? fe.FileDataOffset : 0).ToArray();
+
+            for (int i = 0; i < fileEntries.Length; i++)
+            {
+                var newEntry = fileEntries[i];
+                if (newEntry is FSTFileEntry fileEntry)
+                {
+                    var fsysStartOffset = fileEntry.FileDataOffset;
+                    var fsysSize = fileEntry.Size;
+                    var entryFileName = fileEntry.Name.ToString();
+
+                    isoStream.Seek(fileEntry.FileDataOffset, SeekOrigin.Begin);
+                    if (iso.Files.ContainsKey(entryFileName))
+                    {
+                        var fsys = iso.Files[entryFileName];
+                        using var fsysStream = fsys.Encode();
+                        if (fsysStream.Length != fileEntry.Size)
+                        {
+                            var adjustSize = fileEntry.Size - fsysStream.Length;
+                            fileEntry.Size = (uint)fsysStream.Length;
+                            for (int j = i + 1; j < fileEntries.Length; j++)
+                            {
+                                if (fileEntries[j] is FSTFileEntry fe)
+                                {
+                                    fe.FileDataOffset += (uint)adjustSize;
+                                }
+                            }
+                        }
+                        fsysStream.CopyTo(isoStream);
+                    }
+                    else
+                    {
+                        ISOStream.CopySubStream(isoStream, oldOffsets[entryFileName], fsysSize);
+                    }
+                }
+            }
+
+            if (isoStream.Position < ISOStream.Length)
+            {
+                isoStream.Write(new byte[ISOStream.Length - isoStream.Position]);
+            }
+
+            // pack FST after to account for updates
+            iso.TOC.RebuildFST();
             isoStream.Seek(iso.TOC.Offset, SeekOrigin.Begin);
             using var tocstream = iso.TOC.Encode();
             tocstream.CopyTo(isoStream);
-
-            // pack fsys files
-            foreach (var fsys in iso.Files.Values)
+            if (isoStream.Position < iso.TOC.StartDataOffset)
             {
-                using var fsysStream = fsys.Encode();
-                var fsysStartOffset = iso.TOC.LocationForFile(fsys.FileName);
-                isoStream.Seek(fsysStartOffset, SeekOrigin.Begin);
-                fsysStream.CopyTo(isoStream);
+                isoStream.Write(new byte[iso.TOC.StartDataOffset - isoStream.Position]);
             }
 
-            // pack padding
-
-
             isoStream.Flush();
+        }
+
+        int AlignByteCount(int val, int alignment = 2048)
+        {
+            var m = val % alignment;
+            return m == 0 ? 0 : alignment - m;
         }
 
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
             {
-                ISOStream.Dispose();
+                if (ISOStream != null && ISOStream.CanSeek)
+                {
+                    ISOStream.Dispose();
+                }
                 disposedValue = true;
             }
         }

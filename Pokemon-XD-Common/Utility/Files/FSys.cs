@@ -75,13 +75,15 @@ namespace XDCommon.Utility
             Path = string.Join("/", fileParts.Take(fileParts.Length - 1));
         }
 
-        public FSys(string path, string fileName, ISO iso)
+        public FSys(string fileName, ISO iso)
         {
 
             FileName = fileName;
             Path = iso.Path;
-            Offset = iso.TOC.LocationForFile(fileName);
-            Size = iso.TOC.SizeForFile(fileName);
+
+            var fileEntry = iso.TOC.GetFileEntry(fileName);
+            Offset = (int)fileEntry.FileDataOffset;
+            Size = (int)fileEntry.Size;
 
             if (Configuration.Verbose)
             {

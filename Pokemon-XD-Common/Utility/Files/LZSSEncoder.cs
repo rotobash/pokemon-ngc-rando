@@ -224,6 +224,7 @@ namespace XDCommon.Utility
 
 			if (file is FileStream)
 			{
+				file.Dispose();
 				outputStream.Dispose();
 				File.Delete(filename);
 				File.Move(outputFilename, filename);

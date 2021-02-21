@@ -112,7 +112,7 @@ namespace XDCommon.Utility
 
         public override Stream Encode(bool isCompressed)
         {
-            Stream entryStream = new MemoryStream();
+            Stream entryStream = $"{Path}/{FileName}.lzss".GetNewStream();
             ExtractedFile.Seek(0, SeekOrigin.Begin);
             ExtractedFile.CopyTo(entryStream);
             entryStream.Flush();

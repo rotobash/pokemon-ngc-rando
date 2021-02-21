@@ -145,11 +145,11 @@ namespace XDCommon.Utility
             return (char)GetByteAtOffset(stream, offset);
         }
 
-        public static List<IUnicodeCharacters> GetStringAtOffset(this Stream stream, long offset)
+        public static UnicodeString GetStringAtOffset(this Stream stream, long offset)
         {
             byte currentByte;
             var currentOffset = offset;
-            List<IUnicodeCharacters> chars = new List<IUnicodeCharacters>();
+            UnicodeString chars = new UnicodeString();
 
             while ((currentByte = GetByteAtOffset(stream, currentOffset)) != 0)
             {
@@ -192,7 +192,6 @@ namespace XDCommon.Utility
             var bytesReadTotal = 0;
             var bufferSize = 64 * 1024;
             input.Seek(start, SeekOrigin.Begin);
-            output.Seek(0, SeekOrigin.Begin);
             do
             {
                 var bytesToRead = Math.Min(length - bytesReadTotal, bufferSize);
@@ -270,6 +269,7 @@ namespace XDCommon.Utility
             stream.Flush();
             stream.Seek(0, SeekOrigin.Begin);
             stream.CopySubStream(newStream, 0, offset);
+            stream.Seek(offset + length, SeekOrigin.Begin);
             stream.CopySubStream(newStream, offset + length, (int)stream.Length - (offset + length));
 
             // dispose of old stream
