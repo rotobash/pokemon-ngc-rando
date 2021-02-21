@@ -75,11 +75,11 @@ namespace XDCommon.Utility
                 Game = gameEnum,
                 Region = regionEnum,
                 DOL = new DOL(ExtractPath, this),
-                TOC =  new FST(ExtractPath, this)
+                TOC = new FST(ExtractPath, this)
             };
 
             oldOffsets = iso.TOC.GetFlattenedFST().ToDictionary(k => k.Name.ToString(), v => v is FSTFileEntry fe ? fe.FileDataOffset : 0);
-            iso.CommonRel = iso.GetFSysFile("common.fsys").GetEntryByFileName("common_rel.rel") as REL; 
+            iso.CommonRel = iso.GetFSysFile("common.fsys").GetEntryByFileName("common_rel.rel") as REL;
             iso.BuildStringTables();
 
             return iso;
@@ -124,13 +124,18 @@ namespace XDCommon.Utility
                     var entryFileName = fileEntry.Name.ToString();
 
                     isoStream.Seek(fileEntry.FileDataOffset, SeekOrigin.Begin);
+
                     if (iso.Files.ContainsKey(entryFileName))
                     {
                         var fsys = iso.Files[entryFileName];
                         using var fsysStream = fsys.Encode();
+                        fsysStream.CopyTo(isoStream);
                         if (fsysStream.Length != fileEntry.Size)
                         {
-                            var adjustSize = fileEntry.Size - fsysStream.Length;
+                            var adjustSize = fsysStream.Length - fileEntry.Size;
+                            if (adjustSize < 0)
+                                continue;
+
                             fileEntry.Size = (uint)fsysStream.Length;
                             for (int j = i + 1; j < fileEntries.Length; j++)
                             {
@@ -140,12 +145,13 @@ namespace XDCommon.Utility
                                 }
                             }
                         }
-                        fsysStream.CopyTo(isoStream);
                     }
                     else
                     {
                         ISOStream.CopySubStream(isoStream, oldOffsets[entryFileName], fsysSize);
                     }
+
+                    isoStream.Flush();
                 }
             }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace XDCommon.Utility
 {
@@ -35,6 +36,18 @@ namespace XDCommon.Utility
             return valBytes;
         }
 
+        public static int GetAlignBytesCount(this int size, int alignment)
+        {
+            var m = size % alignment;
+            return m == 0 ? 0 : alignment - m;
+        }
+
+        public static uint GetAlignBytesCount(this uint size, int alignment)
+        {
+            var m = (uint)(size % alignment);
+            return m == 0 ? 0 : (uint)alignment - m;
+        }
+
         /// <summary>
         /// Get a new stream depending on what the value of Configuration.UseMemoryStreams is
         /// If true, use RAM to do processing, else write to disk.
@@ -54,6 +67,10 @@ namespace XDCommon.Utility
             }
             else
             {
+                var path = Path.GetDirectoryName(fullPath);
+                if (path != string.Empty && !Directory.Exists(path))
+                    Directory.CreateDirectory(path);
+
                 // use create instead of open in cases where we crash and wrote junk the stream
                 // if you didn't want this to happen why did you have files named exactly the same
                 // and picked the same directory??
@@ -178,6 +195,16 @@ namespace XDCommon.Utility
                 bytesWrittenTotal += (int)(stream.Position - oldPosition);
 
             } while (bytesWrittenTotal < writeBytes.Length);
+        }
+
+        public static void AlignStream(this Stream stream, int alignment)
+        {
+            var m = stream.Length % alignment;
+            if (m != 0)
+            {
+                stream.Seek(0, SeekOrigin.End);
+                stream.Write(new byte[alignment - m]);
+            }
         }
 
         /// <summary>

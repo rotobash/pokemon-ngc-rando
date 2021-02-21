@@ -15,8 +15,10 @@ namespace XDCommon.Utility
 
             for (int i = 0; i < sys.NumberOfEntries; i++)
             {
-                var entry = FSysFileEntry.ExtractFromFSys(sys, i);
-                sys.ExtractedEntries.Add(entry.FileName, entry);
+                var entry = FSysFileEntry.ExtractFromFSys(sys, i);                
+                if (!sys.ExtractedEntries.TryAdd(entry.FileName, entry))
+                    continue;
+
                 switch (entry.FileType)
                 {
                     case FileTypes.GSW:

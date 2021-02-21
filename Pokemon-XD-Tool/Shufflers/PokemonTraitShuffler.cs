@@ -22,7 +22,7 @@ namespace Randomizer.Shufflers
             var easyEvolutions = new List<string>();
 
             // set up filtered lists here to avoid recalculating it every loop
-            IEnumerable<Move> movefilter = extractedGame.MoveList;
+            IEnumerable<Move> movefilter = extractedGame.ValidMoves;
             if (settings.BanShadowMoves)
             {
                 movefilter = movefilter.Where(m => !m.IsShadowMove);

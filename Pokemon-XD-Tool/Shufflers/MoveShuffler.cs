@@ -12,7 +12,7 @@ namespace Randomizer.Shufflers
     {
         public static void RandomizeMoves(Random random, MoveShufflerSettings settings, ExtractedGame extractedGame)
         {
-            foreach (var move in extractedGame.MoveList)
+            foreach (var move in extractedGame.ValidMoves)
             {
                 if (settings.RandomMovePower && move.BasePower > 0)
                 {

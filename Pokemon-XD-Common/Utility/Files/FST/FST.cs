@@ -188,13 +188,10 @@ namespace XDCommon.Utility
                 if (prevEntry.FileDataOffset + prevEntry.Size < currEntry.FileDataOffset)
                 {
                     // come a little closer
-                    var m = (prevEntry.FileDataOffset + prevEntry.Size) % 2048;
+                    var m = (prevEntry.FileDataOffset + prevEntry.Size).GetAlignBytesCount(0x10);
                     currEntry.FileDataOffset = prevEntry.FileDataOffset + prevEntry.Size;
                     if (m != 0)
                     {
-                        // align by 2048 byte sectors
-                        // probably not necessary unless you intend to burn the ISO to disk...
-                        m = 2048 - m;
                         prevEntry.Size += m;
                         currEntry.FileDataOffset += m;
                     }

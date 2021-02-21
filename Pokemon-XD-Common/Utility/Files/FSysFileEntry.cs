@@ -11,17 +11,19 @@ namespace XDCommon.Utility
         
         public static IExtractedFile ExtractFromFSys(FSys fSys, int index)
         {
-            var offset = fSys.GetStartOffsetForFile(index);
-            var size = fSys.GetSizeForFile(index);
+            var fileDetails = fSys.GetDetailsForFile(index);
             var noExtFsysName = fSys.FileName.RemoveFileExtensions();
             var extractDir = $"{fSys.Path}/{noExtFsysName}";
-            var fileName = string.Join("", fSys.GetFilenameForFile(index));
-            var isCompressed = fSys.IsCompressed(index);
-            var fileType = fSys.GetFileTypeForFile(index);
 
-            if (!fSys.UsesFileExtensions || fileName == fileName.Split(".")[0])
+            var fileName = fileDetails.FileName.ToString();
+            if (!fSys.UsesFileExtensions || fileName == fileName.RemoveFileExtensions())
             {
-                fileName = $"{fileName.RemoveFileExtensions()}{fileType.FileTypeName()}";
+                fileName = $"{fileName.RemoveFileExtensions()}{fileDetails.Filetype.FileTypeName()}";
+            }
+
+            if (fSys.ExtractedEntries.ContainsKey(fileName))
+            {
+                return fSys.ExtractedEntries[fileName];
             }
 
             if (Configuration.Verbose)
@@ -30,10 +32,10 @@ namespace XDCommon.Utility
             }
 
             var extractedFile = $"{extractDir}/{fileName}".GetNewStream();
-            fSys.ExtractedFile.CopySubStream(extractedFile, offset, size);
+            fSys.ExtractedFile.CopySubStream(extractedFile, fileDetails.StartOffset, fileDetails.IsCompressed ? fileDetails.CompressedSize : fileDetails.UncompressedSize);
             extractedFile.Flush();
 
-            if (isCompressed)
+            if (fileDetails.IsCompressed)
             {
                 if (Configuration.Verbose)
                 {
@@ -43,7 +45,7 @@ namespace XDCommon.Utility
                 extractedFile = LZSSEncoder.Decode(extractedFile);
             }
 
-            return CreateExtractedFile(extractDir, fileName, fileType, extractedFile);
+            return CreateExtractedFile(extractDir, fileName, fileDetails.Filetype, extractedFile);
         }
 
         public static IExtractedFile CreateExtractedFile(string extractDir, string fileName, FileTypes fileType, Stream extractedFile)
@@ -115,18 +117,16 @@ namespace XDCommon.Utility
             Stream entryStream = $"{Path}/{FileName}.lzss".GetNewStream();
             ExtractedFile.Seek(0, SeekOrigin.Begin);
             ExtractedFile.CopyTo(entryStream);
-            entryStream.Flush();
-            entryStream.Seek(0, SeekOrigin.Begin);
 
             if (isCompressed)
             {
                 var encoder = new LZSSEncoder();
                 entryStream = encoder.Encode(entryStream);
-                entryStream.Seek(0, SeekOrigin.Begin);
-                using var newFile = File.Open(Configuration.ExtractDirectory + "/" + FileName, FileMode.Create, FileAccess.ReadWrite);
-                entryStream.CopyTo(newFile);
-                entryStream.Seek(0, SeekOrigin.Begin);
             }
+
+            entryStream.AlignStream(0x10);
+            entryStream.Flush();
+            entryStream.Seek(0, SeekOrigin.Begin);
             return entryStream;
         }
     }
