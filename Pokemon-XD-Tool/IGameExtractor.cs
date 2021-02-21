@@ -33,7 +33,7 @@ namespace Randomizer
         public OverworldItem[] OverworldItemList { get; }
         public Pokemarts[] Pokemarts { get; }
 
-        public Move[] ValidMoves => MoveList.Where(m => m.MoveIndex != 0 || m.MoveIndex != 355).ToArray();
+        public Move[] ValidMoves => MoveList.Where(m => m.MoveIndex != 0 && m.MoveIndex != 355).ToArray();
         public Move[] GoodDamagingMoves => MoveList.Where(m => m.BasePower >= Configuration.GoodDamagingMovePower).ToArray();
 
         public Pokemon[] ValidPokemon => PokemonList.Where(p => !RandomizerConstants.SpecialPokemon.Contains(p.Index)).ToArray();

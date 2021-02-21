@@ -62,10 +62,11 @@ namespace Randomizer.Shufflers
                         {
                             var count = 1;
                             var similarStrengths = pokeFilter.Where(p => p.BST >= poke.BST - BSTRange && p.BST <= poke.BST + BSTRange);
-                            while (!similarStrengths.Any() || count > 3)
+                            while (!similarStrengths.Any() && count < 3)
                             {
                                 // anybody? hello?
-                                similarStrengths = pokeFilter.Where(p => p.BST >= poke.BST - (++count * BSTRange) && p.BST <= poke.BST + (++count * BSTRange));
+                                count++;
+                                similarStrengths = pokeFilter.Where(p => p.BST >= poke.BST - (count * BSTRange) && p.BST <= poke.BST + (count * BSTRange));
                             }
                             pokeFilter = similarStrengths;
                         }
@@ -128,21 +129,15 @@ namespace Randomizer.Shufflers
                     else
                     {
                         // random within total
-                        var bstRemaining = poke.BST;
+                        var pokeBst = poke.BST;
+                        var randomBsts = new byte[6];
                         newBsts = new byte[6];
+                        random.NextBytes(randomBsts);
+
+                        var randomSum = randomBsts.Sum(b => b);
                         for (int i = 0; i < newBsts.Count; i++)
                         {
-                            // pick a number between 1 and the amount of bst remaining, this is our stat
-                            // keep it within a byte
-                            var newBst = random.Next(1, bstRemaining) & 0xFF;
-                            bstRemaining -= newBst;
-                            newBsts[i] = (byte)newBst;
-                        }
-
-                        if (bstRemaining > 0)
-                        {
-                            // we have some left over, plop into a stat somewhere
-                            newBsts[random.Next(0, newBsts.Count)] += (byte)bstRemaining;
+                            newBsts[i] = (byte)(((float)randomBsts[i] / randomSum) * pokeBst);
                         }
                     }
 
