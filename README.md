@@ -4,12 +4,24 @@ A randomizer for the GC Pokemon games written in C#.
 Based off of the [GoD Tool](https://github.com/PekanMmd/Pokemon-XD-Code) written by Stars.
 
 ## Installing
-1. [Download](https://dotnet.microsoft.com/download/dotnet/5.0) the .NET 5 Desktop Runtime for your platform from Microsoft.
-2. [Download](https://github.com/rotobash/pokemon-ngc-rando/releases) the appropriate zip for your platform from the "Releases" Page to the right. 
-3. Run! The application is self contained and doesn't need to be installed.
+### Windows
+1. [Download](https://dotnet.microsoft.com/download/dotnet/5.0) the .NET 5 Desktop Runtime.
+2. [Download](https://github.com/rotobash/pokemon-ngc-rando/releases) the latest release of the randomizer.
+3. Run!
+
+### Mac/Linux
+Unfortunately, WinForms are only supported on Windows. The app is basic enough that it can be run through WINE most likely. This was an oversight on my part, I thought "cross-platform" meant everything but apparently not... Regardless, I plan to replace the GUI with something that is actually cross-platform. Something like [Uno](https://platform.uno/) or [MAUI](https://github.com/dotnet/maui) (I'd prefer MAUI I think but it won't be availible till September :coffin:)
+
+The steps to install in this case are the same, but just install WINE first and perform the above through WINE.
 
 ## How To Use
 This tool should be pretty straight forward to use. Open the application, load your (legally obtained) game file, select your settings, and click "Randomize" to save a new randomized copy of the game file (you'll be prompted to select where). There are tooltips for most options so just hover over an option if you don't understand it (if you still don't afterwards, my bad).
+
+## Roadmap (updated Feb 21, 2021)
+- Add Colosseum support (it's 95% there, just needs the extractors to be written)
+- Rewrite the GUI to use a cross-platform library for Mac/Linux frens
+- Add an in-place editor tool for changing/adding files (the hard part has theoretically been done, just needs the interface)
+- Add more complicated file types extraction (like the texture files)
 
 ## Contributing
 Thanks for you interest! There are many things that would be helpful:
