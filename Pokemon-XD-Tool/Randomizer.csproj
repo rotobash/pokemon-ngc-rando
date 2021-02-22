@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -6,6 +6,8 @@
     <RootNamespace>Randomizer</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Authors>rotobash</Authors>
+    <PackageProjectUrl>https://github.com/rotobash/pokemon-ngc-rando</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
