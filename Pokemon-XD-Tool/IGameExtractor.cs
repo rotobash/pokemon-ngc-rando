@@ -55,7 +55,7 @@ namespace Randomizer
             GiftPokemonList = extractor.ExtractGiftPokemon();
             ItemList = extractor.ExtractItems();
             OverworldItemList = extractor.ExtractOverworldItems();
-            Pokemarts = extractor.ExtractPokemarts();
+            Pokemarts = extractor.ExtractPokemarts().OrderBy(m => m.FirstItemIndex).ToArray();
             TrainerPools = extractor.ExtractPools(PokemonList, MoveList);
 
             if (extractor is XDExtractor xd)

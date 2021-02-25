@@ -12,7 +12,7 @@ namespace Randomizer.Shufflers
     {
         public static void ShuffleTMs(Random random, ItemShufflerSettings settings, ExtractedGame extractedGame)
         {
-            if (settings.RandomizeTMs) 
+            if (settings.RandomizeTMs)
             {
                 var tms = extractedGame.TMs;
                 // use set to avoid dupes
@@ -119,9 +119,33 @@ namespace Randomizer.Shufflers
 
         public static void UpdatePokemarts(Random random, ItemShufflerSettings settings, ExtractedGame extractedGame)
         {
-            foreach (var mart in extractedGame.Pokemarts)
+            if (settings.RandomizeMarts)
             {
-                
+                var potentialItems = settings.BanBadItems ? extractedGame.NonKeyItems : extractedGame.GoodItems;
+                potentialItems = potentialItems.Where(i => !RandomizerConstants.BattleCDList.Contains(i.Index)).ToArray();
+
+                foreach (var mart in extractedGame.Pokemarts)
+                {
+                    for (int i = 0; i < mart.Items.Count; i++)
+                    {
+                        mart.Items[i] = (ushort)potentialItems[random.Next(0, potentialItems.Length)].Index;
+                    }
+                    mart.SaveItems();
+                }
+            }
+
+            if (settings.MartsSellEvoStones)
+            {
+                foreach (var agateMartIndex in RandomizerConstants.AgateVillageMartIndices)
+                {
+                    var agateMart = extractedGame.Pokemarts[agateMartIndex];
+                    agateMart.Items.AddRange(RandomizerConstants.EvoStoneItemList);
+                    for (int i = agateMartIndex + 1; i < extractedGame.Pokemarts.Length; i++)
+                    {
+                        extractedGame.Pokemarts[i].FirstItemIndex += (ushort)(RandomizerConstants.EvoStoneItemList.Length);
+                    }
+                    agateMart.SaveItems();
+                }
             }
         }
     }
