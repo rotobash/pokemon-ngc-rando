@@ -284,6 +284,8 @@ namespace Randomizer
                     RandomizeMarts = randomizeMartItems.Checked,
                     MartsSellEvoStones = martsSellEvoStonesCheck.Checked,
                     MartsSellXItems = martsSellXItemsCheck.Checked,
+                    BanBattleCDs = banBattleCDsCheck.Checked,
+                    BanBadItems = banBadItemsCheck.Checked,
 
                     RandomizeTMs = randomizeTMsCheck.Checked,
                     TMForceGoodDamagingMove = forceGoodDamagingTMsCheck.Checked,
@@ -307,6 +309,7 @@ namespace Randomizer
 
                     RandomizeHeldItems = randomHeldItemCheck.Checked,
                     BanBadItems = banBadItemsCheck.Checked,
+                    BanBattleCDs = banBattleCDsCheck.Checked,
 
                     MoveSetOptions = options
                 },

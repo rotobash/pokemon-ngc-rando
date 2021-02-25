@@ -55,6 +55,7 @@
 
         public bool RandomizeHeldItems { get; set; }
         public bool BanBadItems { get; set; }
+        public bool BanBattleCDs { get; set; }
         public RandomMoveSetOptions MoveSetOptions { get; set; }
     }
 
@@ -77,6 +78,7 @@
         public bool RandomizeMarts { get; set; }
 
         public bool BanBadItems { get; set; }
+        public bool BanBattleCDs { get; set; }
         public bool MakeItemsSparkles { get; set; }
         public bool MakeItemsBoxes { get; set; }
 

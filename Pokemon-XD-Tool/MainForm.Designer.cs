@@ -174,6 +174,7 @@ namespace Randomizer
             this.miscItemGroupBox = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel31 = new System.Windows.Forms.TableLayoutPanel();
             this.banBadItemsCheck = new System.Windows.Forms.CheckBox();
+            this.banBattleCDsCheck = new System.Windows.Forms.CheckBox();
             this.battleBingoTabPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -181,9 +182,11 @@ namespace Randomizer
             this.bingoBanShadowMovesCheck = new System.Windows.Forms.CheckBox();
             this.bingoUseStabMoveCheck = new System.Windows.Forms.CheckBox();
             this.bingoUseDamagingMoveCheck = new System.Windows.Forms.CheckBox();
+            this.randomizeBattleBingoMovesetsCheck = new System.Windows.Forms.CheckBox();
             this.bingoPokemonGroupBox = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel27 = new System.Windows.Forms.TableLayoutPanel();
             this.bingoUseStrongPokemon = new System.Windows.Forms.CheckBox();
+            this.randomizeBattleBingoPokemonCheck = new System.Windows.Forms.CheckBox();
             this.miscTabPage = new System.Windows.Forms.TabPage();
             this.noEXPCheck = new System.Windows.Forms.CheckBox();
             this.progressBar = new System.Windows.Forms.ProgressBar();
@@ -202,8 +205,6 @@ namespace Randomizer
             this.tmGroupBox = new System.Windows.Forms.GroupBox();
             this.openSettingsDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveSettingsDialog = new System.Windows.Forms.SaveFileDialog();
-            this.randomizeBattleBingoPokemonCheck = new System.Windows.Forms.CheckBox();
-            this.randomizeBattleBingoMovesetsCheck = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gamePictureBox)).BeginInit();
             this.settingsTab.SuspendLayout();
@@ -2937,6 +2938,8 @@ namespace Randomizer
             this.randomizeOverworldItemsCheck.Size = new System.Drawing.Size(175, 19);
             this.randomizeOverworldItemsCheck.TabIndex = 0;
             this.randomizeOverworldItemsCheck.Text = "Randomize Overworld Items";
+            this.infoToolTip.SetToolTip(this.randomizeOverworldItemsCheck, "Note: If you find an item like \"????!\" this is not a bug.\r\nThese are most likely " +
+        "Battle CDs and you haven\'t received\r\nthe case for them yet.");
             this.randomizeOverworldItemsCheck.UseVisualStyleBackColor = true;
             // 
             // martGroupBox
@@ -3060,6 +3063,7 @@ namespace Randomizer
             this.tableLayoutPanel31.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel31.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.tableLayoutPanel31.Controls.Add(this.banBadItemsCheck, 1, 0);
+            this.tableLayoutPanel31.Controls.Add(this.banBattleCDsCheck, 1, 1);
             this.tableLayoutPanel31.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel31.Location = new System.Drawing.Point(3, 19);
             this.tableLayoutPanel31.Name = "tableLayoutPanel31";
@@ -3081,6 +3085,18 @@ namespace Randomizer
             this.banBadItemsCheck.Text = "Ban Bad Items";
             this.infoToolTip.SetToolTip(this.banBadItemsCheck, resources.GetString("banBadItemsCheck.ToolTip"));
             this.banBadItemsCheck.UseVisualStyleBackColor = true;
+            // 
+            // banBattleCDsCheck
+            // 
+            this.banBattleCDsCheck.AutoSize = true;
+            this.banBattleCDsCheck.Location = new System.Drawing.Point(37, 30);
+            this.banBattleCDsCheck.Name = "banBattleCDsCheck";
+            this.banBattleCDsCheck.Size = new System.Drawing.Size(103, 19);
+            this.banBattleCDsCheck.TabIndex = 3;
+            this.banBattleCDsCheck.Text = "Ban Battle CDs";
+            this.infoToolTip.SetToolTip(this.banBattleCDsCheck, "Bans Battle CDs from the item pool.\r\nNote: This means you won\'t be able to do Sim" +
+        " Battles at Realgam Tower");
+            this.banBattleCDsCheck.UseVisualStyleBackColor = true;
             // 
             // battleBingoTabPage
             // 
@@ -3178,6 +3194,17 @@ namespace Randomizer
         "igurable in the Options menu.");
             this.bingoUseDamagingMoveCheck.UseVisualStyleBackColor = true;
             // 
+            // randomizeBattleBingoMovesetsCheck
+            // 
+            this.randomizeBattleBingoMovesetsCheck.AutoSize = true;
+            this.randomizeBattleBingoMovesetsCheck.Location = new System.Drawing.Point(37, 3);
+            this.randomizeBattleBingoMovesetsCheck.Name = "randomizeBattleBingoMovesetsCheck";
+            this.randomizeBattleBingoMovesetsCheck.Size = new System.Drawing.Size(138, 19);
+            this.randomizeBattleBingoMovesetsCheck.TabIndex = 31;
+            this.randomizeBattleBingoMovesetsCheck.Text = "Randomize Movesets";
+            this.randomizeBattleBingoMovesetsCheck.UseVisualStyleBackColor = true;
+            this.randomizeBattleBingoMovesetsCheck.CheckedChanged += new System.EventHandler(this.randomizeBattleBingoMovesetsCheck_CheckedChanged);
+            // 
             // bingoPokemonGroupBox
             // 
             this.bingoPokemonGroupBox.Controls.Add(this.tableLayoutPanel27);
@@ -3218,6 +3245,17 @@ namespace Randomizer
             this.bingoUseStrongPokemon.Text = "Use Strong Pokemon";
             this.infoToolTip.SetToolTip(this.bingoUseStrongPokemon, "Only pick Pokemon with a BST greater than what\'s defined in the configuration.");
             this.bingoUseStrongPokemon.UseVisualStyleBackColor = true;
+            // 
+            // randomizeBattleBingoPokemonCheck
+            // 
+            this.randomizeBattleBingoPokemonCheck.AutoSize = true;
+            this.randomizeBattleBingoPokemonCheck.Location = new System.Drawing.Point(37, 3);
+            this.randomizeBattleBingoPokemonCheck.Name = "randomizeBattleBingoPokemonCheck";
+            this.randomizeBattleBingoPokemonCheck.Size = new System.Drawing.Size(139, 19);
+            this.randomizeBattleBingoPokemonCheck.TabIndex = 1;
+            this.randomizeBattleBingoPokemonCheck.Text = "Randomize Pokemon";
+            this.randomizeBattleBingoPokemonCheck.UseVisualStyleBackColor = true;
+            this.randomizeBattleBingoPokemonCheck.CheckedChanged += new System.EventHandler(this.randomizeBattleBingoPokemonCheck_CheckedChanged);
             // 
             // miscTabPage
             // 
@@ -3362,28 +3400,6 @@ namespace Randomizer
             // 
             this.saveSettingsDialog.DefaultExt = "settings";
             this.saveSettingsDialog.Filter = "Settings File|*.settings";
-            // 
-            // randomizeBattleBingoPokemonCheck
-            // 
-            this.randomizeBattleBingoPokemonCheck.AutoSize = true;
-            this.randomizeBattleBingoPokemonCheck.Location = new System.Drawing.Point(37, 3);
-            this.randomizeBattleBingoPokemonCheck.Name = "randomizeBattleBingoPokemonCheck";
-            this.randomizeBattleBingoPokemonCheck.Size = new System.Drawing.Size(139, 19);
-            this.randomizeBattleBingoPokemonCheck.TabIndex = 1;
-            this.randomizeBattleBingoPokemonCheck.Text = "Randomize Pokemon";
-            this.randomizeBattleBingoPokemonCheck.UseVisualStyleBackColor = true;
-            this.randomizeBattleBingoPokemonCheck.CheckedChanged += new System.EventHandler(this.randomizeBattleBingoPokemonCheck_CheckedChanged);
-            // 
-            // randomizeBattleBingoMovesetsCheck
-            // 
-            this.randomizeBattleBingoMovesetsCheck.AutoSize = true;
-            this.randomizeBattleBingoMovesetsCheck.Location = new System.Drawing.Point(37, 3);
-            this.randomizeBattleBingoMovesetsCheck.Name = "randomizeBattleBingoMovesetsCheck";
-            this.randomizeBattleBingoMovesetsCheck.Size = new System.Drawing.Size(138, 19);
-            this.randomizeBattleBingoMovesetsCheck.TabIndex = 31;
-            this.randomizeBattleBingoMovesetsCheck.Text = "Randomize Movesets";
-            this.randomizeBattleBingoMovesetsCheck.UseVisualStyleBackColor = true;
-            this.randomizeBattleBingoMovesetsCheck.CheckedChanged += new System.EventHandler(this.randomizeBattleBingoMovesetsCheck_CheckedChanged);
             // 
             // MainForm
             // 
@@ -3669,6 +3685,7 @@ namespace Randomizer
         private System.Windows.Forms.CheckBox banEarlyDragonRageCheck;
         private System.Windows.Forms.CheckBox randomizeBattleBingoMovesetsCheck;
         private System.Windows.Forms.CheckBox randomizeBattleBingoPokemonCheck;
+        private System.Windows.Forms.CheckBox banBattleCDsCheck;
     }
 }
 

@@ -78,7 +78,14 @@ namespace Randomizer.Shufflers
 
         public static void ShuffleOverworldItems(Random random, ItemShufflerSettings settings, ExtractedGame extractedGame)
         {
+            // there are a lot of battle cds, so only add them to one location and then
+            // block that same cd from being put in another location (only if they haven't banned cds entirely)
+            var battleCDsUsed = new List<int>();
             var potentialItems = settings.BanBadItems ? extractedGame.NonKeyItems : extractedGame.GoodItems;
+            if (settings.BanBattleCDs)
+            {
+                potentialItems = potentialItems.Where(i => !RandomizerConstants.BattleCDList.Contains(i.Index)).ToArray();
+            }
 
             foreach (var item in extractedGame.OverworldItemList)
             {
@@ -88,8 +95,18 @@ namespace Randomizer.Shufflers
 
                 if (settings.RandomizeItems)
                 {
-                    item.Item = (ushort)potentialItems[random.Next(0, potentialItems.Length)].Index;
+                    ushort newItem = 0;
+                    while (newItem == 0 || battleCDsUsed.Contains(newItem))
+                    {
+                        newItem = (ushort)potentialItems[random.Next(0, potentialItems.Length)].Index;
+                    }
+
+                    if (RandomizerConstants.BattleCDList.Contains(newItem))
+                        battleCDsUsed.Add(newItem);
+
+                    item.Item = newItem;
                 }
+
                 if (settings.RandomizeItemQuantity)
                 {
                     item.Quantity = (byte)random.Next(1, 6);
