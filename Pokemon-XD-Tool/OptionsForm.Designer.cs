@@ -162,6 +162,7 @@ namespace Randomizer
             // browseForDirButton
             // 
             this.browseForDirButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.browseForDirButton.Enabled = false;
             this.browseForDirButton.Location = new System.Drawing.Point(3, 31);
             this.browseForDirButton.Name = "browseForDirButton";
             this.browseForDirButton.Size = new System.Drawing.Size(163, 22);
