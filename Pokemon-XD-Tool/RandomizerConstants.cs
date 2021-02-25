@@ -22,6 +22,8 @@ namespace Randomizer
             251, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386
         };
 
+        public static readonly int[] BattleCDList = Enumerable.Range(383, 61).ToArray();
+
         public static readonly int[] BadItemList = new int[]
         {
             // anything to do with wild pokemon (i.e. repels, smoke ball, pokedoll, etc.),
@@ -34,7 +36,8 @@ namespace Randomizer
             170, 171, 172, 173, 174, 254, 255, 256, 257, 258
         };
 
-        public static readonly int[] BattleCDList = Enumerable.Range(383, 60).ToArray();
+        // Water Stone, Thunder Stone, Fire Stone, Leaf Stone, Sun Stone, Moon Stone
+        public static readonly ushort[] EvoStoneItemList = Enumerable.Range(93, 6).Select(i => (ushort)i).ToArray();
 
         public static readonly int[] BadAbilityList = new int[]
         {
@@ -49,5 +52,7 @@ namespace Randomizer
         public const int BonslyIndex = 413;
 
         public const int BanDragonRageUnderLevel = 20;
+
+        public const int AgateVillageMartIndex = 5;
     }
 }

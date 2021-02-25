@@ -2951,7 +2951,7 @@ namespace Randomizer
             this.martGroupBox.Size = new System.Drawing.Size(350, 131);
             this.martGroupBox.TabIndex = 1;
             this.martGroupBox.TabStop = false;
-            this.martGroupBox.Text = "Marts (WIP)";
+            this.martGroupBox.Text = "Marts";
             // 
             // tableLayoutPanel25
             // 
@@ -2987,7 +2987,6 @@ namespace Randomizer
             // randomizeMartItems
             // 
             this.randomizeMartItems.AutoSize = true;
-            this.randomizeMartItems.Enabled = false;
             this.randomizeMartItems.Location = new System.Drawing.Point(37, 3);
             this.randomizeMartItems.Name = "randomizeMartItems";
             this.randomizeMartItems.Size = new System.Drawing.Size(145, 19);
@@ -2998,12 +2997,11 @@ namespace Randomizer
             // martsSellEvoStonesCheck
             // 
             this.martsSellEvoStonesCheck.AutoSize = true;
-            this.martsSellEvoStonesCheck.Enabled = false;
             this.martsSellEvoStonesCheck.Location = new System.Drawing.Point(37, 30);
             this.martsSellEvoStonesCheck.Name = "martsSellEvoStonesCheck";
-            this.martsSellEvoStonesCheck.Size = new System.Drawing.Size(185, 19);
+            this.martsSellEvoStonesCheck.Size = new System.Drawing.Size(202, 19);
             this.martsSellEvoStonesCheck.TabIndex = 0;
-            this.martsSellEvoStonesCheck.Text = "All Marts Sell Evolution Stones";
+            this.martsSellEvoStonesCheck.Text = "Agate Mart Sells Evolution Stones";
             this.infoToolTip.SetToolTip(this.martsSellEvoStonesCheck, "All marts will sell evolution stones for 5000.");
             this.martsSellEvoStonesCheck.UseVisualStyleBackColor = true;
             // 

@@ -10,7 +10,7 @@ namespace XDCommon.PokemonDefinitions
         int index;
         REL pocket;
 
-        public int FirstItemIndex => (int)pocket.GetPointer(Constants.MartStartIndexes) + (index * 4) + 2;
+        public ushort FirstItemIndex => pocket.ExtractedFile.GetUShortAtOffset(pocket.GetPointer(Constants.MartStartIndexes) + (index * 4) + 2);
         public int StartOffset => (int)pocket.GetPointer(Constants.MartItems) + (FirstItemIndex * 2);
         public List<ushort> Items
         {
