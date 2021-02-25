@@ -58,7 +58,7 @@ namespace Randomizer
                         case Game.Colosseum:
                         {
                             gamePictureBox.Image = new Bitmap("Images/colo-logo.jpg");
-                            gameExtractor = new ColoExtractor();
+                            gameExtractor = new ColoExtractor(iso);
                             starterComboBox.SelectedItem = "ESPEON";
                             starter2ComboBox.SelectedItem = "UMBREON";
                             // disable XD only options

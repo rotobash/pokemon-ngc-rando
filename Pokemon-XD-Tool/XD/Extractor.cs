@@ -22,15 +22,18 @@ namespace Randomizer.XD
 
         public ITrainerPool[] ExtractPools(Pokemon[] pokemon, Move[] moves)
         {
-			var trainerPool = new ITrainerPool[XDTrainerPool.MainTeams.Length + 1];
-			trainerPool[0] = new XDShadowTrainerPool(ISO, pokemon, moves);
+			var trainerPool = new ITrainerPool[TrainerPool.Trainers.Length + 1];
+			trainerPool[0] = new ShadowTrainerPool(iso, pokemon, moves);
 
-			for (int i = 1; i <= XDTrainerPool.MainTeams.Length; i++)
+			for (int i = 1; i <= TrainerPool.Trainers.Length; i++)
             {
-				var pool = XDTrainerPool.MainTeams[i - 1];
-                trainerPool[i] = new XDTrainerPool(pool, ISO, pokemon, moves);
-				trainerPool[i].SetShadowPokemon(trainerPool[0] as XDShadowTrainerPool);
-				trainerPool[i].LoadTrainers();
+				var poolType = TrainerPool.Trainers[i - 1];
+				var pool = new XDTrainerPool(poolType, iso, pokemon, moves)
+				{
+					DarkPokemon = trainerPool[0] as ShadowTrainerPool
+				};
+				pool.LoadTrainers();
+				trainerPool[i] = pool;
             }
 			return trainerPool;
 		}

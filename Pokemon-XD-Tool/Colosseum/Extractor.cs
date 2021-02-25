@@ -10,51 +10,169 @@ using XDCommon.Utility;
 namespace Randomizer.Colosseum
 {
     public class ColoExtractor : IGameExtractor
-    {
-        public ISO ISO { get; }
-        public Items[] ExtractItems()
-        {
-            throw new NotImplementedException();
-        }
+	{
+		ISO iso;
+		public ColoExtractor(ISO iso)
+		{
+			this.iso = iso;
+		}
 
-        public OverworldItem[] ExtractOverworldItems()
-        {
-            throw new NotImplementedException();
-        }
+		public ITrainerPool[] ExtractPools(Pokemon[] pokemon, Move[] moves)
+		{
+			var trainerPool = new ITrainerPool[TrainerPool.Trainers.Length];
 
-        public Move[] ExtractMoves()
-        {
-            throw new NotImplementedException();
-        }
+			for (int i = 0; i < TrainerPool.Trainers.Length; i++)
+			{
+				var pool = TrainerPool.Trainers[i];
+				trainerPool[i] = new ColTrainerPool(pool, iso, pokemon, moves);
+			}
+			return trainerPool;
+		}
 
-        public Pokemon[] ExtractPokemon()
-        {
-            throw new NotImplementedException();
-        }
+		public Items[] ExtractItems()
+		{
+			var numItems = (int)iso.CommonRel.GetValueAtPointer(Constants.NumberOfItems);
+			var items = new Items[numItems];
+			for (int i = 0; i < numItems; i++)
+			{
+				if (i <= 12)
+				{
+					items[i] = new Pokeballs(i, iso);
+				}
+				else if (i >= Constants.FirstTMItemIndex && i < Constants.FirstTMItemIndex + Constants.NumberOfTMsAndHMs)
+				{
+					items[i] = new TM(i, iso);
+				}
+				else
+				{
+					items[i] = new Items(i, iso);
+				}
+			}
 
-        public ITrainerPool[] ExtractPools(Pokemon[] pokemon, Move[] moves)
-        {
-            throw new NotImplementedException();
-        }
+			return items;
+		}
 
-        public void RandomizeStatics(StaticPokemonShufflerSettings settings, Random random, Pokemon[] pokemon, Move[] moves)
-        {
-            throw new NotImplementedException();
-        }
+		public TutorMove[] ExtractTutorMoves()
+		{
+			var tutorMoves = new TutorMove[Constants.NumberOfTutorMoves];
+			for (int i = 0; i < tutorMoves.Length; i++)
+			{
+				tutorMoves[i] = new TutorMove(i, iso);
+			}
+			return tutorMoves;
+		}
 
-        public Pokemarts[] ExtractPokemarts()
-        {
-            throw new NotImplementedException();
-        }
+		public OverworldItem[] ExtractOverworldItems()
+		{
+			var numItems = iso.CommonRel.GetValueAtPointer(Constants.ColNumberTreasureBoxes);
+			var items = new OverworldItem[numItems];
+			for (int i = 0; i < numItems; i++)
+			{
+				items[i] = new OverworldItem(i, iso);
+			}
+			return items;
+		}
 
-        public Ability[] ExtractAbilities()
-        {
-            throw new NotImplementedException();
-        }
+		public Pokemarts[] ExtractPokemarts()
+		{
+			var pocket = iso.GetFSysFile("pocket_menu.fsys").GetEntryByFileName("pocket_menu.rel") as REL;
+			var numMarts = pocket.GetValueAtPointer(Constants.NumberOfMarts);
+			var marts = new Pokemarts[numMarts];
+			for (int i = 0; i < numMarts; i++)
+			{
+				marts[i] = new Pokemarts(i, iso);
+			}
+			return marts;
+		}
 
-        public IGiftPokemon[] ExtractGiftPokemon()
-        {
-            throw new NotImplementedException();
-        }
-    }
+		public Move[] ExtractMoves()
+		{
+			var moveNum = iso.CommonRel.GetValueAtPointer(Constants.ColNumberOfMoves);
+			var moves = new Move[moveNum];
+			for (int i = 0; i < moveNum; i++)
+			{
+				moves[i] = new Move(i, iso);
+			}
+			return moves;
+		}
+
+		public Pokemon[] ExtractPokemon()
+		{
+			var pokemonNum = iso.CommonRel.GetValueAtPointer(Constants.ColNumberOfPokemon);
+			var pokemon = new Pokemon[pokemonNum];
+			for (int i = 0; i < pokemonNum; i++)
+			{
+				pokemon[i] = new Pokemon(i, iso);
+			}
+
+			return pokemon;
+		}
+
+		public BattleBingoCard[] ExtractBattleBingoCards()
+		{
+			var numCards = Constants.NumberOfBingoCards;
+			var cards = new BattleBingoCard[numCards];
+			for (int i = 0; i < numCards; i++)
+			{
+				cards[i] = new BattleBingoCard(i, iso);
+			}
+			return cards;
+		}
+
+		public PokeSpotPokemon[] ExtractPokeSpotPokemon()
+		{
+			var pokeSpots = Enum.GetValues<PokeSpotType>();
+			var pokemon = new List<PokeSpotPokemon>();
+
+			foreach (var pokeSpotType in pokeSpots)
+			{
+				var pokeSpot = new PokeSpot(pokeSpotType, iso);
+				for (int i = 0; i < pokeSpot.NumberOfEntries; i++)
+				{
+					pokemon.Add(new PokeSpotPokemon(i, pokeSpot, iso));
+				}
+			}
+
+			return pokemon.ToArray();
+		}
+
+		public IGiftPokemon[] ExtractGiftPokemon()
+		{
+			var giftPokemon = new IGiftPokemon[8];
+			for (int i = 0; i < giftPokemon.Length; i++)
+			{
+				if (i < 4)
+				{
+					giftPokemon[i] = new ColTradePokemon((byte)i, iso);
+				}
+				else if (i == 4)
+				{
+					giftPokemon[i] = new ColShadowGiftPokemon(iso);
+				}
+				else
+				{
+					// have to fiddle with the index
+					var index = giftPokemon.Length - 1 - i;
+					giftPokemon[i] = new ColMtBattlePokemon((byte)index, iso);
+				}
+			}
+			return giftPokemon;
+		}
+
+		public IGiftPokemon[] GetStarters()
+		{
+			return Array.Empty<IGiftPokemon>();
+		}
+
+		public Ability[] ExtractAbilities()
+		{
+			var numAbilities = Constants.NumberOfAbilities(iso);
+			var abilities = new Ability[numAbilities];
+			for (int i = 0; i < abilities.Length; i++)
+			{
+				abilities[i] = new Ability(i, iso);
+			}
+			return abilities;
+		}
+	}
 }
