@@ -434,6 +434,7 @@ namespace Randomizer
             randomizeOverworldItemsCheck.Checked = settings.ItemShufflerSettings.RandomizeItems;
             randomizeItemQuantityCheck.Checked = settings.ItemShufflerSettings.RandomizeItemQuantity;
             randomizeMartItems.Checked = settings.ItemShufflerSettings.RandomizeMarts;
+            banBattleCDsCheck.Checked = settings.ItemShufflerSettings.BanBattleCDs;
             martsSellEvoStonesCheck.Checked = settings.ItemShufflerSettings.MartsSellEvoStones;
             martsSellXItemsCheck.Checked = settings.ItemShufflerSettings.MartsSellXItems;
 
