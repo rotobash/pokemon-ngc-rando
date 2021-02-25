@@ -14,7 +14,7 @@ namespace Randomizer.Shufflers
         {
             var potentialItems = settings.BanBadItems ? extractedGame.GoodItems : extractedGame.NonKeyItems;
             var potentialMoves = extractedGame.MoveList;
-            if (settings.RandomizeMovesets && settings.ForceGoodDamagingMoves)
+            if (settings.MoveSetOptions.RandomizeMovesets && settings.MoveSetOptions.ForceGoodMoves)
             {
                 potentialMoves = potentialMoves.Where(m => m.BasePower >= Configuration.GoodDamagingMovePower).ToArray();
             }
@@ -97,29 +97,23 @@ namespace Randomizer.Shufflers
 
         public static void RandomizeMoveSet(Random random, TeamShufflerSettings settings, ITrainerPokemon pokemon, ExtractedGame extractedGame)
         {
-            ushort[] moveSet;
-            if (settings.RandomizeMovesets && !settings.UseLevelUpMoves)
+            ushort[] moveSet = null;
+            
+            if (settings.MoveSetOptions.MetronomeOnly)
             {
-                moveSet = MoveShuffler.GetRandomMoveset(random, settings.BanShadowMoves, settings.MovePreferType, settings.ForceGoodDamagingMovesCount, pokemon.Pokemon, extractedGame);
+                moveSet = Enumerable.Repeat(RandomizerConstants.MetronomeIndex, Constants.NumberOfPokemonMoves).ToArray();
             }
-            else if (settings.MetronomeOnly)
+            else if (settings.MoveSetOptions.RandomizeMovesets || settings.RandomizePokemon)
             {
-                for (int i = 0; i < Constants.NumberOfPokemonMoves; i++)
-                    pokemon.SetMove(i, RandomizerConstants.MetronomeIndex);
-                return;
-            }
-            else if (settings.RandomizePokemon)
-            {
-                moveSet = MoveShuffler.GetLevelUpMoveset(random, pokemon.Pokemon, pokemon.Level, settings.ForceFourMoves, settings.BanShadowMoves, extractedGame);
-            }
-            else
-            {
-                moveSet = pokemon.Moves;
+                moveSet = MoveShuffler.GetNewMoveset(random, settings.MoveSetOptions, pokemon.Pokemon, pokemon.Level, extractedGame);
             }
 
-            for (int i = 0; i < moveSet.Length; i++)
+            if (moveSet != null)
             {
-                pokemon.SetMove(i, moveSet.ElementAt(i));
+                for (int i = 0; i < moveSet.Length; i++)
+                {
+                    pokemon.SetMove(i, moveSet.ElementAt(i));
+                }
             }
         }
     }

@@ -8,6 +8,19 @@ using XDCommon.PokemonDefinitions;
 
 namespace Randomizer.Shufflers
 {
+    public struct RandomMoveSetOptions
+    {
+        public bool RandomizeMovesets { get; set; }
+        public bool MetronomeOnly { get; set; }
+        public bool UseLevelUpMoves { get; set; }
+        public bool BanShadowMoves { get; set; }
+        public bool BanEarlyDragonRage { get; set; }
+        public bool PreferType { get; set; }
+        public bool ForceFourMoves { get; set; }
+        public bool ForceGoodMoves { get; set; }
+        public int MinimumGoodMoves { get; set; }
+    }
+
     public static class MoveShuffler
     {
         public static void RandomizeMoves(Random random, MoveShufflerSettings settings, ExtractedGame extractedGame)
@@ -60,14 +73,18 @@ namespace Randomizer.Shufflers
             }
         }
 
-        public static ushort[] GetRandomMoveset(Random random, bool banShadowMoves, bool preferType, int minimumGoodMoves, ushort pokemon, ExtractedGame extractedGame)
+        public static ushort[] GetNewMoveset(Random random, RandomMoveSetOptions options, ushort pokemon, ushort level, ExtractedGame extractedGame)
         {
             var poke = extractedGame.PokemonList[pokemon];
             var moveSet = new HashSet<ushort>();
-            var moveFilter = banShadowMoves ? extractedGame.ValidMoves.Where(m => !m.IsShadowMove) : extractedGame.ValidMoves;
+            var moveFilter = options.BanShadowMoves ? extractedGame.ValidMoves.Where(m => !m.IsShadowMove) : extractedGame.ValidMoves;
+            if (options.BanEarlyDragonRage)
+            {
+                moveFilter = moveFilter.Where(m => !(m.MoveIndex == RandomizerConstants.DragonRageIndex && level < RandomizerConstants.BanDragonRageUnderLevel));
+            }
 
             var typeFilter = moveFilter;
-            if (preferType)
+            if (options.PreferType)
             {
                 // allow 20% chance for move to not be same type
                 typeFilter = typeFilter.Where(m => m.Type == poke.Type1 || m.Type == poke.Type2 || random.Next(0, 10) >= 8).ToArray();
@@ -76,44 +93,29 @@ namespace Randomizer.Shufflers
             }
 
             var potentialMoves = typeFilter.ToArray();
-            if (minimumGoodMoves > 0)
+
+            if (options.UseLevelUpMoves)
+            {
+                // not randomizing moves? pick level up moves then
+                foreach (var levelUpMove in extractedGame.PokemonList[pokemon].CurrentLevelMoves(level))
+                {
+                    moveSet.Add(levelUpMove.Move);
+                }
+            }
+            else if (options.MinimumGoodMoves > 0)
             {
                 var goodMoves = potentialMoves.Where(m => m.BasePower >= Configuration.GoodDamagingMovePower).ToArray();
-                while (moveSet.Count < minimumGoodMoves)
+                while (moveSet.Count < options.MinimumGoodMoves)
                 {
                     var newMove = goodMoves[random.Next(0, goodMoves.Length)];
                     moveSet.Add((ushort)newMove.MoveIndex);
                 }
             }
 
-            while (moveSet.Count < Constants.NumberOfPokemonMoves)
+            while ((options.ForceFourMoves || !options.UseLevelUpMoves) && moveSet.Count < Constants.NumberOfPokemonMoves)
             {
                 var newMove = potentialMoves[random.Next(0, potentialMoves.Length)];
                 moveSet.Add((ushort)newMove.MoveIndex);
-            }
-
-            return moveSet.ToArray();
-        }
-
-        public static ushort[] GetLevelUpMoveset(Random random, ushort pokemon, ushort level, bool forceFourMoves, bool banShadowMoves, ExtractedGame extractedGame)
-        {
-            var moveSet = new HashSet<ushort>();
-            var potentialMoves = banShadowMoves ? extractedGame.ValidMoves.Where(m => !m.IsShadowMove).ToArray() : extractedGame.ValidMoves;
-
-            // not randomizing moves? pick level up moves then
-            foreach (var levelUpMove in extractedGame.PokemonList[pokemon].CurrentLevelMoves(level))
-            {
-                moveSet.Add(levelUpMove.Move);
-            }
-
-            if (forceFourMoves && moveSet.Count < Constants.NumberOfPokemonMoves)
-            {
-                var total = moveSet.Count;
-                while (moveSet.Count < Constants.NumberOfPokemonMoves)
-                {
-                    var newMove = potentialMoves[random.Next(0, potentialMoves.Length)];
-                    moveSet.Add((ushort)newMove.MoveIndex);
-                }
             }
 
             return moveSet.ToArray();

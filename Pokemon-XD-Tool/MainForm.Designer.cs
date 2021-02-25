@@ -154,8 +154,9 @@ namespace Randomizer
             this.randomizeMovesetsPreferType = new System.Windows.Forms.RadioButton();
             this.randomizeMovesets = new System.Windows.Forms.RadioButton();
             this.movesetsForceGoodDamagingMovePercent = new System.Windows.Forms.NumericUpDown();
-            this.banShadowMovesCheck = new System.Windows.Forms.CheckBox();
             this.pokemonShareMovesetsCheck = new System.Windows.Forms.CheckBox();
+            this.banShadowMovesCheck = new System.Windows.Forms.CheckBox();
+            this.banEarlyDragonRageCheck = new System.Windows.Forms.CheckBox();
             this.itemsTabPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.overworldItemGroupBox = new System.Windows.Forms.GroupBox();
@@ -2702,10 +2703,11 @@ namespace Randomizer
             // 
             // tableLayoutPanel12
             // 
-            this.tableLayoutPanel12.ColumnCount = 4;
+            this.tableLayoutPanel12.ColumnCount = 5;
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel12.Controls.Add(this.movesetsForceGoodDamagingMoveCheck, 2, 1);
             this.tableLayoutPanel12.Controls.Add(this.forceFourMoveCheck, 2, 0);
@@ -2713,9 +2715,10 @@ namespace Randomizer
             this.tableLayoutPanel12.Controls.Add(this.unchangedMovesetsCheck, 1, 0);
             this.tableLayoutPanel12.Controls.Add(this.randomizeMovesetsPreferType, 1, 1);
             this.tableLayoutPanel12.Controls.Add(this.randomizeMovesets, 1, 2);
-            this.tableLayoutPanel12.Controls.Add(this.movesetsForceGoodDamagingMovePercent, 3, 1);
-            this.tableLayoutPanel12.Controls.Add(this.banShadowMovesCheck, 2, 2);
-            this.tableLayoutPanel12.Controls.Add(this.pokemonShareMovesetsCheck, 2, 3);
+            this.tableLayoutPanel12.Controls.Add(this.movesetsForceGoodDamagingMovePercent, 4, 1);
+            this.tableLayoutPanel12.Controls.Add(this.pokemonShareMovesetsCheck, 2, 2);
+            this.tableLayoutPanel12.Controls.Add(this.banShadowMovesCheck, 2, 3);
+            this.tableLayoutPanel12.Controls.Add(this.banEarlyDragonRageCheck, 3, 3);
             this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel12.Location = new System.Drawing.Point(3, 19);
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
@@ -2724,13 +2727,13 @@ namespace Randomizer
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel12.Size = new System.Drawing.Size(700, 109);
             this.tableLayoutPanel12.TabIndex = 5;
             // 
             // movesetsForceGoodDamagingMoveCheck
             // 
             this.movesetsForceGoodDamagingMoveCheck.AutoSize = true;
+            this.tableLayoutPanel12.SetColumnSpan(this.movesetsForceGoodDamagingMoveCheck, 2);
             this.movesetsForceGoodDamagingMoveCheck.Location = new System.Drawing.Point(353, 30);
             this.movesetsForceGoodDamagingMoveCheck.Name = "movesetsForceGoodDamagingMoveCheck";
             this.movesetsForceGoodDamagingMoveCheck.Size = new System.Drawing.Size(183, 19);
@@ -2744,6 +2747,7 @@ namespace Randomizer
             // forceFourMoveCheck
             // 
             this.forceFourMoveCheck.AutoSize = true;
+            this.tableLayoutPanel12.SetColumnSpan(this.forceFourMoveCheck, 2);
             this.forceFourMoveCheck.Location = new System.Drawing.Point(353, 3);
             this.forceFourMoveCheck.Name = "forceFourMoveCheck";
             this.forceFourMoveCheck.Size = new System.Drawing.Size(215, 19);
@@ -2815,23 +2819,12 @@ namespace Randomizer
             this.movesetsForceGoodDamagingMovePercent.Size = new System.Drawing.Size(64, 23);
             this.movesetsForceGoodDamagingMovePercent.TabIndex = 28;
             // 
-            // banShadowMovesCheck
-            // 
-            this.banShadowMovesCheck.AutoSize = true;
-            this.banShadowMovesCheck.Enabled = false;
-            this.banShadowMovesCheck.Location = new System.Drawing.Point(353, 57);
-            this.banShadowMovesCheck.Name = "banShadowMovesCheck";
-            this.banShadowMovesCheck.Size = new System.Drawing.Size(129, 19);
-            this.banShadowMovesCheck.TabIndex = 29;
-            this.banShadowMovesCheck.Text = "Ban Shadow Moves";
-            this.infoToolTip.SetToolTip(this.banShadowMovesCheck, "Checking this will ensure normal Pokemon don\'t learn shadow moves.");
-            this.banShadowMovesCheck.UseVisualStyleBackColor = true;
-            // 
             // pokemonShareMovesetsCheck
             // 
             this.pokemonShareMovesetsCheck.AutoSize = true;
+            this.tableLayoutPanel12.SetColumnSpan(this.pokemonShareMovesetsCheck, 2);
             this.pokemonShareMovesetsCheck.Enabled = false;
-            this.pokemonShareMovesetsCheck.Location = new System.Drawing.Point(353, 84);
+            this.pokemonShareMovesetsCheck.Location = new System.Drawing.Point(353, 57);
             this.pokemonShareMovesetsCheck.Name = "pokemonShareMovesetsCheck";
             this.pokemonShareMovesetsCheck.Size = new System.Drawing.Size(162, 19);
             this.pokemonShareMovesetsCheck.TabIndex = 30;
@@ -2839,6 +2832,30 @@ namespace Randomizer
             this.infoToolTip.SetToolTip(this.pokemonShareMovesetsCheck, "Trainer Pokemon movesets and level up moves are different from each other.\r\nCheck" +
         "ing this will make all Pokemon use level up moves to generate their movesets.");
             this.pokemonShareMovesetsCheck.UseVisualStyleBackColor = true;
+            // 
+            // banShadowMovesCheck
+            // 
+            this.banShadowMovesCheck.AutoSize = true;
+            this.banShadowMovesCheck.Enabled = false;
+            this.banShadowMovesCheck.Location = new System.Drawing.Point(353, 84);
+            this.banShadowMovesCheck.Name = "banShadowMovesCheck";
+            this.banShadowMovesCheck.Size = new System.Drawing.Size(129, 19);
+            this.banShadowMovesCheck.TabIndex = 29;
+            this.banShadowMovesCheck.Text = "Ban Shadow Moves";
+            this.infoToolTip.SetToolTip(this.banShadowMovesCheck, "Checking this will ensure normal Pokemon don\'t learn shadow moves.");
+            this.banShadowMovesCheck.UseVisualStyleBackColor = true;
+            // 
+            // banEarlyDragonRageCheck
+            // 
+            this.banEarlyDragonRageCheck.AutoSize = true;
+            this.tableLayoutPanel12.SetColumnSpan(this.banEarlyDragonRageCheck, 2);
+            this.banEarlyDragonRageCheck.Enabled = false;
+            this.banEarlyDragonRageCheck.Location = new System.Drawing.Point(493, 84);
+            this.banEarlyDragonRageCheck.Name = "banEarlyDragonRageCheck";
+            this.banEarlyDragonRageCheck.Size = new System.Drawing.Size(145, 19);
+            this.banEarlyDragonRageCheck.TabIndex = 31;
+            this.banEarlyDragonRageCheck.Text = "Ban Early Dragon Rage";
+            this.banEarlyDragonRageCheck.UseVisualStyleBackColor = true;
             // 
             // itemsTabPage
             // 
@@ -3619,6 +3636,7 @@ namespace Randomizer
         private System.Windows.Forms.CheckBox banShadowMovesCheck;
         private System.Windows.Forms.CheckBox pokemonShareMovesetsCheck;
         private System.Windows.Forms.CheckBox bingoBanShadowMovesCheck;
+        private System.Windows.Forms.CheckBox banEarlyDragonRageCheck;
     }
 }
 

@@ -40,9 +40,12 @@ namespace Randomizer
             1, 35, 50, 54, 76
         };
 
-        public const int MetronomeIndex = 118;
+        public const ushort DragonRageIndex = 118;
+        public const ushort MetronomeIndex = 118;
         public const int WonderGuardIndex = 25;
         public const int ShedinjaIndex = 303;
         public const int BonslyIndex = 413;
+
+        public const int BanDragonRageUnderLevel = 20;
     }
 }

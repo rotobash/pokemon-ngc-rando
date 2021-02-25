@@ -36,13 +36,9 @@
 
         public MoveCompatibility TMCompatibility { get; set; }
         public MoveCompatibility TutorCompatibility { get; set; }
+        public RandomMoveSetOptions MoveSetOptions { get; set; }
 
         public bool NoEXP { get; set; }
-        public bool RandomizeMovesets { get; set; }
-        public bool BanShadowMoves { get; set; }
-        public int ForceGoodDamagingMovesCount { get; set; }
-        public bool MetronomeOnly { get; set; }
-        public bool LevelUpMovePreferType { get; set; }
     }
 
     public struct TeamShufflerSettings
@@ -59,14 +55,7 @@
 
         public bool RandomizeHeldItems { get; set; }
         public bool BanBadItems { get; set; }
-        public bool RandomizeMovesets { get; set; }
-        public bool UseLevelUpMoves { get; set; }
-        public bool MovePreferType { get; set; }
-        public bool BanShadowMoves { get; set; }
-        public bool MetronomeOnly { get; set; }
-        public bool ForceGoodDamagingMoves { get; set; }
-        public int ForceGoodDamagingMovesCount { get; set; }
-        public bool ForceFourMoves { get; set; }
+        public RandomMoveSetOptions MoveSetOptions { get; set; }
     }
 
     public struct MoveShufflerSettings
@@ -116,13 +105,7 @@
         public string Starter2 { get; set; }
 
         public TradeRandomSetting Trade { get; set; }
-
-        public bool RandomizeMovesets { get; set; }
-        public bool BanShadowMoves { get; set; }
-        public bool UseLevelUpMoves { get; set; }
-        public bool MovePreferType { get; set; }
-        public bool ForceFourMoves { get; set; }
-        public int ForceGoodDamagingMovesCount { get; set; }
+        public RandomMoveSetOptions MoveSetOptions { get; set; }
     }
 
     public enum MoveCompatibility
