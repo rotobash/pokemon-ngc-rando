@@ -12,7 +12,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="PokemonDefinitions\Colosseum\" />
     <Folder Include="Utility\Files\ExtractedTypes\Colosseum\" />
     <Folder Include="Utility\Files\ExtractedTypes\XD\" />
   </ItemGroup>

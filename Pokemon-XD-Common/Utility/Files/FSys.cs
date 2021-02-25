@@ -123,19 +123,17 @@ namespace XDCommon.Utility
             LoadFileDetails();
         }
 
-        public FSys(string fileName, ISO iso)
+        public FSys(FSTFileEntry fileEntry, ISO iso)
         {
-
-            FileName = fileName;
+            FileName = fileEntry.Name.ToString();
             Path = iso.Path;
 
-            var fileEntry = iso.TOC.GetFileEntry(fileName);
             Offset = (int)fileEntry.FileDataOffset;
             Size = (int)fileEntry.Size;
 
             if (Configuration.Verbose)
             {
-                Console.WriteLine($"Extracting {fileName}");
+                Console.WriteLine($"Extracting {FileName}");
             }
 
             ExtractedFile = $"{Path}/{FileName}".GetNewStream();

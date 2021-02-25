@@ -6,15 +6,12 @@ using XDCommon.Utility;
 
 namespace XDCommon.PokemonDefinitions
 {
-    public class XDShadowTrainerPool : XDTrainerPool
+    public class ShadowTrainerPool : TrainerPool
     {
         internal int DDPKHeaderOffset => 0x10;
         internal int DDPKDataOffset => DDPKHeaderOffset + 0x10;
 
-        public override XDShadowTrainerPool DarkPokemon => this;
-
-
-        public XDShadowTrainerPool(ISO iso, Pokemon[] pokemon, Move[] moveList) : base(TrainerPoolType.DarkPokemon, iso, pokemon, moveList)
+        public ShadowTrainerPool(ISO iso, Pokemon[] pokemon, Move[] moveList) : base(TrainerPoolType.DarkPokemon, iso, pokemon, moveList)
         {
         }
     }
