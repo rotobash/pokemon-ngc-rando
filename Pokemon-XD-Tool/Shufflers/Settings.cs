@@ -91,6 +91,8 @@
 
     public struct BingoCardShufflerSettings
     {
+        public bool RandomizeBattleBingoPokemon { get; set; }
+        public bool RandomizeBattleBingoMoveSets { get; set; }
         public bool ForceStrongPokemon { get; set; }
         public bool ForceGoodDamagingMove { get; set; }
         public bool ForceSTABMove { get; set; }

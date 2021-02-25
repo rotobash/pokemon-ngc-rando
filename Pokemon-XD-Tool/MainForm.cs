@@ -330,6 +330,8 @@ namespace Randomizer
                 },
                 BingoCardShufflerSettings = new BingoCardShufflerSettings
                 {
+                    RandomizeBattleBingoMoveSets = randomizeBattleBingoMovesetsCheck.Checked,
+                    RandomizeBattleBingoPokemon = randomizeBattleBingoPokemonCheck.Checked,
                     ForceGoodDamagingMove = bingoUseDamagingMoveCheck.Checked,
                     ForceSTABMove = bingoUseStabMoveCheck.Checked,
                     ForceStrongPokemon = bingoUseStrongPokemon.Checked,
@@ -505,6 +507,8 @@ namespace Randomizer
                     break;
             }
 
+            randomizeBattleBingoPokemonCheck.Checked = settings.BingoCardShufflerSettings.RandomizeBattleBingoPokemon;
+            randomizeBattleBingoMovesetsCheck.Checked = settings.BingoCardShufflerSettings.RandomizeBattleBingoMoveSets;
             bingoUseDamagingMoveCheck.Checked = settings.BingoCardShufflerSettings.ForceGoodDamagingMove;
             bingoUseStabMoveCheck.Checked = settings.BingoCardShufflerSettings.ForceSTABMove;
             bingoUseStrongPokemon.Checked = settings.BingoCardShufflerSettings.ForceStrongPokemon;
@@ -663,6 +667,17 @@ namespace Randomizer
                 var settings = JsonSerializer.Deserialize<Settings>(json);
                 LoadSettings(settings);
             }
+        }
+        private void randomizeBattleBingoMovesetsCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            bingoUseDamagingMoveCheck.Enabled = randomizeBattleBingoMovesetsCheck.Checked;
+            bingoUseStabMoveCheck.Enabled = randomizeBattleBingoMovesetsCheck.Checked;
+            bingoBanShadowMovesCheck.Enabled = randomizeBattleBingoMovesetsCheck.Checked;
+        }
+
+        private void randomizeBattleBingoPokemonCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            bingoUseStrongPokemon.Enabled = randomizeBattleBingoPokemonCheck.Checked;
         }
         #endregion
     }
