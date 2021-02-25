@@ -17,6 +17,7 @@ namespace Randomizer.Shufflers
                 var tms = extractedGame.TMs;
                 // use set to avoid dupes
                 var newTMSet = new HashSet<ushort>();
+                var validMoves = extractedGame.ValidMoves;
 
                 if (settings.TMForceGoodDamagingMove)
                 {
@@ -34,7 +35,7 @@ namespace Randomizer.Shufflers
 
                 // keep picking while we haven't picked enough TMs
                 while (newTMSet.Count < tms.Length)
-                    newTMSet.Add((ushort)random.Next(1, extractedGame.MoveList.Length));
+                    newTMSet.Add((ushort)validMoves[random.Next(0, validMoves.Length)].MoveIndex);
 
                 // set them to the actual TM item
                 for (int i = 0; i < tms.Length; i++)
@@ -50,6 +51,7 @@ namespace Randomizer.Shufflers
             if (settings.RandomizeTutorMoves)
             {
                 var newTutorMoveSet = new HashSet<ushort>();
+                var validMoves = extractedGame.ValidMoves;
 
                 if (settings.TutorForceGoodDamagingMove)
                 {
@@ -66,7 +68,7 @@ namespace Randomizer.Shufflers
 
                 // keep picking while we haven't picked enough TMs or we picked a dupe
                 while (newTutorMoveSet.Count < tutorMoves.Length)
-                    newTutorMoveSet.Add((ushort)random.Next(1, extractedGame.MoveList.Length));
+                    newTutorMoveSet.Add((ushort)validMoves[random.Next(0, validMoves.Length)].MoveIndex);
 
                 // set them to the actual TM item
                 for (int i = 0; i < tutorMoves.Length; i++)
