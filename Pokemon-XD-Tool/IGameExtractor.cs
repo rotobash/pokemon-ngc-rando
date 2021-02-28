@@ -33,12 +33,13 @@ namespace Randomizer
         public OverworldItem[] OverworldItemList { get; }
         public Pokemarts[] Pokemarts { get; }
 
-        public Move[] ValidMoves => MoveList.Where(m => m.MoveIndex != 0 && m.MoveIndex != 355).ToArray();
+        public Move[] ValidMoves { get; }
         public Move[] GoodDamagingMoves => MoveList.Where(m => m.BasePower >= Configuration.GoodDamagingMovePower).ToArray();
 
-        public Pokemon[] ValidPokemon => PokemonList.Where(p => !RandomizerConstants.SpecialPokemon.Contains(p.Index)).ToArray();
+        public Pokemon[] ValidPokemon { get; }
         public Pokemon[] GoodPokemon => PokemonList.Where(p => p.BST >= Configuration.StrongPokemonBST).ToArray();
 
+        public Items[] ValidItems { get; }
         public Items[] NonKeyItems => ItemList.Where(i => i.BagSlot != BagSlots.KeyItems || i.BagSlot != BagSlots.None).ToArray();
         public Items[] GoodItems => NonKeyItems.Where(i => !RandomizerConstants.BadItemList.Contains(i.Index)).ToArray();
 
@@ -57,6 +58,10 @@ namespace Randomizer
             OverworldItemList = extractor.ExtractOverworldItems();
             Pokemarts = extractor.ExtractPokemarts().OrderBy(m => m.FirstItemIndex).ToArray();
             TrainerPools = extractor.ExtractPools(PokemonList, MoveList);
+
+            ValidMoves = MoveList.Where(m => m.MoveIndex != 0 && m.MoveIndex != 355).ToArray();
+            ValidPokemon = PokemonList.Where(p => !RandomizerConstants.SpecialPokemon.Contains(p.Index)).ToArray();
+            ValidItems = ItemList.Where(i => !RandomizerConstants.InvalidItemList.Contains(i.Index)).ToArray();
 
             if (extractor is XDExtractor xd)
             {
