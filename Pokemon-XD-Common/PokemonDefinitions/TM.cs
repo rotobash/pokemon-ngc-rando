@@ -45,7 +45,7 @@ namespace XDCommon.PokemonDefinitions
 
         public uint TutorStartOffset => (uint)(iso.CommonRel.GetPointer(TutorMoves) + ((Index - 1) * SizeOfTutorMoveEntry));
 
-        public int Move
+        public ushort Move
         {
             get => iso.CommonRel.ExtractedFile.GetUShortAtOffset(TutorStartOffset + TutorMoveMoveIndexOffset);
             set => iso.CommonRel.ExtractedFile.WriteBytesAtOffset(TutorStartOffset + TutorMoveMoveIndexOffset, value.GetBytes());
