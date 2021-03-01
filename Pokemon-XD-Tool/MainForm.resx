@@ -57,6 +57,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="forceFourMoveCheck.ToolTip" xml:space="preserve">
+    <value>If not randomizing the movesets, some Pokemon's level up moves don't have enough at their level.
+Selecting this will ensure that all Pokemon will have four moves. Will randomly pick moves to fill out the rest.</value>
+  </data>
   <data name="banBadItemsCheck.ToolTip" xml:space="preserve">
     <value>Bans items that aren't very useful in Colo/XD. 
 This includes all berries, contest items, shards (except moon and sun), 

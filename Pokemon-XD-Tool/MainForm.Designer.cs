@@ -2756,9 +2756,7 @@ namespace Randomizer
             this.forceFourMoveCheck.Size = new System.Drawing.Size(215, 19);
             this.forceFourMoveCheck.TabIndex = 20;
             this.forceFourMoveCheck.Text = "Every Pokemon Starts With 4 Moves";
-            this.infoToolTip.SetToolTip(this.forceFourMoveCheck, "If not randomizing the movesets, some Pokemon\'s level up moves don\'t have enough " +
-        "at their level.\r\nSelecting this will ensure that all Pokemon will have four move" +
-        "s\r\n.");
+            this.infoToolTip.SetToolTip(this.forceFourMoveCheck, resources.GetString("forceFourMoveCheck.ToolTip"));
             this.forceFourMoveCheck.UseVisualStyleBackColor = true;
             // 
             // movesetsMetronomeOnlyCheck
@@ -2832,8 +2830,9 @@ namespace Randomizer
             this.pokemonShareMovesetsCheck.Size = new System.Drawing.Size(162, 19);
             this.pokemonShareMovesetsCheck.TabIndex = 30;
             this.pokemonShareMovesetsCheck.Text = "Pokemon Share Movesets";
-            this.infoToolTip.SetToolTip(this.pokemonShareMovesetsCheck, "Trainer Pokemon movesets and level up moves are different from each other.\r\nCheck" +
-        "ing this will make all Pokemon use level up moves to generate their movesets.");
+            this.infoToolTip.SetToolTip(this.pokemonShareMovesetsCheck, "Trainer Pokemon movesets and level up moves are different from each other,\r\nso ch" +
+        "ecking this will make all Pokemon use level up moves to generate their movesets." +
+        "");
             this.pokemonShareMovesetsCheck.UseVisualStyleBackColor = true;
             // 
             // banShadowMovesCheck
@@ -2858,6 +2857,7 @@ namespace Randomizer
             this.banEarlyDragonRageCheck.Size = new System.Drawing.Size(145, 19);
             this.banEarlyDragonRageCheck.TabIndex = 31;
             this.banEarlyDragonRageCheck.Text = "Ban Early Dragon Rage";
+            this.infoToolTip.SetToolTip(this.banEarlyDragonRageCheck, "Ban Dragon Rage from the move pool until Pokemon are over lvl 20.");
             this.banEarlyDragonRageCheck.UseVisualStyleBackColor = true;
             // 
             // itemsTabPage
@@ -2938,8 +2938,6 @@ namespace Randomizer
             this.randomizeOverworldItemsCheck.Size = new System.Drawing.Size(175, 19);
             this.randomizeOverworldItemsCheck.TabIndex = 0;
             this.randomizeOverworldItemsCheck.Text = "Randomize Overworld Items";
-            this.infoToolTip.SetToolTip(this.randomizeOverworldItemsCheck, "Note: If you find an item like \"????!\" this is not a bug.\r\nThese are most likely " +
-        "Battle CDs and you haven\'t received\r\nthe case for them yet.");
             this.randomizeOverworldItemsCheck.UseVisualStyleBackColor = true;
             // 
             // martGroupBox
@@ -3002,7 +3000,9 @@ namespace Randomizer
             this.martsSellEvoStonesCheck.Size = new System.Drawing.Size(202, 19);
             this.martsSellEvoStonesCheck.TabIndex = 0;
             this.martsSellEvoStonesCheck.Text = "Agate Mart Sells Evolution Stones";
-            this.infoToolTip.SetToolTip(this.martsSellEvoStonesCheck, "All marts will sell evolution stones for 5000.");
+            this.infoToolTip.SetToolTip(this.martsSellEvoStonesCheck, "Agate Village mart sells evolution stones for 2100. \r\nNote: Sun Stones sell for 5" +
+        "00 and Moon stones sell for 0.\r\nI haven\'t altered any of the selling prices for " +
+        "them.");
             this.martsSellEvoStonesCheck.UseVisualStyleBackColor = true;
             // 
             // pokemonItemGroupBox
