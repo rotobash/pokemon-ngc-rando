@@ -40,10 +40,10 @@ namespace Randomizer
         public Pokemon[] GoodPokemon => PokemonList.Where(p => p.BST >= Configuration.StrongPokemonBST).ToArray();
 
         public Items[] ValidItems { get; }
-        public Items[] NonKeyItems => ItemList.Where(i => i.BagSlot != BagSlots.KeyItems || i.BagSlot != BagSlots.None).ToArray();
+        public Items[] NonKeyItems { get; }
         public Items[] GoodItems => NonKeyItems.Where(i => !RandomizerConstants.BadItemList.Contains(i.Index)).ToArray();
 
-        public TM[] TMs => ItemList.Where(i => i is TM).Select(i => i as TM).ToArray();
+        public TM[] TMs { get; }
         public TutorMove[] TutorMoves { get; }
 
         bool isXD;
@@ -62,6 +62,8 @@ namespace Randomizer
             ValidMoves = MoveList.Where(m => m.MoveIndex != 0 && m.MoveIndex != 355).ToArray();
             ValidPokemon = PokemonList.Where(p => !RandomizerConstants.SpecialPokemon.Contains(p.Index)).ToArray();
             ValidItems = ItemList.Where(i => !RandomizerConstants.InvalidItemList.Contains(i.Index)).ToArray();
+            NonKeyItems = ValidItems.Where(i => i.BagSlot != BagSlots.KeyItems || i.BagSlot != BagSlots.None).ToArray();
+            TMs = ItemList.Where(i => i is TM).Select(i => i as TM).ToArray();
 
             if (extractor is XDExtractor xd)
             {

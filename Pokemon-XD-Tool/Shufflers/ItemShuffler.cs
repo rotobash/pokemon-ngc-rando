@@ -83,7 +83,7 @@ namespace Randomizer.Shufflers
             // there are a lot of battle cds, so only add them to one location and then
             // block that same cd from being put in another location (only if they haven't banned cds entirely)
             var battleCDsUsed = new List<int>();
-            var potentialItems = settings.BanBadItems ? extractedGame.NonKeyItems : extractedGame.GoodItems;
+            var potentialItems = settings.BanBadItems ? extractedGame.GoodItems : extractedGame.NonKeyItems;
             if (settings.BanBattleCDs)
             {
                 potentialItems = potentialItems.Where(i => !RandomizerConstants.BattleCDList.Contains(i.Index)).ToArray();
