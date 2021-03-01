@@ -154,8 +154,9 @@ namespace Randomizer
             this.randomizeMovesetsPreferType = new System.Windows.Forms.RadioButton();
             this.randomizeMovesets = new System.Windows.Forms.RadioButton();
             this.movesetsForceGoodDamagingMovePercent = new System.Windows.Forms.NumericUpDown();
-            this.banShadowMovesCheck = new System.Windows.Forms.CheckBox();
             this.pokemonShareMovesetsCheck = new System.Windows.Forms.CheckBox();
+            this.banShadowMovesCheck = new System.Windows.Forms.CheckBox();
+            this.banEarlyDragonRageCheck = new System.Windows.Forms.CheckBox();
             this.itemsTabPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.overworldItemGroupBox = new System.Windows.Forms.GroupBox();
@@ -173,6 +174,7 @@ namespace Randomizer
             this.miscItemGroupBox = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel31 = new System.Windows.Forms.TableLayoutPanel();
             this.banBadItemsCheck = new System.Windows.Forms.CheckBox();
+            this.banBattleCDsCheck = new System.Windows.Forms.CheckBox();
             this.battleBingoTabPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -180,9 +182,11 @@ namespace Randomizer
             this.bingoBanShadowMovesCheck = new System.Windows.Forms.CheckBox();
             this.bingoUseStabMoveCheck = new System.Windows.Forms.CheckBox();
             this.bingoUseDamagingMoveCheck = new System.Windows.Forms.CheckBox();
+            this.randomizeBattleBingoMovesetsCheck = new System.Windows.Forms.CheckBox();
             this.bingoPokemonGroupBox = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel27 = new System.Windows.Forms.TableLayoutPanel();
             this.bingoUseStrongPokemon = new System.Windows.Forms.CheckBox();
+            this.randomizeBattleBingoPokemonCheck = new System.Windows.Forms.CheckBox();
             this.miscTabPage = new System.Windows.Forms.TabPage();
             this.noEXPCheck = new System.Windows.Forms.CheckBox();
             this.progressBar = new System.Windows.Forms.ProgressBar();
@@ -2702,10 +2706,11 @@ namespace Randomizer
             // 
             // tableLayoutPanel12
             // 
-            this.tableLayoutPanel12.ColumnCount = 4;
+            this.tableLayoutPanel12.ColumnCount = 5;
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel12.Controls.Add(this.movesetsForceGoodDamagingMoveCheck, 2, 1);
             this.tableLayoutPanel12.Controls.Add(this.forceFourMoveCheck, 2, 0);
@@ -2713,9 +2718,10 @@ namespace Randomizer
             this.tableLayoutPanel12.Controls.Add(this.unchangedMovesetsCheck, 1, 0);
             this.tableLayoutPanel12.Controls.Add(this.randomizeMovesetsPreferType, 1, 1);
             this.tableLayoutPanel12.Controls.Add(this.randomizeMovesets, 1, 2);
-            this.tableLayoutPanel12.Controls.Add(this.movesetsForceGoodDamagingMovePercent, 3, 1);
-            this.tableLayoutPanel12.Controls.Add(this.banShadowMovesCheck, 2, 2);
-            this.tableLayoutPanel12.Controls.Add(this.pokemonShareMovesetsCheck, 2, 3);
+            this.tableLayoutPanel12.Controls.Add(this.movesetsForceGoodDamagingMovePercent, 4, 1);
+            this.tableLayoutPanel12.Controls.Add(this.pokemonShareMovesetsCheck, 2, 2);
+            this.tableLayoutPanel12.Controls.Add(this.banShadowMovesCheck, 2, 3);
+            this.tableLayoutPanel12.Controls.Add(this.banEarlyDragonRageCheck, 3, 3);
             this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel12.Location = new System.Drawing.Point(3, 19);
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
@@ -2724,13 +2730,13 @@ namespace Randomizer
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel12.Size = new System.Drawing.Size(700, 109);
             this.tableLayoutPanel12.TabIndex = 5;
             // 
             // movesetsForceGoodDamagingMoveCheck
             // 
             this.movesetsForceGoodDamagingMoveCheck.AutoSize = true;
+            this.tableLayoutPanel12.SetColumnSpan(this.movesetsForceGoodDamagingMoveCheck, 2);
             this.movesetsForceGoodDamagingMoveCheck.Location = new System.Drawing.Point(353, 30);
             this.movesetsForceGoodDamagingMoveCheck.Name = "movesetsForceGoodDamagingMoveCheck";
             this.movesetsForceGoodDamagingMoveCheck.Size = new System.Drawing.Size(183, 19);
@@ -2744,14 +2750,13 @@ namespace Randomizer
             // forceFourMoveCheck
             // 
             this.forceFourMoveCheck.AutoSize = true;
+            this.tableLayoutPanel12.SetColumnSpan(this.forceFourMoveCheck, 2);
             this.forceFourMoveCheck.Location = new System.Drawing.Point(353, 3);
             this.forceFourMoveCheck.Name = "forceFourMoveCheck";
             this.forceFourMoveCheck.Size = new System.Drawing.Size(215, 19);
             this.forceFourMoveCheck.TabIndex = 20;
             this.forceFourMoveCheck.Text = "Every Pokemon Starts With 4 Moves";
-            this.infoToolTip.SetToolTip(this.forceFourMoveCheck, "If not randomizing the movesets, some Pokemon\'s level up moves don\'t have enough " +
-        "at their level.\r\nSelecting this will ensure that all Pokemon will have four move" +
-        "s\r\n.");
+            this.infoToolTip.SetToolTip(this.forceFourMoveCheck, resources.GetString("forceFourMoveCheck.ToolTip"));
             this.forceFourMoveCheck.UseVisualStyleBackColor = true;
             // 
             // movesetsMetronomeOnlyCheck
@@ -2815,11 +2820,26 @@ namespace Randomizer
             this.movesetsForceGoodDamagingMovePercent.Size = new System.Drawing.Size(64, 23);
             this.movesetsForceGoodDamagingMovePercent.TabIndex = 28;
             // 
+            // pokemonShareMovesetsCheck
+            // 
+            this.pokemonShareMovesetsCheck.AutoSize = true;
+            this.tableLayoutPanel12.SetColumnSpan(this.pokemonShareMovesetsCheck, 2);
+            this.pokemonShareMovesetsCheck.Enabled = false;
+            this.pokemonShareMovesetsCheck.Location = new System.Drawing.Point(353, 57);
+            this.pokemonShareMovesetsCheck.Name = "pokemonShareMovesetsCheck";
+            this.pokemonShareMovesetsCheck.Size = new System.Drawing.Size(162, 19);
+            this.pokemonShareMovesetsCheck.TabIndex = 30;
+            this.pokemonShareMovesetsCheck.Text = "Pokemon Share Movesets";
+            this.infoToolTip.SetToolTip(this.pokemonShareMovesetsCheck, "Trainer Pokemon movesets and level up moves are different from each other,\r\nso ch" +
+        "ecking this will make all Pokemon use level up moves to generate their movesets." +
+        "");
+            this.pokemonShareMovesetsCheck.UseVisualStyleBackColor = true;
+            // 
             // banShadowMovesCheck
             // 
             this.banShadowMovesCheck.AutoSize = true;
             this.banShadowMovesCheck.Enabled = false;
-            this.banShadowMovesCheck.Location = new System.Drawing.Point(353, 57);
+            this.banShadowMovesCheck.Location = new System.Drawing.Point(353, 84);
             this.banShadowMovesCheck.Name = "banShadowMovesCheck";
             this.banShadowMovesCheck.Size = new System.Drawing.Size(129, 19);
             this.banShadowMovesCheck.TabIndex = 29;
@@ -2827,18 +2847,18 @@ namespace Randomizer
             this.infoToolTip.SetToolTip(this.banShadowMovesCheck, "Checking this will ensure normal Pokemon don\'t learn shadow moves.");
             this.banShadowMovesCheck.UseVisualStyleBackColor = true;
             // 
-            // pokemonShareMovesetsCheck
+            // banEarlyDragonRageCheck
             // 
-            this.pokemonShareMovesetsCheck.AutoSize = true;
-            this.pokemonShareMovesetsCheck.Enabled = false;
-            this.pokemonShareMovesetsCheck.Location = new System.Drawing.Point(353, 84);
-            this.pokemonShareMovesetsCheck.Name = "pokemonShareMovesetsCheck";
-            this.pokemonShareMovesetsCheck.Size = new System.Drawing.Size(162, 19);
-            this.pokemonShareMovesetsCheck.TabIndex = 30;
-            this.pokemonShareMovesetsCheck.Text = "Pokemon Share Movesets";
-            this.infoToolTip.SetToolTip(this.pokemonShareMovesetsCheck, "Trainer Pokemon movesets and level up moves are different from each other.\r\nCheck" +
-        "ing this will make all Pokemon use level up moves to generate their movesets.");
-            this.pokemonShareMovesetsCheck.UseVisualStyleBackColor = true;
+            this.banEarlyDragonRageCheck.AutoSize = true;
+            this.tableLayoutPanel12.SetColumnSpan(this.banEarlyDragonRageCheck, 2);
+            this.banEarlyDragonRageCheck.Enabled = false;
+            this.banEarlyDragonRageCheck.Location = new System.Drawing.Point(493, 84);
+            this.banEarlyDragonRageCheck.Name = "banEarlyDragonRageCheck";
+            this.banEarlyDragonRageCheck.Size = new System.Drawing.Size(145, 19);
+            this.banEarlyDragonRageCheck.TabIndex = 31;
+            this.banEarlyDragonRageCheck.Text = "Ban Early Dragon Rage";
+            this.infoToolTip.SetToolTip(this.banEarlyDragonRageCheck, "Ban Dragon Rage from the move pool until Pokemon are over lvl 20.");
+            this.banEarlyDragonRageCheck.UseVisualStyleBackColor = true;
             // 
             // itemsTabPage
             // 
@@ -2929,7 +2949,7 @@ namespace Randomizer
             this.martGroupBox.Size = new System.Drawing.Size(350, 131);
             this.martGroupBox.TabIndex = 1;
             this.martGroupBox.TabStop = false;
-            this.martGroupBox.Text = "Marts (WIP)";
+            this.martGroupBox.Text = "Marts";
             // 
             // tableLayoutPanel25
             // 
@@ -2965,7 +2985,6 @@ namespace Randomizer
             // randomizeMartItems
             // 
             this.randomizeMartItems.AutoSize = true;
-            this.randomizeMartItems.Enabled = false;
             this.randomizeMartItems.Location = new System.Drawing.Point(37, 3);
             this.randomizeMartItems.Name = "randomizeMartItems";
             this.randomizeMartItems.Size = new System.Drawing.Size(145, 19);
@@ -2976,13 +2995,14 @@ namespace Randomizer
             // martsSellEvoStonesCheck
             // 
             this.martsSellEvoStonesCheck.AutoSize = true;
-            this.martsSellEvoStonesCheck.Enabled = false;
             this.martsSellEvoStonesCheck.Location = new System.Drawing.Point(37, 30);
             this.martsSellEvoStonesCheck.Name = "martsSellEvoStonesCheck";
-            this.martsSellEvoStonesCheck.Size = new System.Drawing.Size(185, 19);
+            this.martsSellEvoStonesCheck.Size = new System.Drawing.Size(202, 19);
             this.martsSellEvoStonesCheck.TabIndex = 0;
-            this.martsSellEvoStonesCheck.Text = "All Marts Sell Evolution Stones";
-            this.infoToolTip.SetToolTip(this.martsSellEvoStonesCheck, "All marts will sell evolution stones for 5000.");
+            this.martsSellEvoStonesCheck.Text = "Agate Mart Sells Evolution Stones";
+            this.infoToolTip.SetToolTip(this.martsSellEvoStonesCheck, "Agate Village mart sells evolution stones for 2100. \r\nNote: Sun Stones sell for 5" +
+        "00 and Moon stones sell for 0.\r\nI haven\'t altered any of the selling prices for " +
+        "them.");
             this.martsSellEvoStonesCheck.UseVisualStyleBackColor = true;
             // 
             // pokemonItemGroupBox
@@ -3041,6 +3061,7 @@ namespace Randomizer
             this.tableLayoutPanel31.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel31.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.tableLayoutPanel31.Controls.Add(this.banBadItemsCheck, 1, 0);
+            this.tableLayoutPanel31.Controls.Add(this.banBattleCDsCheck, 1, 1);
             this.tableLayoutPanel31.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel31.Location = new System.Drawing.Point(3, 19);
             this.tableLayoutPanel31.Name = "tableLayoutPanel31";
@@ -3062,6 +3083,18 @@ namespace Randomizer
             this.banBadItemsCheck.Text = "Ban Bad Items";
             this.infoToolTip.SetToolTip(this.banBadItemsCheck, resources.GetString("banBadItemsCheck.ToolTip"));
             this.banBadItemsCheck.UseVisualStyleBackColor = true;
+            // 
+            // banBattleCDsCheck
+            // 
+            this.banBattleCDsCheck.AutoSize = true;
+            this.banBattleCDsCheck.Location = new System.Drawing.Point(37, 30);
+            this.banBattleCDsCheck.Name = "banBattleCDsCheck";
+            this.banBattleCDsCheck.Size = new System.Drawing.Size(103, 19);
+            this.banBattleCDsCheck.TabIndex = 3;
+            this.banBattleCDsCheck.Text = "Ban Battle CDs";
+            this.infoToolTip.SetToolTip(this.banBattleCDsCheck, "Bans Battle CDs from the item pool.\r\nNote: This means you won\'t be able to do Sim" +
+        " Battles at Realgam Tower");
+            this.banBattleCDsCheck.UseVisualStyleBackColor = true;
             // 
             // battleBingoTabPage
             // 
@@ -3105,9 +3138,10 @@ namespace Randomizer
             this.tableLayoutPanel26.ColumnCount = 2;
             this.tableLayoutPanel26.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel26.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
-            this.tableLayoutPanel26.Controls.Add(this.bingoBanShadowMovesCheck, 1, 2);
-            this.tableLayoutPanel26.Controls.Add(this.bingoUseStabMoveCheck, 1, 1);
-            this.tableLayoutPanel26.Controls.Add(this.bingoUseDamagingMoveCheck, 1, 0);
+            this.tableLayoutPanel26.Controls.Add(this.bingoBanShadowMovesCheck, 1, 3);
+            this.tableLayoutPanel26.Controls.Add(this.bingoUseStabMoveCheck, 1, 2);
+            this.tableLayoutPanel26.Controls.Add(this.bingoUseDamagingMoveCheck, 1, 1);
+            this.tableLayoutPanel26.Controls.Add(this.randomizeBattleBingoMovesetsCheck, 1, 0);
             this.tableLayoutPanel26.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel26.Location = new System.Drawing.Point(3, 19);
             this.tableLayoutPanel26.Name = "tableLayoutPanel26";
@@ -3122,7 +3156,8 @@ namespace Randomizer
             // bingoBanShadowMovesCheck
             // 
             this.bingoBanShadowMovesCheck.AutoSize = true;
-            this.bingoBanShadowMovesCheck.Location = new System.Drawing.Point(37, 59);
+            this.bingoBanShadowMovesCheck.Enabled = false;
+            this.bingoBanShadowMovesCheck.Location = new System.Drawing.Point(37, 87);
             this.bingoBanShadowMovesCheck.Name = "bingoBanShadowMovesCheck";
             this.bingoBanShadowMovesCheck.Size = new System.Drawing.Size(129, 19);
             this.bingoBanShadowMovesCheck.TabIndex = 30;
@@ -3134,7 +3169,8 @@ namespace Randomizer
             // bingoUseStabMoveCheck
             // 
             this.bingoUseStabMoveCheck.AutoSize = true;
-            this.bingoUseStabMoveCheck.Location = new System.Drawing.Point(37, 31);
+            this.bingoUseStabMoveCheck.Enabled = false;
+            this.bingoUseStabMoveCheck.Location = new System.Drawing.Point(37, 59);
             this.bingoUseStabMoveCheck.Name = "bingoUseStabMoveCheck";
             this.bingoUseStabMoveCheck.Size = new System.Drawing.Size(112, 19);
             this.bingoUseStabMoveCheck.TabIndex = 1;
@@ -3146,7 +3182,8 @@ namespace Randomizer
             // bingoUseDamagingMoveCheck
             // 
             this.bingoUseDamagingMoveCheck.AutoSize = true;
-            this.bingoUseDamagingMoveCheck.Location = new System.Drawing.Point(37, 3);
+            this.bingoUseDamagingMoveCheck.Enabled = false;
+            this.bingoUseDamagingMoveCheck.Location = new System.Drawing.Point(37, 31);
             this.bingoUseDamagingMoveCheck.Name = "bingoUseDamagingMoveCheck";
             this.bingoUseDamagingMoveCheck.Size = new System.Drawing.Size(168, 19);
             this.bingoUseDamagingMoveCheck.TabIndex = 0;
@@ -3154,6 +3191,17 @@ namespace Randomizer
             this.infoToolTip.SetToolTip(this.bingoUseDamagingMoveCheck, "Note: this affects both starter and card Pokemon.\r\nWhat qualifies as good is conf" +
         "igurable in the Options menu.");
             this.bingoUseDamagingMoveCheck.UseVisualStyleBackColor = true;
+            // 
+            // randomizeBattleBingoMovesetsCheck
+            // 
+            this.randomizeBattleBingoMovesetsCheck.AutoSize = true;
+            this.randomizeBattleBingoMovesetsCheck.Location = new System.Drawing.Point(37, 3);
+            this.randomizeBattleBingoMovesetsCheck.Name = "randomizeBattleBingoMovesetsCheck";
+            this.randomizeBattleBingoMovesetsCheck.Size = new System.Drawing.Size(138, 19);
+            this.randomizeBattleBingoMovesetsCheck.TabIndex = 31;
+            this.randomizeBattleBingoMovesetsCheck.Text = "Randomize Movesets";
+            this.randomizeBattleBingoMovesetsCheck.UseVisualStyleBackColor = true;
+            this.randomizeBattleBingoMovesetsCheck.CheckedChanged += new System.EventHandler(this.randomizeBattleBingoMovesetsCheck_CheckedChanged);
             // 
             // bingoPokemonGroupBox
             // 
@@ -3171,7 +3219,8 @@ namespace Randomizer
             this.tableLayoutPanel27.ColumnCount = 2;
             this.tableLayoutPanel27.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel27.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
-            this.tableLayoutPanel27.Controls.Add(this.bingoUseStrongPokemon, 1, 0);
+            this.tableLayoutPanel27.Controls.Add(this.bingoUseStrongPokemon, 1, 1);
+            this.tableLayoutPanel27.Controls.Add(this.randomizeBattleBingoPokemonCheck, 1, 0);
             this.tableLayoutPanel27.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel27.Location = new System.Drawing.Point(3, 19);
             this.tableLayoutPanel27.Name = "tableLayoutPanel27";
@@ -3186,13 +3235,25 @@ namespace Randomizer
             // bingoUseStrongPokemon
             // 
             this.bingoUseStrongPokemon.AutoSize = true;
-            this.bingoUseStrongPokemon.Location = new System.Drawing.Point(37, 3);
+            this.bingoUseStrongPokemon.Enabled = false;
+            this.bingoUseStrongPokemon.Location = new System.Drawing.Point(37, 31);
             this.bingoUseStrongPokemon.Name = "bingoUseStrongPokemon";
             this.bingoUseStrongPokemon.Size = new System.Drawing.Size(137, 19);
             this.bingoUseStrongPokemon.TabIndex = 0;
             this.bingoUseStrongPokemon.Text = "Use Strong Pokemon";
             this.infoToolTip.SetToolTip(this.bingoUseStrongPokemon, "Only pick Pokemon with a BST greater than what\'s defined in the configuration.");
             this.bingoUseStrongPokemon.UseVisualStyleBackColor = true;
+            // 
+            // randomizeBattleBingoPokemonCheck
+            // 
+            this.randomizeBattleBingoPokemonCheck.AutoSize = true;
+            this.randomizeBattleBingoPokemonCheck.Location = new System.Drawing.Point(37, 3);
+            this.randomizeBattleBingoPokemonCheck.Name = "randomizeBattleBingoPokemonCheck";
+            this.randomizeBattleBingoPokemonCheck.Size = new System.Drawing.Size(139, 19);
+            this.randomizeBattleBingoPokemonCheck.TabIndex = 1;
+            this.randomizeBattleBingoPokemonCheck.Text = "Randomize Pokemon";
+            this.randomizeBattleBingoPokemonCheck.UseVisualStyleBackColor = true;
+            this.randomizeBattleBingoPokemonCheck.CheckedChanged += new System.EventHandler(this.randomizeBattleBingoPokemonCheck_CheckedChanged);
             // 
             // miscTabPage
             // 
@@ -3619,6 +3680,10 @@ namespace Randomizer
         private System.Windows.Forms.CheckBox banShadowMovesCheck;
         private System.Windows.Forms.CheckBox pokemonShareMovesetsCheck;
         private System.Windows.Forms.CheckBox bingoBanShadowMovesCheck;
+        private System.Windows.Forms.CheckBox banEarlyDragonRageCheck;
+        private System.Windows.Forms.CheckBox randomizeBattleBingoMovesetsCheck;
+        private System.Windows.Forms.CheckBox randomizeBattleBingoPokemonCheck;
+        private System.Windows.Forms.CheckBox banBattleCDsCheck;
     }
 }
 

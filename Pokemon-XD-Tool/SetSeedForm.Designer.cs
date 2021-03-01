@@ -61,6 +61,11 @@ namespace Randomizer
             this.infoToolTip.SetToolTip(this.newSeed, "Set a new seed for the RNG, this will cause the game to be randomized the same ev" +
         "erytime.\r\nIf you set the seed and want to unset it (i.e. have the computer gener" +
         "ate one for you), set this to -1. ");
+            this.newSeed.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
             // 
             // tableLayoutPanel1
             // 

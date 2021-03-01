@@ -12,11 +12,12 @@ namespace Randomizer.Shufflers
     {
         public static void ShuffleTMs(Random random, ItemShufflerSettings settings, ExtractedGame extractedGame)
         {
-            if (settings.RandomizeTMs) 
+            if (settings.RandomizeTMs)
             {
                 var tms = extractedGame.TMs;
                 // use set to avoid dupes
                 var newTMSet = new HashSet<ushort>();
+                var validMoves = extractedGame.ValidMoves;
 
                 if (settings.TMForceGoodDamagingMove)
                 {
@@ -34,7 +35,7 @@ namespace Randomizer.Shufflers
 
                 // keep picking while we haven't picked enough TMs
                 while (newTMSet.Count < tms.Length)
-                    newTMSet.Add((ushort)random.Next(1, extractedGame.MoveList.Length));
+                    newTMSet.Add((ushort)validMoves[random.Next(0, validMoves.Length)].MoveIndex);
 
                 // set them to the actual TM item
                 for (int i = 0; i < tms.Length; i++)
@@ -50,6 +51,7 @@ namespace Randomizer.Shufflers
             if (settings.RandomizeTutorMoves)
             {
                 var newTutorMoveSet = new HashSet<ushort>();
+                var validMoves = extractedGame.ValidMoves;
 
                 if (settings.TutorForceGoodDamagingMove)
                 {
@@ -66,7 +68,7 @@ namespace Randomizer.Shufflers
 
                 // keep picking while we haven't picked enough TMs or we picked a dupe
                 while (newTutorMoveSet.Count < tutorMoves.Length)
-                    newTutorMoveSet.Add((ushort)random.Next(1, extractedGame.MoveList.Length));
+                    newTutorMoveSet.Add((ushort)validMoves[random.Next(0, validMoves.Length)].MoveIndex);
 
                 // set them to the actual TM item
                 for (int i = 0; i < tutorMoves.Length; i++)
@@ -78,7 +80,14 @@ namespace Randomizer.Shufflers
 
         public static void ShuffleOverworldItems(Random random, ItemShufflerSettings settings, ExtractedGame extractedGame)
         {
-            var potentialItems = settings.BanBadItems ? extractedGame.NonKeyItems : extractedGame.GoodItems;
+            // there are a lot of battle cds, so only add them to one location and then
+            // block that same cd from being put in another location (only if they haven't banned cds entirely)
+            var battleCDsUsed = new List<int>();
+            var potentialItems = settings.BanBadItems ? extractedGame.GoodItems : extractedGame.NonKeyItems;
+            if (settings.BanBattleCDs)
+            {
+                potentialItems = potentialItems.Where(i => !RandomizerConstants.BattleCDList.Contains(i.Index)).ToArray();
+            }
 
             foreach (var item in extractedGame.OverworldItemList)
             {
@@ -88,8 +97,18 @@ namespace Randomizer.Shufflers
 
                 if (settings.RandomizeItems)
                 {
-                    item.Item = (ushort)potentialItems[random.Next(0, potentialItems.Length)].Index;
+                    ushort newItem = 0;
+                    while (newItem == 0 || battleCDsUsed.Contains(newItem))
+                    {
+                        newItem = (ushort)potentialItems[random.Next(0, potentialItems.Length)].Index;
+                    }
+
+                    if (RandomizerConstants.BattleCDList.Contains(newItem))
+                        battleCDsUsed.Add(newItem);
+
+                    item.Item = newItem;
                 }
+
                 if (settings.RandomizeItemQuantity)
                 {
                     item.Quantity = (byte)random.Next(1, 6);
@@ -100,9 +119,33 @@ namespace Randomizer.Shufflers
 
         public static void UpdatePokemarts(Random random, ItemShufflerSettings settings, ExtractedGame extractedGame)
         {
-            foreach (var mart in extractedGame.Pokemarts)
+            if (settings.RandomizeMarts)
             {
-                
+                var potentialItems = settings.BanBadItems ? extractedGame.NonKeyItems : extractedGame.GoodItems;
+                potentialItems = potentialItems.Where(i => !RandomizerConstants.BattleCDList.Contains(i.Index)).ToArray();
+
+                foreach (var mart in extractedGame.Pokemarts)
+                {
+                    for (int i = 0; i < mart.Items.Count; i++)
+                    {
+                        mart.Items[i] = (ushort)potentialItems[random.Next(0, potentialItems.Length)].Index;
+                    }
+                    mart.SaveItems();
+                }
+            }
+
+            if (settings.MartsSellEvoStones)
+            {
+                foreach (var agateMartIndex in RandomizerConstants.AgateVillageMartIndices)
+                {
+                    var agateMart = extractedGame.Pokemarts[agateMartIndex];
+                    agateMart.Items.AddRange(RandomizerConstants.EvoStoneItemList);
+                    for (int i = agateMartIndex + 1; i < extractedGame.Pokemarts.Length; i++)
+                    {
+                        extractedGame.Pokemarts[i].FirstItemIndex += (ushort)(RandomizerConstants.EvoStoneItemList.Length);
+                    }
+                    agateMart.SaveItems();
+                }
             }
         }
     }

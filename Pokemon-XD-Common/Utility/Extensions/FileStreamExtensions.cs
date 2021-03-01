@@ -265,14 +265,14 @@ namespace XDCommon.Utility
             stream.Dispose();
             newStream.Flush();
 
-            if (!Configuration.UseMemoryStreams)
+            if (stream is FileStream f)
             {
                 // flush new stream and close it
                 newStream.Dispose();
-                File.Delete(streamFileName);
-                File.Move($"{streamFileName}.bak", streamFileName);
+                File.Delete(f.Name);
+                File.Move(streamFileName, f.Name);
                 // bypass GetNewStream because it'll overwrite files
-                return File.Open(streamFileName, FileMode.Open, FileAccess.ReadWrite);
+                return File.Open(f.Name, FileMode.Open, FileAccess.ReadWrite);
             }
             return newStream;
         }
@@ -285,11 +285,11 @@ namespace XDCommon.Utility
         /// <param name="offset">The offset to delete the data at.</param>
         /// <param name="length">The amount bytes to delete.</param>
         /// <returns>The new stream with deleted data.</returns>
-        public static Stream DeleteFromStream(this FileStream stream, long offset, int length)
+        public static Stream DeleteFromStream(this Stream stream, long offset, int length)
         {
             // you can't really insert into a stream without pulling it entirely into memory, so cheat a bit
-            var streamFileName = stream.Name;
-            var newStream = File.Create($"{streamFileName}.bak");
+            var streamFileName = stream is FileStream fs ? fs.Name : string.Empty;
+            var newStream = $"{streamFileName}.bak".GetNewStream();
 
             // write any pending changes
             // copy old stream into new stream up to offset
@@ -297,17 +297,17 @@ namespace XDCommon.Utility
             stream.Seek(0, SeekOrigin.Begin);
             stream.CopySubStream(newStream, 0, offset);
             stream.Seek(offset + length, SeekOrigin.Begin);
-            stream.CopySubStream(newStream, offset + length, (int)stream.Length - (offset + length));
+            stream.CopySubStream(newStream, offset + length, stream.Length - (offset + length));
 
             // dispose of old stream
             stream.Dispose();
             // flush new stream and close it
             newStream.Flush();
 
-            if (!Configuration.UseMemoryStreams)
+            if (stream is FileStream f)
             {
                 newStream.Dispose();
-                File.Delete(streamFileName);
+                File.Delete(f.Name);
                 File.Move($"{streamFileName}.bak", streamFileName);
                 // bypass GetNewStream because it'll overwrite files
                 return File.Open(streamFileName, FileMode.Open, FileAccess.ReadWrite);

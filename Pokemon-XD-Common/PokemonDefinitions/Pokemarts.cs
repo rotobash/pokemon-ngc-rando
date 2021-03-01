@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using XDCommon.Utility;
 
@@ -9,42 +10,71 @@ namespace XDCommon.PokemonDefinitions
     {
         int index;
         REL pocket;
+        int originalItemsCount;
 
-        public int FirstItemIndex => (int)pocket.GetPointer(Constants.MartStartIndexes) + (index * 4) + 2;
         public int StartOffset => (int)pocket.GetPointer(Constants.MartItems) + (FirstItemIndex * 2);
+
+        public ushort FirstItemIndex
+        {
+            get => pocket.ExtractedFile.GetUShortAtOffset(pocket.GetPointer(Constants.MartStartIndexes) + (index * 4) + 2);
+            set => pocket.ExtractedFile.WriteBytesAtOffset(pocket.GetPointer(Constants.MartStartIndexes) + (index * 4) + 2, value.GetBytes());
+        }
         public List<ushort> Items
         {
             get;
+            private set;
         }
 
         public Pokemarts(int index, ISO iso)
         {
             this.index = index;
             pocket = iso.GetFSysFile("pocket_menu.fsys").GetEntryByFileName("pocket_menu.rel") as REL;
+            LoadItems();
+        }
 
+        private void LoadItems()
+        {
             Items = new List<ushort>();
             ushort nextItem;
             var nextItemOffset = StartOffset;
 
-            // todo: mart has crazy items indices but all the offsets are correct...
-            // am I reading the wrong file??
-            while ((nextItem = pocket.ExtractedFile.GetUShortAtOffset(nextItemOffset)) != 0) 
+            while ((nextItem = pocket.ExtractedFile.GetUShortAtOffset(nextItemOffset)) != 0)
             {
                 Items.Add(nextItem);
                 nextItemOffset += 2;
             }
+
+            originalItemsCount = Items.Count;
         }
 
         public void SaveItems()
         {
-            var nextItemOffset = StartOffset;
-            foreach (var item in Items)
+            var newItemsCount = (Items.Count - originalItemsCount);
+
+            var numberOfItemsOffset = pocket.GetPointer(Constants.NumberOfMartItems);
+            var numberOfItems = pocket.ExtractedFile.GetIntAtOffset(numberOfItemsOffset);
+            pocket.ExtractedFile.WriteBytesAtOffset(numberOfItemsOffset, (numberOfItems + newItemsCount).GetBytes());
+
+            // update pointers
+            int offset = 0;
+            var pointerIndices = new[] { 1, 3, 5, 6, 7 };
+            for (int i = 0; i < pocket.NumberOfPointers; i++)
             {
-                pocket.ExtractedFile.WriteBytesAtOffset(nextItemOffset, item.GetBytes());
-                nextItemOffset += 2;
+                offset = (int)pocket.GetPointer(i);
+
+                if (offset > StartOffset)
+                    pocket.ReplacePointer(i, offset + (newItemsCount * 2));
             }
-            pocket.ExtractedFile.WriteByte(0);
-            pocket.ExtractedFile.WriteByte(0);
+
+            var itemOffset = StartOffset;
+            var itemBytes = Items.SelectMany(i => i.GetBytes()).ToArray();
+
+            pocket.AdjustPointerStart(newItemsCount * 2);
+            pocket.ExtractedFile = pocket.ExtractedFile.DeleteFromStream(itemOffset, originalItemsCount * 2);
+            pocket.ExtractedFile = pocket.ExtractedFile.InsertIntoStream(itemOffset, itemBytes);
+            pocket.ExtractedFile.Flush();
+
+            originalItemsCount = Items.Count;
         }
     }
 }

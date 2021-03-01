@@ -63,7 +63,7 @@ namespace Randomizer.XD
 			var tutorMoves = new TutorMove[Constants.NumberOfTutorMoves];
 			for (int i = 0; i < tutorMoves.Length; i++)
 			{
-				tutorMoves[i] = new TutorMove(i, iso);
+				tutorMoves[i] = new TutorMove(i + 1, iso);
 			}
 			return tutorMoves;
 		}

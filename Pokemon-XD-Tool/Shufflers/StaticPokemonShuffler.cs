@@ -69,21 +69,12 @@ namespace Randomizer.Shufflers
             // instance pokemon have separate movesets than the pool
             // i.e. if you don't update the moveset than your starter will have Eevee's move set
             ushort[] moves;
-            if (settings.RandomizeMovesets && !settings.UseLevelUpMoves)
+            if (settings.MoveSetOptions.RandomizeMovesets || settings.Starter != StarterRandomSetting.Unchanged)
             {
-                moves = MoveShuffler.GetRandomMoveset(random, settings.BanShadowMoves, settings.MovePreferType, settings.ForceGoodDamagingMovesCount, starter.Pokemon, extractedGame);
+                moves = MoveShuffler.GetNewMoveset(random, settings.MoveSetOptions, starter.Pokemon, starter.Level, extractedGame);
+                for (int i = 0; i < moves.Length; i++)
+                    starter.SetMove(i, moves[i]);
             }
-            else if (settings.Starter != StarterRandomSetting.Unchanged)
-            {
-                moves = MoveShuffler.GetLevelUpMoveset(random, starter.Pokemon, starter.Level, settings.ForceFourMoves, settings.BanShadowMoves, extractedGame);
-            }
-            else
-            {
-                moves = starter.Moves;
-            }
-
-            for (int i = 0; i < moves.Length; i++)
-                starter.SetMove(i, moves[i]);
 
             switch (settings.Trade)
             {
@@ -95,16 +86,7 @@ namespace Randomizer.Shufflers
                         var newPoke = (ushort)pokemon[random.Next(0, pokemon.Length)].Index;
                         extractedGame.GiftPokemonList[i].Pokemon = newPoke;
 
-                        ushort[] newMoveSet;
-                        if (settings.RandomizeMovesets && !settings.UseLevelUpMoves)
-                        {
-                            newMoveSet = MoveShuffler.GetRandomMoveset(random, settings.BanShadowMoves, settings.MovePreferType, settings.ForceGoodDamagingMovesCount, newPoke, extractedGame);
-                        }
-                        else
-                        {
-                            newMoveSet = MoveShuffler.GetLevelUpMoveset(random, newPoke, extractedGame.GiftPokemonList[i].Level, settings.ForceFourMoves, settings.BanShadowMoves, extractedGame);
-                        }
-
+                        ushort[] newMoveSet = MoveShuffler.GetNewMoveset(random, settings.MoveSetOptions, newPoke, extractedGame.GiftPokemonList[i].Level, extractedGame);
                         for (int j = 0; j < newMoveSet.Length; j++)
                         {
                             extractedGame.GiftPokemonList[i].SetMove(j, newMoveSet[j]);

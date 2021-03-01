@@ -23,7 +23,7 @@ namespace Randomizer.Shufflers
 
             // set up filtered lists here to avoid recalculating it every loop
             IEnumerable<Move> movefilter = extractedGame.ValidMoves;
-            if (settings.BanShadowMoves)
+            if (settings.MoveSetOptions.BanShadowMoves)
             {
                 movefilter = movefilter.Where(m => !m.IsShadowMove);
             }
@@ -267,10 +267,10 @@ namespace Randomizer.Shufflers
                 }
 
                 // randomize level up moves
-                if (settings.RandomizeMovesets)
+                if (settings.MoveSetOptions.RandomizeMovesets)
                 {
                     var typeFilter = movefilter;
-                    if (settings.LevelUpMovePreferType)
+                    if (settings.MoveSetOptions.PreferType)
                     {
                         // allow 20% chance for move to not be same type
                         typeFilter = typeFilter.Where(m => m.Type == poke.Type1 || m.Type == poke.Type2 || random.Next(0, 10) >= 8).ToArray();
@@ -285,7 +285,7 @@ namespace Randomizer.Shufflers
                         if (move.Level == 0)
                             continue;
 
-                        if (settings.MetronomeOnly)
+                        if (settings.MoveSetOptions.MetronomeOnly)
                         {
                             poke.SetLevelUpMove(i, move.Level, RandomizerConstants.MetronomeIndex);
                         }

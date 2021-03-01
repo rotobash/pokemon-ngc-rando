@@ -215,6 +215,20 @@ namespace Randomizer
         // sorry
         private Settings CreateRandoSettings()
         {
+
+            var options = new RandomMoveSetOptions
+            {
+                RandomizeMovesets = randomizeMovesets.Checked,
+                MetronomeOnly = movesetsMetronomeOnlyCheck.Checked,
+                BanShadowMoves = banShadowMovesCheck.Checked,
+                ForceGoodMoves = movesetsForceGoodDamagingMoveCheck.Checked,
+                MinimumGoodMoves = (int)movesetsForceGoodDamagingMovePercent.Value,
+                PreferType = randomizeMovesetsPreferType.Checked,
+                BanEarlyDragonRage = banEarlyDragonRageCheck.Checked,
+                UseLevelUpMoves = pokemonShareMovesetsCheck.Checked,
+                ForceFourMoves = forceFourMoveCheck.Checked,
+            };
+
             return new Settings
             {
                 PokemonTraitShufflerSettings = new PokemonTraitShufflerSettings
@@ -252,11 +266,8 @@ namespace Randomizer
                             : MoveCompatibility.Unchanged)),
 
                     NoEXP = noEXPCheck.Checked,
-                    RandomizeMovesets = randomizeMovesets.Checked,
-                    BanShadowMoves = banShadowMovesCheck.Checked,
-                    ForceGoodDamagingMovesCount = (int)movesetsForceGoodDamagingMovePercent.Value,
-                    LevelUpMovePreferType = randomizeMovesetsPreferType.Checked,
-                    MetronomeOnly = movesetsMetronomeOnlyCheck.Checked,
+
+                    MoveSetOptions = options
                 },
                 MoveShufflerSettings = new MoveShufflerSettings
                 {
@@ -273,6 +284,8 @@ namespace Randomizer
                     RandomizeMarts = randomizeMartItems.Checked,
                     MartsSellEvoStones = martsSellEvoStonesCheck.Checked,
                     MartsSellXItems = martsSellXItemsCheck.Checked,
+                    BanBattleCDs = banBattleCDsCheck.Checked,
+                    BanBadItems = banBadItemsCheck.Checked,
 
                     RandomizeTMs = randomizeTMsCheck.Checked,
                     TMForceGoodDamagingMove = forceGoodDamagingTMsCheck.Checked,
@@ -296,24 +309,13 @@ namespace Randomizer
 
                     RandomizeHeldItems = randomHeldItemCheck.Checked,
                     BanBadItems = banBadItemsCheck.Checked,
+                    BanBattleCDs = banBattleCDsCheck.Checked,
 
-                    RandomizeMovesets = randomizeMovesets.Checked,
-                    BanShadowMoves = banShadowMovesCheck.Checked,
-                    UseLevelUpMoves = pokemonShareMovesetsCheck.Checked,
-                    MovePreferType = randomizeMovesetsPreferType.Checked,
-                    ForceFourMoves = forceFourMoveCheck.Checked,
-                    ForceGoodDamagingMoves = movesetsForceGoodDamagingMoveCheck.Checked,
-                    ForceGoodDamagingMovesCount = (int)movesetsForceGoodDamagingMovePercent.Value,
-                    MetronomeOnly = movesetsMetronomeOnlyCheck.Checked
+                    MoveSetOptions = options
                 },
                 StaticPokemonShufflerSettings = new StaticPokemonShufflerSettings
                 {
-                    RandomizeMovesets = randomizeMovesets.Checked,
-                    BanShadowMoves = banShadowMovesCheck.Checked,
-                    UseLevelUpMoves = pokemonShareMovesetsCheck.Checked,
-                    MovePreferType = randomizeMovesetsPreferType.Checked,
-                    ForceGoodDamagingMovesCount = (int)movesetsForceGoodDamagingMovePercent.Value,
-                    ForceFourMoves = forceFourMoveCheck.Checked,
+                    MoveSetOptions = options,
 
                     Starter = randomStarterCheck.Checked ? StarterRandomSetting.Random
                             : (customStarterCheck.Checked ? StarterRandomSetting.Custom
@@ -331,6 +333,8 @@ namespace Randomizer
                 },
                 BingoCardShufflerSettings = new BingoCardShufflerSettings
                 {
+                    RandomizeBattleBingoMoveSets = randomizeBattleBingoMovesetsCheck.Checked,
+                    RandomizeBattleBingoPokemon = randomizeBattleBingoPokemonCheck.Checked,
                     ForceGoodDamagingMove = bingoUseDamagingMoveCheck.Checked,
                     ForceSTABMove = bingoUseStabMoveCheck.Checked,
                     ForceStrongPokemon = bingoUseStrongPokemon.Checked,
@@ -430,6 +434,7 @@ namespace Randomizer
             randomizeOverworldItemsCheck.Checked = settings.ItemShufflerSettings.RandomizeItems;
             randomizeItemQuantityCheck.Checked = settings.ItemShufflerSettings.RandomizeItemQuantity;
             randomizeMartItems.Checked = settings.ItemShufflerSettings.RandomizeMarts;
+            banBattleCDsCheck.Checked = settings.ItemShufflerSettings.BanBattleCDs;
             martsSellEvoStonesCheck.Checked = settings.ItemShufflerSettings.MartsSellEvoStones;
             martsSellXItemsCheck.Checked = settings.ItemShufflerSettings.MartsSellXItems;
 
@@ -457,16 +462,15 @@ namespace Randomizer
             banBadItemsCheck.Checked = settings.TeamShufflerSettings.BanBadItems;
 
             // movesets
-            randomizeMovesets.Checked = settings.TeamShufflerSettings.RandomizeMovesets;
-            banShadowMovesCheck.Checked = settings.TeamShufflerSettings.BanShadowMoves;
-            pokemonShareMovesetsCheck.Checked = settings.TeamShufflerSettings.UseLevelUpMoves;
-            forceFourMoveCheck.Checked = settings.TeamShufflerSettings.ForceFourMoves;
-            movesetsForceGoodDamagingMoveCheck.Checked = settings.TeamShufflerSettings.ForceGoodDamagingMoves;
-            movesetsForceGoodDamagingMovePercent.Value = settings.TeamShufflerSettings.ForceGoodDamagingMovesCount;
-            movesetsMetronomeOnlyCheck.Checked = settings.TeamShufflerSettings.MetronomeOnly;
-
-            randomizeMovesets.Checked = settings.StaticPokemonShufflerSettings.RandomizeMovesets;
-            forceFourMoveCheck.Checked = settings.StaticPokemonShufflerSettings.ForceFourMoves;
+            randomizeMovesets.Checked = settings.TeamShufflerSettings.MoveSetOptions.RandomizeMovesets;
+            movesetsMetronomeOnlyCheck.Checked = settings.TeamShufflerSettings.MoveSetOptions.MetronomeOnly;
+            randomizeMovesetsPreferType.Checked = settings.TeamShufflerSettings.MoveSetOptions.PreferType;
+            banShadowMovesCheck.Checked = settings.TeamShufflerSettings.MoveSetOptions.BanShadowMoves;
+            banEarlyDragonRageCheck.Checked = settings.TeamShufflerSettings.MoveSetOptions.BanEarlyDragonRage;
+            movesetsForceGoodDamagingMoveCheck.Checked = settings.TeamShufflerSettings.MoveSetOptions.ForceGoodMoves;
+            movesetsForceGoodDamagingMovePercent.Value = settings.TeamShufflerSettings.MoveSetOptions.MinimumGoodMoves;
+            pokemonShareMovesetsCheck.Checked = settings.TeamShufflerSettings.MoveSetOptions.UseLevelUpMoves;
+            forceFourMoveCheck.Checked = settings.TeamShufflerSettings.MoveSetOptions.ForceFourMoves;
 
             // starters
             switch (settings.StaticPokemonShufflerSettings.Starter)
@@ -507,6 +511,8 @@ namespace Randomizer
                     break;
             }
 
+            randomizeBattleBingoPokemonCheck.Checked = settings.BingoCardShufflerSettings.RandomizeBattleBingoPokemon;
+            randomizeBattleBingoMovesetsCheck.Checked = settings.BingoCardShufflerSettings.RandomizeBattleBingoMoveSets;
             bingoUseDamagingMoveCheck.Checked = settings.BingoCardShufflerSettings.ForceGoodDamagingMove;
             bingoUseStabMoveCheck.Checked = settings.BingoCardShufflerSettings.ForceSTABMove;
             bingoUseStrongPokemon.Checked = settings.BingoCardShufflerSettings.ForceStrongPokemon;
@@ -624,6 +630,7 @@ namespace Randomizer
             {
                 banShadowMovesCheck.Enabled = randomizeMovesets.Checked;
                 pokemonShareMovesetsCheck.Enabled = randomizeMovesets.Checked;
+                banEarlyDragonRageCheck.Enabled = randomizeMovesets.Checked;
             }
         }
 
@@ -633,6 +640,7 @@ namespace Randomizer
             {
                 banShadowMovesCheck.Enabled = randomizeMovesetsPreferType.Checked;
                 pokemonShareMovesetsCheck.Enabled = randomizeMovesetsPreferType.Checked;
+                banEarlyDragonRageCheck.Enabled = randomizeMovesetsPreferType.Checked;
             }
         }
 
@@ -663,6 +671,17 @@ namespace Randomizer
                 var settings = JsonSerializer.Deserialize<Settings>(json);
                 LoadSettings(settings);
             }
+        }
+        private void randomizeBattleBingoMovesetsCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            bingoUseDamagingMoveCheck.Enabled = randomizeBattleBingoMovesetsCheck.Checked;
+            bingoUseStabMoveCheck.Enabled = randomizeBattleBingoMovesetsCheck.Checked;
+            bingoBanShadowMovesCheck.Enabled = randomizeBattleBingoMovesetsCheck.Checked;
+        }
+
+        private void randomizeBattleBingoPokemonCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            bingoUseStrongPokemon.Enabled = randomizeBattleBingoPokemonCheck.Checked;
         }
         #endregion
     }
