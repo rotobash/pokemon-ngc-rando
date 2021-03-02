@@ -79,6 +79,13 @@ namespace XDCommon.PokemonDefinitions
             this.iso = iso;
         }
 
+        public PokeSpotPokemon(int index, PokeSpotType pokeSpotType, ISO iso)
+        {
+            PokeSpot = new PokeSpot(pokeSpotType, iso);
+            this.index = index;
+            this.iso = iso;
+        }
+
         public byte MinLevel
         {
             get => iso.CommonRel.ExtractedFile.GetByteAtOffset(StartOffset + MinLevelOffset);

@@ -14,21 +14,21 @@ namespace Randomizer.XD
 {
     public class XDExtractor : IGameExtractor
 	{
-        ISO iso;
+        public ISO ISO { get; }
         public XDExtractor(ISO iso)
         {
-            this.iso = iso;
+            ISO = iso;
         }
 
         public ITrainerPool[] ExtractPools(Pokemon[] pokemon, Move[] moves)
         {
 			var trainerPool = new ITrainerPool[XDTrainerPool.MainTeams.Length + 1];
-			trainerPool[0] = new XDShadowTrainerPool(iso, pokemon, moves);
+			trainerPool[0] = new XDShadowTrainerPool(ISO, pokemon, moves);
 
 			for (int i = 1; i <= XDTrainerPool.MainTeams.Length; i++)
             {
 				var pool = XDTrainerPool.MainTeams[i - 1];
-                trainerPool[i] = new XDTrainerPool(pool, iso, pokemon, moves);
+                trainerPool[i] = new XDTrainerPool(pool, ISO, pokemon, moves);
 				trainerPool[i].SetShadowPokemon(trainerPool[0] as XDShadowTrainerPool);
 				trainerPool[i].LoadTrainers();
             }
@@ -37,21 +37,21 @@ namespace Randomizer.XD
 
 		public Items[] ExtractItems()
 		{
-			var numItems = (int)iso.CommonRel.GetValueAtPointer(Constants.NumberOfItems);
+			var numItems = (int)ISO.CommonRel.GetValueAtPointer(Constants.NumberOfItems);
 			var items = new Items[numItems];
 			for (int i = 0; i < numItems; i++)
             {
 				if (i <= 12)
                 {
-					items[i] = new Pokeballs(i, iso);
+					items[i] = new Pokeballs(i, ISO);
                 }
 				else if (i >= Constants.FirstTMItemIndex && i < Constants.FirstTMItemIndex + Constants.NumberOfTMsAndHMs)
                 {
-					items[i] = new TM(i, iso);
+					items[i] = new TM(i, ISO);
                 }
 				else
                 {
-					items[i] = new Items(i, iso);
+					items[i] = new Items(i, ISO);
                 }
             }
 
@@ -63,51 +63,51 @@ namespace Randomizer.XD
 			var tutorMoves = new TutorMove[Constants.NumberOfTutorMoves];
 			for (int i = 0; i < tutorMoves.Length; i++)
 			{
-				tutorMoves[i] = new TutorMove(i + 1, iso);
+				tutorMoves[i] = new TutorMove(i + 1, ISO);
 			}
 			return tutorMoves;
 		}
 
 		public OverworldItem[] ExtractOverworldItems()
 		{
-			var numItems = iso.CommonRel.GetValueAtPointer(Constants.XDNumberTreasureBoxes);
+			var numItems = ISO.CommonRel.GetValueAtPointer(Constants.XDNumberTreasureBoxes);
 			var items = new OverworldItem[numItems];
 			for (int i = 0;  i < numItems; i++)
             {
-				items[i] = new OverworldItem(i, iso);
+				items[i] = new OverworldItem(i, ISO);
             }
 			return items;
 		}
 
 		public Pokemarts[] ExtractPokemarts()
 		{
-			var pocket = iso.GetFSysFile("pocket_menu.fsys").GetEntryByFileName("pocket_menu.rel") as REL;
+			var pocket = ISO.GetFSysFile("pocket_menu.fsys").GetEntryByFileName("pocket_menu.rel") as REL;
 			var numMarts = pocket.GetValueAtPointer(Constants.NumberOfMarts);
 			var marts = new Pokemarts[numMarts];
 			for (int i = 0;  i < numMarts; i++)
             {
-				marts[i] = new Pokemarts(i, iso);
+				marts[i] = new Pokemarts(i, ISO);
             }
 			return marts;
 		}
 
 		public Move[] ExtractMoves()
         {
-			var moveNum = iso.CommonRel.GetValueAtPointer(Constants.XDNumberOfMoves);
+			var moveNum = ISO.CommonRel.GetValueAtPointer(Constants.XDNumberOfMoves);
 			var moves = new Move[moveNum];
 			for (int i = 0; i < moveNum; i++) {
-				moves[i] = new Move(i, iso);
+				moves[i] = new Move(i, ISO);
 			}
 			return moves;
 		}
 
 		public Pokemon[] ExtractPokemon()
 		{
-			var pokemonNum = iso.CommonRel.GetValueAtPointer(Constants.XDNumberOfPokemon);
+			var pokemonNum = ISO.CommonRel.GetValueAtPointer(Constants.XDNumberOfPokemon);
 			var pokemon = new Pokemon[pokemonNum];
 			for (int i = 0; i < pokemonNum; i++)
 			{
-				pokemon[i] = new Pokemon(i, iso);
+				pokemon[i] = new Pokemon(i, ISO);
 			}
 
 			return pokemon;
@@ -119,7 +119,7 @@ namespace Randomizer.XD
 			var cards = new BattleBingoCard[numCards];
 			for (int i = 0; i < numCards; i++)
 			{
-				cards[i] = new BattleBingoCard(i, iso);
+				cards[i] = new BattleBingoCard(i, ISO);
 			}
 			return cards;
 		}
@@ -131,10 +131,10 @@ namespace Randomizer.XD
 			
 			foreach (var pokeSpotType in pokeSpots)
             {
-				var pokeSpot = new PokeSpot(pokeSpotType, iso);
+				var pokeSpot = new PokeSpot(pokeSpotType, ISO);
 				for (int i = 0; i < pokeSpot.NumberOfEntries; i++)
                 {
-					pokemon.Add(new PokeSpotPokemon(i, pokeSpot, iso));
+					pokemon.Add(new PokeSpotPokemon(i, pokeSpot, ISO));
                 }
             }
 
@@ -148,17 +148,17 @@ namespace Randomizer.XD
             {
 				if (i < 4)
                 {
-					giftPokemon[i] = new XDTradePokemon((byte)i, iso);
+					giftPokemon[i] = new XDTradePokemon((byte)i, ISO);
                 }
 				else if (i == 4)
                 {
-					giftPokemon[i] = new XDShadowGiftPokemon(iso);
+					giftPokemon[i] = new XDShadowGiftPokemon(ISO);
                 }
 				else
                 {
 					// have to fiddle with the index
 					var index = giftPokemon.Length - 1 - i;
-					giftPokemon[i] = new XDMtBattlePokemon((byte)index, iso);
+					giftPokemon[i] = new XDMtBattlePokemon((byte)index, ISO);
                 }
             }
 			return giftPokemon;
@@ -166,16 +166,16 @@ namespace Randomizer.XD
 
 		public XDStarterPokemon GetStarter()
         {
-			return new XDStarterPokemon(iso);
+			return new XDStarterPokemon(ISO);
 		}
 
         public Ability[] ExtractAbilities()
         {
-			var numAbilities = Constants.NumberOfAbilities(iso);
+			var numAbilities = Constants.NumberOfAbilities(ISO);
 			var abilities = new Ability[numAbilities];
 			for (int i = 0; i < abilities.Length; i++)
             {
-				abilities[i] = new Ability(i, iso);
+				abilities[i] = new Ability(i, ISO);
             }
 			return abilities;
         }

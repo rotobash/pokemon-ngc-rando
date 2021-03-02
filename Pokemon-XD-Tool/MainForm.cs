@@ -329,7 +329,9 @@ namespace Randomizer
 
                     Trade = tradeBothRandomCheck.Checked ? TradeRandomSetting.Both
                             : (tradeRandomGivenCheck.Checked ? TradeRandomSetting.Given
-                            : TradeRandomSetting.Unchanged),
+                            : (tradeRequestedRandomCheck.Checked ? TradeRandomSetting.Requested
+                            : TradeRandomSetting.Unchanged)),
+                    UsePokeSpotPokemonInTrade = tradeUsePokeSpotCheck.Checked
                 },
                 BingoCardShufflerSettings = new BingoCardShufflerSettings
                 {
@@ -498,6 +500,7 @@ namespace Randomizer
             starterComboBox.Text = settings.StaticPokemonShufflerSettings.Starter1;
             starter2ComboBox.Text = settings.StaticPokemonShufflerSettings.Starter2;
 
+            tradeUsePokeSpotCheck.Checked = settings.StaticPokemonShufflerSettings.UsePokeSpotPokemonInTrade;
             switch (settings.StaticPokemonShufflerSettings.Trade)
             {
                 case TradeRandomSetting.Given:
@@ -505,6 +508,9 @@ namespace Randomizer
                     break;
                 case TradeRandomSetting.Both:
                     tradeBothRandomCheck.Checked = true;
+                    break;
+                case TradeRandomSetting.Requested:
+                    tradeRequestedRandomCheck.Checked = true;
                     break;
                 default:
                     tradeUnchangedCheck.Checked = true;

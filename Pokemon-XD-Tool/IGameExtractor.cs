@@ -7,11 +7,13 @@ using System.Text;
 using System.Threading.Tasks;
 using XDCommon;
 using XDCommon.PokemonDefinitions;
+using XDCommon.Utility;
 
 namespace Randomizer
 {
     public interface IGameExtractor
     {
+        ISO ISO { get; }
         ITrainerPool[] ExtractPools(Pokemon[] pokemon, Move[] moves);
         Ability[] ExtractAbilities();
         Items[] ExtractItems();

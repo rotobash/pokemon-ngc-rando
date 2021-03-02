@@ -8,6 +8,17 @@ namespace XDCommon.PokemonDefinitions
 {
     public class XDTradePokemon : IGiftPokemon
     {
+        static readonly ushort[][] DukingTradeRequestedPokemonIndices = new ushort[][]
+        {
+            // Trapinch Offsets
+            new ushort[] { 0x0B4A, 0x0D1E, 0x0D3A, 0x1756 },
+            // Surskit Offsets
+            new ushort[] { 0x0B9A, 0x0D62, 0x0D7E, 0x175E },
+            // Wooper Offsets
+            new ushort[] { 0x0BEA, 0x0DA6, 0x0DC2, 0x1766 }
+        };
+        static readonly ushort[] DukingTradeGivenPokemonIndices = new ushort[] { 0x0D32, 0x0D76, 0x0DBA };
+
         const byte TradePokemonSpeciesOffset = 0x02;
         const byte TradePokemonLevelOffset = 0x0B;
         const byte TradePokemonMoveOffset = 0x26;
@@ -110,6 +121,35 @@ namespace XDCommon.PokemonDefinitions
         public void SetMove(int i, ushort move)
         {
             iso.DOL.ExtractedFile.WriteBytesAtOffset(StartOffset + TradePokemonMoveOffset + i * 4, move.GetBytes());
+        }
+
+        public static void UpdateTrades(ISO iso, Pokemon[] newRequestedPokemon, Pokemon[] newGivenPokemon)
+        {
+            var tradeScript = iso.GetFSysFile("M2_guild_1F_2.fsys").GetEntryByFileName("M2_guild_1F_2.scd");
+
+            if (newGivenPokemon.Length < 3)
+            {
+                throw new ArgumentException();
+            }
+            
+            if (newGivenPokemon.Length < 3)
+            {
+                throw new ArgumentException();
+            }
+
+
+            for (int i = 0; i < DukingTradeGivenPokemonIndices.Length; i++)
+            {
+                var requestPokemonNameId = newRequestedPokemon[i].NameID.GetBytes();
+                foreach (var requestedOffset in DukingTradeRequestedPokemonIndices[i])
+                {
+                    tradeScript.ExtractedFile.WriteBytesAtOffset(requestedOffset, requestPokemonNameId);
+                }
+
+                var tradePoke = newGivenPokemon[i].NameID;
+                var givenOffset = DukingTradeGivenPokemonIndices[i];
+                tradeScript.ExtractedFile.WriteBytesAtOffset(givenOffset, tradePoke.GetBytes());
+            }
         }
     }
 }

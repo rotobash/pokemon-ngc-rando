@@ -110,6 +110,7 @@
 
         public TradeRandomSetting Trade { get; set; }
         public RandomMoveSetOptions MoveSetOptions { get; set; }
+        public bool UsePokeSpotPokemonInTrade { get; set; }
     }
 
     public enum MoveCompatibility
@@ -134,6 +135,7 @@
     {
         Unchanged,
         Given,
+        Requested,
         Both,
     }
 }
