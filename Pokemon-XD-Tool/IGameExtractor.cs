@@ -64,7 +64,7 @@ namespace Randomizer
             ValidMoves = MoveList.Where(m => m.MoveIndex != 0 && m.MoveIndex != 355).ToArray();
             ValidPokemon = PokemonList.Where(p => !RandomizerConstants.SpecialPokemon.Contains(p.Index)).ToArray();
             ValidItems = ItemList.Where(i => !RandomizerConstants.InvalidItemList.Contains(i.Index)).ToArray();
-            NonKeyItems = ValidItems.Where(i => i.BagSlot != BagSlots.KeyItems || i.BagSlot != BagSlots.None).ToArray();
+            NonKeyItems = ValidItems.Where(i => i.BagSlot != BagSlots.KeyItems && i.BagSlot != BagSlots.None).ToArray();
             TMs = ItemList.Where(i => i is TM).Select(i => i as TM).ToArray();
 
             if (extractor is XDExtractor xd)
