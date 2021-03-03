@@ -57,6 +57,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="tradeUsePokeSpotCheck.ToolTip" xml:space="preserve">
+    <value>Will set the requested Pokemon in a trade to one of the PokeSpot Pokemon. Recommended if randomizing PokeSpots or trades. 
+If randomizing PokeSpots, it may be impossible to find Duking's requested Pokemon and if randomizing trades.
+</value>
+  </data>
   <data name="forceFourMoveCheck.ToolTip" xml:space="preserve">
     <value>If not randomizing the movesets, some Pokemon's level up moves don't have enough at their level.
 Selecting this will ensure that all Pokemon will have four moves. Will randomly pick moves to fill out the rest.</value>

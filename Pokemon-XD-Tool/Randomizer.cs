@@ -65,7 +65,7 @@ namespace Randomizer
             if (gameExtractor is XDExtractor xd)
             {
                 var starter = xd.GetStarter();
-                StaticPokemonShuffler.RandomizeXDStatics(random, settings, starter, extractedGameStructures);
+                StaticPokemonShuffler.RandomizeXDStatics(random, settings, starter, gameExtractor.ISO, extractedGameStructures);
             }
             else if (gameExtractor is ColoExtractor colo)
             {

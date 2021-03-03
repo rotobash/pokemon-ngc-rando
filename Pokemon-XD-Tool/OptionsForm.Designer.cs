@@ -92,8 +92,8 @@ namespace Randomizer
             this.verboseLogCheck.Size = new System.Drawing.Size(42, 19);
             this.verboseLogCheck.TabIndex = 8;
             this.verboseLogCheck.Text = "On";
+            this.infoToolTip.SetToolTip(this.verboseLogCheck, "Will generate a log of what values were randomized and their new value.");
             this.verboseLogCheck.UseVisualStyleBackColor = true;
-            this.verboseLogCheck.Visible = false;
             this.verboseLogCheck.CheckedChanged += new System.EventHandler(this.verboseLogCheck_CheckedChanged);
             // 
             // label5
@@ -104,7 +104,7 @@ namespace Randomizer
             this.label5.Size = new System.Drawing.Size(66, 15);
             this.label5.TabIndex = 3;
             this.label5.Text = "Log To File:";
-            this.label5.Visible = false;
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label4
             // 

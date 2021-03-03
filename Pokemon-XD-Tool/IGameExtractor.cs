@@ -7,11 +7,13 @@ using System.Text;
 using System.Threading.Tasks;
 using XDCommon;
 using XDCommon.PokemonDefinitions;
+using XDCommon.Utility;
 
 namespace Randomizer
 {
     public interface IGameExtractor
     {
+        ISO ISO { get; }
         ITrainerPool[] ExtractPools(Pokemon[] pokemon, Move[] moves);
         Ability[] ExtractAbilities();
         Items[] ExtractItems();
@@ -62,7 +64,7 @@ namespace Randomizer
             ValidMoves = MoveList.Where(m => m.MoveIndex != 0 && m.MoveIndex != 355).ToArray();
             ValidPokemon = PokemonList.Where(p => !RandomizerConstants.SpecialPokemon.Contains(p.Index)).ToArray();
             ValidItems = ItemList.Where(i => !RandomizerConstants.InvalidItemList.Contains(i.Index)).ToArray();
-            NonKeyItems = ValidItems.Where(i => i.BagSlot != BagSlots.KeyItems || i.BagSlot != BagSlots.None).ToArray();
+            NonKeyItems = ValidItems.Where(i => i.BagSlot != BagSlots.KeyItems && i.BagSlot != BagSlots.None).ToArray();
             TMs = ItemList.Where(i => i is TM).Select(i => i as TM).ToArray();
 
             if (extractor is XDExtractor xd)

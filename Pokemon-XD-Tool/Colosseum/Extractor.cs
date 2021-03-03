@@ -5,11 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using XDCommon.PokemonDefinitions;
+using XDCommon.Utility;
 
 namespace Randomizer.Colosseum
 {
     public class ColoExtractor : IGameExtractor
     {
+        public ISO ISO { get; }
         public Items[] ExtractItems()
         {
             throw new NotImplementedException();

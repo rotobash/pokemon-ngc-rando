@@ -12,6 +12,7 @@ namespace Randomizer.Shufflers
     {
         public static void ShuffleCards(Random random, BingoCardShufflerSettings settings, BattleBingoCard[] bingoCards, ExtractedGame extractedGame)
         {
+            Logger.Log("=============================== Bingo Cards ===============================\n\n");
             var potentialPokes = extractedGame.PokemonList;
             if (settings.RandomizeBattleBingoPokemon && settings.ForceStrongPokemon)
             {
@@ -42,12 +43,14 @@ namespace Randomizer.Shufflers
                     {
                         // randomize starter
                         battleBingoPokemon = card.StartingPokemon;
+                        Logger.Log($"Starter: {extractedGame.PokemonList[battleBingoPokemon.Pokemon].Name} -> ");
                     }
                     else
                     {
                         var panel = card.Panels[i];
                         if (panel.PanelType != BattleBingoPanelType.Pokemon) continue;
                         battleBingoPokemon = panel.BingoPokemon;
+                        Logger.Log($"Panel Pokemon: {extractedGame.PokemonList[battleBingoPokemon.Pokemon].Name} -> ");
                     }
 
                     newPoke = extractedGame.PokemonList[battleBingoPokemon.Pokemon];
@@ -56,6 +59,7 @@ namespace Randomizer.Shufflers
                         newPoke = potentialPokes[random.Next(0, potentialPokes.Length)];
                         battleBingoPokemon.Pokemon = (ushort)newPoke.Index;
                     }
+                    Logger.Log($"{extractedGame.PokemonList[battleBingoPokemon.Pokemon].Name}\n");
 
                     if (settings.RandomizeBattleBingoMoveSets)
                     {
@@ -71,6 +75,7 @@ namespace Randomizer.Shufflers
                         // pick good moves
                         battleBingoPokemon.Move = (ushort)movePool.ElementAt(random.Next(0, movePool.Count())).MoveIndex;
                     }
+                    Logger.Log($"Move: {extractedGame.MoveList[battleBingoPokemon.Move].Name}\n\n");
                 }
                 // if you shuffle the panels do you have to write back the offset?
             }

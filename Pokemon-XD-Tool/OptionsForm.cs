@@ -57,5 +57,10 @@ namespace Randomizer
         {
             Configuration.GoodDamagingMovePower = (int)movePower.Value;
         }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

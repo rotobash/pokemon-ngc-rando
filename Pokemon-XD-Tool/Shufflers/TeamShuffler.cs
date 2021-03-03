@@ -18,7 +18,8 @@ namespace Randomizer.Shufflers
             {
                 potentialMoves = potentialMoves.Where(m => m.BasePower >= Configuration.GoodDamagingMovePower).ToArray();
             }
-            
+            Logger.Log("=============================== Trainers ===============================\n\n");
+
             // yikes
             foreach (var pool in extractedGame.TrainerPools)
             {
@@ -30,39 +31,49 @@ namespace Randomizer.Shufflers
                     if (!trainer.IsSet)
                         continue;
 
+                    Logger.Log($"Trainer {trainer.Name}\nWith:\n");
                     foreach (var pokemon in trainer.Pokemon)
                     {
                         if (pokemon.Pokemon == 0)
                             continue;
 
                         RandomizePokemon(random, settings, pokemon, extractedGame.PokemonList);
+                        Logger.Log($"{extractedGame.PokemonList[pokemon.Pokemon].Name}\n");
+                        Logger.Log($"Is a shadow Pokemon: {pokemon.IsShadow}\n");
 
                         if (settings.RandomizeHeldItems)
                         {
-                            pokemon.Item = (ushort)potentialItems[random.Next(0, potentialItems.Length)].Index;
+                            var item = potentialItems[random.Next(0, potentialItems.Length)];
+                            pokemon.Item = (ushort)item.Index;
+                            Logger.Log($"Holding a(n) {item.Name}\n");
                         }
 
-                        if (settings.SetMinimumShadowCatchRate)
+                        if (settings.SetMinimumShadowCatchRate && pokemon.IsShadow)
                         {
                             if (pokemon.ShadowCatchRate == 0)
                             {
                                 pokemon.ShadowCatchRate = extractedGame.PokemonList[pokemon.Pokemon].CatchRate;
                             }
-
                             var catchRate = Math.Max(pokemon.ShadowCatchRate, settings.ShadowCatchRateMinimum);
                             var catchRateIncrease = (byte)Math.Clamp(catchRate, 0, byte.MaxValue);
+
+                            Logger.Log($"Setting catch rate to {catchRateIncrease}\n");
                             pokemon.ShadowCatchRate = catchRateIncrease;
                         }
                         if (settings.BoostTrainerLevel)
                         {
                             var level = pokemon.Level;
                             var levelIncrease = (byte)Math.Clamp(level + level * settings.BoostTrainerLevelPercent, 1, 100);
+                            Logger.Log($"Boosting level from {pokemon.Level} to {levelIncrease}\n");
                             pokemon.Level = levelIncrease;
                         }
 
                         RandomizeMoveSet(random, settings, pokemon, extractedGame);
+                        Logger.Log($"\n");
                     }
+                    Logger.Log($"\n");
                 }
+                Logger.Log($"\n");
             }
         }
 
@@ -98,7 +109,7 @@ namespace Randomizer.Shufflers
         public static void RandomizeMoveSet(Random random, TeamShufflerSettings settings, ITrainerPokemon pokemon, ExtractedGame extractedGame)
         {
             ushort[] moveSet = null;
-            
+
             if (settings.MoveSetOptions.MetronomeOnly)
             {
                 moveSet = Enumerable.Repeat(RandomizerConstants.MetronomeIndex, Constants.NumberOfPokemonMoves).ToArray();
@@ -110,9 +121,12 @@ namespace Randomizer.Shufflers
 
             if (moveSet != null)
             {
+                Logger.Log($"It knows:\n");
                 for (int i = 0; i < moveSet.Length; i++)
                 {
-                    pokemon.SetMove(i, moveSet.ElementAt(i));
+                    var move = moveSet[i];
+                    Logger.Log($"{extractedGame.MoveList[move].Name}\n");
+                    pokemon.SetMove(i, move);
                 }
             }
         }

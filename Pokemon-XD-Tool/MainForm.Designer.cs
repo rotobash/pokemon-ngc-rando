@@ -102,9 +102,11 @@ namespace Randomizer
             this.unchangedStarterCheck = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
-            this.tradeBothRandomCheck = new System.Windows.Forms.RadioButton();
             this.tradeUnchangedCheck = new System.Windows.Forms.RadioButton();
             this.tradeRandomGivenCheck = new System.Windows.Forms.RadioButton();
+            this.tradeBothRandomCheck = new System.Windows.Forms.RadioButton();
+            this.tradeRequestedRandomCheck = new System.Windows.Forms.RadioButton();
+            this.tradeUsePokeSpotCheck = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.starterLabel = new System.Windows.Forms.Label();
@@ -1318,9 +1320,11 @@ namespace Randomizer
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel14.Controls.Add(this.tradeBothRandomCheck, 1, 2);
             this.tableLayoutPanel14.Controls.Add(this.tradeUnchangedCheck, 1, 0);
             this.tableLayoutPanel14.Controls.Add(this.tradeRandomGivenCheck, 1, 1);
+            this.tableLayoutPanel14.Controls.Add(this.tradeBothRandomCheck, 1, 3);
+            this.tableLayoutPanel14.Controls.Add(this.tradeRequestedRandomCheck, 1, 2);
+            this.tableLayoutPanel14.Controls.Add(this.tradeUsePokeSpotCheck, 2, 0);
             this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel14.Location = new System.Drawing.Point(3, 19);
             this.tableLayoutPanel14.Name = "tableLayoutPanel14";
@@ -1331,17 +1335,6 @@ namespace Randomizer
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel14.Size = new System.Drawing.Size(344, 109);
             this.tableLayoutPanel14.TabIndex = 3;
-            // 
-            // tradeBothRandomCheck
-            // 
-            this.tradeBothRandomCheck.AutoSize = true;
-            this.tradeBothRandomCheck.Location = new System.Drawing.Point(37, 57);
-            this.tradeBothRandomCheck.Name = "tradeBothRandomCheck";
-            this.tradeBothRandomCheck.Size = new System.Drawing.Size(131, 19);
-            this.tradeBothRandomCheck.TabIndex = 5;
-            this.tradeBothRandomCheck.Text = "Randomize Both Requested And Given";
-            this.infoToolTip.SetToolTip(this.tradeBothRandomCheck, "Randomize both the requested and given Pokemon in a trade.");
-            this.tradeBothRandomCheck.UseVisualStyleBackColor = true;
             // 
             // tradeUnchangedCheck
             // 
@@ -1363,8 +1356,47 @@ namespace Randomizer
             this.tradeRandomGivenCheck.Size = new System.Drawing.Size(131, 19);
             this.tradeRandomGivenCheck.TabIndex = 4;
             this.tradeRandomGivenCheck.Text = "Randomize Given Pokemon Only";
-            this.infoToolTip.SetToolTip(this.tradeRandomGivenCheck, "Change only the Pokemon given in a trade.");
+            this.infoToolTip.SetToolTip(this.tradeRandomGivenCheck, "Randomize the Pokemon given in trade.\r\nThis randomizes the Duking/Hordel trades i" +
+        "n XD\r\nand Duking\'s Plusle in Colosseum");
             this.tradeRandomGivenCheck.UseVisualStyleBackColor = true;
+            // 
+            // tradeBothRandomCheck
+            // 
+            this.tradeBothRandomCheck.AutoSize = true;
+            this.tradeBothRandomCheck.Location = new System.Drawing.Point(37, 84);
+            this.tradeBothRandomCheck.Name = "tradeBothRandomCheck";
+            this.tradeBothRandomCheck.Size = new System.Drawing.Size(131, 19);
+            this.tradeBothRandomCheck.TabIndex = 5;
+            this.tradeBothRandomCheck.Text = "Randomize Both Requested And Given";
+            this.infoToolTip.SetToolTip(this.tradeBothRandomCheck, "Randomize both the requested and given Pokemon in a trade.\r\nNote: You can enable " +
+        "logging to see what Pokemon he wants but you will see what everything has been r" +
+        "andomized to.");
+            this.tradeBothRandomCheck.UseVisualStyleBackColor = true;
+            // 
+            // tradeRequestedRandomCheck
+            // 
+            this.tradeRequestedRandomCheck.AutoSize = true;
+            this.tableLayoutPanel14.SetColumnSpan(this.tradeRequestedRandomCheck, 2);
+            this.tradeRequestedRandomCheck.Location = new System.Drawing.Point(37, 57);
+            this.tradeRequestedRandomCheck.Name = "tradeRequestedRandomCheck";
+            this.tradeRequestedRandomCheck.Size = new System.Drawing.Size(142, 19);
+            this.tradeRequestedRandomCheck.TabIndex = 6;
+            this.tradeRequestedRandomCheck.TabStop = true;
+            this.tradeRequestedRandomCheck.Text = "Randomize Requested";
+            this.infoToolTip.SetToolTip(this.tradeRequestedRandomCheck, "Randomize the requested Pokemon in a trade.\r\nNote: You can enable logging to see " +
+        "what Pokemon he wants but you will see what everything has been randomized to.");
+            this.tradeRequestedRandomCheck.UseVisualStyleBackColor = true;
+            // 
+            // tradeUsePokeSpotCheck
+            // 
+            this.tradeUsePokeSpotCheck.AutoSize = true;
+            this.tradeUsePokeSpotCheck.Location = new System.Drawing.Point(174, 3);
+            this.tradeUsePokeSpotCheck.Name = "tradeUsePokeSpotCheck";
+            this.tradeUsePokeSpotCheck.Size = new System.Drawing.Size(152, 19);
+            this.tradeUsePokeSpotCheck.TabIndex = 7;
+            this.tradeUsePokeSpotCheck.Text = "Use PokeSpot Pokemon";
+            this.infoToolTip.SetToolTip(this.tradeUsePokeSpotCheck, resources.GetString("tradeUsePokeSpotCheck.ToolTip"));
+            this.tradeUsePokeSpotCheck.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
@@ -3684,6 +3716,8 @@ namespace Randomizer
         private System.Windows.Forms.CheckBox randomizeBattleBingoMovesetsCheck;
         private System.Windows.Forms.CheckBox randomizeBattleBingoPokemonCheck;
         private System.Windows.Forms.CheckBox banBattleCDsCheck;
+        private System.Windows.Forms.RadioButton tradeRequestedRandomCheck;
+        private System.Windows.Forms.CheckBox tradeUsePokeSpotCheck;
     }
 }
 
