@@ -8,7 +8,7 @@ namespace XDCommon.PokemonDefinitions
 {
     public class Pokemarts
     {
-        int index;
+        public int Index { get; }
         REL pocket;
         int originalItemsCount;
 
@@ -16,8 +16,8 @@ namespace XDCommon.PokemonDefinitions
 
         public ushort FirstItemIndex
         {
-            get => pocket.ExtractedFile.GetUShortAtOffset(pocket.GetPointer(Constants.MartStartIndexes) + (index * 4) + 2);
-            set => pocket.ExtractedFile.WriteBytesAtOffset(pocket.GetPointer(Constants.MartStartIndexes) + (index * 4) + 2, value.GetBytes());
+            get => pocket.ExtractedFile.GetUShortAtOffset(pocket.GetPointer(Constants.MartStartIndexes) + (Index * 4) + 2);
+            set => pocket.ExtractedFile.WriteBytesAtOffset(pocket.GetPointer(Constants.MartStartIndexes) + (Index * 4) + 2, value.GetBytes());
         }
         public List<ushort> Items
         {
@@ -27,7 +27,7 @@ namespace XDCommon.PokemonDefinitions
 
         public Pokemarts(int index, ISO iso)
         {
-            this.index = index;
+            Index = index;
             pocket = iso.GetFSysFile("pocket_menu.fsys").GetEntryByFileName("pocket_menu.rel") as REL;
             LoadItems();
         }

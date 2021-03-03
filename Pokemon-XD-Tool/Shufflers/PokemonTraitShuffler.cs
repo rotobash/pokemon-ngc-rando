@@ -21,6 +21,8 @@ namespace Randomizer.Shufflers
             var pokeEvosRandomized = new List<int>();
             var easyEvolutions = new List<string>();
 
+            Logger.Log("=============================== Pokemon ===============================\n\n");
+
             // set up filtered lists here to avoid recalculating it every loop
             IEnumerable<Move> movefilter = extractedGame.ValidMoves;
             if (settings.MoveSetOptions.BanShadowMoves)
@@ -39,9 +41,11 @@ namespace Randomizer.Shufflers
                 abilitiesFilter = abilitiesFilter.Where(a => !RandomizerConstants.BadAbilityList.Contains(a.Index));
             }
 
+
             // do this first for "follow evolution" checks
             if (settings.RandomizeEvolutions)
             {
+                Logger.Log($"Setting New Evolutions\n\n");
                 foreach (var poke in extractedGame.PokemonList)
                 {
                     // prevent loops and multiple pokemon evolving into the same pokemon
@@ -75,15 +79,18 @@ namespace Randomizer.Shufflers
                         if (potentialPokes.Length == 0)
                         {
                             // null it out
+                            Logger.Log($"End of the line for {poke.Name}.\n");
                             poke.SetEvolution(i, 0, 0, 0);
                         }
                         else
                         {
                             var newPoke = potentialPokes[random.Next(0, potentialPokes.Length)];
                             // same evolution, just evolves into something else
+                            Logger.Log($"{poke.Name} evolves into {newPoke.Name} instead of {extractedGame.PokemonList[evolution.EvolvesInto].Name}.\n");
                             poke.SetEvolution(i, (byte)evolution.EvolutionMethod, evolution.EvolutionCondition, (ushort)newPoke.Index);
                             pokeEvosRandomized.Add(newPoke.Index);
                         }
+                        Logger.Log($"\n");
                     }
                 }
             }
@@ -93,12 +100,15 @@ namespace Randomizer.Shufflers
                 if (RandomizerConstants.SpecialPokemon.Contains(poke.Index))
                     continue;
 
+                Logger.Log($"{poke.Name}'s Traits:\n\n");
+
                 ChangeCompatibility(random, settings.TMCompatibility, poke, extractedGame, true);
                 if (extractedGame.TutorMoves.Length > 0)
                     ChangeCompatibility(random, settings.TutorCompatibility, poke, extractedGame, false);
 
                 // todo: use enum for bst option
-                if (settings.RandomizeBaseStats > 0 && settings.BaseStatsFollowEvolution && !pokeBaseStatsRandomized.Contains(poke.Name))
+                // and follow evolution
+                if (settings.RandomizeBaseStats > 0) // || (settings.BaseStatsFollowEvolution && !pokeBaseStatsRandomized.Contains(poke.Name)))
                 {
                     IList<byte> newBsts;
                     if (settings.RandomizeBaseStats == 1)
@@ -148,6 +158,8 @@ namespace Randomizer.Shufflers
                     poke.SpecialDefense = newBsts[4];
                     poke.Speed = newBsts[5];
 
+                    Logger.Log($"Setting BSTs: H {newBsts[0]}/A {newBsts[1]}/D {newBsts[2]}/SpA {newBsts[3]}/SpD {newBsts[4]}/S {newBsts[5]}.\n");
+
                     if (settings.BaseStatsFollowEvolution)
                     {
                         pokeBaseStatsRandomized.Add(poke.Name);
@@ -165,6 +177,8 @@ namespace Randomizer.Shufflers
                     poke.LevelUpRate = RandomizerConstants.Legendaries.Contains(poke.Index)
                         ? ExpRate.Slow
                         : ExpRate.Fast;
+
+                    Logger.Log($"Setting EXP rate to {poke.LevelUpRate}.\n");
                 }
 
                 if (settings.RandomizeAbilities && !pokeAbilitiesRandomized.Contains(poke.Name))
@@ -176,6 +190,7 @@ namespace Randomizer.Shufflers
                     {
                         var endOrSplitEvolution = false;
                         Pokemon currentPoke = poke;
+                        pokeAbilitiesRandomized.Add(currentPoke.Name);
                         while (!endOrSplitEvolution)
                         {
                             endOrSplitEvolution = CheckForSplitOrEndEvolution(currentPoke, out var _);
@@ -183,9 +198,12 @@ namespace Randomizer.Shufflers
                             if (!endOrSplitEvolution)
                             {
                                 var evoPoke = extractedGame.PokemonList[currentPoke.Evolutions[0].EvolvesInto];
-                                pokeAbilitiesRandomized.Add(currentPoke.Name);
                                 evoPoke.Ability1 = poke.Ability1;
                                 evoPoke.Ability2 = poke.Ability2;
+
+                                Logger.Log($"Setting {evoPoke.Name}'s Ability to match {poke.Name}.\n");
+
+                                pokeAbilitiesRandomized.Add(evoPoke.Name);
                                 currentPoke = evoPoke;
                             }
                         }
@@ -201,6 +219,7 @@ namespace Randomizer.Shufflers
                     {
                         var endOrSplitEvolution = false;
                         Pokemon currentPoke = poke;
+                        pokeTypesRandomized.Add(currentPoke.Name);
                         while (!endOrSplitEvolution)
                         {
                             endOrSplitEvolution = CheckForSplitOrEndEvolution(currentPoke, out var _);
@@ -208,9 +227,12 @@ namespace Randomizer.Shufflers
                             if (!endOrSplitEvolution)
                             {
                                 var evoPoke = extractedGame.PokemonList[currentPoke.Evolutions[0].EvolvesInto];
-                                pokeTypesRandomized.Add(currentPoke.Name);
                                 evoPoke.Type1 = currentPoke.Type1;
                                 evoPoke.Type2 = currentPoke.Type2;
+
+                                Logger.Log($"Setting {evoPoke.Name}'s Type to match {poke.Name}.\n");
+
+                                pokeTypesRandomized.Add(evoPoke.Name);
                                 currentPoke = evoPoke;
                             }
                         }
@@ -227,6 +249,7 @@ namespace Randomizer.Shufflers
                             if (method == EvolutionMethods.TradeWithItem || method == EvolutionMethods.Trade || method == EvolutionMethods.HappinessDay || method == EvolutionMethods.HappinessNight)
                             {
                                 poke.SetEvolution(i, (byte)EvolutionMethods.LevelUp, (ushort)Configuration.TradePokemonEvolutionLevel, poke.Evolutions[i].EvolvesInto);
+                                Logger.Log($"Setting to evolve via level up at level {Configuration.TradePokemonEvolutionLevel}\n");
                                 break;
                             }
                         }
@@ -245,19 +268,24 @@ namespace Randomizer.Shufflers
                                     var evoPokeEvolution = evoPoke.Evolutions[0];
                                     if (evoPokeEvolution.EvolutionMethod == EvolutionMethods.LevelUp && evoPokeEvolution.EvolutionCondition > 40)
                                     {
-                                        // make a bold assumption that if the third stage evolves by level up then the second does too
+                                        // make a bold assumption that if the second stage evolves by level up then the first does too
                                         evoPoke.SetEvolution(0, (byte)evoPokeEvolution.EvolutionMethod, 40, evoPokeEvolution.EvolvesInto);
                                         poke.SetEvolution(0, (byte)evolution.EvolutionMethod, 30, evolution.EvolvesInto);
+
+                                        Logger.Log($"Setting {poke.Name} to evolve at level 30.\n");
+                                        Logger.Log($"Setting {evoPoke.Name} to evolve at level 40.\n");
                                     }
                                 }
                                 else if (count == 0 && evolution.EvolutionMethod == EvolutionMethods.LevelUp && evolution.EvolutionCondition > 40)
                                 {
                                     // this is the last stage
                                     poke.SetEvolution(0, (byte)evolution.EvolutionMethod, 40, evolution.EvolvesInto);
+                                    Logger.Log($"Setting to evolve at level 40.\n");
                                 }
                             }
                         }
                     }
+                    Logger.Log($"\n");
                 }
 
                 // so I heard you like a challenge...
@@ -285,17 +313,16 @@ namespace Randomizer.Shufflers
                         if (move.Level == 0)
                             continue;
 
-                        if (settings.MoveSetOptions.MetronomeOnly)
-                        {
-                            poke.SetLevelUpMove(i, move.Level, RandomizerConstants.MetronomeIndex);
-                        }
-                        else
-                        {
-                            var newMove = potentialMoves[random.Next(0, potentialMoves.Length)];
-                            poke.SetLevelUpMove(i, move.Level, (ushort)newMove.MoveIndex);
-                        }
+                        var newMove = settings.MoveSetOptions.MetronomeOnly
+                            ? extractedGame.MoveList[RandomizerConstants.MetronomeIndex]
+                            : potentialMoves[random.Next(0, potentialMoves.Length)];
+
+                        poke.SetLevelUpMove(i, move.Level, (ushort)newMove.MoveIndex);
+                        Logger.Log($"Level Up Move at level {move.Level}: {newMove.Name}\n");
                     }
                 }
+
+                Logger.Log($"\n");
             }
         }
 
@@ -327,6 +354,9 @@ namespace Randomizer.Shufflers
             } while (!validTyping);
 
 
+            Logger.Log($"Type 1: {type}\n");
+            Logger.Log($"Type 2: {type2}\n");
+
             poke.Type1 = type;
             poke.Type2 = type2;
         }
@@ -336,20 +366,23 @@ namespace Randomizer.Shufflers
             // don't do my boy shedinja dirty like this
             if (poke.Index == RandomizerConstants.ShedinjaIndex)
             {
+                Logger.Log($"No");
                 return;
             }
 
-            var firstAbility = (byte)potentialAbilities[random.Next(0, potentialAbilities.Length)].Index;
-            poke.Ability1 = firstAbility;
+            var firstAbility = potentialAbilities[random.Next(0, potentialAbilities.Length)];
+            poke.Ability1 = (byte)firstAbility.Index;
+            Logger.Log($"Ability 1: {firstAbility.Name}\n");
 
             if (poke.Ability2 > 0)
             {
                 var newAbility = firstAbility;
-                while (newAbility != firstAbility)
+                while (newAbility.Index != firstAbility.Index)
                 {
-                    newAbility = (byte)potentialAbilities[random.Next(0, potentialAbilities.Length)].Index;
+                    newAbility = potentialAbilities[random.Next(0, potentialAbilities.Length)];
                 }
-                poke.Ability2 = newAbility;
+                poke.Ability2 = (byte)newAbility.Index;
+                Logger.Log($"Ability 2: {newAbility.Name}\n");
             }
         }
 
@@ -361,6 +394,7 @@ namespace Randomizer.Shufflers
                 {
                     if (tms)
                     {
+                        Logger.Log($"TM Compatibility: Full\n");
                         for (int i = 0; i < pokemon.LearnableTMs.Length; i++)
                         {
                             pokemon.SetLearnableTMS(i, true);
@@ -368,6 +402,7 @@ namespace Randomizer.Shufflers
                     }
                     else
                     {
+                        Logger.Log($"Tutor Move Compatibility: Full\n");
                         for (int i = 0; i < pokemon.TutorMoves.Length; i++)
                         {
                             pokemon.SetTutorMoves(i, true);
@@ -379,40 +414,52 @@ namespace Randomizer.Shufflers
                 {
                     if (tms)
                     {
+                        Logger.Log($"TM Compatibility:\n");
                         for (int i = 0; i < pokemon.LearnableTMs.Length; i++)
                         {
-                            pokemon.SetLearnableTMS(i, random.Next(0, 2) == 0);
+                            var compatible = random.Next(0, 2) == 0;
+                            pokemon.SetLearnableTMS(i, compatible);
+                            Logger.Log($"TM{extractedGame.TMs[i].TMIndex} - {compatible}\n");
                         }
                     }
                     else
                     {
+                        Logger.Log($"Tutor Move Compatibility:\n");
                         for (int i = 0; i < pokemon.TutorMoves.Length; i++)
                         {
-                            pokemon.SetTutorMoves(i, random.Next(0, 2) == 0);
+                            var compatible = random.Next(0, 2) == 0;
+                            pokemon.SetTutorMoves(i, compatible);
+                            Logger.Log($"{i + 1} - {compatible}\n");
                         }
                     }
+                    Logger.Log($"\n");
                 }
                 break;
                 case MoveCompatibility.RandomPreferType:
                 {
                     if (tms)
                     {
+                        Logger.Log($"TM Compatibility:\n");
                         var tmMoves = extractedGame.TMs.Select(t => extractedGame.MoveList[t.Move]).ToArray();
                         for (int i = 0; i < pokemon.LearnableTMs.Length; i++)
                         {
                             var isCompatible = tmMoves[i].Type == pokemon.Type1 || tmMoves[i].Type == pokemon.Type2 || random.Next(0, 10) >= 8;
                             pokemon.SetLearnableTMS(i, isCompatible);
+                            Logger.Log($"TM{extractedGame.TMs[i].TMIndex} - {isCompatible}\n");
                         }
                     }
                     else
                     {
+                        Logger.Log($"Tutor Move Compatibility:\n");
                         var tutorMoves = extractedGame.TutorMoves.Select(t => extractedGame.MoveList[t.Move]).ToArray();
                         for (int i = 0; i < pokemon.TutorMoves.Length; i++)
                         {
                             var isCompatible = tutorMoves[i].Type == pokemon.Type1 || tutorMoves[i].Type == pokemon.Type2 || random.Next(0, 10) >= 8;
                             pokemon.SetTutorMoves(i, isCompatible);
+                            Logger.Log($"{i + 1} - {isCompatible}\n");
                         }
                     }
+                    Logger.Log($"\n");
                 }
                 break;
                 default:

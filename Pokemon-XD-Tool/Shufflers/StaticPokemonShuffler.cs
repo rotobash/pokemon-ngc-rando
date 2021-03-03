@@ -15,6 +15,7 @@ namespace Randomizer.Shufflers
             int index = 0;
             Evolution secondStage;
             bool condition = false;
+            Logger.Log("=============================== Statics ===============================\n\n");
             // pick starters
             // basically set a condition based on the setting, keep looping till you meet it
             switch (settings.Starter)
@@ -98,15 +99,21 @@ namespace Randomizer.Shufflers
                     break;
             }
             starter.Pokemon = (ushort)index;
+            Logger.Log($"Your new starter is {extractedGame.PokemonList[index].Name}\n");
 
             // instance pokemon have separate movesets than the pool
             // i.e. if you don't update the moveset than your starter will have Eevee's move set
             ushort[] moves;
             if (settings.MoveSetOptions.RandomizeMovesets || settings.Starter != StarterRandomSetting.Unchanged)
             {
+                Logger.Log($"It knows:\n");
                 moves = MoveShuffler.GetNewMoveset(random, settings.MoveSetOptions, starter.Pokemon, starter.Level, extractedGame);
                 for (int i = 0; i < moves.Length; i++)
-                    starter.SetMove(i, moves[i]);
+                {
+                    var move = moves[i];
+                    Logger.Log($"{extractedGame.MoveList[move]}\n");
+                    starter.SetMove(i, move);
+                }
             }
 
             List<Pokemon> newRequestedPokemon = new List<Pokemon>();
@@ -117,6 +124,7 @@ namespace Randomizer.Shufflers
             {
                 default:
                 case TradeRandomSetting.Unchanged:
+                    Logger.Log("Unchanged\n\n");
                     return;
                 case TradeRandomSetting.Given:
                 case TradeRandomSetting.Both:
@@ -153,15 +161,20 @@ namespace Randomizer.Shufflers
                 case TradeRandomSetting.Both:
                     for (int i = 0; i < 3; i++)
                     {
+                        var pokeSpot = new PokeSpotPokemon(2, (PokeSpotType)i, iso);
                         var newRequestedPoke = settings.UsePokeSpotPokemonInTrade 
-                            ? pokemon[random.Next(0, pokemon.Length)]
-                            : pokemon[new PokeSpotPokemon(2, (PokeSpotType)index, iso).Pokemon];
+                            ? extractedGame.PokemonList[pokeSpot.Pokemon]
+                            : pokemon[random.Next(0, pokemon.Length)];
                         newRequestedPokemon.Add(newRequestedPoke);
                     }
                     break;
                 default:
                     break;
             }
+
+
+            Logger.Log($"Requested Pokemon: {string.Join(", ", newRequestedPokemon.Select(p => p.Name))}\n");
+            Logger.Log($"Given Pokemon: {string.Join(", ", newGivenPokemon.Select(p => p.Name))}\n");
 
             XDTradePokemon.UpdateTrades(iso, newRequestedPokemon.ToArray(), newGivenPokemon.ToArray());
         }

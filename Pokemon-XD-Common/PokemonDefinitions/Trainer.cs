@@ -6,6 +6,7 @@ namespace XDCommon.PokemonDefinitions
 {
     public interface ITrainer
     {
+        string Name { get; }
         ITrainerPokemon[] Pokemon { get; }
         bool IsSet { get; }
     }

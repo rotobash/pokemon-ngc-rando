@@ -93,7 +93,6 @@ namespace Randomizer
             this.verboseLogCheck.TabIndex = 8;
             this.verboseLogCheck.Text = "On";
             this.verboseLogCheck.UseVisualStyleBackColor = true;
-            this.verboseLogCheck.Visible = false;
             this.verboseLogCheck.CheckedChanged += new System.EventHandler(this.verboseLogCheck_CheckedChanged);
             // 
             // label5
@@ -104,7 +103,7 @@ namespace Randomizer
             this.label5.Size = new System.Drawing.Size(66, 15);
             this.label5.TabIndex = 3;
             this.label5.Text = "Log To File:";
-            this.label5.Visible = false;
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label4
             // 

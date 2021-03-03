@@ -25,14 +25,18 @@ namespace Randomizer.Shufflers
     {
         public static void RandomizeMoves(Random random, MoveShufflerSettings settings, ExtractedGame extractedGame)
         {
+            Logger.Log("=============================== Moves ===============================\n\n");
             foreach (var move in extractedGame.ValidMoves)
             {
+
+                Logger.Log($"{move.Name}: \n");
                 if (settings.RandomMovePower && move.BasePower > 0)
                 {
                     // sample move power with the power of math!!
                     // basically moves will average at 80 power but can be from 10 to 150
                     move.BasePower = (byte)random.Sample(80, 70);
                 }
+                Logger.Log($"Power: {move.BasePower}\n");
 
                 if (settings.RandomMoveAcc && move.Accuracy > 0)
                 {
@@ -44,12 +48,14 @@ namespace Randomizer.Shufflers
                     } while (acc == 100 && move.EffectType == MoveEffectTypes.OHKO);
                     move.Accuracy = acc;
                 }
+                Logger.Log($"Accuracy: {move.Accuracy}\n");
 
                 if (settings.RandomMovePP)
                 {
                     // pick from 1, 8, multiply by 5 to get the 5 - 40 range for PP
                     move.PP = (byte)Math.Max(5, Math.Round(random.Sample(4, 4)) * 5);
                 }
+                Logger.Log($"PP: {move.PP}\n");
 
                 if (settings.RandomMoveTypes && move.Type != PokemonTypes.None)
                 {
@@ -63,6 +69,7 @@ namespace Randomizer.Shufflers
                     while (newType == PokemonTypes.None);
                     move.Type = newType;
                 }
+                Logger.Log($"Type: {move.Type}\n");
 
                 // I don't know if this will work for colo, probably not
                 if (settings.RandomMoveCategory && move.Category != MoveCategories.None)
@@ -70,6 +77,7 @@ namespace Randomizer.Shufflers
                     var newCategory = (MoveCategories)random.Next(1, 3);
                     move.Category = newCategory;
                 }
+                Logger.Log($"Category: {move.Category}\n\n");
             }
         }
 
