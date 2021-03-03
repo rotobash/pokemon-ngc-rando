@@ -1368,7 +1368,9 @@ namespace Randomizer
             this.tradeBothRandomCheck.Size = new System.Drawing.Size(131, 19);
             this.tradeBothRandomCheck.TabIndex = 5;
             this.tradeBothRandomCheck.Text = "Randomize Both Requested And Given";
-            this.infoToolTip.SetToolTip(this.tradeBothRandomCheck, "Randomize both the requested and given Pokemon in a trade.");
+            this.infoToolTip.SetToolTip(this.tradeBothRandomCheck, "Randomize both the requested and given Pokemon in a trade.\r\nNote: You can enable " +
+        "logging to see what Pokemon he wants but you will see what everything has been r" +
+        "andomized to.");
             this.tradeBothRandomCheck.UseVisualStyleBackColor = true;
             // 
             // tradeRequestedRandomCheck
@@ -1381,7 +1383,8 @@ namespace Randomizer
             this.tradeRequestedRandomCheck.TabIndex = 6;
             this.tradeRequestedRandomCheck.TabStop = true;
             this.tradeRequestedRandomCheck.Text = "Randomize Requested";
-            this.infoToolTip.SetToolTip(this.tradeRequestedRandomCheck, "Randomize the requested Pokemon in a trade.");
+            this.infoToolTip.SetToolTip(this.tradeRequestedRandomCheck, "Randomize the requested Pokemon in a trade.\r\nNote: You can enable logging to see " +
+        "what Pokemon he wants but you will see what everything has been randomized to.");
             this.tradeRequestedRandomCheck.UseVisualStyleBackColor = true;
             // 
             // tradeUsePokeSpotCheck

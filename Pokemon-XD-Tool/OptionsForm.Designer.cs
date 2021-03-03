@@ -92,6 +92,7 @@ namespace Randomizer
             this.verboseLogCheck.Size = new System.Drawing.Size(42, 19);
             this.verboseLogCheck.TabIndex = 8;
             this.verboseLogCheck.Text = "On";
+            this.infoToolTip.SetToolTip(this.verboseLogCheck, "Will generate a log of what values were randomized and their new value.");
             this.verboseLogCheck.UseVisualStyleBackColor = true;
             this.verboseLogCheck.CheckedChanged += new System.EventHandler(this.verboseLogCheck_CheckedChanged);
             // 
