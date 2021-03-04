@@ -102,12 +102,27 @@ namespace Randomizer.Shufflers
 
             var potentialMoves = typeFilter.ToArray();
 
-            if (options.UseLevelUpMoves)
+            if (options.UseLevelUpMoves || !options.RandomizeMovesets)
             {
                 // not randomizing moves? pick level up moves then
-                foreach (var levelUpMove in extractedGame.PokemonList[pokemon].CurrentLevelMoves(level))
+                var levelUpMoves = extractedGame.PokemonList[pokemon].CurrentLevelMoves(level++);
+
+                // this *could* happen so increase the level until there's at least one move for them
+                while (!levelUpMoves.Any() && level <= 100)
+                    levelUpMoves = extractedGame.PokemonList[pokemon].CurrentLevelMoves(level++);
+
+                // still nothing, add a random move
+                if (!levelUpMoves.Any())
                 {
-                    moveSet.Add(levelUpMove.Move);
+                    var newMove = potentialMoves[random.Next(0, potentialMoves.Length)];
+                    moveSet.Add((ushort)newMove.MoveIndex);
+                }
+                else
+                {
+                    foreach (var levelUpMove in levelUpMoves)
+                    {
+                        moveSet.Add(levelUpMove.Move);
+                    }
                 }
             }
             else if (options.MinimumGoodMoves > 0)
@@ -120,7 +135,7 @@ namespace Randomizer.Shufflers
                 }
             }
 
-            while ((options.ForceFourMoves || !options.UseLevelUpMoves) && moveSet.Count < Constants.NumberOfPokemonMoves)
+            while ((options.ForceFourMoves && !options.UseLevelUpMoves) && moveSet.Count < Constants.NumberOfPokemonMoves)
             {
                 var newMove = potentialMoves[random.Next(0, potentialMoves.Length)];
                 moveSet.Add((ushort)newMove.MoveIndex);

@@ -111,7 +111,7 @@ namespace Randomizer.Shufflers
                 for (int i = 0; i < moves.Length; i++)
                 {
                     var move = moves[i];
-                    Logger.Log($"{extractedGame.MoveList[move]}\n");
+                    Logger.Log($"{extractedGame.MoveList[move].Name}\n");
                     starter.SetMove(i, move);
                 }
             }
