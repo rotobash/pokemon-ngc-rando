@@ -42,7 +42,7 @@ namespace Randomizer.Shufflers
                 {
                     // randomize accuracy, repick if the moves is OHKO and 100% accurate cause that's a yikes
                     byte acc;
-                    do 
+                    do
                     {
                         acc = (byte)Math.Min(100, random.Sample(80, 30));
                     } while (acc == 100 && move.EffectType == MoveEffectTypes.OHKO);
@@ -135,10 +135,13 @@ namespace Randomizer.Shufflers
                 }
             }
 
-            while ((options.ForceFourMoves && !options.UseLevelUpMoves) && moveSet.Count < Constants.NumberOfPokemonMoves)
+            if (options.RandomizeMovesets || options.ForceFourMoves)
             {
-                var newMove = potentialMoves[random.Next(0, potentialMoves.Length)];
-                moveSet.Add((ushort)newMove.MoveIndex);
+                while (moveSet.Count < Constants.NumberOfPokemonMoves)
+                {
+                    var newMove = potentialMoves[random.Next(0, potentialMoves.Length)];
+                    moveSet.Add((ushort)newMove.MoveIndex);
+                }
             }
 
             return moveSet.ToArray();
