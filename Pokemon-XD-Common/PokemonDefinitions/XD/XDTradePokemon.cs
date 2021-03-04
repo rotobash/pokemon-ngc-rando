@@ -132,7 +132,7 @@ namespace XDCommon.PokemonDefinitions
                 throw new ArgumentException();
             }
             
-            if (newGivenPokemon.Length < 3)
+            if (newRequestedPokemon.Length < 3)
             {
                 throw new ArgumentException();
             }

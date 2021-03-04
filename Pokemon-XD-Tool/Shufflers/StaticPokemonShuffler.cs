@@ -155,23 +155,14 @@ namespace Randomizer.Shufflers
             }
 
             // set requested
-            switch (settings.Trade)
+            for (int i = 0; i < 3; i++)
             {
-                case TradeRandomSetting.Requested:
-                case TradeRandomSetting.Both:
-                    for (int i = 0; i < 3; i++)
-                    {
-                        var pokeSpot = new PokeSpotPokemon(2, (PokeSpotType)i, iso);
-                        var newRequestedPoke = settings.UsePokeSpotPokemonInTrade 
-                            ? extractedGame.PokemonList[pokeSpot.Pokemon]
-                            : pokemon[random.Next(0, pokemon.Length)];
-                        newRequestedPokemon.Add(newRequestedPoke);
-                    }
-                    break;
-                default:
-                    break;
+                var pokeSpot = new PokeSpotPokemon(2, (PokeSpotType)i, iso);
+                var newRequestedPoke = settings.UsePokeSpotPokemonInTrade || settings.Trade == TradeRandomSetting.Requested  || settings.Trade == TradeRandomSetting.Both
+                    ? extractedGame.PokemonList[pokeSpot.Pokemon]
+                    : pokemon[random.Next(0, pokemon.Length)];
+                newRequestedPokemon.Add(newRequestedPoke);
             }
-
 
             Logger.Log($"Requested Pokemon: {string.Join(", ", newRequestedPokemon.Select(p => p.Name))}\n");
             Logger.Log($"Given Pokemon: {string.Join(", ", newGivenPokemon.Select(p => p.Name))}\n");
