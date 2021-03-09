@@ -3440,6 +3440,7 @@ namespace Randomizer
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.Text = "Randomizer";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gamePictureBox)).EndInit();
             this.settingsTab.ResumeLayout(false);
