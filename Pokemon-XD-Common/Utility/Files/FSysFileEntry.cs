@@ -119,7 +119,7 @@ namespace XDCommon.Utility
 
             if (isCompressed)
             {
-                var tempStream = $"{Path}/{FileName}.lzss".GetNewStream();
+                using var tempStream = $"{Path}/{FileName}.lzss".GetNewStream();
                 ExtractedFile.CopyTo(tempStream);
                 tempStream.Flush();
                 tempStream.Seek(0, SeekOrigin.Begin);
