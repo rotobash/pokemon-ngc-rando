@@ -59,23 +59,18 @@ namespace Randomizer
                         {
                             gamePictureBox.Image = new Bitmap("Images/colo-logo.jpg");
                             gameExtractor = new ColoExtractor(iso);
-                            starterComboBox.SelectedItem = "ESPEON";
-                            starter2ComboBox.SelectedItem = "UMBREON";
-                            // disable XD only options
-                            foreach (Control ctrl in battleBingoTabPage.Controls) ctrl.Enabled = false;
-                            pokeSpotGroupBox.Enabled = false;
+                            SetControlDisplay(false);
                             break;
                         }
                         case Game.XD:
                         {
                             gamePictureBox.Image = new Bitmap("Images/xd-logo.jpg");
                             gameExtractor = new XDExtractor(iso);
-                            starterComboBox.SelectedItem = "EEVEE";
-                            starter2Label.Visible = false;
-                            starter2ComboBox.Visible = false;
+                            SetControlDisplay(true);
                             break;
                         }
                         default:
+                            progressMessageLabel.Text = "Error reading ISO";
                             return;
                     }
                     gameLabel.Text = iso.Game.ToString();
@@ -84,6 +79,31 @@ namespace Randomizer
                     progressMessageLabel.Text = "Successfully read ISO";
                 }
             }
+        }
+
+        private void SetControlDisplay(bool isXD)
+        {
+            if (isXD)
+            {
+                starterComboBox.SelectedItem = "EEVEE";
+            }
+            else
+            {
+                starterComboBox.SelectedItem = "ESPEON";
+                starter2ComboBox.SelectedItem = "UMBREON";
+            }
+
+            starter2Label.Visible = !isXD;
+            starter2ComboBox.Visible = !isXD;
+            pokeSpotGroupBox.Enabled = isXD;
+
+            tradeBothRandomCheck.Enabled = isXD;
+            tutorMoveGroupBox.Enabled = isXD;
+            tutorCompatibilityGroupBox.Enabled = isXD;
+
+            banBattleCDsCheck.Enabled = isXD;
+
+            foreach (Control ctrl in battleBingoTabPage.Controls) ctrl.Enabled = isXD;
         }
 
         private bool OpenFile()
