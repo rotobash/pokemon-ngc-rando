@@ -11,17 +11,17 @@ namespace Randomizer.Colosseum
 {
     public class ColoExtractor : IGameExtractor
 	{
-		ISO iso;
+		public ISO ISO { get; }
 		public ColoExtractor(ISO iso)
 		{
-			this.iso = iso;
+			this.ISO = iso;
 		}
 
 		public ITrainerPool[] ExtractPools(Pokemon[] pokemon, Move[] moves)
 		{
 			var trainerPool = new ITrainerPool[]
 			{
-				new ColTrainerPool(iso, pokemon, moves)
+				new ColTrainerPool(ISO, pokemon, moves)
 			};
 
 			return trainerPool;
@@ -35,103 +35,65 @@ namespace Randomizer.Colosseum
 			{
 				if (i <= 12)
 				{
-					items[i] = new Pokeballs(i, iso);
+					items[i] = new Pokeballs(i, ISO);
 				}
 				else if (i >= Constants.FirstTMItemIndex && i < Constants.FirstTMItemIndex + Constants.NumberOfTMsAndHMs)
 				{
-					items[i] = new TM(i, iso);
+					items[i] = new TM(i, ISO);
 				}
 				else
 				{
-					items[i] = new Items(i, iso);
+					items[i] = new Items(i, ISO);
 				}
 			}
 
 			return items;
 		}
 
-		public TutorMove[] ExtractTutorMoves()
-		{
-			var tutorMoves = new TutorMove[Constants.NumberOfTutorMoves];
-			for (int i = 0; i < tutorMoves.Length; i++)
-			{
-				tutorMoves[i] = new TutorMove(i, iso);
-			}
-			return tutorMoves;
-		}
-
 		public OverworldItem[] ExtractOverworldItems()
 		{
-			var numItems = iso.CommonRel.GetValueAtPointer(Constants.ColNumberTreasureBoxes);
+			var numItems = ISO.CommonRel.GetValueAtPointer(Constants.ColNumberTreasureBoxes);
 			var items = new OverworldItem[numItems];
 			for (int i = 0; i < numItems; i++)
 			{
-				items[i] = new OverworldItem(i, iso);
+				items[i] = new OverworldItem(i, ISO);
 			}
 			return items;
 		}
 
 		public Pokemarts[] ExtractPokemarts()
 		{
-			var pocket = iso.GetFSysFile("pocket_menu.fsys").GetEntryByFileName("pocket_menu.rel") as REL;
+			var pocket = ISO.GetFSysFile("pocket_menu.fsys").GetEntryByFileName("pocket_menu.rel") as REL;
 			var numMarts = pocket.GetValueAtPointer(Constants.NumberOfMarts);
 			var marts = new Pokemarts[numMarts];
 			for (int i = 0; i < numMarts; i++)
 			{
-				marts[i] = new Pokemarts(i, iso);
+				marts[i] = new Pokemarts(i, ISO);
 			}
 			return marts;
 		}
 
 		public Move[] ExtractMoves()
 		{
-			var moveNum = iso.CommonRel.GetValueAtPointer(Constants.ColNumberOfMoves);
+			var moveNum = ISO.CommonRel.GetValueAtPointer(Constants.ColNumberOfMoves);
 			var moves = new Move[moveNum];
 			for (int i = 0; i < moveNum; i++)
 			{
-				moves[i] = new Move(i, iso);
+				moves[i] = new Move(i, ISO);
 			}
 			return moves;
 		}
 
 		public Pokemon[] ExtractPokemon()
 		{
-			var pokemonNum = iso.CommonRel.GetValueAtPointer(Constants.ColNumberOfPokemon);
+			var pokemonNum = ISO.CommonRel.GetValueAtPointer(Constants.ColNumberOfPokemon);
 			var pokemon = new Pokemon[pokemonNum];
 			for (int i = 0; i < pokemonNum; i++)
 			{
-				pokemon[i] = new ColPokemon(i, iso);
+				pokemon[i] = new ColPokemon(i, ISO);
 			}
 
 			return pokemon;
-		}
-
-		public BattleBingoCard[] ExtractBattleBingoCards()
-		{
-			var numCards = Constants.NumberOfBingoCards;
-			var cards = new BattleBingoCard[numCards];
-			for (int i = 0; i < numCards; i++)
-			{
-				cards[i] = new BattleBingoCard(i, iso);
-			}
-			return cards;
-		}
-
-		public PokeSpotPokemon[] ExtractPokeSpotPokemon()
-		{
-			var pokeSpots = Enum.GetValues<PokeSpotType>();
-			var pokemon = new List<PokeSpotPokemon>();
-
-			foreach (var pokeSpotType in pokeSpots)
-			{
-				var pokeSpot = new PokeSpot(pokeSpotType, iso);
-				for (int i = 0; i < pokeSpot.NumberOfEntries; i++)
-				{
-					pokemon.Add(new PokeSpotPokemon(i, pokeSpot, iso));
-				}
-			}
-
-			return pokemon.ToArray();
 		}
 
 		public IGiftPokemon[] ExtractGiftPokemon()
@@ -141,7 +103,7 @@ namespace Randomizer.Colosseum
 			{
 				if (i < 4)
 				{
-					giftPokemon[i] = new ColGiftPokemon((byte)i, iso);
+					giftPokemon[i] = new ColGiftPokemon((byte)i, ISO);
 				}
 			}
 			return giftPokemon;
@@ -154,11 +116,11 @@ namespace Randomizer.Colosseum
 
 		public Ability[] ExtractAbilities()
 		{
-			var numAbilities = Constants.NumberOfAbilities(iso);
+			var numAbilities = Constants.NumberOfAbilities(ISO);
 			var abilities = new Ability[numAbilities];
 			for (int i = 0; i < abilities.Length; i++)
 			{
-				abilities[i] = new Ability(i, iso);
+				abilities[i] = new Ability(i, ISO);
 			}
 			return abilities;
 		}
