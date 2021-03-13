@@ -78,7 +78,6 @@ namespace XDCommon.PokemonDefinitions
         public const int ValidItems = 68; // list of items which are actually available in XD
         public const int TotalNumberOfItems = 69;
         public const int Items = 70;
-        public const int NumberOfItems = 71;
         public const int SoundsMetaData = 102;
         public const int NumberOfSounds = 103;
         public const int BGM = 104;
@@ -161,6 +160,7 @@ namespace XDCommon.PokemonDefinitions
         public const int XDNumberOfDoors = 61;
         public const int XDTreasureBoxData = 66; // 0x1c bytes each;
         public const int XDNumberTreasureBoxes = 67;
+        public const int XDNumberOfItems = 71;
 
         public const int XDInteractionPoints = 62; // warps and inanimate objects
         public const int XDNumberOfInteractionPoints = 63;
@@ -189,6 +189,7 @@ namespace XDCommon.PokemonDefinitions
         public const int ColRooms = 14;
         public const int ColNumberOfRooms = 15;
         public const int ColTreasureBoxData = 60;
+        public const ushort ColNumberOfItems = 0x18D;
         public const int ColNumberTreasureBoxes = 61;
         public const int ColCharacterModels = 72;
         public const int ColNumberOfCharacterModels = 73;
@@ -199,7 +200,7 @@ namespace XDCommon.PokemonDefinitions
         public const int ColNatures = 64;
         public const int ColNumberOfNatures = 65;
         public const int ColMoves = 62;
-        public const int ColNumberOfMoves = 6;
+        public const int ColNumberOfMoves = 63;
 
         public static int AbilityStartOffset(ISO iso)
         {

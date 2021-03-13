@@ -17,12 +17,24 @@ namespace XDCommon.PokemonDefinitions
 
         }
 
-        int FirstTMListOffset => iso.Region switch
+        int FirstTMListOffset 
         {
-            Region.US => 0x4023A0,
-            Region.Europe => 0x43CC80,
-            _ => 0x3DFA60
-        };
+            get
+            {
+                if (iso.Game == Game.XD) return iso.Region switch
+                {
+                    Region.US => 0x4023A0,
+                    Region.Europe => 0x43CC80,
+                    _ => 0x3DFA60
+                };
+                else return iso.Region switch
+                {
+                    Region.US => 0x365018,
+                    Region.Europe => 0x3B20D0,
+                    _ => 0x351758
+                };
+            }
+        }
 
         public ushort Move
         {

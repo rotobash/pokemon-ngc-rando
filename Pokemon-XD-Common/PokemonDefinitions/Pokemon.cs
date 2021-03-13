@@ -8,53 +8,57 @@ using XDCommon.Utility;
 
 namespace XDCommon.PokemonDefinitions
 {
-    public class Pokemon
+    public abstract class Pokemon
     {
         const byte PokemonNameIDOFfset = 0x18;
-        const int SizeOfPokemonStats = 0x124;
 
         const byte EXPRateOffset = 0x00;
         const byte CatchRateOffset = 0x01;
         const byte GenderRatioOffset = 0x02;
-        const byte BaseEXPOffset = 0x05;
-        const byte BaseHappinessOffset = 0x07;
-        const byte HeightOffset = 0x08;
-        const byte WeightOffset = 0x0A;
 
         const byte NationalIndexOffset = 0x0E;
         const byte Type1Offset = 0x30;
         const byte Type2Offset = 0x31;
         const byte Ability1Offset = 0x32;
         const byte Ability2Offset = 0x33;
-        const byte HeldItem1Offset = 0x7A;
-        const byte HeldItem2Offset = 0x7C;
 
-        const byte HPOffset = 0x8F;
-        const byte AttackOffset = 0x91;
-        const byte DefenseOffset = 0x93;
-        const byte SpecialAttackOffset = 0x95;
-        const byte SpecialDefenseOffset = 0x97;
-        const byte SpeedOffset = 0x99;
-        const byte FirstEVYieldOffset = 0x9A; // 1 byte between each one.
         const byte FirstTMOffset = 0x34;
-        const byte FirstEvolutionOffset = 0xA6;
-        const byte FirstTutorMoveOffset = 0x6E;
-        const byte FirstLevelUpMoveOffset = 0xC4;
         const byte FirstEggMoveOffset = 0x7E;
 
         const byte EvolutionMethodOffset = 0x0;
         const byte EvolutionConditionOffset = 0x2;
         const byte EvovledFormOffset = 0x4;
 
-        int dexNum;
-        ISO iso;
+        protected readonly int dexNum;
+        protected readonly ISO iso;
+
+        public abstract ushort HeightOffset { get; }
+        public abstract ushort WeightOffset { get; }
+        public abstract ushort SizeOfPokemonStats { get; }
+        public abstract ushort HeldItem1Offset { get; }
+        public abstract ushort BaseEXPOffset { get; }
+        public abstract ushort BaseHappinessOffset { get; }
+
+        public abstract ushort HPOffset { get; }
+        public abstract ushort AttackOffset { get; }
+        public abstract ushort DefenseOffset { get; }
+        public abstract ushort SpecialAttackOffset { get; }
+        public abstract ushort SpecialDefenseOffset { get; }
+        public abstract ushort SpeedOffset { get; }
+
+        public abstract ushort FirstEVYieldOffset { get; }
+        public abstract ushort FirstLevelUpMoveOffset { get; }
+        public abstract ushort FirstTutorMoveOffset { get; }
+        public abstract ushort FirstEvolutionOffset { get; }
+
+
         public int Index => dexNum;
         public int NameID => iso.CommonRel.ExtractedFile.GetIntAtOffset(StartOffset + PokemonNameIDOFfset);
         public string Name => iso.CommonRelStringTable.GetStringWithId(NameID).ToString();
         public int SpeciesNameID => iso.CommonRel.ExtractedFile.GetIntAtOffset(StartOffset + Constants.SpeciesNameIDOffset);
         public double Height => (double)iso.CommonRel.ExtractedFile.GetUShortAtOffset(StartOffset + HeightOffset) / 10;
         public double Weight => (double)iso.CommonRel.ExtractedFile.GetUShortAtOffset(StartOffset + WeightOffset) / 10;
-        
+
         public int StartOffset
         {
             get
@@ -67,7 +71,7 @@ namespace XDCommon.PokemonDefinitions
         public bool[] LearnableTMs { get; }
         public bool[] TutorMoves { get; }
         public LevelUpMove[] LevelUpMoves { get; }
-        
+
         public Evolution[] Evolutions { get; set; }
 
         public ushort HeldItem

@@ -40,7 +40,7 @@ namespace Randomizer.XD
 
 		public Items[] ExtractItems()
 		{
-			var numItems = (int)ISO.CommonRel.GetValueAtPointer(Constants.NumberOfItems);
+			var numItems = (int)iso.CommonRel.GetValueAtPointer(Constants.XDNumberOfItems);
 			var items = new Items[numItems];
 			for (int i = 0; i < numItems; i++)
             {
@@ -110,7 +110,7 @@ namespace Randomizer.XD
 			var pokemon = new Pokemon[pokemonNum];
 			for (int i = 0; i < pokemonNum; i++)
 			{
-				pokemon[i] = new Pokemon(i, ISO);
+				pokemon[i] = new XDPokemon(i, iso);
 			}
 
 			return pokemon;

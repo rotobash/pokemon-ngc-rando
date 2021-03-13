@@ -29,7 +29,7 @@ namespace Randomizer.Colosseum
 
 		public Items[] ExtractItems()
 		{
-			var numItems = (int)iso.CommonRel.GetValueAtPointer(Constants.NumberOfItems);
+			var numItems = Constants.ColNumberOfItems;
 			var items = new Items[numItems];
 			for (int i = 0; i < numItems; i++)
 			{
@@ -100,7 +100,7 @@ namespace Randomizer.Colosseum
 			var pokemon = new Pokemon[pokemonNum];
 			for (int i = 0; i < pokemonNum; i++)
 			{
-				pokemon[i] = new Pokemon(i, iso);
+				pokemon[i] = new ColPokemon(i, iso);
 			}
 
 			return pokemon;
@@ -136,22 +136,12 @@ namespace Randomizer.Colosseum
 
 		public IGiftPokemon[] ExtractGiftPokemon()
 		{
-			var giftPokemon = new IGiftPokemon[8];
+			var giftPokemon = new IGiftPokemon[4];
 			for (int i = 0; i < giftPokemon.Length; i++)
 			{
 				if (i < 4)
 				{
-					giftPokemon[i] = new ColTradePokemon((byte)i, iso);
-				}
-				else if (i == 4)
-				{
-					giftPokemon[i] = new ColShadowGiftPokemon(iso);
-				}
-				else
-				{
-					// have to fiddle with the index
-					var index = giftPokemon.Length - 1 - i;
-					giftPokemon[i] = new ColMtBattlePokemon((byte)index, iso);
+					giftPokemon[i] = new ColGiftPokemon((byte)i, iso);
 				}
 			}
 			return giftPokemon;
