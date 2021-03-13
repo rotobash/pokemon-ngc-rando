@@ -40,7 +40,8 @@ namespace XDCommon.PokemonDefinitions
         public XDTrainerPool(TrainerPoolType poolType, ISO iso, Pokemon[] pokemon, Move[] moveList)
         {
             var deckArchive = iso.GetFSysFile("deck_archive.fsys");
-            var fileEntry = deckArchive.GetEntryByFileName($"DeckData_{poolType}.bin");
+            var fileEntryName = iso.Region == Region.Europe ? $"DeckData_{poolType}_EU.bin" : $"DeckData_{poolType}.bin";
+            var fileEntry = deckArchive.GetEntryByFileName(fileEntryName);
             this.iso = iso;
 
             ExtractedFile = fileEntry.ExtractedFile;

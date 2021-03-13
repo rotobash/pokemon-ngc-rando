@@ -7,8 +7,8 @@ namespace XDCommon.Contracts
     public enum Region
     {
         US = 0x45,
-        Europe,
-        Japan
+        Europe = 0x50,
+        Japan = 0x4A
     }
     
     public enum Game

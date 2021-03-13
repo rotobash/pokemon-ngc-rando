@@ -182,7 +182,7 @@ namespace XDCommon.Utility
             {
                 var detailsName = fSysDetailsHeaders[i].FileName.ToString();
                 var detailsType = fSysDetailsHeaders[i].Filetype;
-                if (fileName == detailsName | (fileName.RemoveFileExtensions() == detailsName && fileName.EndsWith(detailsType.FileTypeName())))
+                if (fileName == detailsName || (fileName.RemoveFileExtensions() == detailsName && fileName.EndsWith(detailsType.FileTypeName())))
                 {
                     return i;
                 }
