@@ -19,13 +19,11 @@ namespace Randomizer.Colosseum
 
 		public ITrainerPool[] ExtractPools(Pokemon[] pokemon, Move[] moves)
 		{
-			var trainerPool = new ITrainerPool[TrainerPool.Trainers.Length];
-
-			for (int i = 0; i < TrainerPool.Trainers.Length; i++)
+			var trainerPool = new ITrainerPool[]
 			{
-				var pool = TrainerPool.Trainers[i];
-				trainerPool[i] = new ColTrainerPool(pool, iso, pokemon, moves);
-			}
+				new ColTrainerPool(iso, pokemon, moves)
+			};
+
 			return trainerPool;
 		}
 

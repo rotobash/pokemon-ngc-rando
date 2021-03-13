@@ -58,6 +58,17 @@ namespace XDCommon.PokemonDefinitions
             get => pool.ExtractedFile.GetUShortAtOffset(StartOffset + TrainerAIOffset);
             set => pool.ExtractedFile.WriteBytesAtOffset(StartOffset + TrainerAIOffset, value.GetBytes());
         }
+        public ushort TrainerStringID
+        {
+            get => pool.ExtractedFile.GetUShortAtOffset(StartOffset + StringOffset);
+            set => pool.ExtractedFile.WriteBytesAtOffset(StartOffset + StringOffset, value.GetBytes());
+        }
+        public string TrainerString { get; }
+        public byte ShadowMask
+        {
+            get => pool.ExtractedFile.GetByteAtOffset(StartOffset + ShadowMaskOffset);
+            set => pool.ExtractedFile.WriteByteAtOffset(StartOffset + ShadowMaskOffset, value);
+        }
 
         public override bool IsSet => TrainerClass != XDTrainerClasses.None;
         public override int SizeOfTrainerData => ConstSizeOfTrainerData;
@@ -66,12 +77,32 @@ namespace XDCommon.PokemonDefinitions
         {
             get
             {
-                return (uint)(pool.DTNRDataOffset + index * SizeOfTrainerData);
+                return (uint)(DTNRDataOffset + index * SizeOfTrainerData);
             }
         }
 
+        readonly int DTNRDataOffset;
+
         public XDTrainer(int index, XDTrainerPool trainers, ISO iso) : base(index, trainers, iso)
         {
+            DTNRDataOffset = trainers.DTNRDataOffset;
+
+            var name = "";
+            var currentChar = 0x1;
+            var offset = DTNRDataOffset + TrainerStringID;
+
+            while (currentChar != 0)
+            {
+                currentChar = trainers.ExtractedFile.GetByteAtOffset(offset);
+                if (currentChar != 0)
+                {
+                    name += new UnicodeCharacters(currentChar);
+                }
+                offset++;
+            }
+
+            TrainerString = name;
+
             var mask = ShadowMask;
             for (int i = 0; i < Pokemon.Length; i++)
             {

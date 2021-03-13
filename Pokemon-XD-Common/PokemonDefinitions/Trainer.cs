@@ -26,7 +26,6 @@ namespace XDCommon.PokemonDefinitions
 
         protected TrainerPool pool;
         protected ISO iso;
-        protected Stream ExtractedFile;
         protected int index;
 
         protected byte StringOffset => ConstStringOffset;
@@ -37,36 +36,10 @@ namespace XDCommon.PokemonDefinitions
             this.index = index;
             pool = trainers;
             this.iso = iso;
-            var name = "";
-            var currentChar = 0x1;
-
-            var offset = trainers.DTNRDataOffset + TrainerStringID;
-            while (currentChar != 0)
-            {
-                currentChar = trainers.ExtractedFile.GetByteAtOffset(offset);
-                if (currentChar != 0)
-                {
-                    name += new UnicodeCharacters(currentChar);
-                }
-                offset++;
-            }
-            TrainerString = name;
             Pokemon = new ITrainerPokemon[6];
         }
 
         public string Name => iso.CommonRelStringTable.GetStringWithId(NameID).ToString();
-
-        public ushort TrainerStringID
-        {
-            get => pool.ExtractedFile.GetUShortAtOffset(StartOffset + StringOffset);
-            set => pool.ExtractedFile.WriteBytesAtOffset(StartOffset + StringOffset, value.GetBytes());
-        }
-        public string TrainerString { get; }
-        public byte ShadowMask
-        {
-            get => pool.ExtractedFile.GetByteAtOffset(StartOffset + ShadowMaskOffset);
-            set => pool.ExtractedFile.WriteByteAtOffset(StartOffset + ShadowMaskOffset, value);
-        }
 
         // some models have unique animations at the start of battle which require special camera movements
         public ushort CameraEffects

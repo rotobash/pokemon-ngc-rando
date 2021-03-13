@@ -64,23 +64,18 @@ namespace XDCommon.PokemonDefinitions
 
         public override int SizeOfTrainerData => ConstSizeOfTrainerData;
 
+        
+
         public ColTrainer(int index, ColTrainerPool trainers, ISO iso) : base(index, trainers, iso)
         {
             var sizeOfPokemonData = iso.CommonRel.GetValueAtPointer(Constants.NumberOfTrainerPokemonData);
             var first = pool.ExtractedFile.GetUShortAtOffset(StartOffset + FirstTrainerPokemonOffset);
+
             if (first < sizeOfPokemonData)
             {
-                var mask = ShadowMask;
                 for (int i = 0; i < Pokemon.Length; i++)
                 {
-                    var id = pool.ExtractedFile.GetUShortAtOffset(StartOffset + FirstTrainerPokemonOffset + i * 2);
-                    var m = mask % 2;
-                    Pokemon[i] = new ColTrainerPokemon(
-                        (ushort)(first + id),
-                        trainers,
-                        m == 1 ? PokemonFileType.DDPK : PokemonFileType.DPKM
-                    );
-                    mask >>= 1;
+                    Pokemon[i] = new ColTrainerPokemon((ushort)(first + i), iso, trainers);
                 }
             }
         }

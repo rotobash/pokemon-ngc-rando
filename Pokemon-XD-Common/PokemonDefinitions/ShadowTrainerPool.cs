@@ -13,6 +13,9 @@ namespace XDCommon.PokemonDefinitions
 
         public ShadowTrainerPool(ISO iso, Pokemon[] pokemon, Move[] moveList) : base(TrainerPoolType.DarkPokemon, iso, pokemon, moveList)
         {
+            var deckArchive = iso.GetFSysFile("deck_archive.fsys");
+            var fileEntry = deckArchive.GetEntryByFileName($"DeckData_{TrainerPoolType.DarkPokemon}.bin");
+            ExtractedFile = fileEntry.ExtractedFile;
         }
     }
 }
