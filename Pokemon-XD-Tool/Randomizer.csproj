@@ -8,9 +8,13 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Authors>rotobash</Authors>
     <PackageProjectUrl>https://github.com/rotobash/pokemon-ngc-rando</PackageProjectUrl>
+    <AssemblyVersion>1.0.5.0</AssemblyVersion>
+    <FileVersion>1.0.5.0</FileVersion>
+    <Version>1.0.5</Version>
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AutoUpdater\AutoUpdater.csproj" />
     <ProjectReference Include="..\Pokemon-XD-Common\Common.csproj" />
   </ItemGroup>
 

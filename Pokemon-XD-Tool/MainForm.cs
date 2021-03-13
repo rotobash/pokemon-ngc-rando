@@ -1,4 +1,5 @@
-﻿using Randomizer.Colosseum;
+﻿using AutoUpdater;
+using Randomizer.Colosseum;
 using Randomizer.Shufflers;
 using Randomizer.XD;
 using System;
@@ -9,6 +10,7 @@ using System.Drawing;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -21,6 +23,7 @@ namespace Randomizer
 {
     public partial class MainForm : Form
     {
+        const string ToolName = "NGC Randomizer";
         ISO iso;
         ISOExtractor isoExtractor;
         IGameExtractor gameExtractor;
@@ -695,5 +698,21 @@ namespace Randomizer
             bingoUseStrongPokemon.Enabled = randomizeBattleBingoPokemonCheck.Checked;
         }
         #endregion
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+            var version = Assembly.GetExecutingAssembly().GetName().Version;
+            var release = SelfUpdater.CheckForUpdate(ToolName, version.Major, version.Minor, version.Build);
+            if (release != null)
+            {
+                if (MessageBox.Show("There's a new update available! Would you like to update now?", "Hey you!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    var updateForm = new Updater(release);
+                    updateForm.ShowDialog();
+                    Close();
+                }
+            }
+        }
     }
 }
