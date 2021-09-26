@@ -57,7 +57,6 @@ namespace XDCommon.PokemonDefinitions
 
             // update pointers
             int offset = 0;
-            var pointerIndices = new[] { 1, 3, 5, 6, 7 };
             for (int i = 0; i < pocket.NumberOfPointers; i++)
             {
                 offset = (int)pocket.GetPointer(i);

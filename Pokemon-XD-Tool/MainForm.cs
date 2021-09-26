@@ -98,9 +98,13 @@ namespace Randomizer
             pokeSpotGroupBox.Enabled = isXD;
 
             tradeBothRandomCheck.Enabled = isXD;
+            tradeUsePokeSpotCheck.Enabled = isXD;
+            tradeRequestedRandomCheck.Enabled = isXD;
+
             tutorMoveGroupBox.Enabled = isXD;
             tutorCompatibilityGroupBox.Enabled = isXD;
 
+            martGroupBox.Enabled = isXD;
             banBattleCDsCheck.Enabled = isXD;
 
             foreach (Control ctrl in battleBingoTabPage.Controls) ctrl.Enabled = isXD;

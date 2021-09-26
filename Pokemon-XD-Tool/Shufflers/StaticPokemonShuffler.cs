@@ -90,6 +90,7 @@ namespace Randomizer.Shufflers
                         var giftPoke = extractedGame.GiftPokemonList[i];
                         var newPoke = pokemon[random.Next(0, pokemon.Length)];
                         giftPoke.Pokemon = (ushort)newPoke.Index;
+                        newGivenPokemon.Add(newPoke);
 
                         ushort[] newMoveSet = MoveShuffler.GetNewMoveset(random, settings.MoveSetOptions, giftPoke.Pokemon, extractedGame.GiftPokemonList[i].Level, extractedGame);
                         for (int j = 0; j < newMoveSet.Length; j++)

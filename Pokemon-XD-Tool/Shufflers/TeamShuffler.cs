@@ -28,7 +28,7 @@ namespace Randomizer.Shufflers
 
                 foreach (var trainer in pool.AllTrainers)
                 {
-                    if (!trainer.IsSet)
+                    if (!trainer.IsSet || trainer.Name == string.Empty)
                         continue;
 
                     Logger.Log($"Trainer {trainer.Name}\nWith:\n");
