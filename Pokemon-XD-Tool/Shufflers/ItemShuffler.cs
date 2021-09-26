@@ -10,7 +10,7 @@ namespace Randomizer.Shufflers
 {
     public static class ItemShuffler
     {
-        public static void ShuffleTMs(Random random, ItemShufflerSettings settings, ExtractedGame extractedGame)
+        public static void ShuffleTMs(IRandom random, ItemShufflerSettings settings, ExtractedGame extractedGame)
         {
             if (settings.RandomizeTMs)
             {
@@ -49,7 +49,7 @@ namespace Randomizer.Shufflers
             }
         }
 
-        public static void ShuffleTutorMoves(Random random, ItemShufflerSettings settings, TutorMove[] tutorMoves, ExtractedGame extractedGame)
+        public static void ShuffleTutorMoves(IRandom random, ItemShufflerSettings settings, TutorMove[] tutorMoves, ExtractedGame extractedGame)
         {
             if (settings.RandomizeTutorMoves)
             {
@@ -84,7 +84,7 @@ namespace Randomizer.Shufflers
             }
         }
 
-        public static void ShuffleOverworldItems(Random random, ItemShufflerSettings settings, ExtractedGame extractedGame)
+        public static void ShuffleOverworldItems(IRandom random, ItemShufflerSettings settings, ExtractedGame extractedGame)
         {
             // there are a lot of battle cds, so only add them to one location and then
             // block that same cd from being put in another location (only if they haven't banned cds entirely)
@@ -127,7 +127,7 @@ namespace Randomizer.Shufflers
             }
         }
 
-        public static void UpdatePokemarts(Random random, ItemShufflerSettings settings, ExtractedGame extractedGame)
+        public static void UpdatePokemarts(IRandom random, ItemShufflerSettings settings, ExtractedGame extractedGame)
         {
             if (settings.RandomizeMarts)
             {

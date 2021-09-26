@@ -13,7 +13,7 @@ namespace Randomizer
 {
     public class Randomizer
     {
-        Random random;
+        IRandom random;
         IGameExtractor gameExtractor;
         ExtractedGame extractedGameStructures;
 
@@ -21,11 +21,11 @@ namespace Randomizer
         {
             if (seed < 0)
             {
-                random = new Random();
+                random = new Xoroshiro128StarStar();
             }
             else
             {
-                random = new Random(seed);
+                random = new NetRandom(seed);
             }
 
             extractedGameStructures = new ExtractedGame(extractor);
