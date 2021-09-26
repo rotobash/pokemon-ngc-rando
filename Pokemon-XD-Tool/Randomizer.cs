@@ -69,7 +69,8 @@ namespace Randomizer
             }
             else if (gameExtractor is ColoExtractor colo)
             {
-                StaticPokemonShuffler.RandomizeColoStatics(random, settings, null, extractedGameStructures);
+                var starters = colo.GetStarters();
+                StaticPokemonShuffler.RandomizeColoStatics(random, settings, starters, extractedGameStructures);
             }
         }
 

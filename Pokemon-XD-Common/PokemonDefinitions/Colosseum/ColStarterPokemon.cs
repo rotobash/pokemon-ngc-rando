@@ -1,35 +1,77 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using XDCommon.Contracts;
 using XDCommon.Utility;
 
 namespace XDCommon.PokemonDefinitions
 {
     public class ColStarterPokemon : IGiftPokemon
     {
-        private byte index;
         private ISO iso;
+        const byte SpeciesOffset = 0x2;
+        const byte LevelOffset = 0x7;
+        const byte Move1Offset = 0x16;
+        const byte Move2Offset = 0x26;
+        const byte Move3Offset = 0x36;
+        const byte Move4Offset = 0x46;
 
-        public ColStarterPokemon(byte index, ISO iso)
+        public byte Index => 0;
+
+        public int StartOffset
         {
-            this.index = index;
-            this.iso = iso;
+            get
+            {
+                return iso.Region switch
+                {
+                    Region.US => firstStarter ? 0x12DBF0 : 0x12DAC8,
+                    Region.Europe => firstStarter ? 0x12DBF0 : 0x12DAC8,
+                    _ => firstStarter ? 0x12DBF0 : 0x12DAC8,
+                };
+            }
         }
 
-        public byte Index => throw new NotImplementedException();
-
-        public ushort Exp => throw new NotImplementedException();
-
-        public ushort[] Moves => throw new NotImplementedException();
-
-        public string GiftType => throw new NotImplementedException();
-
-        public byte Level { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public ushort Pokemon { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-        public void SetMove(int i, ushort move)
+        public byte Level
         {
-            throw new NotImplementedException();
+            get => iso.DOL.ExtractedFile.GetByteAtOffset(StartOffset + LevelOffset);
+            set => iso.DOL.ExtractedFile.WriteByteAtOffset(StartOffset + LevelOffset, value);
+        }
+
+        public ushort Exp
+        {
+            get;
+            set;
+        }
+
+        public ushort Pokemon
+        {
+            get => iso.DOL.ExtractedFile.GetUShortAtOffset(StartOffset + SpeciesOffset);
+            set => iso.DOL.ExtractedFile.WriteBytesAtOffset(StartOffset + SpeciesOffset, value.GetBytes());
+        }
+
+        public ushort[] Moves
+        {
+            get;
+        }
+
+        public string GiftType => "Starter";
+        bool firstStarter;
+
+        public ColStarterPokemon(ISO iso, bool isFirstStarter)
+        {
+            this.iso = iso;
+            firstStarter = isFirstStarter;
+            Moves = new ushort[Constants.NumberOfPokemonMoves];
+
+            for (int i = 0; i < Moves.Length; i++)
+            {
+                Moves[i] = iso.DOL.ExtractedFile.GetUShortAtOffset(StartOffset + Move1Offset + (i * Constants.ColSizeOfStarterMoveData));
+            }
+        }
+
+        public void SetMove(int index, ushort move)
+        {
+            iso.DOL.ExtractedFile.WriteBytesAtOffset(StartOffset + Move1Offset + (index * Constants.ColSizeOfStarterMoveData), move.GetBytes());
         }
     }
 }

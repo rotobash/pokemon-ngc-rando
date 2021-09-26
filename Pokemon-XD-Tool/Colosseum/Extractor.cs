@@ -111,7 +111,11 @@ namespace Randomizer.Colosseum
 
 		public IGiftPokemon[] GetStarters()
 		{
-			return Array.Empty<IGiftPokemon>();
+			return new[]
+			{
+				new ColStarterPokemon(ISO, true),
+				new ColStarterPokemon(ISO, false),
+			};
 		}
 
 		public Ability[] ExtractAbilities()

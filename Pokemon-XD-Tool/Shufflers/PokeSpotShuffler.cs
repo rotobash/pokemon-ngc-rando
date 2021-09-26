@@ -34,7 +34,7 @@ namespace Randomizer.Shufflers
                 if (pokeSpotPoke.Pokemon == RandomizerConstants.BonslyIndex)
                 {
                     // I don't know if this'll work or not...
-                    pokeSpotPoke.EncounterPercentage = settings.EasyBonsly ? 100 : pokeSpotPoke.EncounterPercentage;
+                    pokeSpotPoke.EncounterPercentage = settings.EasyBonsly ? (byte)100 : pokeSpotPoke.EncounterPercentage;
                     Logger.Log("Bonsly damnit stop running away!\n");
                     continue;
                 }

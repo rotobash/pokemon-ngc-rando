@@ -178,6 +178,7 @@ namespace XDCommon.PokemonDefinitions
         public const int ColNumberRelPointers = 0x6C;
         public const int ColPeopleIDs = 6; // 2 bytes at offset 0 person id 4 bytes at offset 4 string id for character name
         public const int ColNumberOfPeopleIDs = 7;
+        public const int ColSizeOfStarterMoveData = 0x10;
 
         public const int ColTrainerClasses = 24;
         public const int ColNumberOfTrainerClasses = 25;
