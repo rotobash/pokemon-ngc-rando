@@ -6,7 +6,8 @@ using XDCommon.Utility;
 
 namespace XDCommon.PokemonDefinitions
 {
-    public class XDTrainerPool : ITrainerPool
+
+    public class XDTrainerPool : TrainerPool
     {
         public static TrainerPoolType[] MainTeams = new[] { TrainerPoolType.Story, TrainerPoolType.Colosseum, TrainerPoolType.Hundred, TrainerPoolType.Virtual };
         public static TrainerPoolType[] Trainers = new[] { TrainerPoolType.Story, TrainerPoolType.Colosseum, TrainerPoolType.Hundred, TrainerPoolType.Virtual, TrainerPoolType.Imasugu, TrainerPoolType.Bingo, TrainerPoolType.Sample };
@@ -25,30 +26,12 @@ namespace XDCommon.PokemonDefinitions
         internal int DSTRHeaderOffset => DTAIHeaderOffset + GetSize(DTAIHeaderOffset);
         internal int DSTRDataOffset => DSTRHeaderOffset + 0x10;
 
-        public TrainerPoolType TeamType { get; }
-        public IEnumerable<ITrainer> AllTrainers { get; private set; }
-
-        public Stream ExtractedFile;
-        public FileTypes FileType;
-
-        internal Pokemon[] PokemonList { get; }
-        internal Move[] MoveList { get; }
-
-        public virtual XDShadowTrainerPool DarkPokemon { get; private set; }
-
-        private ISO iso;
-        public XDTrainerPool(TrainerPoolType poolType, ISO iso, Pokemon[] pokemon, Move[] moveList)
+        public XDTrainerPool(TrainerPoolType poolType, ISO iso, Pokemon[] pokemon, Move[] moveList) : base(poolType, iso, pokemon, moveList)
         {
             var deckArchive = iso.GetFSysFile("deck_archive.fsys");
             var fileEntryName = iso.Region == Region.Europe ? $"DeckData_{poolType}_EU.bin" : $"DeckData_{poolType}.bin";
             var fileEntry = deckArchive.GetEntryByFileName(fileEntryName);
-            this.iso = iso;
-
             ExtractedFile = fileEntry.ExtractedFile;
-            FileType = FileTypes.BIN;
-            TeamType = poolType;
-            PokemonList = pokemon;
-            MoveList = moveList;
         }
 
         // load trainers separately because they might need the shadow deck
@@ -63,24 +46,9 @@ namespace XDCommon.PokemonDefinitions
             AllTrainers = trainers;
         }
 
-        public void SetShadowPokemon(ITrainerPool pool)
-        {
-            DarkPokemon = pool as XDShadowTrainerPool ?? throw new Exception("Invalid shadow pool!");
-        }
-
-        internal int GetSize(int headerOffset)
-        {
-            return ExtractedFile.GetIntAtOffset(headerOffset + 4);
-        }
-
-        internal int GetEntries(int headerOffset)
-        {
-            return ExtractedFile.GetIntAtOffset(headerOffset + 8);
-        }
-
         void AddOrreColoAI()
         {
-            ExtractedFile.Seek(DTAIDataOffset + XDTrainer.kSizeOfAIData, SeekOrigin.Begin);
+            ExtractedFile.Seek(DTAIDataOffset + XDTrainer.SizeOfAIData, SeekOrigin.Begin);
             ExtractedFile.Write(kOffensiveDTAI);
 
             ExtractedFile.Seek(kOffensiveDTAI.Length, SeekOrigin.Current);

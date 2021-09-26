@@ -22,22 +22,25 @@ namespace Randomizer.XD
 
         public ITrainerPool[] ExtractPools(Pokemon[] pokemon, Move[] moves)
         {
-			var trainerPool = new ITrainerPool[XDTrainerPool.MainTeams.Length + 1];
-			trainerPool[0] = new XDShadowTrainerPool(ISO, pokemon, moves);
+			var trainerPool = new ITrainerPool[XDTrainerPool.Trainers.Length + 1];
+			trainerPool[0] = new ShadowTrainerPool(ISO, pokemon, moves);
 
-			for (int i = 1; i <= XDTrainerPool.MainTeams.Length; i++)
+			for (int i = 1; i <= XDTrainerPool.Trainers.Length; i++)
             {
-				var pool = XDTrainerPool.MainTeams[i - 1];
-                trainerPool[i] = new XDTrainerPool(pool, ISO, pokemon, moves);
-				trainerPool[i].SetShadowPokemon(trainerPool[0] as XDShadowTrainerPool);
-				trainerPool[i].LoadTrainers();
+				var poolType = XDTrainerPool.Trainers[i - 1];
+				var pool = new XDTrainerPool(poolType, ISO, pokemon, moves)
+				{
+					DarkPokemon = trainerPool[0] as ShadowTrainerPool
+				};
+				pool.LoadTrainers();
+				trainerPool[i] = pool;
             }
 			return trainerPool;
 		}
 
 		public Items[] ExtractItems()
 		{
-			var numItems = (int)ISO.CommonRel.GetValueAtPointer(Constants.NumberOfItems);
+			var numItems = (int)ISO.CommonRel.GetValueAtPointer(Constants.XDNumberOfItems);
 			var items = new Items[numItems];
 			for (int i = 0; i < numItems; i++)
             {
@@ -107,7 +110,7 @@ namespace Randomizer.XD
 			var pokemon = new Pokemon[pokemonNum];
 			for (int i = 0; i < pokemonNum; i++)
 			{
-				pokemon[i] = new Pokemon(i, ISO);
+				pokemon[i] = new XDPokemon(i, ISO);
 			}
 
 			return pokemon;

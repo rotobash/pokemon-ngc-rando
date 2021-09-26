@@ -25,40 +25,10 @@ namespace XDCommon.PokemonDefinitions
         public const byte NumberOfEvolutions = 0x5;
         public const byte SizeOfEvolutionData = 0x6;
 
-        //trainer poke
-        public const byte SizeOfPokemonData = 0x20;
+        // pokemon traits
         public const byte NumberOfPokemonMoves = 0x04;
         public const byte NumberOfEVs = 0x06;
         public const byte NumberOfIVs = 0x06;
-
-        public const byte PokemonIndexOffset = 0x00;
-        public const byte PokemonLevelOffset = 0x02;
-        public const byte PokemonHappinessOffset = 0x03;
-        public const byte PokemonItemOffset = 0x04;
-        public const byte FirstPokemonIVOffset = 0x08;
-        public const byte FirstPokemonEVOffset = 0x0E;
-        public const byte FirstPokemonMoveOffset = 0x14;
-        public const byte PokemonPriority1Offset = 0x1D; // priority? in vanilla but moved by stars in xg
-        public const byte PokemonPIDOffset = 0x1E;
-        public const byte PokemonGenRandomOffset = 0x1F; // If value is set to 1 then the pokemon is generated with a random nature and gender. Always 0 in vanilla and unused in XG
-
-        // added by stars by modifying dol behaviour
-        public const byte PokemonshinynessOffset = 0x1C;
-        public const byte PokemonPriority2Offset = 0x1F;
-
-        public const byte SizeOfShadowData = 0x18;
-
-        public const byte FleeAfterBattleOffset = 0x00; // 0 = no flee. Other values probably chances of finding with mirorb. Higher value = more common encounter.
-        public const byte ShadowCatchRateOFfset = 0x01; // this catch rate overrides the species' catch rate
-        public const byte ShadowLevelOffset = 0x02; // the pokemon's level after it's caught. Regular level can be increased so AI shadows are stronger
-        public const byte ShadowInUseFlagOffset = 0x03; // flags for whether pokemon is seen/caught/purified etc. default 0x80 and updated in save file
-        public const byte ShadowStoryIndexOffset = 0x06; // dpkm index of pokemon data in deck story
-        public const byte ShadowCounterOffset = 0x08; // the starting value of the heart gauge
-        public const byte FirstShadowMoveOFfset = 0x0C;
-        public const byte ShadowAggressionOffset = 0x14; // determines how often it enters reverse mode
-        public const byte ShadowAlwaysFleeOffset = 0x15; // the shadow pokemon is sent to miror b. even if you lose the battle
-
-        public const byte PurificationExperienceOffset = 0xA; // Should always be 0. The value gets increased as the pokemon gains exp and it is all gained at once upon purification.
 
         // moves
         public const byte SizeOfMoveData = 0x0038;
@@ -108,7 +78,6 @@ namespace XDCommon.PokemonDefinitions
         public const int ValidItems = 68; // list of items which are actually available in XD
         public const int TotalNumberOfItems = 69;
         public const int Items = 70;
-        public const int NumberOfItems = 71;
         public const int SoundsMetaData = 102;
         public const int NumberOfSounds = 103;
         public const int BGM = 104;
@@ -191,6 +160,7 @@ namespace XDCommon.PokemonDefinitions
         public const int XDNumberOfDoors = 61;
         public const int XDTreasureBoxData = 66; // 0x1c bytes each;
         public const int XDNumberTreasureBoxes = 67;
+        public const int XDNumberOfItems = 71;
 
         public const int XDInteractionPoints = 62; // warps and inanimate objects
         public const int XDNumberOfInteractionPoints = 63;
@@ -208,6 +178,7 @@ namespace XDCommon.PokemonDefinitions
         public const int ColNumberRelPointers = 0x6C;
         public const int ColPeopleIDs = 6; // 2 bytes at offset 0 person id 4 bytes at offset 4 string id for character name
         public const int ColNumberOfPeopleIDs = 7;
+        public const int ColSizeOfStarterMoveData = 0x10;
 
         public const int ColTrainerClasses = 24;
         public const int ColNumberOfTrainerClasses = 25;
@@ -219,6 +190,7 @@ namespace XDCommon.PokemonDefinitions
         public const int ColRooms = 14;
         public const int ColNumberOfRooms = 15;
         public const int ColTreasureBoxData = 60;
+        public const ushort ColNumberOfItems = 0x18D;
         public const int ColNumberTreasureBoxes = 61;
         public const int ColCharacterModels = 72;
         public const int ColNumberOfCharacterModels = 73;
@@ -229,7 +201,7 @@ namespace XDCommon.PokemonDefinitions
         public const int ColNatures = 64;
         public const int ColNumberOfNatures = 65;
         public const int ColMoves = 62;
-        public const int ColNumberOfMoves = 6;
+        public const int ColNumberOfMoves = 63;
 
         public static int AbilityStartOffset(ISO iso)
         {

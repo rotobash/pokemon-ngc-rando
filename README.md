@@ -18,7 +18,7 @@ The steps to install in this case are the same, but just install WINE first and 
 This tool should be pretty straight forward to use. Open the application, load your (legally obtained) game file, select your settings, and click "Randomize" to save a new randomized copy of the game file (you'll be prompted to select where). There are tooltips for most options so just hover over an option if you don't understand it (if you still don't afterwards, my bad).
 
 ## Roadmap (updated Feb 21, 2021)
-- Add Colosseum support (it's 95% there, just needs the extractors to be written)
+~~- Add Colosseum support (it's 95% there, just needs the extractors to be written)~~
 - Rewrite the GUI to use a cross-platform library for Mac/Linux frens
 - Add an in-place editor tool for changing/adding files (the hard part has theoretically been done, just needs the interface)
 - Add more complicated file types extraction (like the texture files)

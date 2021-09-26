@@ -125,7 +125,7 @@ namespace Randomizer.Shufflers
                         };
 
                         // everyone do the the fisher-yates shuffle
-                        for (int i = newBsts.Count; i > 0; i--)
+                        for (int i = newBsts.Count - 1; i >= 0; i--)
                         {
                             var j = random.Next(0, i + 1);
 

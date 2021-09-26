@@ -28,11 +28,38 @@ namespace XDCommon.PokemonDefinitions
         const byte ItemParameterOffset = 0x1B;
         const byte FirstFriendshipEffectOffset = 0x24; // Signed Int
 
-        int index;
-        public int Index => (index > iso.CommonRel.GetValueAtPointer(Constants.NumberOfItems) && index < 0x250) ? index - 150 : index;
-        public virtual uint StartOffset => iso.CommonRel.GetPointer(Constants.Items) + (uint)(index * Constants.SizeOfItemData);
-        public int NameId => iso.CommonRel.ExtractedFile.GetIntAtOffset(StartOffset + ItemNameIDOffset);
-        public int DescriptionId => iso.CommonRel.ExtractedFile.GetIntAtOffset(StartOffset + ItemDescriptionIDOffset);
+        uint ColFirstItemOffset => iso.Region switch
+        {
+            Region.US => 0x360CE8,
+            Region.Europe => 0x34D428,
+            _ => 0x3ADDA0,
+        };
+
+        protected int index;
+        public virtual int Index
+        {
+            get
+            {
+                if (iso.Game == Game.XD)
+                    return (index > iso.CommonRel.GetValueAtPointer(Constants.XDNumberOfItems) && index < 0x250) ? index - 150 : index;
+                else
+                    return index < Constants.ColNumberOfItems ? index : 0;
+            }
+        }
+
+        public uint StartOffset
+        {
+            get
+            {
+                if (iso.Game == Game.XD)
+                    return iso.CommonRel.GetPointer(Constants.Items) + (uint)(index * Constants.SizeOfItemData);
+                else
+                    return ColFirstItemOffset + (uint)(index * Constants.SizeOfItemData);
+            }
+        }
+
+        public int NameId => dataSource.ExtractedFile.GetIntAtOffset(StartOffset + ItemNameIDOffset);
+        public int DescriptionId => dataSource.ExtractedFile.GetIntAtOffset(StartOffset + ItemDescriptionIDOffset);
         
         public string Name => iso.CommonRelStringTable.GetStringWithId(NameId).ToString();
         public string Description => pocketMenu.GetStringWithId(DescriptionId).ToString();
@@ -40,51 +67,61 @@ namespace XDCommon.PokemonDefinitions
 
         protected ISO iso;
         protected StringTable pocketMenu;
+        BaseExtractedFile dataSource;
+
         public Items(int index, ISO iso)
         {
             this.index = index;
             this.iso = iso;
+
+            dataSource = iso.Game == Game.XD ? (BaseExtractedFile)iso.CommonRel : iso.DOL;
+
             var pocketFsys = iso.GetFSysFile("pocket_menu.fsys");
-            var pocketFileName = iso.Region == Region.Europe ? "(null).msg" : "pocket_menu.msg";
+            var pocketFileName = "pocket_menu.msg";
+            if (iso.Region == Region.Europe)
+            {
+                  pocketFileName = iso.Game == Game.XD ? "(null).msg" : "pocket_menu.rel";
+            }
+
             pocketMenu = pocketFsys.GetEntryByFileName(pocketFileName) as StringTable;
         }
 
         public BagSlots BagSlot
         {
-            get => (BagSlots)iso.CommonRel.ExtractedFile.GetByteAtOffset(StartOffset + BagSlotOffset);
-            set => iso.CommonRel.ExtractedFile.WriteByteAtOffset(StartOffset + BagSlotOffset, (byte)value);
+            get => (BagSlots)dataSource.ExtractedFile.GetByteAtOffset(StartOffset + BagSlotOffset);
+            set => dataSource.ExtractedFile.WriteByteAtOffset(StartOffset + BagSlotOffset, (byte)value);
         }
 
         public byte InBattleUseID
         {
-            get => iso.CommonRel.ExtractedFile.GetByteAtOffset(StartOffset + InBattleUseItemIDOffset);
-            set => iso.CommonRel.ExtractedFile.WriteByteAtOffset(StartOffset + InBattleUseItemIDOffset, value);
+            get => dataSource.ExtractedFile.GetByteAtOffset(StartOffset + InBattleUseItemIDOffset);
+            set => dataSource.ExtractedFile.WriteByteAtOffset(StartOffset + InBattleUseItemIDOffset, value);
         }
         public ushort Price
         {
-            get => iso.CommonRel.ExtractedFile.GetUShortAtOffset(StartOffset + ItemPriceOffset);
-            set => iso.CommonRel.ExtractedFile.WriteBytesAtOffset(StartOffset + ItemPriceOffset, value.GetBytes());
+            get => dataSource.ExtractedFile.GetUShortAtOffset(StartOffset + ItemPriceOffset);
+            set => dataSource.ExtractedFile.WriteBytesAtOffset(StartOffset + ItemPriceOffset, value.GetBytes());
         }
         public ushort CouponPrice
         {
-            get => iso.CommonRel.ExtractedFile.GetUShortAtOffset(StartOffset + ItemCouponCostOffset);
-            set => iso.CommonRel.ExtractedFile.WriteBytesAtOffset(StartOffset + ItemCouponCostOffset, value.GetBytes());
+            get => dataSource.ExtractedFile.GetUShortAtOffset(StartOffset + ItemCouponCostOffset);
+            set => dataSource.ExtractedFile.WriteBytesAtOffset(StartOffset + ItemCouponCostOffset, value.GetBytes());
         }
         public byte Parameter
         {
-            get => iso.CommonRel.ExtractedFile.GetByteAtOffset(StartOffset + ItemParameterOffset);
-            set => iso.CommonRel.ExtractedFile.WriteByteAtOffset(StartOffset + ItemParameterOffset, value);
+            get => dataSource.ExtractedFile.GetByteAtOffset(StartOffset + ItemParameterOffset);
+            set => dataSource.ExtractedFile.WriteByteAtOffset(StartOffset + ItemParameterOffset, value);
         }
         public bool CanBeHeld
         {
-            get => iso.CommonRel.ExtractedFile.GetByteAtOffset(StartOffset + ItemCantBeHeldOffset) == 0;
-            set => iso.CommonRel.ExtractedFile.WriteByteAtOffset(StartOffset + InBattleUseItemIDOffset, value ? (byte)0 : (byte)1);
+            get => dataSource.ExtractedFile.GetByteAtOffset(StartOffset + ItemCantBeHeldOffset) == 0;
+            set => dataSource.ExtractedFile.WriteByteAtOffset(StartOffset + InBattleUseItemIDOffset, value ? (byte)0 : (byte)1);
         }
 
         public byte[] FriendshipEffects
         {
-            get => iso.CommonRel.ExtractedFile.GetBytesAtOffset(StartOffset + FirstFriendshipEffectOffset, NumberOfFriendshipEffects);
-            set => iso.CommonRel.ExtractedFile.WriteBytesAtOffset(StartOffset + FirstFriendshipEffectOffset, value);
+            get => dataSource.ExtractedFile.GetBytesAtOffset(StartOffset + FirstFriendshipEffectOffset, NumberOfFriendshipEffects);
+            set => dataSource.ExtractedFile.WriteBytesAtOffset(StartOffset + FirstFriendshipEffectOffset, value);
         }
     }
 }

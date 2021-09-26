@@ -72,13 +72,14 @@ namespace XDCommon.Utility
         {
             if (fileName.Contains("fsys", StringComparison.InvariantCultureIgnoreCase))
             {
+                FSTFileEntry fileEntry;
                 if (Files.ContainsKey(fileName))
                 {
                     return Files[fileName];
                 }
-                else
+                else if ((fileEntry = TOC.GetFileEntry(fileName)) != null)
                 {
-                    var fsys = new FSys(fileName, this);
+                    var fsys = new FSys(fileEntry, this);
                     Files.Add(fsys.FileName, fsys);
                     return fsys;
                 }

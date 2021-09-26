@@ -9,7 +9,6 @@ namespace XDCommon.Utility
 {
     public class FSysDetailsHeader
     {
-        public const byte DetailsHeaderSize = 0x70;
         static byte[] MysteryBytes = new byte[] { 0x80, 0, 0, 0 };
 
         public UnicodeString FileName { get; set; }
@@ -23,7 +22,13 @@ namespace XDCommon.Utility
         public uint FileFormatIndexOffset { get; set; }
         public bool IsCompressed => CompressedSize != UncompressedSize;
 
-        public byte[] Encode()
+        Game game;
+        public FSysDetailsHeader(Game game)
+        {
+            this.game = game;
+        }
+
+        public byte[] Encode(int detailsHeaderSize)
         {
             var header = new List<byte>();
 
@@ -44,9 +49,16 @@ namespace XDCommon.Utility
             header.AddRange(FileFormatIndexOffset.GetBytes());
             header.AddRange(NameOffset.GetBytes());
 
-            if (header.Count < DetailsHeaderSize)
+            header.AddRange(new byte[0xC]);
+
+            if (game == Game.Colosseum)
             {
-                header.AddRange(new byte[DetailsHeaderSize - header.Count]);
+                header.AddRange(Enumerable.Repeat<byte>(0x11, 0xC));
+            }
+
+            if (header.Count < detailsHeaderSize)
+            {
+                header.AddRange(new byte[detailsHeaderSize - header.Count]);
             }
             return header.ToArray();
         }
@@ -114,41 +126,33 @@ namespace XDCommon.Utility
 
         public bool UsesFileExtensions => ExtractedFile.GetByteAtOffset(0x13) == 1;
 
-        public FSys(string pathToFile)
+        private int sizeOfFileDetails;
+        public FSys(FSTFileEntry fileEntry, ISO iso)
         {
-            ExtractedFile = File.Open(pathToFile, FileMode.Open, FileAccess.ReadWrite);
-            var fileParts = pathToFile.Split("/");
-            FileName = fileParts.Last();
-            Path = string.Join("/", fileParts.Take(fileParts.Length - 1));
-            LoadFileDetails();
-        }
-
-        public FSys(string fileName, ISO iso)
-        {
-
-            FileName = fileName;
+            FileName = fileEntry.Name.ToString();
             Path = iso.Path;
 
-            var fileEntry = iso.TOC.GetFileEntry(fileName);
             Offset = (int)fileEntry.FileDataOffset;
             Size = (int)fileEntry.Size;
 
             if (Configuration.Verbose)
             {
-                Console.WriteLine($"Extracting {fileName}");
+                Console.WriteLine($"Extracting {FileName}");
             }
 
             ExtractedFile = $"{Path}/{FileName}".GetNewStream();
             iso.ExtractedFile.CopySubStream(ExtractedFile, Offset, Size);
-            LoadFileDetails();
+
+            sizeOfFileDetails = iso.Game == Game.XD ? 0x70 : 0x50;
+            LoadFileDetails(iso.Game);
         }
 
-        void LoadFileDetails()
+        void LoadFileDetails(Game game)
         {
             for (int i = 0; i < NumberOfEntries; i++)
             {
                 var start = GetStartOffsetForFileDetails(i);
-                var fileDetails = new FSysDetailsHeader
+                var fileDetails = new FSysDetailsHeader(game)
                 {
                     Identifier = ExtractedFile.GetUShortAtOffset(start),
                     Filetype = (FileTypes)ExtractedFile.GetByteAtOffset(start + FileFormatOffset),
@@ -192,13 +196,14 @@ namespace XDCommon.Utility
 
         public IExtractedFile GetEntryByFileName(string filename)
         {
-            if (ExtractedEntries.ContainsKey(filename))
+            var index = GetIndexForFileName(filename);
+            var details = GetDetailsForFile(index);
+            if (ExtractedEntries.ContainsKey($"{details.FileName}.{details.Filetype}".ToLower()))
             {
                 return ExtractedEntries[filename];
             }
             else
             {
-                var index = GetIndexForFileName(filename);
                 var entry = FSysFileEntry.ExtractFromFSys(this, index);
                 ExtractedEntries.Add(entry.FileName, entry);
                 return entry;
@@ -230,14 +235,15 @@ namespace XDCommon.Utility
             if (ExtractedEntries.Count < NumberOfEntries)
                 FSysExtractor.ExtractFSys(this, false);
 
+            var startDetailsOffset = 0x60;
 
             // copy the header back, we'll update the sizes later
             NumberOfEntries = ExtractedEntries.Count;
             ExtractedFile.Seek(0, SeekOrigin.Begin);
-            ExtractedFile.CopySubStream(fSysStream, 0, 0x60);
+            ExtractedFile.CopySubStream(fSysStream, 0, startDetailsOffset);
 
             var sizeOfDetailsPointers = (fSysDetailsHeaders.Count * 4);
-            var startNameOffset = 0x60 + sizeOfDetailsPointers + sizeOfDetailsPointers.GetAlignBytesCount(16);
+            var startNameOffset = startDetailsOffset + sizeOfDetailsPointers + sizeOfDetailsPointers.GetAlignBytesCount(16);
             fSysStream.Seek(startNameOffset, SeekOrigin.Begin);
 
             // write the name table
@@ -254,13 +260,12 @@ namespace XDCommon.Utility
             // align names
             fSysStream.AlignStream(0x10);
             var lastNameOffset = (int)fSysStream.Position;
-            var startDetailsOffsewt = 0x60;
 
             // write pointers to details offset
-            fSysStream.Seek(startDetailsOffsewt, SeekOrigin.Begin);
+            fSysStream.Seek(startDetailsOffset, SeekOrigin.Begin);
             for (int x = 0; x < fSysDetailsHeaders.Count; x++)
             {
-                fSysStream.Write((lastNameOffset + (x * 0x70)).GetBytes());
+                fSysStream.Write((lastNameOffset + (x * sizeOfFileDetails)).GetBytes());
             }
 
             // write our data, update offsets along the way if we find mismatches
@@ -309,7 +314,7 @@ namespace XDCommon.Utility
             fSysStream.Seek(lastNameOffset, SeekOrigin.Begin);
             foreach (var detailHeader in fSysDetailsHeaders)
             {
-                fSysStream.Write(detailHeader.Encode());
+                fSysStream.Write(detailHeader.Encode(sizeOfFileDetails));
             }
 
             fSysStream.Flush();

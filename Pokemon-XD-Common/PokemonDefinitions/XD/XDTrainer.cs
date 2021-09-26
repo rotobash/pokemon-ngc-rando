@@ -6,106 +6,91 @@ using XDCommon.Utility;
 
 namespace XDCommon.PokemonDefinitions
 {
-    public class XDTrainer : ITrainer
+    public class XDTrainer : Trainer
     {
-        internal const byte kSizeOfTrainerData = 0x38;
-        internal const byte kSizeOfAIData = 0x20;
-        internal const byte kNumberOfTrainerPokemon = 0x06;
+        internal const byte ConstSizeOfTrainerData = 0x38;
+        internal const byte SizeOfAIData = 0x20;
 
-        const byte kStringOffset = 0x00;
-        const byte kShadowMaskOffset = 0x04;
-        const byte kTrainerClassNameOffset = 0x05;
-        const byte kTrainerNameIDOffset = 0x06;
-        const byte kTrainerClassModelOffset = 0x11;
-        const byte kTrainerCameraEffectOffset = 0x12;
-        const byte kTrainerPreBattleTextIDOffset = 0x14;
-        const byte kTrainerVictoryTextIDOffset = 0x16;
-        const byte kTrainerDefeatTextIDOffset = 0x18;
-        const byte kFirstTrainerPokemonOffset = 0x1C;
-        const ushort kTrainerAIOffset = 0x28;
+        const byte TrainerClassNameOffset = 0x05;
+        const byte TrainerNameIDOffset = 0x06;
+        const byte TrainerClassModelOffset = 0x11;
+        const byte TrainerPreBattleTextIDOffset = 0x14;
+        const byte TrainerVictoryTextIDOffset = 0x16;
+        const byte TrainerDefeatTextIDOffset = 0x18;
+        const byte FirstTrainerPokemonOffset = 0x1C;
+        const ushort TrainerAIOffset = 0x28;
 
-        int index = 0x0;
-        XDTrainerPool pool;
-        ISO iso;
-
-        public ITrainerPokemon[] Pokemon { get; }
-        public int NameID
+        public override int NameID
         {
-            get => pool.ExtractedFile.GetIntAtOffset(StartOffset + kTrainerNameIDOffset);
-            set => pool.ExtractedFile.WriteBytesAtOffset(StartOffset + kTrainerNameIDOffset, value.GetBytes());
+            get => pool.ExtractedFile.GetIntAtOffset(StartOffset + TrainerNameIDOffset);
+            set => pool.ExtractedFile.WriteBytesAtOffset(StartOffset + TrainerNameIDOffset, value.GetBytes());
         }
 
-        public ushort TrainerStringID
-        {
-            get => pool.ExtractedFile.GetUShortAtOffset(StartOffset + kStringOffset);
-            set => pool.ExtractedFile.WriteBytesAtOffset(StartOffset + kStringOffset, value.GetBytes());
-        }
-        public string TrainerString { get; }
         public ushort PreBattleTextID
         {
-            get => pool.ExtractedFile.GetUShortAtOffset(StartOffset + kTrainerPreBattleTextIDOffset);
-            set => pool.ExtractedFile.WriteBytesAtOffset(StartOffset + kTrainerPreBattleTextIDOffset, value.GetBytes());
+            get => pool.ExtractedFile.GetUShortAtOffset(StartOffset + TrainerPreBattleTextIDOffset);
+            set => pool.ExtractedFile.WriteBytesAtOffset(StartOffset + TrainerPreBattleTextIDOffset, value.GetBytes());
         }
         public ushort VictoryTextID
         {
-            get => pool.ExtractedFile.GetUShortAtOffset(StartOffset + kTrainerPreBattleTextIDOffset);
-            set => pool.ExtractedFile.WriteBytesAtOffset(StartOffset + kTrainerPreBattleTextIDOffset, value.GetBytes());
+            get => pool.ExtractedFile.GetUShortAtOffset(StartOffset + TrainerPreBattleTextIDOffset);
+            set => pool.ExtractedFile.WriteBytesAtOffset(StartOffset + TrainerPreBattleTextIDOffset, value.GetBytes());
         }
         public ushort DefeatTextID
         {
-            get => pool.ExtractedFile.GetUShortAtOffset(StartOffset + kTrainerVictoryTextIDOffset);
-            set => pool.ExtractedFile.WriteBytesAtOffset(StartOffset + kTrainerVictoryTextIDOffset, value.GetBytes());
+            get => pool.ExtractedFile.GetUShortAtOffset(StartOffset + TrainerVictoryTextIDOffset);
+            set => pool.ExtractedFile.WriteBytesAtOffset(StartOffset + TrainerVictoryTextIDOffset, value.GetBytes());
         }
-        public byte ShadowMask
-        {
-            get => pool.ExtractedFile.GetByteAtOffset(StartOffset + kShadowMaskOffset);
-            set => pool.ExtractedFile.WriteByteAtOffset(StartOffset + kShadowMaskOffset, value);
-        }
+
         public XDTrainerClasses TrainerClass
         {
-            get => (XDTrainerClasses)pool.ExtractedFile.GetByteAtOffset(StartOffset + kTrainerClassNameOffset);
-            set => pool.ExtractedFile.WriteByteAtOffset(StartOffset + kTrainerClassNameOffset, (byte)value);
+            get => (XDTrainerClasses)pool.ExtractedFile.GetByteAtOffset(StartOffset + TrainerClassNameOffset);
+            set => pool.ExtractedFile.WriteByteAtOffset(StartOffset + TrainerClassNameOffset, (byte)value);
         }
         public XDTrainerModels TrainerModel
         {
-            get => (XDTrainerModels)pool.ExtractedFile.GetByteAtOffset(StartOffset + kTrainerClassModelOffset);
-            set => pool.ExtractedFile.WriteByteAtOffset(StartOffset + kTrainerClassModelOffset, (byte)value);
+            get => (XDTrainerModels)pool.ExtractedFile.GetByteAtOffset(StartOffset + TrainerClassModelOffset);
+            set => pool.ExtractedFile.WriteByteAtOffset(StartOffset + TrainerClassModelOffset, (byte)value);
         }
 
         public ushort AI
         {
-            get => pool.ExtractedFile.GetUShortAtOffset(StartOffset + kTrainerAIOffset);
-            set => pool.ExtractedFile.WriteBytesAtOffset(StartOffset + kTrainerAIOffset, value.GetBytes());
+            get => pool.ExtractedFile.GetUShortAtOffset(StartOffset + TrainerAIOffset);
+            set => pool.ExtractedFile.WriteBytesAtOffset(StartOffset + TrainerAIOffset, value.GetBytes());
         }
-
-        // some models have unique animations at the start of battle which require special camera movements
-        public ushort CameraEffects
+        public ushort TrainerStringID
         {
-            get => pool.ExtractedFile.GetUShortAtOffset(StartOffset + kTrainerCameraEffectOffset);
-            set => pool.ExtractedFile.WriteBytesAtOffset(StartOffset + kTrainerCameraEffectOffset, value.GetBytes());
+            get => pool.ExtractedFile.GetUShortAtOffset(StartOffset + StringOffset);
+            set => pool.ExtractedFile.WriteBytesAtOffset(StartOffset + StringOffset, value.GetBytes());
+        }
+        public string TrainerString { get; }
+        public byte ShadowMask
+        {
+            get => pool.ExtractedFile.GetByteAtOffset(StartOffset + ShadowMaskOffset);
+            set => pool.ExtractedFile.WriteByteAtOffset(StartOffset + ShadowMaskOffset, value);
         }
 
-        int StartOffset
+        public override bool IsSet => TrainerClass != XDTrainerClasses.None;
+        public override int SizeOfTrainerData => ConstSizeOfTrainerData;
+
+        protected override uint StartOffset
         {
             get
             {
-                return pool.DTNRDataOffset + index * kSizeOfTrainerData;
+                return (uint)(DTNRDataOffset + index * SizeOfTrainerData);
             }
         }
 
-        public string Name => iso.CommonRelStringTable.GetStringWithId(NameID).ToString();
+        readonly int DTNRDataOffset;
 
-        public bool IsSet => TrainerClass != XDTrainerClasses.None;
-
-        public XDTrainer(int index, XDTrainerPool trainers, ISO iso)
+        public XDTrainer(int index, XDTrainerPool trainers, ISO iso) : base(index, trainers, iso)
         {
-            this.index = index;
-            pool = trainers;
-            this.iso = iso;
+            DTNRDataOffset = trainers.DTNRDataOffset;
+
             var name = "";
             var currentChar = 0x1;
+            var offset = DTNRDataOffset + TrainerStringID;
 
-            var offset = trainers.DTNRDataOffset + TrainerStringID;
             while (currentChar != 0)
             {
                 currentChar = trainers.ExtractedFile.GetByteAtOffset(offset);
@@ -115,22 +100,19 @@ namespace XDCommon.PokemonDefinitions
                 }
                 offset++;
             }
+
             TrainerString = name;
 
-            Pokemon = new ITrainerPokemon[6];
             var mask = ShadowMask;
             for (int i = 0; i < Pokemon.Length; i++)
             {
-                var id = pool.ExtractedFile.GetUShortAtOffset(StartOffset + kFirstTrainerPokemonOffset + i * 2);
+                var id = pool.ExtractedFile.GetUShortAtOffset(StartOffset + FirstTrainerPokemonOffset + i * 2);
                 var m = mask % 2;
-                if (m == 1)
-                {
-                    Pokemon[i] = new XDTrainerPokemon(id, pool, PokemonFileType.DDPK);
-                }
-                else
-                {
-                    Pokemon[i] = new XDTrainerPokemon(id, pool, PokemonFileType.DPKM);
-                }
+                Pokemon[i] = new XDTrainerPokemon(
+                    id, 
+                    trainers, 
+                    m == 1 ? PokemonFileType.DDPK : PokemonFileType.DPKM
+                );
                 mask >>= 1;
             }
         }

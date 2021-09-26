@@ -12,6 +12,100 @@ namespace Randomizer.Shufflers
     {
         public static void RandomizeXDStatics(Random random, StaticPokemonShufflerSettings settings, XDStarterPokemon starter, ISO iso, ExtractedGame extractedGame)
         {
+            RandomizeStarter(random, settings, starter, extractedGame);
+
+            List<Pokemon> newRequestedPokemon = new List<Pokemon>();
+            List<Pokemon> newGivenPokemon = new List<Pokemon>();
+            var pokemon = extractedGame.ValidPokemon;
+            // set given
+            switch (settings.Trade)
+            {
+                default:
+                case TradeRandomSetting.Unchanged:
+                    Logger.Log("Unchanged\n\n");
+                    return;
+                case TradeRandomSetting.Given:
+                case TradeRandomSetting.Both:
+                    for (int i = 0; i < extractedGame.GiftPokemonList.Length; i++)
+                    {
+                        var giftPoke = extractedGame.GiftPokemonList[i];
+                        var newPoke = pokemon[random.Next(0, pokemon.Length)];
+                        giftPoke.Pokemon = (ushort)newPoke.Index;
+
+                        if (giftPoke.GiftType.Contains("Duking"))
+                        {
+                            newGivenPokemon.Add(newPoke);
+                        }
+
+                        ushort[] newMoveSet = MoveShuffler.GetNewMoveset(random, settings.MoveSetOptions, giftPoke.Pokemon, extractedGame.GiftPokemonList[i].Level, extractedGame);
+                        for (int j = 0; j < newMoveSet.Length; j++)
+                        {
+                            extractedGame.GiftPokemonList[i].SetMove(j, newMoveSet[j]);
+                        }
+                    }
+                    break;
+                case TradeRandomSetting.Requested:
+                    for (int i = 0; i < 3; i++)
+                    {
+                        newGivenPokemon.Add(extractedGame.PokemonList[new XDTradePokemon((byte)(i + 2), iso).Pokemon]);
+                    }
+                    break;
+            }
+
+            // set requested
+            for (int i = 0; i < 3; i++)
+            {
+                var pokeSpot = new PokeSpotPokemon(2, (PokeSpotType)i, iso);
+                var newRequestedPoke = settings.UsePokeSpotPokemonInTrade || settings.Trade == TradeRandomSetting.Requested || settings.Trade == TradeRandomSetting.Both
+                    ? extractedGame.PokemonList[pokeSpot.Pokemon]
+                    : pokemon[random.Next(0, pokemon.Length)];
+                newRequestedPokemon.Add(newRequestedPoke);
+            }
+
+            Logger.Log($"Requested Pokemon: {string.Join(", ", newRequestedPokemon.Select(p => p.Name))}\n");
+            Logger.Log($"Given Pokemon: {string.Join(", ", newGivenPokemon.Select(p => p.Name))}\n");
+
+            XDTradePokemon.UpdateTrades(iso, newRequestedPokemon.ToArray(), newGivenPokemon.ToArray());
+        }
+
+        public static void RandomizeColoStatics(Random random, StaticPokemonShufflerSettings settings, IGiftPokemon[] starters, ExtractedGame extractedGame)
+        {
+            foreach (var starter in starters)
+            {
+                RandomizeStarter(random, settings, starter, extractedGame);
+            }
+
+            List<Pokemon> newGivenPokemon = new List<Pokemon>();
+            var pokemon = extractedGame.ValidPokemon;
+            // set given
+            switch (settings.Trade)
+            {
+                default:
+                case TradeRandomSetting.Unchanged:
+                    Logger.Log("Unchanged\n\n");
+                    return;
+                case TradeRandomSetting.Given:
+                    for (int i = 0; i < extractedGame.GiftPokemonList.Length; i++)
+                    {
+                        var giftPoke = extractedGame.GiftPokemonList[i];
+                        var newPoke = pokemon[random.Next(0, pokemon.Length)];
+                        giftPoke.Pokemon = (ushort)newPoke.Index;
+                        newGivenPokemon.Add(newPoke);
+
+                        ushort[] newMoveSet = MoveShuffler.GetNewMoveset(random, settings.MoveSetOptions, giftPoke.Pokemon, extractedGame.GiftPokemonList[i].Level, extractedGame);
+                        for (int j = 0; j < newMoveSet.Length; j++)
+                        {
+                            extractedGame.GiftPokemonList[i].SetMove(j, newMoveSet[j]);
+                        }
+                    }
+                    break;
+            }
+
+            Logger.Log($"Given Pokemon: {string.Join(", ", newGivenPokemon.Select(p => p.Name))}\n");
+        }
+
+        private static void RandomizeStarter(Random random, StaticPokemonShufflerSettings settings, IGiftPokemon starter, ExtractedGame extractedGame)
+        {
             int index = 0;
             Evolution secondStage;
             bool condition = false;
@@ -21,18 +115,18 @@ namespace Randomizer.Shufflers
             switch (settings.Starter)
             {
                 case StarterRandomSetting.Custom:
-                {
-                    index = extractedGame.PokemonList.FirstOrDefault(p => p.Name.ToLower() == settings.Starter1.ToLower())?.Index ?? starter.Pokemon;
-                }
-                break;
-                case StarterRandomSetting.Random:
-                {
-                    while (index == 0 || RandomizerConstants.SpecialPokemon.Contains(index))
                     {
-                        index = random.Next(1, extractedGame.PokemonList.Length);
+                        index = extractedGame.PokemonList.FirstOrDefault(p => p.Name.ToLower() == settings.Starter1.ToLower())?.Index ?? starter.Pokemon;
                     }
-                }
-                break;
+                    break;
+                case StarterRandomSetting.Random:
+                    {
+                        while (index == 0 || RandomizerConstants.SpecialPokemon.Contains(index))
+                        {
+                            index = random.Next(1, extractedGame.PokemonList.Length);
+                        }
+                    }
+                    break;
                 case StarterRandomSetting.RandomThreeStage:
                     while (!condition)
                     {
@@ -115,63 +209,6 @@ namespace Randomizer.Shufflers
                     starter.SetMove(i, move);
                 }
             }
-
-            List<Pokemon> newRequestedPokemon = new List<Pokemon>();
-            List<Pokemon> newGivenPokemon = new List<Pokemon>();
-            var pokemon = extractedGame.ValidPokemon;
-            // set given
-            switch (settings.Trade)
-            {
-                default:
-                case TradeRandomSetting.Unchanged:
-                    Logger.Log("Unchanged\n\n");
-                    return;
-                case TradeRandomSetting.Given:
-                case TradeRandomSetting.Both:
-                    for (int i = 0; i < extractedGame.GiftPokemonList.Length; i++)
-                    {
-                        var giftPoke = extractedGame.GiftPokemonList[i];
-                        var newPoke = pokemon[random.Next(0, pokemon.Length)];
-                        giftPoke.Pokemon = (ushort)newPoke.Index;
-
-                        if (giftPoke.GiftType.Contains("Duking"))
-                        {
-                            newGivenPokemon.Add(newPoke);
-                        }
-
-                        ushort[] newMoveSet = MoveShuffler.GetNewMoveset(random, settings.MoveSetOptions, giftPoke.Pokemon, extractedGame.GiftPokemonList[i].Level, extractedGame);
-                        for (int j = 0; j < newMoveSet.Length; j++)
-                        {
-                            extractedGame.GiftPokemonList[i].SetMove(j, newMoveSet[j]);
-                        }
-                    }
-                    break;
-                case TradeRandomSetting.Requested:
-                    for (int i = 0; i < 3; i++)
-                    {
-                        newGivenPokemon.Add(extractedGame.PokemonList[new XDTradePokemon((byte)(i + 2), iso).Pokemon]);
-                    }
-                    break;
-            }
-
-            // set requested
-            for (int i = 0; i < 3; i++)
-            {
-                var pokeSpot = new PokeSpotPokemon(2, (PokeSpotType)i, iso);
-                var newRequestedPoke = settings.UsePokeSpotPokemonInTrade || settings.Trade == TradeRandomSetting.Requested  || settings.Trade == TradeRandomSetting.Both
-                    ? extractedGame.PokemonList[pokeSpot.Pokemon]
-                    : pokemon[random.Next(0, pokemon.Length)];
-                newRequestedPokemon.Add(newRequestedPoke);
-            }
-
-            Logger.Log($"Requested Pokemon: {string.Join(", ", newRequestedPokemon.Select(p => p.Name))}\n");
-            Logger.Log($"Given Pokemon: {string.Join(", ", newGivenPokemon.Select(p => p.Name))}\n");
-
-            XDTradePokemon.UpdateTrades(iso, newRequestedPokemon.ToArray(), newGivenPokemon.ToArray());
-        }
-
-        public static void RandomizeColoStatics(Random random, StaticPokemonShufflerSettings settings, IGiftPokemon[] starters, ExtractedGame extractedGame)
-        {
         }
     }
 }
