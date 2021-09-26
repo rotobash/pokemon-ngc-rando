@@ -77,7 +77,12 @@ namespace XDCommon.PokemonDefinitions
             dataSource = iso.Game == Game.XD ? (BaseExtractedFile)iso.CommonRel : iso.DOL;
 
             var pocketFsys = iso.GetFSysFile("pocket_menu.fsys");
-            var pocketFileName = iso.Region == Region.Europe ? "(null).msg" : "pocket_menu.msg";
+            var pocketFileName = "pocket_menu.msg";
+            if (iso.Region == Region.Europe)
+            {
+                  pocketFileName = iso.Game == Game.XD ? "(null).msg" : "pocket_menu.rel";
+            }
+
             pocketMenu = pocketFsys.GetEntryByFileName(pocketFileName) as StringTable;
         }
 

@@ -196,13 +196,14 @@ namespace XDCommon.Utility
 
         public IExtractedFile GetEntryByFileName(string filename)
         {
-            if (ExtractedEntries.ContainsKey(filename))
+            var index = GetIndexForFileName(filename);
+            var details = GetDetailsForFile(index);
+            if (ExtractedEntries.ContainsKey($"{details.FileName}.{details.Filetype}".ToLower()))
             {
                 return ExtractedEntries[filename];
             }
             else
             {
-                var index = GetIndexForFileName(filename);
                 var entry = FSysFileEntry.ExtractFromFSys(this, index);
                 ExtractedEntries.Add(entry.FileName, entry);
                 return entry;

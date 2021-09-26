@@ -25,8 +25,8 @@ namespace XDCommon.PokemonDefinitions
                 return iso.Region switch
                 {
                     Region.US => firstStarter ? 0x12DBF0 : 0x12DAC8,
-                    Region.Europe => firstStarter ? 0x12DBF0 : 0x12DAC8,
-                    _ => firstStarter ? 0x12DBF0 : 0x12DAC8,
+                    Region.Europe => firstStarter ? 0x131E1C : 0x131CF4,
+                    _ => firstStarter ? 0x12B2C0 : 0x12B198,
                 };
             }
         }

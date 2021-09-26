@@ -83,6 +83,9 @@ namespace Randomizer
 
         private void SetControlDisplay(bool isXD)
         {
+            starter2Label.Visible = !isXD;
+            starter2ComboBox.Visible = !isXD;
+
             if (isXD)
             {
                 starterComboBox.SelectedItem = "EEVEE";
@@ -93,21 +96,59 @@ namespace Randomizer
                 starter2ComboBox.SelectedItem = "UMBREON";
             }
 
-            starter2Label.Visible = !isXD;
-            starter2ComboBox.Visible = !isXD;
-            pokeSpotGroupBox.Enabled = isXD;
+            ResetControlCollection(pokeSpotGroupBox.Controls, isXD);
+            boostTrainerLevelCheck.Enabled = isXD;
+            boostTrainerLevelCheck.Checked &= boostTrainerLevelCheck.Enabled;
 
             tradeBothRandomCheck.Enabled = isXD;
-            tradeUsePokeSpotCheck.Enabled = isXD;
+            tradeBothRandomCheck.Checked &= tradeBothRandomCheck.Enabled;
+
             tradeRequestedRandomCheck.Enabled = isXD;
+            tradeRequestedRandomCheck.Checked &= tradeRequestedRandomCheck.Enabled;
 
-            tutorMoveGroupBox.Enabled = isXD;
-            tutorCompatibilityGroupBox.Enabled = isXD;
+            tradeUsePokeSpotCheck.Enabled = isXD;
+            tradeUsePokeSpotCheck.Checked &= tradeUsePokeSpotCheck.Enabled;
 
-            martGroupBox.Enabled = isXD;
+            ResetControlCollection(tutorMoveGroupBox.Controls, isXD);
+            ResetControlCollection(tutorCompatibilityGroupBox.Controls, isXD);
+            ResetControlCollection(martGroupBox.Controls, isXD);
+            ResetControlCollection(battleBingoTabPage.Controls, isXD);
+            ResetControlCollection(itemsTabPage.Controls, isXD || (!isXD && iso.Region != XDCommon.Contracts.Region.Japan));
+
             banBattleCDsCheck.Enabled = isXD;
+            banBattleCDsCheck.Checked &= banBattleCDsCheck.Enabled;
+            martsSellEvoStonesCheck.Enabled = isXD;
+            martsSellEvoStonesCheck.Checked &= martsSellEvoStonesCheck.Enabled;
+            martsSellXItemsCheck.Enabled = isXD;
+            martsSellXItemsCheck.Checked &= martsSellXItemsCheck.Enabled;
+            randomizeMartItems.Enabled = isXD;
+            randomizeMartItems.Checked &= randomizeMartItems.Enabled;
+        }
 
-            foreach (Control ctrl in battleBingoTabPage.Controls) ctrl.Enabled = isXD;
+        private void ResetControlCollection(Control.ControlCollection group, bool? enabled = null)
+        {
+            foreach (Control ctrl in group)
+            {
+                var reset = enabled ?? ctrl.Enabled;
+                ctrl.Enabled = reset;
+
+                if (ctrl is CheckBox cb)
+                {
+                    cb.Checked &= reset;
+                }
+                else if (ctrl is NumericUpDown num)
+                {
+                    num.Value = reset ? num.Value : 1;
+                }
+                else if (ctrl is TextBox text)
+                {
+                    text.Text = reset ? text.Text : string.Empty;
+                }
+                else
+                {
+                    ResetControlCollection(ctrl.Controls, enabled);
+                }
+            }
         }
 
         private bool OpenFile()
@@ -439,16 +480,17 @@ namespace Randomizer
                     break;
             }
 
+            // this will be ignored by the randomizer but just to be safe
             switch (settings.PokemonTraitShufflerSettings.TutorCompatibility)
             {
                 case MoveCompatibility.Full:
-                    tutorFullCompatibilityCheck.Checked = true;
+                    tutorFullCompatibilityCheck.Checked = tutorFullCompatibilityCheck.Enabled;
                     break;
                 case MoveCompatibility.Random:
-                    tutorCompatibilityRandomCheck.Checked = true;
+                    tutorCompatibilityRandomCheck.Checked = tutorCompatibilityRandomCheck.Enabled;
                     break;
                 case MoveCompatibility.RandomPreferType:
-                    tutorCompatibilityPreferTypeCheck.Checked = true;
+                    tutorCompatibilityPreferTypeCheck.Checked = tutorCompatibilityPreferTypeCheck.Enabled;
                     break;
                 default:
                     tutorCompatibilityUnchangedCheck.Checked = true;
@@ -465,21 +507,25 @@ namespace Randomizer
             moveCategoryCheck.Checked = settings.MoveShufflerSettings.RandomMoveCategory;
 
             // items
-            randomizeOverworldItemsCheck.Checked = settings.ItemShufflerSettings.RandomizeItems;
-            randomizeItemQuantityCheck.Checked = settings.ItemShufflerSettings.RandomizeItemQuantity;
-            randomizeMartItems.Checked = settings.ItemShufflerSettings.RandomizeMarts;
-            banBattleCDsCheck.Checked = settings.ItemShufflerSettings.BanBattleCDs;
-            martsSellEvoStonesCheck.Checked = settings.ItemShufflerSettings.MartsSellEvoStones;
-            martsSellXItemsCheck.Checked = settings.ItemShufflerSettings.MartsSellXItems;
+            // use the enabled property so we don't load in disabled settings and crash the program
+            randomizeOverworldItemsCheck.Checked = randomizeOverworldItemsCheck.Enabled && settings.ItemShufflerSettings.RandomizeItems;
+            randomizeItemQuantityCheck.Checked = randomizeItemQuantityCheck.Enabled && settings.ItemShufflerSettings.RandomizeItemQuantity;
+            randomizeMartItems.Checked = randomizeMartItems.Enabled && settings.ItemShufflerSettings.RandomizeMarts;
+            banBattleCDsCheck.Checked = banBattleCDsCheck.Enabled && settings.ItemShufflerSettings.BanBattleCDs;
+            martsSellEvoStonesCheck.Checked = martsSellEvoStonesCheck.Enabled && settings.ItemShufflerSettings.MartsSellEvoStones;
+            martsSellXItemsCheck.Checked = martsSellXItemsCheck.Enabled && settings.ItemShufflerSettings.MartsSellXItems;
+
+            randomHeldItemCheck.Checked = randomHeldItemCheck.Enabled && settings.TeamShufflerSettings.RandomizeHeldItems;
+            banBadItemsCheck.Checked = banBadItemsCheck.Enabled && settings.TeamShufflerSettings.BanBadItems;
 
             // tms/tutors
             randomizeTMsCheck.Checked = settings.ItemShufflerSettings.RandomizeTMs;
             forceGoodDamagingTMsCheck.Checked = settings.ItemShufflerSettings.TMForceGoodDamagingMove;
             forceGoodDamagingTMPercent.Value = (int)(settings.ItemShufflerSettings.TMGoodDamagingMovePercent * 100);
 
-            randomizeTutorMoveCheck.Checked = settings.ItemShufflerSettings.RandomizeTutorMoves;
-            forceGoodDamagingTutorMoveCheck.Checked = settings.ItemShufflerSettings.TutorForceGoodDamagingMove;
-            forceGoodDamagingTutorMovePercent.Value = (int)(settings.ItemShufflerSettings.TutorGoodDamagingMovePercent * 100);
+            randomizeTutorMoveCheck.Checked = randomizeTutorMoveCheck.Enabled && settings.ItemShufflerSettings.RandomizeTutorMoves;
+            forceGoodDamagingTutorMoveCheck.Checked = forceGoodDamagingTutorMoveCheck.Enabled && settings.ItemShufflerSettings.TutorForceGoodDamagingMove;
+            forceGoodDamagingTutorMovePercent.Value = forceGoodDamagingTutorMovePercent.Enabled ? (int)(settings.ItemShufflerSettings.TutorGoodDamagingMovePercent * 100) : 0;
 
             // trainers
             randomizeTrainerPokemonCheck.Checked = settings.TeamShufflerSettings.RandomizePokemon;
@@ -487,13 +533,10 @@ namespace Randomizer
 
             minimumShadowCatchRateCheck.Checked = settings.TeamShufflerSettings.SetMinimumShadowCatchRate;
             shadowCatchMinimum.Value = Math.Clamp(settings.TeamShufflerSettings.ShadowCatchRateMinimum, 0, 255);
-            boostTrainerLevelCheck.Checked = settings.TeamShufflerSettings.BoostTrainerLevel;
-            boostTrainerLevelPercent.Value = (int)(settings.TeamShufflerSettings.BoostTrainerLevelPercent * 100);
+            boostTrainerLevelCheck.Checked = boostTrainerLevelCheck.Enabled && settings.TeamShufflerSettings.BoostTrainerLevel;
+            boostTrainerLevelPercent.Value = boostTrainerLevelPercent.Enabled ? (int)(settings.TeamShufflerSettings.BoostTrainerLevelPercent * 100) : 0;
             forceFullyEvovledLevelCheck.Checked = settings.TeamShufflerSettings.ForceFullyEvolved;
             forceFullyEvolvedLevel.Value = settings.TeamShufflerSettings.ForceFullyEvolvedLevel;
-
-            randomHeldItemCheck.Checked = settings.TeamShufflerSettings.RandomizeHeldItems;
-            banBadItemsCheck.Checked = settings.TeamShufflerSettings.BanBadItems;
 
             // movesets
             randomizeMovesets.Checked = settings.TeamShufflerSettings.MoveSetOptions.RandomizeMovesets;
@@ -532,38 +575,38 @@ namespace Randomizer
             starterComboBox.Text = settings.StaticPokemonShufflerSettings.Starter1;
             starter2ComboBox.Text = settings.StaticPokemonShufflerSettings.Starter2;
 
-            tradeUsePokeSpotCheck.Checked = settings.StaticPokemonShufflerSettings.UsePokeSpotPokemonInTrade;
+            tradeUsePokeSpotCheck.Checked = tradeUsePokeSpotCheck.Enabled && settings.StaticPokemonShufflerSettings.UsePokeSpotPokemonInTrade;
             switch (settings.StaticPokemonShufflerSettings.Trade)
             {
                 case TradeRandomSetting.Given:
                     tradeRandomGivenCheck.Checked = true;
                     break;
                 case TradeRandomSetting.Both:
-                    tradeBothRandomCheck.Checked = true;
+                    tradeBothRandomCheck.Checked = tradeBothRandomCheck.Enabled;
                     break;
                 case TradeRandomSetting.Requested:
-                    tradeRequestedRandomCheck.Checked = true;
+                    tradeRequestedRandomCheck.Checked = tradeRequestedRandomCheck.Enabled;
                     break;
                 default:
                     tradeUnchangedCheck.Checked = true;
                     break;
             }
 
-            randomizeBattleBingoPokemonCheck.Checked = settings.BingoCardShufflerSettings.RandomizeBattleBingoPokemon;
-            randomizeBattleBingoMovesetsCheck.Checked = settings.BingoCardShufflerSettings.RandomizeBattleBingoMoveSets;
-            bingoUseDamagingMoveCheck.Checked = settings.BingoCardShufflerSettings.ForceGoodDamagingMove;
-            bingoUseStabMoveCheck.Checked = settings.BingoCardShufflerSettings.ForceSTABMove;
-            bingoUseStrongPokemon.Checked = settings.BingoCardShufflerSettings.ForceStrongPokemon;
-            bingoBanShadowMovesCheck.Checked = settings.BingoCardShufflerSettings.BanShadowMoves;
+            randomizeBattleBingoPokemonCheck.Checked = randomizeBattleBingoPokemonCheck.Enabled && settings.BingoCardShufflerSettings.RandomizeBattleBingoPokemon;
+            randomizeBattleBingoMovesetsCheck.Checked = randomizeBattleBingoMovesetsCheck.Enabled && settings.BingoCardShufflerSettings.RandomizeBattleBingoMoveSets;
+            bingoUseDamagingMoveCheck.Checked = bingoUseDamagingMoveCheck.Enabled && settings.BingoCardShufflerSettings.ForceGoodDamagingMove;
+            bingoUseStabMoveCheck.Checked = bingoUseStabMoveCheck.Enabled && settings.BingoCardShufflerSettings.ForceSTABMove;
+            bingoUseStrongPokemon.Checked = bingoUseStrongPokemon.Enabled && settings.BingoCardShufflerSettings.ForceStrongPokemon;
+            bingoBanShadowMovesCheck.Checked = bingoBanShadowMovesCheck.Enabled && settings.BingoCardShufflerSettings.BanShadowMoves;
 
-            randomizePokeSpotsCheck.Checked = settings.PokeSpotShufflerSettings.RandomizePokeSpotPokemon;
-            easyBonslyCheck.Checked = settings.PokeSpotShufflerSettings.EasyBonsly;
+            randomizePokeSpotsCheck.Checked = randomizePokeSpotsCheck.Enabled && settings.PokeSpotShufflerSettings.RandomizePokeSpotPokemon;
+            easyBonslyCheck.Checked = easyBonslyCheck.Enabled && settings.PokeSpotShufflerSettings.EasyBonsly;
 
-            minimumPokeSpotCatchRate.Checked = settings.PokeSpotShufflerSettings.SetMinimumCatchRate;
-            pokeSpotCatchMinimum.Value = settings.PokeSpotShufflerSettings.MinimumCatchRate;
+            minimumPokeSpotCatchRate.Checked = minimumPokeSpotCatchRate.Enabled && settings.PokeSpotShufflerSettings.SetMinimumCatchRate;
+            pokeSpotCatchMinimum.Value = pokeSpotCatchMinimum.Enabled ? settings.PokeSpotShufflerSettings.MinimumCatchRate : 1;
 
-            boostPokeSpotLevelCheck.Checked = settings.PokeSpotShufflerSettings.BoostPokeSpotLevel;
-            boostPokeSpotLevelPercent.Value = (int)(settings.PokeSpotShufflerSettings.BoostPokeSpotLevelPercent * 100);
+            boostPokeSpotLevelCheck.Checked = boostPokeSpotLevelCheck.Enabled && settings.PokeSpotShufflerSettings.BoostPokeSpotLevel;
+            boostPokeSpotLevelPercent.Value = boostPokeSpotLevelPercent.Enabled ? (int)(settings.PokeSpotShufflerSettings.BoostPokeSpotLevelPercent * 100) : 0;
         }
         #endregion
 
