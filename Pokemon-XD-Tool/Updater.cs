@@ -17,6 +17,7 @@ namespace Randomizer
     {
         const string updateMessage = "In order to finish updating, the tool needs to close. Click 'OK' to close it now.";
         readonly GithubReleaseAsset releaseAsset;
+        Progress<float> progressHandler;
         public Updater(GithubRelease updateToVersion)
         {
             InitializeComponent();
@@ -52,7 +53,7 @@ namespace Randomizer
 
             var startUpdateTime = DateTime.UtcNow;
             var totalMB = (float)asset.size / 1024 / 1024;
-            var progress = new Progress<float>(progress =>
+            progressHandler = new Progress<float>(progress =>
             {
                 var currentProgressMB = progress * totalMB;
                 var speed = currentProgressMB / (DateTime.UtcNow - startUpdateTime).TotalSeconds;
@@ -61,7 +62,7 @@ namespace Randomizer
                 backgroundWorker.ReportProgress((int)Math.Round(progress * 100));
             });
 
-            SelfUpdater.Update(asset, progress);
+            SelfUpdater.Update(asset, progressHandler);
         }
 
         public void UpdateProgress(object sender, ProgressChangedEventArgs args)
@@ -74,6 +75,7 @@ namespace Randomizer
             progressLabel.Text = "Finished Downloading.";
             MessageBox.Show(updateMessage, "Warning", MessageBoxButtons.OK);
             using var process = new Process();
+
             process.StartInfo.FileName = "AutoUpdater.exe";
             process.StartInfo.WorkingDirectory = Directory.GetCurrentDirectory();
 

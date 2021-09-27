@@ -200,6 +200,9 @@ namespace Randomizer
             this.label13 = new System.Windows.Forms.Label();
             this.gameLabel = new System.Windows.Forms.Label();
             this.regionLabel = new System.Windows.Forms.Label();
+            this.tableLayoutPanel32 = new System.Windows.Forms.TableLayoutPanel();
+            this.prngDropDown = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.openISODialog = new System.Windows.Forms.OpenFileDialog();
             this.saveISODialog = new System.Windows.Forms.SaveFileDialog();
             this.infoToolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -278,6 +281,7 @@ namespace Randomizer
             this.miscTabPage.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel32.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -300,6 +304,7 @@ namespace Randomizer
             this.tableLayoutPanel1.Controls.Add(this.progressBar, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel9, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel32, 0, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 9);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -3407,6 +3412,41 @@ namespace Randomizer
             this.regionLabel.Size = new System.Drawing.Size(0, 15);
             this.regionLabel.TabIndex = 3;
             // 
+            // tableLayoutPanel32
+            // 
+            this.tableLayoutPanel32.ColumnCount = 1;
+            this.tableLayoutPanel32.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel32.Controls.Add(this.prngDropDown, 0, 1);
+            this.tableLayoutPanel32.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel32.Location = new System.Drawing.Point(3, 99);
+            this.tableLayoutPanel32.Name = "tableLayoutPanel32";
+            this.tableLayoutPanel32.RowCount = 2;
+            this.tableLayoutPanel32.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.47619F));
+            this.tableLayoutPanel32.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 59.52381F));
+            this.tableLayoutPanel32.Size = new System.Drawing.Size(177, 42);
+            this.tableLayoutPanel32.TabIndex = 13;
+            // 
+            // prngDropDown
+            // 
+            this.prngDropDown.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.prngDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.prngDropDown.FormattingEnabled = true;
+            this.prngDropDown.Location = new System.Drawing.Point(3, 19);
+            this.prngDropDown.Name = "prngDropDown";
+            this.prngDropDown.Size = new System.Drawing.Size(171, 23);
+            this.prngDropDown.TabIndex = 0;
+            this.infoToolTip.SetToolTip(this.prngDropDown, resources.GetString("prngDropDown.ToolTip"));
+            this.prngDropDown.SelectedIndexChanged += new System.EventHandler(this.prngDropDown_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(157, 15);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Random Number Generator:";
+            // 
             // backgroundWorker
             // 
             this.backgroundWorker.WorkerReportsProgress = true;
@@ -3537,6 +3577,8 @@ namespace Randomizer
             this.tableLayoutPanel9.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            this.tableLayoutPanel32.ResumeLayout(false);
+            this.tableLayoutPanel32.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3719,6 +3761,9 @@ namespace Randomizer
         private System.Windows.Forms.CheckBox banBattleCDsCheck;
         private System.Windows.Forms.RadioButton tradeRequestedRandomCheck;
         private System.Windows.Forms.CheckBox tradeUsePokeSpotCheck;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel32;
+        private System.Windows.Forms.ComboBox prngDropDown;
+        private System.Windows.Forms.Label label1;
     }
 }
 

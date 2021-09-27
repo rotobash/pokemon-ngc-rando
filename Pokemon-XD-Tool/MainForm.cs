@@ -27,6 +27,7 @@ namespace Randomizer
         ISO iso;
         ISOExtractor isoExtractor;
         IGameExtractor gameExtractor;
+        PRNGChoice prng;
 
         int seed = -1;
 
@@ -37,6 +38,12 @@ namespace Randomizer
             backgroundWorker.DoWork += StartRandomizing;
             backgroundWorker.ProgressChanged += reportProgress;
             backgroundWorker.RunWorkerCompleted += doneTask;
+
+            foreach (var choice in Enum.GetValues<PRNGChoice>()) 
+            {
+                prngDropDown.Items.Add(choice);
+                prngDropDown.SelectedItem = choice;
+            }
         }
 
         private void loadIsoButton_Click(object sender, EventArgs e)
@@ -228,14 +235,14 @@ namespace Randomizer
             {
                 backgroundWorker.ReportProgress(0);
 
-                var randoInvoke = BeginInvoke(new Func<Randomizer>(() => new Randomizer(gameExtractor, seed)));
+                var randoInvoke = BeginInvoke(new Func<Randomizer>(() => new Randomizer(gameExtractor, prng, seed)));
                 var settingsInvoke = BeginInvoke(new Func<Settings>(() => CreateRandoSettings()));
                 var extractorInvoke = BeginInvoke(new Func<ISOExtractor>(() => isoExtractor));
                 var isoInvoke = BeginInvoke(new Func<ISO>(() => iso));
                 var settings = EndInvoke(settingsInvoke) as Settings;
-                var randomizer = EndInvoke(randoInvoke) as Randomizer;
                 var extractor = EndInvoke(extractorInvoke) as ISOExtractor;
                 var gameFile = EndInvoke(isoInvoke) as ISO;
+                using var randomizer = EndInvoke(randoInvoke) as Randomizer;
 
                 Logger.CreateNewLogFile(path);
 
@@ -764,13 +771,31 @@ namespace Randomizer
         {
             bingoUseStrongPokemon.Enabled = randomizeBattleBingoPokemonCheck.Checked;
         }
+
+        private void prngDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Enum.TryParse<PRNGChoice>(prngDropDown.SelectedItem?.ToString(), out var choice))
+            {
+                prng = choice;
+                switch (prng)
+                {
+                    case PRNGChoice.Net:
+                    case PRNGChoice.Xoroshiro128:
+                        setSeedButton.Enabled = true;
+                        break;
+                    case PRNGChoice.Cryptographic:
+                        setSeedButton.Enabled = false;
+                        break;
+                }
+            }
+        }
         #endregion
 
         private void MainForm_Load(object sender, EventArgs e)
         {
 
             var version = Assembly.GetExecutingAssembly().GetName().Version;
-            var release = SelfUpdater.CheckForUpdate(ToolName, version.Major, version.Minor, version.Build);
+            var release = SelfUpdater.CheckForUpdate(ToolName, version);
             if (release != null)
             {
                 if (MessageBox.Show("There's a new update available! Would you like to update now?", "Hey you!", MessageBoxButtons.YesNo) == DialogResult.Yes)

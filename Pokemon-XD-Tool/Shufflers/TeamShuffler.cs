@@ -10,7 +10,7 @@ namespace Randomizer.Shufflers
 {
     public static class TeamShuffler
     {
-        public static void ShuffleTeams(Random random, TeamShufflerSettings settings, ExtractedGame extractedGame)
+        public static void ShuffleTeams(AbstractRNG random, TeamShufflerSettings settings, ExtractedGame extractedGame)
         {
             var potentialItems = settings.BanBadItems ? extractedGame.GoodItems : extractedGame.NonKeyItems;
             var potentialMoves = extractedGame.MoveList;
@@ -77,7 +77,7 @@ namespace Randomizer.Shufflers
             }
         }
 
-        public static void RandomizePokemon(Random random, TeamShufflerSettings settings, ITrainerPokemon pokemon, Pokemon[] pokemonList)
+        public static void RandomizePokemon(AbstractRNG random, TeamShufflerSettings settings, ITrainerPokemon pokemon, Pokemon[] pokemonList)
         {
             if (settings.RandomizePokemon)
             {
@@ -106,7 +106,7 @@ namespace Randomizer.Shufflers
             }
         }
 
-        public static void RandomizeMoveSet(Random random, TeamShufflerSettings settings, ITrainerPokemon pokemon, ExtractedGame extractedGame)
+        public static void RandomizeMoveSet(AbstractRNG random, TeamShufflerSettings settings, ITrainerPokemon pokemon, ExtractedGame extractedGame)
         {
             ushort[] moveSet = null;
 

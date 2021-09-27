@@ -60,20 +60,29 @@
   <metadata name="infoToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>281, 17</value>
   </metadata>
+  <data name="forceFourMoveCheck.ToolTip" xml:space="preserve">
+    <value>If not randomizing the movesets, some Pokemon's level up moves don't have enough at their level.
+Selecting this will ensure that all Pokemon will have four moves. Will randomly pick moves to fill out the rest.</value>
+  </data>
+  <metadata name="infoToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>281, 17</value>
+  </metadata>
   <data name="tradeUsePokeSpotCheck.ToolTip" xml:space="preserve">
     <value>Will set the requested Pokemon in a trade to one of the PokeSpot Pokemon. Recommended if randomizing PokeSpots or trades. 
 If randomizing PokeSpots, it may be impossible to find Duking's requested Pokemon and if randomizing trades.
 </value>
-  </data>
-  <data name="forceFourMoveCheck.ToolTip" xml:space="preserve">
-    <value>If not randomizing the movesets, some Pokemon's level up moves don't have enough at their level.
-Selecting this will ensure that all Pokemon will have four moves. Will randomly pick moves to fill out the rest.</value>
   </data>
   <data name="banBadItemsCheck.ToolTip" xml:space="preserve">
     <value>Bans items that aren't very useful in Colo/XD. 
 This includes all berries, contest items, shards (except moon and sun), 
 and items that have to do with wild pokemon (e.g. repels, pokedolls, smoke ball, etc.)
 </value>
+  </data>
+  <data name="prngDropDown.ToolTip" xml:space="preserve">
+    <value>Select a random generator to use. 
+Net: Built-in PRNG, tends to have duplicates
+Xoroshiro128: Custom PRNG, has better results but still limited by being a PRNG
+Cryptographic: Truly random, the best randomness at the cost of not being able to specify a seed</value>
   </data>
   <metadata name="openISODialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>

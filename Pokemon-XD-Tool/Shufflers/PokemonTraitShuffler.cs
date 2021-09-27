@@ -12,7 +12,7 @@ namespace Randomizer.Shufflers
     public static class PokemonTraitShuffler
     {
         const int BSTRange = 50;
-        public static void RandomizePokemonTraits(Random random, PokemonTraitShufflerSettings settings, ExtractedGame extractedGame)
+        public static void RandomizePokemonTraits(AbstractRNG random, PokemonTraitShufflerSettings settings, ExtractedGame extractedGame)
         {
             // store pokemon we've randomized already in a list, for follows evolution
             var pokeBaseStatsRandomized = new List<string>();
@@ -46,11 +46,11 @@ namespace Randomizer.Shufflers
             if (settings.RandomizeEvolutions)
             {
                 Logger.Log($"Setting New Evolutions\n\n");
-                foreach (var poke in extractedGame.PokemonList)
+                foreach (var poke in extractedGame.ValidPokemon)
                 {
                     // prevent loops and multiple pokemon evolving into the same pokemon
                     pokeEvosRandomized.Add(poke.Index);
-                    var pokeFilter = extractedGame.PokemonList.Where(p => !pokeEvosRandomized.Contains(p.Index));
+                    var pokeFilter = extractedGame.ValidPokemon.Where(p => !pokeEvosRandomized.Contains(p.Index));
 
                     if (settings.EvolutionHasSameType)
                     {
@@ -60,23 +60,24 @@ namespace Randomizer.Shufflers
                     for (int i = 0; i < poke.Evolutions.Length; i++)
                     {
                         var evolution = poke.Evolutions[i];
-                        if (evolution.EvolutionMethod == EvolutionMethods.None) continue;
+                        if (evolution.EvolutionMethod == EvolutionMethods.None && i > 0) continue;
 
                         if (settings.EvolutionHasSimilarStrength)
                         {
                             var count = 1;
-                            var similarStrengths = pokeFilter.Where(p => p.BST >= poke.BST - BSTRange && p.BST <= poke.BST + BSTRange);
+                            var similarStrengthPoke = evolution.EvolutionMethod != EvolutionMethods.None ? extractedGame.PokemonList[evolution.EvolvesInto] : poke;
+                            IEnumerable<Pokemon> similarStrengths = Array.Empty<Pokemon>();
                             while (!similarStrengths.Any() && count < 3)
                             {
                                 // anybody? hello?
+                                similarStrengths = pokeFilter.Where(p => p.BST >= similarStrengthPoke.BST - (count * BSTRange) && p.BST <= similarStrengthPoke.BST + (count * BSTRange));
                                 count++;
-                                similarStrengths = pokeFilter.Where(p => p.BST >= poke.BST - (count * BSTRange) && p.BST <= poke.BST + (count * BSTRange));
                             }
                             pokeFilter = similarStrengths;
                         }
 
                         var potentialPokes = pokeFilter.ToArray();
-                        if (potentialPokes.Length == 0)
+                        if (potentialPokes.Length == 0 || (evolution.EvolutionMethod == EvolutionMethods.LevelUp && random.Next(4) > 2))
                         {
                             // null it out
                             Logger.Log($"End of the line for {poke.Name}.\n");
@@ -85,8 +86,12 @@ namespace Randomizer.Shufflers
                         else
                         {
                             var newPoke = potentialPokes[random.Next(0, potentialPokes.Length)];
+                            var evolvesIntoText = evolution.EvolutionMethod == EvolutionMethods.None
+                                ? string.Empty
+                                : $"instead of { extractedGame.PokemonList[evolution.EvolvesInto].Name}";
+
+                            Logger.Log($"{poke.Name} evolves into {newPoke.Name}\n");
                             // same evolution, just evolves into something else
-                            Logger.Log($"{poke.Name} evolves into {newPoke.Name} instead of {extractedGame.PokemonList[evolution.EvolvesInto].Name}.\n");
                             poke.SetEvolution(i, (byte)evolution.EvolutionMethod, evolution.EvolutionCondition, (ushort)newPoke.Index);
                             pokeEvosRandomized.Add(newPoke.Index);
                         }
@@ -326,7 +331,7 @@ namespace Randomizer.Shufflers
             }
         }
 
-        private static void RandomizeTypes(Random random, Pokemon poke)
+        private static void RandomizeTypes(AbstractRNG random, Pokemon poke)
         {
 
             var types = Enum.GetValues<PokemonTypes>();
@@ -361,7 +366,7 @@ namespace Randomizer.Shufflers
             poke.Type2 = type2;
         }
 
-        public static void RandomizeAbility(Random random, Ability[] potentialAbilities, Pokemon poke)
+        public static void RandomizeAbility(AbstractRNG random, Ability[] potentialAbilities, Pokemon poke)
         {
             // don't do my boy shedinja dirty like this
             if (poke.Index == RandomizerConstants.ShedinjaIndex)
@@ -370,7 +375,7 @@ namespace Randomizer.Shufflers
                 return;
             }
 
-            var firstAbility = potentialAbilities[random.Next(0, potentialAbilities.Length)];
+            var firstAbility = potentialAbilities[random.Next(potentialAbilities.Length)];
             poke.Ability1 = (byte)firstAbility.Index;
             Logger.Log($"Ability 1: {firstAbility.Name}\n");
 
@@ -386,7 +391,7 @@ namespace Randomizer.Shufflers
             }
         }
 
-        private static void ChangeCompatibility(Random random, MoveCompatibility moveCompatibility, Pokemon pokemon, ExtractedGame extractedGame, bool tms)
+        private static void ChangeCompatibility(AbstractRNG random, MoveCompatibility moveCompatibility, Pokemon pokemon, ExtractedGame extractedGame, bool tms)
         {
             switch (moveCompatibility)
             {
