@@ -37,6 +37,12 @@ namespace Randomizer
             backgroundWorker.DoWork += StartRandomizing;
             backgroundWorker.ProgressChanged += reportProgress;
             backgroundWorker.RunWorkerCompleted += doneTask;
+
+            foreach (var choice in Enum.GetValues<PRNGChoice>()) 
+            {
+                prngDropDown.Items.Add(choice);
+                prngDropDown.SelectedItem = choice;
+            }
         }
 
         private void loadIsoButton_Click(object sender, EventArgs e)
@@ -228,7 +234,11 @@ namespace Randomizer
             {
                 backgroundWorker.ReportProgress(0);
 
-                var randoInvoke = BeginInvoke(new Func<Randomizer>(() => new Randomizer(gameExtractor, seed)));
+                var randoInvoke = BeginInvoke(new Func<Randomizer>(() =>
+                {
+                    var prng = Enum.Parse<PRNGChoice>(prngDropDown.SelectedItem.ToString());
+                    return new Randomizer(gameExtractor, prng, seed);
+                }));
                 var settingsInvoke = BeginInvoke(new Func<Settings>(() => CreateRandoSettings()));
                 var extractorInvoke = BeginInvoke(new Func<ISOExtractor>(() => isoExtractor));
                 var isoInvoke = BeginInvoke(new Func<ISO>(() => iso));

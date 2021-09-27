@@ -11,21 +11,23 @@ using XDCommon.Utility;
 
 namespace Randomizer
 {
+    public enum PRNGChoice { Net, Xoroshiro128 }
     public class Randomizer
     {
         IRandom random;
         IGameExtractor gameExtractor;
         ExtractedGame extractedGameStructures;
 
-        public Randomizer(IGameExtractor extractor, int seed = -1)
+        public Randomizer(IGameExtractor extractor, PRNGChoice prng, int seed = -1)
         {
-            if (seed < 0)
+            switch (prng)
             {
-                random = new Xoroshiro128StarStar();
-            }
-            else
-            {
-                random = new NetRandom(seed);
+                case PRNGChoice.Net:
+                    random = new NetRandom(seed);
+                    break;
+                case PRNGChoice.Xoroshiro128:
+                    random = new Xoroshiro128StarStar(seed > 0 ? (ulong)seed : 0);
+                    break;
             }
 
             extractedGameStructures = new ExtractedGame(extractor);
