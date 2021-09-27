@@ -46,11 +46,11 @@ namespace Randomizer.Shufflers
             if (settings.RandomizeEvolutions)
             {
                 Logger.Log($"Setting New Evolutions\n\n");
-                foreach (var poke in extractedGame.PokemonList)
+                foreach (var poke in extractedGame.ValidPokemon)
                 {
                     // prevent loops and multiple pokemon evolving into the same pokemon
                     pokeEvosRandomized.Add(poke.Index);
-                    var pokeFilter = extractedGame.PokemonList.Where(p => !pokeEvosRandomized.Contains(p.Index));
+                    var pokeFilter = extractedGame.ValidPokemon.Where(p => !pokeEvosRandomized.Contains(p.Index));
 
                     if (settings.EvolutionHasSameType)
                     {
@@ -60,23 +60,24 @@ namespace Randomizer.Shufflers
                     for (int i = 0; i < poke.Evolutions.Length; i++)
                     {
                         var evolution = poke.Evolutions[i];
-                        if (evolution.EvolutionMethod == EvolutionMethods.None) continue;
+                        if (evolution.EvolutionMethod == EvolutionMethods.None && i > 0) continue;
+                        var evoPoke = evolution.EvolutionMethod != EvolutionMethods.None ? extractedGame.PokemonList[evolution.EvolvesInto] : null;
 
-                        if (settings.EvolutionHasSimilarStrength)
+                        if (settings.EvolutionHasSimilarStrength && evoPoke != null)
                         {
                             var count = 1;
-                            var similarStrengths = pokeFilter.Where(p => p.BST >= poke.BST - BSTRange && p.BST <= poke.BST + BSTRange);
+                            IEnumerable<Pokemon> similarStrengths = Array.Empty<Pokemon>();
                             while (!similarStrengths.Any() && count < 3)
                             {
                                 // anybody? hello?
+                                similarStrengths = pokeFilter.Where(p => p.BST >= evoPoke.BST - (count * BSTRange) && p.BST <= evoPoke.BST + (count * BSTRange));
                                 count++;
-                                similarStrengths = pokeFilter.Where(p => p.BST >= poke.BST - (count * BSTRange) && p.BST <= poke.BST + (count * BSTRange));
                             }
                             pokeFilter = similarStrengths;
                         }
 
                         var potentialPokes = pokeFilter.ToArray();
-                        if (potentialPokes.Length == 0)
+                        if (potentialPokes.Length == 0 || (evolution.EvolutionMethod == EvolutionMethods.LevelUp && random.Next(4) > 2))
                         {
                             // null it out
                             Logger.Log($"End of the line for {poke.Name}.\n");
@@ -85,8 +86,12 @@ namespace Randomizer.Shufflers
                         else
                         {
                             var newPoke = potentialPokes[random.Next(0, potentialPokes.Length)];
+                            var evolvesIntoText = evolution.EvolutionMethod == EvolutionMethods.None
+                                ? string.Empty
+                                : $"instead of { extractedGame.PokemonList[evolution.EvolvesInto].Name}";
+
+                            Logger.Log($"{poke.Name} evolves into {newPoke.Name}\n");
                             // same evolution, just evolves into something else
-                            Logger.Log($"{poke.Name} evolves into {newPoke.Name} instead of {extractedGame.PokemonList[evolution.EvolvesInto].Name}.\n");
                             poke.SetEvolution(i, (byte)evolution.EvolutionMethod, evolution.EvolutionCondition, (ushort)newPoke.Index);
                             pokeEvosRandomized.Add(newPoke.Index);
                         }
