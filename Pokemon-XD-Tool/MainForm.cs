@@ -770,7 +770,7 @@ namespace Randomizer
         {
 
             var version = Assembly.GetExecutingAssembly().GetName().Version;
-            var release = SelfUpdater.CheckForUpdate(ToolName, version.Major, version.Minor, version.Build);
+            var release = SelfUpdater.CheckForUpdate(ToolName, version);
             if (release != null)
             {
                 if (MessageBox.Show("There's a new update available! Would you like to update now?", "Hey you!", MessageBoxButtons.YesNo) == DialogResult.Yes)
