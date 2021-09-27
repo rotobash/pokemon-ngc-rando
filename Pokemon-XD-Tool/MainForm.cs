@@ -27,6 +27,7 @@ namespace Randomizer
         ISO iso;
         ISOExtractor isoExtractor;
         IGameExtractor gameExtractor;
+        PRNGChoice prng;
 
         int seed = -1;
 
@@ -234,18 +235,14 @@ namespace Randomizer
             {
                 backgroundWorker.ReportProgress(0);
 
-                var randoInvoke = BeginInvoke(new Func<Randomizer>(() =>
-                {
-                    var prng = Enum.Parse<PRNGChoice>(prngDropDown.SelectedItem.ToString());
-                    return new Randomizer(gameExtractor, prng, seed);
-                }));
+                var randoInvoke = BeginInvoke(new Func<Randomizer>(() => new Randomizer(gameExtractor, prng, seed)));
                 var settingsInvoke = BeginInvoke(new Func<Settings>(() => CreateRandoSettings()));
                 var extractorInvoke = BeginInvoke(new Func<ISOExtractor>(() => isoExtractor));
                 var isoInvoke = BeginInvoke(new Func<ISO>(() => iso));
                 var settings = EndInvoke(settingsInvoke) as Settings;
-                var randomizer = EndInvoke(randoInvoke) as Randomizer;
                 var extractor = EndInvoke(extractorInvoke) as ISOExtractor;
                 var gameFile = EndInvoke(isoInvoke) as ISO;
+                using var randomizer = EndInvoke(randoInvoke) as Randomizer;
 
                 Logger.CreateNewLogFile(path);
 
@@ -773,6 +770,24 @@ namespace Randomizer
         private void randomizeBattleBingoPokemonCheck_CheckedChanged(object sender, EventArgs e)
         {
             bingoUseStrongPokemon.Enabled = randomizeBattleBingoPokemonCheck.Checked;
+        }
+
+        private void prngDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Enum.TryParse<PRNGChoice>(prngDropDown.SelectedItem?.ToString(), out var choice))
+            {
+                prng = choice;
+                switch (prng)
+                {
+                    case PRNGChoice.Net:
+                    case PRNGChoice.Xoroshiro128:
+                        setSeedButton.Enabled = true;
+                        break;
+                    case PRNGChoice.Cryptographic:
+                        setSeedButton.Enabled = false;
+                        break;
+                }
+            }
         }
         #endregion
 

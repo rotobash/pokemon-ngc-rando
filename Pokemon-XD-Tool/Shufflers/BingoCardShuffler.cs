@@ -10,7 +10,7 @@ namespace Randomizer.Shufflers
 {
     public static class BingoCardShuffler
     {
-        public static void ShuffleCards(IRandom random, BingoCardShufflerSettings settings, BattleBingoCard[] bingoCards, ExtractedGame extractedGame)
+        public static void ShuffleCards(AbstractRNG random, BingoCardShufflerSettings settings, BattleBingoCard[] bingoCards, ExtractedGame extractedGame)
         {
             Logger.Log("=============================== Bingo Cards ===============================\n\n");
             var potentialPokes = extractedGame.PokemonList;

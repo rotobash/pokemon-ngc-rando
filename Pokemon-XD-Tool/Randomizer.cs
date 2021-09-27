@@ -11,12 +11,13 @@ using XDCommon.Utility;
 
 namespace Randomizer
 {
-    public enum PRNGChoice { Net, Xoroshiro128 }
-    public class Randomizer
+    public enum PRNGChoice { Net, Cryptographic, Xoroshiro128 }
+    public class Randomizer : IDisposable
     {
-        IRandom random;
+        AbstractRNG random;
         IGameExtractor gameExtractor;
         ExtractedGame extractedGameStructures;
+        private bool disposedValue;
 
         public Randomizer(IGameExtractor extractor, PRNGChoice prng, int seed = -1)
         {
@@ -27,6 +28,9 @@ namespace Randomizer
                     break;
                 case PRNGChoice.Xoroshiro128:
                     random = new Xoroshiro128StarStar(seed > 0 ? (ulong)seed : 0);
+                    break;
+                case PRNGChoice.Cryptographic:
+                    random = new Cryptographic();
                     break;
             }
 
@@ -92,6 +96,38 @@ namespace Randomizer
                 var pokespots = xd.ExtractPokeSpotPokemon();
                 PokeSpotShuffler.ShufflePokeSpots(random, settings, pokespots, extractedGameStructures);
             }
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    extractedGameStructures = null;
+                    gameExtractor = null;
+                }
+
+                if (random is Cryptographic c)
+                {
+                    c.Dispose();
+                }
+                random = null;
+                disposedValue = true;
+            }
+        }
+
+        ~Randomizer()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
     }
 }

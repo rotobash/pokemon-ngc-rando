@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Randomizer.Shufflers
 {
-    public class NetRandom : IRandom
+    public class NetRandom : AbstractRNG
     {
         Random random;
 
@@ -16,27 +16,29 @@ namespace Randomizer.Shufflers
                 random = new Random(seed);
         }
 
-        public ulong Next()
+        public override ulong Next()
         {
-            return ((ulong)random.Next() << 64) & (ulong)random.Next();
+            var bytes = new byte[sizeof(ulong)];
+            random.NextBytes(bytes);
+            return BitConverter.ToUInt64(bytes);
         }
 
-        public int Next(int minValue, int maxValue)
+        public override int Next(int minValue, int maxValue)
         {
             return random.Next(minValue, maxValue);
         }
 
-        public int Next(int maxValue)
+        public override int Next(int maxValue)
         {
             return random.Next(maxValue);
         }
 
-        public void NextBytes(byte[] buffer)
+        public override void NextBytes(byte[] buffer)
         {
             random.NextBytes(buffer);
         }
 
-        public double NextDouble()
+        public override double NextDouble()
         {
             return random.NextDouble();
         }

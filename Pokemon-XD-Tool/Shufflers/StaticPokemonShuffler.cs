@@ -10,7 +10,7 @@ namespace Randomizer.Shufflers
 {
     public static class StaticPokemonShuffler
     {
-        public static void RandomizeXDStatics(IRandom random, StaticPokemonShufflerSettings settings, XDStarterPokemon starter, ISO iso, ExtractedGame extractedGame)
+        public static void RandomizeXDStatics(AbstractRNG random, StaticPokemonShufflerSettings settings, XDStarterPokemon starter, ISO iso, ExtractedGame extractedGame)
         {
             RandomizeStarter(random, settings, starter, extractedGame);
 
@@ -68,7 +68,7 @@ namespace Randomizer.Shufflers
             XDTradePokemon.UpdateTrades(iso, newRequestedPokemon.ToArray(), newGivenPokemon.ToArray());
         }
 
-        public static void RandomizeColoStatics(IRandom random, StaticPokemonShufflerSettings settings, IGiftPokemon[] starters, ExtractedGame extractedGame)
+        public static void RandomizeColoStatics(AbstractRNG random, StaticPokemonShufflerSettings settings, IGiftPokemon[] starters, ExtractedGame extractedGame)
         {
             foreach (var starter in starters)
             {
@@ -104,7 +104,7 @@ namespace Randomizer.Shufflers
             Logger.Log($"Given Pokemon: {string.Join(", ", newGivenPokemon.Select(p => p.Name))}\n");
         }
 
-        private static void RandomizeStarter(IRandom random, StaticPokemonShufflerSettings settings, IGiftPokemon starter, ExtractedGame extractedGame)
+        private static void RandomizeStarter(AbstractRNG random, StaticPokemonShufflerSettings settings, IGiftPokemon starter, ExtractedGame extractedGame)
         {
             int index = 0;
             Evolution secondStage;

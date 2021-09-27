@@ -75,6 +75,12 @@ This includes all berries, contest items, shards (except moon and sun),
 and items that have to do with wild pokemon (e.g. repels, pokedolls, smoke ball, etc.)
 </value>
   </data>
+  <data name="prngDropDown.ToolTip" xml:space="preserve">
+    <value>Select a random generator to use. 
+Net: Built-in PRNG, tends to have duplicates
+Xoroshiro128: Custom PRNG, has better results but still limited by being a PRNG
+Cryptographic: Truly random, the best randomness at the cost of not being able to specify a seed</value>
+  </data>
   <metadata name="openISODialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>

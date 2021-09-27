@@ -21,7 +21,7 @@ namespace Randomizer.Shufflers
 
     public static class PokeSpotShuffler
     {
-        public static void ShufflePokeSpots(IRandom random, PokeSpotShufflerSettings settings, PokeSpotPokemon[] pokeSpotPokemon, ExtractedGame extractedGame)
+        public static void ShufflePokeSpots(AbstractRNG random, PokeSpotShufflerSettings settings, PokeSpotPokemon[] pokeSpotPokemon, ExtractedGame extractedGame)
         {
             var validPokemon = extractedGame.ValidPokemon;
             var validItems = settings.BanBadHeldItems ? extractedGame.GoodItems : extractedGame.NonKeyItems;

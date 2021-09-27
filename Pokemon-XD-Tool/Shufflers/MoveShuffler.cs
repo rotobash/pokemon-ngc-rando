@@ -23,7 +23,7 @@ namespace Randomizer.Shufflers
 
     public static class MoveShuffler
     {
-        public static void RandomizeMoves(IRandom random, MoveShufflerSettings settings, ExtractedGame extractedGame)
+        public static void RandomizeMoves(AbstractRNG random, MoveShufflerSettings settings, ExtractedGame extractedGame)
         {
             Logger.Log("=============================== Moves ===============================\n\n");
             foreach (var move in extractedGame.ValidMoves)
@@ -81,7 +81,7 @@ namespace Randomizer.Shufflers
             }
         }
 
-        public static ushort[] GetNewMoveset(IRandom random, RandomMoveSetOptions options, ushort pokemon, ushort level, ExtractedGame extractedGame)
+        public static ushort[] GetNewMoveset(AbstractRNG random, RandomMoveSetOptions options, ushort pokemon, ushort level, ExtractedGame extractedGame)
         {
             var poke = extractedGame.PokemonList[pokemon];
             var moveSet = new HashSet<ushort>();

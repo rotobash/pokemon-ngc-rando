@@ -304,7 +304,7 @@ namespace Randomizer
             this.tableLayoutPanel1.Controls.Add(this.progressBar, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel9, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel32, 2, 4);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel32, 0, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 9);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -3418,7 +3418,7 @@ namespace Randomizer
             this.tableLayoutPanel32.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel32.Controls.Add(this.prngDropDown, 0, 1);
             this.tableLayoutPanel32.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel32.Location = new System.Drawing.Point(552, 195);
+            this.tableLayoutPanel32.Location = new System.Drawing.Point(3, 99);
             this.tableLayoutPanel32.Name = "tableLayoutPanel32";
             this.tableLayoutPanel32.RowCount = 2;
             this.tableLayoutPanel32.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.47619F));
@@ -3435,8 +3435,8 @@ namespace Randomizer
             this.prngDropDown.Name = "prngDropDown";
             this.prngDropDown.Size = new System.Drawing.Size(171, 23);
             this.prngDropDown.TabIndex = 0;
-            this.infoToolTip.SetToolTip(this.prngDropDown, "Select a random generator to use. \r\nThe built-in one (Net) tends to have a lot of" +
-        " duplicates.\r\nExperiment and see what does the best.");
+            this.infoToolTip.SetToolTip(this.prngDropDown, resources.GetString("prngDropDown.ToolTip"));
+            this.prngDropDown.SelectedIndexChanged += new System.EventHandler(this.prngDropDown_SelectedIndexChanged);
             // 
             // label1
             // 

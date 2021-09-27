@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Randomizer.Shufflers
 {
-    public class Xoroshiro128StarStar : IRandom
+    public class Xoroshiro128StarStar : AbstractRNG
     {
         public static ulong s0;
         public static ulong s1;
@@ -27,7 +27,7 @@ namespace Randomizer.Shufflers
             return (x << k) | (x >> (64 - k));
         }
 
-        public ulong Next()
+        public override ulong Next()
         {
             var result = rotl(s0 * 5, 7) * 9;
             var temp_s1 = s1;
@@ -37,60 +37,6 @@ namespace Randomizer.Shufflers
             s1 = rotl(temp_s1, 37);
 
             return result;
-        }
-
-        public int Next(int minValue, int maxValue)
-        {
-            if (minValue > maxValue)
-                throw new ArgumentOutOfRangeException(nameof(minValue));
-
-            if (minValue == maxValue) return minValue;
-
-            long diff = maxValue - minValue;
-            while (true)
-            {
-                var rand = (uint)Next();
-
-                long max = 1 + (long)uint.MaxValue;
-                long remainder = max % diff;
-                if (rand < max - remainder)
-                {
-                    return (int)(minValue + (rand % diff));
-                }
-            }
-        }
-
-        public int Next(int maxValue)
-        {
-            if (maxValue < 0)
-                throw new ArgumentOutOfRangeException(nameof(maxValue));
-
-            return Next(0, maxValue);
-        }
-
-        public double NextDouble()
-        {
-            ulong rand = Next();
-            return rand / (1.0 + ulong.MaxValue);
-        }
-
-        public void NextBytes(byte[] buffer)
-        {
-            if (buffer == null) throw new ArgumentNullException(nameof(buffer));
-
-            var index = 0;
-            while (index < buffer.Length)
-            {
-                var randBytes = BitConverter.GetBytes(Next());
-                for (int b = 0; b < randBytes.Length; b++)
-                {
-                    if (index + b > buffer.Length)
-                        break;
-                    buffer[index + b] = randBytes[b];
-                }
-
-                index += randBytes.Length;
-            }
         }
 
         public void SetSeed(params ulong[] seed)

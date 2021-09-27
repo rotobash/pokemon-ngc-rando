@@ -12,7 +12,7 @@ namespace Randomizer.Shufflers
     public static class PokemonTraitShuffler
     {
         const int BSTRange = 50;
-        public static void RandomizePokemonTraits(IRandom random, PokemonTraitShufflerSettings settings, ExtractedGame extractedGame)
+        public static void RandomizePokemonTraits(AbstractRNG random, PokemonTraitShufflerSettings settings, ExtractedGame extractedGame)
         {
             // store pokemon we've randomized already in a list, for follows evolution
             var pokeBaseStatsRandomized = new List<string>();
@@ -331,7 +331,7 @@ namespace Randomizer.Shufflers
             }
         }
 
-        private static void RandomizeTypes(IRandom random, Pokemon poke)
+        private static void RandomizeTypes(AbstractRNG random, Pokemon poke)
         {
 
             var types = Enum.GetValues<PokemonTypes>();
@@ -366,7 +366,7 @@ namespace Randomizer.Shufflers
             poke.Type2 = type2;
         }
 
-        public static void RandomizeAbility(IRandom random, Ability[] potentialAbilities, Pokemon poke)
+        public static void RandomizeAbility(AbstractRNG random, Ability[] potentialAbilities, Pokemon poke)
         {
             // don't do my boy shedinja dirty like this
             if (poke.Index == RandomizerConstants.ShedinjaIndex)
@@ -391,7 +391,7 @@ namespace Randomizer.Shufflers
             }
         }
 
-        private static void ChangeCompatibility(IRandom random, MoveCompatibility moveCompatibility, Pokemon pokemon, ExtractedGame extractedGame, bool tms)
+        private static void ChangeCompatibility(AbstractRNG random, MoveCompatibility moveCompatibility, Pokemon pokemon, ExtractedGame extractedGame, bool tms)
         {
             switch (moveCompatibility)
             {
