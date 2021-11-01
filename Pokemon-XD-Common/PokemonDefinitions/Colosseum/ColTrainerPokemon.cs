@@ -55,6 +55,8 @@ namespace XDCommon.PokemonDefinitions
             set => pool.ExtractedFile.WriteByteAtOffset(StartOffset + ConstPokemonLevelOffset, value);
         }
 
+        public override byte ShadowLevel { get => Level; set => Level = value; }
+
         public override ushort Pokemon 
         { 
             get => base.Pokemon;
