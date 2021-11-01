@@ -142,7 +142,7 @@ namespace Randomizer.Shufflers
                         }
                     }
                     else
-                    {
+                    { 
                         // random within total
                         var pokeBst = poke.BST;
                         var randomBsts = new byte[6];
