@@ -12,6 +12,7 @@ namespace Randomizer.Shufflers
     {
         public static void ShuffleTeams(AbstractRNG random, TeamShufflerSettings settings, ExtractedGame extractedGame)
         {
+            HashSet<int> pickedShadowPokemon = new HashSet<int>();
             var potentialItems = settings.BanBadItems ? extractedGame.GoodItems : extractedGame.NonKeyItems;
             var potentialMoves = extractedGame.MoveList;
             if (settings.MoveSetOptions.RandomizeMovesets && settings.MoveSetOptions.ForceGoodMoves)
@@ -60,6 +61,7 @@ namespace Randomizer.Shufflers
                             Logger.Log($"Setting catch rate to {catchRateIncrease}\n");
                             pokemon.ShadowCatchRate = catchRateIncrease;
                         }
+
                         if (settings.BoostTrainerLevel)
                         {
                             var level = pokemon.Level;
@@ -86,22 +88,26 @@ namespace Randomizer.Shufflers
                 {
                     index = extractedGame.ValidPokemon[random.Next(0, extractedGame.ValidPokemon.Length)].Index;
                 }
-                pokemon.Pokemon = (ushort)index;
+                existingPokemon.Pokemon = (ushort)index;
             }
 
-            if (settings.ForceFullyEvolved && pokemon.Level >= settings.ForceFullyEvolvedLevel)
+            var forceFullyEvolved = existingPokemon.IsShadow
+                ? existingPokemon.ShadowLevel >= settings.ForceFullyEvolvedLevel
+                : existingPokemon.Level >= settings.ForceFullyEvolvedLevel;
+
+            if (settings.ForceFullyEvolved && forceFullyEvolved)
             {
                 var currPoke = extractedGame.PokemonList[pokemon.Pokemon];
                 if (PokemonTraitShuffler.CheckForSplitOrEndEvolution(currPoke, out var count) && count > 0)
                 {
                     // randomly pick from the split
                     var evoInd = random.Next(0, count);
-                    pokemon.Pokemon = currPoke.Evolutions[evoInd].EvolvesInto;
+                    existingPokemon.Pokemon = currPoke.Evolutions[evoInd].EvolvesInto;
                 }
                 else if (count == 1)
                 {
                     // it wasn't split or the end but still evolved
-                    pokemon.Pokemon = currPoke.Evolutions[0].EvolvesInto;
+                    existingPokemon.Pokemon = currPoke.Evolutions[0].EvolvesInto;
                 }
             }
         }

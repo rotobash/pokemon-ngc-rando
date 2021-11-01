@@ -385,6 +385,7 @@ namespace Randomizer
                 {
                     RandomizePokemon = randomizeTrainerPokemonCheck.Checked,
                     DontUseLegendaries = noLegendaryOnTrainerCheck.Checked,
+                    NoDuplicateShadows = noDuplicateShadowPokemonCheck.Checked,
 
                     SetMinimumShadowCatchRate = minimumShadowCatchRateCheck.Checked,
                     ShadowCatchRateMinimum = (int)shadowCatchMinimum.Value,
@@ -543,6 +544,7 @@ namespace Randomizer
             // trainers
             randomizeTrainerPokemonCheck.Checked = settings.TeamShufflerSettings.RandomizePokemon;
             noLegendaryOnTrainerCheck.Checked = settings.TeamShufflerSettings.DontUseLegendaries;
+            noDuplicateShadowPokemonCheck.Checked = settings.TeamShufflerSettings.NoDuplicateShadows;
 
             minimumShadowCatchRateCheck.Checked = settings.TeamShufflerSettings.SetMinimumShadowCatchRate;
             shadowCatchMinimum.Value = Math.Clamp(settings.TeamShufflerSettings.ShadowCatchRateMinimum, 0, 255);

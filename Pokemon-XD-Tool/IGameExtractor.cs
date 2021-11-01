@@ -40,6 +40,7 @@ namespace Randomizer
 
         public Pokemon[] ValidPokemon { get; }
         public Pokemon[] GoodPokemon => PokemonList.Where(p => p.BST >= Configuration.StrongPokemonBST).ToArray();
+        public Pokemon[] NoLegendaryPokemon => PokemonList.Where(p => !RandomizerConstants.Legendaries.Contains(p.Index)).ToArray();
 
         public Items[] ValidItems { get; }
         public Items[] NonKeyItems { get; }
