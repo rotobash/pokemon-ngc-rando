@@ -14,7 +14,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AutoUpdater\AutoUpdater.csproj" />
     <ProjectReference Include="..\Pokemon-XD-Common\Common.csproj" />
   </ItemGroup>
 

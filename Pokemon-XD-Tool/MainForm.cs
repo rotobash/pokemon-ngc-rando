@@ -1,5 +1,4 @@
-﻿using AutoUpdater;
-using Randomizer.Colosseum;
+﻿using Randomizer.Colosseum;
 using Randomizer.Shufflers;
 using Randomizer.XD;
 using System;
