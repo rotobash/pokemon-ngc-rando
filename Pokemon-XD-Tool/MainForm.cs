@@ -162,6 +162,13 @@ namespace Randomizer
             // did they give us crap?
             try
             {
+                isoExtractor?.Dispose();
+                iso?.Dispose();
+                gameExtractor = null;
+                isoExtractor = null;
+                iso = null;
+                gamePictureBox.Image = null;
+
                 if (openISODialog.FileName.EndsWith("zip"))
                 {
                     if (!Configuration.UseMemoryStreams)

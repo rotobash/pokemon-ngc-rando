@@ -22,6 +22,8 @@ namespace XDCommon.Utility
             if (!disposedValue)
             {
                 ExtractedFile.Dispose();
+                ExtractedFile = null;
+
                 disposedValue = true;
             }
         }
