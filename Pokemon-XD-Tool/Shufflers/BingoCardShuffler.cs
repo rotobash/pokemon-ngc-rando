@@ -43,23 +43,27 @@ namespace Randomizer.Shufflers
                     {
                         // randomize starter
                         battleBingoPokemon = card.StartingPokemon;
-                        Logger.Log($"Starter: {extractedGame.PokemonList[battleBingoPokemon.Pokemon].Name} -> ");
                     }
                     else
                     {
                         var panel = card.Panels[i];
                         if (panel.PanelType != BattleBingoPanelType.Pokemon) continue;
                         battleBingoPokemon = panel.BingoPokemon;
-                        Logger.Log($"Panel Pokemon: {extractedGame.PokemonList[battleBingoPokemon.Pokemon].Name} -> ");
                     }
 
                     newPoke = extractedGame.PokemonList[battleBingoPokemon.Pokemon];
                     if (settings.RandomizeBattleBingoPokemon)
                     {
+                        if (i == card.Panels.Length)
+                            Logger.Log("Starter: ");
+                        else
+                            Logger.Log("Panel Pokemon:");
+
+                        Logger.Log($"{extractedGame.PokemonList[battleBingoPokemon.Pokemon].Name}");
                         newPoke = potentialPokes[random.Next(0, potentialPokes.Length)];
                         battleBingoPokemon.Pokemon = (ushort)newPoke.Index;
+                        Logger.Log($" -> {extractedGame.PokemonList[battleBingoPokemon.Pokemon].Name}\n");
                     }
-                    Logger.Log($"{extractedGame.PokemonList[battleBingoPokemon.Pokemon].Name}\n");
 
                     if (settings.RandomizeBattleBingoMoveSets)
                     {
@@ -74,8 +78,8 @@ namespace Randomizer.Shufflers
                         }
                         // pick good moves
                         battleBingoPokemon.Move = (ushort)movePool.ElementAt(random.Next(0, movePool.Count())).MoveIndex;
+                        Logger.Log($"Move: {extractedGame.MoveList[battleBingoPokemon.Move].Name}\n\n");
                     }
-                    Logger.Log($"Move: {extractedGame.MoveList[battleBingoPokemon.Move].Name}\n\n");
                 }
                 // if you shuffle the panels do you have to write back the offset?
             }
