@@ -37,7 +37,7 @@ namespace Randomizer.Shufflers
                         if (pokemon.Pokemon == 0)
                             continue;
 
-                        RandomizePokemon(random, settings, pokemon, extractedGame.PokemonList);
+                        RandomizePokemon(random, settings, extractedGame, pokemon);
                         Logger.Log($"{extractedGame.PokemonList[pokemon.Pokemon].Name}\n");
                         Logger.Log($"Is a shadow Pokemon: {pokemon.IsShadow}\n");
 
@@ -77,21 +77,21 @@ namespace Randomizer.Shufflers
             }
         }
 
-        public static void RandomizePokemon(AbstractRNG random, TeamShufflerSettings settings, ITrainerPokemon pokemon, Pokemon[] pokemonList)
+        public static void RandomizePokemon(AbstractRNG random, TeamShufflerSettings settings, ExtractedGame extractedGame, ITrainerPokemon pokemon)
         {
             if (settings.RandomizePokemon)
             {
                 var index = 0;
-                while (index == 0 || RandomizerConstants.SpecialPokemon.Contains(index) || (settings.DontUseLegendaries && RandomizerConstants.Legendaries.Contains(index)))
+                while (index == 0 || (settings.DontUseLegendaries && RandomizerConstants.Legendaries.Contains(index)))
                 {
-                    index = random.Next(1, pokemonList.Length);
+                    index = extractedGame.ValidPokemon[random.Next(0, extractedGame.ValidPokemon.Length)].Index;
                 }
                 pokemon.Pokemon = (ushort)index;
             }
 
             if (settings.ForceFullyEvolved && pokemon.Level >= settings.ForceFullyEvolvedLevel)
             {
-                var currPoke = pokemonList[pokemon.Pokemon];
+                var currPoke = extractedGame.PokemonList[pokemon.Pokemon];
                 if (PokemonTraitShuffler.CheckForSplitOrEndEvolution(currPoke, out var count) && count > 0)
                 {
                     // randomly pick from the split

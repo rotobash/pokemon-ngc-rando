@@ -105,7 +105,7 @@ namespace Randomizer.Shufflers
                 if (RandomizerConstants.SpecialPokemon.Contains(poke.Index))
                     continue;
 
-                Logger.Log($"{poke.Name}'s Traits:\n\n");
+                Logger.Log($"{poke.Name}\n");
 
                 ChangeCompatibility(random, settings.TMCompatibility, poke, extractedGame, true);
                 if (extractedGame.TutorMoves.Length > 0)
