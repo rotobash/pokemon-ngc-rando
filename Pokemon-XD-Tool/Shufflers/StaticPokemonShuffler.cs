@@ -173,7 +173,7 @@ namespace Randomizer.Shufflers
                     {
                         var newStarter = extractedGame.ValidPokemon[random.Next(0, extractedGame.ValidPokemon.Length)];
                         index = newStarter.Index;
-                        secondStage = extractedGame.PokemonList[index].Evolutions[0];
+                        secondStage = newStarter.Evolutions[0];
                         condition = !PokemonTraitShuffler.CheckForSplitOrEndEvolution(newStarter, out int _)
                             && PokemonTraitShuffler.CheckForSplitOrEndEvolution(extractedGame.PokemonList[secondStage.EvolvesInto], out int count)
                             && count == 0
