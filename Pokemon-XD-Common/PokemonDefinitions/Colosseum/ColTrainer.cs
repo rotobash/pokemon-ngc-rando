@@ -12,7 +12,7 @@ namespace XDCommon.PokemonDefinitions
         const byte TrainerClassNameOffset = 0x03;
         const byte FirstTrainerPokemonOffset = 0x04;
         const byte TrainerAIOffset = 0x06;
-        const byte TrainerNameIDOffset = 0x08;
+        const byte TrainerNameIDOffset = 0x0A;
         const byte TrainerBattleTransitionOffset = 0x0C;
         const byte TrainerClassModelOffset = 0x13;
         const byte TrainerPreBattleTextIDOffset = 0x24;
@@ -21,9 +21,9 @@ namespace XDCommon.PokemonDefinitions
 
         protected override uint StartOffset => (uint)(iso.CommonRel.GetPointer(Constants.Trainers) + (index * ConstSizeOfTrainerData));
 
-        public override int NameID
+        public override ushort NameID
         {
-            get => pool.ExtractedFile.GetIntAtOffset(StartOffset + TrainerNameIDOffset);
+            get => pool.ExtractedFile.GetUShortAtOffset(StartOffset + TrainerNameIDOffset);
             set => pool.ExtractedFile.WriteBytesAtOffset(StartOffset + TrainerNameIDOffset, value.GetBytes());
         }
 

@@ -21,7 +21,7 @@ namespace XDCommon.PokemonDefinitions
 
         public abstract bool IsSet { get; }
         public abstract int SizeOfTrainerData { get; }
-        public abstract int NameID { get; set; }
+        public abstract ushort NameID { get; set; }
         protected abstract uint StartOffset { get; }
 
         protected TrainerPool pool;
