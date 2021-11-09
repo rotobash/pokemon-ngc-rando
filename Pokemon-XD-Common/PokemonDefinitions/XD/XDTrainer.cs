@@ -20,9 +20,9 @@ namespace XDCommon.PokemonDefinitions
         const byte FirstTrainerPokemonOffset = 0x1C;
         const ushort TrainerAIOffset = 0x28;
 
-        public override int NameID
+        public override ushort NameID
         {
-            get => pool.ExtractedFile.GetIntAtOffset(StartOffset + TrainerNameIDOffset);
+            get => pool.ExtractedFile.GetUShortAtOffset(StartOffset + TrainerNameIDOffset);
             set => pool.ExtractedFile.WriteBytesAtOffset(StartOffset + TrainerNameIDOffset, value.GetBytes());
         }
 
