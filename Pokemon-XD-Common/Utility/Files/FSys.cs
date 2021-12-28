@@ -205,8 +205,15 @@ namespace XDCommon.Utility
             else
             {
                 var entry = FSysFileEntry.ExtractFromFSys(this, index);
-                ExtractedEntries.Add(entry.FileName, entry);
-                return entry;
+                if (ExtractedEntries.ContainsKey(entry.FileName))
+                {
+                    return ExtractedEntries[entry.FileName];
+                }
+                else
+                {
+                    ExtractedEntries.Add(entry.FileName, entry);
+                    return entry;
+                }
             }
         }
 
