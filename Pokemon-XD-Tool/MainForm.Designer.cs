@@ -611,11 +611,11 @@ namespace Randomizer
         "keSpots.");
             this.noLegendaryOnTrainerCheck.UseVisualStyleBackColor = true;
             // 
-            // noDuplicateShadowPokemonCheckBox
+            // noDuplicateShadowPokemonCheck
             // 
             this.noDuplicateShadowPokemonCheck.AutoSize = true;
             this.noDuplicateShadowPokemonCheck.Location = new System.Drawing.Point(38, 57);
-            this.noDuplicateShadowPokemonCheck.Name = "noDuplicateShadowPokemonCheckBox";
+            this.noDuplicateShadowPokemonCheck.Name = "noDuplicateShadowPokemonCheck";
             this.noDuplicateShadowPokemonCheck.Size = new System.Drawing.Size(145, 19);
             this.noDuplicateShadowPokemonCheck.TabIndex = 27;
             this.noDuplicateShadowPokemonCheck.Text = "No Duplicate Shadows";

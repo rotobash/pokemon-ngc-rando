@@ -241,45 +241,46 @@ namespace Randomizer
             {
                 backgroundWorker.ReportProgress(0);
 
-                var randoInvoke = BeginInvoke(new Func<Randomizer>(() => new Randomizer(gameExtractor, prng, seed)));
                 var settingsInvoke = BeginInvoke(new Func<Settings>(() => CreateRandoSettings()));
                 var extractorInvoke = BeginInvoke(new Func<ISOExtractor>(() => isoExtractor));
                 var isoInvoke = BeginInvoke(new Func<ISO>(() => iso));
                 var settings = EndInvoke(settingsInvoke) as Settings;
                 var extractor = EndInvoke(extractorInvoke) as ISOExtractor;
                 var gameFile = EndInvoke(isoInvoke) as ISO;
+
+                var randoInvoke = BeginInvoke(new Func<Randomizer>(() => new Randomizer(gameExtractor, settings, prng, seed)));
                 using var randomizer = EndInvoke(randoInvoke) as Randomizer;
 
                 Logger.CreateNewLogFile(path);
 
                 backgroundWorker.ReportProgress(10);
                 progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Randomizing Moves..."));
-                randomizer.RandomizeMoves(settings.MoveShufflerSettings);
+                randomizer.RandomizeMoves();
 
                 backgroundWorker.ReportProgress(20);
                 progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Randomizing Pokemon Traits..."));
-                randomizer.RandomizePokemonTraits(settings.PokemonTraitShufflerSettings);
+                randomizer.RandomizePokemonTraits();
 
                 backgroundWorker.ReportProgress(30);
                 progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Randomizing Trainers..."));
-                randomizer.RandomizeTrainers(settings.TeamShufflerSettings);
+                randomizer.RandomizeTrainers();
 
                 backgroundWorker.ReportProgress(40);
                 progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Randomizing Items..."));
-                randomizer.RandomizeItems(settings.ItemShufflerSettings);
+                randomizer.RandomizeItems();
 
                 backgroundWorker.ReportProgress(50);
                 progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Randomizing Statics..."));
-                randomizer.RandomizeStatics(settings.StaticPokemonShufflerSettings);
+                randomizer.RandomizeStatics();
 
                 // will only do something if game is XD
                 backgroundWorker.ReportProgress(60);
                 progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Randomizing Bingo..."));
-                randomizer.RandomizeBattleBingo(settings.BingoCardShufflerSettings);
+                randomizer.RandomizeBattleBingo();
 
                 backgroundWorker.ReportProgress(70);
                 progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Randomizing PokeSpots..."));
-                randomizer.RandomizePokeSpots(settings.PokeSpotShufflerSettings);
+                randomizer.RandomizePokeSpots();
 
                 backgroundWorker.ReportProgress(80);
                 progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Packing ISO..."));

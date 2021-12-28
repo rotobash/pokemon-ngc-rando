@@ -10,8 +10,12 @@ namespace Randomizer.Shufflers
 {
     public static class ItemShuffler
     {
-        public static void ShuffleTMs(AbstractRNG random, ItemShufflerSettings settings, ExtractedGame extractedGame)
+        public static void ShuffleTMs(ShuffleSettings shuffleSettings)
         {
+            var settings = shuffleSettings.RandomizerSettings.ItemShufflerSettings;
+            var extractedGame = shuffleSettings.ExtractedGame;
+            var random = shuffleSettings.RNG;
+
             if (settings.RandomizeTMs)
             {
                 Logger.Log("=============================== TMs ===============================\n\n");
@@ -49,8 +53,12 @@ namespace Randomizer.Shufflers
             }
         }
 
-        public static void ShuffleTutorMoves(AbstractRNG random, ItemShufflerSettings settings, TutorMove[] tutorMoves, ExtractedGame extractedGame)
+        public static void ShuffleTutorMoves(ShuffleSettings shuffleSettings, TutorMove[] tutorMoves)
         {
+            var settings = shuffleSettings.RandomizerSettings.ItemShufflerSettings;
+            var extractedGame = shuffleSettings.ExtractedGame;
+            var random = shuffleSettings.RNG;
+
             if (settings.RandomizeTutorMoves)
             {
                 Logger.Log("=============================== Tutor Moves ===============================\n\n");
@@ -84,8 +92,12 @@ namespace Randomizer.Shufflers
             }
         }
 
-        public static void ShuffleOverworldItems(AbstractRNG random, ItemShufflerSettings settings, ExtractedGame extractedGame)
+        public static void ShuffleOverworldItems(ShuffleSettings shuffleSettings)
         {
+            var settings = shuffleSettings.RandomizerSettings.ItemShufflerSettings;
+            var extractedGame = shuffleSettings.ExtractedGame;
+            var random = shuffleSettings.RNG;
+
             // there are a lot of battle cds, so only add them to one location and then
             // block that same cd from being put in another location (only if they haven't banned cds entirely)
             var battleCDsUsed = new List<int>();
@@ -127,8 +139,12 @@ namespace Randomizer.Shufflers
             }
         }
 
-        public static void UpdatePokemarts(AbstractRNG random, ItemShufflerSettings settings, ExtractedGame extractedGame)
+        public static void UpdatePokemarts(ShuffleSettings shuffleSettings)
         {
+            var settings = shuffleSettings.RandomizerSettings.ItemShufflerSettings;
+            var extractedGame = shuffleSettings.ExtractedGame;
+            var random = shuffleSettings.RNG;
+
             if (settings.RandomizeMarts)
             {
                 Logger.Log("=============================== Mart Items ===============================\n\n");

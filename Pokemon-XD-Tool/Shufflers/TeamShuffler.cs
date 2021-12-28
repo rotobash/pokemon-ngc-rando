@@ -10,8 +10,12 @@ namespace Randomizer.Shufflers
 {
     public static class TeamShuffler
     {
-        public static void ShuffleTeams(AbstractRNG random, TeamShufflerSettings settings, ExtractedGame extractedGame)
+        public static void ShuffleTeams(ShuffleSettings shuffleSettings)
         {
+            var settings = shuffleSettings.RandomizerSettings.TeamShufflerSettings;
+            var extractedGame = shuffleSettings.ExtractedGame;
+            var random = shuffleSettings.RNG;
+
             HashSet<int> pickedShadowPokemon = new HashSet<int>();
             var potentialItems = settings.BanBadItems ? extractedGame.GoodItems : extractedGame.NonKeyItems;
             var potentialMoves = extractedGame.MoveList;
@@ -29,7 +33,7 @@ namespace Randomizer.Shufflers
 
                 foreach (var trainer in pool.AllTrainers)
                 {
-                    if (!trainer.IsSet || trainer.Name == string.Empty)
+                    if (!trainer.IsSet)
                         continue;
 
                     Logger.Log($"Trainer {trainer.Name}\nWith:\n");
@@ -81,6 +85,10 @@ namespace Randomizer.Shufflers
 
         public static void RandomizePokemon(AbstractRNG random, TeamShufflerSettings settings, ExtractedGame extractedGame, ITrainerPokemon pokemon)
         {
+            var settings = shuffleSettings.RandomizerSettings.TeamShufflerSettings;
+            var extractedGame = shuffleSettings.ExtractedGame;
+            var random = shuffleSettings.RNG;
+
             if (settings.RandomizePokemon)
             {
                 var index = 0;

@@ -12,8 +12,12 @@ namespace Randomizer.Shufflers
     public static class PokemonTraitShuffler
     {
         const int BSTRange = 50;
-        public static void RandomizePokemonTraits(AbstractRNG random, PokemonTraitShufflerSettings settings, ExtractedGame extractedGame)
+        public static void RandomizePokemonTraits(ShuffleSettings shuffleSettings)
         {
+            var settings = shuffleSettings.RandomizerSettings.PokemonTraitShufflerSettings;
+            var extractedGame = shuffleSettings.ExtractedGame;
+            var random = shuffleSettings.RNG;
+
             // store pokemon we've randomized already in a list, for follows evolution
             var pokeBaseStatsRandomized = new List<string>();
             var pokeAbilitiesRandomized = new List<string>();
@@ -107,9 +111,9 @@ namespace Randomizer.Shufflers
 
                 Logger.Log($"{poke.Name}\n");
 
-                ChangeCompatibility(random, settings.TMCompatibility, poke, extractedGame, true);
+                ChangeCompatibility(random, extractedGame, settings.TMCompatibility, poke, true);
                 if (extractedGame.TutorMoves.Length > 0)
-                    ChangeCompatibility(random, settings.TutorCompatibility, poke, extractedGame, false);
+                    ChangeCompatibility(random, extractedGame, settings.TutorCompatibility, poke, false);
 
                 // todo: use enum for bst option
                 // and follow evolution
@@ -391,7 +395,7 @@ namespace Randomizer.Shufflers
             }
         }
 
-        private static void ChangeCompatibility(AbstractRNG random, MoveCompatibility moveCompatibility, Pokemon pokemon, ExtractedGame extractedGame, bool tms)
+        private static void ChangeCompatibility(AbstractRNG random, ExtractedGame extractedGame, MoveCompatibility moveCompatibility, Pokemon pokemon, bool tms)
         {
             switch (moveCompatibility)
             {

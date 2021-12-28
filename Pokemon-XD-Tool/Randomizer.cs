@@ -19,82 +19,81 @@ namespace Randomizer
         ExtractedGame extractedGameStructures;
         private bool disposedValue;
 
-        public Randomizer(IGameExtractor extractor, PRNGChoice prng, int seed = -1)
-        {
-            switch (prng)
-            {
-                case PRNGChoice.Net:
-                    random = new NetRandom(seed);
-                    break;
-                case PRNGChoice.Xoroshiro128:
-                    random = new Xoroshiro128StarStar(seed > 0 ? (ulong)seed : 0);
-                    break;
-                case PRNGChoice.Cryptographic:
-                    random = new Cryptographic();
-                    break;
-            }
+        ShuffleSettings shuffleSettings;
 
-            extractedGameStructures = new ExtractedGame(extractor);
+        public Randomizer(IGameExtractor extractor, Settings settings, PRNGChoice prng, int seed = -1)
+        {
+            shuffleSettings = new ShuffleSettings
+            {
+                ExtractedGame = new ExtractedGame(extractor),
+                RandomizerSettings = settings,
+                RNG = prng switch
+                {
+                    PRNGChoice.Net => new NetRandom(seed),
+                    PRNGChoice.Cryptographic => new Cryptographic(),
+                    _ => new Xoroshiro128StarStar(seed > 0 ? (ulong)seed : 0)
+                }
+            };
             gameExtractor = extractor;
         }
 
-        public void RandomizeMoves(MoveShufflerSettings settings)
+        public void RandomizeMoves()
         {
-            MoveShuffler.RandomizeMoves(random, settings, extractedGameStructures);
+            MoveShuffler.RandomizeMoves(shuffleSettings);
         }
 
-        public void RandomizePokemonTraits(PokemonTraitShufflerSettings settings)
+        public void RandomizePokemonTraits()
         {
-            PokemonTraitShuffler.RandomizePokemonTraits(random, settings, extractedGameStructures);
+            PokemonTraitShuffler.RandomizePokemonTraits(shuffleSettings);
         }
 
-        public void RandomizeTrainers(TeamShufflerSettings settings)
+        public void RandomizeTrainers()
         {
-            TeamShuffler.ShuffleTeams(random, settings, extractedGameStructures);
+            TeamShuffler.ShuffleTeams(shuffleSettings);
         }
 
-        public void RandomizeItems(ItemShufflerSettings settings)
+        public void RandomizeItems()
         {
-            ItemShuffler.ShuffleTMs(random, settings, extractedGameStructures);
-            ItemShuffler.ShuffleOverworldItems(random, settings, extractedGameStructures);
-            ItemShuffler.UpdatePokemarts(random, settings, extractedGameStructures);
+            ItemShuffler.ShuffleTMs(shuffleSettings);
+            ItemShuffler.ShuffleOverworldItems(shuffleSettings);
+            ItemShuffler.UpdatePokemarts(shuffleSettings);
 
             if (gameExtractor is XDExtractor xd)
             {
                 var tutorMoves = xd.ExtractTutorMoves();
-                ItemShuffler.ShuffleTutorMoves(random, settings, tutorMoves, extractedGameStructures);
+                ItemShuffler.ShuffleTutorMoves(shuffleSettings, tutorMoves);
             }
         }
 
-        public void RandomizeStatics(StaticPokemonShufflerSettings settings)
+        public void RandomizeStatics()
         {
             if (gameExtractor is XDExtractor xd)
             {
                 var starter = xd.GetStarter();
-                StaticPokemonShuffler.RandomizeXDStatics(random, settings, starter, gameExtractor.ISO, extractedGameStructures);
+                StaticPokemonShuffler.RandomizeXDStatics(shuffleSettings, starter, gameExtractor.ISO);
             }
             else if (gameExtractor is ColoExtractor colo)
             {
                 var starters = colo.GetStarters();
-                StaticPokemonShuffler.RandomizeColoStatics(random, settings, starters, extractedGameStructures);
+                StaticPokemonShuffler.RandomizeColoStatics(shuffleSettings, starters);
             }
         }
 
-        public void RandomizeBattleBingo(BingoCardShufflerSettings settings)
+        public void RandomizeBattleBingo()
         {
             if (gameExtractor is XDExtractor xd)
             {
                 var bCards = xd.ExtractBattleBingoCards();
-                BingoCardShuffler.ShuffleCards(random, settings, bCards, extractedGameStructures);
+                BingoCardShuffler.ShuffleCards(shuffleSettings, bCards);
             }
         }
 
-        public void RandomizePokeSpots(PokeSpotShufflerSettings settings)
+        public void RandomizePokeSpots()
         {
             if (gameExtractor is XDExtractor xd)
             {
                 var pokespots = xd.ExtractPokeSpotPokemon();
-                PokeSpotShuffler.ShufflePokeSpots(random, settings, pokespots, extractedGameStructures);
+                PokeSpotShuffler.ShufflePokeSpots(shuffleSettings, pokespots);
             }
         }
 

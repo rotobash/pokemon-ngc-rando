@@ -10,9 +10,13 @@ namespace Randomizer.Shufflers
 {
     public static class StaticPokemonShuffler
     {
-        public static void RandomizeXDStatics(AbstractRNG random, StaticPokemonShufflerSettings settings, XDStarterPokemon starter, ISO iso, ExtractedGame extractedGame)
+        public static void RandomizeXDStatics(ShuffleSettings shuffleSettings, XDStarterPokemon starter, ISO iso)
         {
-            RandomizeStarters(random, settings, extractedGame, starter);
+            var settings = shuffleSettings.RandomizerSettings.StaticPokemonShufflerSettings;
+            var extractedGame = shuffleSettings.ExtractedGame;
+            var random = shuffleSettings.RNG;
+
+            RandomizeStarters(shuffleSettings, starter);
 
             List<Pokemon> newRequestedPokemon = new List<Pokemon>();
             List<Pokemon> newGivenPokemon = new List<Pokemon>();
@@ -69,7 +73,7 @@ namespace Randomizer.Shufflers
             XDTradePokemon.UpdateTrades(iso, newRequestedPokemon.ToArray(), newGivenPokemon.ToArray());
         }
 
-        public static void RandomizeColoStatics(AbstractRNG random, StaticPokemonShufflerSettings settings, IGiftPokemon[] starters, ExtractedGame extractedGame)
+        public static void RandomizeColoStatics(ShuffleSettings shuffleSettings, IGiftPokemon[] starters)
         {
             if (starters.Length != 2)
                 return;

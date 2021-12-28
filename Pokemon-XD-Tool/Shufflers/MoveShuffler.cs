@@ -23,8 +23,12 @@ namespace Randomizer.Shufflers
 
     public static class MoveShuffler
     {
-        public static void RandomizeMoves(AbstractRNG random, MoveShufflerSettings settings, ExtractedGame extractedGame)
+        public static void RandomizeMoves(ShuffleSettings shuffleSettings)
         {
+            var settings = shuffleSettings.RandomizerSettings.MoveShufflerSettings;
+            var extractedGame = shuffleSettings.ExtractedGame;
+            var random = shuffleSettings.RNG;
+
             Logger.Log("=============================== Moves ===============================\n\n");
             foreach (var move in extractedGame.ValidMoves)
             {
