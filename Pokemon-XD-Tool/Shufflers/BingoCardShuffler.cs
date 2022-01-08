@@ -10,8 +10,12 @@ namespace Randomizer.Shufflers
 {
     public static class BingoCardShuffler
     {
-        public static void ShuffleCards(AbstractRNG random, BingoCardShufflerSettings settings, BattleBingoCard[] bingoCards, ExtractedGame extractedGame)
+        public static void ShuffleCards(ShuffleSettings shuffleSettings, BattleBingoCard[] bingoCards)
         {
+            var settings = shuffleSettings.RandomizerSettings.BingoCardShufflerSettings;
+            var extractedGame = shuffleSettings.ExtractedGame;
+            var random = shuffleSettings.RNG;
+
             Logger.Log("=============================== Bingo Cards ===============================\n\n");
             var potentialPokes = extractedGame.PokemonList;
             if (settings.RandomizeBattleBingoPokemon && settings.ForceStrongPokemon)

@@ -1,5 +1,13 @@
 ﻿namespace Randomizer.Shufflers
 {
+    public class ShuffleSettings
+    {
+        public Settings RandomizerSettings { get; set; }
+        public AbstractRNG RNG { get; set; }
+        public ExtractedGame ExtractedGame { get; set; }
+    }
+
+
     public class Settings
     {
         public PokemonTraitShufflerSettings PokemonTraitShufflerSettings { get; set; }
@@ -45,6 +53,7 @@
     {
         public bool RandomizePokemon { get; set; }
         public bool DontUseLegendaries { get; set; }
+        public bool NoDuplicateShadows { get; set; }
 
         public bool SetMinimumShadowCatchRate { get; set; }
         public int ShadowCatchRateMinimum { get; set; }

@@ -52,6 +52,7 @@ namespace Randomizer
             this.shadowCatchMinimum = new System.Windows.Forms.NumericUpDown();
             this.minimumShadowCatchRateCheck = new System.Windows.Forms.CheckBox();
             this.noLegendaryOnTrainerCheck = new System.Windows.Forms.CheckBox();
+            this.noDuplicateShadowPokemonCheck = new System.Windows.Forms.CheckBox();
             this.pokeSpotGroupBox = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel29 = new System.Windows.Forms.TableLayoutPanel();
             this.randomizePokeSpotsCheck = new System.Windows.Forms.CheckBox();
@@ -482,6 +483,7 @@ namespace Randomizer
             this.tableLayoutPanel28.Controls.Add(this.shadowCatchMinimum, 5, 0);
             this.tableLayoutPanel28.Controls.Add(this.minimumShadowCatchRateCheck, 4, 0);
             this.tableLayoutPanel28.Controls.Add(this.noLegendaryOnTrainerCheck, 1, 1);
+            this.tableLayoutPanel28.Controls.Add(this.noDuplicateShadowPokemonCheck, 1, 2);
             this.tableLayoutPanel28.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel28.Location = new System.Drawing.Point(3, 19);
             this.tableLayoutPanel28.Name = "tableLayoutPanel28";
@@ -608,6 +610,16 @@ namespace Randomizer
             this.infoToolTip.SetToolTip(this.noLegendaryOnTrainerCheck, "Note: This means you can\'t catch them either unless they happen to be found in Po" +
         "keSpots.");
             this.noLegendaryOnTrainerCheck.UseVisualStyleBackColor = true;
+            // 
+            // noDuplicateShadowPokemonCheck
+            // 
+            this.noDuplicateShadowPokemonCheck.AutoSize = true;
+            this.noDuplicateShadowPokemonCheck.Location = new System.Drawing.Point(38, 57);
+            this.noDuplicateShadowPokemonCheck.Name = "noDuplicateShadowPokemonCheck";
+            this.noDuplicateShadowPokemonCheck.Size = new System.Drawing.Size(145, 19);
+            this.noDuplicateShadowPokemonCheck.TabIndex = 27;
+            this.noDuplicateShadowPokemonCheck.Text = "No Duplicate Shadows";
+            this.noDuplicateShadowPokemonCheck.UseVisualStyleBackColor = true;
             // 
             // pokeSpotGroupBox
             // 
@@ -3765,6 +3777,7 @@ namespace Randomizer
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel32;
         private System.Windows.Forms.ComboBox prngDropDown;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox noDuplicateShadowPokemonCheck;
     }
 }
 

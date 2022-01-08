@@ -67,18 +67,14 @@ namespace XDCommon.PokemonDefinitions
 
         public override byte Level
         {
-            get => IsShadow switch
-            {
-                true => pool.DarkPokemon.ExtractedFile.GetByteAtOffset(ShadowStartOffset + ConstShadowLevelOffset),
-                false => pool.ExtractedFile.GetByteAtOffset(StartOffset + ConstPokemonLevelOffset)
-            };
-            set
-            {
-                if (IsShadow)
-                    pool.DarkPokemon.ExtractedFile.WriteByteAtOffset(ShadowStartOffset + ConstShadowLevelOffset, value);
-                else
-                    pool.ExtractedFile.WriteByteAtOffset(StartOffset + ConstPokemonLevelOffset, value);
-            }
+            get => pool.ExtractedFile.GetByteAtOffset(StartOffset + ConstPokemonLevelOffset);
+            set => pool.ExtractedFile.WriteByteAtOffset(StartOffset + ConstPokemonLevelOffset, value);
+        }
+
+        public override byte ShadowLevel
+        {
+            get => pool.DarkPokemon.ExtractedFile.GetByteAtOffset(ShadowStartOffset + ConstShadowLevelOffset);
+            set => pool.DarkPokemon.ExtractedFile.WriteByteAtOffset(ShadowStartOffset + ConstShadowLevelOffset, value);
         }
 
         public byte Ability

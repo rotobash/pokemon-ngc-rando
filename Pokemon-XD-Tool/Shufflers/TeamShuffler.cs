@@ -10,8 +10,13 @@ namespace Randomizer.Shufflers
 {
     public static class TeamShuffler
     {
-        public static void ShuffleTeams(AbstractRNG random, TeamShufflerSettings settings, ExtractedGame extractedGame)
+        public static void ShuffleTeams(ShuffleSettings shuffleSettings)
         {
+            var settings = shuffleSettings.RandomizerSettings.TeamShufflerSettings;
+            var extractedGame = shuffleSettings.ExtractedGame;
+            var random = shuffleSettings.RNG;
+
+            HashSet<int> pickedShadowPokemon = new HashSet<int>();
             var potentialItems = settings.BanBadItems ? extractedGame.GoodItems : extractedGame.NonKeyItems;
             var potentialMoves = extractedGame.MoveList;
             if (settings.MoveSetOptions.RandomizeMovesets && settings.MoveSetOptions.ForceGoodMoves)
@@ -28,7 +33,7 @@ namespace Randomizer.Shufflers
 
                 foreach (var trainer in pool.AllTrainers)
                 {
-                    if (!trainer.IsSet || trainer.Name == string.Empty)
+                    if (!trainer.IsSet)
                         continue;
 
                     Logger.Log($"Trainer {trainer.Name}\nWith:\n");
@@ -60,6 +65,7 @@ namespace Randomizer.Shufflers
                             Logger.Log($"Setting catch rate to {catchRateIncrease}\n");
                             pokemon.ShadowCatchRate = catchRateIncrease;
                         }
+
                         if (settings.BoostTrainerLevel)
                         {
                             var level = pokemon.Level;
@@ -89,7 +95,11 @@ namespace Randomizer.Shufflers
                 pokemon.Pokemon = (ushort)index;
             }
 
-            if (settings.ForceFullyEvolved && pokemon.Level >= settings.ForceFullyEvolvedLevel)
+            var forceFullyEvolved = pokemon.IsShadow
+                ? pokemon.ShadowLevel >= settings.ForceFullyEvolvedLevel
+                : pokemon.Level >= settings.ForceFullyEvolvedLevel;
+
+            if (settings.ForceFullyEvolved && forceFullyEvolved)
             {
                 var currPoke = extractedGame.PokemonList[pokemon.Pokemon];
                 if (PokemonTraitShuffler.CheckForSplitOrEndEvolution(currPoke, out var count) && count > 0)

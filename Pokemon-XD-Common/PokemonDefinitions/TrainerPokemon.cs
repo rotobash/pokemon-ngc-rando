@@ -12,6 +12,7 @@ namespace XDCommon.PokemonDefinitions
         bool IsSet { get; }
         byte ShadowCatchRate { get; set; }
         byte Level { get; set; }
+        byte ShadowLevel { get; set; }
         ushort Item { get; set; }
         ushort[] Moves { get; }
         void SetMove(int index, ushort moveNum);
@@ -32,6 +33,7 @@ namespace XDCommon.PokemonDefinitions
         protected abstract byte PokemonMoveDataSize { get; }
 
         public abstract byte Level { get; set; }
+        public abstract byte ShadowLevel { get; set; }
         public abstract bool IsShadow { get; }
         public abstract bool IsSet { get; }
         public abstract void SetShadowMove(int index, ushort moveNum);
