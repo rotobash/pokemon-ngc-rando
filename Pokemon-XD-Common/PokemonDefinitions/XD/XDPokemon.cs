@@ -43,9 +43,9 @@ namespace XDCommon.PokemonDefinitions
         public override ushort SpecialDefenseOffset => XDSpecialDefenseOffset;
         public override ushort SpeedOffset => XDSpeedOffset;
         public override ushort FirstEVYieldOffset => XDFirstEVYieldOffset;
-        public override ushort FirstTutorMoveOffset => XDFirstEvolutionOffset;
+        public override ushort FirstTutorMoveOffset => XDFirstTutorMoveOffset;
         public override ushort FirstLevelUpMoveOffset => XDFirstLevelUpMoveOffset;
-        public override ushort FirstEvolutionOffset => XDFirstTutorMoveOffset;
+        public override ushort FirstEvolutionOffset => XDFirstEvolutionOffset;
 
         public XDPokemon(int dexNum, ISO iso) : base(dexNum, iso)
         {
