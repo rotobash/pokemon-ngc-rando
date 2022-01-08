@@ -16,7 +16,7 @@ namespace Randomizer.Shufflers
             var extractedGame = shuffleSettings.ExtractedGame;
             var random = shuffleSettings.RNG;
 
-            RandomizeStarters(shuffleSettings, starter);
+            RandomizeStarters(random, settings, extractedGame, starter);
 
             List<Pokemon> newRequestedPokemon = new List<Pokemon>();
             List<Pokemon> newGivenPokemon = new List<Pokemon>();
@@ -75,6 +75,10 @@ namespace Randomizer.Shufflers
 
         public static void RandomizeColoStatics(ShuffleSettings shuffleSettings, IGiftPokemon[] starters)
         {
+            var settings = shuffleSettings.RandomizerSettings.StaticPokemonShufflerSettings;
+            var extractedGame = shuffleSettings.ExtractedGame;
+            var random = shuffleSettings.RNG;
+
             if (starters.Length != 2)
                 return;
 

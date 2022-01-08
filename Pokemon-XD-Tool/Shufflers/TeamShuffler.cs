@@ -85,10 +85,6 @@ namespace Randomizer.Shufflers
 
         public static void RandomizePokemon(AbstractRNG random, TeamShufflerSettings settings, ExtractedGame extractedGame, ITrainerPokemon pokemon)
         {
-            var settings = shuffleSettings.RandomizerSettings.TeamShufflerSettings;
-            var extractedGame = shuffleSettings.ExtractedGame;
-            var random = shuffleSettings.RNG;
-
             if (settings.RandomizePokemon)
             {
                 var index = 0;
@@ -96,12 +92,12 @@ namespace Randomizer.Shufflers
                 {
                     index = extractedGame.ValidPokemon[random.Next(0, extractedGame.ValidPokemon.Length)].Index;
                 }
-                existingPokemon.Pokemon = (ushort)index;
+                pokemon.Pokemon = (ushort)index;
             }
 
-            var forceFullyEvolved = existingPokemon.IsShadow
-                ? existingPokemon.ShadowLevel >= settings.ForceFullyEvolvedLevel
-                : existingPokemon.Level >= settings.ForceFullyEvolvedLevel;
+            var forceFullyEvolved = pokemon.IsShadow
+                ? pokemon.ShadowLevel >= settings.ForceFullyEvolvedLevel
+                : pokemon.Level >= settings.ForceFullyEvolvedLevel;
 
             if (settings.ForceFullyEvolved && forceFullyEvolved)
             {
@@ -110,12 +106,12 @@ namespace Randomizer.Shufflers
                 {
                     // randomly pick from the split
                     var evoInd = random.Next(0, count);
-                    existingPokemon.Pokemon = currPoke.Evolutions[evoInd].EvolvesInto;
+                    pokemon.Pokemon = currPoke.Evolutions[evoInd].EvolvesInto;
                 }
                 else if (count == 1)
                 {
                     // it wasn't split or the end but still evolved
-                    existingPokemon.Pokemon = currPoke.Evolutions[0].EvolvesInto;
+                    pokemon.Pokemon = currPoke.Evolutions[0].EvolvesInto;
                 }
             }
         }
