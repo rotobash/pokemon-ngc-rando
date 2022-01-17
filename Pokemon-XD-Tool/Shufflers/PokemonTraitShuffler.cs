@@ -309,22 +309,41 @@ namespace Randomizer.Shufflers
                     var typeFilter = movefilter;
                     if (settings.MoveSetOptions.PreferType)
                     {
-                        // allow 20% chance for move to not be same type
-                        typeFilter = typeFilter.Where(m => m.Type == poke.Type1 || m.Type == poke.Type2 || random.Next(0, 10) >= 8).ToArray();
+                        typeFilter = typeFilter.Where(m =>  m.Type == poke.Type1 || m.Type == poke.Type2);
+
                         if (!typeFilter.Any())
                             typeFilter = movefilter;
                     }
 
                     var potentialMoves = typeFilter.ToArray();
+                    var levelUpSet = new HashSet<int>();
+
+                    // pick non duplicate moves for all level up moves using a set
+                    // to ensure no duplicates, we have to pick all the moves first then assign them
+                    while (levelUpSet.Count < poke.LevelUpMoves.Length)
+                    {
+                        int moveIndex;
+                        if (settings.MoveSetOptions.MetronomeOnly)
+                            moveIndex = extractedGame.MoveList[RandomizerConstants.MetronomeIndex].MoveIndex;
+                        else if (settings.MoveSetOptions.PreferType && random.Next(0, 10) >= 8)
+                            // allow 20% chance for move to not be same type
+                            moveIndex = movefilter.ElementAt(random.Next(0, movefilter.Count())).MoveIndex;
+                        else
+                            moveIndex = potentialMoves[random.Next(0, potentialMoves.Length)].MoveIndex;
+
+                        levelUpSet.Add(moveIndex);
+                    }
+
+                    // TODO: add move power re-ordering
+
+                    // go through each level up move and set them
                     for (int i = 0; i < poke.LevelUpMoves.Length; i++)
                     {
                         var move = poke.LevelUpMoves[i];
                         if (move.Level == 0)
                             continue;
 
-                        var newMove = settings.MoveSetOptions.MetronomeOnly
-                            ? extractedGame.MoveList[RandomizerConstants.MetronomeIndex]
-                            : potentialMoves[random.Next(0, potentialMoves.Length)];
+                        Move newMove = extractedGame.MoveList[levelUpSet.ElementAt(i)];
 
                         poke.SetLevelUpMove(i, move.Level, (ushort)newMove.MoveIndex);
                         Logger.Log($"Level Up Move at level {move.Level}: {newMove.Name}\n");

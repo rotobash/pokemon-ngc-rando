@@ -98,9 +98,8 @@ namespace Randomizer.Shufflers
             var typeFilter = moveFilter;
             if (options.PreferType)
             {
-                // allow 20% chance for move to not be same type
-                typeFilter = typeFilter.Where(m => m.Type == poke.Type1 || m.Type == poke.Type2 || random.Next(0, 10) >= 8).ToArray();
-                if (!moveFilter.Any())
+                typeFilter = typeFilter.Where(m => m.Type == poke.Type1 || m.Type == poke.Type2);
+                if (!typeFilter.Any())
                     typeFilter = moveFilter;
             }
 
@@ -143,7 +142,13 @@ namespace Randomizer.Shufflers
             {
                 while (moveSet.Count < Constants.NumberOfPokemonMoves)
                 {
-                    var newMove = potentialMoves[random.Next(0, potentialMoves.Length)];
+                    Move newMove;
+                    if (options.PreferType && random.Next(0, 10) >= 8)
+                        // allow 20% chance for move to not be same type
+                        newMove = moveFilter.ElementAt(random.Next(0, moveFilter.Count()));
+                    else
+                        newMove = potentialMoves[random.Next(0, potentialMoves.Length)];
+
                     moveSet.Add((ushort)newMove.MoveIndex);
                 }
             }
