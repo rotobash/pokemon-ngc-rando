@@ -305,7 +305,7 @@ namespace Randomizer
 
             var options = new RandomMoveSetOptions
             {
-                RandomizeMovesets = randomizeMovesets.Checked,
+                RandomizeMovesets = (randomizeMovesets.Checked || randomizeMovesetsPreferType.Checked),
                 MetronomeOnly = movesetsMetronomeOnlyCheck.Checked,
                 BanShadowMoves = banShadowMovesCheck.Checked,
                 ForceGoodMoves = movesetsForceGoodDamagingMoveCheck.Checked,
@@ -555,7 +555,7 @@ namespace Randomizer
             forceFullyEvolvedLevel.Value = settings.TeamShufflerSettings.ForceFullyEvolvedLevel;
 
             // movesets
-            randomizeMovesets.Checked = settings.TeamShufflerSettings.MoveSetOptions.RandomizeMovesets;
+            randomizeMovesets.Checked = settings.TeamShufflerSettings.MoveSetOptions.RandomizeMovesets && !settings.TeamShufflerSettings.MoveSetOptions.PreferType;
             movesetsMetronomeOnlyCheck.Checked = settings.TeamShufflerSettings.MoveSetOptions.MetronomeOnly;
             randomizeMovesetsPreferType.Checked = settings.TeamShufflerSettings.MoveSetOptions.PreferType;
             banShadowMovesCheck.Checked = settings.TeamShufflerSettings.MoveSetOptions.BanShadowMoves;
