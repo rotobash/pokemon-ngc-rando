@@ -278,7 +278,7 @@ namespace XDCommon.PokemonDefinitions
 
         public void SetEvolution(int index, byte method, ushort condition, ushort evolvesInto)
         {
-            var offset = StartOffset + FirstLevelUpMoveOffset + (index * Constants.SizeOfLevelUpData);
+            var offset = StartOffset + FirstEvolutionOffset + (index * Constants.SizeOfEvolutionData);
             iso.CommonRel.ExtractedFile.WriteByteAtOffset(offset + EvolutionMethodOffset, method);
             iso.CommonRel.ExtractedFile.WriteBytesAtOffset(offset + EvolutionConditionOffset, condition.GetBytes());
             iso.CommonRel.ExtractedFile.WriteBytesAtOffset(offset + EvovledFormOffset, evolvesInto.GetBytes());
