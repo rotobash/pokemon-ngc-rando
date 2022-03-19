@@ -1879,8 +1879,7 @@ namespace Randomizer
             "JIRACHI",
             "DEOXYS",
             "CHIMECHO",
-            "BONSLY",
-            "MUNCHLAX"});
+            "BONSLY"});
             this.starterComboBox.Location = new System.Drawing.Point(89, 24);
             this.starterComboBox.Name = "starterComboBox";
             this.starterComboBox.Size = new System.Drawing.Size(166, 23);
