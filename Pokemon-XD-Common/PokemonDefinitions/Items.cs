@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using XDCommon.Contracts;
 using XDCommon.Utility;
@@ -76,14 +77,16 @@ namespace XDCommon.PokemonDefinitions
 
             dataSource = iso.Game == Game.XD ? (BaseExtractedFile)iso.CommonRel : iso.DOL;
 
-            var pocketFsys = iso.GetFSysFile("pocket_menu.fsys");
-            var pocketFileName = "pocket_menu.msg";
-            if (iso.Region == Region.Europe)
+            KeyValuePair<string, string> itemTableLocation;
+            if (iso.Game == Game.XD)
             {
-                  pocketFileName = iso.Game == Game.XD ? "(null).msg" : "pocket_menu.rel";
+                itemTableLocation = Constants.XDItemTables[iso.Region].First();
             }
-
-            pocketMenu = pocketFsys.GetEntryByFileName(pocketFileName) as StringTable;
+            else
+            {
+                itemTableLocation = Constants.ColItemTables[iso.Region].First();
+            }
+            pocketMenu = iso.GetFSysFile(itemTableLocation.Key).GetEntryByFileName(itemTableLocation.Value) as StringTable;
         }
 
         public BagSlots BagSlot

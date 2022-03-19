@@ -42,22 +42,22 @@ namespace Randomizer.XD
 		{
 			var numItems = (int)ISO.CommonRel.GetValueAtPointer(Constants.XDNumberOfItems);
 			var items = new Items[numItems];
-			for (int i = 0; i < numItems; i++)
-            {
-				if (i <= 12)
-                {
-					items[i] = new Pokeballs(i, ISO);
-                }
-				else if (i >= Constants.FirstTMItemIndex && i < Constants.FirstTMItemIndex + Constants.NumberOfTMsAndHMs)
-                {
-					items[i] = new TM(i, ISO);
-                }
-				else
-                {
-					items[i] = new Items(i, ISO);
-                }
-            }
 
+			for (int i = 0; i < numItems; i++)
+			{
+				if (i <= Constants.LastPokeballIndex)
+				{
+					items[i] = new Pokeballs(i, ISO);
+				}
+				else if (i >= Constants.FirstTMItemIndex && i < Constants.FirstTMItemIndex + Constants.NumberOfTMsAndHMs)
+				{
+					items[i] = new TM(i, ISO);
+				}
+				else
+				{
+					items[i] = new Items(i, ISO);
+				}
+			}
 			return items;
 		}
 
@@ -84,14 +84,18 @@ namespace Randomizer.XD
 
 		public Pokemarts[] ExtractPokemarts()
 		{
-			var pocket = ISO.GetFSysFile("pocket_menu.fsys").GetEntryByFileName("pocket_menu.rel") as REL;
-			var numMarts = pocket.GetValueAtPointer(Constants.NumberOfMarts);
-			var marts = new Pokemarts[numMarts];
-			for (int i = 0;  i < numMarts; i++)
-            {
-				marts[i] = new Pokemarts(i, ISO);
-            }
-			return marts;
+			var marts = new List<Pokemarts>();
+
+			foreach (var pocketfile in Constants.XDItemTables[ISO.Region])
+			{
+				var pocket = ISO.GetFSysFile(pocketfile.Key).GetEntryByFileName("pocket_menu.rel") as REL;
+				var numMarts = pocket.GetValueAtPointer(Constants.NumberOfMarts);
+				for (int i = 0; i < numMarts; i++)
+				{
+					marts.Add(new Pokemarts(i, pocket));
+				}
+			}
+			return marts.ToArray();
 		}
 
 		public Move[] ExtractMoves()
