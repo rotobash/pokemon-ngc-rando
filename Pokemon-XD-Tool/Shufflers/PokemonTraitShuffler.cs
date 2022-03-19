@@ -257,8 +257,8 @@ namespace Randomizer.Shufflers
                             var method = poke.Evolutions[i].EvolutionMethod;
                             if (method == EvolutionMethods.TradeWithItem || method == EvolutionMethods.Trade || method == EvolutionMethods.HappinessDay || method == EvolutionMethods.HappinessNight)
                             {
-                                poke.SetEvolution(i, (byte)EvolutionMethods.LevelUp, (ushort)Configuration.TradePokemonEvolutionLevel, poke.Evolutions[i].EvolvesInto);
-                                Logger.Log($"Setting to evolve via level up at level {Configuration.TradePokemonEvolutionLevel}\n");
+                                poke.SetEvolution(i, (byte)EvolutionMethods.LevelUp, (ushort)Configuration.PokemonImpossibleEvolutionLevel, poke.Evolutions[i].EvolvesInto);
+                                Logger.Log($"Setting to evolve via level up at level {Configuration.PokemonImpossibleEvolutionLevel}\n");
                                 break;
                             }
                         }

@@ -22,6 +22,7 @@ namespace Randomizer
         {
             extractDirLabel.Text = Configuration.ExtractDirectory;
             pokemonBSTSelector.Value = Configuration.StrongPokemonBST;
+            pokemonEvolutionLevelSelector.Value = Configuration.PokemonImpossibleEvolutionLevel;
             movePower.Value = Configuration.GoodDamagingMovePower;
             fileStreamCheck.Checked = !Configuration.UseMemoryStreams;
             verboseLogCheck.Checked = Configuration.Verbose;
@@ -58,9 +59,9 @@ namespace Randomizer
             Configuration.GoodDamagingMovePower = (int)movePower.Value;
         }
 
-        private void label5_Click(object sender, EventArgs e)
+        private void pokemonEvolutionLevelSelector_ValueChanged(object sender, EventArgs e)
         {
-
+            Configuration.PokemonImpossibleEvolutionLevel = (int)pokemonEvolutionLevelSelector.Value;
         }
     }
 }
