@@ -77,19 +77,19 @@ namespace XDCommon
             }
         }
 
-        public static int TradePokemonEvolutionLevel 
+        public static int PokemonImpossibleEvolutionLevel 
         {
             get
             {
-                if (!int.TryParse(ConfigurationManager.AppSettings.Get(nameof(TradePokemonEvolutionLevel)), out int evoLevel))
+                if (!int.TryParse(ConfigurationManager.AppSettings.Get(nameof(PokemonImpossibleEvolutionLevel)), out int evoLevel))
                 {
-                    TradePokemonEvolutionLevel = 40;
+                    PokemonImpossibleEvolutionLevel = 40;
                 }
                 return evoLevel;
             }
             set
             {
-                AddOrUpdateAppSettings(nameof(TradePokemonEvolutionLevel), value.ToString());
+                AddOrUpdateAppSettings(nameof(PokemonImpossibleEvolutionLevel), value.ToString());
             }
         }
 

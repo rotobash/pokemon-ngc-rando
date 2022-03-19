@@ -55,8 +55,10 @@ namespace Randomizer.Shufflers
                     // prevent loops and multiple pokemon evolving into the same pokemon
                     pokeEvosRandomized.Add(poke.Index);
                     var pokeFilter = extractedGame.ValidPokemon.Where(p => !pokeEvosRandomized.Contains(p.Index));
+                    var isEevee = poke.Name.Equals("eevee", StringComparison.InvariantCultureIgnoreCase);
 
-                    if (settings.EvolutionHasSameType)
+                    // check for eevee, don't bother with type filtering
+                    if (settings.EvolutionHasSameType && !isEevee)
                     {
                         pokeFilter = pokeFilter.Where(p => p.Type1 == poke.Type1 || p.Type2 == poke.Type2 || p.Type1 == poke.Type2);
                     }
@@ -81,7 +83,7 @@ namespace Randomizer.Shufflers
                         }
 
                         var potentialPokes = pokeFilter.ToArray();
-                        if (potentialPokes.Length == 0 || (evolution.EvolutionMethod == EvolutionMethods.LevelUp && random.Next(4) > 2))
+                        if (potentialPokes.Length == 0 || (settings.EvolutionLinesEndRandomly && evolution.EvolutionMethod == EvolutionMethods.LevelUp && random.Next(4) > 2))
                         {
                             // null it out
                             Logger.Log($"End of the line for {poke.Name}.\n");
@@ -257,8 +259,8 @@ namespace Randomizer.Shufflers
                             var method = poke.Evolutions[i].EvolutionMethod;
                             if (method == EvolutionMethods.TradeWithItem || method == EvolutionMethods.Trade || method == EvolutionMethods.HappinessDay || method == EvolutionMethods.HappinessNight)
                             {
-                                poke.SetEvolution(i, (byte)EvolutionMethods.LevelUp, (ushort)Configuration.TradePokemonEvolutionLevel, poke.Evolutions[i].EvolvesInto);
-                                Logger.Log($"Setting to evolve via level up at level {Configuration.TradePokemonEvolutionLevel}\n");
+                                poke.SetEvolution(i, (byte)EvolutionMethods.LevelUp, (ushort)Configuration.PokemonImpossibleEvolutionLevel, poke.Evolutions[i].EvolvesInto);
+                                Logger.Log($"Setting to evolve via level up at level {Configuration.PokemonImpossibleEvolutionLevel}\n");
                                 break;
                             }
                         }

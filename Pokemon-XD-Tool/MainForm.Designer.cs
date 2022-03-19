@@ -79,6 +79,7 @@ namespace Randomizer
             this.easyEvolutionsCheck = new System.Windows.Forms.CheckBox();
             this.evolutionSimilarStrengthCheck = new System.Windows.Forms.CheckBox();
             this.fixImpossibleEvolutionsCheck = new System.Windows.Forms.CheckBox();
+            this.randomlyEndEvolutionsCheck = new System.Windows.Forms.CheckBox();
             this.baseStatsGroupBox = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel21 = new System.Windows.Forms.TableLayoutPanel();
             this.bstFollowEvolutionCheck = new System.Windows.Forms.CheckBox();
@@ -911,6 +912,7 @@ namespace Randomizer
             this.tableLayoutPanel23.Controls.Add(this.easyEvolutionsCheck, 1, 2);
             this.tableLayoutPanel23.Controls.Add(this.evolutionSimilarStrengthCheck, 2, 0);
             this.tableLayoutPanel23.Controls.Add(this.fixImpossibleEvolutionsCheck, 1, 1);
+            this.tableLayoutPanel23.Controls.Add(this.randomlyEndEvolutionsCheck, 2, 3);
             this.tableLayoutPanel23.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel23.Location = new System.Drawing.Point(3, 19);
             this.tableLayoutPanel23.Name = "tableLayoutPanel23";
@@ -1011,6 +1013,21 @@ namespace Randomizer
             this.fixImpossibleEvolutionsCheck.Text = "Fix Impossible Evolutions";
             this.infoToolTip.SetToolTip(this.fixImpossibleEvolutionsCheck, "Pokemon that evolve by Trade or by Day/Night cycles.");
             this.fixImpossibleEvolutionsCheck.UseVisualStyleBackColor = true;
+            // 
+            // randomlyEndEvolutionsCheck
+            // 
+            this.randomlyEndEvolutionsCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.randomlyEndEvolutionsCheck.AutoSize = true;
+            this.randomlyEndEvolutionsCheck.Location = new System.Drawing.Point(175, 87);
+            this.randomlyEndEvolutionsCheck.Name = "randomlyEndEvolutionsCheck";
+            this.randomlyEndEvolutionsCheck.Size = new System.Drawing.Size(169, 24);
+            this.randomlyEndEvolutionsCheck.TabIndex = 13;
+            this.randomlyEndEvolutionsCheck.Text = "Randomly End";
+            this.infoToolTip.SetToolTip(this.randomlyEndEvolutionsCheck, "All Pokemon that evolve by level will be fully evolved by level 40. \r\nThree stage" +
+        " evolutions will have their second stage by level 30.");
+            this.randomlyEndEvolutionsCheck.UseVisualStyleBackColor = true;
             // 
             // baseStatsGroupBox
             // 
@@ -1862,8 +1879,7 @@ namespace Randomizer
             "JIRACHI",
             "DEOXYS",
             "CHIMECHO",
-            "BONSLY",
-            "MUNCHLAX"});
+            "BONSLY"});
             this.starterComboBox.Location = new System.Drawing.Point(89, 24);
             this.starterComboBox.Name = "starterComboBox";
             this.starterComboBox.Size = new System.Drawing.Size(166, 23);
@@ -3778,6 +3794,7 @@ namespace Randomizer
         private System.Windows.Forms.ComboBox prngDropDown;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox noDuplicateShadowPokemonCheck;
+        private System.Windows.Forms.CheckBox randomlyEndEvolutionsCheck;
     }
 }
 

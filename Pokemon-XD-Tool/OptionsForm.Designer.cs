@@ -47,10 +47,13 @@ namespace Randomizer
             this.label1 = new System.Windows.Forms.Label();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.infoToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.label7 = new System.Windows.Forms.Label();
+            this.pokemonEvolutionLevelSelector = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pokemonBSTSelector)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.movePower)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pokemonEvolutionLevelSelector)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -60,34 +63,37 @@ namespace Randomizer
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.Controls.Add(this.verboseLogCheck, 2, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label5, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.verboseLogCheck, 2, 6);
+            this.tableLayoutPanel1.Controls.Add(this.label5, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.label4, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.fileStreamCheck, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.label2, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.pokemonBSTSelector, 2, 4);
             this.tableLayoutPanel1.Controls.Add(this.label6, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.movePower, 2, 3);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.pokemonBSTSelector, 2, 4);
+            this.tableLayoutPanel1.Controls.Add(this.label7, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.pokemonEvolutionLevelSelector, 2, 5);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 7;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.RowCount = 8;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(319, 393);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // verboseLogCheck
             // 
             this.verboseLogCheck.AutoSize = true;
-            this.verboseLogCheck.Location = new System.Drawing.Point(129, 290);
+            this.verboseLogCheck.Location = new System.Drawing.Point(129, 309);
             this.verboseLogCheck.Name = "verboseLogCheck";
             this.verboseLogCheck.Size = new System.Drawing.Size(42, 19);
             this.verboseLogCheck.TabIndex = 8;
@@ -99,17 +105,16 @@ namespace Randomizer
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(18, 287);
+            this.label5.Location = new System.Drawing.Point(18, 306);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(66, 15);
             this.label5.TabIndex = 3;
             this.label5.Text = "Log To File:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(18, 39);
+            this.label4.Location = new System.Drawing.Point(18, 31);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(92, 15);
             this.label4.TabIndex = 2;
@@ -118,7 +123,7 @@ namespace Randomizer
             // fileStreamCheck
             // 
             this.fileStreamCheck.AutoSize = true;
-            this.fileStreamCheck.Location = new System.Drawing.Point(129, 42);
+            this.fileStreamCheck.Location = new System.Drawing.Point(129, 34);
             this.fileStreamCheck.Name = "fileStreamCheck";
             this.fileStreamCheck.Size = new System.Drawing.Size(42, 19);
             this.fileStreamCheck.TabIndex = 7;
@@ -130,7 +135,7 @@ namespace Randomizer
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 101);
+            this.label2.Location = new System.Drawing.Point(18, 86);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 15);
             this.label2.TabIndex = 0;
@@ -143,12 +148,12 @@ namespace Randomizer
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Controls.Add(this.extractDirLabel, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.browseForDirButton, 0, 1);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(129, 104);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(129, 89);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(169, 56);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(169, 49);
             this.tableLayoutPanel2.TabIndex = 6;
             // 
             // extractDirLabel
@@ -163,9 +168,9 @@ namespace Randomizer
             // 
             this.browseForDirButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.browseForDirButton.Enabled = false;
-            this.browseForDirButton.Location = new System.Drawing.Point(3, 31);
+            this.browseForDirButton.Location = new System.Drawing.Point(3, 27);
             this.browseForDirButton.Name = "browseForDirButton";
-            this.browseForDirButton.Size = new System.Drawing.Size(163, 22);
+            this.browseForDirButton.Size = new System.Drawing.Size(163, 19);
             this.browseForDirButton.TabIndex = 1;
             this.browseForDirButton.Text = "Browse";
             this.browseForDirButton.UseVisualStyleBackColor = true;
@@ -174,7 +179,7 @@ namespace Randomizer
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(18, 225);
+            this.label3.Location = new System.Drawing.Point(18, 196);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(93, 30);
             this.label3.TabIndex = 1;
@@ -182,7 +187,7 @@ namespace Randomizer
             // 
             // pokemonBSTSelector
             // 
-            this.pokemonBSTSelector.Location = new System.Drawing.Point(129, 228);
+            this.pokemonBSTSelector.Location = new System.Drawing.Point(129, 199);
             this.pokemonBSTSelector.Maximum = new decimal(new int[] {
             680,
             0,
@@ -206,7 +211,7 @@ namespace Randomizer
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(18, 163);
+            this.label6.Location = new System.Drawing.Point(18, 141);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(91, 30);
             this.label6.TabIndex = 9;
@@ -214,7 +219,7 @@ namespace Randomizer
             // 
             // movePower
             // 
-            this.movePower.Location = new System.Drawing.Point(129, 166);
+            this.movePower.Location = new System.Drawing.Point(129, 144);
             this.movePower.Minimum = new decimal(new int[] {
             10,
             0,
@@ -238,6 +243,33 @@ namespace Randomizer
             this.label1.TabIndex = 0;
             this.label1.Text = "label1";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(18, 251);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(90, 30);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Impossible Evolution Level:";
+            // 
+            // pokemonEvolutionLevelSelector
+            // 
+            this.pokemonEvolutionLevelSelector.Location = new System.Drawing.Point(129, 254);
+            this.pokemonEvolutionLevelSelector.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.pokemonEvolutionLevelSelector.Name = "pokemonEvolutionLevelSelector";
+            this.pokemonEvolutionLevelSelector.Size = new System.Drawing.Size(169, 23);
+            this.pokemonEvolutionLevelSelector.TabIndex = 12;
+            this.pokemonEvolutionLevelSelector.Value = new decimal(new int[] {
+            40,
+            0,
+            0,
+            0});
+            this.pokemonEvolutionLevelSelector.ValueChanged += new System.EventHandler(this.pokemonEvolutionLevelSelector_ValueChanged);
+            // 
             // OptionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -253,6 +285,7 @@ namespace Randomizer
             this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pokemonBSTSelector)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.movePower)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pokemonEvolutionLevelSelector)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -275,5 +308,7 @@ namespace Randomizer
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown movePower;
         private System.Windows.Forms.ToolTip infoToolTip;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.NumericUpDown pokemonEvolutionLevelSelector;
     }
 }
