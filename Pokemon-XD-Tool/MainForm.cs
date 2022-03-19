@@ -339,6 +339,7 @@ namespace Randomizer
                     ThreeStageEvolution = threeStageMaxCheck.Checked,
                     EasyEvolutions = easyEvolutionsCheck.Checked,
                     FixImpossibleEvolutions = fixImpossibleEvolutionsCheck.Checked,
+                    EvolutionLinesEndRandomly = randomlyEndEvolutionsCheck.Checked,
 
                     TMCompatibility = tmFullCompatibilityCheck.Checked
                             ? MoveCompatibility.Full : (tmCompatibilityRandomCheck.Checked

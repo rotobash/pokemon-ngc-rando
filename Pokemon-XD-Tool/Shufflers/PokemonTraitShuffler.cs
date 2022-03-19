@@ -81,7 +81,7 @@ namespace Randomizer.Shufflers
                         }
 
                         var potentialPokes = pokeFilter.ToArray();
-                        if (potentialPokes.Length == 0 || (evolution.EvolutionMethod == EvolutionMethods.LevelUp && random.Next(4) > 2))
+                        if (potentialPokes.Length == 0 || (settings.EvolutionLinesEndRandomly && evolution.EvolutionMethod == EvolutionMethods.LevelUp && random.Next(4) > 2))
                         {
                             // null it out
                             Logger.Log($"End of the line for {poke.Name}.\n");

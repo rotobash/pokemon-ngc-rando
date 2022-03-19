@@ -36,6 +36,7 @@
         public bool TypesFollowEvolution { get; set; }
 
         public bool RandomizeEvolutions { get; set; }
+        public bool EvolutionLinesEndRandomly { get; set; }
         public bool EvolutionHasSimilarStrength { get; set; }
         public bool EvolutionHasSameType { get; set; }
         public bool ThreeStageEvolution { get; set; }
