@@ -55,8 +55,10 @@ namespace Randomizer.Shufflers
                     // prevent loops and multiple pokemon evolving into the same pokemon
                     pokeEvosRandomized.Add(poke.Index);
                     var pokeFilter = extractedGame.ValidPokemon.Where(p => !pokeEvosRandomized.Contains(p.Index));
+                    var isEevee = poke.Name.Equals("eevee", StringComparison.InvariantCultureIgnoreCase);
 
-                    if (settings.EvolutionHasSameType)
+                    // check for eevee, don't bother with type filtering
+                    if (settings.EvolutionHasSameType && !isEevee)
                     {
                         pokeFilter = pokeFilter.Where(p => p.Type1 == poke.Type1 || p.Type2 == poke.Type2 || p.Type1 == poke.Type2);
                     }

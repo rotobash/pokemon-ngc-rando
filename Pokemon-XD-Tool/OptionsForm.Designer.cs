@@ -110,7 +110,6 @@ namespace Randomizer
             this.label5.Size = new System.Drawing.Size(66, 15);
             this.label5.TabIndex = 3;
             this.label5.Text = "Log To File:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label4
             // 
