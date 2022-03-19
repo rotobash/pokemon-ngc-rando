@@ -25,10 +25,10 @@ namespace XDCommon.PokemonDefinitions
             private set;
         }
 
-        public Pokemarts(int index, ISO iso)
+        public Pokemarts(int index, REL pocket)
         {
             Index = index;
-            pocket = iso.GetFSysFile("pocket_menu.fsys").GetEntryByFileName("pocket_menu.rel") as REL;
+            this.pocket = pocket;
             LoadItems();
         }
 

@@ -52,6 +52,7 @@ namespace XDCommon.PokemonDefinitions
         public const byte StatusEffectNameIDOffset = 0x10;
 
         // items
+        public const int LastPokeballIndex = 0xC;
         public const byte SizeOfItemData = 0x28;
         public const byte NumberOfTMsAndHMs = 0x3A;
         public const byte NumberOfTMs = 0x32;
@@ -174,6 +175,35 @@ namespace XDCommon.PokemonDefinitions
         public const int XDMoves = 124;
         public const int XDNumberOfMoves = 125;
 
+        public static Dictionary<Region, Dictionary<string, string>> XDItemTables = new Dictionary<Region, Dictionary<string, string>>()
+        {
+            {
+                Region.US,
+                new Dictionary<string, string>
+                {
+                    { "pocket_menu.fsys", "pocket_menu.msg" }
+                }
+            },
+            {
+                Region.Europe,
+                new Dictionary<string, string>
+                {
+                    { "pocket_menu.fsys", "(null).msg" },
+                    { "pocket_menu_it.fsys", "(null).msg" },
+                    { "pocket_menu_ge.fsys", "(null).msg" },
+                    { "pocket_menu_fr.fsys", "(null).msg" },
+                    { "pocket_menu_sp.fsys", "(null).msg" }
+                }
+            },
+            {
+                Region.Japan,
+                new Dictionary<string, string>
+                {
+                    { "pocket_menu.fsys", "pocket_menu.msg" }
+                }
+            },
+        };
+
         // COLO
         public const int ColNumberRelPointers = 0x6C;
         public const int ColPeopleIDs = 6; // 2 bytes at offset 0 person id 4 bytes at offset 4 string id for character name
@@ -202,6 +232,35 @@ namespace XDCommon.PokemonDefinitions
         public const int ColNumberOfNatures = 65;
         public const int ColMoves = 62;
         public const int ColNumberOfMoves = 63;
+
+        public static Dictionary<Region, Dictionary<string, string>> ColItemTables = new Dictionary<Region, Dictionary<string, string>>()
+        {
+            {  
+                Region.US, 
+                new Dictionary<string, string> 
+                {
+                    { "pocket_menu.fsys", "pocket_menu.msg" }
+                } 
+            },
+            {  
+                Region.Europe, 
+                new Dictionary<string, string>
+                {
+                    { "pocket_menu.fsys", "pocket_menu.msg" },
+                    { "pocket_menu_it.fsys", "pocket_menu.msg" },
+                    { "pocket_menu_ge.fsys", "pocket_menu.msg" },
+                    { "pocket_menu_fr.fsys", "pocket_menu.msg" },
+                    { "pocket_menu_sp.fsys", "pocket_menu.msg" }
+                } 
+            },
+            {  
+                Region.Japan, 
+                new Dictionary<string, string>
+                {
+                    { "pocket_menu.fsys", "pocket_menu.msg" }
+                } 
+            },
+        };
 
         public static int AbilityStartOffset(ISO iso)
         {

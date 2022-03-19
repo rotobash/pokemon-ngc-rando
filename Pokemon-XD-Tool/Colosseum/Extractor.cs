@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XDCommon.Contracts;
 using XDCommon.PokemonDefinitions;
 using XDCommon.Utility;
 
@@ -31,9 +32,10 @@ namespace Randomizer.Colosseum
 		{
 			var numItems = Constants.ColNumberOfItems;
 			var items = new Items[numItems];
+
 			for (int i = 0; i < numItems; i++)
 			{
-				if (i <= 12)
+				if (i <= Constants.LastPokeballIndex)
 				{
 					items[i] = new Pokeballs(i, ISO);
 				}
@@ -61,16 +63,21 @@ namespace Randomizer.Colosseum
 			return items;
 		}
 
+
 		public Pokemarts[] ExtractPokemarts()
 		{
-			var pocket = ISO.GetFSysFile("pocket_menu.fsys").GetEntryByFileName("pocket_menu.rel") as REL;
-			var numMarts = pocket.GetValueAtPointer(Constants.NumberOfMarts);
-			var marts = new Pokemarts[numMarts];
-			for (int i = 0; i < numMarts; i++)
+			var marts = new List<Pokemarts>();
+
+			foreach (var pocketfile in Constants.ColItemTables[ISO.Region])
 			{
-				marts[i] = new Pokemarts(i, ISO);
+				var pocket = ISO.GetFSysFile(pocketfile.Key).GetEntryByFileName("pocket_menu.rel") as REL;
+				var numMarts = pocket.GetValueAtPointer(Constants.NumberOfMarts);
+				for (int i = 0; i < numMarts; i++)
+				{
+					marts.Add(new Pokemarts(i, pocket));
+				}
 			}
-			return marts;
+			return marts.ToArray();
 		}
 
 		public Move[] ExtractMoves()
