@@ -213,6 +213,7 @@ namespace Randomizer
             this.tmGroupBox = new System.Windows.Forms.GroupBox();
             this.openSettingsDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveSettingsDialog = new System.Windows.Forms.SaveFileDialog();
+            this.randomizeMovesetsOnlyLegal = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gamePictureBox)).BeginInit();
             this.settingsTab.SuspendLayout();
@@ -2785,22 +2786,24 @@ namespace Randomizer
             // 
             // tableLayoutPanel12
             // 
-            this.tableLayoutPanel12.ColumnCount = 5;
+            this.tableLayoutPanel12.ColumnCount = 6;
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel12.Controls.Add(this.movesetsForceGoodDamagingMoveCheck, 2, 1);
-            this.tableLayoutPanel12.Controls.Add(this.forceFourMoveCheck, 2, 0);
-            this.tableLayoutPanel12.Controls.Add(this.movesetsMetronomeOnlyCheck, 1, 3);
+            this.tableLayoutPanel12.Controls.Add(this.movesetsForceGoodDamagingMoveCheck, 3, 1);
+            this.tableLayoutPanel12.Controls.Add(this.forceFourMoveCheck, 3, 0);
+            this.tableLayoutPanel12.Controls.Add(this.movesetsForceGoodDamagingMovePercent, 5, 1);
+            this.tableLayoutPanel12.Controls.Add(this.pokemonShareMovesetsCheck, 3, 2);
+            this.tableLayoutPanel12.Controls.Add(this.banShadowMovesCheck, 3, 3);
+            this.tableLayoutPanel12.Controls.Add(this.banEarlyDragonRageCheck, 4, 3);
             this.tableLayoutPanel12.Controls.Add(this.unchangedMovesetsCheck, 1, 0);
             this.tableLayoutPanel12.Controls.Add(this.randomizeMovesetsPreferType, 1, 1);
             this.tableLayoutPanel12.Controls.Add(this.randomizeMovesets, 1, 2);
-            this.tableLayoutPanel12.Controls.Add(this.movesetsForceGoodDamagingMovePercent, 4, 1);
-            this.tableLayoutPanel12.Controls.Add(this.pokemonShareMovesetsCheck, 2, 2);
-            this.tableLayoutPanel12.Controls.Add(this.banShadowMovesCheck, 2, 3);
-            this.tableLayoutPanel12.Controls.Add(this.banEarlyDragonRageCheck, 3, 3);
+            this.tableLayoutPanel12.Controls.Add(this.movesetsMetronomeOnlyCheck, 1, 3);
+            this.tableLayoutPanel12.Controls.Add(this.randomizeMovesetsOnlyLegal, 2, 0);
             this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel12.Location = new System.Drawing.Point(3, 19);
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
@@ -2816,7 +2819,7 @@ namespace Randomizer
             // 
             this.movesetsForceGoodDamagingMoveCheck.AutoSize = true;
             this.tableLayoutPanel12.SetColumnSpan(this.movesetsForceGoodDamagingMoveCheck, 2);
-            this.movesetsForceGoodDamagingMoveCheck.Location = new System.Drawing.Point(353, 30);
+            this.movesetsForceGoodDamagingMoveCheck.Location = new System.Drawing.Point(388, 30);
             this.movesetsForceGoodDamagingMoveCheck.Name = "movesetsForceGoodDamagingMoveCheck";
             this.movesetsForceGoodDamagingMoveCheck.Size = new System.Drawing.Size(183, 19);
             this.movesetsForceGoodDamagingMoveCheck.TabIndex = 22;
@@ -2830,7 +2833,7 @@ namespace Randomizer
             // 
             this.forceFourMoveCheck.AutoSize = true;
             this.tableLayoutPanel12.SetColumnSpan(this.forceFourMoveCheck, 2);
-            this.forceFourMoveCheck.Location = new System.Drawing.Point(353, 3);
+            this.forceFourMoveCheck.Location = new System.Drawing.Point(388, 3);
             this.forceFourMoveCheck.Name = "forceFourMoveCheck";
             this.forceFourMoveCheck.Size = new System.Drawing.Size(215, 19);
             this.forceFourMoveCheck.TabIndex = 20;
@@ -2904,7 +2907,7 @@ namespace Randomizer
             this.pokemonShareMovesetsCheck.AutoSize = true;
             this.tableLayoutPanel12.SetColumnSpan(this.pokemonShareMovesetsCheck, 2);
             this.pokemonShareMovesetsCheck.Enabled = false;
-            this.pokemonShareMovesetsCheck.Location = new System.Drawing.Point(353, 57);
+            this.pokemonShareMovesetsCheck.Location = new System.Drawing.Point(388, 57);
             this.pokemonShareMovesetsCheck.Name = "pokemonShareMovesetsCheck";
             this.pokemonShareMovesetsCheck.Size = new System.Drawing.Size(162, 19);
             this.pokemonShareMovesetsCheck.TabIndex = 30;
@@ -2918,7 +2921,7 @@ namespace Randomizer
             // 
             this.banShadowMovesCheck.AutoSize = true;
             this.banShadowMovesCheck.Enabled = false;
-            this.banShadowMovesCheck.Location = new System.Drawing.Point(353, 84);
+            this.banShadowMovesCheck.Location = new System.Drawing.Point(388, 84);
             this.banShadowMovesCheck.Name = "banShadowMovesCheck";
             this.banShadowMovesCheck.Size = new System.Drawing.Size(129, 19);
             this.banShadowMovesCheck.TabIndex = 29;
@@ -2931,7 +2934,7 @@ namespace Randomizer
             this.banEarlyDragonRageCheck.AutoSize = true;
             this.tableLayoutPanel12.SetColumnSpan(this.banEarlyDragonRageCheck, 2);
             this.banEarlyDragonRageCheck.Enabled = false;
-            this.banEarlyDragonRageCheck.Location = new System.Drawing.Point(493, 84);
+            this.banEarlyDragonRageCheck.Location = new System.Drawing.Point(528, 84);
             this.banEarlyDragonRageCheck.Name = "banEarlyDragonRageCheck";
             this.banEarlyDragonRageCheck.Size = new System.Drawing.Size(145, 19);
             this.banEarlyDragonRageCheck.TabIndex = 31;
@@ -3513,6 +3516,18 @@ namespace Randomizer
             this.saveSettingsDialog.DefaultExt = "settings";
             this.saveSettingsDialog.Filter = "Settings File|*.settings";
             // 
+            // randomizeMovesetsOnlyLegal
+            // 
+            this.randomizeMovesetsOnlyLegal.AutoSize = true;
+            this.randomizeMovesetsOnlyLegal.Location = new System.Drawing.Point(213, 3);
+            this.randomizeMovesetsOnlyLegal.Name = "randomizeMovesetsOnlyLegal";
+            this.randomizeMovesetsOnlyLegal.Size = new System.Drawing.Size(139, 19);
+            this.randomizeMovesetsOnlyLegal.TabIndex = 32;
+            this.randomizeMovesetsOnlyLegal.TabStop = true;
+            this.randomizeMovesetsOnlyLegal.Text = "Random Legal Moves";
+            this.randomizeMovesetsOnlyLegal.UseVisualStyleBackColor = true;
+            this.randomizeMovesetsOnlyLegal.CheckedChanged += new System.EventHandler(this.randomizeMovesetsOnlyLegal_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -3810,6 +3825,7 @@ namespace Randomizer
         private System.Windows.Forms.CheckBox noDuplicateShadowPokemonCheck;
         private System.Windows.Forms.CheckBox randomlyEndEvolutionsCheck;
         private System.Windows.Forms.CheckBox ignoreOHKOMovesAccuracyCheck;
+        private System.Windows.Forms.RadioButton randomizeMovesetsOnlyLegal;
     }
 }
 

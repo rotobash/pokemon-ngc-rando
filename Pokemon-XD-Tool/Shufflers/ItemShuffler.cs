@@ -151,6 +151,8 @@ namespace Randomizer.Shufflers
                 var potentialItems = settings.BanBadItems ? extractedGame.NonKeyItems : extractedGame.GoodItems;
                 potentialItems = potentialItems.Where(i => !RandomizerConstants.BattleCDList.Contains(i.Index)).ToArray();
 
+
+
                 foreach (var mart in extractedGame.Pokemarts)
                 {
                     Logger.Log($"Mart {mart.Index}:\n");
