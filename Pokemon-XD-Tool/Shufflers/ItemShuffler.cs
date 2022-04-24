@@ -164,7 +164,11 @@ namespace Randomizer.Shufflers
                         else
                             Logger.Log($"{item} -> ");
 
-                        mart.Items[i] = (ushort)potentialItems[random.Next(0, potentialItems.Length)].Index;
+                        var nextItem = potentialItems[random.Next(0, potentialItems.Length)];
+                        if (nextItem.Name.Contains("master", StringComparison.CurrentCultureIgnoreCase))
+                            nextItem.Price = 30000;
+
+                        mart.Items[i] = (ushort)nextItem.Index;
                         Logger.Log($"{extractedGame.ItemList[mart.Items[i]].Name}\n");
                     }
                     mart.SaveItems();

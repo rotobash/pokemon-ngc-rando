@@ -67,6 +67,6 @@ namespace Randomizer
 
         public const int BanDragonRageUnderLevel = 20;
 
-        public static readonly int[] AgateVillageMartIndices = new[] { 9, 11 };
+        public static readonly int[] AgateVillageMartIndices = new[] { 9, 10, 11 };
     }
 }
