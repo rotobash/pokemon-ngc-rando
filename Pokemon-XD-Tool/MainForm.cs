@@ -733,7 +733,7 @@ namespace Randomizer
 
         private void randomizeMovesets_CheckedChanged(object sender, EventArgs e)
         {
-            if (!randomizeMovesetsPreferType.Checked)
+            if (!(randomizeMovesetsPreferType.Checked || randomizeMovesetsOnlyLegal.Checked))
             {
                 banShadowMovesCheck.Enabled = randomizeMovesets.Checked;
                 pokemonShareMovesetsCheck.Enabled = randomizeMovesets.Checked;
@@ -743,11 +743,21 @@ namespace Randomizer
 
         private void randomizeMovesetsPreferType_CheckedChanged(object sender, EventArgs e)
         {
-            if (!randomizeMovesets.Checked)
+            if (!(randomizeMovesets.Checked || randomizeMovesetsOnlyLegal.Checked))
             {
                 banShadowMovesCheck.Enabled = randomizeMovesetsPreferType.Checked;
                 pokemonShareMovesetsCheck.Enabled = randomizeMovesetsPreferType.Checked;
                 banEarlyDragonRageCheck.Enabled = randomizeMovesetsPreferType.Checked;
+            }
+        }
+
+        private void randomizeMovesetsOnlyLegal_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!(randomizeMovesets.Checked || randomizeMovesetsPreferType.Checked))
+            {
+                banShadowMovesCheck.Enabled = randomizeMovesetsOnlyLegal.Checked;
+                pokemonShareMovesetsCheck.Enabled = randomizeMovesetsOnlyLegal.Checked;
+                banEarlyDragonRageCheck.Enabled = randomizeMovesetsOnlyLegal.Checked;
             }
         }
 

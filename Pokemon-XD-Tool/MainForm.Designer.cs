@@ -3526,6 +3526,7 @@ namespace Randomizer
             this.randomizeMovesetsOnlyLegal.TabStop = true;
             this.randomizeMovesetsOnlyLegal.Text = "Random Legal Moves";
             this.randomizeMovesetsOnlyLegal.UseVisualStyleBackColor = true;
+            this.randomizeMovesetsOnlyLegal.CheckedChanged += new System.EventHandler(this.randomizeMovesetsOnlyLegal_CheckedChanged);
             // 
             // MainForm
             // 
