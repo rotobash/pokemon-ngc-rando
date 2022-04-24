@@ -145,10 +145,11 @@ namespace Randomizer
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
             this.moveCategoryCheck = new System.Windows.Forms.CheckBox();
-            this.movePPCheck = new System.Windows.Forms.CheckBox();
-            this.moveAccCheck = new System.Windows.Forms.CheckBox();
             this.movePowerCheck = new System.Windows.Forms.CheckBox();
             this.moveTypeCheck = new System.Windows.Forms.CheckBox();
+            this.movePPCheck = new System.Windows.Forms.CheckBox();
+            this.moveAccCheck = new System.Windows.Forms.CheckBox();
+            this.ignoreOHKOMovesAccuracyCheck = new System.Windows.Forms.CheckBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.movesetsForceGoodDamagingMoveCheck = new System.Windows.Forms.CheckBox();
@@ -2685,10 +2686,11 @@ namespace Randomizer
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel11.Controls.Add(this.moveCategoryCheck, 2, 1);
-            this.tableLayoutPanel11.Controls.Add(this.movePPCheck, 1, 2);
-            this.tableLayoutPanel11.Controls.Add(this.moveAccCheck, 1, 1);
             this.tableLayoutPanel11.Controls.Add(this.movePowerCheck, 1, 0);
             this.tableLayoutPanel11.Controls.Add(this.moveTypeCheck, 2, 0);
+            this.tableLayoutPanel11.Controls.Add(this.movePPCheck, 1, 1);
+            this.tableLayoutPanel11.Controls.Add(this.moveAccCheck, 1, 2);
+            this.tableLayoutPanel11.Controls.Add(this.ignoreOHKOMovesAccuracyCheck, 1, 3);
             this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel11.Location = new System.Drawing.Point(3, 19);
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
@@ -2712,29 +2714,6 @@ namespace Randomizer
         "olosseum.");
             this.moveCategoryCheck.UseVisualStyleBackColor = true;
             // 
-            // movePPCheck
-            // 
-            this.movePPCheck.AutoSize = true;
-            this.movePPCheck.Location = new System.Drawing.Point(38, 57);
-            this.movePPCheck.Name = "movePPCheck";
-            this.movePPCheck.Size = new System.Drawing.Size(135, 19);
-            this.movePPCheck.TabIndex = 13;
-            this.movePPCheck.Text = "Randomize Move PP";
-            this.infoToolTip.SetToolTip(this.movePPCheck, "Randomize move PP from 5 to 40 in intervals of 5.");
-            this.movePPCheck.UseVisualStyleBackColor = true;
-            // 
-            // moveAccCheck
-            // 
-            this.moveAccCheck.AutoSize = true;
-            this.moveAccCheck.Location = new System.Drawing.Point(38, 30);
-            this.moveAccCheck.Name = "moveAccCheck";
-            this.moveAccCheck.Size = new System.Drawing.Size(170, 19);
-            this.moveAccCheck.TabIndex = 12;
-            this.moveAccCheck.Text = "Randomize Move Accuracy";
-            this.infoToolTip.SetToolTip(this.moveAccCheck, "Randomize move accuracy between 0 and 100.\r\nOHKO moves will be re-rolled until th" +
-        "ey\'re not 100% accurate.");
-            this.moveAccCheck.UseVisualStyleBackColor = true;
-            // 
             // movePowerCheck
             // 
             this.movePowerCheck.AutoSize = true;
@@ -2756,6 +2735,41 @@ namespace Randomizer
             this.moveTypeCheck.TabIndex = 18;
             this.moveTypeCheck.Text = "Randomize Move Types";
             this.moveTypeCheck.UseVisualStyleBackColor = true;
+            // 
+            // movePPCheck
+            // 
+            this.movePPCheck.AutoSize = true;
+            this.movePPCheck.Location = new System.Drawing.Point(38, 30);
+            this.movePPCheck.Name = "movePPCheck";
+            this.movePPCheck.Size = new System.Drawing.Size(135, 19);
+            this.movePPCheck.TabIndex = 13;
+            this.movePPCheck.Text = "Randomize Move PP";
+            this.infoToolTip.SetToolTip(this.movePPCheck, "Randomize move PP from 5 to 40 in intervals of 5.");
+            this.movePPCheck.UseVisualStyleBackColor = true;
+            // 
+            // moveAccCheck
+            // 
+            this.moveAccCheck.AutoSize = true;
+            this.moveAccCheck.Location = new System.Drawing.Point(38, 57);
+            this.moveAccCheck.Name = "moveAccCheck";
+            this.moveAccCheck.Size = new System.Drawing.Size(170, 19);
+            this.moveAccCheck.TabIndex = 12;
+            this.moveAccCheck.Text = "Randomize Move Accuracy";
+            this.infoToolTip.SetToolTip(this.moveAccCheck, "Randomize move accuracy between 0 and 100.\r\nOHKO moves will be re-rolled until th" +
+        "ey\'re not 100% accurate.");
+            this.moveAccCheck.UseVisualStyleBackColor = true;
+            this.moveAccCheck.CheckedChanged += new System.EventHandler(this.moveAccCheck_CheckedChanged);
+            // 
+            // ignoreOHKOMovesAccuracyCheck
+            // 
+            this.ignoreOHKOMovesAccuracyCheck.AutoSize = true;
+            this.ignoreOHKOMovesAccuracyCheck.Enabled = false;
+            this.ignoreOHKOMovesAccuracyCheck.Location = new System.Drawing.Point(38, 84);
+            this.ignoreOHKOMovesAccuracyCheck.Name = "ignoreOHKOMovesAccuracyCheck";
+            this.ignoreOHKOMovesAccuracyCheck.Size = new System.Drawing.Size(134, 19);
+            this.ignoreOHKOMovesAccuracyCheck.TabIndex = 20;
+            this.ignoreOHKOMovesAccuracyCheck.Text = "Ignore OHKO Moves";
+            this.ignoreOHKOMovesAccuracyCheck.UseVisualStyleBackColor = true;
             // 
             // groupBox10
             // 
@@ -3795,6 +3809,7 @@ namespace Randomizer
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox noDuplicateShadowPokemonCheck;
         private System.Windows.Forms.CheckBox randomlyEndEvolutionsCheck;
+        private System.Windows.Forms.CheckBox ignoreOHKOMovesAccuracyCheck;
     }
 }
 

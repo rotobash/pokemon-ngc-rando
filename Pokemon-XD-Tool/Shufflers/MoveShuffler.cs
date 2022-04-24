@@ -44,6 +44,9 @@ namespace Randomizer.Shufflers
 
                 if (settings.RandomMoveAcc && move.Accuracy > 0)
                 {
+                    if (settings.IgnoreOHKOMoveAcc && move.EffectType == MoveEffectTypes.OHKO)
+                        continue;
+
                     // randomize accuracy, repick if the moves is OHKO and 100% accurate cause that's a yikes
                     byte acc;
                     do
