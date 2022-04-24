@@ -185,24 +185,6 @@ namespace Randomizer.Shufflers
                     agateMart.SaveItems();
                 }
             }
-            foreach (var mart in extractedGame.Pokemarts)
-            {
-                if (mart.Items.Count > 0)
-                {
-                    mart.Items.Add(4);
-                    if (settings.MartsSellXItems)
-                    {
-                        mart.Items.Add(73);
-                        mart.Items.Add(74);
-                        mart.Items.Add(75);
-                        mart.Items.Add(76);
-                        mart.Items.Add(77);
-                        mart.Items.Add(78);
-                        mart.Items.Add(79);
-                    }
-                }
-                mart.SaveItems();
-            }
         }
     }
 }

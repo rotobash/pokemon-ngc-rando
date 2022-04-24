@@ -3045,6 +3045,7 @@ namespace Randomizer
             this.martsSellXItemsCheck.Text = "All Marts Sell X-Items";
             this.infoToolTip.SetToolTip(this.martsSellXItemsCheck, "Every mart will sell X-Items at regular price.");
             this.martsSellXItemsCheck.UseVisualStyleBackColor = true;
+            this.martsSellXItemsCheck.Visible = false;
             // 
             // randomizeMartItems
             // 
