@@ -364,6 +364,7 @@ namespace Randomizer
                     RandomMovePP = movePPCheck.Checked,
                     RandomMoveTypes = moveTypeCheck.Checked,
                     RandomMoveCategory = moveCategoryCheck.Checked,
+                    IgnoreOHKOMoveAcc = ignoreOHKOMovesAccuracyCheck.Checked,
                 },
                 ItemShufflerSettings = new ItemShufflerSettings
                 {
@@ -666,6 +667,11 @@ namespace Randomizer
         private void baseStatsRandomCheck_CheckedChanged(object sender, EventArgs e)
         {
             bstFollowEvolutionCheck.Enabled = baseStatsRandomCheck.Checked;
+        }
+
+        private void moveAccCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            ignoreOHKOMovesAccuracyCheck.Enabled = moveAccCheck.Checked;
         }
 
         private void randomizeEvolutionsCheck_CheckedChanged(object sender, EventArgs e)

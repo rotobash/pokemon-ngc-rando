@@ -73,6 +73,7 @@
     {
         public bool RandomMovePower { get; set; }
         public bool RandomMoveAcc { get; set; }
+        public bool IgnoreOHKOMoveAcc { get; set; }
         public bool RandomMovePP { get; set; }
         public bool RandomMoveTypes { get; set; }
         public bool RandomMoveCategory { get; set; }
