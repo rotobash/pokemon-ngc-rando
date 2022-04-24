@@ -305,8 +305,9 @@ namespace Randomizer
 
             var options = new RandomMoveSetOptions
             {
-                RandomizeMovesets = (randomizeMovesets.Checked || randomizeMovesetsPreferType.Checked),
+                RandomizeMovesets = (randomizeMovesets.Checked || randomizeMovesetsPreferType.Checked || randomizeMovesetsOnlyLegal.Checked),
                 MetronomeOnly = movesetsMetronomeOnlyCheck.Checked,
+                LegalMovesOnly = randomizeMovesetsOnlyLegal.Checked,
                 BanShadowMoves = banShadowMovesCheck.Checked,
                 ForceGoodMoves = movesetsForceGoodDamagingMoveCheck.Checked,
                 MinimumGoodMoves = (int)movesetsForceGoodDamagingMovePercent.Value,
@@ -522,6 +523,7 @@ namespace Randomizer
             movePPCheck.Checked = settings.MoveShufflerSettings.RandomMovePP;
             moveTypeCheck.Checked = settings.MoveShufflerSettings.RandomMoveTypes;
             moveCategoryCheck.Checked = settings.MoveShufflerSettings.RandomMoveCategory;
+            ignoreOHKOMovesAccuracyCheck.Checked = settings.MoveShufflerSettings.IgnoreOHKOMoveAcc;
 
             // items
             // use the enabled property so we don't load in disabled settings and crash the program
@@ -557,9 +559,10 @@ namespace Randomizer
             forceFullyEvolvedLevel.Value = settings.TeamShufflerSettings.ForceFullyEvolvedLevel;
 
             // movesets
-            randomizeMovesets.Checked = settings.TeamShufflerSettings.MoveSetOptions.RandomizeMovesets && !settings.TeamShufflerSettings.MoveSetOptions.PreferType;
+            randomizeMovesets.Checked = settings.TeamShufflerSettings.MoveSetOptions.RandomizeMovesets && !(settings.TeamShufflerSettings.MoveSetOptions.PreferType || settings.TeamShufflerSettings.MoveSetOptions.LegalMovesOnly);
             movesetsMetronomeOnlyCheck.Checked = settings.TeamShufflerSettings.MoveSetOptions.MetronomeOnly;
             randomizeMovesetsPreferType.Checked = settings.TeamShufflerSettings.MoveSetOptions.PreferType;
+            randomizeMovesetsOnlyLegal.Checked = settings.TeamShufflerSettings.MoveSetOptions.LegalMovesOnly;
             banShadowMovesCheck.Checked = settings.TeamShufflerSettings.MoveSetOptions.BanShadowMoves;
             banEarlyDragonRageCheck.Checked = settings.TeamShufflerSettings.MoveSetOptions.BanEarlyDragonRage;
             movesetsForceGoodDamagingMoveCheck.Checked = settings.TeamShufflerSettings.MoveSetOptions.ForceGoodMoves;

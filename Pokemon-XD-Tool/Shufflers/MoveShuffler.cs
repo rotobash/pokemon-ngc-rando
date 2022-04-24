@@ -12,6 +12,7 @@ namespace Randomizer.Shufflers
     {
         public bool RandomizeMovesets { get; set; }
         public bool MetronomeOnly { get; set; }
+        public bool LegalMovesOnly { get; set; }
         public bool UseLevelUpMoves { get; set; }
         public bool BanShadowMoves { get; set; }
         public bool BanEarlyDragonRage { get; set; }
@@ -108,7 +109,37 @@ namespace Randomizer.Shufflers
 
             var potentialMoves = typeFilter.ToArray();
 
-            if (options.UseLevelUpMoves || !options.RandomizeMovesets)
+            if (options.LegalMovesOnly)
+            {
+                // change our move filter to only include learnable moves for this pokemon
+                var legalMoves = new HashSet<ushort>();
+                for (int i = 0; i < poke.LearnableTMs.Length; i++)
+                {
+                    var canLearn = poke.LearnableTMs[i];
+                    if (canLearn)
+                    {
+                        legalMoves.Add(extractedGame.TMs[i].Move);
+                    }
+                }
+
+                for (int i = 0; i < poke.TutorMoves.Length; i++)
+                {
+                    var canLearn = poke.TutorMoves[i];
+                    if (canLearn)
+                    {
+                        legalMoves.Add(extractedGame.TutorMoves[i].Move);
+                    }
+                }
+
+                for (int i = 0; i < poke.LevelUpMoves.Length; i++)
+                {
+                    var levelUpMove = poke.LevelUpMoves[i];
+                    legalMoves.Add(levelUpMove.Move);
+                }
+
+                moveFilter = moveFilter.Where(m => legalMoves.Contains((ushort)m.MoveIndex));
+            }
+            else if (options.UseLevelUpMoves || !options.RandomizeMovesets)
             {
                 // not randomizing moves? pick level up moves then
                 var levelUpMoves = extractedGame.PokemonList[pokemon].CurrentLevelMoves(level++);
