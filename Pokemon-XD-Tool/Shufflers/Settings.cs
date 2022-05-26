@@ -55,6 +55,7 @@
         public bool RandomizePokemon { get; set; }
         public bool DontUseLegendaries { get; set; }
         public bool NoDuplicateShadows { get; set; }
+        public bool RandomizeLegendaryIntoLegendary { get; set; }
 
         public bool SetMinimumShadowCatchRate { get; set; }
         public int ShadowCatchRateMinimum { get; set; }
