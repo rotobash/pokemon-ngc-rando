@@ -102,16 +102,20 @@ namespace Randomizer.Shufflers
             if (settings.ForceFullyEvolved && forceFullyEvolved)
             {
                 var currPoke = extractedGame.PokemonList[pokemon.Pokemon];
-                if (PokemonTraitShuffler.CheckForSplitOrEndEvolution(currPoke, out var count) && count > 0)
+                while (currPoke.Evolutions.Any(e => e.EvolvesInto > 0))
                 {
-                    // randomly pick from the split
-                    var evoInd = random.Next(0, count);
-                    pokemon.Pokemon = currPoke.Evolutions[evoInd].EvolvesInto;
-                }
-                else if (count == 1)
-                {
-                    // it wasn't split or the end but still evolved
-                    pokemon.Pokemon = currPoke.Evolutions[0].EvolvesInto;
+                    if (PokemonTraitShuffler.CheckForSplitOrEndEvolution(currPoke, out var count) && count > 0)
+                    {
+                        // randomly pick from the split
+                        var evoInd = random.Next(0, count);
+                        pokemon.Pokemon = currPoke.Evolutions[evoInd].EvolvesInto;
+                    }
+                    else if (count == 1)
+                    {
+                        // it wasn't split or the end but still evolved
+                        pokemon.Pokemon = currPoke.Evolutions[0].EvolvesInto;
+                    }
+                    currPoke = extractedGame.PokemonList[pokemon.Pokemon];
                 }
             }
         }
