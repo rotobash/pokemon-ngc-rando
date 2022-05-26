@@ -14,6 +14,8 @@ namespace Randomizer.Shufflers
         {
             if (seed > 0)
                 random = new Random(seed);
+            else
+                random = new Random();
         }
 
         public override ulong Next()
