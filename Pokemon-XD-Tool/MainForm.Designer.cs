@@ -924,13 +924,13 @@ namespace Randomizer
             this.tableLayoutPanel23.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel23.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel23.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel23.Controls.Add(this.threeStageMaxCheck, 2, 2);
             this.tableLayoutPanel23.Controls.Add(this.randomizeEvolutionsCheck, 1, 0);
             this.tableLayoutPanel23.Controls.Add(this.evolutionSameTypeCheck, 2, 1);
             this.tableLayoutPanel23.Controls.Add(this.easyEvolutionsCheck, 1, 2);
             this.tableLayoutPanel23.Controls.Add(this.evolutionSimilarStrengthCheck, 2, 0);
             this.tableLayoutPanel23.Controls.Add(this.fixImpossibleEvolutionsCheck, 1, 1);
-            this.tableLayoutPanel23.Controls.Add(this.randomlyEndEvolutionsCheck, 2, 3);
+            this.tableLayoutPanel23.Controls.Add(this.threeStageMaxCheck, 2, 3);
+            this.tableLayoutPanel23.Controls.Add(this.randomlyEndEvolutionsCheck, 2, 2);
             this.tableLayoutPanel23.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel23.Location = new System.Drawing.Point(3, 19);
             this.tableLayoutPanel23.Name = "tableLayoutPanel23";
@@ -949,9 +949,9 @@ namespace Randomizer
             | System.Windows.Forms.AnchorStyles.Right)));
             this.threeStageMaxCheck.AutoSize = true;
             this.threeStageMaxCheck.Enabled = false;
-            this.threeStageMaxCheck.Location = new System.Drawing.Point(175, 59);
+            this.threeStageMaxCheck.Location = new System.Drawing.Point(175, 87);
             this.threeStageMaxCheck.Name = "threeStageMaxCheck";
-            this.threeStageMaxCheck.Size = new System.Drawing.Size(169, 22);
+            this.threeStageMaxCheck.Size = new System.Drawing.Size(169, 24);
             this.threeStageMaxCheck.TabIndex = 6;
             this.threeStageMaxCheck.Text = "Three Stage Evolution Max";
             this.infoToolTip.SetToolTip(this.threeStageMaxCheck, "Pokemon can\'t evolve more than twice.");
@@ -1038,13 +1038,14 @@ namespace Randomizer
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.randomlyEndEvolutionsCheck.AutoSize = true;
-            this.randomlyEndEvolutionsCheck.Location = new System.Drawing.Point(175, 87);
+            this.randomlyEndEvolutionsCheck.Enabled = false;
+            this.randomlyEndEvolutionsCheck.Location = new System.Drawing.Point(175, 59);
             this.randomlyEndEvolutionsCheck.Name = "randomlyEndEvolutionsCheck";
-            this.randomlyEndEvolutionsCheck.Size = new System.Drawing.Size(169, 24);
+            this.randomlyEndEvolutionsCheck.Size = new System.Drawing.Size(169, 22);
             this.randomlyEndEvolutionsCheck.TabIndex = 13;
             this.randomlyEndEvolutionsCheck.Text = "Randomly End";
-            this.infoToolTip.SetToolTip(this.randomlyEndEvolutionsCheck, "All Pokemon that evolve by level will be fully evolved by level 40. \r\nThree stage" +
-        " evolutions will have their second stage by level 30.");
+            this.infoToolTip.SetToolTip(this.randomlyEndEvolutionsCheck, "Randomly set pokemon as the end of their evolution line.\r\nCould avoid long loopin" +
+        "g evolution lines.\r\n");
             this.randomlyEndEvolutionsCheck.UseVisualStyleBackColor = true;
             // 
             // baseStatsGroupBox

@@ -482,6 +482,7 @@ namespace Randomizer
             threeStageMaxCheck.Checked = settings.PokemonTraitShufflerSettings.ThreeStageEvolution;
             easyEvolutionsCheck.Checked = settings.PokemonTraitShufflerSettings.EasyEvolutions;
             fixImpossibleEvolutionsCheck.Checked = settings.PokemonTraitShufflerSettings.FixImpossibleEvolutions;
+            randomlyEndEvolutionsCheck.Checked = settings.PokemonTraitShufflerSettings.EvolutionLinesEndRandomly;
 
             switch (settings.PokemonTraitShufflerSettings.TMCompatibility)
             {
@@ -684,6 +685,7 @@ namespace Randomizer
             evolutionSameTypeCheck.Enabled = randomizeEvolutionsCheck.Checked;
             evolutionSimilarStrengthCheck.Enabled = randomizeEvolutionsCheck.Checked;
             threeStageMaxCheck.Enabled = randomizeEvolutionsCheck.Checked;
+            randomlyEndEvolutionsCheck.Enabled = randomizeEvolutionsCheck.Checked;
         }
 
         private void randomizeAbilitiesCheck_CheckedChanged(object sender, EventArgs e)
