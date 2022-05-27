@@ -76,6 +76,21 @@ namespace XDCommon
                 AddOrUpdateAppSettings(nameof(StrongPokemonBST), value.ToString());
             }
         }
+        public static int BSTRange
+        {
+            get
+            {
+                if (!int.TryParse(ConfigurationManager.AppSettings.Get(nameof(BSTRange)), out int bstTotal))
+                {
+                    BSTRange = 20;
+                }
+                return bstTotal;
+            }
+            set
+            {
+                AddOrUpdateAppSettings(nameof(BSTRange), value.ToString());
+            }
+        }
 
         public static int PokemonImpossibleEvolutionLevel 
         {

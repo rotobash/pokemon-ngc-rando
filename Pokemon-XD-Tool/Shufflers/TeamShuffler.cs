@@ -95,14 +95,31 @@ namespace Randomizer.Shufflers
 
         public static void RandomizePokemon(AbstractRNG random, TeamShufflerSettings settings, ExtractedGame extractedGame, ITrainerPokemon pokemon)
         {
+            var pokeFilter = extractedGame.ValidPokemon;
+            if (settings.UseSimilarBSTs)
+            {
+                var count = 1;
+                var pokemonDefinition = extractedGame.PokemonList[pokemon.Pokemon];
+                IEnumerable<Pokemon> similarStrengths = Array.Empty<Pokemon>();
+                while (!similarStrengths.Any())
+                {
+                    // anybody? hello?
+                    var bstRangeSize = count * Configuration.BSTRange;
+                    similarStrengths = pokeFilter.Where(p => p.BST >= pokemonDefinition.BST - bstRangeSize && p.BST <= pokemonDefinition.BST + bstRangeSize);
+                    count++;
+                }
+                pokeFilter = similarStrengths.ToArray();
+            }
+
             if (settings.RandomizePokemon)
             {
-                var index = 0;
-                while (index == 0 || (settings.DontUseLegendaries && RandomizerConstants.Legendaries.Contains(index)))
+                var pokemonIndex = 0;
+                while (pokemonIndex == 0 || (settings.DontUseLegendaries && RandomizerConstants.Legendaries.Contains(pokemonIndex)))
                 {
-                    index = extractedGame.ValidPokemon[random.Next(0, extractedGame.ValidPokemon.Length)].Index;
+                    var index = random.Next(extractedGame.ValidPokemon.Length);
+                    pokemonIndex = pokeFilter[index].Index;
                 }
-                pokemon.Pokemon = (ushort)index;
+                pokemon.Pokemon = (ushort)pokemonIndex;
             }
 
             var forceFullyEvolved = pokemon.IsShadow

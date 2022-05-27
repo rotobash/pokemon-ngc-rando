@@ -73,11 +73,11 @@ namespace Randomizer.Shufflers
                             var count = 1;
                             var similarStrengthPoke = evolution.EvolutionMethod != EvolutionMethods.None ? extractedGame.PokemonList[evolution.EvolvesInto] : poke;
                             IEnumerable<Pokemon> similarStrengths = Array.Empty<Pokemon>();
-                            while (!similarStrengths.Any() && count < 3)
+                            while (!similarStrengths.Any() && count++ < 3)
                             {
                                 // anybody? hello?
-                                similarStrengths = pokeFilter.Where(p => p.BST >= similarStrengthPoke.BST - (count * BSTRange) && p.BST <= similarStrengthPoke.BST + (count * BSTRange));
-                                count++;
+                                var bstRangeSize = count * Configuration.BSTRange;
+                                similarStrengths = pokeFilter.Where(p => p.BST >= similarStrengthPoke.BST - bstRangeSize && p.BST <= similarStrengthPoke.BST + bstRangeSize);
                             }
                             pokeFilter = similarStrengths;
                         }
