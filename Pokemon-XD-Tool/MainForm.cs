@@ -390,6 +390,7 @@ namespace Randomizer
                     RandomizePokemon = randomizeTrainerPokemonCheck.Checked,
                     DontUseLegendaries = noLegendaryOnTrainerCheck.Checked,
                     NoDuplicateShadows = noDuplicateShadowPokemonCheck.Checked,
+                    RandomizeLegendaryIntoLegendary = legendaryToLegendaryCheck.Checked,
 
                     SetMinimumShadowCatchRate = minimumShadowCatchRateCheck.Checked,
                     ShadowCatchRateMinimum = (int)shadowCatchMinimum.Value,
@@ -481,6 +482,7 @@ namespace Randomizer
             threeStageMaxCheck.Checked = settings.PokemonTraitShufflerSettings.ThreeStageEvolution;
             easyEvolutionsCheck.Checked = settings.PokemonTraitShufflerSettings.EasyEvolutions;
             fixImpossibleEvolutionsCheck.Checked = settings.PokemonTraitShufflerSettings.FixImpossibleEvolutions;
+            randomlyEndEvolutionsCheck.Checked = settings.PokemonTraitShufflerSettings.EvolutionLinesEndRandomly;
 
             switch (settings.PokemonTraitShufflerSettings.TMCompatibility)
             {
@@ -550,6 +552,7 @@ namespace Randomizer
             randomizeTrainerPokemonCheck.Checked = settings.TeamShufflerSettings.RandomizePokemon;
             noLegendaryOnTrainerCheck.Checked = settings.TeamShufflerSettings.DontUseLegendaries;
             noDuplicateShadowPokemonCheck.Checked = settings.TeamShufflerSettings.NoDuplicateShadows;
+            legendaryToLegendaryCheck.Checked = settings.TeamShufflerSettings.RandomizeLegendaryIntoLegendary;
 
             minimumShadowCatchRateCheck.Checked = settings.TeamShufflerSettings.SetMinimumShadowCatchRate;
             shadowCatchMinimum.Value = Math.Clamp(settings.TeamShufflerSettings.ShadowCatchRateMinimum, 0, 255);
@@ -682,6 +685,7 @@ namespace Randomizer
             evolutionSameTypeCheck.Enabled = randomizeEvolutionsCheck.Checked;
             evolutionSimilarStrengthCheck.Enabled = randomizeEvolutionsCheck.Checked;
             threeStageMaxCheck.Enabled = randomizeEvolutionsCheck.Checked;
+            randomlyEndEvolutionsCheck.Enabled = randomizeEvolutionsCheck.Checked;
         }
 
         private void randomizeAbilitiesCheck_CheckedChanged(object sender, EventArgs e)

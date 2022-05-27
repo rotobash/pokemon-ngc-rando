@@ -42,7 +42,17 @@ namespace Randomizer.Shufflers
                         if (pokemon.Pokemon == 0)
                             continue;
 
-                        RandomizePokemon(random, settings, extractedGame, pokemon);
+                        if (settings.RandomizeLegendaryIntoLegendary && pokemon.IsShadow && RandomizerConstants.Legendaries.Contains(pokemon.Pokemon))
+                        {
+                            // pick random legendary
+                            var index = random.Next(RandomizerConstants.Legendaries.Length);
+                            pokemon.Pokemon = (ushort)RandomizerConstants.Legendaries[index];
+                        } 
+                        else
+                        {
+                            RandomizePokemon(random, settings, extractedGame, pokemon);
+                        }
+
                         Logger.Log($"{extractedGame.PokemonList[pokemon.Pokemon].Name}\n");
                         Logger.Log($"Is a shadow Pokemon: {pokemon.IsShadow}\n");
 

@@ -19,7 +19,7 @@ namespace Randomizer
         public static readonly int[] Legendaries = new int[]
         {
             144, 145, 146, 150, 151, 243, 244, 245, 249, 250,
-            251, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386
+            251, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410
         };
 
         public static readonly int[] BattleCDList = Enumerable.Range(383, 61).ToArray();

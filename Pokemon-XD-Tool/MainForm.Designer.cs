@@ -44,6 +44,7 @@ namespace Randomizer
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.trainerGroupBox = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel28 = new System.Windows.Forms.TableLayoutPanel();
+            this.legendaryToLegendaryCheck = new System.Windows.Forms.CheckBox();
             this.boostTrainerLevelCheck = new System.Windows.Forms.CheckBox();
             this.boostTrainerLevelPercent = new System.Windows.Forms.NumericUpDown();
             this.forceFullyEvolvedLevel = new System.Windows.Forms.NumericUpDown();
@@ -154,14 +155,15 @@ namespace Randomizer
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.movesetsForceGoodDamagingMoveCheck = new System.Windows.Forms.CheckBox();
             this.forceFourMoveCheck = new System.Windows.Forms.CheckBox();
-            this.movesetsMetronomeOnlyCheck = new System.Windows.Forms.RadioButton();
-            this.unchangedMovesetsCheck = new System.Windows.Forms.RadioButton();
-            this.randomizeMovesetsPreferType = new System.Windows.Forms.RadioButton();
-            this.randomizeMovesets = new System.Windows.Forms.RadioButton();
             this.movesetsForceGoodDamagingMovePercent = new System.Windows.Forms.NumericUpDown();
             this.pokemonShareMovesetsCheck = new System.Windows.Forms.CheckBox();
             this.banShadowMovesCheck = new System.Windows.Forms.CheckBox();
             this.banEarlyDragonRageCheck = new System.Windows.Forms.CheckBox();
+            this.unchangedMovesetsCheck = new System.Windows.Forms.RadioButton();
+            this.randomizeMovesetsPreferType = new System.Windows.Forms.RadioButton();
+            this.randomizeMovesets = new System.Windows.Forms.RadioButton();
+            this.movesetsMetronomeOnlyCheck = new System.Windows.Forms.RadioButton();
+            this.randomizeMovesetsOnlyLegal = new System.Windows.Forms.RadioButton();
             this.itemsTabPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.overworldItemGroupBox = new System.Windows.Forms.GroupBox();
@@ -213,7 +215,6 @@ namespace Randomizer
             this.tmGroupBox = new System.Windows.Forms.GroupBox();
             this.openSettingsDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveSettingsDialog = new System.Windows.Forms.SaveFileDialog();
-            this.randomizeMovesetsOnlyLegal = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gamePictureBox)).BeginInit();
             this.settingsTab.SuspendLayout();
@@ -478,6 +479,7 @@ namespace Randomizer
             this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
             this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel28.Controls.Add(this.legendaryToLegendaryCheck, 1, 3);
             this.tableLayoutPanel28.Controls.Add(this.boostTrainerLevelCheck, 4, 2);
             this.tableLayoutPanel28.Controls.Add(this.boostTrainerLevelPercent, 5, 2);
             this.tableLayoutPanel28.Controls.Add(this.forceFullyEvolvedLevel, 5, 1);
@@ -495,8 +497,22 @@ namespace Randomizer
             this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel28.Size = new System.Drawing.Size(700, 110);
             this.tableLayoutPanel28.TabIndex = 12;
+            // 
+            // legendaryToLegendaryCheck
+            // 
+            this.legendaryToLegendaryCheck.AutoSize = true;
+            this.tableLayoutPanel28.SetColumnSpan(this.legendaryToLegendaryCheck, 2);
+            this.legendaryToLegendaryCheck.Location = new System.Drawing.Point(38, 84);
+            this.legendaryToLegendaryCheck.Name = "legendaryToLegendaryCheck";
+            this.legendaryToLegendaryCheck.Size = new System.Drawing.Size(225, 19);
+            this.legendaryToLegendaryCheck.TabIndex = 28;
+            this.legendaryToLegendaryCheck.Text = "Randomize Legendary Into Legendary";
+            this.infoToolTip.SetToolTip(this.legendaryToLegendaryCheck, "When randomizing legendaries on trainers, randomize them into other legendaries.\r" +
+        "\nNo more final battles with cascoon.");
+            this.legendaryToLegendaryCheck.UseVisualStyleBackColor = true;
             // 
             // boostTrainerLevelCheck
             // 
@@ -908,13 +924,13 @@ namespace Randomizer
             this.tableLayoutPanel23.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel23.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel23.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel23.Controls.Add(this.threeStageMaxCheck, 2, 2);
             this.tableLayoutPanel23.Controls.Add(this.randomizeEvolutionsCheck, 1, 0);
             this.tableLayoutPanel23.Controls.Add(this.evolutionSameTypeCheck, 2, 1);
             this.tableLayoutPanel23.Controls.Add(this.easyEvolutionsCheck, 1, 2);
             this.tableLayoutPanel23.Controls.Add(this.evolutionSimilarStrengthCheck, 2, 0);
             this.tableLayoutPanel23.Controls.Add(this.fixImpossibleEvolutionsCheck, 1, 1);
-            this.tableLayoutPanel23.Controls.Add(this.randomlyEndEvolutionsCheck, 2, 3);
+            this.tableLayoutPanel23.Controls.Add(this.threeStageMaxCheck, 2, 3);
+            this.tableLayoutPanel23.Controls.Add(this.randomlyEndEvolutionsCheck, 2, 2);
             this.tableLayoutPanel23.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel23.Location = new System.Drawing.Point(3, 19);
             this.tableLayoutPanel23.Name = "tableLayoutPanel23";
@@ -933,9 +949,9 @@ namespace Randomizer
             | System.Windows.Forms.AnchorStyles.Right)));
             this.threeStageMaxCheck.AutoSize = true;
             this.threeStageMaxCheck.Enabled = false;
-            this.threeStageMaxCheck.Location = new System.Drawing.Point(175, 59);
+            this.threeStageMaxCheck.Location = new System.Drawing.Point(175, 87);
             this.threeStageMaxCheck.Name = "threeStageMaxCheck";
-            this.threeStageMaxCheck.Size = new System.Drawing.Size(169, 22);
+            this.threeStageMaxCheck.Size = new System.Drawing.Size(169, 24);
             this.threeStageMaxCheck.TabIndex = 6;
             this.threeStageMaxCheck.Text = "Three Stage Evolution Max";
             this.infoToolTip.SetToolTip(this.threeStageMaxCheck, "Pokemon can\'t evolve more than twice.");
@@ -1022,13 +1038,14 @@ namespace Randomizer
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.randomlyEndEvolutionsCheck.AutoSize = true;
-            this.randomlyEndEvolutionsCheck.Location = new System.Drawing.Point(175, 87);
+            this.randomlyEndEvolutionsCheck.Enabled = false;
+            this.randomlyEndEvolutionsCheck.Location = new System.Drawing.Point(175, 59);
             this.randomlyEndEvolutionsCheck.Name = "randomlyEndEvolutionsCheck";
-            this.randomlyEndEvolutionsCheck.Size = new System.Drawing.Size(169, 24);
+            this.randomlyEndEvolutionsCheck.Size = new System.Drawing.Size(169, 22);
             this.randomlyEndEvolutionsCheck.TabIndex = 13;
             this.randomlyEndEvolutionsCheck.Text = "Randomly End";
-            this.infoToolTip.SetToolTip(this.randomlyEndEvolutionsCheck, "All Pokemon that evolve by level will be fully evolved by level 40. \r\nThree stage" +
-        " evolutions will have their second stage by level 30.");
+            this.infoToolTip.SetToolTip(this.randomlyEndEvolutionsCheck, "Randomly set pokemon as the end of their evolution line.\r\nCould avoid long loopin" +
+        "g evolution lines.\r\n");
             this.randomlyEndEvolutionsCheck.UseVisualStyleBackColor = true;
             // 
             // baseStatsGroupBox
@@ -2841,54 +2858,6 @@ namespace Randomizer
             this.infoToolTip.SetToolTip(this.forceFourMoveCheck, resources.GetString("forceFourMoveCheck.ToolTip"));
             this.forceFourMoveCheck.UseVisualStyleBackColor = true;
             // 
-            // movesetsMetronomeOnlyCheck
-            // 
-            this.movesetsMetronomeOnlyCheck.AutoSize = true;
-            this.movesetsMetronomeOnlyCheck.Location = new System.Drawing.Point(38, 84);
-            this.movesetsMetronomeOnlyCheck.Name = "movesetsMetronomeOnlyCheck";
-            this.movesetsMetronomeOnlyCheck.Size = new System.Drawing.Size(116, 19);
-            this.movesetsMetronomeOnlyCheck.TabIndex = 27;
-            this.movesetsMetronomeOnlyCheck.Text = "Metronome Only";
-            this.infoToolTip.SetToolTip(this.movesetsMetronomeOnlyCheck, "Every Pokemon has all their moves set to metronome.");
-            this.movesetsMetronomeOnlyCheck.UseVisualStyleBackColor = true;
-            // 
-            // unchangedMovesetsCheck
-            // 
-            this.unchangedMovesetsCheck.AutoSize = true;
-            this.unchangedMovesetsCheck.Checked = true;
-            this.unchangedMovesetsCheck.Location = new System.Drawing.Point(38, 3);
-            this.unchangedMovesetsCheck.Name = "unchangedMovesetsCheck";
-            this.unchangedMovesetsCheck.Size = new System.Drawing.Size(86, 19);
-            this.unchangedMovesetsCheck.TabIndex = 24;
-            this.unchangedMovesetsCheck.TabStop = true;
-            this.unchangedMovesetsCheck.Text = "Unchanged";
-            this.unchangedMovesetsCheck.UseVisualStyleBackColor = true;
-            // 
-            // randomizeMovesetsPreferType
-            // 
-            this.randomizeMovesetsPreferType.AutoSize = true;
-            this.randomizeMovesetsPreferType.Location = new System.Drawing.Point(38, 30);
-            this.randomizeMovesetsPreferType.Name = "randomizeMovesetsPreferType";
-            this.randomizeMovesetsPreferType.Size = new System.Drawing.Size(152, 19);
-            this.randomizeMovesetsPreferType.TabIndex = 25;
-            this.randomizeMovesetsPreferType.Text = "Random Preferring Type";
-            this.infoToolTip.SetToolTip(this.randomizeMovesetsPreferType, "Moves will be selected so that same type moves are preferred. \r\nWill pick a rando" +
-        "m move if you force good damging moves and there are none that are the same type" +
-        ".");
-            this.randomizeMovesetsPreferType.UseVisualStyleBackColor = true;
-            this.randomizeMovesetsPreferType.CheckedChanged += new System.EventHandler(this.randomizeMovesetsPreferType_CheckedChanged);
-            // 
-            // randomizeMovesets
-            // 
-            this.randomizeMovesets.AutoSize = true;
-            this.randomizeMovesets.Location = new System.Drawing.Point(38, 57);
-            this.randomizeMovesets.Name = "randomizeMovesets";
-            this.randomizeMovesets.Size = new System.Drawing.Size(134, 19);
-            this.randomizeMovesets.TabIndex = 26;
-            this.randomizeMovesets.Text = "Completely Random";
-            this.randomizeMovesets.UseVisualStyleBackColor = true;
-            this.randomizeMovesets.CheckedChanged += new System.EventHandler(this.randomizeMovesets_CheckedChanged);
-            // 
             // movesetsForceGoodDamagingMovePercent
             // 
             this.movesetsForceGoodDamagingMovePercent.Enabled = false;
@@ -2941,6 +2910,66 @@ namespace Randomizer
             this.banEarlyDragonRageCheck.Text = "Ban Early Dragon Rage";
             this.infoToolTip.SetToolTip(this.banEarlyDragonRageCheck, "Ban Dragon Rage from the move pool until Pokemon are over lvl 20.");
             this.banEarlyDragonRageCheck.UseVisualStyleBackColor = true;
+            // 
+            // unchangedMovesetsCheck
+            // 
+            this.unchangedMovesetsCheck.AutoSize = true;
+            this.unchangedMovesetsCheck.Checked = true;
+            this.unchangedMovesetsCheck.Location = new System.Drawing.Point(38, 3);
+            this.unchangedMovesetsCheck.Name = "unchangedMovesetsCheck";
+            this.unchangedMovesetsCheck.Size = new System.Drawing.Size(86, 19);
+            this.unchangedMovesetsCheck.TabIndex = 24;
+            this.unchangedMovesetsCheck.TabStop = true;
+            this.unchangedMovesetsCheck.Text = "Unchanged";
+            this.unchangedMovesetsCheck.UseVisualStyleBackColor = true;
+            // 
+            // randomizeMovesetsPreferType
+            // 
+            this.randomizeMovesetsPreferType.AutoSize = true;
+            this.randomizeMovesetsPreferType.Location = new System.Drawing.Point(38, 30);
+            this.randomizeMovesetsPreferType.Name = "randomizeMovesetsPreferType";
+            this.randomizeMovesetsPreferType.Size = new System.Drawing.Size(152, 19);
+            this.randomizeMovesetsPreferType.TabIndex = 25;
+            this.randomizeMovesetsPreferType.Text = "Random Preferring Type";
+            this.infoToolTip.SetToolTip(this.randomizeMovesetsPreferType, "Moves will be selected so that same type moves are preferred. \r\nWill pick a rando" +
+        "m move if you force good damging moves and there are none that are the same type" +
+        ".");
+            this.randomizeMovesetsPreferType.UseVisualStyleBackColor = true;
+            this.randomizeMovesetsPreferType.CheckedChanged += new System.EventHandler(this.randomizeMovesetsPreferType_CheckedChanged);
+            // 
+            // randomizeMovesets
+            // 
+            this.randomizeMovesets.AutoSize = true;
+            this.randomizeMovesets.Location = new System.Drawing.Point(38, 57);
+            this.randomizeMovesets.Name = "randomizeMovesets";
+            this.randomizeMovesets.Size = new System.Drawing.Size(134, 19);
+            this.randomizeMovesets.TabIndex = 26;
+            this.randomizeMovesets.Text = "Completely Random";
+            this.randomizeMovesets.UseVisualStyleBackColor = true;
+            this.randomizeMovesets.CheckedChanged += new System.EventHandler(this.randomizeMovesets_CheckedChanged);
+            // 
+            // movesetsMetronomeOnlyCheck
+            // 
+            this.movesetsMetronomeOnlyCheck.AutoSize = true;
+            this.movesetsMetronomeOnlyCheck.Location = new System.Drawing.Point(38, 84);
+            this.movesetsMetronomeOnlyCheck.Name = "movesetsMetronomeOnlyCheck";
+            this.movesetsMetronomeOnlyCheck.Size = new System.Drawing.Size(116, 19);
+            this.movesetsMetronomeOnlyCheck.TabIndex = 27;
+            this.movesetsMetronomeOnlyCheck.Text = "Metronome Only";
+            this.infoToolTip.SetToolTip(this.movesetsMetronomeOnlyCheck, "Every Pokemon has all their moves set to metronome.");
+            this.movesetsMetronomeOnlyCheck.UseVisualStyleBackColor = true;
+            // 
+            // randomizeMovesetsOnlyLegal
+            // 
+            this.randomizeMovesetsOnlyLegal.AutoSize = true;
+            this.randomizeMovesetsOnlyLegal.Location = new System.Drawing.Point(213, 3);
+            this.randomizeMovesetsOnlyLegal.Name = "randomizeMovesetsOnlyLegal";
+            this.randomizeMovesetsOnlyLegal.Size = new System.Drawing.Size(139, 19);
+            this.randomizeMovesetsOnlyLegal.TabIndex = 32;
+            this.randomizeMovesetsOnlyLegal.TabStop = true;
+            this.randomizeMovesetsOnlyLegal.Text = "Random Legal Moves";
+            this.randomizeMovesetsOnlyLegal.UseVisualStyleBackColor = true;
+            this.randomizeMovesetsOnlyLegal.CheckedChanged += new System.EventHandler(this.randomizeMovesetsOnlyLegal_CheckedChanged);
             // 
             // itemsTabPage
             // 
@@ -3516,18 +3545,6 @@ namespace Randomizer
             this.saveSettingsDialog.DefaultExt = "settings";
             this.saveSettingsDialog.Filter = "Settings File|*.settings";
             // 
-            // randomizeMovesetsOnlyLegal
-            // 
-            this.randomizeMovesetsOnlyLegal.AutoSize = true;
-            this.randomizeMovesetsOnlyLegal.Location = new System.Drawing.Point(213, 3);
-            this.randomizeMovesetsOnlyLegal.Name = "randomizeMovesetsOnlyLegal";
-            this.randomizeMovesetsOnlyLegal.Size = new System.Drawing.Size(139, 19);
-            this.randomizeMovesetsOnlyLegal.TabIndex = 32;
-            this.randomizeMovesetsOnlyLegal.TabStop = true;
-            this.randomizeMovesetsOnlyLegal.Text = "Random Legal Moves";
-            this.randomizeMovesetsOnlyLegal.UseVisualStyleBackColor = true;
-            this.randomizeMovesetsOnlyLegal.CheckedChanged += new System.EventHandler(this.randomizeMovesetsOnlyLegal_CheckedChanged);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -3826,6 +3843,7 @@ namespace Randomizer
         private System.Windows.Forms.CheckBox randomlyEndEvolutionsCheck;
         private System.Windows.Forms.CheckBox ignoreOHKOMovesAccuracyCheck;
         private System.Windows.Forms.RadioButton randomizeMovesetsOnlyLegal;
+        private System.Windows.Forms.CheckBox legendaryToLegendaryCheck;
     }
 }
 
