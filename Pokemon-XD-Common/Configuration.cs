@@ -98,7 +98,10 @@ namespace XDCommon
             {
                 if (!int.TryParse(ConfigurationManager.AppSettings.Get(nameof(PokemonImpossibleEvolutionLevel)), out int evoLevel))
                 {
+                    // set configuration to default
                     PokemonImpossibleEvolutionLevel = 40;
+                    // wont update evoLevel so just return default
+                    return 40;
                 }
                 return evoLevel;
             }
