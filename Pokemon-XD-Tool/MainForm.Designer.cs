@@ -74,12 +74,12 @@ namespace Randomizer
             this.abilitiesFollowEvolutionCheck = new System.Windows.Forms.CheckBox();
             this.evolutionsGroupBox = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel23 = new System.Windows.Forms.TableLayoutPanel();
-            this.threeStageMaxCheck = new System.Windows.Forms.CheckBox();
             this.randomizeEvolutionsCheck = new System.Windows.Forms.CheckBox();
             this.evolutionSameTypeCheck = new System.Windows.Forms.CheckBox();
             this.easyEvolutionsCheck = new System.Windows.Forms.CheckBox();
             this.evolutionSimilarStrengthCheck = new System.Windows.Forms.CheckBox();
             this.fixImpossibleEvolutionsCheck = new System.Windows.Forms.CheckBox();
+            this.threeStageMaxCheck = new System.Windows.Forms.CheckBox();
             this.randomlyEndEvolutionsCheck = new System.Windows.Forms.CheckBox();
             this.baseStatsGroupBox = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel21 = new System.Windows.Forms.TableLayoutPanel();
@@ -510,8 +510,7 @@ namespace Randomizer
             this.legendaryToLegendaryCheck.Size = new System.Drawing.Size(225, 19);
             this.legendaryToLegendaryCheck.TabIndex = 28;
             this.legendaryToLegendaryCheck.Text = "Randomize Legendary Into Legendary";
-            this.infoToolTip.SetToolTip(this.legendaryToLegendaryCheck, "When randomizing legendaries on trainers, randomize them into other legendaries.\r" +
-        "\nNo more final battles with cascoon.");
+            this.infoToolTip.SetToolTip(this.legendaryToLegendaryCheck, resources.GetString("legendaryToLegendaryCheck.ToolTip"));
             this.legendaryToLegendaryCheck.UseVisualStyleBackColor = true;
             // 
             // boostTrainerLevelCheck
@@ -638,6 +637,7 @@ namespace Randomizer
             this.noDuplicateShadowPokemonCheck.Size = new System.Drawing.Size(145, 19);
             this.noDuplicateShadowPokemonCheck.TabIndex = 27;
             this.noDuplicateShadowPokemonCheck.Text = "No Duplicate Shadows";
+            this.infoToolTip.SetToolTip(this.noDuplicateShadowPokemonCheck, resources.GetString("noDuplicateShadowPokemonCheck.ToolTip"));
             this.noDuplicateShadowPokemonCheck.UseVisualStyleBackColor = true;
             // 
             // pokeSpotGroupBox
@@ -942,22 +942,6 @@ namespace Randomizer
             this.tableLayoutPanel23.Size = new System.Drawing.Size(347, 114);
             this.tableLayoutPanel23.TabIndex = 24;
             // 
-            // threeStageMaxCheck
-            // 
-            this.threeStageMaxCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.threeStageMaxCheck.AutoSize = true;
-            this.threeStageMaxCheck.Enabled = false;
-            this.threeStageMaxCheck.Location = new System.Drawing.Point(175, 87);
-            this.threeStageMaxCheck.Name = "threeStageMaxCheck";
-            this.threeStageMaxCheck.Size = new System.Drawing.Size(169, 24);
-            this.threeStageMaxCheck.TabIndex = 6;
-            this.threeStageMaxCheck.Text = "Three Stage Evolution Max";
-            this.infoToolTip.SetToolTip(this.threeStageMaxCheck, "Pokemon can\'t evolve more than twice.");
-            this.threeStageMaxCheck.UseVisualStyleBackColor = true;
-            this.threeStageMaxCheck.Visible = false;
-            // 
             // randomizeEvolutionsCheck
             // 
             this.randomizeEvolutionsCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1031,6 +1015,22 @@ namespace Randomizer
             this.fixImpossibleEvolutionsCheck.Text = "Fix Impossible Evolutions";
             this.infoToolTip.SetToolTip(this.fixImpossibleEvolutionsCheck, "Pokemon that evolve by Trade or by Day/Night cycles.");
             this.fixImpossibleEvolutionsCheck.UseVisualStyleBackColor = true;
+            // 
+            // threeStageMaxCheck
+            // 
+            this.threeStageMaxCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.threeStageMaxCheck.AutoSize = true;
+            this.threeStageMaxCheck.Enabled = false;
+            this.threeStageMaxCheck.Location = new System.Drawing.Point(175, 87);
+            this.threeStageMaxCheck.Name = "threeStageMaxCheck";
+            this.threeStageMaxCheck.Size = new System.Drawing.Size(169, 24);
+            this.threeStageMaxCheck.TabIndex = 6;
+            this.threeStageMaxCheck.Text = "Three Stage Evolution Max";
+            this.infoToolTip.SetToolTip(this.threeStageMaxCheck, "Pokemon can\'t evolve more than twice.");
+            this.threeStageMaxCheck.UseVisualStyleBackColor = true;
+            this.threeStageMaxCheck.Visible = false;
             // 
             // randomlyEndEvolutionsCheck
             // 
