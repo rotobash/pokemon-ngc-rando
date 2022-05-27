@@ -57,6 +57,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="infoToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>281, 17</value>
+  </metadata>
+  <metadata name="infoToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>281, 17</value>
+  </metadata>
+  <data name="useSimilarBSTsCheck.ToolTip" xml:space="preserve">
+    <value>When picking a new random pokemon, use one that has a similar BST to the current pokemon.
+Note: This will gradually widen the BST range to search for if none are found.
+Note:  If using force fully evolved, this may pick a lower stage with similar BST then evolve it</value>
+  </data>
   <data name="tradeUsePokeSpotCheck.ToolTip" xml:space="preserve">
     <value>Will set the requested Pokemon in a trade to one of the PokeSpot Pokemon. Recommended if randomizing PokeSpots or trades. 
 If randomizing PokeSpots, it may be impossible to find Duking's requested Pokemon and if randomizing trades.
@@ -78,8 +89,23 @@ Net: Built-in PRNG, tends to have duplicates
 Xoroshiro128: Custom PRNG, has better results but still limited by being a PRNG
 Cryptographic: Truly random, the best randomness at the cost of not being able to specify a seed</value>
   </data>
-  <assembly alias="System.Drawing.Common" name="System.Drawing.Common, Version=5.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <metadata name="openISODialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="saveISODialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>151, 17</value>
+  </metadata>
+  <metadata name="backgroundWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>394, 17</value>
+  </metadata>
+  <metadata name="openSettingsDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>551, 17</value>
+  </metadata>
+  <metadata name="saveSettingsDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>710, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAA0AAAAAAAEAIABfBQEA1gAAAICAAAABACAAKAgBADUGAQCAgAAAAQAIAChMAABdDgIAQEAAAAEA
         IAAoQgAAhVoCAEBAAAABAAgAKBYAAK2cAgAwMAAAAQAgAKglAADVsgIAMDAAAAEACACoDgAAfdgCACAg

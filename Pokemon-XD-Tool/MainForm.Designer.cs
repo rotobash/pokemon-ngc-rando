@@ -74,12 +74,12 @@ namespace Randomizer
             this.abilitiesFollowEvolutionCheck = new System.Windows.Forms.CheckBox();
             this.evolutionsGroupBox = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel23 = new System.Windows.Forms.TableLayoutPanel();
-            this.threeStageMaxCheck = new System.Windows.Forms.CheckBox();
             this.randomizeEvolutionsCheck = new System.Windows.Forms.CheckBox();
             this.evolutionSameTypeCheck = new System.Windows.Forms.CheckBox();
             this.easyEvolutionsCheck = new System.Windows.Forms.CheckBox();
             this.evolutionSimilarStrengthCheck = new System.Windows.Forms.CheckBox();
             this.fixImpossibleEvolutionsCheck = new System.Windows.Forms.CheckBox();
+            this.threeStageMaxCheck = new System.Windows.Forms.CheckBox();
             this.randomlyEndEvolutionsCheck = new System.Windows.Forms.CheckBox();
             this.baseStatsGroupBox = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel21 = new System.Windows.Forms.TableLayoutPanel();
@@ -215,6 +215,7 @@ namespace Randomizer
             this.tmGroupBox = new System.Windows.Forms.GroupBox();
             this.openSettingsDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveSettingsDialog = new System.Windows.Forms.SaveFileDialog();
+            this.useSimilarBSTsCheck = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gamePictureBox)).BeginInit();
             this.settingsTab.SuspendLayout();
@@ -489,6 +490,7 @@ namespace Randomizer
             this.tableLayoutPanel28.Controls.Add(this.minimumShadowCatchRateCheck, 4, 0);
             this.tableLayoutPanel28.Controls.Add(this.noLegendaryOnTrainerCheck, 1, 1);
             this.tableLayoutPanel28.Controls.Add(this.noDuplicateShadowPokemonCheck, 1, 2);
+            this.tableLayoutPanel28.Controls.Add(this.useSimilarBSTsCheck, 4, 3);
             this.tableLayoutPanel28.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel28.Location = new System.Drawing.Point(3, 19);
             this.tableLayoutPanel28.Name = "tableLayoutPanel28";
@@ -942,22 +944,6 @@ namespace Randomizer
             this.tableLayoutPanel23.Size = new System.Drawing.Size(347, 114);
             this.tableLayoutPanel23.TabIndex = 24;
             // 
-            // threeStageMaxCheck
-            // 
-            this.threeStageMaxCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.threeStageMaxCheck.AutoSize = true;
-            this.threeStageMaxCheck.Enabled = false;
-            this.threeStageMaxCheck.Location = new System.Drawing.Point(175, 87);
-            this.threeStageMaxCheck.Name = "threeStageMaxCheck";
-            this.threeStageMaxCheck.Size = new System.Drawing.Size(169, 24);
-            this.threeStageMaxCheck.TabIndex = 6;
-            this.threeStageMaxCheck.Text = "Three Stage Evolution Max";
-            this.infoToolTip.SetToolTip(this.threeStageMaxCheck, "Pokemon can\'t evolve more than twice.");
-            this.threeStageMaxCheck.UseVisualStyleBackColor = true;
-            this.threeStageMaxCheck.Visible = false;
-            // 
             // randomizeEvolutionsCheck
             // 
             this.randomizeEvolutionsCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1031,6 +1017,22 @@ namespace Randomizer
             this.fixImpossibleEvolutionsCheck.Text = "Fix Impossible Evolutions";
             this.infoToolTip.SetToolTip(this.fixImpossibleEvolutionsCheck, "Pokemon that evolve by Trade or by Day/Night cycles.");
             this.fixImpossibleEvolutionsCheck.UseVisualStyleBackColor = true;
+            // 
+            // threeStageMaxCheck
+            // 
+            this.threeStageMaxCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.threeStageMaxCheck.AutoSize = true;
+            this.threeStageMaxCheck.Enabled = false;
+            this.threeStageMaxCheck.Location = new System.Drawing.Point(175, 87);
+            this.threeStageMaxCheck.Name = "threeStageMaxCheck";
+            this.threeStageMaxCheck.Size = new System.Drawing.Size(169, 24);
+            this.threeStageMaxCheck.TabIndex = 6;
+            this.threeStageMaxCheck.Text = "Three Stage Evolution Max";
+            this.infoToolTip.SetToolTip(this.threeStageMaxCheck, "Pokemon can\'t evolve more than twice.");
+            this.threeStageMaxCheck.UseVisualStyleBackColor = true;
+            this.threeStageMaxCheck.Visible = false;
             // 
             // randomlyEndEvolutionsCheck
             // 
@@ -3545,6 +3547,17 @@ namespace Randomizer
             this.saveSettingsDialog.DefaultExt = "settings";
             this.saveSettingsDialog.Filter = "Settings File|*.settings";
             // 
+            // useSimilarBSTsCheck
+            // 
+            this.useSimilarBSTsCheck.AutoSize = true;
+            this.useSimilarBSTsCheck.Location = new System.Drawing.Point(388, 84);
+            this.useSimilarBSTsCheck.Name = "useSimilarBSTsCheck";
+            this.useSimilarBSTsCheck.Size = new System.Drawing.Size(110, 19);
+            this.useSimilarBSTsCheck.TabIndex = 29;
+            this.useSimilarBSTsCheck.Text = "Use Similar BSTs";
+            this.infoToolTip.SetToolTip(this.useSimilarBSTsCheck, resources.GetString("useSimilarBSTsCheck.ToolTip"));
+            this.useSimilarBSTsCheck.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -3844,6 +3857,7 @@ namespace Randomizer
         private System.Windows.Forms.CheckBox ignoreOHKOMovesAccuracyCheck;
         private System.Windows.Forms.RadioButton randomizeMovesetsOnlyLegal;
         private System.Windows.Forms.CheckBox legendaryToLegendaryCheck;
+        private System.Windows.Forms.CheckBox useSimilarBSTsCheck;
     }
 }
 

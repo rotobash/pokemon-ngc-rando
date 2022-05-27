@@ -388,6 +388,7 @@ namespace Randomizer
                 TeamShufflerSettings = new TeamShufflerSettings
                 {
                     RandomizePokemon = randomizeTrainerPokemonCheck.Checked,
+                    UseSimilarBSTs = useSimilarBSTsCheck.Checked,
                     DontUseLegendaries = noLegendaryOnTrainerCheck.Checked,
                     NoDuplicateShadows = noDuplicateShadowPokemonCheck.Checked,
                     RandomizeLegendaryIntoLegendary = legendaryToLegendaryCheck.Checked,
@@ -550,6 +551,7 @@ namespace Randomizer
 
             // trainers
             randomizeTrainerPokemonCheck.Checked = settings.TeamShufflerSettings.RandomizePokemon;
+            useSimilarBSTsCheck.Checked = settings.TeamShufflerSettings.UseSimilarBSTs;
             noLegendaryOnTrainerCheck.Checked = settings.TeamShufflerSettings.DontUseLegendaries;
             noDuplicateShadowPokemonCheck.Checked = settings.TeamShufflerSettings.NoDuplicateShadows;
             legendaryToLegendaryCheck.Checked = settings.TeamShufflerSettings.RandomizeLegendaryIntoLegendary;
