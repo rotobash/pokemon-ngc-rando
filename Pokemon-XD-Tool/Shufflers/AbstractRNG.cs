@@ -55,7 +55,7 @@ namespace Randomizer.Shufflers
                 var randBytes = BitConverter.GetBytes(Next());
                 for (int b = 0; b < randBytes.Length; b++)
                 {
-                    if (index + b > buffer.Length)
+                    if (index + b >= buffer.Length)
                         break;
                     buffer[index + b] = randBytes[b];
                 }
