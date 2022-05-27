@@ -45,6 +45,8 @@ namespace Randomizer
         public Items[] ValidItems { get; }
         public Items[] NonKeyItems { get; }
         public Items[] GoodItems => NonKeyItems.Where(i => !RandomizerConstants.BadItemList.Contains(i.Index)).ToArray();
+        public Items[] ValidHeldItems => NonKeyItems.Where(i => !RandomizerConstants.BattleCDList.Contains(i.Index)).ToArray();
+        public Items[] GoodHeldItems => ValidHeldItems.Where(i => !RandomizerConstants.BadItemList.Contains(i.Index)).ToArray();
 
         public TM[] TMs { get; }
         public TutorMove[] TutorMoves { get; }
