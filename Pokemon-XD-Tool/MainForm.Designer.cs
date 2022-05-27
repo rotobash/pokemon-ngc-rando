@@ -54,6 +54,7 @@ namespace Randomizer
             this.minimumShadowCatchRateCheck = new System.Windows.Forms.CheckBox();
             this.noLegendaryOnTrainerCheck = new System.Windows.Forms.CheckBox();
             this.noDuplicateShadowPokemonCheck = new System.Windows.Forms.CheckBox();
+            this.useSimilarBSTsCheck = new System.Windows.Forms.CheckBox();
             this.pokeSpotGroupBox = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel29 = new System.Windows.Forms.TableLayoutPanel();
             this.randomizePokeSpotsCheck = new System.Windows.Forms.CheckBox();
@@ -215,7 +216,6 @@ namespace Randomizer
             this.tmGroupBox = new System.Windows.Forms.GroupBox();
             this.openSettingsDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveSettingsDialog = new System.Windows.Forms.SaveFileDialog();
-            this.useSimilarBSTsCheck = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gamePictureBox)).BeginInit();
             this.settingsTab.SuspendLayout();
@@ -641,6 +641,17 @@ namespace Randomizer
             this.noDuplicateShadowPokemonCheck.TabIndex = 27;
             this.noDuplicateShadowPokemonCheck.Text = "No Duplicate Shadows";
             this.noDuplicateShadowPokemonCheck.UseVisualStyleBackColor = true;
+            // 
+            // useSimilarBSTsCheck
+            // 
+            this.useSimilarBSTsCheck.AutoSize = true;
+            this.useSimilarBSTsCheck.Location = new System.Drawing.Point(388, 84);
+            this.useSimilarBSTsCheck.Name = "useSimilarBSTsCheck";
+            this.useSimilarBSTsCheck.Size = new System.Drawing.Size(110, 19);
+            this.useSimilarBSTsCheck.TabIndex = 29;
+            this.useSimilarBSTsCheck.Text = "Use Similar BSTs";
+            this.infoToolTip.SetToolTip(this.useSimilarBSTsCheck, resources.GetString("useSimilarBSTsCheck.ToolTip"));
+            this.useSimilarBSTsCheck.UseVisualStyleBackColor = true;
             // 
             // pokeSpotGroupBox
             // 
@@ -3546,17 +3557,6 @@ namespace Randomizer
             // 
             this.saveSettingsDialog.DefaultExt = "settings";
             this.saveSettingsDialog.Filter = "Settings File|*.settings";
-            // 
-            // useSimilarBSTsCheck
-            // 
-            this.useSimilarBSTsCheck.AutoSize = true;
-            this.useSimilarBSTsCheck.Location = new System.Drawing.Point(388, 84);
-            this.useSimilarBSTsCheck.Name = "useSimilarBSTsCheck";
-            this.useSimilarBSTsCheck.Size = new System.Drawing.Size(110, 19);
-            this.useSimilarBSTsCheck.TabIndex = 29;
-            this.useSimilarBSTsCheck.Text = "Use Similar BSTs";
-            this.infoToolTip.SetToolTip(this.useSimilarBSTsCheck, resources.GetString("useSimilarBSTsCheck.ToolTip"));
-            this.useSimilarBSTsCheck.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 

@@ -116,7 +116,7 @@ namespace Randomizer.Shufflers
                 var pokemonIndex = 0;
                 while (pokemonIndex == 0 || (settings.DontUseLegendaries && RandomizerConstants.Legendaries.Contains(pokemonIndex)))
                 {
-                    var index = random.Next(extractedGame.ValidPokemon.Length);
+                    var index = random.Next(pokeFilter.Length);
                     pokemonIndex = pokeFilter[index].Index;
                 }
                 pokemon.Pokemon = (ushort)pokemonIndex;

@@ -60,9 +60,6 @@
   <metadata name="infoToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>281, 17</value>
   </metadata>
-  <metadata name="infoToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>281, 17</value>
-  </metadata>
   <data name="useSimilarBSTsCheck.ToolTip" xml:space="preserve">
     <value>When picking a new random pokemon, use one that has a similar BST to the current pokemon.
 Note: This will gradually widen the BST range to search for if none are found.
