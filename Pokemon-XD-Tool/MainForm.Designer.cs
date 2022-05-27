@@ -512,8 +512,7 @@ namespace Randomizer
             this.legendaryToLegendaryCheck.Size = new System.Drawing.Size(225, 19);
             this.legendaryToLegendaryCheck.TabIndex = 28;
             this.legendaryToLegendaryCheck.Text = "Randomize Legendary Into Legendary";
-            this.infoToolTip.SetToolTip(this.legendaryToLegendaryCheck, "When randomizing legendaries on trainers, randomize them into other legendaries.\r" +
-        "\nNo more final battles with cascoon.");
+            this.infoToolTip.SetToolTip(this.legendaryToLegendaryCheck, resources.GetString("legendaryToLegendaryCheck.ToolTip"));
             this.legendaryToLegendaryCheck.UseVisualStyleBackColor = true;
             // 
             // boostTrainerLevelCheck
@@ -640,6 +639,7 @@ namespace Randomizer
             this.noDuplicateShadowPokemonCheck.Size = new System.Drawing.Size(145, 19);
             this.noDuplicateShadowPokemonCheck.TabIndex = 27;
             this.noDuplicateShadowPokemonCheck.Text = "No Duplicate Shadows";
+            this.infoToolTip.SetToolTip(this.noDuplicateShadowPokemonCheck, resources.GetString("noDuplicateShadowPokemonCheck.ToolTip"));
             this.noDuplicateShadowPokemonCheck.UseVisualStyleBackColor = true;
             // 
             // useSimilarBSTsCheck

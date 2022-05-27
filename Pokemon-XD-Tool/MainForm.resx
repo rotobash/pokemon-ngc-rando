@@ -64,6 +64,16 @@
     <value>When picking a new random pokemon, use one that has a similar BST to the current pokemon.
 Note: This will gradually widen the BST range to search for if none are found.
 Note:  If using force fully evolved, this may pick a lower stage with similar BST then evolve it</value>
+  <data name="legendaryToLegendaryCheck.ToolTip" xml:space="preserve">
+    <value>When randomizing legendaries on trainers, randomize them into other legendaries.
+No more final battles with cascoon.
+Note: If using "No Duplicates" and all legendaries have been picked, this will pick a duplicate legendary.</value>
+  </data>
+  <data name="noDuplicateShadowPokemonCheck.ToolTip" xml:space="preserve">
+    <value>Picks unique shadow pokemon for each slot available
+Note: This setting may be ignored if other settings prevent a non-duplicate from being picked.
+i.e., if we've picked all the available pokemon with respect to our settings, then this will pick a duplicate
+just so it can continue randomizing</value>
   </data>
   <data name="tradeUsePokeSpotCheck.ToolTip" xml:space="preserve">
     <value>Will set the requested Pokemon in a trade to one of the PokeSpot Pokemon. Recommended if randomizing PokeSpots or trades. 

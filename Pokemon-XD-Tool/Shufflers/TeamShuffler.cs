@@ -44,14 +44,34 @@ namespace Randomizer.Shufflers
 
                         if (settings.RandomizeLegendaryIntoLegendary && pokemon.IsShadow && RandomizerConstants.Legendaries.Contains(pokemon.Pokemon))
                         {
+                            var potentialLegendaries = RandomizerConstants.Legendaries;
+
+                            if (settings.NoDuplicateShadows)
+                            {
+                                // try to pick a non duplicate shadow if that setting is enabled
+                                potentialLegendaries = RandomizerConstants.Legendaries.Where(poke => !pickedShadowPokemon.Contains(poke)).ToArray();
+                                // in case we've picked them all, just pick another at random
+                                if (!potentialLegendaries.Any())
+                                    potentialLegendaries = RandomizerConstants.Legendaries;
+                            }
+
                             // pick random legendary
-                            var index = random.Next(RandomizerConstants.Legendaries.Length);
-                            pokemon.Pokemon = (ushort)RandomizerConstants.Legendaries[index];
+                            var index = random.Next(potentialLegendaries.Length);
+                            pokemon.Pokemon = (ushort)potentialLegendaries[index];
                         } 
                         else
                         {
                             RandomizePokemon(random, settings, extractedGame, pokemon);
+
+                            // keep randomizing until we've picked a non duplicate, this check won't run unless the setting is enabled
+                            // also add a breakout counter in case the potential pool of pokemon is empty
+                            int breakoutCounter = 0;
+                            while (settings.NoDuplicateShadows && pickedShadowPokemon.Contains(pokemon.Pokemon) || breakoutCounter++ > 10)
+                            {
+                                RandomizePokemon(random, settings, extractedGame, pokemon);
+                            }
                         }
+                        pickedShadowPokemon.Add(pokemon.Pokemon);
 
                         Logger.Log($"{extractedGame.PokemonList[pokemon.Pokemon].Name}\n");
                         Logger.Log($"Is a shadow Pokemon: {pokemon.IsShadow}\n");
