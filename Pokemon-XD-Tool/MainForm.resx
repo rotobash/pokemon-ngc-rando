@@ -60,10 +60,6 @@
   <metadata name="infoToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>281, 17</value>
   </metadata>
-  <data name="useSimilarBSTsCheck.ToolTip" xml:space="preserve">
-    <value>When picking a new random pokemon, use one that has a similar BST to the current pokemon.
-Note: This will gradually widen the BST range to search for if none are found.
-Note:  If using force fully evolved, this may pick a lower stage with similar BST then evolve it</value>
   <data name="legendaryToLegendaryCheck.ToolTip" xml:space="preserve">
     <value>When randomizing legendaries on trainers, randomize them into other legendaries.
 No more final battles with cascoon.
@@ -74,6 +70,11 @@ Note: If using "No Duplicates" and all legendaries have been picked, this will p
 Note: This setting may be ignored if other settings prevent a non-duplicate from being picked.
 i.e., if we've picked all the available pokemon with respect to our settings, then this will pick a duplicate
 just so it can continue randomizing</value>
+  </data>
+  <data name="useSimilarBSTsCheck.ToolTip" xml:space="preserve">
+    <value>When picking a new random pokemon, use one that has a similar BST to the current pokemon.
+Note: This will gradually widen the BST range to search for if none are found.
+Note:  If using force fully evolved, this may pick a lower stage with similar BST then evolve it</value>
   </data>
   <data name="tradeUsePokeSpotCheck.ToolTip" xml:space="preserve">
     <value>Will set the requested Pokemon in a trade to one of the PokeSpot Pokemon. Recommended if randomizing PokeSpots or trades. 

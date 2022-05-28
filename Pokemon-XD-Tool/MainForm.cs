@@ -646,6 +646,14 @@ namespace Randomizer
             MessageBox.Show("Done!");
         }
 
+        private void randomizeTrainerPokemonCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            noLegendaryOnTrainerCheck.Enabled = randomizeTrainerPokemonCheck.Checked;
+            noDuplicateShadowPokemonCheck.Enabled = randomizeTrainerPokemonCheck.Checked;
+            legendaryToLegendaryCheck.Enabled = randomizeTrainerPokemonCheck.Checked;
+            useSimilarBSTsCheck.Enabled = randomizeTrainerPokemonCheck.Checked;
+        }
+
         private void forceFullyEvovledLevelCheck_CheckedChanged(object sender, EventArgs e)
         {
             forceFullyEvolvedLevel.Enabled = forceFullyEvovledLevelCheck.Checked;
