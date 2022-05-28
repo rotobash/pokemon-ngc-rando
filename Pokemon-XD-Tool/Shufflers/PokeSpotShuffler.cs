@@ -30,7 +30,7 @@ namespace Randomizer.Shufflers
             var random = shuffleSettings.RNG;
 
             var validPokemon = extractedGame.ValidPokemon;
-            var validItems = settings.BanBadHeldItems ? extractedGame.GoodItems : extractedGame.NonKeyItems;
+            var validItems = settings.BanBadHeldItems ? extractedGame.GoodHeldItems : extractedGame.ValidHeldItems;
 
             Logger.Log("=============================== Poke Spots ===============================\n\n");
             foreach (var pokeSpotPoke in pokeSpotPokemon)

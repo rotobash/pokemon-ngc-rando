@@ -17,7 +17,7 @@ namespace Randomizer.Shufflers
             var random = shuffleSettings.RNG;
 
             HashSet<int> pickedShadowPokemon = new HashSet<int>();
-            var potentialItems = settings.BanBadItems ? extractedGame.GoodItems : extractedGame.NonKeyItems;
+            var potentialItems = settings.BanBadItems ? extractedGame.GoodHeldItems : extractedGame.ValidHeldItems;
             var potentialMoves = extractedGame.MoveList;
             if (settings.MoveSetOptions.RandomizeMovesets && settings.MoveSetOptions.ForceGoodMoves)
             {
