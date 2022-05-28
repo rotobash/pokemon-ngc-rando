@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XDCommon;
 using XDCommon.PokemonDefinitions;
 
 namespace Randomizer.Shufflers
@@ -10,6 +11,7 @@ namespace Randomizer.Shufflers
     public struct PokeSpotShufflerSettings
     {
         public bool RandomizePokeSpotPokemon { get; set; }
+        public bool UseSimilarBSTs { get; set; }
         public bool RandomizeHeldItems { get; set; }
         public bool BanBadHeldItems { get; set; }
         public bool EasyBonsly { get; set; }
@@ -45,7 +47,14 @@ namespace Randomizer.Shufflers
 
                 if (settings.RandomizePokeSpotPokemon)
                 {
-                    var newPokemon = validPokemon[random.Next(0, validPokemon.Length)];
+                    Pokemon[] pokeFilter = validPokemon;
+                    if (settings.UseSimilarBSTs)
+                    {
+                        var similarStrengthPoke = pokeSpotPoke.Pokemon;
+                        pokeFilter = Helpers.GetSimilarBsts(similarStrengthPoke, validPokemon.AsEnumerable(), extractedGame.PokemonList).ToArray();
+                    }
+
+                    var newPokemon = pokeFilter[random.Next(pokeFilter.Length)];
                     Logger.Log($"Pokemon {pokemon.Name} -> {newPokemon.Name}\n");
                     pokeSpotPoke.Pokemon = (ushort)newPokemon.Index;
                     pokemon = newPokemon;

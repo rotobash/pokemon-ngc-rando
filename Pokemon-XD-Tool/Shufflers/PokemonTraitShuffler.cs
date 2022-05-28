@@ -70,16 +70,8 @@ namespace Randomizer.Shufflers
 
                         if (settings.EvolutionHasSimilarStrength)
                         {
-                            var count = 1;
-                            var similarStrengthPoke = evolution.EvolutionMethod != EvolutionMethods.None ? extractedGame.PokemonList[evolution.EvolvesInto] : poke;
-                            IEnumerable<Pokemon> similarStrengths = Array.Empty<Pokemon>();
-                            while (!similarStrengths.Any() && count++ < 3)
-                            {
-                                // anybody? hello?
-                                var bstRangeSize = count * Configuration.BSTRange;
-                                similarStrengths = pokeFilter.Where(p => p.BST >= similarStrengthPoke.BST - bstRangeSize && p.BST <= similarStrengthPoke.BST + bstRangeSize);
-                            }
-                            pokeFilter = similarStrengths;
+                            var similarStrengthPoke = evolution.EvolutionMethod != EvolutionMethods.None ? evolution.EvolvesInto : poke.Index;
+                            pokeFilter = Helpers.GetSimilarBsts(similarStrengthPoke, pokeFilter, extractedGame.PokemonList);
                         }
 
                         var potentialPokes = pokeFilter.ToArray();
@@ -204,7 +196,7 @@ namespace Randomizer.Shufflers
                         pokeAbilitiesRandomized.Add(currentPoke.Name);
                         while (!endOrSplitEvolution)
                         {
-                            endOrSplitEvolution = CheckForSplitOrEndEvolution(currentPoke, out var _);
+                            endOrSplitEvolution = Helpers.CheckForSplitOrEndEvolution(currentPoke, out var _);
 
                             if (!endOrSplitEvolution)
                             {
@@ -233,7 +225,7 @@ namespace Randomizer.Shufflers
                         pokeTypesRandomized.Add(currentPoke.Name);
                         while (!endOrSplitEvolution)
                         {
-                            endOrSplitEvolution = CheckForSplitOrEndEvolution(currentPoke, out var _);
+                            endOrSplitEvolution = Helpers.CheckForSplitOrEndEvolution(currentPoke, out var _);
 
                             if (!endOrSplitEvolution)
                             {
@@ -267,14 +259,14 @@ namespace Randomizer.Shufflers
 
                         if (settings.EasyEvolutions)
                         {
-                            if (!CheckForSplitOrEndEvolution(poke, out int _))
+                            if (!Helpers.CheckForSplitOrEndEvolution(poke, out int _))
                             {
                                 var evolution = poke.Evolutions[0];
                                 var evoPoke = extractedGame.PokemonList[evolution.EvolvesInto];
 
                                 // check if we evolve into something else
                                 // i.e. if three stage
-                                if (!CheckForSplitOrEndEvolution(evoPoke, out int count))
+                                if (!Helpers.CheckForSplitOrEndEvolution(evoPoke, out int count))
                                 {
                                     var evoPokeEvolution = evoPoke.Evolutions[0];
                                     if (evoPokeEvolution.EvolutionMethod == EvolutionMethods.LevelUp && evoPokeEvolution.EvolutionCondition > 40)
@@ -496,25 +488,6 @@ namespace Randomizer.Shufflers
                 case MoveCompatibility.Unchanged:
                     break;
             }
-        }
-
-        public static bool CheckForSplitOrEndEvolution(Pokemon currentPoke, out int count)
-        {
-            bool endOrSplitEvolution = false;
-            count = 0;
-            for (int i = 0; i < currentPoke.Evolutions.Length; i++)
-            {
-                // if more than one definition found or the first evolution is none
-                if (i == 0 && currentPoke.Evolutions[i].EvolutionMethod == EvolutionMethods.None
-                    || currentPoke.Evolutions[i].EvolutionMethod != EvolutionMethods.None && i > 0)
-                    endOrSplitEvolution = true;
-
-                // keep count for split evos
-                if (currentPoke.Evolutions[i].EvolutionMethod != EvolutionMethods.None)
-                    count++;
-            }
-
-            return endOrSplitEvolution;
         }
     }
 }

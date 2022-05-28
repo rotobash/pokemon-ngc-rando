@@ -42,7 +42,7 @@ namespace Randomizer.Shufflers
                             newGivenPokemon.Add(newPoke);
                         }
 
-                        ushort[] newMoveSet = MoveShuffler.GetNewMoveset(random, settings.MoveSetOptions, giftPoke.Pokemon, extractedGame.GiftPokemonList[i].Level, extractedGame);
+                        ushort[] newMoveSet = Helpers.GetNewMoveset(random, settings.MoveSetOptions, giftPoke.Pokemon, extractedGame.GiftPokemonList[i].Level, extractedGame);
                         for (int j = 0; j < newMoveSet.Length; j++)
                         {
                             extractedGame.GiftPokemonList[i].SetMove(j, newMoveSet[j]);
@@ -102,7 +102,7 @@ namespace Randomizer.Shufflers
                         giftPoke.Pokemon = (ushort)newPoke.Index;
                         newGivenPokemon.Add(newPoke);
 
-                        ushort[] newMoveSet = MoveShuffler.GetNewMoveset(random, settings.MoveSetOptions, giftPoke.Pokemon, extractedGame.GiftPokemonList[i].Level, extractedGame);
+                        ushort[] newMoveSet = Helpers.GetNewMoveset(random, settings.MoveSetOptions, giftPoke.Pokemon, extractedGame.GiftPokemonList[i].Level, extractedGame);
                         for (int j = 0; j < newMoveSet.Length; j++)
                         {
                             extractedGame.GiftPokemonList[i].SetMove(j, newMoveSet[j]);
@@ -162,8 +162,8 @@ namespace Randomizer.Shufflers
                         var newStarter = extractedGame.ValidPokemon[random.Next(0, extractedGame.ValidPokemon.Length)];
                         index = newStarter.Index;
                         secondStage = newStarter.Evolutions[0];
-                        condition = !PokemonTraitShuffler.CheckForSplitOrEndEvolution(newStarter, out int _)
-                            && !PokemonTraitShuffler.CheckForSplitOrEndEvolution(extractedGame.PokemonList[secondStage.EvolvesInto], out int _)
+                        condition = !Helpers.CheckForSplitOrEndEvolution(newStarter, out int _)
+                            && !Helpers.CheckForSplitOrEndEvolution(extractedGame.PokemonList[secondStage.EvolvesInto], out int _)
                             // check if any pokemon evolve into this one, less likely for three stages but probably good to check anyway
                             && !extractedGame.ValidPokemon.Any(p =>
                             {
@@ -182,8 +182,8 @@ namespace Randomizer.Shufflers
                         var newStarter = extractedGame.ValidPokemon[random.Next(0, extractedGame.ValidPokemon.Length)];
                         index = newStarter.Index;
                         secondStage = newStarter.Evolutions[0];
-                        condition = !PokemonTraitShuffler.CheckForSplitOrEndEvolution(newStarter, out int _)
-                            && PokemonTraitShuffler.CheckForSplitOrEndEvolution(extractedGame.PokemonList[secondStage.EvolvesInto], out int count)
+                        condition = !Helpers.CheckForSplitOrEndEvolution(newStarter, out int _)
+                            && Helpers.CheckForSplitOrEndEvolution(extractedGame.PokemonList[secondStage.EvolvesInto], out int count)
                             && count == 0
                             // check if any pokemon evolve into this one
                             && !extractedGame.ValidPokemon.Any(p =>
@@ -202,7 +202,7 @@ namespace Randomizer.Shufflers
                     {
                         var newStarter = extractedGame.ValidPokemon[random.Next(0, extractedGame.ValidPokemon.Length)];
                         index = newStarter.Index;
-                        condition = PokemonTraitShuffler.CheckForSplitOrEndEvolution(newStarter, out int count)
+                        condition = Helpers.CheckForSplitOrEndEvolution(newStarter, out int count)
                             && count == 0
                             // check if any pokemon evolve into this one
                             && !extractedGame.ValidPokemon.Any(p =>
@@ -232,7 +232,7 @@ namespace Randomizer.Shufflers
             if (settings.MoveSetOptions.RandomizeMovesets || settings.Starter != StarterRandomSetting.Unchanged)
             {
                 Logger.Log($"It knows:\n");
-                moves = MoveShuffler.GetNewMoveset(random, settings.MoveSetOptions, starter.Pokemon, starter.Level, extractedGame);
+                moves = Helpers.GetNewMoveset(random, settings.MoveSetOptions, starter.Pokemon, starter.Level, extractedGame);
                 for (int j = 0; j < moves.Length; j++)
                 {
                     var move = moves[j];

@@ -118,17 +118,7 @@ namespace Randomizer.Shufflers
             var pokeFilter = extractedGame.ValidPokemon;
             if (settings.UseSimilarBSTs)
             {
-                var count = 1;
-                var pokemonDefinition = extractedGame.PokemonList[pokemon.Pokemon];
-                IEnumerable<Pokemon> similarStrengths = Array.Empty<Pokemon>();
-                while (!similarStrengths.Any())
-                {
-                    // anybody? hello?
-                    var bstRangeSize = count * Configuration.BSTRange;
-                    similarStrengths = pokeFilter.Where(p => p.BST >= pokemonDefinition.BST - bstRangeSize && p.BST <= pokemonDefinition.BST + bstRangeSize);
-                    count++;
-                }
-                pokeFilter = similarStrengths.ToArray();
+                pokeFilter = Helpers.GetSimilarBsts(pokemon.Pokemon, pokeFilter, extractedGame.PokemonList).ToArray();
             }
 
             if (settings.RandomizePokemon)
@@ -151,7 +141,7 @@ namespace Randomizer.Shufflers
                 var currPoke = extractedGame.PokemonList[pokemon.Pokemon];
                 while (currPoke.Evolutions.Any(e => e.EvolvesInto > 0))
                 {
-                    if (PokemonTraitShuffler.CheckForSplitOrEndEvolution(currPoke, out var count) && count > 0)
+                    if (Helpers.CheckForSplitOrEndEvolution(currPoke, out var count) && count > 0)
                     {
                         // randomly pick from the split
                         var evoInd = random.Next(0, count);
@@ -177,7 +167,7 @@ namespace Randomizer.Shufflers
             }
             else if (settings.MoveSetOptions.RandomizeMovesets || settings.RandomizePokemon)
             {
-                moveSet = MoveShuffler.GetNewMoveset(random, settings.MoveSetOptions, pokemon.Pokemon, pokemon.Level, extractedGame);
+                moveSet = Helpers.GetNewMoveset(random, settings.MoveSetOptions, pokemon.Pokemon, pokemon.Level, extractedGame);
             }
 
             if (moveSet != null)
