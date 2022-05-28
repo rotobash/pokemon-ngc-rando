@@ -115,14 +115,21 @@ namespace Randomizer.Shufflers
 
         public static void RandomizePokemon(AbstractRNG random, TeamShufflerSettings settings, ExtractedGame extractedGame, ITrainerPokemon pokemon)
         {
+            var pokeFilter = extractedGame.ValidPokemon;
+            if (settings.UseSimilarBSTs)
+            {
+                pokeFilter = Helpers.GetSimilarBsts(pokemon.Pokemon, pokeFilter, extractedGame.PokemonList).ToArray();
+            }
+
             if (settings.RandomizePokemon)
             {
-                var index = 0;
-                while (index == 0 || (settings.DontUseLegendaries && RandomizerConstants.Legendaries.Contains(index)))
+                var pokemonIndex = 0;
+                while (pokemonIndex == 0 || (settings.DontUseLegendaries && RandomizerConstants.Legendaries.Contains(pokemonIndex)))
                 {
-                    index = extractedGame.ValidPokemon[random.Next(0, extractedGame.ValidPokemon.Length)].Index;
+                    var index = random.Next(pokeFilter.Length);
+                    pokemonIndex = pokeFilter[index].Index;
                 }
-                pokemon.Pokemon = (ushort)index;
+                pokemon.Pokemon = (ushort)pokemonIndex;
             }
 
             var forceFullyEvolved = pokemon.IsShadow
@@ -134,7 +141,7 @@ namespace Randomizer.Shufflers
                 var currPoke = extractedGame.PokemonList[pokemon.Pokemon];
                 while (currPoke.Evolutions.Any(e => e.EvolvesInto > 0))
                 {
-                    if (PokemonTraitShuffler.CheckForSplitOrEndEvolution(currPoke, out var count) && count > 0)
+                    if (Helpers.CheckForSplitOrEndEvolution(currPoke, out var count) && count > 0)
                     {
                         // randomly pick from the split
                         var evoInd = random.Next(0, count);
@@ -160,7 +167,7 @@ namespace Randomizer.Shufflers
             }
             else if (settings.MoveSetOptions.RandomizeMovesets || settings.RandomizePokemon)
             {
-                moveSet = MoveShuffler.GetNewMoveset(random, settings.MoveSetOptions, pokemon.Pokemon, pokemon.Level, extractedGame);
+                moveSet = Helpers.GetNewMoveset(random, settings.MoveSetOptions, pokemon.Pokemon, pokemon.Level, extractedGame);
             }
 
             if (moveSet != null)

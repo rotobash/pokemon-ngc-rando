@@ -54,6 +54,7 @@ namespace Randomizer
             this.minimumShadowCatchRateCheck = new System.Windows.Forms.CheckBox();
             this.noLegendaryOnTrainerCheck = new System.Windows.Forms.CheckBox();
             this.noDuplicateShadowPokemonCheck = new System.Windows.Forms.CheckBox();
+            this.useSimilarBSTsCheck = new System.Windows.Forms.CheckBox();
             this.pokeSpotGroupBox = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel29 = new System.Windows.Forms.TableLayoutPanel();
             this.randomizePokeSpotsCheck = new System.Windows.Forms.CheckBox();
@@ -62,6 +63,7 @@ namespace Randomizer
             this.minimumPokeSpotCatchRate = new System.Windows.Forms.CheckBox();
             this.boostPokeSpotLevelCheck = new System.Windows.Forms.CheckBox();
             this.easyBonslyCheck = new System.Windows.Forms.CheckBox();
+            this.useSimilarBSTsPokeSpotCheck = new System.Windows.Forms.CheckBox();
             this.label20 = new System.Windows.Forms.Label();
             this.checkBox19 = new System.Windows.Forms.CheckBox();
             this.pokemonTabPage = new System.Windows.Forms.TabPage();
@@ -454,8 +456,8 @@ namespace Randomizer
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 65F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(712, 276);
             this.tableLayoutPanel4.TabIndex = 26;
             // 
@@ -465,7 +467,7 @@ namespace Randomizer
             this.trainerGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.trainerGroupBox.Location = new System.Drawing.Point(3, 3);
             this.trainerGroupBox.Name = "trainerGroupBox";
-            this.trainerGroupBox.Size = new System.Drawing.Size(706, 132);
+            this.trainerGroupBox.Size = new System.Drawing.Size(706, 173);
             this.trainerGroupBox.TabIndex = 27;
             this.trainerGroupBox.TabStop = false;
             this.trainerGroupBox.Text = "Trainers";
@@ -489,23 +491,25 @@ namespace Randomizer
             this.tableLayoutPanel28.Controls.Add(this.minimumShadowCatchRateCheck, 4, 0);
             this.tableLayoutPanel28.Controls.Add(this.noLegendaryOnTrainerCheck, 1, 1);
             this.tableLayoutPanel28.Controls.Add(this.noDuplicateShadowPokemonCheck, 1, 2);
+            this.tableLayoutPanel28.Controls.Add(this.useSimilarBSTsCheck, 1, 4);
             this.tableLayoutPanel28.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel28.Location = new System.Drawing.Point(3, 19);
             this.tableLayoutPanel28.Name = "tableLayoutPanel28";
-            this.tableLayoutPanel28.RowCount = 4;
-            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel28.Size = new System.Drawing.Size(700, 110);
+            this.tableLayoutPanel28.RowCount = 5;
+            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel28.Size = new System.Drawing.Size(700, 151);
             this.tableLayoutPanel28.TabIndex = 12;
             // 
             // legendaryToLegendaryCheck
             // 
             this.legendaryToLegendaryCheck.AutoSize = true;
             this.tableLayoutPanel28.SetColumnSpan(this.legendaryToLegendaryCheck, 2);
-            this.legendaryToLegendaryCheck.Location = new System.Drawing.Point(38, 84);
+            this.legendaryToLegendaryCheck.Enabled = false;
+            this.legendaryToLegendaryCheck.Location = new System.Drawing.Point(38, 93);
             this.legendaryToLegendaryCheck.Name = "legendaryToLegendaryCheck";
             this.legendaryToLegendaryCheck.Size = new System.Drawing.Size(225, 19);
             this.legendaryToLegendaryCheck.TabIndex = 28;
@@ -516,7 +520,7 @@ namespace Randomizer
             // boostTrainerLevelCheck
             // 
             this.boostTrainerLevelCheck.AutoSize = true;
-            this.boostTrainerLevelCheck.Location = new System.Drawing.Point(388, 57);
+            this.boostTrainerLevelCheck.Location = new System.Drawing.Point(388, 63);
             this.boostTrainerLevelCheck.Name = "boostTrainerLevelCheck";
             this.boostTrainerLevelCheck.Size = new System.Drawing.Size(207, 19);
             this.boostTrainerLevelCheck.TabIndex = 26;
@@ -530,7 +534,7 @@ namespace Randomizer
             // 
             this.boostTrainerLevelPercent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.boostTrainerLevelPercent.Enabled = false;
-            this.boostTrainerLevelPercent.Location = new System.Drawing.Point(633, 57);
+            this.boostTrainerLevelPercent.Location = new System.Drawing.Point(633, 63);
             this.boostTrainerLevelPercent.Maximum = new decimal(new int[] {
             50,
             0,
@@ -549,7 +553,7 @@ namespace Randomizer
             // forceFullyEvolvedLevel
             // 
             this.forceFullyEvolvedLevel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.forceFullyEvolvedLevel.Location = new System.Drawing.Point(633, 30);
+            this.forceFullyEvolvedLevel.Location = new System.Drawing.Point(633, 33);
             this.forceFullyEvolvedLevel.Name = "forceFullyEvolvedLevel";
             this.forceFullyEvolvedLevel.Size = new System.Drawing.Size(64, 23);
             this.forceFullyEvolvedLevel.TabIndex = 21;
@@ -565,11 +569,12 @@ namespace Randomizer
             this.infoToolTip.SetToolTip(this.randomizeTrainerPokemonCheck, "Randomizes all pokemon on trainers. \r\nNote: This includes shadow pokemon as well." +
         "");
             this.randomizeTrainerPokemonCheck.UseVisualStyleBackColor = true;
+            this.randomizeTrainerPokemonCheck.CheckedChanged += new System.EventHandler(this.randomizeTrainerPokemonCheck_CheckedChanged);
             // 
             // forceFullyEvovledLevelCheck
             // 
             this.forceFullyEvovledLevelCheck.AutoSize = true;
-            this.forceFullyEvovledLevelCheck.Location = new System.Drawing.Point(388, 30);
+            this.forceFullyEvovledLevelCheck.Location = new System.Drawing.Point(388, 33);
             this.forceFullyEvovledLevelCheck.Name = "forceFullyEvovledLevelCheck";
             this.forceFullyEvovledLevelCheck.Size = new System.Drawing.Size(173, 19);
             this.forceFullyEvovledLevelCheck.TabIndex = 24;
@@ -620,7 +625,8 @@ namespace Randomizer
             // noLegendaryOnTrainerCheck
             // 
             this.noLegendaryOnTrainerCheck.AutoSize = true;
-            this.noLegendaryOnTrainerCheck.Location = new System.Drawing.Point(38, 30);
+            this.noLegendaryOnTrainerCheck.Enabled = false;
+            this.noLegendaryOnTrainerCheck.Location = new System.Drawing.Point(38, 33);
             this.noLegendaryOnTrainerCheck.Name = "noLegendaryOnTrainerCheck";
             this.noLegendaryOnTrainerCheck.Size = new System.Drawing.Size(143, 19);
             this.noLegendaryOnTrainerCheck.TabIndex = 6;
@@ -632,7 +638,8 @@ namespace Randomizer
             // noDuplicateShadowPokemonCheck
             // 
             this.noDuplicateShadowPokemonCheck.AutoSize = true;
-            this.noDuplicateShadowPokemonCheck.Location = new System.Drawing.Point(38, 57);
+            this.noDuplicateShadowPokemonCheck.Enabled = false;
+            this.noDuplicateShadowPokemonCheck.Location = new System.Drawing.Point(38, 63);
             this.noDuplicateShadowPokemonCheck.Name = "noDuplicateShadowPokemonCheck";
             this.noDuplicateShadowPokemonCheck.Size = new System.Drawing.Size(145, 19);
             this.noDuplicateShadowPokemonCheck.TabIndex = 27;
@@ -640,13 +647,25 @@ namespace Randomizer
             this.infoToolTip.SetToolTip(this.noDuplicateShadowPokemonCheck, resources.GetString("noDuplicateShadowPokemonCheck.ToolTip"));
             this.noDuplicateShadowPokemonCheck.UseVisualStyleBackColor = true;
             // 
+            // useSimilarBSTsCheck
+            // 
+            this.useSimilarBSTsCheck.AutoSize = true;
+            this.useSimilarBSTsCheck.Enabled = false;
+            this.useSimilarBSTsCheck.Location = new System.Drawing.Point(38, 123);
+            this.useSimilarBSTsCheck.Name = "useSimilarBSTsCheck";
+            this.useSimilarBSTsCheck.Size = new System.Drawing.Size(110, 19);
+            this.useSimilarBSTsCheck.TabIndex = 29;
+            this.useSimilarBSTsCheck.Text = "Use Similar BSTs";
+            this.infoToolTip.SetToolTip(this.useSimilarBSTsCheck, resources.GetString("useSimilarBSTsCheck.ToolTip"));
+            this.useSimilarBSTsCheck.UseVisualStyleBackColor = true;
+            // 
             // pokeSpotGroupBox
             // 
             this.pokeSpotGroupBox.Controls.Add(this.tableLayoutPanel29);
             this.pokeSpotGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pokeSpotGroupBox.Location = new System.Drawing.Point(3, 141);
+            this.pokeSpotGroupBox.Location = new System.Drawing.Point(3, 182);
             this.pokeSpotGroupBox.Name = "pokeSpotGroupBox";
-            this.pokeSpotGroupBox.Size = new System.Drawing.Size(706, 132);
+            this.pokeSpotGroupBox.Size = new System.Drawing.Size(706, 91);
             this.pokeSpotGroupBox.TabIndex = 29;
             this.pokeSpotGroupBox.TabStop = false;
             this.pokeSpotGroupBox.Text = "PokeSpots";
@@ -666,15 +685,15 @@ namespace Randomizer
             this.tableLayoutPanel29.Controls.Add(this.minimumPokeSpotCatchRate, 4, 0);
             this.tableLayoutPanel29.Controls.Add(this.boostPokeSpotLevelCheck, 4, 1);
             this.tableLayoutPanel29.Controls.Add(this.easyBonslyCheck, 1, 1);
+            this.tableLayoutPanel29.Controls.Add(this.useSimilarBSTsPokeSpotCheck, 2, 0);
             this.tableLayoutPanel29.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel29.Location = new System.Drawing.Point(3, 19);
             this.tableLayoutPanel29.Name = "tableLayoutPanel29";
-            this.tableLayoutPanel29.RowCount = 4;
-            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel29.Size = new System.Drawing.Size(700, 110);
+            this.tableLayoutPanel29.RowCount = 2;
+            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel29.Size = new System.Drawing.Size(700, 69);
             this.tableLayoutPanel29.TabIndex = 28;
             // 
             // randomizePokeSpotsCheck
@@ -686,12 +705,13 @@ namespace Randomizer
             this.randomizePokeSpotsCheck.TabIndex = 16;
             this.randomizePokeSpotsCheck.Text = "Randomize PokeSpots";
             this.randomizePokeSpotsCheck.UseVisualStyleBackColor = true;
+            this.randomizePokeSpotsCheck.CheckedChanged += new System.EventHandler(this.randomizePokeSpotsCheck_CheckedChanged);
             // 
             // boostPokeSpotLevelPercent
             // 
             this.boostPokeSpotLevelPercent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.boostPokeSpotLevelPercent.Enabled = false;
-            this.boostPokeSpotLevelPercent.Location = new System.Drawing.Point(633, 30);
+            this.boostPokeSpotLevelPercent.Location = new System.Drawing.Point(633, 37);
             this.boostPokeSpotLevelPercent.Maximum = new decimal(new int[] {
             50,
             0,
@@ -746,7 +766,7 @@ namespace Randomizer
             // boostPokeSpotLevelCheck
             // 
             this.boostPokeSpotLevelCheck.AutoSize = true;
-            this.boostPokeSpotLevelCheck.Location = new System.Drawing.Point(388, 30);
+            this.boostPokeSpotLevelCheck.Location = new System.Drawing.Point(388, 37);
             this.boostPokeSpotLevelCheck.Name = "boostPokeSpotLevelCheck";
             this.boostPokeSpotLevelCheck.Size = new System.Drawing.Size(222, 19);
             this.boostPokeSpotLevelCheck.TabIndex = 25;
@@ -759,13 +779,24 @@ namespace Randomizer
             // easyBonslyCheck
             // 
             this.easyBonslyCheck.AutoSize = true;
-            this.easyBonslyCheck.Location = new System.Drawing.Point(38, 30);
+            this.easyBonslyCheck.Location = new System.Drawing.Point(38, 37);
             this.easyBonslyCheck.Name = "easyBonslyCheck";
             this.easyBonslyCheck.Size = new System.Drawing.Size(87, 19);
             this.easyBonslyCheck.TabIndex = 15;
             this.easyBonslyCheck.Text = "Easy Bonsly";
             this.infoToolTip.SetToolTip(this.easyBonslyCheck, "Force Bonsly to appear more often at PokeSpots.");
             this.easyBonslyCheck.UseVisualStyleBackColor = true;
+            // 
+            // useSimilarBSTsPokeSpotCheck
+            // 
+            this.useSimilarBSTsPokeSpotCheck.AutoSize = true;
+            this.useSimilarBSTsPokeSpotCheck.Enabled = false;
+            this.useSimilarBSTsPokeSpotCheck.Location = new System.Drawing.Point(213, 3);
+            this.useSimilarBSTsPokeSpotCheck.Name = "useSimilarBSTsPokeSpotCheck";
+            this.useSimilarBSTsPokeSpotCheck.Size = new System.Drawing.Size(110, 19);
+            this.useSimilarBSTsPokeSpotCheck.TabIndex = 26;
+            this.useSimilarBSTsPokeSpotCheck.Text = "Use Similar BSTs";
+            this.useSimilarBSTsPokeSpotCheck.UseVisualStyleBackColor = true;
             // 
             // label20
             // 
@@ -3521,6 +3552,12 @@ namespace Randomizer
             this.label1.TabIndex = 1;
             this.label1.Text = "Random Number Generator:";
             // 
+            // infoToolTip
+            // 
+            this.infoToolTip.AutoPopDelay = 50000;
+            this.infoToolTip.InitialDelay = 500;
+            this.infoToolTip.ReshowDelay = 100;
+            // 
             // backgroundWorker
             // 
             this.backgroundWorker.WorkerReportsProgress = true;
@@ -3844,6 +3881,8 @@ namespace Randomizer
         private System.Windows.Forms.CheckBox ignoreOHKOMovesAccuracyCheck;
         private System.Windows.Forms.RadioButton randomizeMovesetsOnlyLegal;
         private System.Windows.Forms.CheckBox legendaryToLegendaryCheck;
+        private System.Windows.Forms.CheckBox useSimilarBSTsCheck;
+        private System.Windows.Forms.CheckBox useSimilarBSTsPokeSpotCheck;
     }
 }
 

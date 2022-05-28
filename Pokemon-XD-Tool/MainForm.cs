@@ -388,6 +388,7 @@ namespace Randomizer
                 TeamShufflerSettings = new TeamShufflerSettings
                 {
                     RandomizePokemon = randomizeTrainerPokemonCheck.Checked,
+                    UseSimilarBSTs = useSimilarBSTsCheck.Checked,
                     DontUseLegendaries = noLegendaryOnTrainerCheck.Checked,
                     NoDuplicateShadows = noDuplicateShadowPokemonCheck.Checked,
                     RandomizeLegendaryIntoLegendary = legendaryToLegendaryCheck.Checked,
@@ -438,6 +439,7 @@ namespace Randomizer
                 {
                     RandomizeHeldItems = randomHeldItemCheck.Checked,
                     RandomizePokeSpotPokemon = randomizePokeSpotsCheck.Checked,
+                    UseSimilarBSTs = useSimilarBSTsCheck.Checked,
                     SetMinimumCatchRate = minimumPokeSpotCatchRate.Checked,
                     MinimumCatchRate = (int)pokeSpotCatchMinimum.Value,
                     BoostPokeSpotLevel = boostPokeSpotLevelCheck.Checked,
@@ -550,6 +552,7 @@ namespace Randomizer
 
             // trainers
             randomizeTrainerPokemonCheck.Checked = settings.TeamShufflerSettings.RandomizePokemon;
+            useSimilarBSTsCheck.Checked = settings.TeamShufflerSettings.UseSimilarBSTs;
             noLegendaryOnTrainerCheck.Checked = settings.TeamShufflerSettings.DontUseLegendaries;
             noDuplicateShadowPokemonCheck.Checked = settings.TeamShufflerSettings.NoDuplicateShadows;
             legendaryToLegendaryCheck.Checked = settings.TeamShufflerSettings.RandomizeLegendaryIntoLegendary;
@@ -624,6 +627,7 @@ namespace Randomizer
             bingoBanShadowMovesCheck.Checked = bingoBanShadowMovesCheck.Enabled && settings.BingoCardShufflerSettings.BanShadowMoves;
 
             randomizePokeSpotsCheck.Checked = randomizePokeSpotsCheck.Enabled && settings.PokeSpotShufflerSettings.RandomizePokeSpotPokemon;
+            useSimilarBSTsPokeSpotCheck.Checked = useSimilarBSTsPokeSpotCheck.Enabled && settings.PokeSpotShufflerSettings.UseSimilarBSTs;
             easyBonslyCheck.Checked = easyBonslyCheck.Enabled && settings.PokeSpotShufflerSettings.EasyBonsly;
 
             minimumPokeSpotCatchRate.Checked = minimumPokeSpotCatchRate.Enabled && settings.PokeSpotShufflerSettings.SetMinimumCatchRate;
@@ -642,6 +646,14 @@ namespace Randomizer
         private void doneTask(object sender, RunWorkerCompletedEventArgs e)
         {
             MessageBox.Show("Done!");
+        }
+
+        private void randomizeTrainerPokemonCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            noLegendaryOnTrainerCheck.Enabled = randomizeTrainerPokemonCheck.Checked;
+            noDuplicateShadowPokemonCheck.Enabled = randomizeTrainerPokemonCheck.Checked;
+            legendaryToLegendaryCheck.Enabled = randomizeTrainerPokemonCheck.Checked;
+            useSimilarBSTsCheck.Enabled = randomizeTrainerPokemonCheck.Checked;
         }
 
         private void forceFullyEvovledLevelCheck_CheckedChanged(object sender, EventArgs e)
@@ -663,6 +675,11 @@ namespace Randomizer
         private void boostPokeSpotCatchRate_CheckedChanged(object sender, EventArgs e)
         {
             pokeSpotCatchMinimum.Enabled = minimumPokeSpotCatchRate.Checked;
+        }
+
+        private void randomizePokeSpotsCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            useSimilarBSTsPokeSpotCheck.Enabled = randomizePokeSpotsCheck.Checked;
         }
 
         private void randomizeTypesCheck_CheckedChanged(object sender, EventArgs e)
