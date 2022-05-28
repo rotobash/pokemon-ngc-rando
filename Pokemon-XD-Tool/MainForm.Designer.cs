@@ -63,6 +63,7 @@ namespace Randomizer
             this.minimumPokeSpotCatchRate = new System.Windows.Forms.CheckBox();
             this.boostPokeSpotLevelCheck = new System.Windows.Forms.CheckBox();
             this.easyBonslyCheck = new System.Windows.Forms.CheckBox();
+            this.useSimilarBSTsPokeSpotCheck = new System.Windows.Forms.CheckBox();
             this.label20 = new System.Windows.Forms.Label();
             this.checkBox19 = new System.Windows.Forms.CheckBox();
             this.pokemonTabPage = new System.Windows.Forms.TabPage();
@@ -684,6 +685,7 @@ namespace Randomizer
             this.tableLayoutPanel29.Controls.Add(this.minimumPokeSpotCatchRate, 4, 0);
             this.tableLayoutPanel29.Controls.Add(this.boostPokeSpotLevelCheck, 4, 1);
             this.tableLayoutPanel29.Controls.Add(this.easyBonslyCheck, 1, 1);
+            this.tableLayoutPanel29.Controls.Add(this.useSimilarBSTsPokeSpotCheck, 2, 0);
             this.tableLayoutPanel29.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel29.Location = new System.Drawing.Point(3, 19);
             this.tableLayoutPanel29.Name = "tableLayoutPanel29";
@@ -703,6 +705,7 @@ namespace Randomizer
             this.randomizePokeSpotsCheck.TabIndex = 16;
             this.randomizePokeSpotsCheck.Text = "Randomize PokeSpots";
             this.randomizePokeSpotsCheck.UseVisualStyleBackColor = true;
+            this.randomizePokeSpotsCheck.CheckedChanged += new System.EventHandler(this.randomizePokeSpotsCheck_CheckedChanged);
             // 
             // boostPokeSpotLevelPercent
             // 
@@ -783,6 +786,17 @@ namespace Randomizer
             this.easyBonslyCheck.Text = "Easy Bonsly";
             this.infoToolTip.SetToolTip(this.easyBonslyCheck, "Force Bonsly to appear more often at PokeSpots.");
             this.easyBonslyCheck.UseVisualStyleBackColor = true;
+            // 
+            // useSimilarBSTsPokeSpotCheck
+            // 
+            this.useSimilarBSTsPokeSpotCheck.AutoSize = true;
+            this.useSimilarBSTsPokeSpotCheck.Enabled = false;
+            this.useSimilarBSTsPokeSpotCheck.Location = new System.Drawing.Point(213, 3);
+            this.useSimilarBSTsPokeSpotCheck.Name = "useSimilarBSTsPokeSpotCheck";
+            this.useSimilarBSTsPokeSpotCheck.Size = new System.Drawing.Size(110, 19);
+            this.useSimilarBSTsPokeSpotCheck.TabIndex = 26;
+            this.useSimilarBSTsPokeSpotCheck.Text = "Use Similar BSTs";
+            this.useSimilarBSTsPokeSpotCheck.UseVisualStyleBackColor = true;
             // 
             // label20
             // 
@@ -3868,6 +3882,7 @@ namespace Randomizer
         private System.Windows.Forms.RadioButton randomizeMovesetsOnlyLegal;
         private System.Windows.Forms.CheckBox legendaryToLegendaryCheck;
         private System.Windows.Forms.CheckBox useSimilarBSTsCheck;
+        private System.Windows.Forms.CheckBox useSimilarBSTsPokeSpotCheck;
     }
 }
 

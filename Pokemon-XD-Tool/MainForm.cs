@@ -439,6 +439,7 @@ namespace Randomizer
                 {
                     RandomizeHeldItems = randomHeldItemCheck.Checked,
                     RandomizePokeSpotPokemon = randomizePokeSpotsCheck.Checked,
+                    UseSimilarBSTs = useSimilarBSTsCheck.Checked,
                     SetMinimumCatchRate = minimumPokeSpotCatchRate.Checked,
                     MinimumCatchRate = (int)pokeSpotCatchMinimum.Value,
                     BoostPokeSpotLevel = boostPokeSpotLevelCheck.Checked,
@@ -626,6 +627,7 @@ namespace Randomizer
             bingoBanShadowMovesCheck.Checked = bingoBanShadowMovesCheck.Enabled && settings.BingoCardShufflerSettings.BanShadowMoves;
 
             randomizePokeSpotsCheck.Checked = randomizePokeSpotsCheck.Enabled && settings.PokeSpotShufflerSettings.RandomizePokeSpotPokemon;
+            useSimilarBSTsPokeSpotCheck.Checked = useSimilarBSTsPokeSpotCheck.Enabled && settings.PokeSpotShufflerSettings.UseSimilarBSTs;
             easyBonslyCheck.Checked = easyBonslyCheck.Enabled && settings.PokeSpotShufflerSettings.EasyBonsly;
 
             minimumPokeSpotCatchRate.Checked = minimumPokeSpotCatchRate.Enabled && settings.PokeSpotShufflerSettings.SetMinimumCatchRate;
@@ -673,6 +675,11 @@ namespace Randomizer
         private void boostPokeSpotCatchRate_CheckedChanged(object sender, EventArgs e)
         {
             pokeSpotCatchMinimum.Enabled = minimumPokeSpotCatchRate.Checked;
+        }
+
+        private void randomizePokeSpotsCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            useSimilarBSTsPokeSpotCheck.Enabled = randomizePokeSpotsCheck.Checked;
         }
 
         private void randomizeTypesCheck_CheckedChanged(object sender, EventArgs e)
