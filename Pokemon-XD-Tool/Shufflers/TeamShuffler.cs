@@ -65,13 +65,17 @@ namespace Randomizer.Shufflers
 
                             // keep randomizing until we've picked a non duplicate, this check won't run unless the setting is enabled
                             // also add a breakout counter in case the potential pool of pokemon is empty
-                            int breakoutCounter = 0;
-                            while (settings.NoDuplicateShadows && pickedShadowPokemon.Contains(pokemon.Pokemon) || breakoutCounter++ > 10)
+
+                            if (settings.NoDuplicateShadows && pokemon.IsShadow)
                             {
-                                RandomizePokemon(random, settings, extractedGame, pokemon);
+                                int breakoutCounter = 0;
+                                while (pickedShadowPokemon.Contains(pokemon.Pokemon) && breakoutCounter++ < 10)
+                                {
+                                    RandomizePokemon(random, settings, extractedGame, pokemon);
+                                }
+                                pickedShadowPokemon.Add(pokemon.Pokemon);
                             }
                         }
-                        pickedShadowPokemon.Add(pokemon.Pokemon);
 
                         Logger.Log($"{extractedGame.PokemonList[pokemon.Pokemon].Name}\n");
                         Logger.Log($"Is a shadow Pokemon: {pokemon.IsShadow}\n");
