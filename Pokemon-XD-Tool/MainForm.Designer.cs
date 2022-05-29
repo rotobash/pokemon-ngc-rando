@@ -217,6 +217,7 @@ namespace Randomizer
             this.tmGroupBox = new System.Windows.Forms.GroupBox();
             this.openSettingsDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveSettingsDialog = new System.Windows.Forms.SaveFileDialog();
+            this.generateLogCheck = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gamePictureBox)).BeginInit();
             this.settingsTab.SuspendLayout();
@@ -312,6 +313,7 @@ namespace Randomizer
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel9, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel32, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.generateLogCheck, 2, 4);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 9);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -3585,6 +3587,21 @@ namespace Randomizer
             this.saveSettingsDialog.DefaultExt = "settings";
             this.saveSettingsDialog.Filter = "Settings File|*.settings";
             // 
+            // generateLogCheck
+            // 
+            this.generateLogCheck.AutoSize = true;
+            this.generateLogCheck.Dock = System.Windows.Forms.DockStyle.Top;
+            this.generateLogCheck.Location = new System.Drawing.Point(552, 195);
+            this.generateLogCheck.Name = "generateLogCheck";
+            this.generateLogCheck.Size = new System.Drawing.Size(177, 19);
+            this.generateLogCheck.TabIndex = 14;
+            this.generateLogCheck.Text = "Log to file";
+            this.generateLogCheck.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.infoToolTip.SetToolTip(this.generateLogCheck, "When checked, a log will be generated of what values were randomized and their ne" +
+        "w values.");
+            this.generateLogCheck.UseVisualStyleBackColor = true;
+            this.generateLogCheck.CheckedChanged += new System.EventHandler(this.generateLogCheck_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -3597,6 +3614,7 @@ namespace Randomizer
             this.Text = "Randomizer";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gamePictureBox)).EndInit();
             this.settingsTab.ResumeLayout(false);
             this.trainersTabPage.ResumeLayout(false);
@@ -3886,6 +3904,7 @@ namespace Randomizer
         private System.Windows.Forms.CheckBox legendaryToLegendaryCheck;
         private System.Windows.Forms.CheckBox useSimilarBSTsCheck;
         private System.Windows.Forms.CheckBox useSimilarBSTsPokeSpotCheck;
+        private System.Windows.Forms.CheckBox generateLogCheck;
     }
 }
 

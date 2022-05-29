@@ -27,7 +27,6 @@ namespace Randomizer
             pokemonSecondEvolutionLevelSelector.Value = Configuration.PokemonEasierSecondEvolutionLevel;
             movePower.Value = Configuration.GoodDamagingMovePower;
             fileStreamCheck.Checked = !Configuration.UseMemoryStreams;
-            verboseLogCheck.Checked = Configuration.Verbose;
             browseForDirButton.Enabled = !fileStreamCheck.Checked;
         }
 
@@ -50,11 +49,6 @@ namespace Randomizer
         {
             Configuration.UseMemoryStreams = !fileStreamCheck.Checked;
             browseForDirButton.Enabled = fileStreamCheck.Checked;
-        }
-
-        private void verboseLogCheck_CheckedChanged(object sender, EventArgs e)
-        {
-            Configuration.Verbose = verboseLogCheck.Checked;
         }
 
         private void movePower_ValueChanged(object sender, EventArgs e)

@@ -43,6 +43,8 @@ namespace Randomizer
                 prngDropDown.Items.Add(choice);
                 prngDropDown.SelectedItem = choice;
             }
+
+            generateLogCheck.Checked = Configuration.Verbose;
         }
 
         private void loadIsoButton_Click(object sender, EventArgs e)
@@ -676,6 +678,11 @@ namespace Randomizer
         private void doneTask(object sender, RunWorkerCompletedEventArgs e)
         {
             MessageBox.Show("Done!");
+        }
+
+        private void generateLogCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            Configuration.Verbose = generateLogCheck.Checked;
         }
 
         private void randomizeTrainerPokemonCheck_CheckedChanged(object sender, EventArgs e)
