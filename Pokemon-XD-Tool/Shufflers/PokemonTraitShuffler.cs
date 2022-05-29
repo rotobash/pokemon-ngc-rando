@@ -268,21 +268,21 @@ namespace Randomizer.Shufflers
                                 if (!Helpers.CheckForSplitOrEndEvolution(evoPoke, out int count))
                                 {
                                     var evoPokeEvolution = evoPoke.Evolutions[0];
-                                    if (evoPokeEvolution.EvolutionMethod == EvolutionMethods.LevelUp && evoPokeEvolution.EvolutionCondition > 40)
+                                    if (evoPokeEvolution.EvolutionMethod == EvolutionMethods.LevelUp && evoPokeEvolution.EvolutionCondition > Configuration.PokemonEasierFinalEvolutionLevel)
                                     {
                                         // make a bold assumption that if the second stage evolves by level up then the first does too
-                                        evoPoke.SetEvolution(0, (byte)evoPokeEvolution.EvolutionMethod, 40, evoPokeEvolution.EvolvesInto);
-                                        poke.SetEvolution(0, (byte)evolution.EvolutionMethod, 30, evolution.EvolvesInto);
+                                        evoPoke.SetEvolution(0, (byte)evoPokeEvolution.EvolutionMethod, (ushort)Configuration.PokemonEasierFinalEvolutionLevel, evoPokeEvolution.EvolvesInto);
+                                        poke.SetEvolution(0, (byte)evolution.EvolutionMethod, (ushort)Configuration.PokemonEasierSecondEvolutionLevel, evolution.EvolvesInto);
 
-                                        Logger.Log($"Setting {poke.Name} to evolve at level 30.\n");
-                                        Logger.Log($"Setting {evoPoke.Name} to evolve at level 40.\n");
+                                        Logger.Log($"Setting {poke.Name} to evolve at level {Configuration.PokemonEasierSecondEvolutionLevel}.\n");
+                                        Logger.Log($"Setting {evoPoke.Name} to evolve at level {Configuration.PokemonEasierFinalEvolutionLevel}.\n");
                                     }
                                 }
-                                else if (count == 0 && evolution.EvolutionMethod == EvolutionMethods.LevelUp && evolution.EvolutionCondition > 40)
+                                else if (count == 0 && evolution.EvolutionMethod == EvolutionMethods.LevelUp && evolution.EvolutionCondition > Configuration.PokemonEasierFinalEvolutionLevel)
                                 {
                                     // this is the last stage
-                                    poke.SetEvolution(0, (byte)evolution.EvolutionMethod, 40, evolution.EvolvesInto);
-                                    Logger.Log($"Setting to evolve at level 40.\n");
+                                    poke.SetEvolution(0, (byte)evolution.EvolutionMethod, (ushort)Configuration.PokemonEasierFinalEvolutionLevel, evolution.EvolvesInto);
+                                    Logger.Log($"Setting to evolve at level {Configuration.PokemonEasierFinalEvolutionLevel}.\n");
                                 }
                             }
                         }

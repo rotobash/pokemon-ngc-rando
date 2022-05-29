@@ -33,9 +33,10 @@ namespace XDCommon
         {
             get
             {
-                if (!int.TryParse(ConfigurationManager.AppSettings.Get(nameof(ThreadCount)), out int threadCount))
+                if (!int.TryParse(ConfigurationManager.AppSettings.Get(nameof(ThreadCount)), out int threadCount) && threadCount <= 0)
                 {
-                    threadCount = 1;
+                    ThreadCount = 1;
+                    return ThreadCount;
                 }
                 return threadCount;
             }
@@ -49,9 +50,10 @@ namespace XDCommon
         {
             get
             {
-                if (!int.TryParse(ConfigurationManager.AppSettings.Get(nameof(GoodDamagingMovePower)), out int movePower))
+                if (!int.TryParse(ConfigurationManager.AppSettings.Get(nameof(GoodDamagingMovePower)), out int movePower) && movePower <= 0)
                 {
                     GoodDamagingMovePower = 60;
+                    return GoodDamagingMovePower;
                 }
                 return movePower;
             }
@@ -65,9 +67,10 @@ namespace XDCommon
         {
             get
             {
-                if (!int.TryParse(ConfigurationManager.AppSettings.Get(nameof(StrongPokemonBST)), out int bstTotal))
+                if (!int.TryParse(ConfigurationManager.AppSettings.Get(nameof(StrongPokemonBST)), out int bstTotal) && bstTotal <= 0)
                 {
                     StrongPokemonBST = 300;
+                    return StrongPokemonBST;
                 }
                 return bstTotal;
             }
@@ -80,9 +83,10 @@ namespace XDCommon
         {
             get
             {
-                if (!int.TryParse(ConfigurationManager.AppSettings.Get(nameof(BSTRange)), out int bstTotal))
+                if (!int.TryParse(ConfigurationManager.AppSettings.Get(nameof(BSTRange)), out int bstTotal) && bstTotal <= 0)
                 {
                     BSTRange = 20;
+                    return BSTRange;
                 }
                 return bstTotal;
             }
@@ -92,22 +96,54 @@ namespace XDCommon
             }
         }
 
-        public static int PokemonImpossibleEvolutionLevel 
+        public static int PokemonImpossibleEvolutionLevel
         {
             get
             {
-                if (!int.TryParse(ConfigurationManager.AppSettings.Get(nameof(PokemonImpossibleEvolutionLevel)), out int evoLevel))
+                if (!int.TryParse(ConfigurationManager.AppSettings.Get(nameof(PokemonImpossibleEvolutionLevel)), out int evoLevel) && evoLevel <= 0)
                 {
-                    // set configuration to default
                     PokemonImpossibleEvolutionLevel = 40;
-                    // wont update evoLevel so just return default
-                    return 40;
+                    return PokemonImpossibleEvolutionLevel;
                 }
                 return evoLevel;
             }
             set
             {
                 AddOrUpdateAppSettings(nameof(PokemonImpossibleEvolutionLevel), value.ToString());
+            }
+        }
+
+        public static int PokemonEasierFinalEvolutionLevel 
+        {
+            get
+            {
+                if (!int.TryParse(ConfigurationManager.AppSettings.Get(nameof(PokemonEasierFinalEvolutionLevel)), out int evoLevel) && evoLevel <= 0)
+                {
+                    PokemonEasierFinalEvolutionLevel = 40;
+                    return PokemonEasierFinalEvolutionLevel;
+                }
+                return evoLevel;
+            }
+            set
+            {
+                AddOrUpdateAppSettings(nameof(PokemonEasierFinalEvolutionLevel), value.ToString());
+            }
+        }
+
+        public static int PokemonEasierSecondEvolutionLevel
+        {
+            get
+            {
+                if (!int.TryParse(ConfigurationManager.AppSettings.Get(nameof(PokemonEasierSecondEvolutionLevel)), out int evoLevel) && evoLevel <= 0)
+                {
+                    PokemonEasierSecondEvolutionLevel = 30;
+                    return PokemonEasierSecondEvolutionLevel;
+                }
+                return evoLevel;
+            }
+            set
+            {
+                AddOrUpdateAppSettings(nameof(PokemonEasierFinalEvolutionLevel), value.ToString());
             }
         }
 

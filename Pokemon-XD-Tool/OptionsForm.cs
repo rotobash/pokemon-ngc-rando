@@ -22,14 +22,16 @@ namespace Randomizer
         {
             extractDirLabel.Text = Configuration.ExtractDirectory;
             pokemonBSTSelector.Value = Configuration.StrongPokemonBST;
-            pokemonEvolutionLevelSelector.Value = Configuration.PokemonImpossibleEvolutionLevel;
+            pokemonImpossibleEvolutionLevelSelector.Value = Configuration.PokemonImpossibleEvolutionLevel;
+            pokemonFinalEvolutionLevelSelector.Value = Configuration.PokemonEasierFinalEvolutionLevel;
+            pokemonSecondEvolutionLevelSelector.Value = Configuration.PokemonEasierSecondEvolutionLevel;
             movePower.Value = Configuration.GoodDamagingMovePower;
             fileStreamCheck.Checked = !Configuration.UseMemoryStreams;
             verboseLogCheck.Checked = Configuration.Verbose;
             browseForDirButton.Enabled = !fileStreamCheck.Checked;
         }
 
-        private void threadCountSelector_ValueChanged(object sender, EventArgs e)
+        private void pokemonBSTSelector_ValueChanged(object sender, EventArgs e)
         {
             Configuration.StrongPokemonBST = (int)pokemonBSTSelector.Value;
         }
@@ -40,6 +42,7 @@ namespace Randomizer
             {
                 Configuration.ExtractDirectory = folderBrowserDialog.SelectedPath;
                 extractDirLabel.Text = Configuration.ExtractDirectory;
+                this.infoToolTip.SetToolTip(extractDirLabel, Configuration.ExtractDirectory);
             }
         }
 
@@ -61,7 +64,24 @@ namespace Randomizer
 
         private void pokemonEvolutionLevelSelector_ValueChanged(object sender, EventArgs e)
         {
-            Configuration.PokemonImpossibleEvolutionLevel = (int)pokemonEvolutionLevelSelector.Value;
+            var newLevelValue = (int)pokemonFinalEvolutionLevelSelector.Value;
+            Configuration.PokemonEasierFinalEvolutionLevel = newLevelValue;
+
+            if (pokemonSecondEvolutionLevelSelector.Value >= newLevelValue)
+            {
+                pokemonSecondEvolutionLevelSelector.Value = newLevelValue - 1;
+            }
+            pokemonSecondEvolutionLevelSelector.Maximum = newLevelValue - 1;
+        }
+
+        private void pokemonSecondEvolutionLevelSelector_ValueChanged(object sender, EventArgs e)
+        {
+            Configuration.PokemonEasierSecondEvolutionLevel = (int)pokemonSecondEvolutionLevelSelector.Value;
+        }
+
+        private void bstRangeNumeric_ValueChanged(object sender, EventArgs e)
+        {
+            Configuration.BSTRange = (int)bstRangeSelector.Value;
         }
     }
 }
