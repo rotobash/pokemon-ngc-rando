@@ -56,7 +56,7 @@ namespace Randomizer
                 responseTask.Wait();
                 response = responseTask.Result;
             }
-            catch (Exception ex)
+            catch
             {
                 // GitHub is possibly not rersponding, so continue without updating
                 return null;
