@@ -33,6 +33,8 @@ namespace Randomizer
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
             this.progressLabel = new System.Windows.Forms.Label();
+            this.finishUpdateButton = new System.Windows.Forms.Button();
+            this.viewChangeLogButton = new System.Windows.Forms.Button();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -46,7 +48,9 @@ namespace Randomizer
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.Controls.Add(this.progressBar, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.label1, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.progressLabel, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.progressLabel, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.finishUpdateButton, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.viewChangeLogButton, 1, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -82,10 +86,33 @@ namespace Randomizer
             this.progressLabel.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.progressLabel, 2);
             this.progressLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.progressLabel.Location = new System.Drawing.Point(32, 78);
+            this.progressLabel.Location = new System.Drawing.Point(149, 47);
             this.progressLabel.Name = "progressLabel";
-            this.progressLabel.Size = new System.Drawing.Size(228, 15);
+            this.progressLabel.Size = new System.Drawing.Size(142, 15);
             this.progressLabel.TabIndex = 2;
+            // 
+            // finishUpdateButton
+            // 
+            this.finishUpdateButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.finishUpdateButton.Location = new System.Drawing.Point(149, 81);
+            this.finishUpdateButton.Name = "finishUpdateButton";
+            this.finishUpdateButton.Size = new System.Drawing.Size(111, 25);
+            this.finishUpdateButton.TabIndex = 4;
+            this.finishUpdateButton.Text = "Finish Update";
+            this.finishUpdateButton.UseVisualStyleBackColor = true;
+            this.finishUpdateButton.Visible = false;
+            this.finishUpdateButton.Click += new System.EventHandler(this.finishUpdateButton_Click);
+            // 
+            // viewChangeLogButton
+            // 
+            this.viewChangeLogButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewChangeLogButton.Location = new System.Drawing.Point(32, 81);
+            this.viewChangeLogButton.Name = "viewChangeLogButton";
+            this.viewChangeLogButton.Size = new System.Drawing.Size(111, 25);
+            this.viewChangeLogButton.TabIndex = 3;
+            this.viewChangeLogButton.Text = "View Change Log";
+            this.viewChangeLogButton.UseVisualStyleBackColor = true;
+            this.viewChangeLogButton.Click += new System.EventHandler(this.viewChangeLogButton_Click);
             // 
             // Updater
             // 
@@ -109,5 +136,7 @@ namespace Randomizer
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label progressLabel;
         private System.ComponentModel.BackgroundWorker backgroundWorker;
+        private System.Windows.Forms.Button viewChangeLogButton;
+        private System.Windows.Forms.Button finishUpdateButton;
     }
 }

@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -17,6 +18,10 @@ namespace Randomizer
         const string updateMessage = "In order to finish updating, the tool needs to close. Click 'OK' to close it now.";
         readonly GithubReleaseAsset releaseAsset;
         Progress<float> progressHandler;
+
+        Regex patchNotesRegex = new Regex(".*Changelog.*\n", RegexOptions.Compiled);
+        string patchNotes;
+
         public Updater(GithubRelease updateToVersion)
         {
             InitializeComponent();
@@ -25,6 +30,8 @@ namespace Randomizer
             backgroundWorker.ProgressChanged += UpdateProgress;
             backgroundWorker.RunWorkerCompleted += OnDone;
             backgroundWorker.WorkerReportsProgress = true;
+
+            patchNotes = patchNotesRegex.Split(updateToVersion.body, 2).LastOrDefault() ?? string.Empty;
 
             // bit of a hack to check if we're using the self-contained binary or not
             var isSelfContained = File.Exists("System.dll");
@@ -58,7 +65,14 @@ namespace Randomizer
                 var speed = currentProgressMB / (DateTime.UtcNow - startUpdateTime).TotalSeconds;
 
                 progressLabel.Invoke(new Action(() => progressLabel.Text = $"{currentProgressMB:f2}Mb / {totalMB:f2}Mb @ {speed:f2}/MBs"));
-                backgroundWorker.ReportProgress((int)Math.Round(progress * 100));
+
+                try 
+                { 
+                    backgroundWorker.ReportProgress((int)Math.Round(progress * 100));
+                } 
+                catch 
+                { 
+                }
             });
 
             SelfUpdater.Update(asset, progressHandler);
@@ -72,7 +86,17 @@ namespace Randomizer
         public void OnDone(object sender, RunWorkerCompletedEventArgs args)
         {
             progressLabel.Text = "Finished Downloading.";
-            MessageBox.Show(updateMessage, "Warning", MessageBoxButtons.OK);
+            progressBar.Value = 100;
+
+            finishUpdateButton.Visible = true;
+            if (MessageBox.Show(updateMessage, "Warning", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                finishUpdate();
+            }
+        }
+
+        private void finishUpdate()
+        {
             using var process = new Process();
 
             process.StartInfo.FileName = "AutoUpdater.exe";
@@ -82,6 +106,16 @@ namespace Randomizer
             {
                 Close();
             }
+        }
+
+        private void viewChangeLogButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(patchNotes, "Change Log", MessageBoxButtons.OK);
+        }
+
+        private void finishUpdateButton_Click(object sender, EventArgs e)
+        {
+            finishUpdate();
         }
     }
 }
