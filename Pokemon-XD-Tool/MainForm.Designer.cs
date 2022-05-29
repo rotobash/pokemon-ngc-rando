@@ -210,6 +210,7 @@ namespace Randomizer
             this.tableLayoutPanel32 = new System.Windows.Forms.TableLayoutPanel();
             this.prngDropDown = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.generateLogCheck = new System.Windows.Forms.CheckBox();
             this.openISODialog = new System.Windows.Forms.OpenFileDialog();
             this.saveISODialog = new System.Windows.Forms.SaveFileDialog();
             this.infoToolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -217,7 +218,6 @@ namespace Randomizer
             this.tmGroupBox = new System.Windows.Forms.GroupBox();
             this.openSettingsDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveSettingsDialog = new System.Windows.Forms.SaveFileDialog();
-            this.generateLogCheck = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gamePictureBox)).BeginInit();
             this.settingsTab.SuspendLayout();
@@ -3557,6 +3557,21 @@ namespace Randomizer
             this.label1.TabIndex = 1;
             this.label1.Text = "Random Number Generator:";
             // 
+            // generateLogCheck
+            // 
+            this.generateLogCheck.AutoSize = true;
+            this.generateLogCheck.Dock = System.Windows.Forms.DockStyle.Top;
+            this.generateLogCheck.Location = new System.Drawing.Point(552, 195);
+            this.generateLogCheck.Name = "generateLogCheck";
+            this.generateLogCheck.Size = new System.Drawing.Size(177, 19);
+            this.generateLogCheck.TabIndex = 14;
+            this.generateLogCheck.Text = "Log to file";
+            this.generateLogCheck.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.infoToolTip.SetToolTip(this.generateLogCheck, "When checked, a log will be generated of what values were randomized and their ne" +
+        "w values.");
+            this.generateLogCheck.UseVisualStyleBackColor = true;
+            this.generateLogCheck.CheckedChanged += new System.EventHandler(this.generateLogCheck_CheckedChanged);
+            // 
             // infoToolTip
             // 
             this.infoToolTip.AutoPopDelay = 50000;
@@ -3586,21 +3601,6 @@ namespace Randomizer
             // 
             this.saveSettingsDialog.DefaultExt = "settings";
             this.saveSettingsDialog.Filter = "Settings File|*.settings";
-            // 
-            // generateLogCheck
-            // 
-            this.generateLogCheck.AutoSize = true;
-            this.generateLogCheck.Dock = System.Windows.Forms.DockStyle.Top;
-            this.generateLogCheck.Location = new System.Drawing.Point(552, 195);
-            this.generateLogCheck.Name = "generateLogCheck";
-            this.generateLogCheck.Size = new System.Drawing.Size(177, 19);
-            this.generateLogCheck.TabIndex = 14;
-            this.generateLogCheck.Text = "Log to file";
-            this.generateLogCheck.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.infoToolTip.SetToolTip(this.generateLogCheck, "When checked, a log will be generated of what values were randomized and their ne" +
-        "w values.");
-            this.generateLogCheck.UseVisualStyleBackColor = true;
-            this.generateLogCheck.CheckedChanged += new System.EventHandler(this.generateLogCheck_CheckedChanged);
             // 
             // MainForm
             // 

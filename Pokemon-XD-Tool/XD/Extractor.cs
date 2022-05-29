@@ -100,7 +100,8 @@ namespace Randomizer.XD
 
 		public Move[] ExtractMoves()
         {
-			var moveNum = ISO.CommonRel.GetValueAtPointer(Constants.XDNumberOfMoves);
+			// last move is ???? 
+			var moveNum = ISO.CommonRel.GetValueAtPointer(Constants.XDNumberOfMoves) - 1;
 			var moves = new Move[moveNum];
 			for (int i = 0; i < moveNum; i++) {
 				moves[i] = new Move(i, ISO);
