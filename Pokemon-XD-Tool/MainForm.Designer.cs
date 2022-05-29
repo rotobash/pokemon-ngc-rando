@@ -796,6 +796,9 @@ namespace Randomizer
             this.useSimilarBSTsPokeSpotCheck.Size = new System.Drawing.Size(110, 19);
             this.useSimilarBSTsPokeSpotCheck.TabIndex = 26;
             this.useSimilarBSTsPokeSpotCheck.Text = "Use Similar BSTs";
+            this.infoToolTip.SetToolTip(this.useSimilarBSTsPokeSpotCheck, "When picking a new random pokemon, use one that has a similar BST to the current " +
+        "pokemon.\r\nNote: This will gradually widen the BST range to search for if none ar" +
+        "e found.");
             this.useSimilarBSTsPokeSpotCheck.UseVisualStyleBackColor = true;
             // 
             // label20
@@ -1044,7 +1047,8 @@ namespace Randomizer
             this.fixImpossibleEvolutionsCheck.Size = new System.Drawing.Size(132, 22);
             this.fixImpossibleEvolutionsCheck.TabIndex = 11;
             this.fixImpossibleEvolutionsCheck.Text = "Fix Impossible Evolutions";
-            this.infoToolTip.SetToolTip(this.fixImpossibleEvolutionsCheck, "Pokemon that evolve by Trade or by Day/Night cycles.");
+            this.infoToolTip.SetToolTip(this.fixImpossibleEvolutionsCheck, "Pokemon that evolve by Trade or by Day/Night cycles.\r\nNote: The level this is set" +
+        " to is configurable in the Options menu.");
             this.fixImpossibleEvolutionsCheck.UseVisualStyleBackColor = true;
             // 
             // threeStageMaxCheck
@@ -2999,6 +3003,7 @@ namespace Randomizer
             this.randomizeMovesetsOnlyLegal.TabIndex = 32;
             this.randomizeMovesetsOnlyLegal.TabStop = true;
             this.randomizeMovesetsOnlyLegal.Text = "Random Legal Moves";
+            this.infoToolTip.SetToolTip(this.randomizeMovesetsOnlyLegal, resources.GetString("randomizeMovesetsOnlyLegal.ToolTip"));
             this.randomizeMovesetsOnlyLegal.UseVisualStyleBackColor = true;
             this.randomizeMovesetsOnlyLegal.CheckedChanged += new System.EventHandler(this.randomizeMovesetsOnlyLegal_CheckedChanged);
             // 
@@ -3142,9 +3147,7 @@ namespace Randomizer
             this.martsSellEvoStonesCheck.Size = new System.Drawing.Size(202, 19);
             this.martsSellEvoStonesCheck.TabIndex = 0;
             this.martsSellEvoStonesCheck.Text = "Agate Mart Sells Evolution Stones";
-            this.infoToolTip.SetToolTip(this.martsSellEvoStonesCheck, "Agate Village mart sells evolution stones for 2100. \r\nNote: Sun Stones sell for 5" +
-        "00 and Moon stones sell for 0.\r\nI haven\'t altered any of the selling prices for " +
-        "them.");
+            this.infoToolTip.SetToolTip(this.martsSellEvoStonesCheck, resources.GetString("martsSellEvoStonesCheck.ToolTip"));
             this.martsSellEvoStonesCheck.UseVisualStyleBackColor = true;
             // 
             // pokemonItemGroupBox

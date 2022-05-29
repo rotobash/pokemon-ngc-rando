@@ -85,6 +85,17 @@ If randomizing PokeSpots, it may be impossible to find Duking's requested Pokemo
     <value>If not randomizing the movesets, some Pokemon's level up moves don't have enough at their level.
 Selecting this will ensure that all Pokemon will have four moves. Will randomly pick moves to fill out the rest.</value>
   </data>
+  <data name="randomizeMovesetsOnlyLegal.ToolTip" xml:space="preserve">
+    <value>Randomly pick a moveset from moves a Pokemon learns via level up, TM or Tutor Move
+Note: If TM/Tutor Moves are randomized, then it may pick a move that's technically 
+not legal for a Pokemon to learn in the vanilla games.</value>
+  </data>
+  <data name="martsSellEvoStonesCheck.ToolTip" xml:space="preserve">
+    <value>Agate Village mart sells evolution stones for 2100. 
+Note: Sun Stones sell for 500 and Moon stones sell for 0.
+I haven't altered any of the selling prices for them.
+Note: This option doesn't work properly on EU</value>
+  </data>
   <data name="banBadItemsCheck.ToolTip" xml:space="preserve">
     <value>Bans items that aren't very useful in Colo/XD. 
 This includes all berries, contest items, shards (except moon and sun), 
