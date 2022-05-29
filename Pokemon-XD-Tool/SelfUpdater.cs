@@ -67,9 +67,13 @@ namespace Randomizer
                 Task<string> responseBodyTask = response.Content.ReadAsStringAsync();
                 responseBodyTask.Wait();
                 GithubRelease[] releases = JsonSerializer.Deserialize<GithubRelease[]>(responseBodyTask.Result);
+
+                GithubRelease newestRelease = null;
+                var newestVersion = currentVersion;
+
                 foreach (GithubRelease release in releases)
                 {
-                    if (release.name != toolName)
+                    if (!release.name.Contains(toolName))
                     {
                         continue;
                     }
@@ -82,11 +86,13 @@ namespace Randomizer
                     }
 
                     var potentialVersion = new Version(tag);
-                    if (potentialVersion > currentVersion)
+                    if (potentialVersion > newestVersion)
                     {
-                        return release;
+                        newestVersion = potentialVersion;
+                        newestRelease = release;
                     }
                 }
+                return newestRelease;
             }
 
             return null;
