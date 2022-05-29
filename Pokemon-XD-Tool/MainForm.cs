@@ -43,6 +43,8 @@ namespace Randomizer
                 prngDropDown.Items.Add(choice);
                 prngDropDown.SelectedItem = choice;
             }
+
+            generateLogCheck.Checked = Configuration.Verbose;
         }
 
         private void loadIsoButton_Click(object sender, EventArgs e)
@@ -291,11 +293,41 @@ namespace Randomizer
                 {
                     path = $"{path}.iso";
                 }
-                extractor.RepackISO(gameFile, path);
+
+                SaveISO(path, extractor, gameFile);
             }
 
             progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Finished."));
             backgroundWorker.ReportProgress(100);
+        }
+
+        private void SaveISO(string path, ISOExtractor extractor, ISO gameFile)
+        {
+            try
+            {
+                extractor.RepackISO(gameFile, path);
+            }
+            catch
+            {
+                var errorMessage = BeginInvoke(new Func<string>(() =>
+                {
+                    var dialogResult = MessageBox.Show("Cannot save new ISO file. The file might be in use by another program. Select retry to pick a new file name.", "Error", MessageBoxButtons.RetryCancel);
+                    if (dialogResult == DialogResult.Retry)
+                    {
+                        if (saveISODialog.ShowDialog() == DialogResult.OK)
+                        {
+                            return saveISODialog.FileName;
+                        }
+                    }
+                    return null;
+                }));
+                var retry = EndInvoke(errorMessage) as string;
+
+                if (!string.IsNullOrEmpty(retry))
+                {
+                    SaveISO(retry, extractor, gameFile);
+                }
+            }
         }
 
         #region Settings Save/Load
@@ -646,6 +678,11 @@ namespace Randomizer
         private void doneTask(object sender, RunWorkerCompletedEventArgs e)
         {
             MessageBox.Show("Done!");
+        }
+
+        private void generateLogCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            Configuration.Verbose = generateLogCheck.Checked;
         }
 
         private void randomizeTrainerPokemonCheck_CheckedChanged(object sender, EventArgs e)

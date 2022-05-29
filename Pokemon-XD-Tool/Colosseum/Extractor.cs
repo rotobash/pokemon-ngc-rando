@@ -82,7 +82,8 @@ namespace Randomizer.Colosseum
 
 		public Move[] ExtractMoves()
 		{
-			var moveNum = ISO.CommonRel.GetValueAtPointer(Constants.ColNumberOfMoves);
+			// last move is ???? 
+			var moveNum = ISO.CommonRel.GetValueAtPointer(Constants.ColNumberOfMoves) - 1;
 			var moves = new Move[moveNum];
 			for (int i = 0; i < moveNum; i++)
 			{

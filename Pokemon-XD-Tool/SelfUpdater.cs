@@ -49,9 +49,18 @@ namespace Randomizer
             };
             httpClient.DefaultRequestHeaders.UserAgent.ParseAdd("AutoUpdater-by-rotobash");
 
-            Task<HttpResponseMessage> responseTask = httpClient.GetAsync(GithubReleaseEndpoint);
-            responseTask.Wait();
-            HttpResponseMessage response = responseTask.Result;
+            HttpResponseMessage response;
+            try
+            {
+                Task<HttpResponseMessage> responseTask = httpClient.GetAsync(GithubReleaseEndpoint);
+                responseTask.Wait();
+                response = responseTask.Result;
+            }
+            catch
+            {
+                // GitHub is possibly not rersponding, so continue without updating
+                return null;
+            }
 
             if (response.IsSuccessStatusCode)
             {

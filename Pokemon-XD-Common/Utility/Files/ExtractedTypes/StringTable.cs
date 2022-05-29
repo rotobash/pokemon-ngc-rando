@@ -22,7 +22,6 @@ namespace XDCommon.Utility
 
         const int kMaxStringID = 0xFFFFF;
 
-        int startOffset = 0;
         Dictionary<int, int> stringOffsets = new Dictionary<int, int>();
 
         public int NumberOfEntries => ExtractedFile.GetUShortAtOffset(kNumberOfStringsOffset);

@@ -16,7 +16,6 @@ namespace Randomizer
     {
         AbstractRNG random;
         IGameExtractor gameExtractor;
-        ExtractedGame extractedGameStructures;
         private bool disposedValue;
 
         ShuffleSettings shuffleSettings;
@@ -103,7 +102,6 @@ namespace Randomizer
             {
                 if (disposing)
                 {
-                    extractedGameStructures = null;
                     gameExtractor = null;
                 }
 

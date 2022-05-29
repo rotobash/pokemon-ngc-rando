@@ -51,8 +51,6 @@ namespace Randomizer
         public TM[] TMs { get; }
         public TutorMove[] TutorMoves { get; }
 
-        bool isXD;
-
         public ExtractedGame(IGameExtractor extractor)
         {
             MoveList = extractor.ExtractMoves();
@@ -72,12 +70,10 @@ namespace Randomizer
 
             if (extractor is XDExtractor xd)
             {
-                isXD = true;
                 TutorMoves = xd.ExtractTutorMoves();
             }
             else
             {
-                isXD = false;
                 TutorMoves = Array.Empty<TutorMove>();
             }
         }

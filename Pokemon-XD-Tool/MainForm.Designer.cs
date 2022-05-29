@@ -210,6 +210,7 @@ namespace Randomizer
             this.tableLayoutPanel32 = new System.Windows.Forms.TableLayoutPanel();
             this.prngDropDown = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.generateLogCheck = new System.Windows.Forms.CheckBox();
             this.openISODialog = new System.Windows.Forms.OpenFileDialog();
             this.saveISODialog = new System.Windows.Forms.SaveFileDialog();
             this.infoToolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -312,6 +313,7 @@ namespace Randomizer
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel9, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel32, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.generateLogCheck, 2, 4);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 9);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -796,6 +798,9 @@ namespace Randomizer
             this.useSimilarBSTsPokeSpotCheck.Size = new System.Drawing.Size(110, 19);
             this.useSimilarBSTsPokeSpotCheck.TabIndex = 26;
             this.useSimilarBSTsPokeSpotCheck.Text = "Use Similar BSTs";
+            this.infoToolTip.SetToolTip(this.useSimilarBSTsPokeSpotCheck, "When picking a new random pokemon, use one that has a similar BST to the current " +
+        "pokemon.\r\nNote: This will gradually widen the BST range to search for if none ar" +
+        "e found.");
             this.useSimilarBSTsPokeSpotCheck.UseVisualStyleBackColor = true;
             // 
             // label20
@@ -1044,7 +1049,8 @@ namespace Randomizer
             this.fixImpossibleEvolutionsCheck.Size = new System.Drawing.Size(132, 22);
             this.fixImpossibleEvolutionsCheck.TabIndex = 11;
             this.fixImpossibleEvolutionsCheck.Text = "Fix Impossible Evolutions";
-            this.infoToolTip.SetToolTip(this.fixImpossibleEvolutionsCheck, "Pokemon that evolve by Trade or by Day/Night cycles.");
+            this.infoToolTip.SetToolTip(this.fixImpossibleEvolutionsCheck, "Pokemon that evolve by Trade or by Day/Night cycles.\r\nNote: The level this is set" +
+        " to is configurable in the Options menu.");
             this.fixImpossibleEvolutionsCheck.UseVisualStyleBackColor = true;
             // 
             // threeStageMaxCheck
@@ -2999,6 +3005,7 @@ namespace Randomizer
             this.randomizeMovesetsOnlyLegal.TabIndex = 32;
             this.randomizeMovesetsOnlyLegal.TabStop = true;
             this.randomizeMovesetsOnlyLegal.Text = "Random Legal Moves";
+            this.infoToolTip.SetToolTip(this.randomizeMovesetsOnlyLegal, resources.GetString("randomizeMovesetsOnlyLegal.ToolTip"));
             this.randomizeMovesetsOnlyLegal.UseVisualStyleBackColor = true;
             this.randomizeMovesetsOnlyLegal.CheckedChanged += new System.EventHandler(this.randomizeMovesetsOnlyLegal_CheckedChanged);
             // 
@@ -3142,9 +3149,7 @@ namespace Randomizer
             this.martsSellEvoStonesCheck.Size = new System.Drawing.Size(202, 19);
             this.martsSellEvoStonesCheck.TabIndex = 0;
             this.martsSellEvoStonesCheck.Text = "Agate Mart Sells Evolution Stones";
-            this.infoToolTip.SetToolTip(this.martsSellEvoStonesCheck, "Agate Village mart sells evolution stones for 2100. \r\nNote: Sun Stones sell for 5" +
-        "00 and Moon stones sell for 0.\r\nI haven\'t altered any of the selling prices for " +
-        "them.");
+            this.infoToolTip.SetToolTip(this.martsSellEvoStonesCheck, resources.GetString("martsSellEvoStonesCheck.ToolTip"));
             this.martsSellEvoStonesCheck.UseVisualStyleBackColor = true;
             // 
             // pokemonItemGroupBox
@@ -3552,6 +3557,21 @@ namespace Randomizer
             this.label1.TabIndex = 1;
             this.label1.Text = "Random Number Generator:";
             // 
+            // generateLogCheck
+            // 
+            this.generateLogCheck.AutoSize = true;
+            this.generateLogCheck.Dock = System.Windows.Forms.DockStyle.Top;
+            this.generateLogCheck.Location = new System.Drawing.Point(552, 195);
+            this.generateLogCheck.Name = "generateLogCheck";
+            this.generateLogCheck.Size = new System.Drawing.Size(177, 19);
+            this.generateLogCheck.TabIndex = 14;
+            this.generateLogCheck.Text = "Log to file";
+            this.generateLogCheck.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.infoToolTip.SetToolTip(this.generateLogCheck, "When checked, a log will be generated of what values were randomized and their ne" +
+        "w values.");
+            this.generateLogCheck.UseVisualStyleBackColor = true;
+            this.generateLogCheck.CheckedChanged += new System.EventHandler(this.generateLogCheck_CheckedChanged);
+            // 
             // infoToolTip
             // 
             this.infoToolTip.AutoPopDelay = 50000;
@@ -3594,6 +3614,7 @@ namespace Randomizer
             this.Text = "Randomizer";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gamePictureBox)).EndInit();
             this.settingsTab.ResumeLayout(false);
             this.trainersTabPage.ResumeLayout(false);
@@ -3883,6 +3904,7 @@ namespace Randomizer
         private System.Windows.Forms.CheckBox legendaryToLegendaryCheck;
         private System.Windows.Forms.CheckBox useSimilarBSTsCheck;
         private System.Windows.Forms.CheckBox useSimilarBSTsPokeSpotCheck;
+        private System.Windows.Forms.CheckBox generateLogCheck;
     }
 }
 

@@ -60,9 +60,12 @@
   <metadata name="infoToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>180, 17</value>
   </metadata>
-  <metadata name="infoToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>180, 17</value>
-  </metadata>
+  <data name="bstRangeSelector.ToolTip" xml:space="preserve">
+    <value>When using "Similar BST" checks, this is the range +/- the BST to check in.
+This is also the amount the range widens by if it doesn't find a match the first time.
+e.g. 1st check for BST 300 and range of 10 = 290 - 310
+2nd check = 280 - 320, etc.</value>
+  </data>
   <data name="fileStreamCheck.ToolTip" xml:space="preserve">
     <value>Instead of pulling game files into memory, write them to files in a folder specified by Extract Directory.
 Check this only if you have very low RAM or want to extract the randomized game files.

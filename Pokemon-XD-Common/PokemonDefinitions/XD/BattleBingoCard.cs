@@ -44,7 +44,7 @@ namespace XDCommon.PokemonDefinitions
             for (int i = 1; i < NumberOfPokemonPanels; i++)
             {
                 var pokemon = new BattleBingoPokemon(StartOffset + BingoCardFirstPokemonOffset + (i * SizeOfBattleBingoPokemonData), iso);
-                panels.Add(new BattleBingoPanel(pokemon, iso));
+                panels.Add(new BattleBingoPanel(pokemon));
             }
 
             var mysteryOffset = StartOffset + BingoCardFirstMysteryPanelOffset;
@@ -52,7 +52,7 @@ namespace XDCommon.PokemonDefinitions
             {
                 var itemType = (BattleBingoItemType)iso.CommonRel.ExtractedFile.GetByteAtOffset(mysteryOffset++);
                 var panelPosition = iso.CommonRel.ExtractedFile.GetByteAtOffset(mysteryOffset++);
-                var panel = new BattleBingoPanel(itemType, iso);
+                var panel = new BattleBingoPanel(itemType);
                 if (panelPosition < panels.Count)
                     panels.Insert(panelPosition, panel);
                 else

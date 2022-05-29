@@ -21,20 +21,17 @@ namespace XDCommon.PokemonDefinitions
 
     public class BattleBingoPanel
     {
-        int index;
-        ISO iso;
-
         public BattleBingoPanelType PanelType { get; }
         public BattleBingoPokemon BingoPokemon { get; }
         public BattleBingoItemType BingoItem { get; }
 
-        public BattleBingoPanel(BattleBingoPokemon bingoPokemon, ISO iso)
+        public BattleBingoPanel(BattleBingoPokemon bingoPokemon)
         {
             PanelType = BattleBingoPanelType.Pokemon;
             BingoPokemon = bingoPokemon;
         }
 
-        public BattleBingoPanel(BattleBingoItemType bingoItem, ISO iso)
+        public BattleBingoPanel(BattleBingoItemType bingoItem)
         {
             PanelType = BattleBingoPanelType.Mystery;
             BingoItem = bingoItem;
