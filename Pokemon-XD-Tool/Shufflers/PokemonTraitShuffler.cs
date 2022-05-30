@@ -53,7 +53,7 @@ namespace Randomizer.Shufflers
                 foreach (var poke in extractedGame.ValidPokemon)
                 {
                     // prevent loops and multiple pokemon evolving into the same pokemon
-                    var pokeFilter = extractedGame.ValidPokemon.Where(p => !pokeEvosRandomized.Contains(p.Index));
+                    var pokeFilter = extractedGame.ValidPokemon.Where(p => p.Index != poke.Index && !pokeEvosRandomized.Contains(p.Index));
                     var isEevee = poke.Name.Equals("eevee", StringComparison.InvariantCultureIgnoreCase);
 
                     // check for eevee, don't bother with type filtering
@@ -65,9 +65,10 @@ namespace Randomizer.Shufflers
                     for (int i = 0; i < poke.Evolutions.Length; i++)
                     {
                         var evolution = poke.Evolutions[i];
-                        if (evolution.EvolutionMethod == EvolutionMethods.None && i > 0) continue;
+                        if (evolution.EvolutionMethod == EvolutionMethods.None && i > 0) 
+                            continue;
 
-                        if (settings.EvolutionHasSimilarStrength)
+                        if (settings.EvolutionHasSimilarStrength && pokeFilter.Any())
                         {
                             var similarStrengthPoke = evolution.EvolutionMethod != EvolutionMethods.None ? evolution.EvolvesInto : poke.Index;
                             pokeFilter = Helpers.GetSimilarBsts(similarStrengthPoke, pokeFilter, extractedGame.PokemonList);

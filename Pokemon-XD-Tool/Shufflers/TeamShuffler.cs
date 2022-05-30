@@ -143,7 +143,7 @@ namespace Randomizer.Shufflers
             if (settings.ForceFullyEvolved && forceFullyEvolved)
             {
                 var currPoke = extractedGame.PokemonList[pokemon.Pokemon];
-                while (currPoke.Evolutions.Any(e => e.EvolvesInto > 0))
+                while (currPoke.Evolutions.Any(e => e.EvolutionMethod != EvolutionMethods.None))
                 {
                     if (Helpers.CheckForSplitOrEndEvolution(currPoke, out var count) && count > 0)
                     {
