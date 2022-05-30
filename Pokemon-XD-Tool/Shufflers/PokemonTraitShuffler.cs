@@ -65,9 +65,10 @@ namespace Randomizer.Shufflers
                     for (int i = 0; i < poke.Evolutions.Length; i++)
                     {
                         var evolution = poke.Evolutions[i];
-                        if (evolution.EvolutionMethod == EvolutionMethods.None && i > 0) continue;
+                        if (evolution.EvolutionMethod == EvolutionMethods.None && i > 0) 
+                            continue;
 
-                        if (settings.EvolutionHasSimilarStrength)
+                        if (settings.EvolutionHasSimilarStrength && pokeFilter.Any())
                         {
                             var similarStrengthPoke = evolution.EvolutionMethod != EvolutionMethods.None ? evolution.EvolvesInto : poke.Index;
                             pokeFilter = Helpers.GetSimilarBsts(similarStrengthPoke, pokeFilter, extractedGame.PokemonList);
