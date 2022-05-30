@@ -143,7 +143,7 @@ namespace XDCommon
             }
             set
             {
-                AddOrUpdateAppSettings(nameof(PokemonEasierFinalEvolutionLevel), value.ToString());
+                AddOrUpdateAppSettings(nameof(PokemonEasierSecondEvolutionLevel), value.ToString());
             }
         }
 

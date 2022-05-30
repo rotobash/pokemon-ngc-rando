@@ -36,13 +36,7 @@ namespace Randomizer
             this.extractDirLabel = new System.Windows.Forms.Label();
             this.browseForDirButton = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.pokemonBSTSelector = new System.Windows.Forms.NumericUpDown();
-            this.movePower = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.fileStreamCheck = new System.Windows.Forms.CheckBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.bstRangeSelector = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -50,6 +44,12 @@ namespace Randomizer
             this.pokemonSecondEvolutionLevelSelector = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.fileStreamCheck = new System.Windows.Forms.CheckBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.movePower = new System.Windows.Forms.NumericUpDown();
+            this.pokemonBSTSelector = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.pokemonImpossibleEvolutionLevelSelector = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
@@ -57,12 +57,12 @@ namespace Randomizer
             this.infoToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pokemonBSTSelector)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.movePower)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bstRangeSelector)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pokemonFinalEvolutionLevelSelector)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pokemonSecondEvolutionLevelSelector)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.movePower)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pokemonBSTSelector)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pokemonImpossibleEvolutionLevelSelector)).BeginInit();
             this.SuspendLayout();
             // 
@@ -151,67 +151,6 @@ namespace Randomizer
             this.label7.Text = "Easier Evolution Level:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(18, 155);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(93, 30);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Good Pokemon BST:";
-            // 
-            // pokemonBSTSelector
-            // 
-            this.pokemonBSTSelector.Location = new System.Drawing.Point(129, 158);
-            this.pokemonBSTSelector.Maximum = new decimal(new int[] {
-            680,
-            0,
-            0,
-            0});
-            this.pokemonBSTSelector.Minimum = new decimal(new int[] {
-            180,
-            0,
-            0,
-            0});
-            this.pokemonBSTSelector.Name = "pokemonBSTSelector";
-            this.pokemonBSTSelector.Size = new System.Drawing.Size(169, 23);
-            this.pokemonBSTSelector.TabIndex = 5;
-            this.infoToolTip.SetToolTip(this.pokemonBSTSelector, "Minimum base stat total for a move to be considered \"good\".");
-            this.pokemonBSTSelector.Value = new decimal(new int[] {
-            180,
-            0,
-            0,
-            0});
-            this.pokemonBSTSelector.ValueChanged += new System.EventHandler(this.pokemonBSTSelector_ValueChanged);
-            // 
-            // movePower
-            // 
-            this.movePower.Location = new System.Drawing.Point(129, 119);
-            this.movePower.Minimum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.movePower.Name = "movePower";
-            this.movePower.Size = new System.Drawing.Size(169, 23);
-            this.movePower.TabIndex = 10;
-            this.infoToolTip.SetToolTip(this.movePower, "Minimum base power for a move to be considered \"good\".");
-            this.movePower.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.movePower.ValueChanged += new System.EventHandler(this.movePower_ValueChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(18, 116);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(91, 30);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Good Damging Move Power:";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -220,27 +159,6 @@ namespace Randomizer
             this.label2.Size = new System.Drawing.Size(97, 15);
             this.label2.TabIndex = 0;
             this.label2.Text = "Extract Directory:";
-            // 
-            // fileStreamCheck
-            // 
-            this.fileStreamCheck.AutoSize = true;
-            this.fileStreamCheck.Location = new System.Drawing.Point(129, 18);
-            this.fileStreamCheck.Name = "fileStreamCheck";
-            this.fileStreamCheck.Size = new System.Drawing.Size(42, 19);
-            this.fileStreamCheck.TabIndex = 7;
-            this.fileStreamCheck.Text = "On";
-            this.infoToolTip.SetToolTip(this.fileStreamCheck, resources.GetString("fileStreamCheck.ToolTip"));
-            this.fileStreamCheck.UseVisualStyleBackColor = true;
-            this.fileStreamCheck.CheckedChanged += new System.EventHandler(this.memoryStreamCheck_CheckedChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(18, 15);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(92, 15);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Use File Streams";
             // 
             // label8
             // 
@@ -352,6 +270,88 @@ namespace Randomizer
             this.label10.TabIndex = 15;
             this.label10.Text = "Second Stage";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(18, 15);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(92, 15);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Use File Streams";
+            // 
+            // fileStreamCheck
+            // 
+            this.fileStreamCheck.AutoSize = true;
+            this.fileStreamCheck.Location = new System.Drawing.Point(129, 18);
+            this.fileStreamCheck.Name = "fileStreamCheck";
+            this.fileStreamCheck.Size = new System.Drawing.Size(42, 19);
+            this.fileStreamCheck.TabIndex = 7;
+            this.fileStreamCheck.Text = "On";
+            this.infoToolTip.SetToolTip(this.fileStreamCheck, resources.GetString("fileStreamCheck.ToolTip"));
+            this.fileStreamCheck.UseVisualStyleBackColor = true;
+            this.fileStreamCheck.CheckedChanged += new System.EventHandler(this.memoryStreamCheck_CheckedChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(18, 116);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(91, 30);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Good Damging Move Power:";
+            // 
+            // movePower
+            // 
+            this.movePower.Location = new System.Drawing.Point(129, 119);
+            this.movePower.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.movePower.Name = "movePower";
+            this.movePower.Size = new System.Drawing.Size(169, 23);
+            this.movePower.TabIndex = 10;
+            this.infoToolTip.SetToolTip(this.movePower, "Minimum base power for a move to be considered \"good\".");
+            this.movePower.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.movePower.ValueChanged += new System.EventHandler(this.movePower_ValueChanged);
+            // 
+            // pokemonBSTSelector
+            // 
+            this.pokemonBSTSelector.Location = new System.Drawing.Point(129, 158);
+            this.pokemonBSTSelector.Maximum = new decimal(new int[] {
+            680,
+            0,
+            0,
+            0});
+            this.pokemonBSTSelector.Minimum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            this.pokemonBSTSelector.Name = "pokemonBSTSelector";
+            this.pokemonBSTSelector.Size = new System.Drawing.Size(169, 23);
+            this.pokemonBSTSelector.TabIndex = 5;
+            this.infoToolTip.SetToolTip(this.pokemonBSTSelector, "Minimum base stat total for a move to be considered \"good\".");
+            this.pokemonBSTSelector.Value = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            this.pokemonBSTSelector.ValueChanged += new System.EventHandler(this.pokemonBSTSelector_ValueChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(18, 155);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(93, 30);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Good Pokemon BST:";
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -378,6 +378,7 @@ namespace Randomizer
             0,
             0,
             0});
+            this.pokemonImpossibleEvolutionLevelSelector.ValueChanged += new System.EventHandler(this.pokemonImpossibleEvolutionLevelSelector_ValueChanged);
             // 
             // label1
             // 
@@ -400,13 +401,13 @@ namespace Randomizer
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pokemonBSTSelector)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.movePower)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bstRangeSelector)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pokemonFinalEvolutionLevelSelector)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pokemonSecondEvolutionLevelSelector)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.movePower)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pokemonBSTSelector)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pokemonImpossibleEvolutionLevelSelector)).EndInit();
             this.ResumeLayout(false);
 

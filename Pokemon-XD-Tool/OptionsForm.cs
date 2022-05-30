@@ -25,6 +25,7 @@ namespace Randomizer
             pokemonImpossibleEvolutionLevelSelector.Value = Configuration.PokemonImpossibleEvolutionLevel;
             pokemonFinalEvolutionLevelSelector.Value = Configuration.PokemonEasierFinalEvolutionLevel;
             pokemonSecondEvolutionLevelSelector.Value = Configuration.PokemonEasierSecondEvolutionLevel;
+            bstRangeSelector.Value = Configuration.BSTRange;
             movePower.Value = Configuration.GoodDamagingMovePower;
             fileStreamCheck.Checked = !Configuration.UseMemoryStreams;
             browseForDirButton.Enabled = !fileStreamCheck.Checked;
@@ -76,6 +77,11 @@ namespace Randomizer
         private void bstRangeNumeric_ValueChanged(object sender, EventArgs e)
         {
             Configuration.BSTRange = (int)bstRangeSelector.Value;
+        }
+
+        private void pokemonImpossibleEvolutionLevelSelector_ValueChanged(object sender, EventArgs e)
+        {
+            Configuration.PokemonImpossibleEvolutionLevel = (int)pokemonImpossibleEvolutionLevelSelector.Value;
         }
     }
 }
