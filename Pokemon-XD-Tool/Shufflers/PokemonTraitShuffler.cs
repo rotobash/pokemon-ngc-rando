@@ -53,7 +53,7 @@ namespace Randomizer.Shufflers
                 foreach (var poke in extractedGame.ValidPokemon)
                 {
                     // prevent loops and multiple pokemon evolving into the same pokemon
-                    var pokeFilter = extractedGame.ValidPokemon.Where(p => !pokeEvosRandomized.Contains(p.Index));
+                    var pokeFilter = extractedGame.ValidPokemon.Where(p => p.Index != poke.Index && !pokeEvosRandomized.Contains(p.Index));
                     var isEevee = poke.Name.Equals("eevee", StringComparison.InvariantCultureIgnoreCase);
 
                     // check for eevee, don't bother with type filtering
