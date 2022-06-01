@@ -246,11 +246,11 @@ namespace XDCommon.PokemonDefinitions
                 Region.Europe, 
                 new Dictionary<string, string>
                 {
-                    { "pocket_menu.fsys", "pocket_menu.msg" },
-                    { "pocket_menu_it.fsys", "pocket_menu.msg" },
-                    { "pocket_menu_ge.fsys", "pocket_menu.msg" },
-                    { "pocket_menu_fr.fsys", "pocket_menu.msg" },
-                    { "pocket_menu_sp.fsys", "pocket_menu.msg" }
+                    { "pocket_menu.fsys", "pocket_menu_uk.msg" },
+                    { "pocket_menu_it.fsys", "pocket_menu_it.msg" },
+                    { "pocket_menu_ge.fsys", "pocket_menu_ge.msg" },
+                    { "pocket_menu_fr.fsys", "pocket_menu_fr.msg" },
+                    { "pocket_menu_sp.fsys", "pocket_menu_sp.msg" }
                 } 
             },
             {  
