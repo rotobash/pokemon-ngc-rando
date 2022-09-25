@@ -563,6 +563,7 @@ namespace Randomizer
             // forceFullyEvolvedLevel
             // 
             this.forceFullyEvolvedLevel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.forceFullyEvolvedLevel.Enabled = false;
             this.forceFullyEvolvedLevel.Location = new System.Drawing.Point(623, 3);
             this.forceFullyEvolvedLevel.Name = "forceFullyEvolvedLevel";
             this.forceFullyEvolvedLevel.Size = new System.Drawing.Size(66, 23);

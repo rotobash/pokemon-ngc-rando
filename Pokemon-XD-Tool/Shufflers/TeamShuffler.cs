@@ -16,7 +16,9 @@ namespace Randomizer.Shufflers
             var extractedGame = shuffleSettings.ExtractedGame;
             var random = shuffleSettings.RNG;
 
+            HashSet<int> randomizedPokemon = new HashSet<int>();
             HashSet<int> pickedShadowPokemon = new HashSet<int>();
+
             var potentialItems = settings.BanBadItems ? extractedGame.GoodHeldItems : extractedGame.ValidHeldItems;
             var potentialMoves = extractedGame.MoveList;
             if (settings.MoveSetOptions.RandomizeMovesets && settings.MoveSetOptions.ForceGoodMoves)
@@ -39,8 +41,15 @@ namespace Randomizer.Shufflers
                     Logger.Log($"Trainer {trainer.Name}\nWith:\n");
                     foreach (var pokemon in trainer.Pokemon)
                     {
-                        if (pokemon.Pokemon == 0)
+                        // for some reason in Colosseum, there are duplicate trainers that point to the same pokemon which causes randomization actions to happen multiple times.
+                        // Trainer data and Trainer Pokemon data are stored separately and linked by Ids, so its possible for unused trainers and placeholders to have pokemon set
+                        // to the same pokemon that in-game trainers use. for example, Willie (first trainer) has two level 24 Zigzagoons that are randomized, the randomizer continues on
+                        // and finds a placeholder trainer that uses those same two Zigzagoons then applies randomization again to those pokemon. The trainers are marked as in use and some even have names,
+                        // but there is no way to encounter them in-game normally. So keep a set of pokemon we've randomized and skip if we've already messed with it. 
+                        if (pokemon.Pokemon == 0 || randomizedPokemon.Contains(pokemon.Index))
                             continue;
+                        else
+                            randomizedPokemon.Add(pokemon.Index);
 
                         var originalPoke = pokemon.Pokemon;
 

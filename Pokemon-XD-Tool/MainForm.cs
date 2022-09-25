@@ -111,8 +111,6 @@ namespace Randomizer
             }
 
             ResetControlCollection(pokeSpotTabPage.Controls, isXD);
-            boostTrainerLevelCheck.Enabled = isXD;
-            boostTrainerLevelCheck.Checked &= boostTrainerLevelCheck.Enabled;
 
             tradeBothRandomCheck.Enabled = isXD;
             tradeBothRandomCheck.Checked &= tradeBothRandomCheck.Enabled;
