@@ -31,8 +31,22 @@ namespace Randomizer.Shufflers
             var random = shuffleSettings.RNG;
 
             Logger.Log("=============================== Moves ===============================\n\n");
+
+            if (settings.MoveAnimationType != MoveAnimationType.Unchanged)
+            {
+                Logger.Log("Turning off move animations.\n");
+            }
+
             foreach (var move in extractedGame.ValidMoves)
             {
+                switch (settings.MoveAnimationType)
+                {
+                    case MoveAnimationType.None:
+                        move.AnimationID = 0;
+                        break;
+                    default:
+                        break;
+                }
 
                 Logger.Log($"{move.Name}\n");
                 if (settings.RandomMovePower && move.BasePower > 0)

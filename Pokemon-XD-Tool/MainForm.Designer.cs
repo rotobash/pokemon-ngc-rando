@@ -155,6 +155,7 @@ namespace Randomizer
             this.movePPCheck = new System.Windows.Forms.CheckBox();
             this.moveAccCheck = new System.Windows.Forms.CheckBox();
             this.ignoreOHKOMovesAccuracyCheck = new System.Windows.Forms.CheckBox();
+            this.turnOffAnimationCheck = new System.Windows.Forms.CheckBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.movesetsForceGoodDamagingMoveCheck = new System.Windows.Forms.CheckBox();
@@ -718,8 +719,8 @@ namespace Randomizer
             this.tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
             this.tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel29.Controls.Add(this.randomizePokeSpotsCheck, 1, 0);
-            this.tableLayoutPanel29.Controls.Add(this.boostPokeSpotLevelPercent, 5, 1);
-            this.tableLayoutPanel29.Controls.Add(this.pokeSpotCatchMinimum, 5, 0);
+            this.tableLayoutPanel29.Controls.Add(this.boostPokeSpotLevelPercent, 5, 2);
+            this.tableLayoutPanel29.Controls.Add(this.pokeSpotCatchMinimum, 5, 1);
             this.tableLayoutPanel29.Controls.Add(this.easyBonslyCheck, 1, 1);
             this.tableLayoutPanel29.Controls.Add(this.boostPokeSpotLevelCheck, 4, 2);
             this.tableLayoutPanel29.Controls.Add(this.minimumPokeSpotCatchRate, 4, 1);
@@ -750,7 +751,7 @@ namespace Randomizer
             // 
             this.boostPokeSpotLevelPercent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.boostPokeSpotLevelPercent.Enabled = false;
-            this.boostPokeSpotLevelPercent.Location = new System.Drawing.Point(624, 38);
+            this.boostPokeSpotLevelPercent.Location = new System.Drawing.Point(624, 73);
             this.boostPokeSpotLevelPercent.Maximum = new decimal(new int[] {
             50,
             0,
@@ -770,7 +771,7 @@ namespace Randomizer
             // 
             this.pokeSpotCatchMinimum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pokeSpotCatchMinimum.Enabled = false;
-            this.pokeSpotCatchMinimum.Location = new System.Drawing.Point(624, 3);
+            this.pokeSpotCatchMinimum.Location = new System.Drawing.Point(624, 38);
             this.pokeSpotCatchMinimum.Maximum = new decimal(new int[] {
             255,
             0,
@@ -812,6 +813,7 @@ namespace Randomizer
             this.infoToolTip.SetToolTip(this.boostPokeSpotLevelCheck, "All PokeSpot Pokemon will have their levels boosted/de\r\ncreased by this percent.\r" +
         "\nFrom -50 to 50.");
             this.boostPokeSpotLevelCheck.UseVisualStyleBackColor = true;
+            this.boostPokeSpotLevelCheck.CheckedChanged += new System.EventHandler(this.boostPokeSpotLevelCheck_CheckedChanged);
             // 
             // minimumPokeSpotCatchRate
             // 
@@ -823,6 +825,7 @@ namespace Randomizer
             this.minimumPokeSpotCatchRate.Text = "Set Minimum Catch Rate";
             this.infoToolTip.SetToolTip(this.minimumPokeSpotCatchRate, "From 1 to 255.");
             this.minimumPokeSpotCatchRate.UseVisualStyleBackColor = true;
+            this.minimumPokeSpotCatchRate.CheckedChanged += new System.EventHandler(this.minimumPokeSpotCatchRate_CheckedChanged);
             // 
             // useSimilarBSTsPokeSpotCheck
             // 
@@ -2771,16 +2774,18 @@ namespace Randomizer
             // 
             // tableLayoutPanel11
             // 
-            this.tableLayoutPanel11.ColumnCount = 3;
+            this.tableLayoutPanel11.ColumnCount = 4;
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel11.Controls.Add(this.moveCategoryCheck, 2, 1);
             this.tableLayoutPanel11.Controls.Add(this.movePowerCheck, 1, 0);
             this.tableLayoutPanel11.Controls.Add(this.moveTypeCheck, 2, 0);
             this.tableLayoutPanel11.Controls.Add(this.movePPCheck, 1, 1);
             this.tableLayoutPanel11.Controls.Add(this.moveAccCheck, 1, 2);
             this.tableLayoutPanel11.Controls.Add(this.ignoreOHKOMovesAccuracyCheck, 1, 3);
+            this.tableLayoutPanel11.Controls.Add(this.turnOffAnimationCheck, 2, 3);
             this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel11.Location = new System.Drawing.Point(3, 19);
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
@@ -2860,6 +2865,17 @@ namespace Randomizer
             this.ignoreOHKOMovesAccuracyCheck.TabIndex = 20;
             this.ignoreOHKOMovesAccuracyCheck.Text = "Ignore OHKO Moves";
             this.ignoreOHKOMovesAccuracyCheck.UseVisualStyleBackColor = true;
+            // 
+            // turnOffAnimationCheck
+            // 
+            this.turnOffAnimationCheck.AutoSize = true;
+            this.turnOffAnimationCheck.Location = new System.Drawing.Point(353, 84);
+            this.turnOffAnimationCheck.Name = "turnOffAnimationCheck";
+            this.turnOffAnimationCheck.Size = new System.Drawing.Size(134, 19);
+            this.turnOffAnimationCheck.TabIndex = 21;
+            this.turnOffAnimationCheck.Text = "Turn Off Animations";
+            this.infoToolTip.SetToolTip(this.turnOffAnimationCheck, "Makes the game faster at the cost of its soul");
+            this.turnOffAnimationCheck.UseVisualStyleBackColor = true;
             // 
             // groupBox10
             // 
@@ -3943,6 +3959,7 @@ namespace Randomizer
         private System.Windows.Forms.CheckBox boostPokeSpotLevelCheck;
         private System.Windows.Forms.CheckBox minimumPokeSpotCatchRate;
         private System.Windows.Forms.CheckBox useSimilarBSTsPokeSpotCheck;
+        private System.Windows.Forms.CheckBox turnOffAnimationCheck;
     }
 }
 

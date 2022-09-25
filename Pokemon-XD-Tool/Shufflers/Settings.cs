@@ -92,6 +92,7 @@
         public bool RandomMovePP { get; set; }
         public bool RandomMoveTypes { get; set; }
         public bool RandomMoveCategory { get; set; }
+        public MoveAnimationType MoveAnimationType { get; set; } // use enum for now, but 
     }
 
     public struct ItemShufflerSettings
@@ -166,10 +167,16 @@
     }
 
     public enum CatchRateAdjustmentType 
-    { 
-        None, 
+    {
+        Unchanged, 
         Minimum, 
         True, 
-        Adjusted 
+        Adjusted
+    }
+    public enum MoveAnimationType
+    {
+        Unchanged,
+        None,
+        Random
     }
 }

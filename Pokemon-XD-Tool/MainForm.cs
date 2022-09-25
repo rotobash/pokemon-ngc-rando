@@ -402,6 +402,7 @@ namespace Randomizer
                     RandomMoveTypes = moveTypeCheck.Checked,
                     RandomMoveCategory = moveCategoryCheck.Checked,
                     IgnoreOHKOMoveAcc = ignoreOHKOMovesAccuracyCheck.Checked,
+                    MoveAnimationType = turnOffAnimationCheck.Checked ? MoveAnimationType.None : MoveAnimationType.Unchanged
                 },
                 ItemShufflerSettings = new ItemShufflerSettings
                 {
@@ -564,6 +565,7 @@ namespace Randomizer
             moveTypeCheck.Checked = settings.MoveShufflerSettings.RandomMoveTypes;
             moveCategoryCheck.Checked = settings.MoveShufflerSettings.RandomMoveCategory;
             ignoreOHKOMovesAccuracyCheck.Checked = settings.MoveShufflerSettings.IgnoreOHKOMoveAcc;
+            turnOffAnimationCheck.Checked = settings.MoveShufflerSettings.MoveAnimationType == MoveAnimationType.None;
 
             // items
             // use the enabled property so we don't load in disabled settings and crash the program
@@ -701,15 +703,24 @@ namespace Randomizer
         {
             forceFullyEvolvedLevel.Enabled = forceFullyEvovledLevelCheck.Checked;
         }
+
         private void boostTrainerLevelCheck_CheckedChanged(object sender, EventArgs e)
         {
             boostTrainerLevelPercent.Enabled = boostTrainerLevelCheck.Checked;
         }
+
+        private void trainerCatchRateComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            shadowCatchMinimum.Visible = (CatchRateAdjustmentType)trainerCatchRateComboBox.SelectedItem == CatchRateAdjustmentType.Minimum;
+            shadowCatchMinimum.Enabled = shadowCatchMinimum.Visible;
+        }
+
         private void boostPokeSpotLevelCheck_CheckedChanged(object sender, EventArgs e)
         {
             boostPokeSpotLevelPercent.Enabled = boostPokeSpotLevelCheck.Checked;
         }
-        private void boostPokeSpotCatchRate_CheckedChanged(object sender, EventArgs e)
+
+        private void minimumPokeSpotCatchRate_CheckedChanged(object sender, EventArgs e)
         {
             pokeSpotCatchMinimum.Enabled = minimumPokeSpotCatchRate.Checked;
         }
@@ -892,12 +903,6 @@ namespace Randomizer
                     Close();
                 }
             }
-        }
-
-        private void trainerCatchRateComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            shadowCatchMinimum.Visible = (CatchRateAdjustmentType)trainerCatchRateComboBox.SelectedItem == CatchRateAdjustmentType.Minimum;
-            shadowCatchMinimum.Enabled = shadowCatchMinimum.Visible;
         }
     }
 }
