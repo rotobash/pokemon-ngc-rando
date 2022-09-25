@@ -705,15 +705,24 @@ namespace Randomizer
         {
             forceFullyEvolvedLevel.Enabled = forceFullyEvovledLevelCheck.Checked;
         }
+
         private void boostTrainerLevelCheck_CheckedChanged(object sender, EventArgs e)
         {
             boostTrainerLevelPercent.Enabled = boostTrainerLevelCheck.Checked;
         }
+
+        private void trainerCatchRateComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            shadowCatchMinimum.Visible = (CatchRateAdjustmentType)trainerCatchRateComboBox.SelectedItem == CatchRateAdjustmentType.Minimum;
+            shadowCatchMinimum.Enabled = shadowCatchMinimum.Visible;
+        }
+
         private void boostPokeSpotLevelCheck_CheckedChanged(object sender, EventArgs e)
         {
             boostPokeSpotLevelPercent.Enabled = boostPokeSpotLevelCheck.Checked;
         }
-        private void boostPokeSpotCatchRate_CheckedChanged(object sender, EventArgs e)
+
+        private void minimumPokeSpotCatchRate_CheckedChanged(object sender, EventArgs e)
         {
             pokeSpotCatchMinimum.Enabled = minimumPokeSpotCatchRate.Checked;
         }
@@ -896,12 +905,6 @@ namespace Randomizer
                     Close();
                 }
             }
-        }
-
-        private void trainerCatchRateComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            shadowCatchMinimum.Visible = (CatchRateAdjustmentType)trainerCatchRateComboBox.SelectedItem == CatchRateAdjustmentType.Minimum;
-            shadowCatchMinimum.Enabled = shadowCatchMinimum.Visible;
         }
     }
 }

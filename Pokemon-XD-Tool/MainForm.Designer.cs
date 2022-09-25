@@ -155,6 +155,7 @@ namespace Randomizer
             this.movePPCheck = new System.Windows.Forms.CheckBox();
             this.moveAccCheck = new System.Windows.Forms.CheckBox();
             this.ignoreOHKOMovesAccuracyCheck = new System.Windows.Forms.CheckBox();
+            this.turnOffAnimationCheck = new System.Windows.Forms.CheckBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.movesetsForceGoodDamagingMoveCheck = new System.Windows.Forms.CheckBox();
@@ -220,7 +221,6 @@ namespace Randomizer
             this.tmGroupBox = new System.Windows.Forms.GroupBox();
             this.openSettingsDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveSettingsDialog = new System.Windows.Forms.SaveFileDialog();
-            this.turnOffAnimationCheck = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gamePictureBox)).BeginInit();
             this.settingsTab.SuspendLayout();
@@ -564,6 +564,7 @@ namespace Randomizer
             // forceFullyEvolvedLevel
             // 
             this.forceFullyEvolvedLevel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.forceFullyEvolvedLevel.Enabled = false;
             this.forceFullyEvolvedLevel.Location = new System.Drawing.Point(623, 3);
             this.forceFullyEvolvedLevel.Name = "forceFullyEvolvedLevel";
             this.forceFullyEvolvedLevel.Size = new System.Drawing.Size(66, 23);
@@ -812,6 +813,7 @@ namespace Randomizer
             this.infoToolTip.SetToolTip(this.boostPokeSpotLevelCheck, "All PokeSpot Pokemon will have their levels boosted/de\r\ncreased by this percent.\r" +
         "\nFrom -50 to 50.");
             this.boostPokeSpotLevelCheck.UseVisualStyleBackColor = true;
+            this.boostPokeSpotLevelCheck.CheckedChanged += new System.EventHandler(this.boostPokeSpotLevelCheck_CheckedChanged);
             // 
             // minimumPokeSpotCatchRate
             // 
@@ -823,6 +825,7 @@ namespace Randomizer
             this.minimumPokeSpotCatchRate.Text = "Set Minimum Catch Rate";
             this.infoToolTip.SetToolTip(this.minimumPokeSpotCatchRate, "From 1 to 255.");
             this.minimumPokeSpotCatchRate.UseVisualStyleBackColor = true;
+            this.minimumPokeSpotCatchRate.CheckedChanged += new System.EventHandler(this.minimumPokeSpotCatchRate_CheckedChanged);
             // 
             // useSimilarBSTsPokeSpotCheck
             // 
@@ -2863,6 +2866,17 @@ namespace Randomizer
             this.ignoreOHKOMovesAccuracyCheck.Text = "Ignore OHKO Moves";
             this.ignoreOHKOMovesAccuracyCheck.UseVisualStyleBackColor = true;
             // 
+            // turnOffAnimationCheck
+            // 
+            this.turnOffAnimationCheck.AutoSize = true;
+            this.turnOffAnimationCheck.Location = new System.Drawing.Point(353, 84);
+            this.turnOffAnimationCheck.Name = "turnOffAnimationCheck";
+            this.turnOffAnimationCheck.Size = new System.Drawing.Size(134, 19);
+            this.turnOffAnimationCheck.TabIndex = 21;
+            this.turnOffAnimationCheck.Text = "Turn Off Animations";
+            this.infoToolTip.SetToolTip(this.turnOffAnimationCheck, "Makes the game faster at the cost of its soul");
+            this.turnOffAnimationCheck.UseVisualStyleBackColor = true;
+            // 
             // groupBox10
             // 
             this.tableLayoutPanel6.SetColumnSpan(this.groupBox10, 2);
@@ -3638,17 +3652,6 @@ namespace Randomizer
             // 
             this.saveSettingsDialog.DefaultExt = "settings";
             this.saveSettingsDialog.Filter = "Settings File|*.settings";
-            // 
-            // turnOffAnimationCheck
-            // 
-            this.turnOffAnimationCheck.AutoSize = true;
-            this.turnOffAnimationCheck.Location = new System.Drawing.Point(353, 84);
-            this.turnOffAnimationCheck.Name = "turnOffAnimationCheck";
-            this.turnOffAnimationCheck.Size = new System.Drawing.Size(134, 19);
-            this.turnOffAnimationCheck.TabIndex = 21;
-            this.turnOffAnimationCheck.Text = "Turn Off Animations";
-            this.infoToolTip.SetToolTip(this.turnOffAnimationCheck, "Makes the game faster at the cost of its soul");
-            this.turnOffAnimationCheck.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
