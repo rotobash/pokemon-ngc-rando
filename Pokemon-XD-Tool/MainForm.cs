@@ -44,6 +44,12 @@ namespace Randomizer
                 prngDropDown.SelectedItem = choice;
             }
 
+            foreach (var choice in Enum.GetValues<CatchRateAdjustmentType>().Reverse())
+            {
+                trainerCatchRateComboBox.Items.Insert(0, choice);
+                trainerCatchRateComboBox.SelectedItem = choice;
+            }
+
             generateLogCheck.Checked = Configuration.Verbose;
         }
 
@@ -104,7 +110,7 @@ namespace Randomizer
                 starter2ComboBox.SelectedItem = "UMBREON";
             }
 
-            ResetControlCollection(pokeSpotGroupBox.Controls, isXD);
+            ResetControlCollection(pokeSpotTabPage.Controls, isXD);
             boostTrainerLevelCheck.Enabled = isXD;
             boostTrainerLevelCheck.Checked &= boostTrainerLevelCheck.Enabled;
 
@@ -425,7 +431,7 @@ namespace Randomizer
                     NoDuplicateShadows = noDuplicateShadowPokemonCheck.Checked,
                     RandomizeLegendaryIntoLegendary = legendaryToLegendaryCheck.Checked,
 
-                    SetMinimumShadowCatchRate = minimumShadowCatchRateCheck.Checked,
+                    CatchRateAdjustment = (CatchRateAdjustmentType)trainerCatchRateComboBox.SelectedItem,
                     ShadowCatchRateMinimum = (int)shadowCatchMinimum.Value,
                     BoostTrainerLevel = boostTrainerLevelCheck.Checked,
                     BoostTrainerLevelPercent = (float)(boostTrainerLevelPercent.Value / 100),
@@ -471,11 +477,11 @@ namespace Randomizer
                 {
                     RandomizeHeldItems = randomHeldItemCheck.Checked,
                     RandomizePokeSpotPokemon = randomizePokeSpotsCheck.Checked,
-                    UseSimilarBSTs = useSimilarBSTsCheck.Checked,
                     SetMinimumCatchRate = minimumPokeSpotCatchRate.Checked,
                     MinimumCatchRate = (int)pokeSpotCatchMinimum.Value,
                     BoostPokeSpotLevel = boostPokeSpotLevelCheck.Checked,
                     BoostPokeSpotLevelPercent = (float)(boostPokeSpotLevelPercent.Value / 100),
+                    UseSimilarBSTs = useSimilarBSTsCheck.Checked,
                     BanBadHeldItems = banBadItemsCheck.Checked,
                     EasyBonsly = easyBonslyCheck.Checked
                 }
@@ -589,7 +595,7 @@ namespace Randomizer
             noDuplicateShadowPokemonCheck.Checked = settings.TeamShufflerSettings.NoDuplicateShadows;
             legendaryToLegendaryCheck.Checked = settings.TeamShufflerSettings.RandomizeLegendaryIntoLegendary;
 
-            minimumShadowCatchRateCheck.Checked = settings.TeamShufflerSettings.SetMinimumShadowCatchRate;
+            trainerCatchRateComboBox.SelectedValue = settings.TeamShufflerSettings.CatchRateAdjustment.ToString();
             shadowCatchMinimum.Value = Math.Clamp(settings.TeamShufflerSettings.ShadowCatchRateMinimum, 0, 255);
             boostTrainerLevelCheck.Checked = boostTrainerLevelCheck.Enabled && settings.TeamShufflerSettings.BoostTrainerLevel;
             boostTrainerLevelPercent.Value = boostTrainerLevelPercent.Enabled ? (int)(settings.TeamShufflerSettings.BoostTrainerLevelPercent * 100) : 0;
@@ -704,10 +710,6 @@ namespace Randomizer
         private void boostPokeSpotLevelCheck_CheckedChanged(object sender, EventArgs e)
         {
             boostPokeSpotLevelPercent.Enabled = boostPokeSpotLevelCheck.Checked;
-        }
-        private void boostShadowCatchRateCheck_CheckedChanged(object sender, EventArgs e)
-        {
-            shadowCatchMinimum.Enabled = minimumShadowCatchRateCheck.Checked;
         }
         private void boostPokeSpotCatchRate_CheckedChanged(object sender, EventArgs e)
         {
@@ -892,6 +894,12 @@ namespace Randomizer
                     Close();
                 }
             }
+        }
+
+        private void trainerCatchRateComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            shadowCatchMinimum.Visible = (CatchRateAdjustmentType)trainerCatchRateComboBox.SelectedItem == CatchRateAdjustmentType.Minimum;
+            shadowCatchMinimum.Enabled = shadowCatchMinimum.Visible;
         }
     }
 }

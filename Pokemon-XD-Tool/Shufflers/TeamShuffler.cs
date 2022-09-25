@@ -42,6 +42,8 @@ namespace Randomizer.Shufflers
                         if (pokemon.Pokemon == 0)
                             continue;
 
+                        var originalPoke = pokemon.Pokemon;
+
                         if (settings.RandomizeLegendaryIntoLegendary && pokemon.IsShadow && RandomizerConstants.Legendaries.Contains(pokemon.Pokemon))
                         {
                             var potentialLegendaries = RandomizerConstants.Legendaries;
@@ -58,7 +60,7 @@ namespace Randomizer.Shufflers
                             // pick random legendary
                             var index = random.Next(potentialLegendaries.Length);
                             pokemon.Pokemon = (ushort)potentialLegendaries[index];
-                        } 
+                        }
                         else
                         {
                             RandomizePokemon(random, settings, extractedGame, pokemon);
@@ -73,9 +75,12 @@ namespace Randomizer.Shufflers
                                 {
                                     RandomizePokemon(random, settings, extractedGame, pokemon);
                                 }
+
                                 pickedShadowPokemon.Add(pokemon.Pokemon);
                             }
                         }
+
+                        AdjustPokemonLevels(random, settings, pokemon, extractedGame);
 
                         Logger.Log($"{extractedGame.PokemonList[pokemon.Pokemon].Name}\n");
                         Logger.Log($"Is a shadow Pokemon: {pokemon.IsShadow}\n");
@@ -87,25 +92,9 @@ namespace Randomizer.Shufflers
                             Logger.Log($"Holding a(n) {item.Name}\n");
                         }
 
-                        if (settings.SetMinimumShadowCatchRate && pokemon.IsShadow)
+                        if (pokemon.IsShadow)
                         {
-                            if (pokemon.ShadowCatchRate == 0)
-                            {
-                                pokemon.ShadowCatchRate = extractedGame.PokemonList[pokemon.Pokemon].CatchRate;
-                            }
-                            var catchRate = Math.Max(pokemon.ShadowCatchRate, settings.ShadowCatchRateMinimum);
-                            var catchRateIncrease = (byte)Math.Clamp(catchRate, 0, byte.MaxValue);
-
-                            Logger.Log($"Setting catch rate to {catchRateIncrease}\n");
-                            pokemon.ShadowCatchRate = catchRateIncrease;
-                        }
-
-                        if (settings.BoostTrainerLevel)
-                        {
-                            var level = pokemon.Level;
-                            var levelIncrease = (byte)Math.Clamp(level + level * settings.BoostTrainerLevelPercent, 1, 100);
-                            Logger.Log($"Boosting level from {pokemon.Level} to {levelIncrease}\n");
-                            pokemon.Level = levelIncrease;
+                            AdjustCatchRates(settings, pokemon, originalPoke, extractedGame);
                         }
 
                         RandomizeMoveSet(random, settings, pokemon, extractedGame);
@@ -135,30 +124,6 @@ namespace Randomizer.Shufflers
                 }
                 pokemon.Pokemon = (ushort)pokemonIndex;
             }
-
-            var forceFullyEvolved = pokemon.IsShadow
-                ? pokemon.ShadowLevel >= settings.ForceFullyEvolvedLevel
-                : pokemon.Level >= settings.ForceFullyEvolvedLevel;
-
-            if (settings.ForceFullyEvolved && forceFullyEvolved)
-            {
-                var currPoke = extractedGame.PokemonList[pokemon.Pokemon];
-                while (currPoke.Evolutions.Any(e => e.EvolutionMethod != EvolutionMethods.None))
-                {
-                    if (Helpers.CheckForSplitOrEndEvolution(currPoke, out var count) && count > 0)
-                    {
-                        // randomly pick from the split
-                        var evoInd = random.Next(0, count);
-                        pokemon.Pokemon = currPoke.Evolutions[evoInd].EvolvesInto;
-                    }
-                    else if (count == 1)
-                    {
-                        // it wasn't split or the end but still evolved
-                        pokemon.Pokemon = currPoke.Evolutions[0].EvolvesInto;
-                    }
-                    currPoke = extractedGame.PokemonList[pokemon.Pokemon];
-                }
-            }
         }
 
         public static void RandomizeMoveSet(AbstractRNG random, TeamShufflerSettings settings, ITrainerPokemon pokemon, ExtractedGame extractedGame)
@@ -184,6 +149,75 @@ namespace Randomizer.Shufflers
                     pokemon.SetMove(i, move);
                 }
             }
+        }
+
+        public static void AdjustPokemonLevels(AbstractRNG random, TeamShufflerSettings settings, ITrainerPokemon pokemon, ExtractedGame extractedGame)
+        {
+            var forceFullyEvolved = pokemon.IsShadow
+                ? pokemon.ShadowLevel >= settings.ForceFullyEvolvedLevel
+                : pokemon.Level >= settings.ForceFullyEvolvedLevel;
+
+            if (settings.ForceFullyEvolved && forceFullyEvolved)
+            {
+                var currPoke = extractedGame.PokemonList[pokemon.Pokemon];
+                while (currPoke.Evolutions.Any(e => e.EvolutionMethod != EvolutionMethods.None))
+                {
+                    if (Helpers.CheckForSplitOrEndEvolution(currPoke, out var count) && count > 0)
+                    {
+                        // randomly pick from the split
+                        var evoInd = random.Next(0, count);
+                        pokemon.Pokemon = currPoke.Evolutions[evoInd].EvolvesInto;
+                    }
+                    else if (count == 1)
+                    {
+                        // it wasn't split or the end but still evolved
+                        pokemon.Pokemon = currPoke.Evolutions[0].EvolvesInto;
+                    }
+                    currPoke = extractedGame.PokemonList[pokemon.Pokemon];
+                }
+            }
+
+            if (settings.BoostTrainerLevel)
+            {
+                var level = pokemon.Level;
+                var levelIncrease = (byte)Math.Clamp(level + level * settings.BoostTrainerLevelPercent, 1, 100);
+                Logger.Log($"Boosting level from {pokemon.Level} to {levelIncrease}\n");
+                pokemon.Level = levelIncrease;
+            }
+        }
+
+        public static void AdjustCatchRates(TeamShufflerSettings settings, ITrainerPokemon pokemon, ushort oldPokemon, ExtractedGame extractedGame)
+        {
+            int newCatchRate;
+            switch (settings.CatchRateAdjustment)
+            {
+                // Use the new pokemons catch rate to be the shadow's catch rate
+                case CatchRateAdjustmentType.True:
+                    newCatchRate = extractedGame.PokemonList[pokemon.Pokemon].CatchRate;
+                    break;
+                
+                // Use the old shadow catch rate to calculate the adjusted factor
+                case CatchRateAdjustmentType.Adjusted:
+                {
+                    var currentShadowCatchRate = pokemon.ShadowCatchRate;
+                    var actualCatchRate = extractedGame.PokemonList[oldPokemon].CatchRate;
+                    var newBaseCatchRate = extractedGame.PokemonList[pokemon.Pokemon].CatchRate;
+
+                    newCatchRate = (int)(newBaseCatchRate * (float)(currentShadowCatchRate / actualCatchRate));
+                }
+                break;
+                case CatchRateAdjustmentType.Minimum:
+                {
+                    newCatchRate = Math.Max(pokemon.ShadowCatchRate, settings.ShadowCatchRateMinimum);
+                }
+                break;
+                default:
+                    return;
+            }
+
+            var catchRateIncrease = (byte)Math.Clamp(newCatchRate, 0, byte.MaxValue);
+            Logger.Log($"Setting catch rate to {catchRateIncrease}\n");
+            pokemon.ShadowCatchRate = catchRateIncrease;
         }
     }
 }
