@@ -73,6 +73,25 @@ just so it can continue randomizing</value>
 Note: This will gradually widen the BST range to search for if none are found.
 Note:  If using force fully evolved, this may pick a lower stage with similar BST then evolve it</value>
   </data>
+  <data name="trainerCatchRateComboBox.ToolTip" xml:space="preserve">
+    <value>Adjusts the Shadow Catch Rate on trainer Pokemon. 
+The Shadow Catch Rate is not the same as the Pokemon's true catch rate.
+It's used as an in-game difficulty curve to make later encounters more difficult to capture. 
+
+- None
+Leave as is. This means late game encounters will be as difficult as in the vanilla game
+regardless of the Pokemon.
+
+- Minimum 
+Set a minimum catch rate that a Pokemon must have. From 1 - 255.
+
+- True
+Use the set Pokemon's actual catch rate.
+
+- Adjusted
+Calculates the % between the Shadow Catch Rate and the original Pokemon's true catch rate
+and applies it to the new Pokemon's catch rate.</value>
+  </data>
   <data name="tradeUsePokeSpotCheck.ToolTip" xml:space="preserve">
     <value>Will set the requested Pokemon in a trade to one of the PokeSpot Pokemon. Recommended if randomizing PokeSpots or trades. 
 If randomizing PokeSpots, it may be impossible to find Duking's requested Pokemon and if randomizing trades.

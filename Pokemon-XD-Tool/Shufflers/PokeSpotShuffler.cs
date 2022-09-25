@@ -8,19 +8,6 @@ using XDCommon.PokemonDefinitions;
 
 namespace Randomizer.Shufflers
 {
-    public struct PokeSpotShufflerSettings
-    {
-        public bool RandomizePokeSpotPokemon { get; set; }
-        public bool UseSimilarBSTs { get; set; }
-        public bool RandomizeHeldItems { get; set; }
-        public bool BanBadHeldItems { get; set; }
-        public bool EasyBonsly { get; set; }
-        public bool SetMinimumCatchRate { get; set; }
-        public int MinimumCatchRate { get; set; }
-        public bool BoostPokeSpotLevel { get; set; }
-        public float BoostPokeSpotLevelPercent { get; set; }
-    }
-
     public static class PokeSpotShuffler
     {
         public static void ShufflePokeSpots(ShuffleSettings shuffleSettings, PokeSpotPokemon[] pokeSpotPokemon)

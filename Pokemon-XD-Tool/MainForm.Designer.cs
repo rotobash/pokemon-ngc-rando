@@ -40,29 +40,31 @@ namespace Randomizer
             this.loadSettingButton = new System.Windows.Forms.Button();
             this.saveSettingsButton = new System.Windows.Forms.Button();
             this.settingsTab = new System.Windows.Forms.TabControl();
-            this.trainersTabPage = new System.Windows.Forms.TabPage();
+            this.encountersTabPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.trainerGroupBox = new System.Windows.Forms.GroupBox();
+            this.battlePokemonGroupBox = new System.Windows.Forms.TabControl();
+            this.trainersTabPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel28 = new System.Windows.Forms.TableLayoutPanel();
             this.legendaryToLegendaryCheck = new System.Windows.Forms.CheckBox();
-            this.boostTrainerLevelCheck = new System.Windows.Forms.CheckBox();
             this.boostTrainerLevelPercent = new System.Windows.Forms.NumericUpDown();
             this.forceFullyEvolvedLevel = new System.Windows.Forms.NumericUpDown();
             this.randomizeTrainerPokemonCheck = new System.Windows.Forms.CheckBox();
-            this.forceFullyEvovledLevelCheck = new System.Windows.Forms.CheckBox();
             this.shadowCatchMinimum = new System.Windows.Forms.NumericUpDown();
-            this.minimumShadowCatchRateCheck = new System.Windows.Forms.CheckBox();
             this.noLegendaryOnTrainerCheck = new System.Windows.Forms.CheckBox();
             this.noDuplicateShadowPokemonCheck = new System.Windows.Forms.CheckBox();
             this.useSimilarBSTsCheck = new System.Windows.Forms.CheckBox();
-            this.pokeSpotGroupBox = new System.Windows.Forms.GroupBox();
+            this.trainerCatchRateComboBox = new System.Windows.Forms.ComboBox();
+            this.forceFullyEvovledLevelCheck = new System.Windows.Forms.CheckBox();
+            this.boostTrainerLevelCheck = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pokeSpotTabPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel29 = new System.Windows.Forms.TableLayoutPanel();
             this.randomizePokeSpotsCheck = new System.Windows.Forms.CheckBox();
             this.boostPokeSpotLevelPercent = new System.Windows.Forms.NumericUpDown();
             this.pokeSpotCatchMinimum = new System.Windows.Forms.NumericUpDown();
-            this.minimumPokeSpotCatchRate = new System.Windows.Forms.CheckBox();
-            this.boostPokeSpotLevelCheck = new System.Windows.Forms.CheckBox();
             this.easyBonslyCheck = new System.Windows.Forms.CheckBox();
+            this.boostPokeSpotLevelCheck = new System.Windows.Forms.CheckBox();
+            this.minimumPokeSpotCatchRate = new System.Windows.Forms.CheckBox();
             this.useSimilarBSTsPokeSpotCheck = new System.Windows.Forms.CheckBox();
             this.label20 = new System.Windows.Forms.Label();
             this.checkBox19 = new System.Windows.Forms.CheckBox();
@@ -221,14 +223,15 @@ namespace Randomizer
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gamePictureBox)).BeginInit();
             this.settingsTab.SuspendLayout();
-            this.trainersTabPage.SuspendLayout();
+            this.encountersTabPage.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
-            this.trainerGroupBox.SuspendLayout();
+            this.battlePokemonGroupBox.SuspendLayout();
+            this.trainersTabPage.SuspendLayout();
             this.tableLayoutPanel28.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.boostTrainerLevelPercent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.forceFullyEvolvedLevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.shadowCatchMinimum)).BeginInit();
-            this.pokeSpotGroupBox.SuspendLayout();
+            this.pokeSpotTabPage.SuspendLayout();
             this.tableLayoutPanel29.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.boostPokeSpotLevelPercent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pokeSpotCatchMinimum)).BeginInit();
@@ -419,7 +422,7 @@ namespace Randomizer
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.SetColumnSpan(this.settingsTab, 3);
-            this.settingsTab.Controls.Add(this.trainersTabPage);
+            this.settingsTab.Controls.Add(this.encountersTabPage);
             this.settingsTab.Controls.Add(this.pokemonTabPage);
             this.settingsTab.Controls.Add(this.staticPokemonTab);
             this.settingsTab.Controls.Add(this.tmsTabPage);
@@ -434,26 +437,25 @@ namespace Randomizer
             this.settingsTab.Size = new System.Drawing.Size(726, 308);
             this.settingsTab.TabIndex = 7;
             // 
-            // trainersTabPage
+            // encountersTabPage
             // 
-            this.trainersTabPage.Controls.Add(this.tableLayoutPanel4);
-            this.trainersTabPage.Controls.Add(this.label20);
-            this.trainersTabPage.Controls.Add(this.checkBox19);
-            this.trainersTabPage.Location = new System.Drawing.Point(4, 24);
-            this.trainersTabPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.trainersTabPage.Name = "trainersTabPage";
-            this.trainersTabPage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.trainersTabPage.Size = new System.Drawing.Size(718, 280);
-            this.trainersTabPage.TabIndex = 0;
-            this.trainersTabPage.Text = "Trainers & Wilds";
-            this.trainersTabPage.UseVisualStyleBackColor = true;
+            this.encountersTabPage.Controls.Add(this.tableLayoutPanel4);
+            this.encountersTabPage.Controls.Add(this.label20);
+            this.encountersTabPage.Controls.Add(this.checkBox19);
+            this.encountersTabPage.Location = new System.Drawing.Point(4, 24);
+            this.encountersTabPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.encountersTabPage.Name = "encountersTabPage";
+            this.encountersTabPage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.encountersTabPage.Size = new System.Drawing.Size(718, 280);
+            this.encountersTabPage.TabIndex = 0;
+            this.encountersTabPage.Text = "Encounters";
+            this.encountersTabPage.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 1;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Controls.Add(this.trainerGroupBox, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.pokeSpotGroupBox, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.battlePokemonGroupBox, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -463,47 +465,66 @@ namespace Randomizer
             this.tableLayoutPanel4.Size = new System.Drawing.Size(712, 276);
             this.tableLayoutPanel4.TabIndex = 26;
             // 
-            // trainerGroupBox
+            // battlePokemonGroupBox
             // 
-            this.trainerGroupBox.Controls.Add(this.tableLayoutPanel28);
-            this.trainerGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trainerGroupBox.Location = new System.Drawing.Point(3, 3);
-            this.trainerGroupBox.Name = "trainerGroupBox";
-            this.trainerGroupBox.Size = new System.Drawing.Size(706, 173);
-            this.trainerGroupBox.TabIndex = 27;
-            this.trainerGroupBox.TabStop = false;
-            this.trainerGroupBox.Text = "Trainers";
+            this.battlePokemonGroupBox.Controls.Add(this.trainersTabPage);
+            this.battlePokemonGroupBox.Controls.Add(this.pokeSpotTabPage);
+            this.battlePokemonGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.battlePokemonGroupBox.Location = new System.Drawing.Point(3, 3);
+            this.battlePokemonGroupBox.Name = "battlePokemonGroupBox";
+            this.tableLayoutPanel4.SetRowSpan(this.battlePokemonGroupBox, 2);
+            this.battlePokemonGroupBox.SelectedIndex = 0;
+            this.battlePokemonGroupBox.Size = new System.Drawing.Size(706, 270);
+            this.battlePokemonGroupBox.TabIndex = 13;
+            // 
+            // trainersTabPage
+            // 
+            this.trainersTabPage.Controls.Add(this.tableLayoutPanel28);
+            this.trainersTabPage.Location = new System.Drawing.Point(4, 24);
+            this.trainersTabPage.Name = "trainersTabPage";
+            this.trainersTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.trainersTabPage.Size = new System.Drawing.Size(698, 242);
+            this.trainersTabPage.TabIndex = 0;
+            this.trainersTabPage.Text = "Trainers";
+            this.trainersTabPage.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel28
             // 
-            this.tableLayoutPanel28.ColumnCount = 6;
+            this.tableLayoutPanel28.ColumnCount = 7;
             this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel28.Controls.Add(this.legendaryToLegendaryCheck, 1, 3);
-            this.tableLayoutPanel28.Controls.Add(this.boostTrainerLevelCheck, 4, 2);
-            this.tableLayoutPanel28.Controls.Add(this.boostTrainerLevelPercent, 5, 2);
-            this.tableLayoutPanel28.Controls.Add(this.forceFullyEvolvedLevel, 5, 1);
+            this.tableLayoutPanel28.Controls.Add(this.boostTrainerLevelPercent, 6, 1);
+            this.tableLayoutPanel28.Controls.Add(this.forceFullyEvolvedLevel, 6, 0);
             this.tableLayoutPanel28.Controls.Add(this.randomizeTrainerPokemonCheck, 1, 0);
-            this.tableLayoutPanel28.Controls.Add(this.forceFullyEvovledLevelCheck, 4, 1);
-            this.tableLayoutPanel28.Controls.Add(this.shadowCatchMinimum, 5, 0);
-            this.tableLayoutPanel28.Controls.Add(this.minimumShadowCatchRateCheck, 4, 0);
+            this.tableLayoutPanel28.Controls.Add(this.shadowCatchMinimum, 5, 3);
             this.tableLayoutPanel28.Controls.Add(this.noLegendaryOnTrainerCheck, 1, 1);
             this.tableLayoutPanel28.Controls.Add(this.noDuplicateShadowPokemonCheck, 1, 2);
             this.tableLayoutPanel28.Controls.Add(this.useSimilarBSTsCheck, 1, 4);
+            this.tableLayoutPanel28.Controls.Add(this.trainerCatchRateComboBox, 5, 2);
+            this.tableLayoutPanel28.Controls.Add(this.forceFullyEvovledLevelCheck, 4, 0);
+            this.tableLayoutPanel28.Controls.Add(this.boostTrainerLevelCheck, 4, 1);
+            this.tableLayoutPanel28.Controls.Add(this.label2, 4, 2);
             this.tableLayoutPanel28.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel28.Location = new System.Drawing.Point(3, 19);
+            this.tableLayoutPanel28.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel28.Name = "tableLayoutPanel28";
-            this.tableLayoutPanel28.RowCount = 5;
-            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel28.Size = new System.Drawing.Size(700, 151);
+            this.tableLayoutPanel28.RowCount = 7;
+            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel28.Size = new System.Drawing.Size(692, 236);
             this.tableLayoutPanel28.TabIndex = 12;
             // 
             // legendaryToLegendaryCheck
@@ -511,7 +532,7 @@ namespace Randomizer
             this.legendaryToLegendaryCheck.AutoSize = true;
             this.tableLayoutPanel28.SetColumnSpan(this.legendaryToLegendaryCheck, 2);
             this.legendaryToLegendaryCheck.Enabled = false;
-            this.legendaryToLegendaryCheck.Location = new System.Drawing.Point(38, 93);
+            this.legendaryToLegendaryCheck.Location = new System.Drawing.Point(37, 108);
             this.legendaryToLegendaryCheck.Name = "legendaryToLegendaryCheck";
             this.legendaryToLegendaryCheck.Size = new System.Drawing.Size(225, 19);
             this.legendaryToLegendaryCheck.TabIndex = 28;
@@ -519,24 +540,11 @@ namespace Randomizer
             this.infoToolTip.SetToolTip(this.legendaryToLegendaryCheck, resources.GetString("legendaryToLegendaryCheck.ToolTip"));
             this.legendaryToLegendaryCheck.UseVisualStyleBackColor = true;
             // 
-            // boostTrainerLevelCheck
-            // 
-            this.boostTrainerLevelCheck.AutoSize = true;
-            this.boostTrainerLevelCheck.Location = new System.Drawing.Point(388, 63);
-            this.boostTrainerLevelCheck.Name = "boostTrainerLevelCheck";
-            this.boostTrainerLevelCheck.Size = new System.Drawing.Size(207, 19);
-            this.boostTrainerLevelCheck.TabIndex = 26;
-            this.boostTrainerLevelCheck.Text = "Boost Trainer Pokemon Level By %";
-            this.infoToolTip.SetToolTip(this.boostTrainerLevelCheck, "All trainer Pokemon will have their levels boosted/decreased by this percent.\r\nFr" +
-        "om -50 to 50.");
-            this.boostTrainerLevelCheck.UseVisualStyleBackColor = true;
-            this.boostTrainerLevelCheck.CheckedChanged += new System.EventHandler(this.boostTrainerLevelCheck_CheckedChanged);
-            // 
             // boostTrainerLevelPercent
             // 
             this.boostTrainerLevelPercent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.boostTrainerLevelPercent.Enabled = false;
-            this.boostTrainerLevelPercent.Location = new System.Drawing.Point(633, 63);
+            this.boostTrainerLevelPercent.Location = new System.Drawing.Point(623, 38);
             this.boostTrainerLevelPercent.Maximum = new decimal(new int[] {
             50,
             0,
@@ -548,7 +556,7 @@ namespace Randomizer
             0,
             -2147483648});
             this.boostTrainerLevelPercent.Name = "boostTrainerLevelPercent";
-            this.boostTrainerLevelPercent.Size = new System.Drawing.Size(64, 23);
+            this.boostTrainerLevelPercent.Size = new System.Drawing.Size(66, 23);
             this.boostTrainerLevelPercent.TabIndex = 22;
             this.infoToolTip.SetToolTip(this.boostTrainerLevelPercent, "Boosts the levels on trainer\'s Pokemon by this percent. From -50 to 50.");
             // 
@@ -556,15 +564,15 @@ namespace Randomizer
             // 
             this.forceFullyEvolvedLevel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.forceFullyEvolvedLevel.Enabled = false;
-            this.forceFullyEvolvedLevel.Location = new System.Drawing.Point(633, 33);
+            this.forceFullyEvolvedLevel.Location = new System.Drawing.Point(623, 3);
             this.forceFullyEvolvedLevel.Name = "forceFullyEvolvedLevel";
-            this.forceFullyEvolvedLevel.Size = new System.Drawing.Size(64, 23);
+            this.forceFullyEvolvedLevel.Size = new System.Drawing.Size(66, 23);
             this.forceFullyEvolvedLevel.TabIndex = 21;
             // 
             // randomizeTrainerPokemonCheck
             // 
             this.randomizeTrainerPokemonCheck.AutoSize = true;
-            this.randomizeTrainerPokemonCheck.Location = new System.Drawing.Point(38, 3);
+            this.randomizeTrainerPokemonCheck.Location = new System.Drawing.Point(37, 3);
             this.randomizeTrainerPokemonCheck.Name = "randomizeTrainerPokemonCheck";
             this.randomizeTrainerPokemonCheck.Size = new System.Drawing.Size(139, 19);
             this.randomizeTrainerPokemonCheck.TabIndex = 5;
@@ -574,24 +582,12 @@ namespace Randomizer
             this.randomizeTrainerPokemonCheck.UseVisualStyleBackColor = true;
             this.randomizeTrainerPokemonCheck.CheckedChanged += new System.EventHandler(this.randomizeTrainerPokemonCheck_CheckedChanged);
             // 
-            // forceFullyEvovledLevelCheck
-            // 
-            this.forceFullyEvovledLevelCheck.AutoSize = true;
-            this.forceFullyEvovledLevelCheck.Location = new System.Drawing.Point(388, 33);
-            this.forceFullyEvovledLevelCheck.Name = "forceFullyEvovledLevelCheck";
-            this.forceFullyEvovledLevelCheck.Size = new System.Drawing.Size(173, 19);
-            this.forceFullyEvovledLevelCheck.TabIndex = 24;
-            this.forceFullyEvovledLevelCheck.Text = "Force Fully Evolved By Level";
-            this.infoToolTip.SetToolTip(this.forceFullyEvovledLevelCheck, "If a Pokemon on a trainer greater than or equal to this level, that Pokemon will " +
-        "become fully evolved.");
-            this.forceFullyEvovledLevelCheck.UseVisualStyleBackColor = true;
-            this.forceFullyEvovledLevelCheck.CheckedChanged += new System.EventHandler(this.forceFullyEvovledLevelCheck_CheckedChanged);
-            // 
             // shadowCatchMinimum
             // 
+            this.tableLayoutPanel28.SetColumnSpan(this.shadowCatchMinimum, 2);
             this.shadowCatchMinimum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.shadowCatchMinimum.Enabled = false;
-            this.shadowCatchMinimum.Location = new System.Drawing.Point(633, 3);
+            this.shadowCatchMinimum.Location = new System.Drawing.Point(520, 108);
             this.shadowCatchMinimum.Maximum = new decimal(new int[] {
             255,
             0,
@@ -603,33 +599,20 @@ namespace Randomizer
             0,
             0});
             this.shadowCatchMinimum.Name = "shadowCatchMinimum";
-            this.shadowCatchMinimum.Size = new System.Drawing.Size(64, 23);
+            this.shadowCatchMinimum.Size = new System.Drawing.Size(169, 23);
             this.shadowCatchMinimum.TabIndex = 19;
             this.shadowCatchMinimum.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            // 
-            // minimumShadowCatchRateCheck
-            // 
-            this.minimumShadowCatchRateCheck.AutoSize = true;
-            this.minimumShadowCatchRateCheck.Location = new System.Drawing.Point(388, 3);
-            this.minimumShadowCatchRateCheck.Name = "minimumShadowCatchRateCheck";
-            this.minimumShadowCatchRateCheck.Size = new System.Drawing.Size(158, 19);
-            this.minimumShadowCatchRateCheck.TabIndex = 8;
-            this.minimumShadowCatchRateCheck.Text = "Set Minimum Catch Rate";
-            this.infoToolTip.SetToolTip(this.minimumShadowCatchRateCheck, "Shadow catch rate is independent of regular catch rate to provide an in-game diff" +
-        "iculty curve. \r\nBoosting this won\'t affect PokeSpot Pokemon\'s catch rate. \r\nFrom" +
-        " 1 to 255.");
-            this.minimumShadowCatchRateCheck.UseVisualStyleBackColor = true;
-            this.minimumShadowCatchRateCheck.CheckedChanged += new System.EventHandler(this.boostShadowCatchRateCheck_CheckedChanged);
+            this.shadowCatchMinimum.Visible = false;
             // 
             // noLegendaryOnTrainerCheck
             // 
             this.noLegendaryOnTrainerCheck.AutoSize = true;
             this.noLegendaryOnTrainerCheck.Enabled = false;
-            this.noLegendaryOnTrainerCheck.Location = new System.Drawing.Point(38, 33);
+            this.noLegendaryOnTrainerCheck.Location = new System.Drawing.Point(37, 38);
             this.noLegendaryOnTrainerCheck.Name = "noLegendaryOnTrainerCheck";
             this.noLegendaryOnTrainerCheck.Size = new System.Drawing.Size(143, 19);
             this.noLegendaryOnTrainerCheck.TabIndex = 6;
@@ -642,7 +625,7 @@ namespace Randomizer
             // 
             this.noDuplicateShadowPokemonCheck.AutoSize = true;
             this.noDuplicateShadowPokemonCheck.Enabled = false;
-            this.noDuplicateShadowPokemonCheck.Location = new System.Drawing.Point(38, 63);
+            this.noDuplicateShadowPokemonCheck.Location = new System.Drawing.Point(37, 73);
             this.noDuplicateShadowPokemonCheck.Name = "noDuplicateShadowPokemonCheck";
             this.noDuplicateShadowPokemonCheck.Size = new System.Drawing.Size(145, 19);
             this.noDuplicateShadowPokemonCheck.TabIndex = 27;
@@ -654,7 +637,7 @@ namespace Randomizer
             // 
             this.useSimilarBSTsCheck.AutoSize = true;
             this.useSimilarBSTsCheck.Enabled = false;
-            this.useSimilarBSTsCheck.Location = new System.Drawing.Point(38, 123);
+            this.useSimilarBSTsCheck.Location = new System.Drawing.Point(37, 143);
             this.useSimilarBSTsCheck.Name = "useSimilarBSTsCheck";
             this.useSimilarBSTsCheck.Size = new System.Drawing.Size(110, 19);
             this.useSimilarBSTsCheck.TabIndex = 29;
@@ -662,16 +645,68 @@ namespace Randomizer
             this.infoToolTip.SetToolTip(this.useSimilarBSTsCheck, resources.GetString("useSimilarBSTsCheck.ToolTip"));
             this.useSimilarBSTsCheck.UseVisualStyleBackColor = true;
             // 
-            // pokeSpotGroupBox
+            // trainerCatchRateComboBox
             // 
-            this.pokeSpotGroupBox.Controls.Add(this.tableLayoutPanel29);
-            this.pokeSpotGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pokeSpotGroupBox.Location = new System.Drawing.Point(3, 182);
-            this.pokeSpotGroupBox.Name = "pokeSpotGroupBox";
-            this.pokeSpotGroupBox.Size = new System.Drawing.Size(706, 91);
-            this.pokeSpotGroupBox.TabIndex = 29;
-            this.pokeSpotGroupBox.TabStop = false;
-            this.pokeSpotGroupBox.Text = "PokeSpots";
+            this.tableLayoutPanel28.SetColumnSpan(this.trainerCatchRateComboBox, 2);
+            this.trainerCatchRateComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.trainerCatchRateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.trainerCatchRateComboBox.FormattingEnabled = true;
+            this.trainerCatchRateComboBox.Location = new System.Drawing.Point(520, 73);
+            this.trainerCatchRateComboBox.Name = "trainerCatchRateComboBox";
+            this.trainerCatchRateComboBox.Size = new System.Drawing.Size(169, 23);
+            this.trainerCatchRateComboBox.TabIndex = 30;
+            this.infoToolTip.SetToolTip(this.trainerCatchRateComboBox, resources.GetString("trainerCatchRateComboBox.ToolTip"));
+            this.trainerCatchRateComboBox.SelectedIndexChanged += new System.EventHandler(this.trainerCatchRateComboBox_SelectedIndexChanged);
+            // 
+            // forceFullyEvovledLevelCheck
+            // 
+            this.forceFullyEvovledLevelCheck.AutoSize = true;
+            this.tableLayoutPanel28.SetColumnSpan(this.forceFullyEvovledLevelCheck, 2);
+            this.forceFullyEvovledLevelCheck.Location = new System.Drawing.Point(382, 3);
+            this.forceFullyEvovledLevelCheck.Name = "forceFullyEvovledLevelCheck";
+            this.forceFullyEvovledLevelCheck.Size = new System.Drawing.Size(173, 19);
+            this.forceFullyEvovledLevelCheck.TabIndex = 24;
+            this.forceFullyEvovledLevelCheck.Text = "Force Fully Evolved By Level";
+            this.infoToolTip.SetToolTip(this.forceFullyEvovledLevelCheck, "If a Pokemon on a trainer greater than or equal to this level, that Pokemon will " +
+        "become fully evolved.");
+            this.forceFullyEvovledLevelCheck.UseVisualStyleBackColor = true;
+            this.forceFullyEvovledLevelCheck.CheckedChanged += new System.EventHandler(this.forceFullyEvovledLevelCheck_CheckedChanged);
+            // 
+            // boostTrainerLevelCheck
+            // 
+            this.boostTrainerLevelCheck.AutoSize = true;
+            this.tableLayoutPanel28.SetColumnSpan(this.boostTrainerLevelCheck, 2);
+            this.boostTrainerLevelCheck.Location = new System.Drawing.Point(382, 38);
+            this.boostTrainerLevelCheck.Name = "boostTrainerLevelCheck";
+            this.boostTrainerLevelCheck.Size = new System.Drawing.Size(207, 19);
+            this.boostTrainerLevelCheck.TabIndex = 26;
+            this.boostTrainerLevelCheck.Text = "Boost Trainer Pokemon Level By %";
+            this.infoToolTip.SetToolTip(this.boostTrainerLevelCheck, "All trainer Pokemon will have their levels boosted/decreased by this percent.\r\nFr" +
+        "om -50 to 50.");
+            this.boostTrainerLevelCheck.UseVisualStyleBackColor = true;
+            this.boostTrainerLevelCheck.CheckedChanged += new System.EventHandler(this.boostTrainerLevelCheck_CheckedChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Location = new System.Drawing.Point(382, 73);
+            this.label2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(132, 32);
+            this.label2.TabIndex = 31;
+            this.label2.Text = "Shadow Catch Rates";
+            // 
+            // pokeSpotTabPage
+            // 
+            this.pokeSpotTabPage.Controls.Add(this.tableLayoutPanel29);
+            this.pokeSpotTabPage.Location = new System.Drawing.Point(4, 24);
+            this.pokeSpotTabPage.Name = "pokeSpotTabPage";
+            this.pokeSpotTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.pokeSpotTabPage.Size = new System.Drawing.Size(698, 242);
+            this.pokeSpotTabPage.TabIndex = 1;
+            this.pokeSpotTabPage.Text = "PokeSpots";
+            this.pokeSpotTabPage.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel29
             // 
@@ -685,36 +720,37 @@ namespace Randomizer
             this.tableLayoutPanel29.Controls.Add(this.randomizePokeSpotsCheck, 1, 0);
             this.tableLayoutPanel29.Controls.Add(this.boostPokeSpotLevelPercent, 5, 1);
             this.tableLayoutPanel29.Controls.Add(this.pokeSpotCatchMinimum, 5, 0);
-            this.tableLayoutPanel29.Controls.Add(this.minimumPokeSpotCatchRate, 4, 0);
-            this.tableLayoutPanel29.Controls.Add(this.boostPokeSpotLevelCheck, 4, 1);
             this.tableLayoutPanel29.Controls.Add(this.easyBonslyCheck, 1, 1);
-            this.tableLayoutPanel29.Controls.Add(this.useSimilarBSTsPokeSpotCheck, 2, 0);
+            this.tableLayoutPanel29.Controls.Add(this.boostPokeSpotLevelCheck, 4, 2);
+            this.tableLayoutPanel29.Controls.Add(this.minimumPokeSpotCatchRate, 4, 1);
+            this.tableLayoutPanel29.Controls.Add(this.useSimilarBSTsPokeSpotCheck, 4, 0);
             this.tableLayoutPanel29.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel29.Location = new System.Drawing.Point(3, 19);
+            this.tableLayoutPanel29.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel29.Name = "tableLayoutPanel29";
-            this.tableLayoutPanel29.RowCount = 2;
-            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel29.Size = new System.Drawing.Size(700, 69);
-            this.tableLayoutPanel29.TabIndex = 28;
+            this.tableLayoutPanel29.RowCount = 5;
+            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel29.Size = new System.Drawing.Size(692, 236);
+            this.tableLayoutPanel29.TabIndex = 29;
             // 
             // randomizePokeSpotsCheck
             // 
             this.randomizePokeSpotsCheck.AutoSize = true;
-            this.randomizePokeSpotsCheck.Location = new System.Drawing.Point(38, 3);
+            this.randomizePokeSpotsCheck.Location = new System.Drawing.Point(37, 3);
             this.randomizePokeSpotsCheck.Name = "randomizePokeSpotsCheck";
             this.randomizePokeSpotsCheck.Size = new System.Drawing.Size(143, 19);
             this.randomizePokeSpotsCheck.TabIndex = 16;
             this.randomizePokeSpotsCheck.Text = "Randomize PokeSpots";
             this.randomizePokeSpotsCheck.UseVisualStyleBackColor = true;
-            this.randomizePokeSpotsCheck.CheckedChanged += new System.EventHandler(this.randomizePokeSpotsCheck_CheckedChanged);
             // 
             // boostPokeSpotLevelPercent
             // 
             this.boostPokeSpotLevelPercent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.boostPokeSpotLevelPercent.Enabled = false;
-            this.boostPokeSpotLevelPercent.Location = new System.Drawing.Point(633, 37);
+            this.boostPokeSpotLevelPercent.Location = new System.Drawing.Point(624, 38);
             this.boostPokeSpotLevelPercent.Maximum = new decimal(new int[] {
             50,
             0,
@@ -726,7 +762,7 @@ namespace Randomizer
             0,
             -2147483648});
             this.boostPokeSpotLevelPercent.Name = "boostPokeSpotLevelPercent";
-            this.boostPokeSpotLevelPercent.Size = new System.Drawing.Size(64, 23);
+            this.boostPokeSpotLevelPercent.Size = new System.Drawing.Size(65, 23);
             this.boostPokeSpotLevelPercent.TabIndex = 24;
             this.infoToolTip.SetToolTip(this.boostPokeSpotLevelPercent, "Boosts the levels on trainer\'s Pokemon by this percent. From -50 to 50.");
             // 
@@ -734,7 +770,7 @@ namespace Randomizer
             // 
             this.pokeSpotCatchMinimum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pokeSpotCatchMinimum.Enabled = false;
-            this.pokeSpotCatchMinimum.Location = new System.Drawing.Point(633, 3);
+            this.pokeSpotCatchMinimum.Location = new System.Drawing.Point(624, 3);
             this.pokeSpotCatchMinimum.Maximum = new decimal(new int[] {
             255,
             0,
@@ -746,7 +782,7 @@ namespace Randomizer
             0,
             0});
             this.pokeSpotCatchMinimum.Name = "pokeSpotCatchMinimum";
-            this.pokeSpotCatchMinimum.Size = new System.Drawing.Size(64, 23);
+            this.pokeSpotCatchMinimum.Size = new System.Drawing.Size(65, 23);
             this.pokeSpotCatchMinimum.TabIndex = 17;
             this.pokeSpotCatchMinimum.Value = new decimal(new int[] {
             1,
@@ -754,35 +790,10 @@ namespace Randomizer
             0,
             0});
             // 
-            // minimumPokeSpotCatchRate
-            // 
-            this.minimumPokeSpotCatchRate.AutoSize = true;
-            this.minimumPokeSpotCatchRate.Location = new System.Drawing.Point(388, 3);
-            this.minimumPokeSpotCatchRate.Name = "minimumPokeSpotCatchRate";
-            this.minimumPokeSpotCatchRate.Size = new System.Drawing.Size(158, 19);
-            this.minimumPokeSpotCatchRate.TabIndex = 12;
-            this.minimumPokeSpotCatchRate.Text = "Set Minimum Catch Rate";
-            this.infoToolTip.SetToolTip(this.minimumPokeSpotCatchRate, "From 1 to 255.");
-            this.minimumPokeSpotCatchRate.UseVisualStyleBackColor = true;
-            this.minimumPokeSpotCatchRate.CheckedChanged += new System.EventHandler(this.boostPokeSpotCatchRate_CheckedChanged);
-            // 
-            // boostPokeSpotLevelCheck
-            // 
-            this.boostPokeSpotLevelCheck.AutoSize = true;
-            this.boostPokeSpotLevelCheck.Location = new System.Drawing.Point(388, 37);
-            this.boostPokeSpotLevelCheck.Name = "boostPokeSpotLevelCheck";
-            this.boostPokeSpotLevelCheck.Size = new System.Drawing.Size(222, 19);
-            this.boostPokeSpotLevelCheck.TabIndex = 25;
-            this.boostPokeSpotLevelCheck.Text = "Boost PokeSpot Pokemon Level By %";
-            this.infoToolTip.SetToolTip(this.boostPokeSpotLevelCheck, "All PokeSpot Pokemon will have their levels boosted/de\r\ncreased by this percent.\r" +
-        "\nFrom -50 to 50.");
-            this.boostPokeSpotLevelCheck.UseVisualStyleBackColor = true;
-            this.boostPokeSpotLevelCheck.CheckedChanged += new System.EventHandler(this.boostPokeSpotLevelCheck_CheckedChanged);
-            // 
             // easyBonslyCheck
             // 
             this.easyBonslyCheck.AutoSize = true;
-            this.easyBonslyCheck.Location = new System.Drawing.Point(38, 37);
+            this.easyBonslyCheck.Location = new System.Drawing.Point(37, 38);
             this.easyBonslyCheck.Name = "easyBonslyCheck";
             this.easyBonslyCheck.Size = new System.Drawing.Size(87, 19);
             this.easyBonslyCheck.TabIndex = 15;
@@ -790,11 +801,34 @@ namespace Randomizer
             this.infoToolTip.SetToolTip(this.easyBonslyCheck, "Force Bonsly to appear more often at PokeSpots.");
             this.easyBonslyCheck.UseVisualStyleBackColor = true;
             // 
+            // boostPokeSpotLevelCheck
+            // 
+            this.boostPokeSpotLevelCheck.AutoSize = true;
+            this.boostPokeSpotLevelCheck.Location = new System.Drawing.Point(382, 73);
+            this.boostPokeSpotLevelCheck.Name = "boostPokeSpotLevelCheck";
+            this.boostPokeSpotLevelCheck.Size = new System.Drawing.Size(222, 19);
+            this.boostPokeSpotLevelCheck.TabIndex = 25;
+            this.boostPokeSpotLevelCheck.Text = "Boost PokeSpot Pokemon Level By %";
+            this.infoToolTip.SetToolTip(this.boostPokeSpotLevelCheck, "All PokeSpot Pokemon will have their levels boosted/de\r\ncreased by this percent.\r" +
+        "\nFrom -50 to 50.");
+            this.boostPokeSpotLevelCheck.UseVisualStyleBackColor = true;
+            // 
+            // minimumPokeSpotCatchRate
+            // 
+            this.minimumPokeSpotCatchRate.AutoSize = true;
+            this.minimumPokeSpotCatchRate.Location = new System.Drawing.Point(382, 38);
+            this.minimumPokeSpotCatchRate.Name = "minimumPokeSpotCatchRate";
+            this.minimumPokeSpotCatchRate.Size = new System.Drawing.Size(158, 19);
+            this.minimumPokeSpotCatchRate.TabIndex = 12;
+            this.minimumPokeSpotCatchRate.Text = "Set Minimum Catch Rate";
+            this.infoToolTip.SetToolTip(this.minimumPokeSpotCatchRate, "From 1 to 255.");
+            this.minimumPokeSpotCatchRate.UseVisualStyleBackColor = true;
+            // 
             // useSimilarBSTsPokeSpotCheck
             // 
             this.useSimilarBSTsPokeSpotCheck.AutoSize = true;
             this.useSimilarBSTsPokeSpotCheck.Enabled = false;
-            this.useSimilarBSTsPokeSpotCheck.Location = new System.Drawing.Point(213, 3);
+            this.useSimilarBSTsPokeSpotCheck.Location = new System.Drawing.Point(382, 3);
             this.useSimilarBSTsPokeSpotCheck.Name = "useSimilarBSTsPokeSpotCheck";
             this.useSimilarBSTsPokeSpotCheck.Size = new System.Drawing.Size(110, 19);
             this.useSimilarBSTsPokeSpotCheck.TabIndex = 26;
@@ -3618,16 +3652,17 @@ namespace Randomizer
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gamePictureBox)).EndInit();
             this.settingsTab.ResumeLayout(false);
-            this.trainersTabPage.ResumeLayout(false);
-            this.trainersTabPage.PerformLayout();
+            this.encountersTabPage.ResumeLayout(false);
+            this.encountersTabPage.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
-            this.trainerGroupBox.ResumeLayout(false);
+            this.battlePokemonGroupBox.ResumeLayout(false);
+            this.trainersTabPage.ResumeLayout(false);
             this.tableLayoutPanel28.ResumeLayout(false);
             this.tableLayoutPanel28.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.boostTrainerLevelPercent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.forceFullyEvolvedLevel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.shadowCatchMinimum)).EndInit();
-            this.pokeSpotGroupBox.ResumeLayout(false);
+            this.pokeSpotTabPage.ResumeLayout(false);
             this.tableLayoutPanel29.ResumeLayout(false);
             this.tableLayoutPanel29.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.boostPokeSpotLevelPercent)).EndInit();
@@ -3728,7 +3763,7 @@ namespace Randomizer
         private System.Windows.Forms.Button loadSettingButton;
         private System.Windows.Forms.Button saveSettingsButton;
         private System.Windows.Forms.TabControl settingsTab;
-        private System.Windows.Forms.TabPage trainersTabPage;
+        private System.Windows.Forms.TabPage encountersTabPage;
         private System.Windows.Forms.TabPage tmsTabPage;
         private System.Windows.Forms.TabPage itemsTabPage;
         private System.Windows.Forms.TabPage pokemonTabPage;
@@ -3753,15 +3788,6 @@ namespace Randomizer
         private System.Windows.Forms.Label progressLabel;
         private System.Windows.Forms.Label progressMessageLabel;
         private System.ComponentModel.BackgroundWorker backgroundWorker;
-        private System.Windows.Forms.NumericUpDown shadowCatchMinimum;
-        private System.Windows.Forms.NumericUpDown pokeSpotCatchMinimum;
-        private System.Windows.Forms.CheckBox easyBonslyCheck;
-        private System.Windows.Forms.CheckBox minimumPokeSpotCatchRate;
-        private System.Windows.Forms.CheckBox minimumShadowCatchRateCheck;
-        private System.Windows.Forms.CheckBox noLegendaryOnTrainerCheck;
-        private System.Windows.Forms.CheckBox randomizeTrainerPokemonCheck;
-        private System.Windows.Forms.NumericUpDown boostTrainerLevelPercent;
-        private System.Windows.Forms.NumericUpDown forceFullyEvolvedLevel;
         private System.Windows.Forms.NumericUpDown forceGoodDamagingTutorMovePercent;
         private System.Windows.Forms.CheckBox forceGoodDamagingTutorMoveCheck;
         private System.Windows.Forms.CheckBox randomizeTutorMoveCheck;
@@ -3795,12 +3821,7 @@ namespace Randomizer
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.NumericUpDown boostPokeSpotLevelPercent;
-        private System.Windows.Forms.CheckBox randomizePokeSpotsCheck;
         private System.Windows.Forms.CheckBox noEXPCheck;
-        private System.Windows.Forms.CheckBox boostTrainerLevelCheck;
-        private System.Windows.Forms.CheckBox forceFullyEvovledLevelCheck;
-        private System.Windows.Forms.CheckBox boostPokeSpotLevelCheck;
         private System.Windows.Forms.TabPage staticPokemonTab;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -3874,10 +3895,6 @@ namespace Randomizer
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel25;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel26;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel27;
-        private System.Windows.Forms.GroupBox trainerGroupBox;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel28;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel29;
-        private System.Windows.Forms.GroupBox pokeSpotGroupBox;
         private System.Windows.Forms.OpenFileDialog openSettingsDialog;
         private System.Windows.Forms.SaveFileDialog saveSettingsDialog;
         private System.Windows.Forms.GroupBox pokemonItemGroupBox;
@@ -3898,14 +3915,34 @@ namespace Randomizer
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel32;
         private System.Windows.Forms.ComboBox prngDropDown;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox noDuplicateShadowPokemonCheck;
         private System.Windows.Forms.CheckBox randomlyEndEvolutionsCheck;
         private System.Windows.Forms.CheckBox ignoreOHKOMovesAccuracyCheck;
         private System.Windows.Forms.RadioButton randomizeMovesetsOnlyLegal;
-        private System.Windows.Forms.CheckBox legendaryToLegendaryCheck;
-        private System.Windows.Forms.CheckBox useSimilarBSTsCheck;
-        private System.Windows.Forms.CheckBox useSimilarBSTsPokeSpotCheck;
         private System.Windows.Forms.CheckBox generateLogCheck;
+        private System.Windows.Forms.TabControl battlePokemonGroupBox;
+        private System.Windows.Forms.TabPage trainersTabPage;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel28;
+        private System.Windows.Forms.CheckBox legendaryToLegendaryCheck;
+        private System.Windows.Forms.NumericUpDown boostTrainerLevelPercent;
+        private System.Windows.Forms.NumericUpDown forceFullyEvolvedLevel;
+        private System.Windows.Forms.CheckBox randomizeTrainerPokemonCheck;
+        private System.Windows.Forms.NumericUpDown shadowCatchMinimum;
+        private System.Windows.Forms.CheckBox noLegendaryOnTrainerCheck;
+        private System.Windows.Forms.CheckBox noDuplicateShadowPokemonCheck;
+        private System.Windows.Forms.CheckBox useSimilarBSTsCheck;
+        private System.Windows.Forms.ComboBox trainerCatchRateComboBox;
+        private System.Windows.Forms.CheckBox forceFullyEvovledLevelCheck;
+        private System.Windows.Forms.CheckBox boostTrainerLevelCheck;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TabPage pokeSpotTabPage;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel29;
+        private System.Windows.Forms.CheckBox randomizePokeSpotsCheck;
+        private System.Windows.Forms.NumericUpDown boostPokeSpotLevelPercent;
+        private System.Windows.Forms.NumericUpDown pokeSpotCatchMinimum;
+        private System.Windows.Forms.CheckBox easyBonslyCheck;
+        private System.Windows.Forms.CheckBox boostPokeSpotLevelCheck;
+        private System.Windows.Forms.CheckBox minimumPokeSpotCatchRate;
+        private System.Windows.Forms.CheckBox useSimilarBSTsPokeSpotCheck;
     }
 }
 

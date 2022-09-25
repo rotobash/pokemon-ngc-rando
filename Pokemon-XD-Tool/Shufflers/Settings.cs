@@ -17,7 +17,6 @@
         public StaticPokemonShufflerSettings StaticPokemonShufflerSettings { get; set; }
         public BingoCardShufflerSettings BingoCardShufflerSettings { get; set; }
         public PokeSpotShufflerSettings PokeSpotShufflerSettings { get; set; }
-
     }
 
     public struct PokemonTraitShufflerSettings
@@ -58,7 +57,7 @@
         public bool NoDuplicateShadows { get; set; }
         public bool RandomizeLegendaryIntoLegendary { get; set; }
 
-        public bool SetMinimumShadowCatchRate { get; set; }
+        public CatchRateAdjustmentType CatchRateAdjustment { get; set; }
         public int ShadowCatchRateMinimum { get; set; }
         public bool BoostTrainerLevel { get; set; }
         public float BoostTrainerLevelPercent { get; set; }
@@ -69,6 +68,20 @@
         public bool BanBadItems { get; set; }
         public bool BanBattleCDs { get; set; }
         public RandomMoveSetOptions MoveSetOptions { get; set; }
+    }
+
+    public struct PokeSpotShufflerSettings
+    {
+        public bool RandomizePokeSpotPokemon { get; set; }
+        public bool SetMinimumCatchRate { get; set; }
+        public int MinimumCatchRate { get; set; }
+        public bool BoostPokeSpotLevel { get; set; }
+        public float BoostPokeSpotLevelPercent { get; set; }
+
+        public bool UseSimilarBSTs { get; set; }
+        public bool RandomizeHeldItems { get; set; }
+        public bool BanBadHeldItems { get; set; }
+        public bool EasyBonsly { get; set; }
     }
 
     public struct MoveShufflerSettings
@@ -150,5 +163,13 @@
         Given,
         Requested,
         Both,
+    }
+
+    public enum CatchRateAdjustmentType 
+    { 
+        None, 
+        Minimum, 
+        True, 
+        Adjusted 
     }
 }
