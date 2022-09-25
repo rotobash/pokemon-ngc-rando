@@ -7,6 +7,7 @@ namespace XDCommon.PokemonDefinitions
 {
     public interface ITrainerPokemon
     {
+        int Index { get; }
         ushort Pokemon { get; set; }
         bool IsShadow { get; }
         bool IsSet { get; }
