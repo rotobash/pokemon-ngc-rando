@@ -404,6 +404,7 @@ namespace Randomizer
                     RandomMoveTypes = moveTypeCheck.Checked,
                     RandomMoveCategory = moveCategoryCheck.Checked,
                     IgnoreOHKOMoveAcc = ignoreOHKOMovesAccuracyCheck.Checked,
+                    MoveAnimationType = turnOffAnimationCheck.Checked ? MoveAnimationType.None : MoveAnimationType.Unchanged
                 },
                 ItemShufflerSettings = new ItemShufflerSettings
                 {
@@ -566,6 +567,7 @@ namespace Randomizer
             moveTypeCheck.Checked = settings.MoveShufflerSettings.RandomMoveTypes;
             moveCategoryCheck.Checked = settings.MoveShufflerSettings.RandomMoveCategory;
             ignoreOHKOMovesAccuracyCheck.Checked = settings.MoveShufflerSettings.IgnoreOHKOMoveAcc;
+            turnOffAnimationCheck.Checked = settings.MoveShufflerSettings.MoveAnimationType == MoveAnimationType.None;
 
             // items
             // use the enabled property so we don't load in disabled settings and crash the program
