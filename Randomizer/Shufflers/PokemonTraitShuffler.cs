@@ -37,12 +37,12 @@ namespace Randomizer.Shufflers
             IEnumerable<Ability> abilitiesFilter = extractedGame.Abilities;
             if (!settings.AllowWonderGuard)
             {
-                abilitiesFilter = abilitiesFilter.Where(a => a.Index != RandomizerConstants.WonderGuardIndex);
+                abilitiesFilter = abilitiesFilter.Where(a => a.Index != ExtractorConstants.WonderGuardIndex);
             }
 
             if (settings.BanNegativeAbilities)
             {
-                abilitiesFilter = abilitiesFilter.Where(a => !RandomizerConstants.BadAbilityList.Contains(a.Index));
+                abilitiesFilter = abilitiesFilter.Where(a => !ExtractorConstants.BadAbilityList.Contains(a.Index));
             }
 
 
@@ -100,7 +100,7 @@ namespace Randomizer.Shufflers
 
             foreach (var poke in extractedGame.PokemonList)
             {
-                if (RandomizerConstants.SpecialPokemon.Contains(poke.Index))
+                if (ExtractorConstants.SpecialPokemon.Contains(poke.Index))
                     continue;
 
                 Logger.Log($"{poke.Name}\n");
@@ -177,7 +177,7 @@ namespace Randomizer.Shufflers
 
                 if (settings.StandardizeEXPCurves)
                 {
-                    poke.LevelUpRate = RandomizerConstants.Legendaries.Contains(poke.Index)
+                    poke.LevelUpRate = ExtractorConstants.Legendaries.Contains(poke.Index)
                         ? ExpRate.Slow
                         : ExpRate.Fast;
 
@@ -318,7 +318,7 @@ namespace Randomizer.Shufflers
                     {
                         int moveIndex;
                         if (settings.MoveSetOptions.MetronomeOnly)
-                            moveIndex = extractedGame.MoveList[RandomizerConstants.MetronomeIndex].MoveIndex;
+                            moveIndex = extractedGame.MoveList[ExtractorConstants.MetronomeIndex].MoveIndex;
                         else if (settings.MoveSetOptions.PreferType && random.Next(0, 10) >= 8)
                             // allow 20% chance for move to not be same type
                             moveIndex = movefilter.ElementAt(random.Next(0, movefilter.Count())).MoveIndex;
@@ -386,7 +386,7 @@ namespace Randomizer.Shufflers
         public static void RandomizeAbility(AbstractRNG random, Ability[] potentialAbilities, Pokemon poke)
         {
             // don't do my boy shedinja dirty like this
-            if (poke.Index == RandomizerConstants.ShedinjaIndex)
+            if (poke.Index == ExtractorConstants.ShedinjaIndex)
             {
                 Logger.Log($"No");
                 return;

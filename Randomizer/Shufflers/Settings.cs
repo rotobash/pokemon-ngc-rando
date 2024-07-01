@@ -1,4 +1,6 @@
-﻿namespace Randomizer.Shufflers
+﻿using XDCommon.PokemonDefinitions;
+
+namespace Randomizer.Shufflers
 {
     public class ShuffleSettings
     {

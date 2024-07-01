@@ -1,6 +1,4 @@
-﻿using Randomizer.Colosseum;
-using Randomizer.Shufflers;
-using Randomizer.XD;
+﻿using Randomizer.Shufflers;
 using System;
 using System.Collections.Generic;
 using System.Linq;

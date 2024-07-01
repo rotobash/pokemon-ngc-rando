@@ -1,15 +1,8 @@
-﻿using Randomizer.Shufflers;
-using Randomizer.XD;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using XDCommon;
-using XDCommon.PokemonDefinitions;
 using XDCommon.Utility;
 
-namespace Randomizer
+namespace XDCommon.PokemonDefinitions
 {
     public interface IGameExtractor
     {
@@ -40,13 +33,13 @@ namespace Randomizer
 
         public Pokemon[] ValidPokemon { get; }
         public Pokemon[] GoodPokemon => PokemonList.Where(p => p.BST >= Configuration.StrongPokemonBST).ToArray();
-        public Pokemon[] NoLegendaryPokemon => PokemonList.Where(p => !RandomizerConstants.Legendaries.Contains(p.Index)).ToArray();
+        public Pokemon[] NoLegendaryPokemon => PokemonList.Where(p => !ExtractorConstants.Legendaries.Contains(p.Index)).ToArray();
 
         public Items[] ValidItems { get; }
         public Items[] NonKeyItems { get; }
-        public Items[] GoodItems => NonKeyItems.Where(i => !RandomizerConstants.BadItemList.Contains(i.Index)).ToArray();
-        public Items[] ValidHeldItems => NonKeyItems.Where(i => !RandomizerConstants.BattleCDList.Contains(i.Index)).ToArray();
-        public Items[] GoodHeldItems => ValidHeldItems.Where(i => !RandomizerConstants.BadItemList.Contains(i.Index)).ToArray();
+        public Items[] GoodItems => NonKeyItems.Where(i => !ExtractorConstants.BadItemList.Contains(i.Index)).ToArray();
+        public Items[] ValidHeldItems => NonKeyItems.Where(i => !ExtractorConstants.BattleCDList.Contains(i.Index)).ToArray();
+        public Items[] GoodHeldItems => ValidHeldItems.Where(i => !ExtractorConstants.BadItemList.Contains(i.Index)).ToArray();
 
         public TM[] TMs { get; }
         public TutorMove[] TutorMoves { get; }
@@ -63,8 +56,8 @@ namespace Randomizer
             TrainerPools = extractor.ExtractPools(PokemonList, MoveList);
 
             ValidMoves = MoveList.Where(m => m.MoveIndex != 0 && m.MoveIndex != 355).ToArray();
-            ValidPokemon = PokemonList.Where(p => !RandomizerConstants.SpecialPokemon.Contains(p.Index)).ToArray();
-            ValidItems = ItemList.Where(i => !RandomizerConstants.InvalidItemList.Contains(i.Index)).ToArray();
+            ValidPokemon = PokemonList.Where(p => !ExtractorConstants.SpecialPokemon.Contains(p.Index)).ToArray();
+            ValidItems = ItemList.Where(i => !ExtractorConstants.InvalidItemList.Contains(i.Index)).ToArray();
             NonKeyItems = ValidItems.Where(i => i.BagSlot != BagSlots.KeyItems && i.BagSlot != BagSlots.None && i.BagSlot != BagSlots.Colognes).ToArray();
             TMs = ItemList.Where(i => i is TM).Select(i => i as TM).ToArray();
 

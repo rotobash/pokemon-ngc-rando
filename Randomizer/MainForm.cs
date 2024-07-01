@@ -1,6 +1,4 @@
-﻿using Randomizer.Colosseum;
-using Randomizer.Shufflers;
-using Randomizer.XD;
+﻿using Randomizer.Shufflers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +14,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using XDCommon;
 using XDCommon.Contracts;
+using XDCommon.PokemonDefinitions;
 using XDCommon.Utility;
 
 namespace Randomizer

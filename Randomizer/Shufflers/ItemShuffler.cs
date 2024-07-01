@@ -104,7 +104,7 @@ namespace Randomizer.Shufflers
             var potentialItems = settings.BanBadItems ? extractedGame.GoodItems : extractedGame.NonKeyItems;
             if (settings.BanBattleCDs)
             {
-                potentialItems = potentialItems.Where(i => !RandomizerConstants.BattleCDList.Contains(i.Index)).ToArray();
+                potentialItems = potentialItems.Where(i => !ExtractorConstants.BattleCDList.Contains(i.Index)).ToArray();
             }
 
             Logger.Log("=============================== Overworld Items ===============================\n\n");
@@ -122,7 +122,7 @@ namespace Randomizer.Shufflers
                         newItem = (ushort)potentialItems[random.Next(0, potentialItems.Length)].Index;
                     }
 
-                    if (RandomizerConstants.BattleCDList.Contains(newItem))
+                    if (ExtractorConstants.BattleCDList.Contains(newItem))
                         battleCDsUsed.Add(newItem);
 
                     Logger.Log($"{extractedGame.ItemList[item.Item].Name} -> ");
@@ -149,7 +149,7 @@ namespace Randomizer.Shufflers
             {
                 Logger.Log("=============================== Mart Items ===============================\n\n");
                 var potentialItems = settings.BanBadItems ? extractedGame.NonKeyItems : extractedGame.GoodItems;
-                potentialItems = potentialItems.Where(i => !RandomizerConstants.BattleCDList.Contains(i.Index)).ToArray();
+                potentialItems = potentialItems.Where(i => !ExtractorConstants.BattleCDList.Contains(i.Index)).ToArray();
 
 
 
@@ -180,13 +180,13 @@ namespace Randomizer.Shufflers
             if (settings.MartsSellEvoStones)
             {
                 Logger.Log($"Adding Evolution Stones to Agate Village Mart.\n\n");
-                foreach (var agateMartIndex in RandomizerConstants.AgateVillageMartIndices)
+                foreach (var agateMartIndex in ExtractorConstants.AgateVillageMartIndices)
                 {
                     var agateMart = extractedGame.Pokemarts[agateMartIndex];
-                    agateMart.Items.AddRange(RandomizerConstants.EvoStoneItemList);
+                    agateMart.Items.AddRange(ExtractorConstants.EvoStoneItemList);
                     for (int i = agateMartIndex + 1; i < extractedGame.Pokemarts.Length; i++)
                     {
-                        extractedGame.Pokemarts[i].FirstItemIndex += (ushort)(RandomizerConstants.EvoStoneItemList.Length);
+                        extractedGame.Pokemarts[i].FirstItemIndex += (ushort)(ExtractorConstants.EvoStoneItemList.Length);
                     }
                     agateMart.SaveItems();
                 }

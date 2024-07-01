@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Randomizer
+namespace XDCommon
 {
-    public static class RandomizerConstants
+    public static class ExtractorConstants
     {
         // invalid pokemon
         public static readonly int[] SpecialPokemon = new int[]
@@ -22,7 +22,7 @@ namespace Randomizer
             251, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410
         };
 
-        public static readonly int[] BattleCDList = Enumerable.Range(383, 61).ToArray();
+        public static readonly int[] BattleCDList = Enumerable.Range(534, 61).ToArray();
 
         public static readonly int[] InvalidItemList = new int[]
         {
