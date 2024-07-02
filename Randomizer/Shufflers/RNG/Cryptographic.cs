@@ -8,7 +8,7 @@ namespace Randomizer.Shufflers
 {
     public class Cryptographic : AbstractRNG, IDisposable
     {
-        private static RNGCryptoServiceProvider rngCsp = new();
+        private static RandomNumberGenerator rngCsp = RandomNumberGenerator.Create();
         private bool disposedValue;
 
         protected virtual void DisposeRNG()
