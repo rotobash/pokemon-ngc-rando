@@ -41,7 +41,7 @@ namespace XDCommon.PokemonDefinitions
 				{
 					items[i] = new Pokeballs(i, ISO);
 				}
-				else if (i >= Constants.FirstTMItemIndex && i < Constants.FirstTMItemIndex + Constants.NumberOfTMsAndHMs)
+				else if (i >= Constants.FirstTMItemIndex && i < Constants.FirstTMItemIndex + Constants.NumberOfTMs)
 				{
 					items[i] = new TM(i, ISO);
 				}
@@ -70,10 +70,10 @@ namespace XDCommon.PokemonDefinitions
 		public OverworldItem[] ExtractOverworldItems()
 		{
 			var numItems = ISO.CommonRel.GetValueAtPointer(Constants.XDNumberTreasureBoxes);
-			var items = new OverworldItem[numItems];
-			for (int i = 0;  i < numItems; i++)
+			var items = new OverworldItem[numItems - 1];
+			for (int i = 1;  i < numItems; i++)
             {
-				items[i] = new OverworldItem(i, ISO);
+				items[i - 1] = new OverworldItem(i, ISO);
             }
 			return items;
 		}
