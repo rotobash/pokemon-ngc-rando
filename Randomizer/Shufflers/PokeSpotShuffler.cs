@@ -51,7 +51,7 @@ namespace Randomizer.Shufflers
                 {
                     var newItem = validItems[random.Next(0, validItems.Length)];
                     Logger.Log($"Pokemon {pokemon.HeldItem} -> {newItem.Name}\n");
-                    pokemon.HeldItem = (ushort)newItem.Index;
+                    pokemon.HeldItem = (ushort)newItem.OriginalIndex;
                 }
 
                 if (settings.BoostPokeSpotLevel)

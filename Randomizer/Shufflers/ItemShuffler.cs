@@ -104,30 +104,35 @@ namespace Randomizer.Shufflers
             var potentialItems = settings.BanBadItems ? extractedGame.GoodItems : extractedGame.NonKeyItems;
             if (settings.BanBattleCDs)
             {
-                potentialItems = potentialItems.Where(i => !ExtractorConstants.BattleCDList.Contains(i.Index)).ToArray();
+                potentialItems = potentialItems.Where(i => !ExtractorConstants.BattleCDList.Contains(i.OriginalIndex)).ToArray();
             }
 
             Logger.Log("=============================== Overworld Items ===============================\n\n");
             foreach (var item in extractedGame.OverworldItemList)
             {
                 // i'm *assuming* the devs didn't place any invalid items on the overworld
-                if (item.Item > extractedGame.ItemList.Length || extractedGame.ItemList[item.Item].BagSlot == BagSlots.KeyItems)
+                var originalItem = extractedGame.ItemList.FirstOrDefault(i =>  i.OriginalIndex == item.Item);
+                if (originalItem == null)
+                    continue;
+
+                // key items are distributed through chests and sparkles
+                if (originalItem.BagSlot == BagSlots.KeyItems)
                     continue;
 
                 if (settings.RandomizeItems)
                 {
-                    ushort newItem = 0;
-                    while (newItem == 0 || battleCDsUsed.Contains(newItem))
+                    Items newItem = null;
+                    while (newItem == null || battleCDsUsed.Contains(newItem.OriginalIndex))
                     {
-                        newItem = (ushort)potentialItems[random.Next(0, potentialItems.Length)].Index;
+                        var nextIndex = random.Next(0, potentialItems.Length);
+                        newItem = potentialItems[nextIndex];
                     }
+                    if (ExtractorConstants.BattleCDList.Contains(newItem.Index))
+                        battleCDsUsed.Add(newItem.OriginalIndex);
 
-                    if (ExtractorConstants.BattleCDList.Contains(newItem))
-                        battleCDsUsed.Add(newItem);
-
-                    Logger.Log($"{extractedGame.ItemList[item.Item].Name} -> ");
-                    item.Item = newItem;
-                    Logger.Log($"{extractedGame.ItemList[newItem].Name}\n\n");
+                    Logger.Log($"{originalItem.Name} -> ");
+                    item.Item = newItem.OriginalIndex;
+                    Logger.Log($"{newItem.Name}\n\n");
                 }
 
                 if (settings.RandomizeItemQuantity)
@@ -168,7 +173,7 @@ namespace Randomizer.Shufflers
                         if (nextItem.Name.Contains("master", StringComparison.CurrentCultureIgnoreCase))
                             nextItem.Price = 30000;
 
-                        mart.Items[i] = (ushort)nextItem.Index;
+                        mart.Items[i] = (ushort)nextItem.OriginalIndex;
                         Logger.Log($"{extractedGame.ItemList[mart.Items[i]].Name}\n");
                     }
                     mart.SaveItems();

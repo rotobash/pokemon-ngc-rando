@@ -37,9 +37,9 @@ namespace XDCommon.PokemonDefinitions
 
         public Items[] ValidItems { get; }
         public Items[] NonKeyItems { get; }
-        public Items[] GoodItems => NonKeyItems.Where(i => !ExtractorConstants.BadItemList.Contains(i.Index)).ToArray();
-        public Items[] ValidHeldItems => NonKeyItems.Where(i => !ExtractorConstants.BattleCDList.Contains(i.Index)).ToArray();
-        public Items[] GoodHeldItems => ValidHeldItems.Where(i => !ExtractorConstants.BadItemList.Contains(i.Index)).ToArray();
+        public Items[] GoodItems {  get; }
+        public Items[] ValidHeldItems {  get; } 
+        public Items[] GoodHeldItems { get; }
 
         public TM[] TMs { get; }
         public TutorMove[] TutorMoves { get; }
@@ -57,9 +57,14 @@ namespace XDCommon.PokemonDefinitions
 
             ValidMoves = MoveList.Where(m => m.MoveIndex != 0 && m.MoveIndex != 355).ToArray();
             ValidPokemon = PokemonList.Where(p => !ExtractorConstants.SpecialPokemon.Contains(p.Index)).ToArray();
-            ValidItems = ItemList.Where(i => !ExtractorConstants.InvalidItemList.Contains(i.Index)).ToArray();
+            ValidItems = ItemList.Where(i => i.BagSlot != BagSlots.None && i.NameId > 0).ToArray();
+
             NonKeyItems = ValidItems.Where(i => i.BagSlot != BagSlots.KeyItems && i.BagSlot != BagSlots.None && i.BagSlot != BagSlots.Colognes).ToArray();
             TMs = ItemList.Where(i => i is TM).Select(i => i as TM).ToArray();
+
+            ValidHeldItems = NonKeyItems.Where(i => i.CanBeHeld == true).ToArray();
+            GoodItems = NonKeyItems.Where(i => !ExtractorConstants.BadItemList.Contains(i.Index)).ToArray();
+            GoodHeldItems = ValidHeldItems.Where(i => !ExtractorConstants.BadItemList.Contains(i.Index)).ToArray();
 
             if (extractor is XDExtractor xd)
             {

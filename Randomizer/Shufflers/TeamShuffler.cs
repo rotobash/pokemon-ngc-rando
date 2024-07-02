@@ -97,7 +97,7 @@ namespace Randomizer.Shufflers
                         if (settings.RandomizeHeldItems)
                         {
                             var item = potentialItems[random.Next(0, potentialItems.Length)];
-                            pokemon.Item = (ushort)item.Index;
+                            pokemon.Item = item.OriginalIndex;
                             Logger.Log($"Holding a(n) {item.Name}\n");
                         }
 
