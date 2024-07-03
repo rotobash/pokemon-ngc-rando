@@ -167,6 +167,12 @@ namespace Randomizer.Shufflers
                     {
                         var item = mart.Items[i];
                         var martItem = extractedGame.ItemList.First(i => i.OriginalIndex == item);
+
+                        if (martItem.BagSlot == BagSlots.KeyItems)
+                        {
+                            continue;
+                        }
+
                         Logger.Log($"{martItem?.Name} -> ");
 
                         var nextItem = potentialItems[random.Next(0, potentialItems.Length)];

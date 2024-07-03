@@ -36,6 +36,10 @@ namespace XDCommon.PokemonDefinitions
 				else if (i >= Constants.FirstTMItemIndex && i <  Constants.FirstTMItemIndex + Constants.NumberOfTMsAndHMs)
 				{
 					items[i] = new TM(i, ISO);
+                }
+				else if (i >= 349)
+				{
+					items[i] = new Items(i + 151, ISO);
 				}
 				else
 				{

@@ -48,7 +48,7 @@ namespace XDCommon.PokemonDefinitions
                 if (iso.Game == Game.XD)
                     return (index > iso.CommonRel.GetValueAtPointer(Constants.XDNumberOfItems) && index < 0x251) ? index - 150 : index;
                 else
-                    return index < Constants.ColNumberOfItems ? index : 0;
+                    return (index >= 349 && index < 0x251) ? index - 151 : index;
             }
         }
 
