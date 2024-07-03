@@ -153,10 +153,12 @@ namespace Randomizer.Shufflers
             if (settings.RandomizeMarts)
             {
                 Logger.Log("=============================== Mart Items ===============================\n\n");
-                var potentialItems = settings.BanBadItems ? extractedGame.NonKeyItems : extractedGame.GoodItems;
-                potentialItems = potentialItems.Where(i => !ExtractorConstants.BattleCDList.Contains(i.Index)).ToArray();
+                var potentialItems = settings.BanBadItems ? extractedGame.GoodItems : extractedGame.NonKeyItems;
 
-
+                if (settings.BanBattleCDs)
+                {
+                    potentialItems = potentialItems.Where(i => !ExtractorConstants.BattleCDList.Contains(i.OriginalIndex)).ToArray();
+                }
 
                 foreach (var mart in extractedGame.Pokemarts)
                 {
@@ -164,17 +166,15 @@ namespace Randomizer.Shufflers
                     for (int i = 0; i < mart.Items.Count; i++)
                     {
                         var item = mart.Items[i];
-                        if (item < extractedGame.ItemList.Length)
-                            Logger.Log($"{extractedGame.ItemList[item].Name} -> ");
-                        else
-                            Logger.Log($"{item} -> ");
+                        var martItem = extractedGame.ItemList.First(i => i.OriginalIndex == item);
+                        Logger.Log($"{martItem?.Name} -> ");
 
                         var nextItem = potentialItems[random.Next(0, potentialItems.Length)];
                         if (nextItem.Name.Contains("master", StringComparison.CurrentCultureIgnoreCase))
                             nextItem.Price = 30000;
 
-                        mart.Items[i] = (ushort)nextItem.OriginalIndex;
-                        Logger.Log($"{extractedGame.ItemList[mart.Items[i]].Name}\n");
+                        mart.Items[i] = nextItem.OriginalIndex;
+                        Logger.Log($"{nextItem.Name}\n");
                     }
                     mart.SaveItems();
                     Logger.Log($"\n");
