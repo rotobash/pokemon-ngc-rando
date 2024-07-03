@@ -104,30 +104,35 @@ namespace Randomizer.Shufflers
             var potentialItems = settings.BanBadItems ? extractedGame.GoodItems : extractedGame.NonKeyItems;
             if (settings.BanBattleCDs)
             {
-                potentialItems = potentialItems.Where(i => !RandomizerConstants.BattleCDList.Contains(i.Index)).ToArray();
+                potentialItems = potentialItems.Where(i => !ExtractorConstants.BattleCDList.Contains(i.OriginalIndex)).ToArray();
             }
 
             Logger.Log("=============================== Overworld Items ===============================\n\n");
             foreach (var item in extractedGame.OverworldItemList)
             {
                 // i'm *assuming* the devs didn't place any invalid items on the overworld
-                if (item.Item > extractedGame.ItemList.Length || extractedGame.ItemList[item.Item].BagSlot == BagSlots.KeyItems)
+                var originalItem = extractedGame.ItemList.FirstOrDefault(i =>  i.OriginalIndex == item.Item);
+                if (originalItem == null)
+                    continue;
+
+                // key items are distributed through chests and sparkles
+                if (originalItem.BagSlot == BagSlots.KeyItems)
                     continue;
 
                 if (settings.RandomizeItems)
                 {
-                    ushort newItem = 0;
-                    while (newItem == 0 || battleCDsUsed.Contains(newItem))
+                    Items newItem = null;
+                    while (newItem == null || battleCDsUsed.Contains(newItem.OriginalIndex))
                     {
-                        newItem = (ushort)potentialItems[random.Next(0, potentialItems.Length)].Index;
+                        var nextIndex = random.Next(0, potentialItems.Length);
+                        newItem = potentialItems[nextIndex];
                     }
+                    if (ExtractorConstants.BattleCDList.Contains(newItem.Index))
+                        battleCDsUsed.Add(newItem.OriginalIndex);
 
-                    if (RandomizerConstants.BattleCDList.Contains(newItem))
-                        battleCDsUsed.Add(newItem);
-
-                    Logger.Log($"{extractedGame.ItemList[item.Item].Name} -> ");
-                    item.Item = newItem;
-                    Logger.Log($"{extractedGame.ItemList[newItem].Name}\n\n");
+                    Logger.Log($"{originalItem.Name} -> ");
+                    item.Item = newItem.OriginalIndex;
+                    Logger.Log($"{newItem.Name}\n\n");
                 }
 
                 if (settings.RandomizeItemQuantity)
@@ -148,10 +153,12 @@ namespace Randomizer.Shufflers
             if (settings.RandomizeMarts)
             {
                 Logger.Log("=============================== Mart Items ===============================\n\n");
-                var potentialItems = settings.BanBadItems ? extractedGame.NonKeyItems : extractedGame.GoodItems;
-                potentialItems = potentialItems.Where(i => !RandomizerConstants.BattleCDList.Contains(i.Index)).ToArray();
+                var potentialItems = settings.BanBadItems ? extractedGame.GoodItems : extractedGame.NonKeyItems;
 
-
+                if (settings.BanBattleCDs)
+                {
+                    potentialItems = potentialItems.Where(i => !ExtractorConstants.BattleCDList.Contains(i.OriginalIndex)).ToArray();
+                }
 
                 foreach (var mart in extractedGame.Pokemarts)
                 {
@@ -159,17 +166,21 @@ namespace Randomizer.Shufflers
                     for (int i = 0; i < mart.Items.Count; i++)
                     {
                         var item = mart.Items[i];
-                        if (item < extractedGame.ItemList.Length)
-                            Logger.Log($"{extractedGame.ItemList[item].Name} -> ");
-                        else
-                            Logger.Log($"{item} -> ");
+                        var martItem = extractedGame.ItemList.First(i => i.OriginalIndex == item);
+
+                        if (martItem.BagSlot == BagSlots.KeyItems)
+                        {
+                            continue;
+                        }
+
+                        Logger.Log($"{martItem?.Name} -> ");
 
                         var nextItem = potentialItems[random.Next(0, potentialItems.Length)];
                         if (nextItem.Name.Contains("master", StringComparison.CurrentCultureIgnoreCase))
                             nextItem.Price = 30000;
 
-                        mart.Items[i] = (ushort)nextItem.Index;
-                        Logger.Log($"{extractedGame.ItemList[mart.Items[i]].Name}\n");
+                        mart.Items[i] = nextItem.OriginalIndex;
+                        Logger.Log($"{nextItem.Name}\n");
                     }
                     mart.SaveItems();
                     Logger.Log($"\n");
@@ -180,13 +191,13 @@ namespace Randomizer.Shufflers
             if (settings.MartsSellEvoStones)
             {
                 Logger.Log($"Adding Evolution Stones to Agate Village Mart.\n\n");
-                foreach (var agateMartIndex in RandomizerConstants.AgateVillageMartIndices)
+                foreach (var agateMartIndex in ExtractorConstants.AgateVillageMartIndices)
                 {
                     var agateMart = extractedGame.Pokemarts[agateMartIndex];
-                    agateMart.Items.AddRange(RandomizerConstants.EvoStoneItemList);
+                    agateMart.Items.AddRange(ExtractorConstants.EvoStoneItemList);
                     for (int i = agateMartIndex + 1; i < extractedGame.Pokemarts.Length; i++)
                     {
-                        extractedGame.Pokemarts[i].FirstItemIndex += (ushort)(RandomizerConstants.EvoStoneItemList.Length);
+                        extractedGame.Pokemarts[i].FirstItemIndex += (ushort)(ExtractorConstants.EvoStoneItemList.Length);
                     }
                     agateMart.SaveItems();
                 }

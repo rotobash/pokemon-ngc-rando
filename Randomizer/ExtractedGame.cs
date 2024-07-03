@@ -1,29 +1,14 @@
-﻿using Randomizer.Shufflers;
-using Randomizer.XD;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using XDCommon;
+using XDCommon.Contracts;
 using XDCommon.PokemonDefinitions;
-using XDCommon.Utility;
+using XDCommon;
 
 namespace Randomizer
 {
-    public interface IGameExtractor
-    {
-        ISO ISO { get; }
-        ITrainerPool[] ExtractPools(Pokemon[] pokemon, Move[] moves);
-        Ability[] ExtractAbilities();
-        Items[] ExtractItems();
-        OverworldItem[] ExtractOverworldItems();
-        Pokemarts[] ExtractPokemarts();
-        Move[] ExtractMoves();
-        Pokemon[] ExtractPokemon();
-        IGiftPokemon[] ExtractGiftPokemon();
-    }
-
     public class ExtractedGame
     {
         public ITrainerPool[] TrainerPools { get; }
@@ -40,16 +25,18 @@ namespace Randomizer
 
         public Pokemon[] ValidPokemon { get; }
         public Pokemon[] GoodPokemon => PokemonList.Where(p => p.BST >= Configuration.StrongPokemonBST).ToArray();
-        public Pokemon[] NoLegendaryPokemon => PokemonList.Where(p => !RandomizerConstants.Legendaries.Contains(p.Index)).ToArray();
+        public Pokemon[] NoLegendaryPokemon => PokemonList.Where(p => !ExtractorConstants.Legendaries.Contains(p.Index)).ToArray();
 
         public Items[] ValidItems { get; }
         public Items[] NonKeyItems { get; }
-        public Items[] GoodItems => NonKeyItems.Where(i => !RandomizerConstants.BadItemList.Contains(i.Index)).ToArray();
-        public Items[] ValidHeldItems => NonKeyItems.Where(i => !RandomizerConstants.BattleCDList.Contains(i.Index)).ToArray();
-        public Items[] GoodHeldItems => ValidHeldItems.Where(i => !RandomizerConstants.BadItemList.Contains(i.Index)).ToArray();
+        public Items[] GoodItems { get; }
+        public Items[] ValidHeldItems { get; }
+        public Items[] GoodHeldItems { get; }
 
         public TM[] TMs { get; }
         public TutorMove[] TutorMoves { get; }
+
+        public Game Game => TutorMoves.Length == 0 ? Game.Colosseum : Game.XD;
 
         public ExtractedGame(IGameExtractor extractor)
         {
@@ -63,10 +50,15 @@ namespace Randomizer
             TrainerPools = extractor.ExtractPools(PokemonList, MoveList);
 
             ValidMoves = MoveList.Where(m => m.MoveIndex != 0 && m.MoveIndex != 355).ToArray();
-            ValidPokemon = PokemonList.Where(p => !RandomizerConstants.SpecialPokemon.Contains(p.Index)).ToArray();
-            ValidItems = ItemList.Where(i => !RandomizerConstants.InvalidItemList.Contains(i.Index)).ToArray();
+            ValidPokemon = PokemonList.Where(p => !ExtractorConstants.SpecialPokemon.Contains(p.Index)).ToArray();
+            ValidItems = ItemList.Where(i => i.BagSlot != BagSlots.None && i.NameId > 0).ToArray();
+
             NonKeyItems = ValidItems.Where(i => i.BagSlot != BagSlots.KeyItems && i.BagSlot != BagSlots.None && i.BagSlot != BagSlots.Colognes).ToArray();
             TMs = ItemList.Where(i => i is TM).Select(i => i as TM).ToArray();
+
+            ValidHeldItems = NonKeyItems.Where(i => i.CanBeHeld == true).ToArray();
+            GoodItems = NonKeyItems.Where(i => !ExtractorConstants.BadItemList.Contains(i.Index)).ToArray();
+            GoodHeldItems = ValidHeldItems.Where(i => !ExtractorConstants.BadItemList.Contains(i.Index)).ToArray();
 
             if (extractor is XDExtractor xd)
             {

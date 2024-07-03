@@ -9,7 +9,7 @@ namespace XDCommon
         {
             get
             {
-                return  bool.Parse(ConfigurationManager.AppSettings.Get(nameof(Verbose)));
+                return  bool.Parse(ConfigurationManager.AppSettings.Get(nameof(Verbose)) ?? "false");
             }
             set
             {
@@ -21,7 +21,7 @@ namespace XDCommon
         {
             get
             {
-                return bool.Parse(ConfigurationManager.AppSettings.Get(nameof(UseMemoryStreams)));
+                return bool.Parse(ConfigurationManager.AppSettings.Get(nameof(UseMemoryStreams)) ?? "true");
             }
             set
             {

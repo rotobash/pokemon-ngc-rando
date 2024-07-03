@@ -24,7 +24,7 @@ namespace Randomizer.Shufflers
             {
                 Logger.Log($"PokeSpot Type: {pokeSpotPoke.PokeSpot.PokeSpotType}\n\n");
                 var pokemon = extractedGame.PokemonList[pokeSpotPoke.Pokemon];
-                if (pokeSpotPoke.Pokemon == RandomizerConstants.BonslyIndex && settings.EasyBonsly)
+                if (pokeSpotPoke.Pokemon == ExtractorConstants.BonslyIndex && settings.EasyBonsly)
                 {
                     // I don't know if this'll work or not...
                     pokeSpotPoke.EncounterPercentage = 100;
@@ -51,7 +51,7 @@ namespace Randomizer.Shufflers
                 {
                     var newItem = validItems[random.Next(0, validItems.Length)];
                     Logger.Log($"Pokemon {pokemon.HeldItem} -> {newItem.Name}\n");
-                    pokemon.HeldItem = (ushort)newItem.Index;
+                    pokemon.HeldItem = (ushort)newItem.OriginalIndex;
                 }
 
                 if (settings.BoostPokeSpotLevel)

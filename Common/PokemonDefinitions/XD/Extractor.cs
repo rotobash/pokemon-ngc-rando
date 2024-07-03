@@ -1,16 +1,8 @@
-﻿using Randomizer.Shufflers;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using XDCommon;
-using XDCommon.Contracts;
-using XDCommon.PokemonDefinitions;
 using XDCommon.Utility;
 
-namespace Randomizer.XD
+namespace XDCommon.PokemonDefinitions
 {
     public class XDExtractor : IGameExtractor
 	{
@@ -49,10 +41,14 @@ namespace Randomizer.XD
 				{
 					items[i] = new Pokeballs(i, ISO);
 				}
-				else if (i >= Constants.FirstTMItemIndex && i < Constants.FirstTMItemIndex + Constants.NumberOfTMsAndHMs)
+				else if (i >= Constants.FirstTMItemIndex && i < Constants.FirstTMItemIndex + Constants.NumberOfTMs)
 				{
 					items[i] = new TM(i, ISO);
 				}
+				else if (i >= 350)
+                {
+                    items[i] = new Items(i + 150, ISO);
+                }
 				else
 				{
 					items[i] = new Items(i, ISO);
@@ -74,10 +70,10 @@ namespace Randomizer.XD
 		public OverworldItem[] ExtractOverworldItems()
 		{
 			var numItems = ISO.CommonRel.GetValueAtPointer(Constants.XDNumberTreasureBoxes);
-			var items = new OverworldItem[numItems];
-			for (int i = 0;  i < numItems; i++)
+			var items = new OverworldItem[numItems - 1];
+			for (int i = 1;  i < numItems; i++)
             {
-				items[i] = new OverworldItem(i, ISO);
+				items[i - 1] = new OverworldItem(i, ISO);
             }
 			return items;
 		}
@@ -134,10 +130,10 @@ namespace Randomizer.XD
 
 		public PokeSpotPokemon[] ExtractPokeSpotPokemon()
 		{
-			var pokeSpots = Enum.GetValues<PokeSpotType>();
+			var pokeSpots = Enum.GetValues(typeof(PokeSpotType));
 			var pokemon = new List<PokeSpotPokemon>();
 			
-			foreach (var pokeSpotType in pokeSpots)
+			foreach (PokeSpotType pokeSpotType in pokeSpots)
             {
 				var pokeSpot = new PokeSpot(pokeSpotType, ISO);
 				for (int i = 0; i < pokeSpot.NumberOfEntries; i++)

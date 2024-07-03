@@ -51,7 +51,7 @@ namespace Randomizer.Shufflers
             var moveFilter = options.BanShadowMoves ? extractedGame.ValidMoves.Where(m => !m.IsShadowMove) : extractedGame.ValidMoves;
             if (options.BanEarlyDragonRage)
             {
-                moveFilter = moveFilter.Where(m => !(m.MoveIndex == RandomizerConstants.DragonRageIndex && level < RandomizerConstants.BanDragonRageUnderLevel));
+                moveFilter = moveFilter.Where(m => !(m.MoveIndex == ExtractorConstants.DragonRageIndex && level < ExtractorConstants.BanDragonRageUnderLevel));
             }
 
             var typeFilter = moveFilter;
@@ -129,7 +129,7 @@ namespace Randomizer.Shufflers
 
             if (options.RandomizeMovesets || options.ForceFourMoves)
             {
-                while (moveSet.Count < Constants.NumberOfPokemonMoves)
+                while (moveSet.Count < XDCommon.PokemonDefinitions.Constants.NumberOfPokemonMoves)
                 {
                     Move newMove;
                     if (options.PreferType && random.Next(0, 10) >= 8)

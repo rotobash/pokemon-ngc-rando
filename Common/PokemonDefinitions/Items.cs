@@ -37,14 +37,18 @@ namespace XDCommon.PokemonDefinitions
         };
 
         protected int index;
+        public ushort OriginalIndex
+        {
+            get => (ushort)index;
+        }
         public virtual int Index
         {
             get
             {
                 if (iso.Game == Game.XD)
-                    return (index > iso.CommonRel.GetValueAtPointer(Constants.XDNumberOfItems) && index < 0x250) ? index - 150 : index;
+                    return (index > iso.CommonRel.GetValueAtPointer(Constants.XDNumberOfItems) && index < 0x251) ? index - 150 : index;
                 else
-                    return index < Constants.ColNumberOfItems ? index : 0;
+                    return (index >= 349 && index < 0x251) ? index - 151 : index;
             }
         }
 
@@ -53,9 +57,9 @@ namespace XDCommon.PokemonDefinitions
             get
             {
                 if (iso.Game == Game.XD)
-                    return iso.CommonRel.GetPointer(Constants.Items) + (uint)(index * Constants.SizeOfItemData);
+                    return iso.CommonRel.GetPointer(Constants.Items) + (uint)(Index * Constants.SizeOfItemData);
                 else
-                    return ColFirstItemOffset + (uint)(index * Constants.SizeOfItemData);
+                    return ColFirstItemOffset + (uint)(Index * Constants.SizeOfItemData);
             }
         }
 

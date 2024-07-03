@@ -53,17 +53,17 @@ namespace Randomizer.Shufflers
 
                         var originalPoke = pokemon.Pokemon;
 
-                        if (settings.RandomizeLegendaryIntoLegendary && pokemon.IsShadow && RandomizerConstants.Legendaries.Contains(pokemon.Pokemon))
+                        if (settings.RandomizeLegendaryIntoLegendary && pokemon.IsShadow && ExtractorConstants.Legendaries.Contains(pokemon.Pokemon))
                         {
-                            var potentialLegendaries = RandomizerConstants.Legendaries;
+                            var potentialLegendaries = ExtractorConstants.Legendaries;
 
                             if (settings.NoDuplicateShadows)
                             {
                                 // try to pick a non duplicate shadow if that setting is enabled
-                                potentialLegendaries = RandomizerConstants.Legendaries.Where(poke => !pickedShadowPokemon.Contains(poke)).ToArray();
+                                potentialLegendaries = ExtractorConstants.Legendaries.Where(poke => !pickedShadowPokemon.Contains(poke)).ToArray();
                                 // in case we've picked them all, just pick another at random
                                 if (!potentialLegendaries.Any())
-                                    potentialLegendaries = RandomizerConstants.Legendaries;
+                                    potentialLegendaries = ExtractorConstants.Legendaries;
                             }
 
                             // pick random legendary
@@ -97,7 +97,7 @@ namespace Randomizer.Shufflers
                         if (settings.RandomizeHeldItems)
                         {
                             var item = potentialItems[random.Next(0, potentialItems.Length)];
-                            pokemon.Item = (ushort)item.Index;
+                            pokemon.Item = item.OriginalIndex;
                             Logger.Log($"Holding a(n) {item.Name}\n");
                         }
 
@@ -126,7 +126,7 @@ namespace Randomizer.Shufflers
             if (settings.RandomizePokemon)
             {
                 var pokemonIndex = 0;
-                while (pokemonIndex == 0 || (settings.DontUseLegendaries && RandomizerConstants.Legendaries.Contains(pokemonIndex)))
+                while (pokemonIndex == 0 || (settings.DontUseLegendaries && ExtractorConstants.Legendaries.Contains(pokemonIndex)))
                 {
                     var index = random.Next(pokeFilter.Length);
                     pokemonIndex = pokeFilter[index].Index;
@@ -141,7 +141,7 @@ namespace Randomizer.Shufflers
 
             if (settings.MoveSetOptions.MetronomeOnly)
             {
-                moveSet = Enumerable.Repeat(RandomizerConstants.MetronomeIndex, Constants.NumberOfPokemonMoves).ToArray();
+                moveSet = Enumerable.Repeat(ExtractorConstants.MetronomeIndex, Constants.NumberOfPokemonMoves).ToArray();
             }
             else if (settings.MoveSetOptions.RandomizeMovesets || settings.RandomizePokemon)
             {

@@ -185,6 +185,11 @@ namespace XDCommon.Utility
         
         public static void WriteBytesAtOffset(this Stream stream, long offset, byte[] writeBytes)
         {
+            if (writeBytes.Length == 0)
+            {
+                return;
+            }
+
             int bytesWrittenTotal = 0;
             stream.Seek(offset, SeekOrigin.Begin);
             do
@@ -216,6 +221,11 @@ namespace XDCommon.Utility
         /// <param name="length">Amount of bytes to write.</param>
         public static void CopySubStream(this Stream input, Stream output, long start, long length)
         {
+            if (length == 0)
+            {
+                return;
+            }
+
             var bytesReadTotal = 0;
             var bufferSize = 64 * 1024;
             input.Seek(start, SeekOrigin.Begin);
@@ -242,6 +252,9 @@ namespace XDCommon.Utility
         /// <returns>The new stream with inserted data.</returns>
         public static Stream InsertIntoStream(this Stream stream, long offset, byte[] data)
         {
+            if (data.Length == 0)
+                return stream;
+
             // you can't really insert into a stream without pulling it entirely into memory, so cheat a bit
             string streamFileName = stream is FileStream fs
                 ? $"{fs.Name}.bak"
@@ -287,6 +300,9 @@ namespace XDCommon.Utility
         /// <returns>The new stream with deleted data.</returns>
         public static Stream DeleteFromStream(this Stream stream, long offset, int length)
         {
+            if (length == 0)
+                return stream;
+
             // you can't really insert into a stream without pulling it entirely into memory, so cheat a bit
             var streamFileName = stream is FileStream fs ? fs.Name : string.Empty;
             var newStream = $"{streamFileName}.bak".GetNewStream();

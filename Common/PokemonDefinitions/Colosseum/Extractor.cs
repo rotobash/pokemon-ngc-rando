@@ -1,14 +1,8 @@
-﻿using Randomizer.Shufflers;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using XDCommon.Contracts;
-using XDCommon.PokemonDefinitions;
 using XDCommon.Utility;
 
-namespace Randomizer.Colosseum
+namespace XDCommon.PokemonDefinitions
 {
     public class ColoExtractor : IGameExtractor
 	{
@@ -39,9 +33,13 @@ namespace Randomizer.Colosseum
 				{
 					items[i] = new Pokeballs(i, ISO);
 				}
-				else if (i >= Constants.FirstTMItemIndex && i < Constants.FirstTMItemIndex + Constants.NumberOfTMsAndHMs)
+				else if (i >= Constants.FirstTMItemIndex && i <  Constants.FirstTMItemIndex + Constants.NumberOfTMsAndHMs)
 				{
 					items[i] = new TM(i, ISO);
+                }
+				else if (i >= 349)
+				{
+					items[i] = new Items(i + 151, ISO);
 				}
 				else
 				{
