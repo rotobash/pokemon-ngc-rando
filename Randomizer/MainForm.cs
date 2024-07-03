@@ -256,7 +256,7 @@ namespace Randomizer
                 var randoInvoke = BeginInvoke(new Func<Randomizer>(() => new Randomizer(gameExtractor, settings, prng, seed)));
                 using var randomizer = EndInvoke(randoInvoke) as Randomizer;
 
-                Logger.CreateNewLogFile(path);
+                Logger.CreateNewLogFile(path, settings);
 
                 backgroundWorker.ReportProgress(10);
                 progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Randomizing Moves..."));
