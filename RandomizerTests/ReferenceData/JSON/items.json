@@ -1,0 +1,3566 @@
+[
+  {
+    "index": 0,
+    "hex": "0x0000",
+    "name": "Nothing",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 1,
+    "hex": "0x0001",
+    "name": "Master Ball",
+    "pocket": "Poké Balls pocket"
+  },
+  {
+    "index": 2,
+    "hex": " 0x0002",
+    "name": "Ultra Ball",
+    "pocket": "Poké Balls pocket"
+  },
+  {
+    "index": 3,
+    "hex": "0x0003",
+    "name": "Great Ball",
+    "pocket": "Poké Balls pocket"
+  },
+  {
+    "index": 4,
+    "hex": "0x0004",
+    "name": "Poké Ball",
+    "pocket": "Poké Balls pocket"
+  },
+  {
+    "index": 5,
+    "hex": "0x0005",
+    "name": "Safari Ball",
+    "pocket": "Poké Balls pocket"
+  },
+  {
+    "index": 6,
+    "hex": "0x0006",
+    "name": "Net Ball",
+    "pocket": "Poké Balls pocket"
+  },
+  {
+    "index": 7,
+    "hex": "0x0007",
+    "name": "Dive Ball",
+    "pocket": "Poké Balls pocket"
+  },
+  {
+    "index": 8,
+    "hex": "0x0008",
+    "name": "Nest Ball",
+    "pocket": "Poké Balls pocket"
+  },
+  {
+    "index": 9,
+    "hex": "0x0009",
+    "name": "Repeat Ball",
+    "pocket": "Poké Balls pocket"
+  },
+  {
+    "index": 10,
+    "hex": "0x000A",
+    "name": "Timer Ball",
+    "pocket": "Poké Balls pocket"
+  },
+  {
+    "index": 11,
+    "hex": "0x000B",
+    "name": "Luxury Ball",
+    "pocket": "Poké Balls pocket"
+  },
+  {
+    "index": 12,
+    "hex": "0x000C",
+    "name": "Premier Ball",
+    "pocket": "Poké Balls pocket"
+  },
+  {
+    "index": 13,
+    "hex": "0x000D",
+    "name": "Potion",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 14,
+    "hex": "0x000E",
+    "name": "Antidote",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 15,
+    "hex": "0x000F",
+    "name": "Burn Heal",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 16,
+    "hex": "0x0010",
+    "name": "Ice Heal",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 17,
+    "hex": "0x0011",
+    "name": "Awakening",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 18,
+    "hex": "0x0012",
+    "name": "Parlyz Heal",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 19,
+    "hex": "0x0013",
+    "name": "Full Restore",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 20,
+    "hex": "0x0014",
+    "name": "Max Potion",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 21,
+    "hex": "0x0015",
+    "name": "Hyper Potion",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 22,
+    "hex": "0x0016",
+    "name": "Super Potion",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 23,
+    "hex": "0x0017",
+    "name": "Full Heal",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 24,
+    "hex": "0x0018",
+    "name": "Revive",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 25,
+    "hex": "0x0019",
+    "name": "Max Revive",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 26,
+    "hex": "0x001A",
+    "name": "Fresh Water",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 27,
+    "hex": "0x001B",
+    "name": "Soda Pop",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 28,
+    "hex": "0x001C",
+    "name": "Lemonade",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 29,
+    "hex": "0x001D",
+    "name": "Moomoo Milk",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 30,
+    "hex": "0x001E",
+    "name": "EnergyPowder",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 31,
+    "hex": "0x001F",
+    "name": "Energy Root",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 32,
+    "hex": "0x0020",
+    "name": "Heal Powder",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 33,
+    "hex": "0x0021",
+    "name": "Revival Herb",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 34,
+    "hex": "0x0022",
+    "name": "Ether",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 35,
+    "hex": "0x0023",
+    "name": "Max Ether",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 36,
+    "hex": "0x0024",
+    "name": "Elixir",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 37,
+    "hex": "0x0025",
+    "name": "Max Elixir",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 38,
+    "hex": "0x0026",
+    "name": "Lava Cookie",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 39,
+    "hex": "0x0027",
+    "name": "Blue Flute",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 40,
+    "hex": "0x0028",
+    "name": "Yellow Flute",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 41,
+    "hex": "0x0029",
+    "name": "Red Flute",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 42,
+    "hex": "0x002A",
+    "name": "Black Flute",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 43,
+    "hex": "0x002B",
+    "name": "White Flute",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 44,
+    "hex": "0x002C",
+    "name": "Berry Juice",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 45,
+    "hex": "0x002D",
+    "name": "Sacred Ash",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 46,
+    "hex": "0x002E",
+    "name": "Shoal Salt",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 47,
+    "hex": "0x002F",
+    "name": "Shoal Shell",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 48,
+    "hex": "0x0030",
+    "name": "Red Shard",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 49,
+    "hex": "0x0031",
+    "name": "Blue Shard",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 50,
+    "hex": "0x0032",
+    "name": "Yellow Shard",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 51,
+    "hex": "0x0033",
+    "name": "Green Shard",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 52,
+    "hex": "0x0034",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 53,
+    "hex": "0x0035",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 54,
+    "hex": "0x0036",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 55,
+    "hex": "0x0037",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 56,
+    "hex": "0x0038",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 57,
+    "hex": "0x0039",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 58,
+    "hex": "0x003A",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 59,
+    "hex": "0x003B",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 60,
+    "hex": "0x003C",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 61,
+    "hex": "0x003D",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 62,
+    "hex": "0x003E",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 63,
+    "hex": "0x003F",
+    "name": "HP Up",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 64,
+    "hex": "0x0040",
+    "name": "Protein",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 65,
+    "hex": "0x0041",
+    "name": "Iron",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 66,
+    "hex": "0x0042",
+    "name": "Carbos",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 67,
+    "hex": "0x0043",
+    "name": "Calcium",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 68,
+    "hex": "0x0044",
+    "name": "Rare Candy",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 69,
+    "hex": "0x0045",
+    "name": "PP Up",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 70,
+    "hex": "0x0046",
+    "name": "Zinc",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 71,
+    "hex": "0x0047",
+    "name": "PP Max",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 72,
+    "hex": "0x0048",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 73,
+    "hex": "0x0049",
+    "name": "Guard Spec.",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 74,
+    "hex": "0x004A",
+    "name": "Dire Hit",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 75,
+    "hex": "0x004B",
+    "name": "X Attack",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 76,
+    "hex": "0x004C",
+    "name": "X Defend",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 77,
+    "hex": "0x004D",
+    "name": "X Speed",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 78,
+    "hex": "0x004E",
+    "name": "X Accuracy",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 79,
+    "hex": "0x004F",
+    "name": "X Special",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 80,
+    "hex": "0x0050",
+    "name": "Poké Doll",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 81,
+    "hex": "0x0051",
+    "name": "Fluffy Tail",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 82,
+    "hex": "0x0052",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 83,
+    "hex": "0x0053",
+    "name": "Super Repel",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 84,
+    "hex": "0x0054",
+    "name": "Max Repel",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 85,
+    "hex": "0x0055",
+    "name": "Escape Rope",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 86,
+    "hex": "0x0056",
+    "name": "Repel",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 87,
+    "hex": "0x0057",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 88,
+    "hex": "0x0058",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 89,
+    "hex": "0x0059",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 90,
+    "hex": "0x005A",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 91,
+    "hex": "0x005B",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 92,
+    "hex": "0x005C",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 93,
+    "hex": "0x005D",
+    "name": "Sun Stone",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 94,
+    "hex": "0x005E",
+    "name": "Moon Stone",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 95,
+    "hex": "0x005F",
+    "name": "Fire Stone",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 96,
+    "hex": "0x0060",
+    "name": "Thunderstone",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 97,
+    "hex": "0x0061",
+    "name": "Water Stone",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 98,
+    "hex": "0x0062",
+    "name": "Leaf Stone",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 99,
+    "hex": "0x0063",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 100,
+    "hex": "0x0064",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 101,
+    "hex": "0x0065",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 102,
+    "hex": "0x0066",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 103,
+    "hex": "0x0067",
+    "name": "TinyMushroom",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 104,
+    "hex": "0x0068",
+    "name": "Big Mushroom",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 105,
+    "hex": "0x0069",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 106,
+    "hex": "0x006A",
+    "name": "Pearl",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 107,
+    "hex": "0x006B",
+    "name": "Big Pearl",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 108,
+    "hex": "0x006C",
+    "name": "Stardust",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 109,
+    "hex": "0x006D",
+    "name": "Star Piece",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 110,
+    "hex": "0x006E",
+    "name": "Nugget",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 111,
+    "hex": "0x006F",
+    "name": "Heart Scale",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 112,
+    "hex": "0x0070",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 113,
+    "hex": "0x0071",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 114,
+    "hex": "0x0072",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 115,
+    "hex": "0x0073",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 116,
+    "hex": "0x0074",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 117,
+    "hex": "0x0075",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 118,
+    "hex": "0x0076",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 119,
+    "hex": "0x0077",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 120,
+    "hex": "0x0078",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 121,
+    "hex": "0x0079",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 122,
+    "hex": "0x007A",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 123,
+    "hex": "0x007B",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 124,
+    "hex": "0x007C",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 125,
+    "hex": "0x007D",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 126,
+    "hex": "0x007E",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 127,
+    "hex": "0x007F",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 128,
+    "hex": "0x0080",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 129,
+    "hex": "0x0081",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 130,
+    "hex": "0x0082",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 131,
+    "hex": "0x0083",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 132,
+    "hex": "0x0084",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 133,
+    "hex": "0x0085",
+    "name": "Cheri Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 134,
+    "hex": "0x0086",
+    "name": "Chesto Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 135,
+    "hex": "0x0087",
+    "name": "Pecha Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 136,
+    "hex": "0x0088",
+    "name": "Rawst Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 137,
+    "hex": "0x0089",
+    "name": "Aspear Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 138,
+    "hex": "0x008A",
+    "name": "Leppa Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 139,
+    "hex": "0x008B",
+    "name": "Oran Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 140,
+    "hex": "0x008C",
+    "name": "Persim Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 141,
+    "hex": "0x008D",
+    "name": "Lum Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 142,
+    "hex": "0x008E",
+    "name": "Sitrus Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 143,
+    "hex": "0x008F",
+    "name": "Figy Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 144,
+    "hex": "0x0090",
+    "name": "Wiki Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 145,
+    "hex": "0x0091",
+    "name": "Mago Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 146,
+    "hex": "0x0092",
+    "name": "Aguav Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 147,
+    "hex": "0x0093",
+    "name": "Iapapa Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 148,
+    "hex": "0x0094",
+    "name": "Razz Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 149,
+    "hex": "0x0095",
+    "name": "Bluk Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 150,
+    "hex": "0x0096",
+    "name": "Nanab Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 151,
+    "hex": "0x0097",
+    "name": "Wepear Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 152,
+    "hex": "0x0098",
+    "name": "Pinap Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 153,
+    "hex": "0x0099",
+    "name": "Pomeg Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 154,
+    "hex": "0x009A",
+    "name": "Kelpsy Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 155,
+    "hex": "0x009B",
+    "name": "Qualot Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 156,
+    "hex": "0x009C",
+    "name": "Hondew Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 157,
+    "hex": "0x009D",
+    "name": "Grepa Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 158,
+    "hex": "0x009E",
+    "name": "Tamato Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 159,
+    "hex": "0x009F",
+    "name": "Cornn Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 160,
+    "hex": "0x00A0",
+    "name": "Magost Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 161,
+    "hex": "0x00A1",
+    "name": "Rabuta Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 162,
+    "hex": "0x00A2",
+    "name": "Nomel Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 163,
+    "hex": "0x00A3",
+    "name": "Spelon Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 164,
+    "hex": "0x00A4",
+    "name": "Pamtre Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 165,
+    "hex": "0x00A5",
+    "name": "Watmel Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 166,
+    "hex": "0x00A6",
+    "name": "Durin Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 167,
+    "hex": "0x00A7",
+    "name": "Belue Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 168,
+    "hex": "0x00A8",
+    "name": "Liechi Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 169,
+    "hex": "0x00A9",
+    "name": "Ganlon Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 170,
+    "hex": "0x00AA",
+    "name": "Salac Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 171,
+    "hex": "0x00AB",
+    "name": "Petaya Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 172,
+    "hex": "0x00AC",
+    "name": "Apicot Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 173,
+    "hex": "0x00AD",
+    "name": "Lansat Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 174,
+    "hex": "0x00AE",
+    "name": "Starf Berry",
+    "pocket": "Berries pocket"
+  },
+  {
+    "index": 175,
+    "hex": "0x00AF",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 176,
+    "hex": "0x00B0",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 177,
+    "hex": "0x00B1",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 178,
+    "hex": "0x00B2",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 179,
+    "hex": "0x00B3",
+    "name": "BrightPowder",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 180,
+    "hex": "0x00B4",
+    "name": "White Herb",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 181,
+    "hex": "0x00B5",
+    "name": "Macho Brace",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 182,
+    "hex": "0x00B6",
+    "name": "Exp. Share",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 183,
+    "hex": "0x00B7",
+    "name": "Quick Claw",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 184,
+    "hex": "0x00B8",
+    "name": "Soothe Bell",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 185,
+    "hex": "0x00B9",
+    "name": "Mental Herb",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 186,
+    "hex": "0x00BA",
+    "name": "Choice Band",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 187,
+    "hex": "0x00BB",
+    "name": "King's Rock",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 188,
+    "hex": "0x00BC",
+    "name": "SilverPowder",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 189,
+    "hex": "0x00BD",
+    "name": "Amulet Coin",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 190,
+    "hex": "0x00BE",
+    "name": "Cleanse Tag",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 191,
+    "hex": "0x00BF",
+    "name": "Soul Dew",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 192,
+    "hex": "0x00C0",
+    "name": "DeepSeaTooth",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 193,
+    "hex": "0x00C1",
+    "name": "DeepSeaScale",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 194,
+    "hex": "0x00C2",
+    "name": "Smoke Ball",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 195,
+    "hex": "0x00C3",
+    "name": "Everstone",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 196,
+    "hex": "0x00C4",
+    "name": "Focus Band",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 197,
+    "hex": "0x00C5",
+    "name": "Lucky Egg",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 198,
+    "hex": "0x00C6",
+    "name": "Scope Lens",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 199,
+    "hex": "0x00C7",
+    "name": "Metal Coat",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 200,
+    "hex": "0x00C8",
+    "name": "Leftovers",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 201,
+    "hex": "0x00C9",
+    "name": "Dragon Scale",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 202,
+    "hex": "0x00CA",
+    "name": "Light Ball",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 203,
+    "hex": "0x00CB",
+    "name": "Soft Sand",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 204,
+    "hex": "0x00CC",
+    "name": "Hard Stone",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 205,
+    "hex": "0x00CD",
+    "name": "Miracle Seed",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 206,
+    "hex": "0x00CE",
+    "name": "BlackGlasses",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 207,
+    "hex": "0x00CF",
+    "name": "Black Belt",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 208,
+    "hex": "0x00D0",
+    "name": "Magnet",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 209,
+    "hex": "0x00D1",
+    "name": "Mystic Water",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 210,
+    "hex": "0x00D2",
+    "name": "Sharp Beak",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 211,
+    "hex": "0x00D3",
+    "name": "Poison Barb",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 212,
+    "hex": "0x00D4",
+    "name": "NeverMeltIce",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 213,
+    "hex": "0x00D5",
+    "name": "Spell Tag",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 214,
+    "hex": "0x00D6",
+    "name": "TwistedSpoon",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 215,
+    "hex": "0x00D7",
+    "name": "Charcoal",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 216,
+    "hex": "0x00D8",
+    "name": "Dragon Fang",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 217,
+    "hex": "0x00D9",
+    "name": "Silk Scarf",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 218,
+    "hex": "0x00DA",
+    "name": "Up-Grade",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 219,
+    "hex": "0x00DB",
+    "name": "Shell Bell",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 220,
+    "hex": "0x00DC",
+    "name": "Sea Incense",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 221,
+    "hex": "0x00DD",
+    "name": "Lax Incense",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 222,
+    "hex": "0x00DE",
+    "name": "Lucky Punch",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 223,
+    "hex": "0x00DF",
+    "name": "Metal Powder",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 224,
+    "hex": "0x00E0",
+    "name": "Thick Club",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 225,
+    "hex": "0x00E1",
+    "name": "Stick",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 226,
+    "hex": "0x00E2",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 227,
+    "hex": "0x00E3",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 228,
+    "hex": "0x00E4",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 229,
+    "hex": "0x00E5",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 230,
+    "hex": "0x00E6",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 231,
+    "hex": "0x00E7",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 232,
+    "hex": "0x00E8",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 233,
+    "hex": "0x00E9",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 234,
+    "hex": "0x00EA",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 235,
+    "hex": "0x00EB",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 236,
+    "hex": "0x00EC",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 237,
+    "hex": "0x00ED",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 238,
+    "hex": "0x00EE",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 239,
+    "hex": "0x00EF",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 240,
+    "hex": "0x00F0",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 241,
+    "hex": "0x00F1",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 242,
+    "hex": "0x00F2",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 243,
+    "hex": "0x00F3",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 244,
+    "hex": "0x00F4",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 245,
+    "hex": "0x00F5",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 246,
+    "hex": "0x00F6",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 247,
+    "hex": "0x00F7",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 248,
+    "hex": "0x00F8",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 249,
+    "hex": "0x00F9",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 250,
+    "hex": "0x00FA",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 251,
+    "hex": "0x00FB",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 252,
+    "hex": "0x00FC",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 253,
+    "hex": "0x00FD",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 254,
+    "hex": "0x00FE",
+    "name": "Red Scarf",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 255,
+    "hex": "0x00FF",
+    "name": "Blue Scarf",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 256,
+    "hex": "0x0100",
+    "name": "Pink Scarf",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 257,
+    "hex": "0x0101",
+    "name": "Green Scarf",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 258,
+    "hex": "0x0102",
+    "name": "Yellow Scarf",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 259,
+    "hex": "0x0103",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 260,
+    "hex": "0x0104",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 261,
+    "hex": "0x0105",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 262,
+    "hex": "0x0106",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 263,
+    "hex": "0x0107",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 264,
+    "hex": "0x0108",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 265,
+    "hex": "0x0109",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 266,
+    "hex": "0x010A",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 267,
+    "hex": "0x010B",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 268,
+    "hex": "0x010C",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 269,
+    "hex": "0x010D",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 270,
+    "hex": "0x010E",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 271,
+    "hex": "0x010F",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 272,
+    "hex": "0x0110",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 273,
+    "hex": "0x0111",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 274,
+    "hex": "0x0112",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 275,
+    "hex": "0x0113",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 276,
+    "hex": "0x0114",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 277,
+    "hex": "0x0115",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 278,
+    "hex": "0x0116",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 279,
+    "hex": "0x0117",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 280,
+    "hex": "0x0118",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 281,
+    "hex": "0x0119",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 282,
+    "hex": "0x011A",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 283,
+    "hex": "0x011B",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 284,
+    "hex": "0x011C",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 285,
+    "hex": "0x011D",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 286,
+    "hex": "0x011E",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 287,
+    "hex": "0x011F",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 288,
+    "hex": "0x0120",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 289,
+    "hex": "0x0121",
+    "name": "TM01",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 290,
+    "hex": "0x0122",
+    "name": "TM02",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 291,
+    "hex": "0x0123",
+    "name": "TM03",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 292,
+    "hex": "0x0124",
+    "name": "TM04",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 293,
+    "hex": "0x0125",
+    "name": "TM05",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 294,
+    "hex": "0x0126",
+    "name": "TM06",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 295,
+    "hex": "0x0127",
+    "name": "TM07",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 296,
+    "hex": "0x0128",
+    "name": "TM08",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 297,
+    "hex": "0x0129",
+    "name": "TM09",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 298,
+    "hex": "0x012A",
+    "name": "TM10",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 299,
+    "hex": "0x012B",
+    "name": "TM11",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 300,
+    "hex": "0x012C",
+    "name": "TM12",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 301,
+    "hex": "0x012D",
+    "name": "TM13",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 302,
+    "hex": "0x012E",
+    "name": "TM14",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 303,
+    "hex": "0x012F",
+    "name": "TM15",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 304,
+    "hex": "0x0130",
+    "name": "TM16",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 305,
+    "hex": "0x0131",
+    "name": "TM17",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 306,
+    "hex": "0x0132",
+    "name": "TM18",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 307,
+    "hex": "0x0133",
+    "name": "TM19",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 308,
+    "hex": "0x0134",
+    "name": "TM20",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 309,
+    "hex": "0x0135",
+    "name": "TM21",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 310,
+    "hex": "0x0136",
+    "name": "TM22",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 311,
+    "hex": "0x0137",
+    "name": "TM23",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 312,
+    "hex": "0x0138",
+    "name": "TM24",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 313,
+    "hex": "0x0139",
+    "name": "TM25",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 314,
+    "hex": "0x013A",
+    "name": "TM26",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 315,
+    "hex": "0x013B",
+    "name": "TM27",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 316,
+    "hex": "0x013C",
+    "name": "TM28",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 317,
+    "hex": "0x013D",
+    "name": "TM29",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 318,
+    "hex": "0x013E",
+    "name": "TM30",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 319,
+    "hex": "0x013F",
+    "name": "TM31",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 320,
+    "hex": "0x0140",
+    "name": "TM32",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 321,
+    "hex": "0x0141",
+    "name": "TM33",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 322,
+    "hex": "0x0142",
+    "name": "TM34",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 323,
+    "hex": "0x0143",
+    "name": "TM35",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 324,
+    "hex": "0x0144",
+    "name": "TM36",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 325,
+    "hex": "0x0145",
+    "name": "TM37",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 326,
+    "hex": "0x0146",
+    "name": "TM38",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 327,
+    "hex": "0x0147",
+    "name": "TM39",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 328,
+    "hex": "0x0148",
+    "name": "TM40",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 329,
+    "hex": "0x0149",
+    "name": "TM41",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 330,
+    "hex": "0x014A",
+    "name": "TM42",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 331,
+    "hex": "0x014B",
+    "name": "TM43",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 332,
+    "hex": "0x014C",
+    "name": "TM44",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 333,
+    "hex": "0x014D",
+    "name": "TM45",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 334,
+    "hex": "0x014E",
+    "name": "TM46",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 335,
+    "hex": "0x014F",
+    "name": "TM47",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 336,
+    "hex": "0x0150",
+    "name": "TM48",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 337,
+    "hex": "0x0151",
+    "name": "TM49",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 338,
+    "hex": "0x0152",
+    "name": "TM50",
+    "pocket": "TMs and HMs pocket"
+  },
+  {
+    "index": 339,
+    "hex": "0x0153",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 340,
+    "hex": "0x0154",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 341,
+    "hex": "0x0155",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 342,
+    "hex": "0x0156",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 343,
+    "hex": "0x0157",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 344,
+    "hex": "0x0158",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 345,
+    "hex": "0x0159",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 346,
+    "hex": "0x015A",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 347,
+    "hex": "0x15B",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 348,
+    "hex": "0x15C",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 349,
+    "hex": "0x015D",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 350,
+    "hex": "0x015E",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 351,
+    "hex": "0x015F",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 352,
+    "hex": "0x0160",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 353,
+    "hex": "0x0161",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 354,
+    "hex": "0x0162",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 355,
+    "hex": "0x0163",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 356,
+    "hex": "0x0164",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 357,
+    "hex": "0x0165",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 358,
+    "hex": "0x0166",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 359,
+    "hex": "0x0167",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 360,
+    "hex": "0x0168",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 361,
+    "hex": "0x0169",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 362,
+    "hex": "0x016A",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 363,
+    "hex": "0x016B",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 364,
+    "hex": "0x016C",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 365,
+    "hex": "0x016D",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 366,
+    "hex": "0x016E",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 367,
+    "hex": "0x016F",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 368,
+    "hex": "0x0170",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 369,
+    "hex": "0x0171",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 370,
+    "hex": "0x0172",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 371,
+    "hex": "0x0173",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 372,
+    "hex": "0x0174",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 373,
+    "hex": "0x0175",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 374,
+    "hex": "0x0176",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 375,
+    "hex": "0x0177",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 376,
+    "hex": "0x0178",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 377,
+    "hex": "0x0179",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 378,
+    "hex": "0x017A",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 379,
+    "hex": "0x017B",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 380,
+    "hex": "0x017C",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 381,
+    "hex": "0x017D",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 382,
+    "hex": "0x017E",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 383,
+    "hex": "0x017F",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 384,
+    "hex": "0x0180",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 385,
+    "hex": "0x0181",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 386,
+    "hex": "0x0182",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 387,
+    "hex": "0x0183",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 388,
+    "hex": "0x0184",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 389,
+    "hex": "0x0185",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 390,
+    "hex": "0x0186",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 391,
+    "hex": "0x0187",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 392,
+    "hex": "0x0188",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 393,
+    "hex": "0x0189",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 394,
+    "hex": "0x018A",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 395,
+    "hex": "0x018B",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 396,
+    "hex": "0x018C",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 397,
+    "hex": "0x018D",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 398,
+    "hex": "0x018E",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 399,
+    "hex": "0x018F",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 400,
+    "hex": "0x0190",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 401,
+    "hex": "0x0191",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 402,
+    "hex": "0x0192",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 403,
+    "hex": "0x0193",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 404,
+    "hex": "0x0194",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 405,
+    "hex": "0x0195",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 406,
+    "hex": "0x0196",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 407,
+    "hex": "0x0197",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 408,
+    "hex": "0x0198",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 409,
+    "hex": "0x0199",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 410,
+    "hex": "0x019A",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 411,
+    "hex": "0x019B",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 412,
+    "hex": "0x019C",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 413,
+    "hex": "0x019D",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 414,
+    "hex": "0x019E",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 415,
+    "hex": "0x019F",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 416,
+    "hex": "0x01A0",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 417,
+    "hex": "0x01A1",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 418,
+    "hex": "0x01A2",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 419,
+    "hex": "0x01A3",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 420,
+    "hex": "0x01A4",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 421,
+    "hex": "0x01A5",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 422,
+    "hex": "0x01A6",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 423,
+    "hex": "0x01A7",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 424,
+    "hex": "0x01A8",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 425,
+    "hex": "0x01A9",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 426,
+    "hex": "0x01AA",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 427,
+    "hex": "0x01AB",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 428,
+    "hex": "0x01AC",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 429,
+    "hex": "0x01AD",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 430,
+    "hex": "0x01AE",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 431,
+    "hex": "0x01AF",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 432,
+    "hex": "0x01B0",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 433,
+    "hex": "0x01B1",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 434,
+    "hex": "0x01B2",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 435,
+    "hex": "0x01B3",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 436,
+    "hex": "0x01B4",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 437,
+    "hex": "0x01B5",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 438,
+    "hex": "0x01B6",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 439,
+    "hex": "0x01B7",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 440,
+    "hex": "0x01B8",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 441,
+    "hex": "0x01B9",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 442,
+    "hex": "0x01BA",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 443,
+    "hex": "0x01BB",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 444,
+    "hex": "0x01BC",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 445,
+    "hex": "0x01BD",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 446,
+    "hex": "0x01BE",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 447,
+    "hex": "0x01BF",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 448,
+    "hex": "0x01C0",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 449,
+    "hex": "0x01C1",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 450,
+    "hex": "0x01C2",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 451,
+    "hex": "0x01C3",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 452,
+    "hex": "0x01C4",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 453,
+    "hex": "0x01C5",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 454,
+    "hex": "0x01C6",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 455,
+    "hex": "0x01C7",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 456,
+    "hex": "0x01C8",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 457,
+    "hex": "0x01C9",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 458,
+    "hex": "0x01CA",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 459,
+    "hex": "0x01CB",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 460,
+    "hex": "0x01CC",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 461,
+    "hex": "0x01CD",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 462,
+    "hex": "0x01CE",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 463,
+    "hex": "0x01CF",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 464,
+    "hex": "0x01D0",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 465,
+    "hex": "0x01D1",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 466,
+    "hex": "0x01D2",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 467,
+    "hex": "0x01D3",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 468,
+    "hex": "0x01D4",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 469,
+    "hex": "0x01D5",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 470,
+    "hex": "0x01D6",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 471,
+    "hex": "0x01D7",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 472,
+    "hex": "0x01D8",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 473,
+    "hex": "0x01D9",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 474,
+    "hex": "0x01DA",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 475,
+    "hex": "0x01DB",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 476,
+    "hex": "0x01DC",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 477,
+    "hex": "0x01DD",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 478,
+    "hex": "0x01DE",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 479,
+    "hex": "0x01DF",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 480,
+    "hex": "0x01E0",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 481,
+    "hex": "0x01E1",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 482,
+    "hex": "0x01E2",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 483,
+    "hex": "0x01E3",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 484,
+    "hex": "0x01E4",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 485,
+    "hex": "0x01E5",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 486,
+    "hex": "0x01E6",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 487,
+    "hex": "0x01E7",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 488,
+    "hex": "0x01E8",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 489,
+    "hex": "0x01E9",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 490,
+    "hex": "0x01EA",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 491,
+    "hex": "0x01EB",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 492,
+    "hex": "0x01EC",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 493,
+    "hex": "0x01ED",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 494,
+    "hex": "0x01EE",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 495,
+    "hex": "0x01EF",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 496,
+    "hex": "0x01F0",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 497,
+    "hex": "0x01F1",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 498,
+    "hex": "0x01F2",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 499,
+    "hex": "0x01F3",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 500,
+    "hex": "0x01F4",
+    "name": "Safe Key",
+    "pocket": "Key items pocket"
+  },
+  {
+    "index": 501,
+    "hex": "0x01F5",
+    "name": "Elevator Key",
+    "pocket": "Key items pocket"
+  },
+  {
+    "index": 502,
+    "hex": "0x01F6",
+    "name": "Bonsly Card",
+    "pocket": "Key items pocket"
+  },
+  {
+    "index": 503,
+    "hex": "0x01F7",
+    "name": "Machine Part",
+    "pocket": "Key items pocket"
+  },
+  {
+    "index": 504,
+    "hex": "0x01F8",
+    "name": "Gonzap's Key",
+    "pocket": "Key items pocket"
+  },
+  {
+    "index": 505,
+    "hex": "0x01F9",
+    "name": "Data ROM",
+    "pocket": "Key items pocket"
+  },
+  {
+    "index": 506,
+    "hex": "0x01FA",
+    "name": "ID Card",
+    "pocket": "Key items pocket"
+  },
+  {
+    "index": 507,
+    "hex": "0x01FB",
+    "name": "Music Disc",
+    "pocket": "Key items pocket"
+  },
+  {
+    "index": 508,
+    "hex": "0x01FC",
+    "name": "System Lever",
+    "pocket": "Key items pocket"
+  },
+  {
+    "index": 509,
+    "hex": "0x01FD",
+    "name": "Mayor's Note",
+    "pocket": "Key items pocket"
+  },
+  {
+    "index": 510,
+    "hex": "0x01FE",
+    "name": "Miror Radar",
+    "pocket": "Key items pocket"
+  },
+  {
+    "index": 511,
+    "hex": "0x01FF",
+    "name": "Poké Snack",
+    "pocket": "Items pocket"
+  },
+  {
+    "index": 512,
+    "hex": "0x0200",
+    "name": "Cologne Case",
+    "pocket": "Key items pocket"
+  },
+  {
+    "index": 513,
+    "hex": "0x0201",
+    "name": "Joy Scent",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 514,
+    "hex": "0x0202",
+    "name": "Excite Scent",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 515,
+    "hex": "0x0203",
+    "name": "Vivid Scent",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 516,
+    "hex": "0x0204",
+    "name": "Sun Shard",
+    "pocket": "Key items pocket"
+  },
+  {
+    "index": 517,
+    "hex": "0x0205",
+    "name": "Moon Shard",
+    "pocket": "Key items pocket"
+  },
+  {
+    "index": 518,
+    "hex": "0x0206",
+    "name": "Bonsly Photo",
+    "pocket": "Key items pocket"
+  },
+  {
+    "index": 519,
+    "hex": "0x0207",
+    "name": "Cry Analyzer",
+    "pocket": "Key items pocket"
+  },
+  {
+    "index": 520,
+    "hex": "0x0208",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 521,
+    "hex": "0x0209",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 522,
+    "hex": "0x020A",
+    "name": "unknown",
+    "pocket": "Unknown pocket"
+  },
+  {
+    "index": 523,
+    "hex": "0x020B",
+    "name": "Krane Memo 1",
+    "pocket": "Key items pocket"
+  },
+  {
+    "index": 524,
+    "hex": "0x020C",
+    "name": "Krane Memo 2",
+    "pocket": "Key items pocket"
+  },
+  {
+    "index": 525,
+    "hex": "0x020D",
+    "name": "Krane Memo 3",
+    "pocket": "Key items pocket"
+  },
+  {
+    "index": 526,
+    "hex": "0x020E",
+    "name": "Krane Memo 4",
+    "pocket": "Key items pocket"
+  },
+  {
+    "index": 527,
+    "hex": "0x020F",
+    "name": "Krane Memo 5",
+    "pocket": "Key items pocket"
+  },
+  {
+    "index": 528,
+    "hex": "0x0210",
+    "name": "Voice Case 1",
+    "pocket": "Key items pocket"
+  },
+  {
+    "index": 529,
+    "hex": "0x0211",
+    "name": "Voice Case 2",
+    "pocket": "Key items pocket"
+  },
+  {
+    "index": 530,
+    "hex": "0x0212",
+    "name": "Voice Case 3",
+    "pocket": "Key items pocket"
+  },
+  {
+    "index": 531,
+    "hex": "0x0213",
+    "name": "Voice Case 4",
+    "pocket": "Key items pocket"
+  },
+  {
+    "index": 532,
+    "hex": "0x0214",
+    "name": "Voice Case 5",
+    "pocket": "Key items pocket"
+  },
+  {
+    "index": 533,
+    "hex": "0x0215",
+    "name": "Disc Case",
+    "pocket": "Key items pocket"
+  },
+  {
+    "index": 534,
+    "hex": "0x0216",
+    "name": "Battle CD 01",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 535,
+    "hex": "0x0217",
+    "name": "Battle CD 02",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 536,
+    "hex": "0x0218",
+    "name": "Battle CD 03",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 537,
+    "hex": "0x0219",
+    "name": "Battle CD 04",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 538,
+    "hex": "0x021A",
+    "name": "Battle CD 05",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 539,
+    "hex": "0x021B",
+    "name": "Battle CD 06",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 540,
+    "hex": "0x021C",
+    "name": "Battle CD 07",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 541,
+    "hex": "0x021D",
+    "name": "Battle CD 08",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 542,
+    "hex": "0x021E",
+    "name": "Battle CD 09",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 543,
+    "hex": "0x021F",
+    "name": "Battle CD 10",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 544,
+    "hex": "0x0220",
+    "name": "Battle CD 11",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 545,
+    "hex": "0x0221",
+    "name": "Battle CD 12",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 546,
+    "hex": "0x0222",
+    "name": "Battle CD 13",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 547,
+    "hex": "0x0223",
+    "name": "Battle CD 14",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 548,
+    "hex": "0x0224",
+    "name": "Battle CD 15",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 549,
+    "hex": "0x0225",
+    "name": "Battle CD 16",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 550,
+    "hex": "0x0226",
+    "name": "Battle CD 17",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 551,
+    "hex": "0x0227",
+    "name": "Battle CD 18",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 552,
+    "hex": "0x0228",
+    "name": "Battle CD 19",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 553,
+    "hex": "0x0229",
+    "name": "Battle CD 20",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 554,
+    "hex": "0x022A",
+    "name": "Battle CD 21",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 555,
+    "hex": "0x022B",
+    "name": "Battle CD 22",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 556,
+    "hex": "0x022C",
+    "name": "Battle CD 23",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 557,
+    "hex": "0x022D",
+    "name": "Battle CD 24",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 558,
+    "hex": "0x022E",
+    "name": "Battle CD 25",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 559,
+    "hex": "0x022F",
+    "name": "Battle CD 26",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 560,
+    "hex": "0x0230",
+    "name": "Battle CD 27",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 561,
+    "hex": "0x0231",
+    "name": "Battle CD 28",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 562,
+    "hex": "0x0232",
+    "name": "Battle CD 29",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 563,
+    "hex": "0x0233",
+    "name": "Battle CD 30",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 564,
+    "hex": "0x0234",
+    "name": "Battle CD 31",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 565,
+    "hex": "0x0235",
+    "name": "Battle CD 32",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 566,
+    "hex": "0x0236",
+    "name": "Battle CD 33",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 567,
+    "hex": "0x0237",
+    "name": "Battle CD 34",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 568,
+    "hex": "0x0238",
+    "name": "Battle CD 35",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 569,
+    "hex": "0x0239",
+    "name": "Battle CD 36",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 570,
+    "hex": "0x023A",
+    "name": "Battle CD 37",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 571,
+    "hex": "0x023B",
+    "name": "Battle CD 38",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 572,
+    "hex": "0x023C",
+    "name": "Battle CD 39",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 573,
+    "hex": "0x023D",
+    "name": "Battle CD 40",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 574,
+    "hex": "0x023E",
+    "name": "Battle CD 41",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 575,
+    "hex": "0x023F",
+    "name": "Battle CD 42",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 576,
+    "hex": "0x0240",
+    "name": "Battle CD 43",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 577,
+    "hex": "0x0241",
+    "name": "Battle CD 44",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 578,
+    "hex": "0x0242",
+    "name": "Battle CD 45",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 579,
+    "hex": "0x0243",
+    "name": "Battle CD 46",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 580,
+    "hex": "0x0244",
+    "name": "Battle CD 47",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 581,
+    "hex": "0x0245",
+    "name": "Battle CD 48",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 582,
+    "hex": "0x0246",
+    "name": "Battle CD 49",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 583,
+    "hex": "0x0247",
+    "name": "Battle CD 50",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 584,
+    "hex": "0x0248",
+    "name": "Battle CD 51",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 585,
+    "hex": "0x0249",
+    "name": "Battle CD 52",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 586,
+    "hex": "0x024A",
+    "name": "Battle CD 53",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 587,
+    "hex": "0x024B",
+    "name": "Battle CD 54",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 588,
+    "hex": "0x024C",
+    "name": "Battle CD 55",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 589,
+    "hex": "0x024D",
+    "name": "Battle CD 56",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 590,
+    "hex": "0x024E",
+    "name": "Battle CD 57",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 591,
+    "hex": "0x024F",
+    "name": "Battle CD 58",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 592,
+    "hex": "0x0250",
+    "name": "Battle CD 59",
+    "pocket": "Battle CDs"
+  },
+  {
+    "index": 593,
+    "hex": "0x0251",
+    "name": "Battle CD 60",
+    "pocket": "Battle CDs"
+  }
+]
