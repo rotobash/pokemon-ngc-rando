@@ -53,11 +53,11 @@ namespace Randomizer.Shufflers
 
                         var originalPoke = pokemon.Pokemon;
 
-                        if (settings.RandomizeLegendaryIntoLegendary && pokemon.IsShadow && ExtractorConstants.Legendaries.Contains(pokemon.Pokemon))
+                        if (settings.RandomizeLegendaryIntoLegendary && ExtractorConstants.Legendaries.Contains(pokemon.Pokemon))
                         {
                             var potentialLegendaries = ExtractorConstants.Legendaries;
 
-                            if (settings.NoDuplicateShadows)
+                            if (pokemon.IsShadow && settings.NoDuplicateShadows)
                             {
                                 // try to pick a non duplicate shadow if that setting is enabled
                                 potentialLegendaries = ExtractorConstants.Legendaries.Where(poke => !pickedShadowPokemon.Contains(poke)).ToArray();
