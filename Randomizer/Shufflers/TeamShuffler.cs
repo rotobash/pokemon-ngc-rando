@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using XDCommon;
+using XDCommon.Contracts;
 using XDCommon.PokemonDefinitions;
 
 namespace Randomizer.Shufflers
@@ -192,6 +193,14 @@ namespace Randomizer.Shufflers
                 var levelIncrease = (byte)Math.Clamp(level + level * settings.BoostTrainerLevelPercent, 1, 100);
                 Logger.Log($"Boosting level from {pokemon.Level} to {levelIncrease}\n");
                 pokemon.Level = levelIncrease;
+
+                if (pokemon.IsShadow && extractedGame.Game == Game.XD)
+                {
+                    level = pokemon.ShadowLevel;
+                    levelIncrease = (byte)Math.Clamp(level + level * settings.BoostTrainerLevelPercent, 1, 100);
+                    Logger.Log($"Boosting shadow level from {pokemon.ShadowLevel} to {levelIncrease}\n");
+                    pokemon.ShadowLevel = levelIncrease;
+                }
             }
         }
 
