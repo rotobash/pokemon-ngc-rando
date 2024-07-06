@@ -158,7 +158,7 @@ namespace XDCommon
                 AddOrUpdateAppSettings(nameof(ExtractDirectory), value.ToString());
             }
         }
-        static void AddOrUpdateAppSettings(string key, string value)
+        public static void AddOrUpdateAppSettings(string key, string value)
         {
             try
             {
