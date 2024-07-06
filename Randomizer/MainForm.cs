@@ -246,7 +246,7 @@ namespace Randomizer
             {
                 backgroundWorker.ReportProgress(0);
 
-                var settingsInvoke = BeginInvoke(new Func<Settings>(() => CreateRandoSettings()));
+                var settingsInvoke = BeginInvoke(new Func<Settings>(CreateRandoSettings));
                 var extractorInvoke = BeginInvoke(new Func<ISOExtractor>(() => isoExtractor));
                 var isoInvoke = BeginInvoke(new Func<ISO>(() => iso));
                 var settings = EndInvoke(settingsInvoke) as Settings;
@@ -263,29 +263,29 @@ namespace Randomizer
                 randomizer.RandomizeMoves();
 
                 backgroundWorker.ReportProgress(20);
+                progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Randomizing Items..."));
+                randomizer.RandomizeItems();
+
+                backgroundWorker.ReportProgress(30);
                 progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Randomizing Pokemon Traits..."));
                 randomizer.RandomizePokemonTraits();
 
-                backgroundWorker.ReportProgress(30);
+                backgroundWorker.ReportProgress(40);
                 progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Randomizing Trainers..."));
                 randomizer.RandomizeTrainers();
-
-                backgroundWorker.ReportProgress(40);
-                progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Randomizing Items..."));
-                randomizer.RandomizeItems();
 
                 backgroundWorker.ReportProgress(50);
                 progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Randomizing Statics..."));
                 randomizer.RandomizeStatics();
 
-                // will only do something if game is XD
                 backgroundWorker.ReportProgress(60);
-                progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Randomizing Bingo..."));
-                randomizer.RandomizeBattleBingo();
-
-                backgroundWorker.ReportProgress(70);
                 progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Randomizing PokeSpots..."));
                 randomizer.RandomizePokeSpots();
+
+                // will only do something if game is XD
+                backgroundWorker.ReportProgress(70);
+                progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Randomizing Bingo..."));
+                randomizer.RandomizeBattleBingo();
 
                 backgroundWorker.ReportProgress(80);
                 progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Packing ISO..."));
