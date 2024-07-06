@@ -22,7 +22,6 @@ namespace RandomizerTests.Items
         [OneTimeSetUp]
         public void Setup()
         {
-            TestConfiguration.TestRomPath = "H:\\ISO\\Gamecube\\Pokemon Colosseum.iso";
             var isoExtractor = new ISOExtractor(TestConfiguration.TestRomPath);
             var iso = isoExtractor.ExtractISO();
             if (iso.Game == XDCommon.Contracts.Game.XD)
