@@ -427,7 +427,7 @@ namespace Randomizer.Shufflers
                         Logger.Log($"Tutor Move Compatibility: Full\n");
                         for (int i = 0; i < pokemon.TutorMoves.Length; i++)
                         {
-                            pokemon.SetTutorMoves(i, true);
+                            pokemon.SetTutorMove(i, true);
                         }
                     }
                 }
@@ -450,7 +450,7 @@ namespace Randomizer.Shufflers
                         for (int i = 0; i < pokemon.TutorMoves.Length; i++)
                         {
                             var compatible = random.Next(0, 2) == 0;
-                            pokemon.SetTutorMoves(i, compatible);
+                            pokemon.SetTutorMove(i, compatible);
                             Logger.Log($"{i + 1} - {compatible}\n");
                         }
                     }
@@ -477,7 +477,7 @@ namespace Randomizer.Shufflers
                         for (int i = 0; i < pokemon.TutorMoves.Length; i++)
                         {
                             var isCompatible = tutorMoves[i].Type == pokemon.Type1 || tutorMoves[i].Type == pokemon.Type2 || random.Next(0, 10) >= 8;
-                            pokemon.SetTutorMoves(i, isCompatible);
+                            pokemon.SetTutorMove(i, isCompatible);
                             Logger.Log($"{i + 1} - {isCompatible}\n");
                         }
                     }

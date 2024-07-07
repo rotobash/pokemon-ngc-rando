@@ -42,25 +42,4 @@ namespace XDCommon.PokemonDefinitions
             set => iso.DOL.ExtractedFile.WriteBytesAtOffset(TMStartOffset, value.GetBytes());
         }
     }
-
-    public class TutorMove : Items
-    {
-        const int TutorMoves = 126;
-        const byte SizeOfTutorMoveEntry = 0x0C;
-        const byte TutorMoveMoveIndexOffset = 0x00;
-        const byte AvailabilityFlagOffset = 0x07;
-
-        public TutorMove(int index, ISO iso) : base(index, iso)
-        {
-
-        }
-
-        public uint TutorStartOffset => (uint)(iso.CommonRel.GetPointer(TutorMoves) + ((Index - 1) * SizeOfTutorMoveEntry));
-
-        public ushort Move
-        {
-            get => iso.CommonRel.ExtractedFile.GetUShortAtOffset(TutorStartOffset + TutorMoveMoveIndexOffset);
-            set => iso.CommonRel.ExtractedFile.WriteBytesAtOffset(TutorStartOffset + TutorMoveMoveIndexOffset, value.GetBytes());
-        }
-    }
 }

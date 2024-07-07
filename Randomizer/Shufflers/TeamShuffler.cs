@@ -42,15 +42,8 @@ namespace Randomizer.Shufflers
                     Logger.Log($"Trainer {trainer.Name}\nWith:\n");
                     foreach (var pokemon in trainer.Pokemon)
                     {
-                        // for some reason in Colosseum, there are duplicate trainers that point to the same pokemon which causes randomization actions to happen multiple times.
-                        // Trainer data and Trainer Pokemon data are stored separately and linked by Ids, so its possible for unused trainers and placeholders to have pokemon set
-                        // to the same pokemon that in-game trainers use. for example, Willie (first trainer) has two level 24 Zigzagoons that are randomized, the randomizer continues on
-                        // and finds a placeholder trainer that uses those same two Zigzagoons then applies randomization again to those pokemon. The trainers are marked as in use and some even have names,
-                        // but there is no way to encounter them in-game normally. So keep a set of pokemon we've randomized and skip if we've already messed with it. 
-                        if (pokemon.Pokemon == 0 || randomizedPokemon.Contains(pokemon.Index))
+                        if (pokemon.Pokemon == 0)
                             continue;
-                        else
-                            randomizedPokemon.Add(pokemon.Index);
 
                         var originalPoke = pokemon.Pokemon;
 
@@ -85,12 +78,25 @@ namespace Randomizer.Shufflers
                                 {
                                     RandomizePokemon(random, settings, extractedGame, pokemon);
                                 }
-
-                                pickedShadowPokemon.Add(pokemon.Pokemon);
                             }
                         }
 
-                        AdjustPokemonLevels(random, settings, pokemon, extractedGame);
+                        if (settings.NoDuplicateShadows && pokemon.IsShadow)
+                        {
+                            pickedShadowPokemon.Add(pokemon.Pokemon);
+                        }
+
+                        // for some reason in Colosseum, there are duplicate trainers that point to the same pokemon which causes randomization actions to happen multiple times.
+                        // Trainer data and Trainer Pokemon data are stored separately and linked by Ids, so its possible for unused trainers and placeholders to have pokemon set
+                        // to the same pokemon that in-game trainers use. for example, Willie (first trainer) has two level 24 Zigzagoons that are randomized, the randomizer continues on
+                        // and finds a placeholder trainer that uses those same two Zigzagoons then applies randomization again to those pokemon. The trainers are marked as in use and some even have names,
+                        // but there is no way to encounter them in-game normally.
+                        // The problem is that it will keep boosting their levels until they hit 100, so keep track of that and skip if we've boosted levels already
+                        if (!randomizedPokemon.Contains(pokemon.Index))
+                        {
+                            randomizedPokemon.Add(pokemon.Index);
+                            AdjustPokemonLevels(random, settings, pokemon, extractedGame);
+                        }
 
                         Logger.Log($"{extractedGame.PokemonList[pokemon.Pokemon].Name}\n");
                         Logger.Log($"Is a shadow Pokemon: {pokemon.IsShadow}\n");
@@ -190,14 +196,14 @@ namespace Randomizer.Shufflers
             if (settings.BoostTrainerLevel)
             {
                 var level = pokemon.Level;
-                var levelIncrease = (byte)Math.Clamp(level + level * settings.BoostTrainerLevelPercent, 1, 100);
+                var levelIncrease = (byte)Math.Round(Math.Clamp(level + level * settings.BoostTrainerLevelPercent, 1, 100), MidpointRounding.AwayFromZero);
                 Logger.Log($"Boosting level from {pokemon.Level} to {levelIncrease}\n");
                 pokemon.Level = levelIncrease;
 
                 if (pokemon.IsShadow && extractedGame.Game == Game.XD)
                 {
                     level = pokemon.ShadowLevel;
-                    levelIncrease = (byte)Math.Clamp(level + level * settings.BoostTrainerLevelPercent, 1, 100);
+                    levelIncrease = (byte)Math.Round(Math.Clamp(level + level * settings.BoostTrainerLevelPercent, 1, 100), MidpointRounding.AwayFromZero);
                     Logger.Log($"Boosting shadow level from {pokemon.ShadowLevel} to {levelIncrease}\n");
                     pokemon.ShadowLevel = levelIncrease;
                 }

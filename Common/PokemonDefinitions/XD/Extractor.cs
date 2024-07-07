@@ -62,7 +62,7 @@ namespace XDCommon.PokemonDefinitions
 			var tutorMoves = new TutorMove[Constants.NumberOfTutorMoves];
 			for (int i = 0; i < tutorMoves.Length; i++)
 			{
-				tutorMoves[i] = new TutorMove(i + 1, ISO);
+				tutorMoves[i] = new TutorMove(i, ISO);
 			}
 			return tutorMoves;
 		}

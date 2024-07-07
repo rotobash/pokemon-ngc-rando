@@ -35,6 +35,7 @@ namespace XDCommon.PokemonDefinitions
         public const int FirstTMItemIndex = 0x121;
         public const byte NumberOfTMsandHMs = 0x3A;
         public const byte NumberOfTutorMoves = 0x0C; // XD only
+        public const byte TutorMoves = 126; // XD only
 
         public const byte NumberOfLevelUpMoves = 0x13;
         public const byte SizeOfLevelUpData = 0x4;
