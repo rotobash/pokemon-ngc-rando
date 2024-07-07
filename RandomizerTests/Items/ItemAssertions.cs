@@ -20,8 +20,6 @@ namespace RandomizerTests.Items
             var randomizedPokemon = new HashSet<int>();
             foreach (var pool in trainerPools)
             {
-                if (pool.AllTrainers == null) continue;
-
                 foreach (var trainer in pool.AllTrainers)
                 {
                     foreach (var partypoke in trainer.Pokemon)

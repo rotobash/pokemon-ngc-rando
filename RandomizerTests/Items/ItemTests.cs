@@ -9,41 +9,8 @@ using RandomizerTests.ReferenceData;
 
 namespace RandomizerTests.Items
 {
-    public class ItemTests
+    public class ItemTests : BaseTestSetup
     {
-        IGameExtractor gameExtractor { get; set; }
-        ShuffleSettings shuffleSettings { get; set; } = new ShuffleSettings
-        {
-            RNG = new Cryptographic()
-        };
-        Pokemon[] pokemon;
-        Move[] moves;
-
-        [OneTimeSetUp]
-        public void Setup()
-        {
-            var isoExtractor = new ISOExtractor(TestConfiguration.TestRomPath);
-            var iso = isoExtractor.ExtractISO();
-            if (iso.Game == XDCommon.Contracts.Game.XD)
-            {
-                gameExtractor = new XDExtractor(iso);
-            }
-            else
-            {
-                gameExtractor = new ColoExtractor(iso);
-            }
-            shuffleSettings.ExtractedGame = new ExtractedGame(gameExtractor);
-
-            pokemon = gameExtractor.ExtractPokemon();
-            moves = gameExtractor.ExtractMoves();
-        }
-
-        [SetUp]
-        public void SettingsSetup()
-        {
-            shuffleSettings.RandomizerSettings = Helpers.CreateBlankSettings();
-        }
-
         #region OverworldItems
         [Test]
         public void TestOverworldItemRando()
