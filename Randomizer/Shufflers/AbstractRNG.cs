@@ -39,6 +39,16 @@ namespace Randomizer.Shufflers
             return Next(0, maxValue);
         }
 
+        public virtual T NextElement<T>(IEnumerable<T> list)
+        {
+            var count = list.Count();
+            if (count == 0)
+                throw new ArgumentOutOfRangeException(nameof(list));
+
+            var i = Next(0, count);
+            return list.ElementAt(i);
+        }
+
         public virtual double NextDouble()
         {
             ulong rand = Next();

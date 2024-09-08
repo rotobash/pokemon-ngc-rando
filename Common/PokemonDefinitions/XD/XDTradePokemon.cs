@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime;
 using System.Text;
 using XDCommon.Contracts;
 using XDCommon.Utility;
@@ -8,22 +9,34 @@ namespace XDCommon.PokemonDefinitions
 {
     public class XDTradePokemon : IGiftPokemon
     {
-        static readonly ushort[][] DukingTradeRequestedPokemonIndices = new ushort[][]
+        static readonly ushort[][] DukingTradeRequestedPokemonIDIndices = new ushort[][]
+        {
+            // Trapinch ID Offsets
+            new ushort[] { 0x0B4A, 0x0D1E },
+            // Surskit ID Offsets
+            new ushort[] { 0x0B9A, 0x0D62 },
+            // Wooper ID Offsets
+            new ushort[] { 0x0BEA, 0x0DA6 }
+        };
+
+        static readonly ushort[][] DukingTradeRequestedPokemonNameIDIndices = new ushort[][]
         {
             // Trapinch Offsets
-            new ushort[] { 0x0B4A, 0x0D1E, 0x0D3A, 0x1756 },
+            new ushort[] { 0x0D3A, 0x1756 },
             // Surskit Offsets
-            new ushort[] { 0x0B9A, 0x0D62, 0x0D7E, 0x175E },
+            new ushort[] { 0x0D7E, 0x175E },
             // Wooper Offsets
-            new ushort[] { 0x0BEA, 0x0DA6, 0x0DC2, 0x1766 }
+            new ushort[] { 0x0DC2, 0x1766 }
         };
-        static readonly ushort[] DukingTradeGivenPokemonIndices = new ushort[] { 0x0D32, 0x0D76, 0x0DBA };
+
+
+        static readonly ushort[] DukingTradeGivenPokemonSpeciesNameIDIndices = new ushort[] { 0x0D32, 0x0D76, 0x0DBA };
 
         const byte TradePokemonSpeciesOffset = 0x02;
         const byte TradePokemonLevelOffset = 0x0B;
         const byte TradePokemonMoveOffset = 0x26;
 
-        public byte Index { get; }
+        public int Index { get; }
         public string GiftType => Index == 0 ? "Hordel" : "Duking";
 
         public byte Level
@@ -123,32 +136,35 @@ namespace XDCommon.PokemonDefinitions
             iso.DOL.ExtractedFile.WriteBytesAtOffset(StartOffset + TradePokemonMoveOffset + i * 4, move.GetBytes());
         }
 
-        public static void UpdateTrades(ISO iso, Pokemon[] newRequestedPokemon, Pokemon[] newGivenPokemon)
+        public static void UpdateDukingTrades(ISO iso, Pokemon[] newRequestedPokemon, Pokemon[] newGivenPokemon)
         {
             var tradeScript = iso.GetFSysFile("M2_guild_1F_2.fsys").GetEntryByFileName("M2_guild_1F_2.scd");
-
-            if (newGivenPokemon.Length < 3)
+            if (newRequestedPokemon != null)
             {
-                throw new ArgumentException();
-            }
-            
-            if (newRequestedPokemon.Length < 3)
-            {
-                throw new ArgumentException();
-            }
-
-
-            for (int i = 0; i < DukingTradeGivenPokemonIndices.Length; i++)
-            {
-                var requestPokemonNameId = newRequestedPokemon[i].NameID.GetBytes();
-                foreach (var requestedOffset in DukingTradeRequestedPokemonIndices[i])
+                for (int i = 0; i < 3; i++)
                 {
-                    tradeScript.ExtractedFile.WriteBytesAtOffset(requestedOffset, requestPokemonNameId);
-                }
+                    var requestPokemonId = newRequestedPokemon[i].Index.GetBytes();
+                    foreach (var requestedOffset in DukingTradeRequestedPokemonIDIndices[i])
+                    {
+                        tradeScript.ExtractedFile.WriteBytesAtOffset(requestedOffset, requestPokemonId);
+                    }
 
-                var tradePoke = newGivenPokemon[i].NameID;
-                var givenOffset = DukingTradeGivenPokemonIndices[i];
-                tradeScript.ExtractedFile.WriteBytesAtOffset(givenOffset, tradePoke.GetBytes());
+                    var requestPokemonNameId = newRequestedPokemon[i].NameID.GetBytes();
+                    foreach (var requestedOffset in DukingTradeRequestedPokemonNameIDIndices[i])
+                    {
+                        tradeScript.ExtractedFile.WriteBytesAtOffset(requestedOffset, requestPokemonNameId);
+                    }
+                }
+            }
+
+            if (newGivenPokemon != null)
+            {
+                for (int i = 0; i < DukingTradeGivenPokemonSpeciesNameIDIndices.Length; i++)
+                {
+                    var tradePoke = newGivenPokemon[i].SpeciesNameID;
+                    var givenOffset = DukingTradeGivenPokemonSpeciesNameIDIndices[i];
+                    tradeScript.ExtractedFile.WriteBytesAtOffset(givenOffset, tradePoke.GetBytes());
+                }
             }
         }
     }

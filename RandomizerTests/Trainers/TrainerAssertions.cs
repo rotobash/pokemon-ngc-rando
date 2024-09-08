@@ -66,10 +66,10 @@ namespace RandomizerTests.Trainers
                             var expectedLevel = (byte)Math.Round(Math.Clamp(pokeReference.Level + pokeReference.Level * boostAmount, 1, 100), MidpointRounding.AwayFromZero);
                             Assert.That(pokemon.Level, Is.EqualTo(expectedLevel));
 
-                            if (pokemon.IsShadow)
+                            if (pokemon.IsShadow && pokemon is IShadowPokemon shadowPokemon)
                             {
                                 var expectedShadowLevel = (byte)Math.Round(Math.Clamp(pokeReference.ShadowLevel + pokeReference.ShadowLevel * boostAmount, 1, 100), MidpointRounding.AwayFromZero);
-                                Assert.That(pokemon.ShadowLevel, Is.EqualTo(expectedShadowLevel));
+                                Assert.That(shadowPokemon.ShadowLevel, Is.EqualTo(expectedShadowLevel));
                             }
 
                             randomizedPokemon.Add(pokemon.Index);

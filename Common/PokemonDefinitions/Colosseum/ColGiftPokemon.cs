@@ -52,7 +52,7 @@ namespace XDCommon.PokemonDefinitions
 			_ => PikachuOffset
 		};
 
-        public byte Index { get; }
+        public int Index { get; }
         public ushort Exp => 0;
 
         public ushort[] Moves => new ushort[Constants.NumberOfPokemonMoves];

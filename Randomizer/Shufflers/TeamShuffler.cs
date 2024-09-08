@@ -11,7 +11,7 @@ namespace Randomizer.Shufflers
 {
     public static class TeamShuffler
     {
-        public static void ShuffleTeams(ShuffleSettings shuffleSettings)
+        public static int[] ShuffleTeams(ShuffleSettings shuffleSettings)
         {
             var settings = shuffleSettings.RandomizerSettings.TeamShufflerSettings;
             var extractedGame = shuffleSettings.ExtractedGame;
@@ -47,43 +47,21 @@ namespace Randomizer.Shufflers
 
                         var originalPoke = pokemon.Pokemon;
 
-                        if (settings.RandomizeLegendaryIntoLegendary && ExtractorConstants.Legendaries.Contains(pokemon.Pokemon))
+                        if (settings.RandomizePokemon)
                         {
-                            var potentialLegendaries = ExtractorConstants.Legendaries;
 
-                            if (pokemon.IsShadow && settings.NoDuplicateShadows)
+                            IEnumerable<Pokemon> pokeFilter = extractedGame.ValidPokemon;
+                            if (settings.RandomizeLegendaryIntoLegendary && ExtractorConstants.Legendaries.Contains(pokemon.Pokemon))
                             {
-                                // try to pick a non duplicate shadow if that setting is enabled
-                                potentialLegendaries = ExtractorConstants.Legendaries.Where(poke => !pickedShadowPokemon.Contains(poke)).ToArray();
-                                // in case we've picked them all, just pick another at random
-                                if (!potentialLegendaries.Any())
-                                    potentialLegendaries = ExtractorConstants.Legendaries;
+                                pokeFilter = ExtractorConstants.Legendaries.Select(i => extractedGame.PokemonList[i]);
                             }
-
-                            // pick random legendary
-                            var index = random.Next(potentialLegendaries.Length);
-                            pokemon.Pokemon = (ushort)potentialLegendaries[index];
-                        }
-                        else
-                        {
-                            RandomizePokemon(random, settings, extractedGame, pokemon);
-
-                            // keep randomizing until we've picked a non duplicate, this check won't run unless the setting is enabled
-                            // also add a breakout counter in case the potential pool of pokemon is empty
 
                             if (settings.NoDuplicateShadows && pokemon.IsShadow)
                             {
-                                int breakoutCounter = 0;
-                                while (pickedShadowPokemon.Contains(pokemon.Pokemon) && breakoutCounter++ < 10)
-                                {
-                                    RandomizePokemon(random, settings, extractedGame, pokemon);
-                                }
+                                pokeFilter = pokeFilter.Where(p => !pickedShadowPokemon.Contains(p.Index));
                             }
-                        }
 
-                        if (settings.NoDuplicateShadows && pokemon.IsShadow)
-                        {
-                            pickedShadowPokemon.Add(pokemon.Pokemon);
+                            Helpers.RandomizePokemon(shuffleSettings, pokemon, pokeFilter);
                         }
 
                         // for some reason in Colosseum, there are duplicate trainers that point to the same pokemon which causes randomization actions to happen multiple times.
@@ -110,70 +88,25 @@ namespace Randomizer.Shufflers
 
                         if (pokemon.IsShadow)
                         {
-                            AdjustCatchRates(settings, pokemon, originalPoke, extractedGame);
+                            AdjustCatchRates(settings, pokemon as IShadowPokemon, originalPoke, extractedGame);
                         }
 
-                        RandomizeMoveSet(random, settings, pokemon, extractedGame);
                         Logger.Log($"\n");
                     }
                     Logger.Log($"\n");
                 }
                 Logger.Log($"\n");
             }
+
+            return pickedShadowPokemon.ToArray();
         }
 
-        public static void RandomizePokemon(AbstractRNG random, TeamShufflerSettings settings, ExtractedGame extractedGame, ITrainerPokemon pokemon)
+
+        private static void AdjustPokemonLevels(AbstractRNG random, TeamShufflerSettings settings, IPokemonInstance pokemon, ExtractedGame extractedGame)
         {
-            var pokeFilter = extractedGame.ValidPokemon;
-            if (settings.UseSimilarBSTs)
-            {
-                pokeFilter = Helpers.GetSimilarBsts(pokemon.Pokemon, pokeFilter, extractedGame.PokemonList).ToArray();
-            }
+            var shouldforceFullyEvolved = pokemon.Level >= settings.ForceFullyEvolvedLevel;
 
-            if (settings.RandomizePokemon)
-            {
-                var pokemonIndex = 0;
-                while (pokemonIndex == 0 || (settings.DontUseLegendaries && ExtractorConstants.Legendaries.Contains(pokemonIndex)))
-                {
-                    var index = random.Next(pokeFilter.Length);
-                    pokemonIndex = pokeFilter[index].Index;
-                }
-                pokemon.Pokemon = (ushort)pokemonIndex;
-            }
-        }
-
-        public static void RandomizeMoveSet(AbstractRNG random, TeamShufflerSettings settings, ITrainerPokemon pokemon, ExtractedGame extractedGame)
-        {
-            ushort[] moveSet = null;
-
-            if (settings.MoveSetOptions.MetronomeOnly)
-            {
-                moveSet = Enumerable.Repeat(ExtractorConstants.MetronomeIndex, Constants.NumberOfPokemonMoves).ToArray();
-            }
-            else if (settings.MoveSetOptions.RandomizeMovesets || settings.RandomizePokemon)
-            {
-                moveSet = Helpers.GetNewMoveset(random, settings.MoveSetOptions, pokemon.Pokemon, pokemon.Level, extractedGame);
-            }
-
-            if (moveSet != null)
-            {
-                Logger.Log($"It knows:\n");
-                for (int i = 0; i < moveSet.Length; i++)
-                {
-                    var move = moveSet[i];
-                    Logger.Log($"{extractedGame.MoveList[move].Name}\n");
-                    pokemon.SetMove(i, move);
-                }
-            }
-        }
-
-        public static void AdjustPokemonLevels(AbstractRNG random, TeamShufflerSettings settings, ITrainerPokemon pokemon, ExtractedGame extractedGame)
-        {
-            var forceFullyEvolved = pokemon.IsShadow
-                ? pokemon.ShadowLevel >= settings.ForceFullyEvolvedLevel
-                : pokemon.Level >= settings.ForceFullyEvolvedLevel;
-
-            if (settings.ForceFullyEvolved && forceFullyEvolved)
+            if (settings.ForceFullyEvolved && shouldforceFullyEvolved)
             {
                 var currPoke = extractedGame.PokemonList[pokemon.Pokemon];
                 while (currPoke.Evolutions.Any(e => e.EvolutionMethod != EvolutionMethods.None))
@@ -200,17 +133,17 @@ namespace Randomizer.Shufflers
                 Logger.Log($"Boosting level from {pokemon.Level} to {levelIncrease}\n");
                 pokemon.Level = levelIncrease;
 
-                if (pokemon.IsShadow && extractedGame.Game == Game.XD)
+                if (pokemon is IShadowPokemon shadowPokemon && extractedGame.Game == Game.XD)
                 {
-                    level = pokemon.ShadowLevel;
+                    level = shadowPokemon.ShadowLevel;
                     levelIncrease = (byte)Math.Round(Math.Clamp(level + level * settings.BoostTrainerLevelPercent, 1, 100), MidpointRounding.AwayFromZero);
-                    Logger.Log($"Boosting shadow level from {pokemon.ShadowLevel} to {levelIncrease}\n");
-                    pokemon.ShadowLevel = levelIncrease;
+                    Logger.Log($"Boosting shadow level from {shadowPokemon.ShadowLevel} to {levelIncrease}\n");
+                    shadowPokemon.ShadowLevel = levelIncrease;
                 }
             }
         }
 
-        public static void AdjustCatchRates(TeamShufflerSettings settings, ITrainerPokemon pokemon, ushort oldPokemon, ExtractedGame extractedGame)
+        private static void AdjustCatchRates(TeamShufflerSettings settings, IShadowPokemon pokemon, ushort oldPokemon, ExtractedGame extractedGame)
         {
             int newCatchRate;
             switch (settings.CatchRateAdjustment)
@@ -219,7 +152,7 @@ namespace Randomizer.Shufflers
                 case CatchRateAdjustmentType.True:
                     newCatchRate = extractedGame.PokemonList[pokemon.Pokemon].CatchRate;
                     break;
-                
+
                 // Use the old shadow catch rate to calculate the adjusted factor
                 case CatchRateAdjustmentType.Adjusted:
                 {

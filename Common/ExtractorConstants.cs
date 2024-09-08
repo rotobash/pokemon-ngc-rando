@@ -38,6 +38,7 @@ namespace XDCommon
 
         // Water Stone, Thunder Stone, Fire Stone, Leaf Stone, Sun Stone, Moon Stone
         public static readonly ushort[] EvoStoneItemList = Enumerable.Range(93, 6).Select(i => (ushort)i).ToArray();
+        public static readonly ushort[] XItemList = Enumerable.Range(73, 7).Select(i => (ushort)i).ToArray();
 
         public static readonly int[] BadAbilityList = new int[]
         {

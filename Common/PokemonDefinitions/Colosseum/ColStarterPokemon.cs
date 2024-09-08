@@ -16,7 +16,7 @@ namespace XDCommon.PokemonDefinitions
         const byte Move3Offset = 0x36;
         const byte Move4Offset = 0x46;
 
-        public byte Index => 0;
+        public int Index => 0;
 
         public int StartOffset
         {

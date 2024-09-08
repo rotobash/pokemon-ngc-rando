@@ -16,7 +16,7 @@ namespace XDCommon.PokemonDefinitions
         const byte Move4Offset = 0x1E;
         const byte ExpValueOffset = 0x66;
 
-        public byte Index => 0;
+        public int Index => 0;
 
         public int StartOffset
         {
