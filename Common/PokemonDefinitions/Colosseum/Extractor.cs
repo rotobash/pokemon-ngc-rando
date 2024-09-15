@@ -134,5 +134,15 @@ namespace XDCommon.PokemonDefinitions
 			}
 			return abilities;
 		}
-	}
+
+        public Area[] ExtractAreas()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Room[] ExtractRooms()
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

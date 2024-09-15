@@ -175,6 +175,8 @@ namespace XDCommon.PokemonDefinitions
 
         public const int XDMoves = 124;
         public const int XDNumberOfMoves = 125;
+        public const int XDWorldMapLocations = 128;
+        public const int XDNumberOfWorldMapLocations = 129;
 
         public static Dictionary<Region, Dictionary<string, string>> XDItemTables = new Dictionary<Region, Dictionary<string, string>>()
         {

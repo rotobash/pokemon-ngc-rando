@@ -16,5 +16,7 @@ namespace XDCommon.PokemonDefinitions
         Move[] ExtractMoves();
         Pokemon[] ExtractPokemon();
         IGiftPokemon[] ExtractGiftPokemon();
+        Area[] ExtractAreas();
+        Room[] ExtractRooms();
     }
 }
