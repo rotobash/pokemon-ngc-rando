@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime;
 using System.Text;
 using XDCommon.Contracts;
@@ -29,8 +30,25 @@ namespace XDCommon.PokemonDefinitions
             new ushort[] { 0x0DC2, 0x1766 }
         };
 
+        static readonly ushort[][] HordelTradeRequestedPokemonIDIndices = new ushort[][]
+        {
+            // Togepi Offsets
+            new ushort[] { 0x0F26, 0x1352 },
+            // Togetic Offsets
+            new ushort[] { 0x0F36, 0x1332 },
+        };
 
-        static readonly ushort[] DukingTradeGivenPokemonSpeciesNameIDIndices = new ushort[] { 0x0D32, 0x0D76, 0x0DBA };
+        static readonly ushort[] DukingTradeGivenPokemonNameIDIndices = new ushort[] { 0x0D32, 0x0D76, 0x0DBA };
+
+        static readonly (ushort, ushort)[] PokemonNameOffsets = new (ushort, ushort)[]
+        {
+            (0x628, 8),
+            (0x63C, 7),
+            (0x659, 6)
+        };
+
+        const byte TradeMessageCharacterCopyIndex = 42;
+        const int TradeMessageStringId = 37236;
 
         const byte TradePokemonSpeciesOffset = 0x02;
         const byte TradePokemonLevelOffset = 0x0B;
@@ -138,32 +156,81 @@ namespace XDCommon.PokemonDefinitions
 
         public static void UpdateDukingTrades(ISO iso, Pokemon[] newRequestedPokemon, Pokemon[] newGivenPokemon)
         {
-            var tradeScript = iso.GetFSysFile("M2_guild_1F_2.fsys").GetEntryByFileName("M2_guild_1F_2.scd");
-            if (newRequestedPokemon != null)
+            var fsysFile = iso.GetFSysFile("M2_guild_1F_2.fsys");
+            var tradeScript = fsysFile.GetEntryByFileName("M2_guild_1F_2.scd");
+            var message = fsysFile.GetEntryByFileName("M2_guild_1F_2.msg") as StringTable;
+
+            if (newRequestedPokemon?.Length > 0)
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    var requestPokemonId = newRequestedPokemon[i].Index.GetBytes();
+                    var requestedPokemon = newRequestedPokemon[i];
+                    var requestPokemonId = ((ushort)requestedPokemon.Index).GetBytes();
                     foreach (var requestedOffset in DukingTradeRequestedPokemonIDIndices[i])
                     {
                         tradeScript.ExtractedFile.WriteBytesAtOffset(requestedOffset, requestPokemonId);
                     }
 
-                    var requestPokemonNameId = newRequestedPokemon[i].NameID.GetBytes();
+                    var requestPokemonNameId = ((ushort)requestedPokemon.NameID).GetBytes();
                     foreach (var requestedOffset in DukingTradeRequestedPokemonNameIDIndices[i])
                     {
                         tradeScript.ExtractedFile.WriteBytesAtOffset(requestedOffset, requestPokemonNameId);
                     }
                 }
+
+                var endMessageLine1 = new UnicodeString(Encoding.UTF8.GetBytes($"{newRequestedPokemon[0].UnicodeName}, {newRequestedPokemon[1].UnicodeName}").SelectMany(b => new byte[] { 0, b }));
+                var lineBreak = new[] { new SpecialUnicodeCharacters(SpecialCharacters.NewLine) };
+                var endMessageLine2 = new UnicodeString(Encoding.UTF8.GetBytes($"or a {newRequestedPokemon[2].UnicodeName}?").SelectMany(b => new byte[] { 0, b }));
+
+                var str = new UnicodeString(message.GetStringWithId(TradeMessageStringId).Take(TradeMessageCharacterCopyIndex).Concat(endMessageLine1).Concat(lineBreak).Concat(endMessageLine2));
+
+                message.ReplaceString(TradeMessageStringId, str);
             }
 
-            if (newGivenPokemon != null)
+            if (newGivenPokemon?.Length > 0)
             {
-                for (int i = 0; i < DukingTradeGivenPokemonSpeciesNameIDIndices.Length; i++)
+                for (int i = 0; i < DukingTradeGivenPokemonNameIDIndices.Length; i++)
                 {
-                    var tradePoke = newGivenPokemon[i].SpeciesNameID;
-                    var givenOffset = DukingTradeGivenPokemonSpeciesNameIDIndices[i];
+                    var tradePoke = newGivenPokemon[i].NameID;
+                    var givenOffset = DukingTradeGivenPokemonNameIDIndices[i];
                     tradeScript.ExtractedFile.WriteBytesAtOffset(givenOffset, tradePoke.GetBytes());
+                }
+            }
+        }
+
+        public static void UpdateHordelTrade(ISO iso, Pokemon shadowGivenPokemon, Pokemon tradePokemon)
+        {
+            if (shadowGivenPokemon == null && tradePokemon == null) return;
+
+            var fsysFile = iso.GetFSysFile("S1_shop_1F.fsys");
+            var tradeScript = fsysFile.GetEntryByFileName("S1_shop_1F.scd");
+            var message = fsysFile.GetEntryByFileName("S1_shop_1F.msg") as StringTable;
+
+            var togepiStr = new UnicodeString(Encoding.UTF8.GetBytes("\0T\0O\0G\0E\0P\0I"));
+            var elekidStr = new UnicodeString(Encoding.UTF8.GetBytes("\0E\0L\0E\0K\0I\0D"));
+
+            if (shadowGivenPokemon != null)
+            {
+                foreach (var requestedPokemonIdOffset in HordelTradeRequestedPokemonIDIndices)
+                {
+                    foreach (var offset in requestedPokemonIdOffset)
+                    {
+                        tradeScript.ExtractedFile.WriteBytesAtOffset(offset, ((ushort)shadowGivenPokemon.Index).GetBytes());
+                    }
+                }
+            }
+
+            foreach (var messageId in message.StringIds)
+            {
+                var str = message.GetStringWithId(messageId);
+                if (shadowGivenPokemon != null && str.Contains(togepiStr))
+                {
+                    message.ReplaceString(messageId, str.Replace(togepiStr, shadowGivenPokemon.UnicodeName));
+                }
+
+                if (tradePokemon != null && str.Contains(elekidStr))
+                {
+                    message.ReplaceString(messageId, str.Replace(elekidStr, tradePokemon.UnicodeName));
                 }
             }
         }

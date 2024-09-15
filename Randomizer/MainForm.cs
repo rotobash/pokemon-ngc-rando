@@ -240,7 +240,7 @@ namespace Randomizer
             }
         }
 
-        private void StartRandomizing(object? sender, DoWorkEventArgs e)
+        private void StartRandomizing(object? sender, DoWorkEventArgs e) 
         {
             if (e.Argument is string path)
             {
@@ -272,15 +272,15 @@ namespace Randomizer
 
                 backgroundWorker.ReportProgress(40);
                 progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Randomizing Trainers..."));
-                randomizer.RandomizeTrainers();
+                var pickedshadows = randomizer.RandomizeTrainers();
 
                 backgroundWorker.ReportProgress(50);
-                progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Randomizing Statics..."));
-                randomizer.RandomizeStatics();
-
-                backgroundWorker.ReportProgress(60);
                 progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Randomizing PokeSpots..."));
                 randomizer.RandomizePokeSpots();
+
+                backgroundWorker.ReportProgress(60);
+                progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Randomizing Statics..."));
+                randomizer.RandomizeStatics(pickedshadows);
 
                 // will only do something if game is XD
                 backgroundWorker.ReportProgress(70);
@@ -340,7 +340,7 @@ namespace Randomizer
 
             var options = new RandomMoveSetOptions
             {
-                RandomizeMovesets = (randomizeMovesets.Checked || randomizeMovesetsPreferType.Checked || randomizeMovesetsOnlyLegal.Checked),
+                RandomizeMovesets = (randomizeMovesets.Checked || randomizeMovesetsPreferType.Checked),
                 MetronomeOnly = movesetsMetronomeOnlyCheck.Checked,
                 LegalMovesOnly = randomizeMovesetsOnlyLegal.Checked,
                 BanShadowMoves = banShadowMovesCheck.Checked,

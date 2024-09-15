@@ -29,3743 +29,2831 @@ namespace Randomizer
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.gamePictureBox = new System.Windows.Forms.PictureBox();
-            this.loadIsoButton = new System.Windows.Forms.Button();
-            this.randomizerButton = new System.Windows.Forms.Button();
-            this.setSeedButton = new System.Windows.Forms.Button();
-            this.optionsButton = new System.Windows.Forms.Button();
-            this.loadSettingButton = new System.Windows.Forms.Button();
-            this.saveSettingsButton = new System.Windows.Forms.Button();
-            this.settingsTab = new System.Windows.Forms.TabControl();
-            this.encountersTabPage = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.battlePokemonGroupBox = new System.Windows.Forms.TabControl();
-            this.trainersTabPage = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel28 = new System.Windows.Forms.TableLayoutPanel();
-            this.legendaryToLegendaryCheck = new System.Windows.Forms.CheckBox();
-            this.boostTrainerLevelPercent = new System.Windows.Forms.NumericUpDown();
-            this.forceFullyEvolvedLevel = new System.Windows.Forms.NumericUpDown();
-            this.randomizeTrainerPokemonCheck = new System.Windows.Forms.CheckBox();
-            this.shadowCatchMinimum = new System.Windows.Forms.NumericUpDown();
-            this.noLegendaryOnTrainerCheck = new System.Windows.Forms.CheckBox();
-            this.noDuplicateShadowPokemonCheck = new System.Windows.Forms.CheckBox();
-            this.useSimilarBSTsCheck = new System.Windows.Forms.CheckBox();
-            this.trainerCatchRateComboBox = new System.Windows.Forms.ComboBox();
-            this.forceFullyEvovledLevelCheck = new System.Windows.Forms.CheckBox();
-            this.boostTrainerLevelCheck = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.pokeSpotTabPage = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel29 = new System.Windows.Forms.TableLayoutPanel();
-            this.randomizePokeSpotsCheck = new System.Windows.Forms.CheckBox();
-            this.boostPokeSpotLevelPercent = new System.Windows.Forms.NumericUpDown();
-            this.pokeSpotCatchMinimum = new System.Windows.Forms.NumericUpDown();
-            this.easyBonslyCheck = new System.Windows.Forms.CheckBox();
-            this.boostPokeSpotLevelCheck = new System.Windows.Forms.CheckBox();
-            this.minimumPokeSpotCatchRate = new System.Windows.Forms.CheckBox();
-            this.useSimilarBSTsPokeSpotCheck = new System.Windows.Forms.CheckBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.checkBox19 = new System.Windows.Forms.CheckBox();
-            this.pokemonTabPage = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel20 = new System.Windows.Forms.TableLayoutPanel();
-            this.randomizeAbilitiesCheck = new System.Windows.Forms.CheckBox();
-            this.banBadAbilitiesCheck = new System.Windows.Forms.CheckBox();
-            this.allowWonderGuardCheck = new System.Windows.Forms.CheckBox();
-            this.abilitiesFollowEvolutionCheck = new System.Windows.Forms.CheckBox();
-            this.evolutionsGroupBox = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel23 = new System.Windows.Forms.TableLayoutPanel();
-            this.randomizeEvolutionsCheck = new System.Windows.Forms.CheckBox();
-            this.evolutionSameTypeCheck = new System.Windows.Forms.CheckBox();
-            this.easyEvolutionsCheck = new System.Windows.Forms.CheckBox();
-            this.evolutionSimilarStrengthCheck = new System.Windows.Forms.CheckBox();
-            this.fixImpossibleEvolutionsCheck = new System.Windows.Forms.CheckBox();
-            this.threeStageMaxCheck = new System.Windows.Forms.CheckBox();
-            this.randomlyEndEvolutionsCheck = new System.Windows.Forms.CheckBox();
-            this.baseStatsGroupBox = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel21 = new System.Windows.Forms.TableLayoutPanel();
-            this.bstFollowEvolutionCheck = new System.Windows.Forms.CheckBox();
-            this.standardizeExpCurveCheck = new System.Windows.Forms.CheckBox();
-            this.updateBSTCheck = new System.Windows.Forms.CheckBox();
-            this.baseStatsUnchangedCheck = new System.Windows.Forms.RadioButton();
-            this.baseStatsShuffleCheck = new System.Windows.Forms.RadioButton();
-            this.baseStatsRandomCheck = new System.Windows.Forms.RadioButton();
-            this.typesGroupBox = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel22 = new System.Windows.Forms.TableLayoutPanel();
-            this.randomizeTypesCheck = new System.Windows.Forms.CheckBox();
-            this.typesFollowEvolutionCheck = new System.Windows.Forms.CheckBox();
-            this.staticPokemonTab = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
-            this.randomStarterThreeStageCheck = new System.Windows.Forms.RadioButton();
-            this.randomStarterTwoStageCheck = new System.Windows.Forms.RadioButton();
-            this.randomStarterSingleStageCheck = new System.Windows.Forms.RadioButton();
-            this.randomStarterCheck = new System.Windows.Forms.RadioButton();
-            this.customStarterCheck = new System.Windows.Forms.RadioButton();
-            this.unchangedStarterCheck = new System.Windows.Forms.RadioButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
-            this.tradeUnchangedCheck = new System.Windows.Forms.RadioButton();
-            this.tradeRandomGivenCheck = new System.Windows.Forms.RadioButton();
-            this.tradeBothRandomCheck = new System.Windows.Forms.RadioButton();
-            this.tradeRequestedRandomCheck = new System.Windows.Forms.RadioButton();
-            this.tradeUsePokeSpotCheck = new System.Windows.Forms.CheckBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
-            this.starterLabel = new System.Windows.Forms.Label();
-            this.starter2Label = new System.Windows.Forms.Label();
-            this.starterComboBox = new System.Windows.Forms.ComboBox();
-            this.starter2ComboBox = new System.Windows.Forms.ComboBox();
-            this.tmsTabPage = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
-            this.randomizeTMsCheck = new System.Windows.Forms.CheckBox();
-            this.forceGoodDamagingTMPercent = new System.Windows.Forms.NumericUpDown();
-            this.forceGoodDamagingTMsCheck = new System.Windows.Forms.CheckBox();
-            this.tmCompatibilityGroupBox = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
-            this.tmCompatibilityUnchangedCheck = new System.Windows.Forms.RadioButton();
-            this.tmFullCompatibilityCheck = new System.Windows.Forms.RadioButton();
-            this.tmCompatibilityRandomCheck = new System.Windows.Forms.RadioButton();
-            this.tmCompatibilityPreferTypeCheck = new System.Windows.Forms.RadioButton();
-            this.tutorCompatibilityGroupBox = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
-            this.tutorCompatibilityUnchangedCheck = new System.Windows.Forms.RadioButton();
-            this.tutorFullCompatibilityCheck = new System.Windows.Forms.RadioButton();
-            this.tutorCompatibilityPreferTypeCheck = new System.Windows.Forms.RadioButton();
-            this.tutorCompatibilityRandomCheck = new System.Windows.Forms.RadioButton();
-            this.panel16 = new System.Windows.Forms.Panel();
-            this.tutorMoveGroupBox = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel19 = new System.Windows.Forms.TableLayoutPanel();
-            this.randomizeTutorMoveCheck = new System.Windows.Forms.CheckBox();
-            this.forceGoodDamagingTutorMoveCheck = new System.Windows.Forms.CheckBox();
-            this.forceGoodDamagingTutorMovePercent = new System.Windows.Forms.NumericUpDown();
-            this.moveSetsTabPage = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
-            this.moveCategoryCheck = new System.Windows.Forms.CheckBox();
-            this.movePowerCheck = new System.Windows.Forms.CheckBox();
-            this.moveTypeCheck = new System.Windows.Forms.CheckBox();
-            this.movePPCheck = new System.Windows.Forms.CheckBox();
-            this.moveAccCheck = new System.Windows.Forms.CheckBox();
-            this.ignoreOHKOMovesAccuracyCheck = new System.Windows.Forms.CheckBox();
-            this.turnOffAnimationCheck = new System.Windows.Forms.CheckBox();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
-            this.movesetsForceGoodDamagingMoveCheck = new System.Windows.Forms.CheckBox();
-            this.forceFourMoveCheck = new System.Windows.Forms.CheckBox();
-            this.movesetsForceGoodDamagingMovePercent = new System.Windows.Forms.NumericUpDown();
-            this.pokemonShareMovesetsCheck = new System.Windows.Forms.CheckBox();
-            this.banShadowMovesCheck = new System.Windows.Forms.CheckBox();
-            this.banEarlyDragonRageCheck = new System.Windows.Forms.CheckBox();
-            this.unchangedMovesetsCheck = new System.Windows.Forms.RadioButton();
-            this.randomizeMovesetsPreferType = new System.Windows.Forms.RadioButton();
-            this.randomizeMovesets = new System.Windows.Forms.RadioButton();
-            this.movesetsMetronomeOnlyCheck = new System.Windows.Forms.RadioButton();
-            this.randomizeMovesetsOnlyLegal = new System.Windows.Forms.RadioButton();
-            this.itemsTabPage = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-            this.overworldItemGroupBox = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel24 = new System.Windows.Forms.TableLayoutPanel();
-            this.randomizeItemQuantityCheck = new System.Windows.Forms.CheckBox();
-            this.randomizeOverworldItemsCheck = new System.Windows.Forms.CheckBox();
-            this.martGroupBox = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel25 = new System.Windows.Forms.TableLayoutPanel();
-            this.martsSellXItemsCheck = new System.Windows.Forms.CheckBox();
-            this.randomizeMartItems = new System.Windows.Forms.CheckBox();
-            this.martsSellEvoStonesCheck = new System.Windows.Forms.CheckBox();
-            this.pokemonItemGroupBox = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel30 = new System.Windows.Forms.TableLayoutPanel();
-            this.randomHeldItemCheck = new System.Windows.Forms.CheckBox();
-            this.miscItemGroupBox = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel31 = new System.Windows.Forms.TableLayoutPanel();
-            this.banBadItemsCheck = new System.Windows.Forms.CheckBox();
-            this.banBattleCDsCheck = new System.Windows.Forms.CheckBox();
-            this.battleBingoTabPage = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel26 = new System.Windows.Forms.TableLayoutPanel();
-            this.bingoBanShadowMovesCheck = new System.Windows.Forms.CheckBox();
-            this.bingoUseStabMoveCheck = new System.Windows.Forms.CheckBox();
-            this.bingoUseDamagingMoveCheck = new System.Windows.Forms.CheckBox();
-            this.randomizeBattleBingoMovesetsCheck = new System.Windows.Forms.CheckBox();
-            this.bingoPokemonGroupBox = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel27 = new System.Windows.Forms.TableLayoutPanel();
-            this.bingoUseStrongPokemon = new System.Windows.Forms.CheckBox();
-            this.randomizeBattleBingoPokemonCheck = new System.Windows.Forms.CheckBox();
-            this.miscTabPage = new System.Windows.Forms.TabPage();
-            this.noEXPCheck = new System.Windows.Forms.CheckBox();
-            this.progressBar = new System.Windows.Forms.ProgressBar();
-            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
-            this.progressLabel = new System.Windows.Forms.Label();
-            this.progressMessageLabel = new System.Windows.Forms.Label();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.gameLabel = new System.Windows.Forms.Label();
-            this.regionLabel = new System.Windows.Forms.Label();
-            this.tableLayoutPanel32 = new System.Windows.Forms.TableLayoutPanel();
-            this.prngDropDown = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.generateLogCheck = new System.Windows.Forms.CheckBox();
-            this.openISODialog = new System.Windows.Forms.OpenFileDialog();
-            this.saveISODialog = new System.Windows.Forms.SaveFileDialog();
-            this.infoToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.tmGroupBox = new System.Windows.Forms.GroupBox();
-            this.openSettingsDialog = new System.Windows.Forms.OpenFileDialog();
-            this.saveSettingsDialog = new System.Windows.Forms.SaveFileDialog();
-            this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gamePictureBox)).BeginInit();
-            this.settingsTab.SuspendLayout();
-            this.encountersTabPage.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
-            this.battlePokemonGroupBox.SuspendLayout();
-            this.trainersTabPage.SuspendLayout();
-            this.tableLayoutPanel28.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.boostTrainerLevelPercent)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.forceFullyEvolvedLevel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.shadowCatchMinimum)).BeginInit();
-            this.pokeSpotTabPage.SuspendLayout();
-            this.tableLayoutPanel29.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.boostPokeSpotLevelPercent)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pokeSpotCatchMinimum)).BeginInit();
-            this.pokemonTabPage.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
-            this.groupBox11.SuspendLayout();
-            this.tableLayoutPanel20.SuspendLayout();
-            this.evolutionsGroupBox.SuspendLayout();
-            this.tableLayoutPanel23.SuspendLayout();
-            this.baseStatsGroupBox.SuspendLayout();
-            this.tableLayoutPanel21.SuspendLayout();
-            this.typesGroupBox.SuspendLayout();
-            this.tableLayoutPanel22.SuspendLayout();
-            this.staticPokemonTab.SuspendLayout();
-            this.tableLayoutPanel7.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.tableLayoutPanel15.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.tableLayoutPanel14.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.tableLayoutPanel13.SuspendLayout();
-            this.tmsTabPage.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
-            this.groupBox8.SuspendLayout();
-            this.tableLayoutPanel16.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.forceGoodDamagingTMPercent)).BeginInit();
-            this.tmCompatibilityGroupBox.SuspendLayout();
-            this.tableLayoutPanel17.SuspendLayout();
-            this.tutorCompatibilityGroupBox.SuspendLayout();
-            this.tableLayoutPanel18.SuspendLayout();
-            this.panel16.SuspendLayout();
-            this.tutorMoveGroupBox.SuspendLayout();
-            this.tableLayoutPanel19.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.forceGoodDamagingTutorMovePercent)).BeginInit();
-            this.moveSetsTabPage.SuspendLayout();
-            this.tableLayoutPanel6.SuspendLayout();
-            this.groupBox9.SuspendLayout();
-            this.tableLayoutPanel11.SuspendLayout();
-            this.groupBox10.SuspendLayout();
-            this.tableLayoutPanel12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.movesetsForceGoodDamagingMovePercent)).BeginInit();
-            this.itemsTabPage.SuspendLayout();
-            this.tableLayoutPanel8.SuspendLayout();
-            this.overworldItemGroupBox.SuspendLayout();
-            this.tableLayoutPanel24.SuspendLayout();
-            this.martGroupBox.SuspendLayout();
-            this.tableLayoutPanel25.SuspendLayout();
-            this.pokemonItemGroupBox.SuspendLayout();
-            this.tableLayoutPanel30.SuspendLayout();
-            this.miscItemGroupBox.SuspendLayout();
-            this.tableLayoutPanel31.SuspendLayout();
-            this.battleBingoTabPage.SuspendLayout();
-            this.tableLayoutPanel10.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.tableLayoutPanel26.SuspendLayout();
-            this.bingoPokemonGroupBox.SuspendLayout();
-            this.tableLayoutPanel27.SuspendLayout();
-            this.miscTabPage.SuspendLayout();
-            this.tableLayoutPanel9.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.tableLayoutPanel32.SuspendLayout();
-            this.SuspendLayout();
+            tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            gamePictureBox = new System.Windows.Forms.PictureBox();
+            loadIsoButton = new System.Windows.Forms.Button();
+            randomizerButton = new System.Windows.Forms.Button();
+            setSeedButton = new System.Windows.Forms.Button();
+            optionsButton = new System.Windows.Forms.Button();
+            loadSettingButton = new System.Windows.Forms.Button();
+            saveSettingsButton = new System.Windows.Forms.Button();
+            settingsTab = new System.Windows.Forms.TabControl();
+            encountersTabPage = new System.Windows.Forms.TabPage();
+            tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            battlePokemonGroupBox = new System.Windows.Forms.TabControl();
+            trainersTabPage = new System.Windows.Forms.TabPage();
+            tableLayoutPanel28 = new System.Windows.Forms.TableLayoutPanel();
+            legendaryToLegendaryCheck = new System.Windows.Forms.CheckBox();
+            boostTrainerLevelPercent = new System.Windows.Forms.NumericUpDown();
+            forceFullyEvolvedLevel = new System.Windows.Forms.NumericUpDown();
+            randomizeTrainerPokemonCheck = new System.Windows.Forms.CheckBox();
+            shadowCatchMinimum = new System.Windows.Forms.NumericUpDown();
+            noLegendaryOnTrainerCheck = new System.Windows.Forms.CheckBox();
+            noDuplicateShadowPokemonCheck = new System.Windows.Forms.CheckBox();
+            useSimilarBSTsCheck = new System.Windows.Forms.CheckBox();
+            trainerCatchRateComboBox = new System.Windows.Forms.ComboBox();
+            forceFullyEvovledLevelCheck = new System.Windows.Forms.CheckBox();
+            boostTrainerLevelCheck = new System.Windows.Forms.CheckBox();
+            label2 = new System.Windows.Forms.Label();
+            pokeSpotTabPage = new System.Windows.Forms.TabPage();
+            tableLayoutPanel29 = new System.Windows.Forms.TableLayoutPanel();
+            randomizePokeSpotsCheck = new System.Windows.Forms.CheckBox();
+            boostPokeSpotLevelPercent = new System.Windows.Forms.NumericUpDown();
+            pokeSpotCatchMinimum = new System.Windows.Forms.NumericUpDown();
+            easyBonslyCheck = new System.Windows.Forms.CheckBox();
+            boostPokeSpotLevelCheck = new System.Windows.Forms.CheckBox();
+            minimumPokeSpotCatchRate = new System.Windows.Forms.CheckBox();
+            useSimilarBSTsPokeSpotCheck = new System.Windows.Forms.CheckBox();
+            label20 = new System.Windows.Forms.Label();
+            checkBox19 = new System.Windows.Forms.CheckBox();
+            pokemonTabPage = new System.Windows.Forms.TabPage();
+            tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            groupBox11 = new System.Windows.Forms.GroupBox();
+            tableLayoutPanel20 = new System.Windows.Forms.TableLayoutPanel();
+            randomizeAbilitiesCheck = new System.Windows.Forms.CheckBox();
+            banBadAbilitiesCheck = new System.Windows.Forms.CheckBox();
+            allowWonderGuardCheck = new System.Windows.Forms.CheckBox();
+            abilitiesFollowEvolutionCheck = new System.Windows.Forms.CheckBox();
+            evolutionsGroupBox = new System.Windows.Forms.GroupBox();
+            tableLayoutPanel23 = new System.Windows.Forms.TableLayoutPanel();
+            randomizeEvolutionsCheck = new System.Windows.Forms.CheckBox();
+            evolutionSameTypeCheck = new System.Windows.Forms.CheckBox();
+            easyEvolutionsCheck = new System.Windows.Forms.CheckBox();
+            evolutionSimilarStrengthCheck = new System.Windows.Forms.CheckBox();
+            fixImpossibleEvolutionsCheck = new System.Windows.Forms.CheckBox();
+            threeStageMaxCheck = new System.Windows.Forms.CheckBox();
+            randomlyEndEvolutionsCheck = new System.Windows.Forms.CheckBox();
+            baseStatsGroupBox = new System.Windows.Forms.GroupBox();
+            tableLayoutPanel21 = new System.Windows.Forms.TableLayoutPanel();
+            bstFollowEvolutionCheck = new System.Windows.Forms.CheckBox();
+            standardizeExpCurveCheck = new System.Windows.Forms.CheckBox();
+            updateBSTCheck = new System.Windows.Forms.CheckBox();
+            baseStatsUnchangedCheck = new System.Windows.Forms.RadioButton();
+            baseStatsShuffleCheck = new System.Windows.Forms.RadioButton();
+            baseStatsRandomCheck = new System.Windows.Forms.RadioButton();
+            typesGroupBox = new System.Windows.Forms.GroupBox();
+            tableLayoutPanel22 = new System.Windows.Forms.TableLayoutPanel();
+            randomizeTypesCheck = new System.Windows.Forms.CheckBox();
+            typesFollowEvolutionCheck = new System.Windows.Forms.CheckBox();
+            staticPokemonTab = new System.Windows.Forms.TabPage();
+            tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            groupBox1 = new System.Windows.Forms.GroupBox();
+            tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
+            randomStarterThreeStageCheck = new System.Windows.Forms.RadioButton();
+            randomStarterTwoStageCheck = new System.Windows.Forms.RadioButton();
+            randomStarterSingleStageCheck = new System.Windows.Forms.RadioButton();
+            randomStarterCheck = new System.Windows.Forms.RadioButton();
+            customStarterCheck = new System.Windows.Forms.RadioButton();
+            unchangedStarterCheck = new System.Windows.Forms.RadioButton();
+            groupBox2 = new System.Windows.Forms.GroupBox();
+            tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
+            tradeUnchangedCheck = new System.Windows.Forms.RadioButton();
+            tradeRandomGivenCheck = new System.Windows.Forms.RadioButton();
+            tradeBothRandomCheck = new System.Windows.Forms.RadioButton();
+            tradeRequestedRandomCheck = new System.Windows.Forms.RadioButton();
+            tradeUsePokeSpotCheck = new System.Windows.Forms.CheckBox();
+            groupBox3 = new System.Windows.Forms.GroupBox();
+            tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
+            starterLabel = new System.Windows.Forms.Label();
+            starter2Label = new System.Windows.Forms.Label();
+            starterComboBox = new System.Windows.Forms.ComboBox();
+            starter2ComboBox = new System.Windows.Forms.ComboBox();
+            tmsTabPage = new System.Windows.Forms.TabPage();
+            tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            groupBox8 = new System.Windows.Forms.GroupBox();
+            tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
+            randomizeTMsCheck = new System.Windows.Forms.CheckBox();
+            forceGoodDamagingTMPercent = new System.Windows.Forms.NumericUpDown();
+            forceGoodDamagingTMsCheck = new System.Windows.Forms.CheckBox();
+            tmCompatibilityGroupBox = new System.Windows.Forms.GroupBox();
+            tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
+            tmCompatibilityUnchangedCheck = new System.Windows.Forms.RadioButton();
+            tmFullCompatibilityCheck = new System.Windows.Forms.RadioButton();
+            tmCompatibilityRandomCheck = new System.Windows.Forms.RadioButton();
+            tmCompatibilityPreferTypeCheck = new System.Windows.Forms.RadioButton();
+            tutorCompatibilityGroupBox = new System.Windows.Forms.GroupBox();
+            tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
+            tutorCompatibilityUnchangedCheck = new System.Windows.Forms.RadioButton();
+            tutorFullCompatibilityCheck = new System.Windows.Forms.RadioButton();
+            tutorCompatibilityPreferTypeCheck = new System.Windows.Forms.RadioButton();
+            tutorCompatibilityRandomCheck = new System.Windows.Forms.RadioButton();
+            panel16 = new System.Windows.Forms.Panel();
+            tutorMoveGroupBox = new System.Windows.Forms.GroupBox();
+            tableLayoutPanel19 = new System.Windows.Forms.TableLayoutPanel();
+            randomizeTutorMoveCheck = new System.Windows.Forms.CheckBox();
+            forceGoodDamagingTutorMoveCheck = new System.Windows.Forms.CheckBox();
+            forceGoodDamagingTutorMovePercent = new System.Windows.Forms.NumericUpDown();
+            moveSetsTabPage = new System.Windows.Forms.TabPage();
+            tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            groupBox9 = new System.Windows.Forms.GroupBox();
+            tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
+            moveCategoryCheck = new System.Windows.Forms.CheckBox();
+            movePowerCheck = new System.Windows.Forms.CheckBox();
+            moveTypeCheck = new System.Windows.Forms.CheckBox();
+            movePPCheck = new System.Windows.Forms.CheckBox();
+            moveAccCheck = new System.Windows.Forms.CheckBox();
+            ignoreOHKOMovesAccuracyCheck = new System.Windows.Forms.CheckBox();
+            turnOffAnimationCheck = new System.Windows.Forms.CheckBox();
+            groupBox10 = new System.Windows.Forms.GroupBox();
+            tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
+            movesetsForceGoodDamagingMoveCheck = new System.Windows.Forms.CheckBox();
+            forceFourMoveCheck = new System.Windows.Forms.CheckBox();
+            movesetsForceGoodDamagingMovePercent = new System.Windows.Forms.NumericUpDown();
+            pokemonShareMovesetsCheck = new System.Windows.Forms.CheckBox();
+            banShadowMovesCheck = new System.Windows.Forms.CheckBox();
+            banEarlyDragonRageCheck = new System.Windows.Forms.CheckBox();
+            unchangedMovesetsCheck = new System.Windows.Forms.RadioButton();
+            randomizeMovesetsPreferType = new System.Windows.Forms.RadioButton();
+            randomizeMovesets = new System.Windows.Forms.RadioButton();
+            movesetsMetronomeOnlyCheck = new System.Windows.Forms.RadioButton();
+            randomizeMovesetsOnlyLegal = new System.Windows.Forms.RadioButton();
+            itemsTabPage = new System.Windows.Forms.TabPage();
+            tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            overworldItemGroupBox = new System.Windows.Forms.GroupBox();
+            tableLayoutPanel24 = new System.Windows.Forms.TableLayoutPanel();
+            randomizeItemQuantityCheck = new System.Windows.Forms.CheckBox();
+            randomizeOverworldItemsCheck = new System.Windows.Forms.CheckBox();
+            martGroupBox = new System.Windows.Forms.GroupBox();
+            tableLayoutPanel25 = new System.Windows.Forms.TableLayoutPanel();
+            martsSellXItemsCheck = new System.Windows.Forms.CheckBox();
+            randomizeMartItems = new System.Windows.Forms.CheckBox();
+            martsSellEvoStonesCheck = new System.Windows.Forms.CheckBox();
+            pokemonItemGroupBox = new System.Windows.Forms.GroupBox();
+            tableLayoutPanel30 = new System.Windows.Forms.TableLayoutPanel();
+            randomHeldItemCheck = new System.Windows.Forms.CheckBox();
+            miscItemGroupBox = new System.Windows.Forms.GroupBox();
+            tableLayoutPanel31 = new System.Windows.Forms.TableLayoutPanel();
+            banBadItemsCheck = new System.Windows.Forms.CheckBox();
+            banBattleCDsCheck = new System.Windows.Forms.CheckBox();
+            battleBingoTabPage = new System.Windows.Forms.TabPage();
+            tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+            groupBox6 = new System.Windows.Forms.GroupBox();
+            tableLayoutPanel26 = new System.Windows.Forms.TableLayoutPanel();
+            bingoBanShadowMovesCheck = new System.Windows.Forms.CheckBox();
+            bingoUseStabMoveCheck = new System.Windows.Forms.CheckBox();
+            bingoUseDamagingMoveCheck = new System.Windows.Forms.CheckBox();
+            randomizeBattleBingoMovesetsCheck = new System.Windows.Forms.CheckBox();
+            bingoPokemonGroupBox = new System.Windows.Forms.GroupBox();
+            tableLayoutPanel27 = new System.Windows.Forms.TableLayoutPanel();
+            bingoUseStrongPokemon = new System.Windows.Forms.CheckBox();
+            randomizeBattleBingoPokemonCheck = new System.Windows.Forms.CheckBox();
+            miscTabPage = new System.Windows.Forms.TabPage();
+            noEXPCheck = new System.Windows.Forms.CheckBox();
+            progressBar = new System.Windows.Forms.ProgressBar();
+            tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            progressLabel = new System.Windows.Forms.Label();
+            progressMessageLabel = new System.Windows.Forms.Label();
+            tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            label3 = new System.Windows.Forms.Label();
+            label13 = new System.Windows.Forms.Label();
+            gameLabel = new System.Windows.Forms.Label();
+            regionLabel = new System.Windows.Forms.Label();
+            tableLayoutPanel32 = new System.Windows.Forms.TableLayoutPanel();
+            prngDropDown = new System.Windows.Forms.ComboBox();
+            label1 = new System.Windows.Forms.Label();
+            generateLogCheck = new System.Windows.Forms.CheckBox();
+            openISODialog = new System.Windows.Forms.OpenFileDialog();
+            saveISODialog = new System.Windows.Forms.SaveFileDialog();
+            infoToolTip = new System.Windows.Forms.ToolTip(components);
+            backgroundWorker = new System.ComponentModel.BackgroundWorker();
+            tmGroupBox = new System.Windows.Forms.GroupBox();
+            openSettingsDialog = new System.Windows.Forms.OpenFileDialog();
+            saveSettingsDialog = new System.Windows.Forms.SaveFileDialog();
+            tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)gamePictureBox).BeginInit();
+            settingsTab.SuspendLayout();
+            encountersTabPage.SuspendLayout();
+            tableLayoutPanel4.SuspendLayout();
+            battlePokemonGroupBox.SuspendLayout();
+            trainersTabPage.SuspendLayout();
+            tableLayoutPanel28.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)boostTrainerLevelPercent).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)forceFullyEvolvedLevel).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)shadowCatchMinimum).BeginInit();
+            pokeSpotTabPage.SuspendLayout();
+            tableLayoutPanel29.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)boostPokeSpotLevelPercent).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pokeSpotCatchMinimum).BeginInit();
+            pokemonTabPage.SuspendLayout();
+            tableLayoutPanel3.SuspendLayout();
+            groupBox11.SuspendLayout();
+            tableLayoutPanel20.SuspendLayout();
+            evolutionsGroupBox.SuspendLayout();
+            tableLayoutPanel23.SuspendLayout();
+            baseStatsGroupBox.SuspendLayout();
+            tableLayoutPanel21.SuspendLayout();
+            typesGroupBox.SuspendLayout();
+            tableLayoutPanel22.SuspendLayout();
+            staticPokemonTab.SuspendLayout();
+            tableLayoutPanel7.SuspendLayout();
+            groupBox1.SuspendLayout();
+            tableLayoutPanel15.SuspendLayout();
+            groupBox2.SuspendLayout();
+            tableLayoutPanel14.SuspendLayout();
+            groupBox3.SuspendLayout();
+            tableLayoutPanel13.SuspendLayout();
+            tmsTabPage.SuspendLayout();
+            tableLayoutPanel5.SuspendLayout();
+            groupBox8.SuspendLayout();
+            tableLayoutPanel16.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)forceGoodDamagingTMPercent).BeginInit();
+            tmCompatibilityGroupBox.SuspendLayout();
+            tableLayoutPanel17.SuspendLayout();
+            tutorCompatibilityGroupBox.SuspendLayout();
+            tableLayoutPanel18.SuspendLayout();
+            panel16.SuspendLayout();
+            tutorMoveGroupBox.SuspendLayout();
+            tableLayoutPanel19.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)forceGoodDamagingTutorMovePercent).BeginInit();
+            moveSetsTabPage.SuspendLayout();
+            tableLayoutPanel6.SuspendLayout();
+            groupBox9.SuspendLayout();
+            tableLayoutPanel11.SuspendLayout();
+            groupBox10.SuspendLayout();
+            tableLayoutPanel12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)movesetsForceGoodDamagingMovePercent).BeginInit();
+            itemsTabPage.SuspendLayout();
+            tableLayoutPanel8.SuspendLayout();
+            overworldItemGroupBox.SuspendLayout();
+            tableLayoutPanel24.SuspendLayout();
+            martGroupBox.SuspendLayout();
+            tableLayoutPanel25.SuspendLayout();
+            pokemonItemGroupBox.SuspendLayout();
+            tableLayoutPanel30.SuspendLayout();
+            miscItemGroupBox.SuspendLayout();
+            tableLayoutPanel31.SuspendLayout();
+            battleBingoTabPage.SuspendLayout();
+            tableLayoutPanel10.SuspendLayout();
+            groupBox6.SuspendLayout();
+            tableLayoutPanel26.SuspendLayout();
+            bingoPokemonGroupBox.SuspendLayout();
+            tableLayoutPanel27.SuspendLayout();
+            miscTabPage.SuspendLayout();
+            tableLayoutPanel9.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
+            tableLayoutPanel32.SuspendLayout();
+            SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Controls.Add(this.gamePictureBox, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.loadIsoButton, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.randomizerButton, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.setSeedButton, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.optionsButton, 2, 3);
-            this.tableLayoutPanel1.Controls.Add(this.loadSettingButton, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.saveSettingsButton, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.settingsTab, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.progressBar, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel9, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel32, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.generateLogCheck, 2, 4);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 9);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 7;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(732, 600);
-            this.tableLayoutPanel1.TabIndex = 0;
+            tableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            tableLayoutPanel1.ColumnCount = 3;
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel1.Controls.Add(gamePictureBox, 1, 0);
+            tableLayoutPanel1.Controls.Add(loadIsoButton, 2, 0);
+            tableLayoutPanel1.Controls.Add(randomizerButton, 2, 1);
+            tableLayoutPanel1.Controls.Add(setSeedButton, 2, 2);
+            tableLayoutPanel1.Controls.Add(optionsButton, 2, 3);
+            tableLayoutPanel1.Controls.Add(loadSettingButton, 0, 0);
+            tableLayoutPanel1.Controls.Add(saveSettingsButton, 0, 1);
+            tableLayoutPanel1.Controls.Add(settingsTab, 0, 5);
+            tableLayoutPanel1.Controls.Add(progressBar, 1, 6);
+            tableLayoutPanel1.Controls.Add(tableLayoutPanel9, 0, 6);
+            tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 1, 3);
+            tableLayoutPanel1.Controls.Add(tableLayoutPanel32, 0, 2);
+            tableLayoutPanel1.Controls.Add(generateLogCheck, 2, 4);
+            tableLayoutPanel1.Location = new System.Drawing.Point(10, 9);
+            tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 7;
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52F));
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            tableLayoutPanel1.Size = new System.Drawing.Size(732, 600);
+            tableLayoutPanel1.TabIndex = 0;
             // 
             // gamePictureBox
             // 
-            this.gamePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.gamePictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gamePictureBox.Location = new System.Drawing.Point(186, 2);
-            this.gamePictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gamePictureBox.Name = "gamePictureBox";
-            this.tableLayoutPanel1.SetRowSpan(this.gamePictureBox, 3);
-            this.gamePictureBox.Size = new System.Drawing.Size(360, 140);
-            this.gamePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.gamePictureBox.TabIndex = 0;
-            this.gamePictureBox.TabStop = false;
+            gamePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            gamePictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            gamePictureBox.Location = new System.Drawing.Point(186, 2);
+            gamePictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            gamePictureBox.Name = "gamePictureBox";
+            tableLayoutPanel1.SetRowSpan(gamePictureBox, 3);
+            gamePictureBox.Size = new System.Drawing.Size(360, 140);
+            gamePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            gamePictureBox.TabIndex = 0;
+            gamePictureBox.TabStop = false;
             // 
             // loadIsoButton
             // 
-            this.loadIsoButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.loadIsoButton.Location = new System.Drawing.Point(552, 2);
-            this.loadIsoButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.loadIsoButton.Name = "loadIsoButton";
-            this.loadIsoButton.Size = new System.Drawing.Size(177, 44);
-            this.loadIsoButton.TabIndex = 1;
-            this.loadIsoButton.Text = "Load ISO";
-            this.loadIsoButton.UseVisualStyleBackColor = true;
-            this.loadIsoButton.Click += new System.EventHandler(this.loadIsoButton_Click);
+            loadIsoButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            loadIsoButton.Location = new System.Drawing.Point(552, 2);
+            loadIsoButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            loadIsoButton.Name = "loadIsoButton";
+            loadIsoButton.Size = new System.Drawing.Size(177, 44);
+            loadIsoButton.TabIndex = 1;
+            loadIsoButton.Text = "Load ISO";
+            loadIsoButton.UseVisualStyleBackColor = true;
+            loadIsoButton.Click += loadIsoButton_Click;
             // 
             // randomizerButton
             // 
-            this.randomizerButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.randomizerButton.Location = new System.Drawing.Point(552, 50);
-            this.randomizerButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.randomizerButton.Name = "randomizerButton";
-            this.randomizerButton.Size = new System.Drawing.Size(177, 44);
-            this.randomizerButton.TabIndex = 2;
-            this.randomizerButton.Text = "Randomize";
-            this.randomizerButton.UseVisualStyleBackColor = true;
-            this.randomizerButton.Click += new System.EventHandler(this.randomizerButton_Click);
+            randomizerButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            randomizerButton.Location = new System.Drawing.Point(552, 50);
+            randomizerButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            randomizerButton.Name = "randomizerButton";
+            randomizerButton.Size = new System.Drawing.Size(177, 44);
+            randomizerButton.TabIndex = 2;
+            randomizerButton.Text = "Randomize";
+            randomizerButton.UseVisualStyleBackColor = true;
+            randomizerButton.Click += randomizerButton_Click;
             // 
             // setSeedButton
             // 
-            this.setSeedButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.setSeedButton.Location = new System.Drawing.Point(552, 98);
-            this.setSeedButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.setSeedButton.Name = "setSeedButton";
-            this.setSeedButton.Size = new System.Drawing.Size(177, 44);
-            this.setSeedButton.TabIndex = 3;
-            this.setSeedButton.Text = "Set Seed";
-            this.setSeedButton.UseVisualStyleBackColor = true;
-            this.setSeedButton.Click += new System.EventHandler(this.setSeedButton_Click);
+            setSeedButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            setSeedButton.Location = new System.Drawing.Point(552, 98);
+            setSeedButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            setSeedButton.Name = "setSeedButton";
+            setSeedButton.Size = new System.Drawing.Size(177, 44);
+            setSeedButton.TabIndex = 3;
+            setSeedButton.Text = "Set Seed";
+            setSeedButton.UseVisualStyleBackColor = true;
+            setSeedButton.Click += setSeedButton_Click;
             // 
             // optionsButton
             // 
-            this.optionsButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.optionsButton.Location = new System.Drawing.Point(552, 146);
-            this.optionsButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.optionsButton.Name = "optionsButton";
-            this.optionsButton.Size = new System.Drawing.Size(177, 44);
-            this.optionsButton.TabIndex = 4;
-            this.optionsButton.Text = "Options";
-            this.optionsButton.UseVisualStyleBackColor = true;
-            this.optionsButton.Click += new System.EventHandler(this.optionsButton_Click);
+            optionsButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            optionsButton.Location = new System.Drawing.Point(552, 146);
+            optionsButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            optionsButton.Name = "optionsButton";
+            optionsButton.Size = new System.Drawing.Size(177, 44);
+            optionsButton.TabIndex = 4;
+            optionsButton.Text = "Options";
+            optionsButton.UseVisualStyleBackColor = true;
+            optionsButton.Click += optionsButton_Click;
             // 
             // loadSettingButton
             // 
-            this.loadSettingButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.loadSettingButton.Location = new System.Drawing.Point(3, 2);
-            this.loadSettingButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.loadSettingButton.Name = "loadSettingButton";
-            this.loadSettingButton.Size = new System.Drawing.Size(177, 44);
-            this.loadSettingButton.TabIndex = 5;
-            this.loadSettingButton.Text = "Load Settings";
-            this.loadSettingButton.UseVisualStyleBackColor = true;
-            this.loadSettingButton.Click += new System.EventHandler(this.loadSettingButton_Click);
+            loadSettingButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            loadSettingButton.Location = new System.Drawing.Point(3, 2);
+            loadSettingButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            loadSettingButton.Name = "loadSettingButton";
+            loadSettingButton.Size = new System.Drawing.Size(177, 44);
+            loadSettingButton.TabIndex = 5;
+            loadSettingButton.Text = "Load Settings";
+            loadSettingButton.UseVisualStyleBackColor = true;
+            loadSettingButton.Click += loadSettingButton_Click;
             // 
             // saveSettingsButton
             // 
-            this.saveSettingsButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.saveSettingsButton.Location = new System.Drawing.Point(3, 50);
-            this.saveSettingsButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.saveSettingsButton.Name = "saveSettingsButton";
-            this.saveSettingsButton.Size = new System.Drawing.Size(177, 44);
-            this.saveSettingsButton.TabIndex = 6;
-            this.saveSettingsButton.Text = "Save Settings";
-            this.saveSettingsButton.UseVisualStyleBackColor = true;
-            this.saveSettingsButton.Click += new System.EventHandler(this.saveSettingsButton_Click);
+            saveSettingsButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            saveSettingsButton.Location = new System.Drawing.Point(3, 50);
+            saveSettingsButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            saveSettingsButton.Name = "saveSettingsButton";
+            saveSettingsButton.Size = new System.Drawing.Size(177, 44);
+            saveSettingsButton.TabIndex = 6;
+            saveSettingsButton.Text = "Save Settings";
+            saveSettingsButton.UseVisualStyleBackColor = true;
+            saveSettingsButton.Click += saveSettingsButton_Click;
             // 
             // settingsTab
             // 
-            this.settingsTab.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.SetColumnSpan(this.settingsTab, 3);
-            this.settingsTab.Controls.Add(this.encountersTabPage);
-            this.settingsTab.Controls.Add(this.pokemonTabPage);
-            this.settingsTab.Controls.Add(this.staticPokemonTab);
-            this.settingsTab.Controls.Add(this.tmsTabPage);
-            this.settingsTab.Controls.Add(this.moveSetsTabPage);
-            this.settingsTab.Controls.Add(this.itemsTabPage);
-            this.settingsTab.Controls.Add(this.battleBingoTabPage);
-            this.settingsTab.Controls.Add(this.miscTabPage);
-            this.settingsTab.Location = new System.Drawing.Point(3, 242);
-            this.settingsTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.settingsTab.Name = "settingsTab";
-            this.settingsTab.SelectedIndex = 0;
-            this.settingsTab.Size = new System.Drawing.Size(726, 308);
-            this.settingsTab.TabIndex = 7;
+            settingsTab.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            tableLayoutPanel1.SetColumnSpan(settingsTab, 3);
+            settingsTab.Controls.Add(encountersTabPage);
+            settingsTab.Controls.Add(pokemonTabPage);
+            settingsTab.Controls.Add(staticPokemonTab);
+            settingsTab.Controls.Add(tmsTabPage);
+            settingsTab.Controls.Add(moveSetsTabPage);
+            settingsTab.Controls.Add(itemsTabPage);
+            settingsTab.Controls.Add(battleBingoTabPage);
+            settingsTab.Controls.Add(miscTabPage);
+            settingsTab.Location = new System.Drawing.Point(3, 242);
+            settingsTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            settingsTab.Name = "settingsTab";
+            settingsTab.SelectedIndex = 0;
+            settingsTab.Size = new System.Drawing.Size(726, 308);
+            settingsTab.TabIndex = 7;
             // 
             // encountersTabPage
             // 
-            this.encountersTabPage.Controls.Add(this.tableLayoutPanel4);
-            this.encountersTabPage.Controls.Add(this.label20);
-            this.encountersTabPage.Controls.Add(this.checkBox19);
-            this.encountersTabPage.Location = new System.Drawing.Point(4, 24);
-            this.encountersTabPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.encountersTabPage.Name = "encountersTabPage";
-            this.encountersTabPage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.encountersTabPage.Size = new System.Drawing.Size(718, 280);
-            this.encountersTabPage.TabIndex = 0;
-            this.encountersTabPage.Text = "Encounters";
-            this.encountersTabPage.UseVisualStyleBackColor = true;
+            encountersTabPage.Controls.Add(tableLayoutPanel4);
+            encountersTabPage.Controls.Add(label20);
+            encountersTabPage.Controls.Add(checkBox19);
+            encountersTabPage.Location = new System.Drawing.Point(4, 24);
+            encountersTabPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            encountersTabPage.Name = "encountersTabPage";
+            encountersTabPage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            encountersTabPage.Size = new System.Drawing.Size(718, 280);
+            encountersTabPage.TabIndex = 0;
+            encountersTabPage.Text = "Encounters";
+            encountersTabPage.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel4
             // 
-            this.tableLayoutPanel4.ColumnCount = 1;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Controls.Add(this.battlePokemonGroupBox, 0, 0);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 2);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 2;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 65F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(712, 276);
-            this.tableLayoutPanel4.TabIndex = 26;
+            tableLayoutPanel4.ColumnCount = 1;
+            tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanel4.Controls.Add(battlePokemonGroupBox, 0, 0);
+            tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel4.Location = new System.Drawing.Point(3, 2);
+            tableLayoutPanel4.Name = "tableLayoutPanel4";
+            tableLayoutPanel4.RowCount = 2;
+            tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 65F));
+            tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            tableLayoutPanel4.Size = new System.Drawing.Size(712, 276);
+            tableLayoutPanel4.TabIndex = 26;
             // 
             // battlePokemonGroupBox
             // 
-            this.battlePokemonGroupBox.Controls.Add(this.trainersTabPage);
-            this.battlePokemonGroupBox.Controls.Add(this.pokeSpotTabPage);
-            this.battlePokemonGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.battlePokemonGroupBox.Location = new System.Drawing.Point(3, 3);
-            this.battlePokemonGroupBox.Name = "battlePokemonGroupBox";
-            this.tableLayoutPanel4.SetRowSpan(this.battlePokemonGroupBox, 2);
-            this.battlePokemonGroupBox.SelectedIndex = 0;
-            this.battlePokemonGroupBox.Size = new System.Drawing.Size(706, 270);
-            this.battlePokemonGroupBox.TabIndex = 13;
+            battlePokemonGroupBox.Controls.Add(trainersTabPage);
+            battlePokemonGroupBox.Controls.Add(pokeSpotTabPage);
+            battlePokemonGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            battlePokemonGroupBox.Location = new System.Drawing.Point(3, 3);
+            battlePokemonGroupBox.Name = "battlePokemonGroupBox";
+            tableLayoutPanel4.SetRowSpan(battlePokemonGroupBox, 2);
+            battlePokemonGroupBox.SelectedIndex = 0;
+            battlePokemonGroupBox.Size = new System.Drawing.Size(706, 270);
+            battlePokemonGroupBox.TabIndex = 13;
             // 
             // trainersTabPage
             // 
-            this.trainersTabPage.Controls.Add(this.tableLayoutPanel28);
-            this.trainersTabPage.Location = new System.Drawing.Point(4, 24);
-            this.trainersTabPage.Name = "trainersTabPage";
-            this.trainersTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.trainersTabPage.Size = new System.Drawing.Size(698, 242);
-            this.trainersTabPage.TabIndex = 0;
-            this.trainersTabPage.Text = "Trainers";
-            this.trainersTabPage.UseVisualStyleBackColor = true;
+            trainersTabPage.Controls.Add(tableLayoutPanel28);
+            trainersTabPage.Location = new System.Drawing.Point(4, 24);
+            trainersTabPage.Name = "trainersTabPage";
+            trainersTabPage.Padding = new System.Windows.Forms.Padding(3);
+            trainersTabPage.Size = new System.Drawing.Size(698, 242);
+            trainersTabPage.TabIndex = 0;
+            trainersTabPage.Text = "Trainers";
+            trainersTabPage.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel28
             // 
-            this.tableLayoutPanel28.ColumnCount = 7;
-            this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel28.Controls.Add(this.legendaryToLegendaryCheck, 1, 3);
-            this.tableLayoutPanel28.Controls.Add(this.boostTrainerLevelPercent, 6, 1);
-            this.tableLayoutPanel28.Controls.Add(this.forceFullyEvolvedLevel, 6, 0);
-            this.tableLayoutPanel28.Controls.Add(this.randomizeTrainerPokemonCheck, 1, 0);
-            this.tableLayoutPanel28.Controls.Add(this.shadowCatchMinimum, 5, 3);
-            this.tableLayoutPanel28.Controls.Add(this.noLegendaryOnTrainerCheck, 1, 1);
-            this.tableLayoutPanel28.Controls.Add(this.noDuplicateShadowPokemonCheck, 1, 2);
-            this.tableLayoutPanel28.Controls.Add(this.useSimilarBSTsCheck, 1, 4);
-            this.tableLayoutPanel28.Controls.Add(this.trainerCatchRateComboBox, 5, 2);
-            this.tableLayoutPanel28.Controls.Add(this.forceFullyEvovledLevelCheck, 4, 0);
-            this.tableLayoutPanel28.Controls.Add(this.boostTrainerLevelCheck, 4, 1);
-            this.tableLayoutPanel28.Controls.Add(this.label2, 4, 2);
-            this.tableLayoutPanel28.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel28.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel28.Name = "tableLayoutPanel28";
-            this.tableLayoutPanel28.RowCount = 7;
-            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel28.Size = new System.Drawing.Size(692, 236);
-            this.tableLayoutPanel28.TabIndex = 12;
+            tableLayoutPanel28.ColumnCount = 7;
+            tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            tableLayoutPanel28.Controls.Add(legendaryToLegendaryCheck, 1, 3);
+            tableLayoutPanel28.Controls.Add(boostTrainerLevelPercent, 6, 1);
+            tableLayoutPanel28.Controls.Add(forceFullyEvolvedLevel, 6, 0);
+            tableLayoutPanel28.Controls.Add(randomizeTrainerPokemonCheck, 1, 0);
+            tableLayoutPanel28.Controls.Add(shadowCatchMinimum, 5, 3);
+            tableLayoutPanel28.Controls.Add(noLegendaryOnTrainerCheck, 1, 1);
+            tableLayoutPanel28.Controls.Add(noDuplicateShadowPokemonCheck, 1, 2);
+            tableLayoutPanel28.Controls.Add(useSimilarBSTsCheck, 1, 4);
+            tableLayoutPanel28.Controls.Add(trainerCatchRateComboBox, 5, 2);
+            tableLayoutPanel28.Controls.Add(forceFullyEvovledLevelCheck, 4, 0);
+            tableLayoutPanel28.Controls.Add(boostTrainerLevelCheck, 4, 1);
+            tableLayoutPanel28.Controls.Add(label2, 4, 2);
+            tableLayoutPanel28.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel28.Location = new System.Drawing.Point(3, 3);
+            tableLayoutPanel28.Name = "tableLayoutPanel28";
+            tableLayoutPanel28.RowCount = 7;
+            tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            tableLayoutPanel28.Size = new System.Drawing.Size(692, 236);
+            tableLayoutPanel28.TabIndex = 12;
             // 
             // legendaryToLegendaryCheck
             // 
-            this.legendaryToLegendaryCheck.AutoSize = true;
-            this.tableLayoutPanel28.SetColumnSpan(this.legendaryToLegendaryCheck, 2);
-            this.legendaryToLegendaryCheck.Enabled = false;
-            this.legendaryToLegendaryCheck.Location = new System.Drawing.Point(37, 108);
-            this.legendaryToLegendaryCheck.Name = "legendaryToLegendaryCheck";
-            this.legendaryToLegendaryCheck.Size = new System.Drawing.Size(225, 19);
-            this.legendaryToLegendaryCheck.TabIndex = 28;
-            this.legendaryToLegendaryCheck.Text = "Randomize Legendary Into Legendary";
-            this.infoToolTip.SetToolTip(this.legendaryToLegendaryCheck, resources.GetString("legendaryToLegendaryCheck.ToolTip"));
-            this.legendaryToLegendaryCheck.UseVisualStyleBackColor = true;
+            legendaryToLegendaryCheck.AutoSize = true;
+            tableLayoutPanel28.SetColumnSpan(legendaryToLegendaryCheck, 2);
+            legendaryToLegendaryCheck.Enabled = false;
+            legendaryToLegendaryCheck.Location = new System.Drawing.Point(37, 108);
+            legendaryToLegendaryCheck.Name = "legendaryToLegendaryCheck";
+            legendaryToLegendaryCheck.Size = new System.Drawing.Size(225, 19);
+            legendaryToLegendaryCheck.TabIndex = 28;
+            legendaryToLegendaryCheck.Text = "Randomize Legendary Into Legendary";
+            infoToolTip.SetToolTip(legendaryToLegendaryCheck, resources.GetString("legendaryToLegendaryCheck.ToolTip"));
+            legendaryToLegendaryCheck.UseVisualStyleBackColor = true;
             // 
             // boostTrainerLevelPercent
             // 
-            this.boostTrainerLevelPercent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.boostTrainerLevelPercent.Enabled = false;
-            this.boostTrainerLevelPercent.Location = new System.Drawing.Point(623, 38);
-            this.boostTrainerLevelPercent.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.boostTrainerLevelPercent.Minimum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            -2147483648});
-            this.boostTrainerLevelPercent.Name = "boostTrainerLevelPercent";
-            this.boostTrainerLevelPercent.Size = new System.Drawing.Size(66, 23);
-            this.boostTrainerLevelPercent.TabIndex = 22;
-            this.infoToolTip.SetToolTip(this.boostTrainerLevelPercent, "Boosts the levels on trainer\'s Pokemon by this percent. From -50 to 50.");
+            boostTrainerLevelPercent.Dock = System.Windows.Forms.DockStyle.Fill;
+            boostTrainerLevelPercent.Enabled = false;
+            boostTrainerLevelPercent.Location = new System.Drawing.Point(623, 38);
+            boostTrainerLevelPercent.Maximum = new decimal(new int[] { 50, 0, 0, 0 });
+            boostTrainerLevelPercent.Minimum = new decimal(new int[] { 50, 0, 0, int.MinValue });
+            boostTrainerLevelPercent.Name = "boostTrainerLevelPercent";
+            boostTrainerLevelPercent.Size = new System.Drawing.Size(66, 23);
+            boostTrainerLevelPercent.TabIndex = 22;
+            infoToolTip.SetToolTip(boostTrainerLevelPercent, "Boosts the levels on trainer's Pokemon by this percent. From -50 to 50.");
             // 
             // forceFullyEvolvedLevel
             // 
-            this.forceFullyEvolvedLevel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.forceFullyEvolvedLevel.Enabled = false;
-            this.forceFullyEvolvedLevel.Location = new System.Drawing.Point(623, 3);
-            this.forceFullyEvolvedLevel.Name = "forceFullyEvolvedLevel";
-            this.forceFullyEvolvedLevel.Size = new System.Drawing.Size(66, 23);
-            this.forceFullyEvolvedLevel.TabIndex = 21;
+            forceFullyEvolvedLevel.Dock = System.Windows.Forms.DockStyle.Fill;
+            forceFullyEvolvedLevel.Enabled = false;
+            forceFullyEvolvedLevel.Location = new System.Drawing.Point(623, 3);
+            forceFullyEvolvedLevel.Name = "forceFullyEvolvedLevel";
+            forceFullyEvolvedLevel.Size = new System.Drawing.Size(66, 23);
+            forceFullyEvolvedLevel.TabIndex = 21;
             // 
             // randomizeTrainerPokemonCheck
             // 
-            this.randomizeTrainerPokemonCheck.AutoSize = true;
-            this.randomizeTrainerPokemonCheck.Location = new System.Drawing.Point(37, 3);
-            this.randomizeTrainerPokemonCheck.Name = "randomizeTrainerPokemonCheck";
-            this.randomizeTrainerPokemonCheck.Size = new System.Drawing.Size(139, 19);
-            this.randomizeTrainerPokemonCheck.TabIndex = 5;
-            this.randomizeTrainerPokemonCheck.Text = "Randomize Pokemon";
-            this.infoToolTip.SetToolTip(this.randomizeTrainerPokemonCheck, "Randomizes all pokemon on trainers. \r\nNote: This includes shadow pokemon as well." +
-        "");
-            this.randomizeTrainerPokemonCheck.UseVisualStyleBackColor = true;
-            this.randomizeTrainerPokemonCheck.CheckedChanged += new System.EventHandler(this.randomizeTrainerPokemonCheck_CheckedChanged);
+            randomizeTrainerPokemonCheck.AutoSize = true;
+            randomizeTrainerPokemonCheck.Location = new System.Drawing.Point(37, 3);
+            randomizeTrainerPokemonCheck.Name = "randomizeTrainerPokemonCheck";
+            randomizeTrainerPokemonCheck.Size = new System.Drawing.Size(139, 19);
+            randomizeTrainerPokemonCheck.TabIndex = 5;
+            randomizeTrainerPokemonCheck.Text = "Randomize Pokemon";
+            infoToolTip.SetToolTip(randomizeTrainerPokemonCheck, "Randomizes all pokemon on trainers. \r\nNote: This includes shadow pokemon as well.");
+            randomizeTrainerPokemonCheck.UseVisualStyleBackColor = true;
+            randomizeTrainerPokemonCheck.CheckedChanged += randomizeTrainerPokemonCheck_CheckedChanged;
             // 
             // shadowCatchMinimum
             // 
-            this.tableLayoutPanel28.SetColumnSpan(this.shadowCatchMinimum, 2);
-            this.shadowCatchMinimum.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.shadowCatchMinimum.Enabled = false;
-            this.shadowCatchMinimum.Location = new System.Drawing.Point(520, 108);
-            this.shadowCatchMinimum.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.shadowCatchMinimum.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.shadowCatchMinimum.Name = "shadowCatchMinimum";
-            this.shadowCatchMinimum.Size = new System.Drawing.Size(169, 23);
-            this.shadowCatchMinimum.TabIndex = 19;
-            this.shadowCatchMinimum.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.shadowCatchMinimum.Visible = false;
+            tableLayoutPanel28.SetColumnSpan(shadowCatchMinimum, 2);
+            shadowCatchMinimum.Dock = System.Windows.Forms.DockStyle.Fill;
+            shadowCatchMinimum.Enabled = false;
+            shadowCatchMinimum.Location = new System.Drawing.Point(520, 108);
+            shadowCatchMinimum.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
+            shadowCatchMinimum.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            shadowCatchMinimum.Name = "shadowCatchMinimum";
+            shadowCatchMinimum.Size = new System.Drawing.Size(169, 23);
+            shadowCatchMinimum.TabIndex = 19;
+            shadowCatchMinimum.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            shadowCatchMinimum.Visible = false;
             // 
             // noLegendaryOnTrainerCheck
             // 
-            this.noLegendaryOnTrainerCheck.AutoSize = true;
-            this.noLegendaryOnTrainerCheck.Enabled = false;
-            this.noLegendaryOnTrainerCheck.Location = new System.Drawing.Point(37, 38);
-            this.noLegendaryOnTrainerCheck.Name = "noLegendaryOnTrainerCheck";
-            this.noLegendaryOnTrainerCheck.Size = new System.Drawing.Size(143, 19);
-            this.noLegendaryOnTrainerCheck.TabIndex = 6;
-            this.noLegendaryOnTrainerCheck.Text = "Don\'t Use Legendaries";
-            this.infoToolTip.SetToolTip(this.noLegendaryOnTrainerCheck, "Note: This means you can\'t catch them either unless they happen to be found in Po" +
-        "keSpots.");
-            this.noLegendaryOnTrainerCheck.UseVisualStyleBackColor = true;
+            noLegendaryOnTrainerCheck.AutoSize = true;
+            noLegendaryOnTrainerCheck.Enabled = false;
+            noLegendaryOnTrainerCheck.Location = new System.Drawing.Point(37, 38);
+            noLegendaryOnTrainerCheck.Name = "noLegendaryOnTrainerCheck";
+            noLegendaryOnTrainerCheck.Size = new System.Drawing.Size(143, 19);
+            noLegendaryOnTrainerCheck.TabIndex = 6;
+            noLegendaryOnTrainerCheck.Text = "Don't Use Legendaries";
+            infoToolTip.SetToolTip(noLegendaryOnTrainerCheck, "Note: This means you can't catch them either unless they happen to be found in PokeSpots.");
+            noLegendaryOnTrainerCheck.UseVisualStyleBackColor = true;
             // 
             // noDuplicateShadowPokemonCheck
             // 
-            this.noDuplicateShadowPokemonCheck.AutoSize = true;
-            this.noDuplicateShadowPokemonCheck.Enabled = false;
-            this.noDuplicateShadowPokemonCheck.Location = new System.Drawing.Point(37, 73);
-            this.noDuplicateShadowPokemonCheck.Name = "noDuplicateShadowPokemonCheck";
-            this.noDuplicateShadowPokemonCheck.Size = new System.Drawing.Size(145, 19);
-            this.noDuplicateShadowPokemonCheck.TabIndex = 27;
-            this.noDuplicateShadowPokemonCheck.Text = "No Duplicate Shadows";
-            this.infoToolTip.SetToolTip(this.noDuplicateShadowPokemonCheck, resources.GetString("noDuplicateShadowPokemonCheck.ToolTip"));
-            this.noDuplicateShadowPokemonCheck.UseVisualStyleBackColor = true;
+            noDuplicateShadowPokemonCheck.AutoSize = true;
+            noDuplicateShadowPokemonCheck.Enabled = false;
+            noDuplicateShadowPokemonCheck.Location = new System.Drawing.Point(37, 73);
+            noDuplicateShadowPokemonCheck.Name = "noDuplicateShadowPokemonCheck";
+            noDuplicateShadowPokemonCheck.Size = new System.Drawing.Size(145, 19);
+            noDuplicateShadowPokemonCheck.TabIndex = 27;
+            noDuplicateShadowPokemonCheck.Text = "No Duplicate Shadows";
+            infoToolTip.SetToolTip(noDuplicateShadowPokemonCheck, resources.GetString("noDuplicateShadowPokemonCheck.ToolTip"));
+            noDuplicateShadowPokemonCheck.UseVisualStyleBackColor = true;
             // 
             // useSimilarBSTsCheck
             // 
-            this.useSimilarBSTsCheck.AutoSize = true;
-            this.useSimilarBSTsCheck.Enabled = false;
-            this.useSimilarBSTsCheck.Location = new System.Drawing.Point(37, 143);
-            this.useSimilarBSTsCheck.Name = "useSimilarBSTsCheck";
-            this.useSimilarBSTsCheck.Size = new System.Drawing.Size(110, 19);
-            this.useSimilarBSTsCheck.TabIndex = 29;
-            this.useSimilarBSTsCheck.Text = "Use Similar BSTs";
-            this.infoToolTip.SetToolTip(this.useSimilarBSTsCheck, resources.GetString("useSimilarBSTsCheck.ToolTip"));
-            this.useSimilarBSTsCheck.UseVisualStyleBackColor = true;
+            useSimilarBSTsCheck.AutoSize = true;
+            useSimilarBSTsCheck.Enabled = false;
+            useSimilarBSTsCheck.Location = new System.Drawing.Point(37, 143);
+            useSimilarBSTsCheck.Name = "useSimilarBSTsCheck";
+            useSimilarBSTsCheck.Size = new System.Drawing.Size(110, 19);
+            useSimilarBSTsCheck.TabIndex = 29;
+            useSimilarBSTsCheck.Text = "Use Similar BSTs";
+            infoToolTip.SetToolTip(useSimilarBSTsCheck, resources.GetString("useSimilarBSTsCheck.ToolTip"));
+            useSimilarBSTsCheck.UseVisualStyleBackColor = true;
             // 
             // trainerCatchRateComboBox
             // 
-            this.tableLayoutPanel28.SetColumnSpan(this.trainerCatchRateComboBox, 2);
-            this.trainerCatchRateComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trainerCatchRateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.trainerCatchRateComboBox.FormattingEnabled = true;
-            this.trainerCatchRateComboBox.Location = new System.Drawing.Point(520, 73);
-            this.trainerCatchRateComboBox.Name = "trainerCatchRateComboBox";
-            this.trainerCatchRateComboBox.Size = new System.Drawing.Size(169, 23);
-            this.trainerCatchRateComboBox.TabIndex = 30;
-            this.infoToolTip.SetToolTip(this.trainerCatchRateComboBox, resources.GetString("trainerCatchRateComboBox.ToolTip"));
-            this.trainerCatchRateComboBox.SelectedIndexChanged += new System.EventHandler(this.trainerCatchRateComboBox_SelectedIndexChanged);
+            tableLayoutPanel28.SetColumnSpan(trainerCatchRateComboBox, 2);
+            trainerCatchRateComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            trainerCatchRateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            trainerCatchRateComboBox.FormattingEnabled = true;
+            trainerCatchRateComboBox.Location = new System.Drawing.Point(520, 73);
+            trainerCatchRateComboBox.Name = "trainerCatchRateComboBox";
+            trainerCatchRateComboBox.Size = new System.Drawing.Size(169, 23);
+            trainerCatchRateComboBox.TabIndex = 30;
+            infoToolTip.SetToolTip(trainerCatchRateComboBox, resources.GetString("trainerCatchRateComboBox.ToolTip"));
+            trainerCatchRateComboBox.SelectedIndexChanged += trainerCatchRateComboBox_SelectedIndexChanged;
             // 
             // forceFullyEvovledLevelCheck
             // 
-            this.forceFullyEvovledLevelCheck.AutoSize = true;
-            this.tableLayoutPanel28.SetColumnSpan(this.forceFullyEvovledLevelCheck, 2);
-            this.forceFullyEvovledLevelCheck.Location = new System.Drawing.Point(382, 3);
-            this.forceFullyEvovledLevelCheck.Name = "forceFullyEvovledLevelCheck";
-            this.forceFullyEvovledLevelCheck.Size = new System.Drawing.Size(173, 19);
-            this.forceFullyEvovledLevelCheck.TabIndex = 24;
-            this.forceFullyEvovledLevelCheck.Text = "Force Fully Evolved By Level";
-            this.infoToolTip.SetToolTip(this.forceFullyEvovledLevelCheck, "If a Pokemon on a trainer greater than or equal to this level, that Pokemon will " +
-        "become fully evolved.");
-            this.forceFullyEvovledLevelCheck.UseVisualStyleBackColor = true;
-            this.forceFullyEvovledLevelCheck.CheckedChanged += new System.EventHandler(this.forceFullyEvovledLevelCheck_CheckedChanged);
+            forceFullyEvovledLevelCheck.AutoSize = true;
+            tableLayoutPanel28.SetColumnSpan(forceFullyEvovledLevelCheck, 2);
+            forceFullyEvovledLevelCheck.Location = new System.Drawing.Point(382, 3);
+            forceFullyEvovledLevelCheck.Name = "forceFullyEvovledLevelCheck";
+            forceFullyEvovledLevelCheck.Size = new System.Drawing.Size(173, 19);
+            forceFullyEvovledLevelCheck.TabIndex = 24;
+            forceFullyEvovledLevelCheck.Text = "Force Fully Evolved By Level";
+            infoToolTip.SetToolTip(forceFullyEvovledLevelCheck, "If a Pokemon on a trainer greater than or equal to this level, that Pokemon will become fully evolved.");
+            forceFullyEvovledLevelCheck.UseVisualStyleBackColor = true;
+            forceFullyEvovledLevelCheck.CheckedChanged += forceFullyEvovledLevelCheck_CheckedChanged;
             // 
             // boostTrainerLevelCheck
             // 
-            this.boostTrainerLevelCheck.AutoSize = true;
-            this.tableLayoutPanel28.SetColumnSpan(this.boostTrainerLevelCheck, 2);
-            this.boostTrainerLevelCheck.Location = new System.Drawing.Point(382, 38);
-            this.boostTrainerLevelCheck.Name = "boostTrainerLevelCheck";
-            this.boostTrainerLevelCheck.Size = new System.Drawing.Size(207, 19);
-            this.boostTrainerLevelCheck.TabIndex = 26;
-            this.boostTrainerLevelCheck.Text = "Boost Trainer Pokemon Level By %";
-            this.infoToolTip.SetToolTip(this.boostTrainerLevelCheck, "All trainer Pokemon will have their levels boosted/decreased by this percent.\r\nFr" +
-        "om -50 to 50.");
-            this.boostTrainerLevelCheck.UseVisualStyleBackColor = true;
-            this.boostTrainerLevelCheck.CheckedChanged += new System.EventHandler(this.boostTrainerLevelCheck_CheckedChanged);
+            boostTrainerLevelCheck.AutoSize = true;
+            tableLayoutPanel28.SetColumnSpan(boostTrainerLevelCheck, 2);
+            boostTrainerLevelCheck.Location = new System.Drawing.Point(382, 38);
+            boostTrainerLevelCheck.Name = "boostTrainerLevelCheck";
+            boostTrainerLevelCheck.Size = new System.Drawing.Size(207, 19);
+            boostTrainerLevelCheck.TabIndex = 26;
+            boostTrainerLevelCheck.Text = "Boost Trainer Pokemon Level By %";
+            infoToolTip.SetToolTip(boostTrainerLevelCheck, "All trainer Pokemon will have their levels boosted/decreased by this percent.\r\nFrom -50 to 50.");
+            boostTrainerLevelCheck.UseVisualStyleBackColor = true;
+            boostTrainerLevelCheck.CheckedChanged += boostTrainerLevelCheck_CheckedChanged;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(382, 73);
-            this.label2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(132, 32);
-            this.label2.TabIndex = 31;
-            this.label2.Text = "Shadow Catch Rates";
+            label2.AutoSize = true;
+            label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            label2.Location = new System.Drawing.Point(382, 73);
+            label2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(132, 32);
+            label2.TabIndex = 31;
+            label2.Text = "Shadow Catch Rates";
             // 
             // pokeSpotTabPage
             // 
-            this.pokeSpotTabPage.Controls.Add(this.tableLayoutPanel29);
-            this.pokeSpotTabPage.Location = new System.Drawing.Point(4, 24);
-            this.pokeSpotTabPage.Name = "pokeSpotTabPage";
-            this.pokeSpotTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.pokeSpotTabPage.Size = new System.Drawing.Size(698, 242);
-            this.pokeSpotTabPage.TabIndex = 1;
-            this.pokeSpotTabPage.Text = "PokeSpots";
-            this.pokeSpotTabPage.UseVisualStyleBackColor = true;
+            pokeSpotTabPage.Controls.Add(tableLayoutPanel29);
+            pokeSpotTabPage.Location = new System.Drawing.Point(4, 24);
+            pokeSpotTabPage.Name = "pokeSpotTabPage";
+            pokeSpotTabPage.Padding = new System.Windows.Forms.Padding(3);
+            pokeSpotTabPage.Size = new System.Drawing.Size(698, 242);
+            pokeSpotTabPage.TabIndex = 1;
+            pokeSpotTabPage.Text = "PokeSpots";
+            pokeSpotTabPage.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel29
             // 
-            this.tableLayoutPanel29.ColumnCount = 6;
-            this.tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
-            this.tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel29.Controls.Add(this.randomizePokeSpotsCheck, 1, 0);
-            this.tableLayoutPanel29.Controls.Add(this.boostPokeSpotLevelPercent, 5, 2);
-            this.tableLayoutPanel29.Controls.Add(this.pokeSpotCatchMinimum, 5, 1);
-            this.tableLayoutPanel29.Controls.Add(this.easyBonslyCheck, 1, 1);
-            this.tableLayoutPanel29.Controls.Add(this.boostPokeSpotLevelCheck, 4, 2);
-            this.tableLayoutPanel29.Controls.Add(this.minimumPokeSpotCatchRate, 4, 1);
-            this.tableLayoutPanel29.Controls.Add(this.useSimilarBSTsPokeSpotCheck, 4, 0);
-            this.tableLayoutPanel29.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel29.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel29.Name = "tableLayoutPanel29";
-            this.tableLayoutPanel29.RowCount = 5;
-            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel29.Size = new System.Drawing.Size(692, 236);
-            this.tableLayoutPanel29.TabIndex = 29;
+            tableLayoutPanel29.ColumnCount = 6;
+            tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            tableLayoutPanel29.Controls.Add(randomizePokeSpotsCheck, 1, 0);
+            tableLayoutPanel29.Controls.Add(boostPokeSpotLevelPercent, 5, 2);
+            tableLayoutPanel29.Controls.Add(pokeSpotCatchMinimum, 5, 1);
+            tableLayoutPanel29.Controls.Add(easyBonslyCheck, 1, 1);
+            tableLayoutPanel29.Controls.Add(boostPokeSpotLevelCheck, 4, 2);
+            tableLayoutPanel29.Controls.Add(minimumPokeSpotCatchRate, 4, 1);
+            tableLayoutPanel29.Controls.Add(useSimilarBSTsPokeSpotCheck, 4, 0);
+            tableLayoutPanel29.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel29.Location = new System.Drawing.Point(3, 3);
+            tableLayoutPanel29.Name = "tableLayoutPanel29";
+            tableLayoutPanel29.RowCount = 5;
+            tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            tableLayoutPanel29.Size = new System.Drawing.Size(692, 236);
+            tableLayoutPanel29.TabIndex = 29;
             // 
             // randomizePokeSpotsCheck
             // 
-            this.randomizePokeSpotsCheck.AutoSize = true;
-            this.randomizePokeSpotsCheck.Location = new System.Drawing.Point(37, 3);
-            this.randomizePokeSpotsCheck.Name = "randomizePokeSpotsCheck";
-            this.randomizePokeSpotsCheck.Size = new System.Drawing.Size(143, 19);
-            this.randomizePokeSpotsCheck.TabIndex = 16;
-            this.randomizePokeSpotsCheck.Text = "Randomize PokeSpots";
-            this.randomizePokeSpotsCheck.UseVisualStyleBackColor = true;
+            randomizePokeSpotsCheck.AutoSize = true;
+            randomizePokeSpotsCheck.Location = new System.Drawing.Point(37, 3);
+            randomizePokeSpotsCheck.Name = "randomizePokeSpotsCheck";
+            randomizePokeSpotsCheck.Size = new System.Drawing.Size(143, 19);
+            randomizePokeSpotsCheck.TabIndex = 16;
+            randomizePokeSpotsCheck.Text = "Randomize PokeSpots";
+            randomizePokeSpotsCheck.UseVisualStyleBackColor = true;
             // 
             // boostPokeSpotLevelPercent
             // 
-            this.boostPokeSpotLevelPercent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.boostPokeSpotLevelPercent.Enabled = false;
-            this.boostPokeSpotLevelPercent.Location = new System.Drawing.Point(624, 73);
-            this.boostPokeSpotLevelPercent.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.boostPokeSpotLevelPercent.Minimum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            -2147483648});
-            this.boostPokeSpotLevelPercent.Name = "boostPokeSpotLevelPercent";
-            this.boostPokeSpotLevelPercent.Size = new System.Drawing.Size(65, 23);
-            this.boostPokeSpotLevelPercent.TabIndex = 24;
-            this.infoToolTip.SetToolTip(this.boostPokeSpotLevelPercent, "Boosts the levels on trainer\'s Pokemon by this percent. From -50 to 50.");
+            boostPokeSpotLevelPercent.Dock = System.Windows.Forms.DockStyle.Fill;
+            boostPokeSpotLevelPercent.Enabled = false;
+            boostPokeSpotLevelPercent.Location = new System.Drawing.Point(624, 73);
+            boostPokeSpotLevelPercent.Maximum = new decimal(new int[] { 50, 0, 0, 0 });
+            boostPokeSpotLevelPercent.Minimum = new decimal(new int[] { 50, 0, 0, int.MinValue });
+            boostPokeSpotLevelPercent.Name = "boostPokeSpotLevelPercent";
+            boostPokeSpotLevelPercent.Size = new System.Drawing.Size(65, 23);
+            boostPokeSpotLevelPercent.TabIndex = 24;
+            infoToolTip.SetToolTip(boostPokeSpotLevelPercent, "Boosts the levels on trainer's Pokemon by this percent. From -50 to 50.");
             // 
             // pokeSpotCatchMinimum
             // 
-            this.pokeSpotCatchMinimum.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pokeSpotCatchMinimum.Enabled = false;
-            this.pokeSpotCatchMinimum.Location = new System.Drawing.Point(624, 38);
-            this.pokeSpotCatchMinimum.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.pokeSpotCatchMinimum.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.pokeSpotCatchMinimum.Name = "pokeSpotCatchMinimum";
-            this.pokeSpotCatchMinimum.Size = new System.Drawing.Size(65, 23);
-            this.pokeSpotCatchMinimum.TabIndex = 17;
-            this.pokeSpotCatchMinimum.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            pokeSpotCatchMinimum.Dock = System.Windows.Forms.DockStyle.Fill;
+            pokeSpotCatchMinimum.Enabled = false;
+            pokeSpotCatchMinimum.Location = new System.Drawing.Point(624, 38);
+            pokeSpotCatchMinimum.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
+            pokeSpotCatchMinimum.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            pokeSpotCatchMinimum.Name = "pokeSpotCatchMinimum";
+            pokeSpotCatchMinimum.Size = new System.Drawing.Size(65, 23);
+            pokeSpotCatchMinimum.TabIndex = 17;
+            pokeSpotCatchMinimum.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // easyBonslyCheck
             // 
-            this.easyBonslyCheck.AutoSize = true;
-            this.easyBonslyCheck.Location = new System.Drawing.Point(37, 38);
-            this.easyBonslyCheck.Name = "easyBonslyCheck";
-            this.easyBonslyCheck.Size = new System.Drawing.Size(87, 19);
-            this.easyBonslyCheck.TabIndex = 15;
-            this.easyBonslyCheck.Text = "Easy Bonsly";
-            this.infoToolTip.SetToolTip(this.easyBonslyCheck, "Force Bonsly to appear more often at PokeSpots.");
-            this.easyBonslyCheck.UseVisualStyleBackColor = true;
+            easyBonslyCheck.AutoSize = true;
+            easyBonslyCheck.Location = new System.Drawing.Point(37, 38);
+            easyBonslyCheck.Name = "easyBonslyCheck";
+            easyBonslyCheck.Size = new System.Drawing.Size(87, 19);
+            easyBonslyCheck.TabIndex = 15;
+            easyBonslyCheck.Text = "Easy Bonsly";
+            infoToolTip.SetToolTip(easyBonslyCheck, "Force Bonsly to appear more often at PokeSpots.");
+            easyBonslyCheck.UseVisualStyleBackColor = true;
             // 
             // boostPokeSpotLevelCheck
             // 
-            this.boostPokeSpotLevelCheck.AutoSize = true;
-            this.boostPokeSpotLevelCheck.Location = new System.Drawing.Point(382, 73);
-            this.boostPokeSpotLevelCheck.Name = "boostPokeSpotLevelCheck";
-            this.boostPokeSpotLevelCheck.Size = new System.Drawing.Size(222, 19);
-            this.boostPokeSpotLevelCheck.TabIndex = 25;
-            this.boostPokeSpotLevelCheck.Text = "Boost PokeSpot Pokemon Level By %";
-            this.infoToolTip.SetToolTip(this.boostPokeSpotLevelCheck, "All PokeSpot Pokemon will have their levels boosted/de\r\ncreased by this percent.\r" +
-        "\nFrom -50 to 50.");
-            this.boostPokeSpotLevelCheck.UseVisualStyleBackColor = true;
-            this.boostPokeSpotLevelCheck.CheckedChanged += new System.EventHandler(this.boostPokeSpotLevelCheck_CheckedChanged);
+            boostPokeSpotLevelCheck.AutoSize = true;
+            boostPokeSpotLevelCheck.Location = new System.Drawing.Point(382, 73);
+            boostPokeSpotLevelCheck.Name = "boostPokeSpotLevelCheck";
+            boostPokeSpotLevelCheck.Size = new System.Drawing.Size(222, 19);
+            boostPokeSpotLevelCheck.TabIndex = 25;
+            boostPokeSpotLevelCheck.Text = "Boost PokeSpot Pokemon Level By %";
+            infoToolTip.SetToolTip(boostPokeSpotLevelCheck, "All PokeSpot Pokemon will have their levels boosted/de\r\ncreased by this percent.\r\nFrom -50 to 50.");
+            boostPokeSpotLevelCheck.UseVisualStyleBackColor = true;
+            boostPokeSpotLevelCheck.CheckedChanged += boostPokeSpotLevelCheck_CheckedChanged;
             // 
             // minimumPokeSpotCatchRate
             // 
-            this.minimumPokeSpotCatchRate.AutoSize = true;
-            this.minimumPokeSpotCatchRate.Location = new System.Drawing.Point(382, 38);
-            this.minimumPokeSpotCatchRate.Name = "minimumPokeSpotCatchRate";
-            this.minimumPokeSpotCatchRate.Size = new System.Drawing.Size(158, 19);
-            this.minimumPokeSpotCatchRate.TabIndex = 12;
-            this.minimumPokeSpotCatchRate.Text = "Set Minimum Catch Rate";
-            this.infoToolTip.SetToolTip(this.minimumPokeSpotCatchRate, "From 1 to 255.");
-            this.minimumPokeSpotCatchRate.UseVisualStyleBackColor = true;
-            this.minimumPokeSpotCatchRate.CheckedChanged += new System.EventHandler(this.minimumPokeSpotCatchRate_CheckedChanged);
+            minimumPokeSpotCatchRate.AutoSize = true;
+            minimumPokeSpotCatchRate.Location = new System.Drawing.Point(382, 38);
+            minimumPokeSpotCatchRate.Name = "minimumPokeSpotCatchRate";
+            minimumPokeSpotCatchRate.Size = new System.Drawing.Size(158, 19);
+            minimumPokeSpotCatchRate.TabIndex = 12;
+            minimumPokeSpotCatchRate.Text = "Set Minimum Catch Rate";
+            infoToolTip.SetToolTip(minimumPokeSpotCatchRate, "From 1 to 255.");
+            minimumPokeSpotCatchRate.UseVisualStyleBackColor = true;
+            minimumPokeSpotCatchRate.CheckedChanged += minimumPokeSpotCatchRate_CheckedChanged;
             // 
             // useSimilarBSTsPokeSpotCheck
             // 
-            this.useSimilarBSTsPokeSpotCheck.AutoSize = true;
-            this.useSimilarBSTsPokeSpotCheck.Enabled = false;
-            this.useSimilarBSTsPokeSpotCheck.Location = new System.Drawing.Point(382, 3);
-            this.useSimilarBSTsPokeSpotCheck.Name = "useSimilarBSTsPokeSpotCheck";
-            this.useSimilarBSTsPokeSpotCheck.Size = new System.Drawing.Size(110, 19);
-            this.useSimilarBSTsPokeSpotCheck.TabIndex = 26;
-            this.useSimilarBSTsPokeSpotCheck.Text = "Use Similar BSTs";
-            this.infoToolTip.SetToolTip(this.useSimilarBSTsPokeSpotCheck, "When picking a new random pokemon, use one that has a similar BST to the current " +
-        "pokemon.\r\nNote: This will gradually widen the BST range to search for if none ar" +
-        "e found.");
-            this.useSimilarBSTsPokeSpotCheck.UseVisualStyleBackColor = true;
+            useSimilarBSTsPokeSpotCheck.AutoSize = true;
+            useSimilarBSTsPokeSpotCheck.Enabled = false;
+            useSimilarBSTsPokeSpotCheck.Location = new System.Drawing.Point(382, 3);
+            useSimilarBSTsPokeSpotCheck.Name = "useSimilarBSTsPokeSpotCheck";
+            useSimilarBSTsPokeSpotCheck.Size = new System.Drawing.Size(110, 19);
+            useSimilarBSTsPokeSpotCheck.TabIndex = 26;
+            useSimilarBSTsPokeSpotCheck.Text = "Use Similar BSTs";
+            infoToolTip.SetToolTip(useSimilarBSTsPokeSpotCheck, "When picking a new random pokemon, use one that has a similar BST to the current pokemon.\r\nNote: This will gradually widen the BST range to search for if none are found.");
+            useSimilarBSTsPokeSpotCheck.UseVisualStyleBackColor = true;
             // 
             // label20
             // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(147, -74);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(49, 15);
-            this.label20.TabIndex = 25;
-            this.label20.Text = "Starters:";
+            label20.AutoSize = true;
+            label20.Location = new System.Drawing.Point(147, -74);
+            label20.Name = "label20";
+            label20.Size = new System.Drawing.Size(49, 15);
+            label20.TabIndex = 25;
+            label20.Text = "Starters:";
             // 
             // checkBox19
             // 
-            this.checkBox19.AutoSize = true;
-            this.checkBox19.Location = new System.Drawing.Point(165, -41);
-            this.checkBox19.Name = "checkBox19";
-            this.checkBox19.Size = new System.Drawing.Size(89, 19);
-            this.checkBox19.TabIndex = 24;
-            this.checkBox19.Text = "checkBox19";
-            this.checkBox19.UseVisualStyleBackColor = true;
+            checkBox19.AutoSize = true;
+            checkBox19.Location = new System.Drawing.Point(165, -41);
+            checkBox19.Name = "checkBox19";
+            checkBox19.Size = new System.Drawing.Size(89, 19);
+            checkBox19.TabIndex = 24;
+            checkBox19.Text = "checkBox19";
+            checkBox19.UseVisualStyleBackColor = true;
             // 
             // pokemonTabPage
             // 
-            this.pokemonTabPage.Controls.Add(this.tableLayoutPanel3);
-            this.pokemonTabPage.Location = new System.Drawing.Point(4, 24);
-            this.pokemonTabPage.Name = "pokemonTabPage";
-            this.pokemonTabPage.Size = new System.Drawing.Size(718, 280);
-            this.pokemonTabPage.TabIndex = 5;
-            this.pokemonTabPage.Text = "Pokemon Traits";
-            this.pokemonTabPage.UseVisualStyleBackColor = true;
+            pokemonTabPage.Controls.Add(tableLayoutPanel3);
+            pokemonTabPage.Location = new System.Drawing.Point(4, 24);
+            pokemonTabPage.Name = "pokemonTabPage";
+            pokemonTabPage.Size = new System.Drawing.Size(718, 280);
+            pokemonTabPage.TabIndex = 5;
+            pokemonTabPage.Text = "Pokemon Traits";
+            pokemonTabPage.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel3
             // 
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Controls.Add(this.groupBox11, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.evolutionsGroupBox, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.baseStatsGroupBox, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.typesGroupBox, 0, 1);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49.57983F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.42017F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(718, 280);
-            this.tableLayoutPanel3.TabIndex = 1;
+            tableLayoutPanel3.ColumnCount = 2;
+            tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            tableLayoutPanel3.Controls.Add(groupBox11, 1, 0);
+            tableLayoutPanel3.Controls.Add(evolutionsGroupBox, 1, 1);
+            tableLayoutPanel3.Controls.Add(baseStatsGroupBox, 0, 0);
+            tableLayoutPanel3.Controls.Add(typesGroupBox, 0, 1);
+            tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
+            tableLayoutPanel3.Name = "tableLayoutPanel3";
+            tableLayoutPanel3.RowCount = 2;
+            tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49.57983F));
+            tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.42017F));
+            tableLayoutPanel3.Size = new System.Drawing.Size(718, 280);
+            tableLayoutPanel3.TabIndex = 1;
             // 
             // groupBox11
             // 
-            this.groupBox11.Controls.Add(this.tableLayoutPanel20);
-            this.groupBox11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox11.Location = new System.Drawing.Point(362, 3);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(353, 132);
-            this.groupBox11.TabIndex = 20;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Abilities";
+            groupBox11.Controls.Add(tableLayoutPanel20);
+            groupBox11.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBox11.Location = new System.Drawing.Point(362, 3);
+            groupBox11.Name = "groupBox11";
+            groupBox11.Size = new System.Drawing.Size(353, 132);
+            groupBox11.TabIndex = 20;
+            groupBox11.TabStop = false;
+            groupBox11.Text = "Abilities";
             // 
             // tableLayoutPanel20
             // 
-            this.tableLayoutPanel20.ColumnCount = 3;
-            this.tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel20.Controls.Add(this.randomizeAbilitiesCheck, 1, 0);
-            this.tableLayoutPanel20.Controls.Add(this.banBadAbilitiesCheck, 2, 2);
-            this.tableLayoutPanel20.Controls.Add(this.allowWonderGuardCheck, 2, 0);
-            this.tableLayoutPanel20.Controls.Add(this.abilitiesFollowEvolutionCheck, 2, 1);
-            this.tableLayoutPanel20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel20.Location = new System.Drawing.Point(3, 19);
-            this.tableLayoutPanel20.Name = "tableLayoutPanel20";
-            this.tableLayoutPanel20.RowCount = 4;
-            this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel20.Size = new System.Drawing.Size(347, 110);
-            this.tableLayoutPanel20.TabIndex = 11;
+            tableLayoutPanel20.ColumnCount = 3;
+            tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel20.Controls.Add(randomizeAbilitiesCheck, 1, 0);
+            tableLayoutPanel20.Controls.Add(banBadAbilitiesCheck, 2, 2);
+            tableLayoutPanel20.Controls.Add(allowWonderGuardCheck, 2, 0);
+            tableLayoutPanel20.Controls.Add(abilitiesFollowEvolutionCheck, 2, 1);
+            tableLayoutPanel20.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel20.Location = new System.Drawing.Point(3, 19);
+            tableLayoutPanel20.Name = "tableLayoutPanel20";
+            tableLayoutPanel20.RowCount = 4;
+            tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel20.Size = new System.Drawing.Size(347, 110);
+            tableLayoutPanel20.TabIndex = 11;
             // 
             // randomizeAbilitiesCheck
             // 
-            this.randomizeAbilitiesCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.randomizeAbilitiesCheck.AutoSize = true;
-            this.randomizeAbilitiesCheck.Location = new System.Drawing.Point(37, 3);
-            this.randomizeAbilitiesCheck.Name = "randomizeAbilitiesCheck";
-            this.randomizeAbilitiesCheck.Size = new System.Drawing.Size(132, 21);
-            this.randomizeAbilitiesCheck.TabIndex = 10;
-            this.randomizeAbilitiesCheck.Text = "Randomize";
-            this.infoToolTip.SetToolTip(this.randomizeAbilitiesCheck, "Note: Shedinja is exempt from ability randomization");
-            this.randomizeAbilitiesCheck.UseVisualStyleBackColor = true;
-            this.randomizeAbilitiesCheck.CheckedChanged += new System.EventHandler(this.randomizeAbilitiesCheck_CheckedChanged);
+            randomizeAbilitiesCheck.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            randomizeAbilitiesCheck.AutoSize = true;
+            randomizeAbilitiesCheck.Location = new System.Drawing.Point(37, 3);
+            randomizeAbilitiesCheck.Name = "randomizeAbilitiesCheck";
+            randomizeAbilitiesCheck.Size = new System.Drawing.Size(132, 21);
+            randomizeAbilitiesCheck.TabIndex = 10;
+            randomizeAbilitiesCheck.Text = "Randomize";
+            infoToolTip.SetToolTip(randomizeAbilitiesCheck, "Note: Shedinja is exempt from ability randomization");
+            randomizeAbilitiesCheck.UseVisualStyleBackColor = true;
+            randomizeAbilitiesCheck.CheckedChanged += randomizeAbilitiesCheck_CheckedChanged;
             // 
             // banBadAbilitiesCheck
             // 
-            this.banBadAbilitiesCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.banBadAbilitiesCheck.AutoSize = true;
-            this.banBadAbilitiesCheck.Enabled = false;
-            this.banBadAbilitiesCheck.Location = new System.Drawing.Point(175, 57);
-            this.banBadAbilitiesCheck.Name = "banBadAbilitiesCheck";
-            this.banBadAbilitiesCheck.Size = new System.Drawing.Size(169, 21);
-            this.banBadAbilitiesCheck.TabIndex = 6;
-            this.banBadAbilitiesCheck.Text = "Ban Bad Abilities";
-            this.infoToolTip.SetToolTip(this.banBadAbilitiesCheck, "Ban Truant, Slow Start, and Defeatist. Also ban abilities that have no effect in " +
-        "Colo/XD like Illuminate or Cacophony.");
-            this.banBadAbilitiesCheck.UseVisualStyleBackColor = true;
+            banBadAbilitiesCheck.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            banBadAbilitiesCheck.AutoSize = true;
+            banBadAbilitiesCheck.Enabled = false;
+            banBadAbilitiesCheck.Location = new System.Drawing.Point(175, 57);
+            banBadAbilitiesCheck.Name = "banBadAbilitiesCheck";
+            banBadAbilitiesCheck.Size = new System.Drawing.Size(169, 21);
+            banBadAbilitiesCheck.TabIndex = 6;
+            banBadAbilitiesCheck.Text = "Ban Bad Abilities";
+            infoToolTip.SetToolTip(banBadAbilitiesCheck, "Ban Truant, Slow Start, and Defeatist. Also ban abilities that have no effect in Colo/XD like Illuminate or Cacophony.");
+            banBadAbilitiesCheck.UseVisualStyleBackColor = true;
             // 
             // allowWonderGuardCheck
             // 
-            this.allowWonderGuardCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.allowWonderGuardCheck.AutoSize = true;
-            this.allowWonderGuardCheck.Enabled = false;
-            this.allowWonderGuardCheck.Location = new System.Drawing.Point(175, 3);
-            this.allowWonderGuardCheck.Name = "allowWonderGuardCheck";
-            this.allowWonderGuardCheck.Size = new System.Drawing.Size(169, 21);
-            this.allowWonderGuardCheck.TabIndex = 4;
-            this.allowWonderGuardCheck.Text = "Allow Wonder Guard";
-            this.allowWonderGuardCheck.UseVisualStyleBackColor = true;
+            allowWonderGuardCheck.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            allowWonderGuardCheck.AutoSize = true;
+            allowWonderGuardCheck.Enabled = false;
+            allowWonderGuardCheck.Location = new System.Drawing.Point(175, 3);
+            allowWonderGuardCheck.Name = "allowWonderGuardCheck";
+            allowWonderGuardCheck.Size = new System.Drawing.Size(169, 21);
+            allowWonderGuardCheck.TabIndex = 4;
+            allowWonderGuardCheck.Text = "Allow Wonder Guard";
+            allowWonderGuardCheck.UseVisualStyleBackColor = true;
             // 
             // abilitiesFollowEvolutionCheck
             // 
-            this.abilitiesFollowEvolutionCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.abilitiesFollowEvolutionCheck.AutoSize = true;
-            this.abilitiesFollowEvolutionCheck.Enabled = false;
-            this.abilitiesFollowEvolutionCheck.Location = new System.Drawing.Point(175, 30);
-            this.abilitiesFollowEvolutionCheck.Name = "abilitiesFollowEvolutionCheck";
-            this.abilitiesFollowEvolutionCheck.Size = new System.Drawing.Size(169, 21);
-            this.abilitiesFollowEvolutionCheck.TabIndex = 5;
-            this.abilitiesFollowEvolutionCheck.Text = "Follow Evolutions";
-            this.infoToolTip.SetToolTip(this.abilitiesFollowEvolutionCheck, "Make the entire evolution line share the same abilities.");
-            this.abilitiesFollowEvolutionCheck.UseVisualStyleBackColor = true;
+            abilitiesFollowEvolutionCheck.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            abilitiesFollowEvolutionCheck.AutoSize = true;
+            abilitiesFollowEvolutionCheck.Enabled = false;
+            abilitiesFollowEvolutionCheck.Location = new System.Drawing.Point(175, 30);
+            abilitiesFollowEvolutionCheck.Name = "abilitiesFollowEvolutionCheck";
+            abilitiesFollowEvolutionCheck.Size = new System.Drawing.Size(169, 21);
+            abilitiesFollowEvolutionCheck.TabIndex = 5;
+            abilitiesFollowEvolutionCheck.Text = "Follow Evolutions";
+            infoToolTip.SetToolTip(abilitiesFollowEvolutionCheck, "Make the entire evolution line share the same abilities.");
+            abilitiesFollowEvolutionCheck.UseVisualStyleBackColor = true;
             // 
             // evolutionsGroupBox
             // 
-            this.evolutionsGroupBox.Controls.Add(this.tableLayoutPanel23);
-            this.evolutionsGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.evolutionsGroupBox.Location = new System.Drawing.Point(362, 141);
-            this.evolutionsGroupBox.Name = "evolutionsGroupBox";
-            this.evolutionsGroupBox.Size = new System.Drawing.Size(353, 136);
-            this.evolutionsGroupBox.TabIndex = 21;
-            this.evolutionsGroupBox.TabStop = false;
-            this.evolutionsGroupBox.Text = "Evolutions";
+            evolutionsGroupBox.Controls.Add(tableLayoutPanel23);
+            evolutionsGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            evolutionsGroupBox.Location = new System.Drawing.Point(362, 141);
+            evolutionsGroupBox.Name = "evolutionsGroupBox";
+            evolutionsGroupBox.Size = new System.Drawing.Size(353, 136);
+            evolutionsGroupBox.TabIndex = 21;
+            evolutionsGroupBox.TabStop = false;
+            evolutionsGroupBox.Text = "Evolutions";
             // 
             // tableLayoutPanel23
             // 
-            this.tableLayoutPanel23.ColumnCount = 3;
-            this.tableLayoutPanel23.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel23.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel23.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel23.Controls.Add(this.randomizeEvolutionsCheck, 1, 0);
-            this.tableLayoutPanel23.Controls.Add(this.evolutionSameTypeCheck, 2, 1);
-            this.tableLayoutPanel23.Controls.Add(this.easyEvolutionsCheck, 1, 2);
-            this.tableLayoutPanel23.Controls.Add(this.evolutionSimilarStrengthCheck, 2, 0);
-            this.tableLayoutPanel23.Controls.Add(this.fixImpossibleEvolutionsCheck, 1, 1);
-            this.tableLayoutPanel23.Controls.Add(this.threeStageMaxCheck, 2, 3);
-            this.tableLayoutPanel23.Controls.Add(this.randomlyEndEvolutionsCheck, 2, 2);
-            this.tableLayoutPanel23.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel23.Location = new System.Drawing.Point(3, 19);
-            this.tableLayoutPanel23.Name = "tableLayoutPanel23";
-            this.tableLayoutPanel23.RowCount = 4;
-            this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel23.Size = new System.Drawing.Size(347, 114);
-            this.tableLayoutPanel23.TabIndex = 24;
+            tableLayoutPanel23.ColumnCount = 3;
+            tableLayoutPanel23.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            tableLayoutPanel23.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            tableLayoutPanel23.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel23.Controls.Add(randomizeEvolutionsCheck, 1, 0);
+            tableLayoutPanel23.Controls.Add(evolutionSameTypeCheck, 2, 1);
+            tableLayoutPanel23.Controls.Add(easyEvolutionsCheck, 1, 2);
+            tableLayoutPanel23.Controls.Add(evolutionSimilarStrengthCheck, 2, 0);
+            tableLayoutPanel23.Controls.Add(fixImpossibleEvolutionsCheck, 1, 1);
+            tableLayoutPanel23.Controls.Add(threeStageMaxCheck, 2, 3);
+            tableLayoutPanel23.Controls.Add(randomlyEndEvolutionsCheck, 2, 2);
+            tableLayoutPanel23.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel23.Location = new System.Drawing.Point(3, 19);
+            tableLayoutPanel23.Name = "tableLayoutPanel23";
+            tableLayoutPanel23.RowCount = 4;
+            tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel23.Size = new System.Drawing.Size(347, 114);
+            tableLayoutPanel23.TabIndex = 24;
             // 
             // randomizeEvolutionsCheck
             // 
-            this.randomizeEvolutionsCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.randomizeEvolutionsCheck.AutoSize = true;
-            this.randomizeEvolutionsCheck.Location = new System.Drawing.Point(37, 3);
-            this.randomizeEvolutionsCheck.Name = "randomizeEvolutionsCheck";
-            this.randomizeEvolutionsCheck.Size = new System.Drawing.Size(132, 22);
-            this.randomizeEvolutionsCheck.TabIndex = 10;
-            this.randomizeEvolutionsCheck.Text = "Randomize";
-            this.randomizeEvolutionsCheck.UseVisualStyleBackColor = true;
-            this.randomizeEvolutionsCheck.CheckedChanged += new System.EventHandler(this.randomizeEvolutionsCheck_CheckedChanged);
+            randomizeEvolutionsCheck.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            randomizeEvolutionsCheck.AutoSize = true;
+            randomizeEvolutionsCheck.Location = new System.Drawing.Point(37, 3);
+            randomizeEvolutionsCheck.Name = "randomizeEvolutionsCheck";
+            randomizeEvolutionsCheck.Size = new System.Drawing.Size(132, 22);
+            randomizeEvolutionsCheck.TabIndex = 10;
+            randomizeEvolutionsCheck.Text = "Randomize";
+            randomizeEvolutionsCheck.UseVisualStyleBackColor = true;
+            randomizeEvolutionsCheck.CheckedChanged += randomizeEvolutionsCheck_CheckedChanged;
             // 
             // evolutionSameTypeCheck
             // 
-            this.evolutionSameTypeCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.evolutionSameTypeCheck.AutoSize = true;
-            this.evolutionSameTypeCheck.Enabled = false;
-            this.evolutionSameTypeCheck.Location = new System.Drawing.Point(175, 31);
-            this.evolutionSameTypeCheck.Name = "evolutionSameTypeCheck";
-            this.evolutionSameTypeCheck.Size = new System.Drawing.Size(169, 22);
-            this.evolutionSameTypeCheck.TabIndex = 5;
-            this.evolutionSameTypeCheck.Text = "Same Type";
-            this.infoToolTip.SetToolTip(this.evolutionSameTypeCheck, "Pokemon will evolve into Pokemon of the same type");
-            this.evolutionSameTypeCheck.UseVisualStyleBackColor = true;
+            evolutionSameTypeCheck.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            evolutionSameTypeCheck.AutoSize = true;
+            evolutionSameTypeCheck.Enabled = false;
+            evolutionSameTypeCheck.Location = new System.Drawing.Point(175, 31);
+            evolutionSameTypeCheck.Name = "evolutionSameTypeCheck";
+            evolutionSameTypeCheck.Size = new System.Drawing.Size(169, 22);
+            evolutionSameTypeCheck.TabIndex = 5;
+            evolutionSameTypeCheck.Text = "Same Type";
+            infoToolTip.SetToolTip(evolutionSameTypeCheck, "Pokemon will evolve into Pokemon of the same type");
+            evolutionSameTypeCheck.UseVisualStyleBackColor = true;
             // 
             // easyEvolutionsCheck
             // 
-            this.easyEvolutionsCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.easyEvolutionsCheck.AutoSize = true;
-            this.easyEvolutionsCheck.Location = new System.Drawing.Point(37, 59);
-            this.easyEvolutionsCheck.Name = "easyEvolutionsCheck";
-            this.easyEvolutionsCheck.Size = new System.Drawing.Size(132, 22);
-            this.easyEvolutionsCheck.TabIndex = 12;
-            this.easyEvolutionsCheck.Text = "Easier Evolutions";
-            this.infoToolTip.SetToolTip(this.easyEvolutionsCheck, "All Pokemon that evolve by level will be fully evolved by level 40. \r\nThree stage" +
-        " evolutions will have their second stage by level 30.");
-            this.easyEvolutionsCheck.UseVisualStyleBackColor = true;
+            easyEvolutionsCheck.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            easyEvolutionsCheck.AutoSize = true;
+            easyEvolutionsCheck.Location = new System.Drawing.Point(37, 59);
+            easyEvolutionsCheck.Name = "easyEvolutionsCheck";
+            easyEvolutionsCheck.Size = new System.Drawing.Size(132, 22);
+            easyEvolutionsCheck.TabIndex = 12;
+            easyEvolutionsCheck.Text = "Easier Evolutions";
+            infoToolTip.SetToolTip(easyEvolutionsCheck, "All Pokemon that evolve by level will be fully evolved by level 40. \r\nThree stage evolutions will have their second stage by level 30.");
+            easyEvolutionsCheck.UseVisualStyleBackColor = true;
             // 
             // evolutionSimilarStrengthCheck
             // 
-            this.evolutionSimilarStrengthCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.evolutionSimilarStrengthCheck.AutoSize = true;
-            this.evolutionSimilarStrengthCheck.Enabled = false;
-            this.evolutionSimilarStrengthCheck.Location = new System.Drawing.Point(175, 3);
-            this.evolutionSimilarStrengthCheck.Name = "evolutionSimilarStrengthCheck";
-            this.evolutionSimilarStrengthCheck.Size = new System.Drawing.Size(169, 22);
-            this.evolutionSimilarStrengthCheck.TabIndex = 4;
-            this.evolutionSimilarStrengthCheck.Text = "Similar Strength";
-            this.infoToolTip.SetToolTip(this.evolutionSimilarStrengthCheck, "Pokemon will evolve into a Pokemon with a similiar BST as the intended evolution." +
-        "");
-            this.evolutionSimilarStrengthCheck.UseVisualStyleBackColor = true;
+            evolutionSimilarStrengthCheck.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            evolutionSimilarStrengthCheck.AutoSize = true;
+            evolutionSimilarStrengthCheck.Enabled = false;
+            evolutionSimilarStrengthCheck.Location = new System.Drawing.Point(175, 3);
+            evolutionSimilarStrengthCheck.Name = "evolutionSimilarStrengthCheck";
+            evolutionSimilarStrengthCheck.Size = new System.Drawing.Size(169, 22);
+            evolutionSimilarStrengthCheck.TabIndex = 4;
+            evolutionSimilarStrengthCheck.Text = "Similar Strength";
+            infoToolTip.SetToolTip(evolutionSimilarStrengthCheck, "Pokemon will evolve into a Pokemon with a similiar BST as the intended evolution.");
+            evolutionSimilarStrengthCheck.UseVisualStyleBackColor = true;
             // 
             // fixImpossibleEvolutionsCheck
             // 
-            this.fixImpossibleEvolutionsCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fixImpossibleEvolutionsCheck.AutoSize = true;
-            this.fixImpossibleEvolutionsCheck.Location = new System.Drawing.Point(37, 31);
-            this.fixImpossibleEvolutionsCheck.Name = "fixImpossibleEvolutionsCheck";
-            this.fixImpossibleEvolutionsCheck.Size = new System.Drawing.Size(132, 22);
-            this.fixImpossibleEvolutionsCheck.TabIndex = 11;
-            this.fixImpossibleEvolutionsCheck.Text = "Fix Impossible Evolutions";
-            this.infoToolTip.SetToolTip(this.fixImpossibleEvolutionsCheck, "Pokemon that evolve by Trade or by Day/Night cycles.\r\nNote: The level this is set" +
-        " to is configurable in the Options menu.");
-            this.fixImpossibleEvolutionsCheck.UseVisualStyleBackColor = true;
+            fixImpossibleEvolutionsCheck.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            fixImpossibleEvolutionsCheck.AutoSize = true;
+            fixImpossibleEvolutionsCheck.Location = new System.Drawing.Point(37, 31);
+            fixImpossibleEvolutionsCheck.Name = "fixImpossibleEvolutionsCheck";
+            fixImpossibleEvolutionsCheck.Size = new System.Drawing.Size(132, 22);
+            fixImpossibleEvolutionsCheck.TabIndex = 11;
+            fixImpossibleEvolutionsCheck.Text = "Fix Impossible Evolutions";
+            infoToolTip.SetToolTip(fixImpossibleEvolutionsCheck, "Pokemon that evolve by Trade or by Day/Night cycles.\r\nNote: The level this is set to is configurable in the Options menu.");
+            fixImpossibleEvolutionsCheck.UseVisualStyleBackColor = true;
             // 
             // threeStageMaxCheck
             // 
-            this.threeStageMaxCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.threeStageMaxCheck.AutoSize = true;
-            this.threeStageMaxCheck.Enabled = false;
-            this.threeStageMaxCheck.Location = new System.Drawing.Point(175, 87);
-            this.threeStageMaxCheck.Name = "threeStageMaxCheck";
-            this.threeStageMaxCheck.Size = new System.Drawing.Size(169, 24);
-            this.threeStageMaxCheck.TabIndex = 6;
-            this.threeStageMaxCheck.Text = "Three Stage Evolution Max";
-            this.infoToolTip.SetToolTip(this.threeStageMaxCheck, "Pokemon can\'t evolve more than twice.");
-            this.threeStageMaxCheck.UseVisualStyleBackColor = true;
-            this.threeStageMaxCheck.Visible = false;
+            threeStageMaxCheck.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            threeStageMaxCheck.AutoSize = true;
+            threeStageMaxCheck.Enabled = false;
+            threeStageMaxCheck.Location = new System.Drawing.Point(175, 87);
+            threeStageMaxCheck.Name = "threeStageMaxCheck";
+            threeStageMaxCheck.Size = new System.Drawing.Size(169, 24);
+            threeStageMaxCheck.TabIndex = 6;
+            threeStageMaxCheck.Text = "Three Stage Evolution Max";
+            infoToolTip.SetToolTip(threeStageMaxCheck, "Pokemon can't evolve more than twice.");
+            threeStageMaxCheck.UseVisualStyleBackColor = true;
+            threeStageMaxCheck.Visible = false;
             // 
             // randomlyEndEvolutionsCheck
             // 
-            this.randomlyEndEvolutionsCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.randomlyEndEvolutionsCheck.AutoSize = true;
-            this.randomlyEndEvolutionsCheck.Enabled = false;
-            this.randomlyEndEvolutionsCheck.Location = new System.Drawing.Point(175, 59);
-            this.randomlyEndEvolutionsCheck.Name = "randomlyEndEvolutionsCheck";
-            this.randomlyEndEvolutionsCheck.Size = new System.Drawing.Size(169, 22);
-            this.randomlyEndEvolutionsCheck.TabIndex = 13;
-            this.randomlyEndEvolutionsCheck.Text = "Randomly End";
-            this.infoToolTip.SetToolTip(this.randomlyEndEvolutionsCheck, "Randomly set pokemon as the end of their evolution line.\r\nCould avoid long loopin" +
-        "g evolution lines.\r\n");
-            this.randomlyEndEvolutionsCheck.UseVisualStyleBackColor = true;
+            randomlyEndEvolutionsCheck.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            randomlyEndEvolutionsCheck.AutoSize = true;
+            randomlyEndEvolutionsCheck.Enabled = false;
+            randomlyEndEvolutionsCheck.Location = new System.Drawing.Point(175, 59);
+            randomlyEndEvolutionsCheck.Name = "randomlyEndEvolutionsCheck";
+            randomlyEndEvolutionsCheck.Size = new System.Drawing.Size(169, 22);
+            randomlyEndEvolutionsCheck.TabIndex = 13;
+            randomlyEndEvolutionsCheck.Text = "Randomly End";
+            infoToolTip.SetToolTip(randomlyEndEvolutionsCheck, "Randomly set pokemon as the end of their evolution line.\r\nCould avoid long looping evolution lines.\r\n");
+            randomlyEndEvolutionsCheck.UseVisualStyleBackColor = true;
             // 
             // baseStatsGroupBox
             // 
-            this.baseStatsGroupBox.Controls.Add(this.tableLayoutPanel21);
-            this.baseStatsGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.baseStatsGroupBox.Location = new System.Drawing.Point(3, 3);
-            this.baseStatsGroupBox.Name = "baseStatsGroupBox";
-            this.baseStatsGroupBox.Size = new System.Drawing.Size(353, 132);
-            this.baseStatsGroupBox.TabIndex = 22;
-            this.baseStatsGroupBox.TabStop = false;
-            this.baseStatsGroupBox.Text = "Base Stats";
+            baseStatsGroupBox.Controls.Add(tableLayoutPanel21);
+            baseStatsGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            baseStatsGroupBox.Location = new System.Drawing.Point(3, 3);
+            baseStatsGroupBox.Name = "baseStatsGroupBox";
+            baseStatsGroupBox.Size = new System.Drawing.Size(353, 132);
+            baseStatsGroupBox.TabIndex = 22;
+            baseStatsGroupBox.TabStop = false;
+            baseStatsGroupBox.Text = "Base Stats";
             // 
             // tableLayoutPanel21
             // 
-            this.tableLayoutPanel21.ColumnCount = 3;
-            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel21.Controls.Add(this.bstFollowEvolutionCheck, 2, 2);
-            this.tableLayoutPanel21.Controls.Add(this.standardizeExpCurveCheck, 2, 0);
-            this.tableLayoutPanel21.Controls.Add(this.updateBSTCheck, 2, 1);
-            this.tableLayoutPanel21.Controls.Add(this.baseStatsUnchangedCheck, 1, 0);
-            this.tableLayoutPanel21.Controls.Add(this.baseStatsShuffleCheck, 1, 1);
-            this.tableLayoutPanel21.Controls.Add(this.baseStatsRandomCheck, 1, 2);
-            this.tableLayoutPanel21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel21.Location = new System.Drawing.Point(3, 19);
-            this.tableLayoutPanel21.Name = "tableLayoutPanel21";
-            this.tableLayoutPanel21.RowCount = 4;
-            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel21.Size = new System.Drawing.Size(347, 110);
-            this.tableLayoutPanel21.TabIndex = 12;
+            tableLayoutPanel21.ColumnCount = 3;
+            tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel21.Controls.Add(bstFollowEvolutionCheck, 2, 2);
+            tableLayoutPanel21.Controls.Add(standardizeExpCurveCheck, 2, 0);
+            tableLayoutPanel21.Controls.Add(updateBSTCheck, 2, 1);
+            tableLayoutPanel21.Controls.Add(baseStatsUnchangedCheck, 1, 0);
+            tableLayoutPanel21.Controls.Add(baseStatsShuffleCheck, 1, 1);
+            tableLayoutPanel21.Controls.Add(baseStatsRandomCheck, 1, 2);
+            tableLayoutPanel21.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel21.Location = new System.Drawing.Point(3, 19);
+            tableLayoutPanel21.Name = "tableLayoutPanel21";
+            tableLayoutPanel21.RowCount = 4;
+            tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel21.Size = new System.Drawing.Size(347, 110);
+            tableLayoutPanel21.TabIndex = 12;
             // 
             // bstFollowEvolutionCheck
             // 
-            this.bstFollowEvolutionCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.bstFollowEvolutionCheck.AutoSize = true;
-            this.bstFollowEvolutionCheck.Enabled = false;
-            this.bstFollowEvolutionCheck.Location = new System.Drawing.Point(175, 57);
-            this.bstFollowEvolutionCheck.Name = "bstFollowEvolutionCheck";
-            this.bstFollowEvolutionCheck.Size = new System.Drawing.Size(169, 21);
-            this.bstFollowEvolutionCheck.TabIndex = 6;
-            this.bstFollowEvolutionCheck.Text = "Follow Evolutions (WIP)";
-            this.infoToolTip.SetToolTip(this.bstFollowEvolutionCheck, "Base stats distribution will be inherited from previous evolutions. (i.e. if spee" +
-        "d is high in the first, it will also be high in the next)");
-            this.bstFollowEvolutionCheck.UseVisualStyleBackColor = true;
-            this.bstFollowEvolutionCheck.Visible = false;
+            bstFollowEvolutionCheck.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            bstFollowEvolutionCheck.AutoSize = true;
+            bstFollowEvolutionCheck.Enabled = false;
+            bstFollowEvolutionCheck.Location = new System.Drawing.Point(175, 57);
+            bstFollowEvolutionCheck.Name = "bstFollowEvolutionCheck";
+            bstFollowEvolutionCheck.Size = new System.Drawing.Size(169, 21);
+            bstFollowEvolutionCheck.TabIndex = 6;
+            bstFollowEvolutionCheck.Text = "Follow Evolutions (WIP)";
+            infoToolTip.SetToolTip(bstFollowEvolutionCheck, "Base stats distribution will be inherited from previous evolutions. (i.e. if speed is high in the first, it will also be high in the next)");
+            bstFollowEvolutionCheck.UseVisualStyleBackColor = true;
+            bstFollowEvolutionCheck.Visible = false;
             // 
             // standardizeExpCurveCheck
             // 
-            this.standardizeExpCurveCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.standardizeExpCurveCheck.AutoSize = true;
-            this.standardizeExpCurveCheck.Location = new System.Drawing.Point(175, 3);
-            this.standardizeExpCurveCheck.Name = "standardizeExpCurveCheck";
-            this.standardizeExpCurveCheck.Size = new System.Drawing.Size(169, 21);
-            this.standardizeExpCurveCheck.TabIndex = 4;
-            this.standardizeExpCurveCheck.Text = "Standardize EXP Curve";
-            this.infoToolTip.SetToolTip(this.standardizeExpCurveCheck, "Set all regular Pokemon\'s exp curve to fast and all legendary Pokemon to slowest." +
-        "");
-            this.standardizeExpCurveCheck.UseVisualStyleBackColor = true;
+            standardizeExpCurveCheck.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            standardizeExpCurveCheck.AutoSize = true;
+            standardizeExpCurveCheck.Location = new System.Drawing.Point(175, 3);
+            standardizeExpCurveCheck.Name = "standardizeExpCurveCheck";
+            standardizeExpCurveCheck.Size = new System.Drawing.Size(169, 21);
+            standardizeExpCurveCheck.TabIndex = 4;
+            standardizeExpCurveCheck.Text = "Standardize EXP Curve";
+            infoToolTip.SetToolTip(standardizeExpCurveCheck, "Set all regular Pokemon's exp curve to fast and all legendary Pokemon to slowest.");
+            standardizeExpCurveCheck.UseVisualStyleBackColor = true;
             // 
             // updateBSTCheck
             // 
-            this.updateBSTCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateBSTCheck.AutoSize = true;
-            this.updateBSTCheck.Enabled = false;
-            this.updateBSTCheck.Location = new System.Drawing.Point(175, 30);
-            this.updateBSTCheck.Name = "updateBSTCheck";
-            this.updateBSTCheck.Size = new System.Drawing.Size(169, 21);
-            this.updateBSTCheck.TabIndex = 5;
-            this.updateBSTCheck.Text = "Update BSTs (WIP)";
-            this.infoToolTip.SetToolTip(this.updateBSTCheck, "Use the Gen 6 BSTs for Pokemon.");
-            this.updateBSTCheck.UseVisualStyleBackColor = true;
-            this.updateBSTCheck.Visible = false;
+            updateBSTCheck.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            updateBSTCheck.AutoSize = true;
+            updateBSTCheck.Enabled = false;
+            updateBSTCheck.Location = new System.Drawing.Point(175, 30);
+            updateBSTCheck.Name = "updateBSTCheck";
+            updateBSTCheck.Size = new System.Drawing.Size(169, 21);
+            updateBSTCheck.TabIndex = 5;
+            updateBSTCheck.Text = "Update BSTs (WIP)";
+            infoToolTip.SetToolTip(updateBSTCheck, "Use the Gen 6 BSTs for Pokemon.");
+            updateBSTCheck.UseVisualStyleBackColor = true;
+            updateBSTCheck.Visible = false;
             // 
             // baseStatsUnchangedCheck
             // 
-            this.baseStatsUnchangedCheck.AutoSize = true;
-            this.baseStatsUnchangedCheck.Checked = true;
-            this.baseStatsUnchangedCheck.Location = new System.Drawing.Point(37, 3);
-            this.baseStatsUnchangedCheck.Name = "baseStatsUnchangedCheck";
-            this.baseStatsUnchangedCheck.Size = new System.Drawing.Size(86, 19);
-            this.baseStatsUnchangedCheck.TabIndex = 7;
-            this.baseStatsUnchangedCheck.TabStop = true;
-            this.baseStatsUnchangedCheck.Text = "Unchanged";
-            this.baseStatsUnchangedCheck.UseVisualStyleBackColor = true;
+            baseStatsUnchangedCheck.AutoSize = true;
+            baseStatsUnchangedCheck.Checked = true;
+            baseStatsUnchangedCheck.Location = new System.Drawing.Point(37, 3);
+            baseStatsUnchangedCheck.Name = "baseStatsUnchangedCheck";
+            baseStatsUnchangedCheck.Size = new System.Drawing.Size(86, 19);
+            baseStatsUnchangedCheck.TabIndex = 7;
+            baseStatsUnchangedCheck.TabStop = true;
+            baseStatsUnchangedCheck.Text = "Unchanged";
+            baseStatsUnchangedCheck.UseVisualStyleBackColor = true;
             // 
             // baseStatsShuffleCheck
             // 
-            this.baseStatsShuffleCheck.AutoSize = true;
-            this.baseStatsShuffleCheck.Location = new System.Drawing.Point(37, 30);
-            this.baseStatsShuffleCheck.Name = "baseStatsShuffleCheck";
-            this.baseStatsShuffleCheck.Size = new System.Drawing.Size(62, 19);
-            this.baseStatsShuffleCheck.TabIndex = 8;
-            this.baseStatsShuffleCheck.Text = "Shuffle";
-            this.infoToolTip.SetToolTip(this.baseStatsShuffleCheck, "Swap stats around without changing their totals. \r\nFor example, a Pokemon\'s speed" +
-        " could become it\'s attack.");
-            this.baseStatsShuffleCheck.UseVisualStyleBackColor = true;
+            baseStatsShuffleCheck.AutoSize = true;
+            baseStatsShuffleCheck.Location = new System.Drawing.Point(37, 30);
+            baseStatsShuffleCheck.Name = "baseStatsShuffleCheck";
+            baseStatsShuffleCheck.Size = new System.Drawing.Size(62, 19);
+            baseStatsShuffleCheck.TabIndex = 8;
+            baseStatsShuffleCheck.Text = "Shuffle";
+            infoToolTip.SetToolTip(baseStatsShuffleCheck, "Swap stats around without changing their totals. \r\nFor example, a Pokemon's speed could become it's attack.");
+            baseStatsShuffleCheck.UseVisualStyleBackColor = true;
             // 
             // baseStatsRandomCheck
             // 
-            this.baseStatsRandomCheck.AutoSize = true;
-            this.baseStatsRandomCheck.Location = new System.Drawing.Point(37, 57);
-            this.baseStatsRandomCheck.Name = "baseStatsRandomCheck";
-            this.baseStatsRandomCheck.Size = new System.Drawing.Size(84, 19);
-            this.baseStatsRandomCheck.TabIndex = 9;
-            this.baseStatsRandomCheck.Text = "Randomize";
-            this.infoToolTip.SetToolTip(this.baseStatsRandomCheck, "Randomize Base Stats within the Pokemon\'s total.\r\ni.e. a Pokemon will have it\'s B" +
-        "ST divided into 6 new parts and assigned randomly.");
-            this.baseStatsRandomCheck.UseVisualStyleBackColor = true;
-            this.baseStatsRandomCheck.CheckedChanged += new System.EventHandler(this.baseStatsRandomCheck_CheckedChanged);
+            baseStatsRandomCheck.AutoSize = true;
+            baseStatsRandomCheck.Location = new System.Drawing.Point(37, 57);
+            baseStatsRandomCheck.Name = "baseStatsRandomCheck";
+            baseStatsRandomCheck.Size = new System.Drawing.Size(84, 19);
+            baseStatsRandomCheck.TabIndex = 9;
+            baseStatsRandomCheck.Text = "Randomize";
+            infoToolTip.SetToolTip(baseStatsRandomCheck, "Randomize Base Stats within the Pokemon's total.\r\ni.e. a Pokemon will have it's BST divided into 6 new parts and assigned randomly.");
+            baseStatsRandomCheck.UseVisualStyleBackColor = true;
+            baseStatsRandomCheck.CheckedChanged += baseStatsRandomCheck_CheckedChanged;
             // 
             // typesGroupBox
             // 
-            this.typesGroupBox.Controls.Add(this.tableLayoutPanel22);
-            this.typesGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.typesGroupBox.Location = new System.Drawing.Point(3, 141);
-            this.typesGroupBox.Name = "typesGroupBox";
-            this.typesGroupBox.Size = new System.Drawing.Size(353, 136);
-            this.typesGroupBox.TabIndex = 23;
-            this.typesGroupBox.TabStop = false;
-            this.typesGroupBox.Text = "Types";
+            typesGroupBox.Controls.Add(tableLayoutPanel22);
+            typesGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            typesGroupBox.Location = new System.Drawing.Point(3, 141);
+            typesGroupBox.Name = "typesGroupBox";
+            typesGroupBox.Size = new System.Drawing.Size(353, 136);
+            typesGroupBox.TabIndex = 23;
+            typesGroupBox.TabStop = false;
+            typesGroupBox.Text = "Types";
             // 
             // tableLayoutPanel22
             // 
-            this.tableLayoutPanel22.ColumnCount = 3;
-            this.tableLayoutPanel22.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel22.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel22.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel22.Controls.Add(this.randomizeTypesCheck, 1, 0);
-            this.tableLayoutPanel22.Controls.Add(this.typesFollowEvolutionCheck, 2, 0);
-            this.tableLayoutPanel22.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel22.Location = new System.Drawing.Point(3, 19);
-            this.tableLayoutPanel22.Name = "tableLayoutPanel22";
-            this.tableLayoutPanel22.RowCount = 4;
-            this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel22.Size = new System.Drawing.Size(347, 114);
-            this.tableLayoutPanel22.TabIndex = 12;
+            tableLayoutPanel22.ColumnCount = 3;
+            tableLayoutPanel22.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            tableLayoutPanel22.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            tableLayoutPanel22.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel22.Controls.Add(randomizeTypesCheck, 1, 0);
+            tableLayoutPanel22.Controls.Add(typesFollowEvolutionCheck, 2, 0);
+            tableLayoutPanel22.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel22.Location = new System.Drawing.Point(3, 19);
+            tableLayoutPanel22.Name = "tableLayoutPanel22";
+            tableLayoutPanel22.RowCount = 4;
+            tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel22.Size = new System.Drawing.Size(347, 114);
+            tableLayoutPanel22.TabIndex = 12;
             // 
             // randomizeTypesCheck
             // 
-            this.randomizeTypesCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.randomizeTypesCheck.AutoSize = true;
-            this.randomizeTypesCheck.Location = new System.Drawing.Point(37, 3);
-            this.randomizeTypesCheck.Name = "randomizeTypesCheck";
-            this.randomizeTypesCheck.Size = new System.Drawing.Size(132, 22);
-            this.randomizeTypesCheck.TabIndex = 10;
-            this.randomizeTypesCheck.Text = "Randomize";
-            this.randomizeTypesCheck.UseVisualStyleBackColor = true;
-            this.randomizeTypesCheck.CheckedChanged += new System.EventHandler(this.randomizeTypesCheck_CheckedChanged);
+            randomizeTypesCheck.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            randomizeTypesCheck.AutoSize = true;
+            randomizeTypesCheck.Location = new System.Drawing.Point(37, 3);
+            randomizeTypesCheck.Name = "randomizeTypesCheck";
+            randomizeTypesCheck.Size = new System.Drawing.Size(132, 22);
+            randomizeTypesCheck.TabIndex = 10;
+            randomizeTypesCheck.Text = "Randomize";
+            randomizeTypesCheck.UseVisualStyleBackColor = true;
+            randomizeTypesCheck.CheckedChanged += randomizeTypesCheck_CheckedChanged;
             // 
             // typesFollowEvolutionCheck
             // 
-            this.typesFollowEvolutionCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.typesFollowEvolutionCheck.AutoSize = true;
-            this.typesFollowEvolutionCheck.Enabled = false;
-            this.typesFollowEvolutionCheck.Location = new System.Drawing.Point(175, 3);
-            this.typesFollowEvolutionCheck.Name = "typesFollowEvolutionCheck";
-            this.typesFollowEvolutionCheck.Size = new System.Drawing.Size(169, 22);
-            this.typesFollowEvolutionCheck.TabIndex = 4;
-            this.typesFollowEvolutionCheck.Text = "Follow Evolution";
-            this.infoToolTip.SetToolTip(this.typesFollowEvolutionCheck, "If selected, evolutions will inherit their previous evolution\'s type.");
-            this.typesFollowEvolutionCheck.UseVisualStyleBackColor = true;
+            typesFollowEvolutionCheck.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            typesFollowEvolutionCheck.AutoSize = true;
+            typesFollowEvolutionCheck.Enabled = false;
+            typesFollowEvolutionCheck.Location = new System.Drawing.Point(175, 3);
+            typesFollowEvolutionCheck.Name = "typesFollowEvolutionCheck";
+            typesFollowEvolutionCheck.Size = new System.Drawing.Size(169, 22);
+            typesFollowEvolutionCheck.TabIndex = 4;
+            typesFollowEvolutionCheck.Text = "Follow Evolution";
+            infoToolTip.SetToolTip(typesFollowEvolutionCheck, "If selected, evolutions will inherit their previous evolution's type.");
+            typesFollowEvolutionCheck.UseVisualStyleBackColor = true;
             // 
             // staticPokemonTab
             // 
-            this.staticPokemonTab.Controls.Add(this.tableLayoutPanel7);
-            this.staticPokemonTab.Location = new System.Drawing.Point(4, 24);
-            this.staticPokemonTab.Name = "staticPokemonTab";
-            this.staticPokemonTab.Padding = new System.Windows.Forms.Padding(3);
-            this.staticPokemonTab.Size = new System.Drawing.Size(718, 280);
-            this.staticPokemonTab.TabIndex = 9;
-            this.staticPokemonTab.Text = "Starters, Trades and Gifts";
-            this.staticPokemonTab.UseVisualStyleBackColor = true;
+            staticPokemonTab.Controls.Add(tableLayoutPanel7);
+            staticPokemonTab.Location = new System.Drawing.Point(4, 24);
+            staticPokemonTab.Name = "staticPokemonTab";
+            staticPokemonTab.Padding = new System.Windows.Forms.Padding(3);
+            staticPokemonTab.Size = new System.Drawing.Size(718, 280);
+            staticPokemonTab.TabIndex = 9;
+            staticPokemonTab.Text = "Starters, Trades and Gifts";
+            staticPokemonTab.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel7
             // 
-            this.tableLayoutPanel7.ColumnCount = 2;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Controls.Add(this.groupBox1, 0, 0);
-            this.tableLayoutPanel7.Controls.Add(this.groupBox2, 0, 1);
-            this.tableLayoutPanel7.Controls.Add(this.groupBox3, 1, 0);
-            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 2;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(712, 274);
-            this.tableLayoutPanel7.TabIndex = 0;
+            tableLayoutPanel7.ColumnCount = 2;
+            tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel7.Controls.Add(groupBox1, 0, 0);
+            tableLayoutPanel7.Controls.Add(groupBox2, 0, 1);
+            tableLayoutPanel7.Controls.Add(groupBox3, 1, 0);
+            tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel7.Location = new System.Drawing.Point(3, 3);
+            tableLayoutPanel7.Name = "tableLayoutPanel7";
+            tableLayoutPanel7.RowCount = 2;
+            tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel7.Size = new System.Drawing.Size(712, 274);
+            tableLayoutPanel7.TabIndex = 0;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.tableLayoutPanel15);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(350, 131);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Starters";
+            groupBox1.Controls.Add(tableLayoutPanel15);
+            groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBox1.Location = new System.Drawing.Point(3, 3);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new System.Drawing.Size(350, 131);
+            groupBox1.TabIndex = 0;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Starters";
             // 
             // tableLayoutPanel15
             // 
-            this.tableLayoutPanel15.ColumnCount = 3;
-            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel15.Controls.Add(this.randomStarterThreeStageCheck, 2, 0);
-            this.tableLayoutPanel15.Controls.Add(this.randomStarterTwoStageCheck, 2, 1);
-            this.tableLayoutPanel15.Controls.Add(this.randomStarterSingleStageCheck, 2, 2);
-            this.tableLayoutPanel15.Controls.Add(this.randomStarterCheck, 1, 2);
-            this.tableLayoutPanel15.Controls.Add(this.customStarterCheck, 1, 1);
-            this.tableLayoutPanel15.Controls.Add(this.unchangedStarterCheck, 1, 0);
-            this.tableLayoutPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel15.Location = new System.Drawing.Point(3, 19);
-            this.tableLayoutPanel15.Name = "tableLayoutPanel15";
-            this.tableLayoutPanel15.RowCount = 4;
-            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel15.Size = new System.Drawing.Size(344, 109);
-            this.tableLayoutPanel15.TabIndex = 4;
+            tableLayoutPanel15.ColumnCount = 3;
+            tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel15.Controls.Add(randomStarterThreeStageCheck, 2, 0);
+            tableLayoutPanel15.Controls.Add(randomStarterTwoStageCheck, 2, 1);
+            tableLayoutPanel15.Controls.Add(randomStarterSingleStageCheck, 2, 2);
+            tableLayoutPanel15.Controls.Add(randomStarterCheck, 1, 2);
+            tableLayoutPanel15.Controls.Add(customStarterCheck, 1, 1);
+            tableLayoutPanel15.Controls.Add(unchangedStarterCheck, 1, 0);
+            tableLayoutPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel15.Location = new System.Drawing.Point(3, 19);
+            tableLayoutPanel15.Name = "tableLayoutPanel15";
+            tableLayoutPanel15.RowCount = 4;
+            tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel15.Size = new System.Drawing.Size(344, 109);
+            tableLayoutPanel15.TabIndex = 4;
             // 
             // randomStarterThreeStageCheck
             // 
-            this.randomStarterThreeStageCheck.AutoSize = true;
-            this.randomStarterThreeStageCheck.Location = new System.Drawing.Point(174, 3);
-            this.randomStarterThreeStageCheck.Name = "randomStarterThreeStageCheck";
-            this.randomStarterThreeStageCheck.Size = new System.Drawing.Size(134, 19);
-            this.randomStarterThreeStageCheck.TabIndex = 3;
-            this.randomStarterThreeStageCheck.Text = "Random Three Stage";
-            this.infoToolTip.SetToolTip(this.randomStarterThreeStageCheck, "Pick a Pokemon with only two evolutions.");
-            this.randomStarterThreeStageCheck.UseVisualStyleBackColor = true;
+            randomStarterThreeStageCheck.AutoSize = true;
+            randomStarterThreeStageCheck.Location = new System.Drawing.Point(174, 3);
+            randomStarterThreeStageCheck.Name = "randomStarterThreeStageCheck";
+            randomStarterThreeStageCheck.Size = new System.Drawing.Size(134, 19);
+            randomStarterThreeStageCheck.TabIndex = 3;
+            randomStarterThreeStageCheck.Text = "Random Three Stage";
+            infoToolTip.SetToolTip(randomStarterThreeStageCheck, "Pick a Pokemon with only two evolutions.");
+            randomStarterThreeStageCheck.UseVisualStyleBackColor = true;
             // 
             // randomStarterTwoStageCheck
             // 
-            this.randomStarterTwoStageCheck.AutoSize = true;
-            this.randomStarterTwoStageCheck.Location = new System.Drawing.Point(174, 30);
-            this.randomStarterTwoStageCheck.Name = "randomStarterTwoStageCheck";
-            this.randomStarterTwoStageCheck.Size = new System.Drawing.Size(126, 19);
-            this.randomStarterTwoStageCheck.TabIndex = 4;
-            this.randomStarterTwoStageCheck.Text = "Random Two Stage";
-            this.infoToolTip.SetToolTip(this.randomStarterTwoStageCheck, "Pick a Pokemon that only has one evolution.");
-            this.randomStarterTwoStageCheck.UseVisualStyleBackColor = true;
+            randomStarterTwoStageCheck.AutoSize = true;
+            randomStarterTwoStageCheck.Location = new System.Drawing.Point(174, 30);
+            randomStarterTwoStageCheck.Name = "randomStarterTwoStageCheck";
+            randomStarterTwoStageCheck.Size = new System.Drawing.Size(126, 19);
+            randomStarterTwoStageCheck.TabIndex = 4;
+            randomStarterTwoStageCheck.Text = "Random Two Stage";
+            infoToolTip.SetToolTip(randomStarterTwoStageCheck, "Pick a Pokemon that only has one evolution.");
+            randomStarterTwoStageCheck.UseVisualStyleBackColor = true;
             // 
             // randomStarterSingleStageCheck
             // 
-            this.randomStarterSingleStageCheck.AutoSize = true;
-            this.randomStarterSingleStageCheck.Location = new System.Drawing.Point(174, 57);
-            this.randomStarterSingleStageCheck.Name = "randomStarterSingleStageCheck";
-            this.randomStarterSingleStageCheck.Size = new System.Drawing.Size(137, 19);
-            this.randomStarterSingleStageCheck.TabIndex = 5;
-            this.randomStarterSingleStageCheck.Text = "Random Single Stage";
-            this.infoToolTip.SetToolTip(this.randomStarterSingleStageCheck, "Pick a Pokemon with no evolutions.");
-            this.randomStarterSingleStageCheck.UseVisualStyleBackColor = true;
+            randomStarterSingleStageCheck.AutoSize = true;
+            randomStarterSingleStageCheck.Location = new System.Drawing.Point(174, 57);
+            randomStarterSingleStageCheck.Name = "randomStarterSingleStageCheck";
+            randomStarterSingleStageCheck.Size = new System.Drawing.Size(137, 19);
+            randomStarterSingleStageCheck.TabIndex = 5;
+            randomStarterSingleStageCheck.Text = "Random Single Stage";
+            infoToolTip.SetToolTip(randomStarterSingleStageCheck, "Pick a Pokemon with no evolutions.");
+            randomStarterSingleStageCheck.UseVisualStyleBackColor = true;
             // 
             // randomStarterCheck
             // 
-            this.randomStarterCheck.AutoSize = true;
-            this.randomStarterCheck.Location = new System.Drawing.Point(37, 57);
-            this.randomStarterCheck.Name = "randomStarterCheck";
-            this.randomStarterCheck.Size = new System.Drawing.Size(70, 19);
-            this.randomStarterCheck.TabIndex = 2;
-            this.randomStarterCheck.Text = "Random";
-            this.infoToolTip.SetToolTip(this.randomStarterCheck, "Pick a completely random Pokemon.");
-            this.randomStarterCheck.UseVisualStyleBackColor = true;
+            randomStarterCheck.AutoSize = true;
+            randomStarterCheck.Location = new System.Drawing.Point(37, 57);
+            randomStarterCheck.Name = "randomStarterCheck";
+            randomStarterCheck.Size = new System.Drawing.Size(70, 19);
+            randomStarterCheck.TabIndex = 2;
+            randomStarterCheck.Text = "Random";
+            infoToolTip.SetToolTip(randomStarterCheck, "Pick a completely random Pokemon.");
+            randomStarterCheck.UseVisualStyleBackColor = true;
             // 
             // customStarterCheck
             // 
-            this.customStarterCheck.AutoSize = true;
-            this.customStarterCheck.Location = new System.Drawing.Point(37, 30);
-            this.customStarterCheck.Name = "customStarterCheck";
-            this.customStarterCheck.Size = new System.Drawing.Size(67, 19);
-            this.customStarterCheck.TabIndex = 1;
-            this.customStarterCheck.Text = "Custom";
-            this.infoToolTip.SetToolTip(this.customStarterCheck, "Specify a starter from the drop down to the right.");
-            this.customStarterCheck.UseVisualStyleBackColor = true;
-            this.customStarterCheck.CheckedChanged += new System.EventHandler(this.customStarterCheck_CheckedChanged);
+            customStarterCheck.AutoSize = true;
+            customStarterCheck.Location = new System.Drawing.Point(37, 30);
+            customStarterCheck.Name = "customStarterCheck";
+            customStarterCheck.Size = new System.Drawing.Size(67, 19);
+            customStarterCheck.TabIndex = 1;
+            customStarterCheck.Text = "Custom";
+            infoToolTip.SetToolTip(customStarterCheck, "Specify a starter from the drop down to the right.");
+            customStarterCheck.UseVisualStyleBackColor = true;
+            customStarterCheck.CheckedChanged += customStarterCheck_CheckedChanged;
             // 
             // unchangedStarterCheck
             // 
-            this.unchangedStarterCheck.AutoSize = true;
-            this.unchangedStarterCheck.Checked = true;
-            this.unchangedStarterCheck.Location = new System.Drawing.Point(37, 3);
-            this.unchangedStarterCheck.Name = "unchangedStarterCheck";
-            this.unchangedStarterCheck.Size = new System.Drawing.Size(86, 19);
-            this.unchangedStarterCheck.TabIndex = 0;
-            this.unchangedStarterCheck.TabStop = true;
-            this.unchangedStarterCheck.Text = "Unchanged";
-            this.unchangedStarterCheck.UseVisualStyleBackColor = true;
+            unchangedStarterCheck.AutoSize = true;
+            unchangedStarterCheck.Checked = true;
+            unchangedStarterCheck.Location = new System.Drawing.Point(37, 3);
+            unchangedStarterCheck.Name = "unchangedStarterCheck";
+            unchangedStarterCheck.Size = new System.Drawing.Size(86, 19);
+            unchangedStarterCheck.TabIndex = 0;
+            unchangedStarterCheck.TabStop = true;
+            unchangedStarterCheck.Text = "Unchanged";
+            unchangedStarterCheck.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.tableLayoutPanel14);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(3, 140);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(350, 131);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Trades";
+            groupBox2.Controls.Add(tableLayoutPanel14);
+            groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBox2.Location = new System.Drawing.Point(3, 140);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new System.Drawing.Size(350, 131);
+            groupBox2.TabIndex = 1;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Trades";
             // 
             // tableLayoutPanel14
             // 
-            this.tableLayoutPanel14.ColumnCount = 3;
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel14.Controls.Add(this.tradeUnchangedCheck, 1, 0);
-            this.tableLayoutPanel14.Controls.Add(this.tradeRandomGivenCheck, 1, 1);
-            this.tableLayoutPanel14.Controls.Add(this.tradeBothRandomCheck, 1, 3);
-            this.tableLayoutPanel14.Controls.Add(this.tradeRequestedRandomCheck, 1, 2);
-            this.tableLayoutPanel14.Controls.Add(this.tradeUsePokeSpotCheck, 2, 0);
-            this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel14.Location = new System.Drawing.Point(3, 19);
-            this.tableLayoutPanel14.Name = "tableLayoutPanel14";
-            this.tableLayoutPanel14.RowCount = 4;
-            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel14.Size = new System.Drawing.Size(344, 109);
-            this.tableLayoutPanel14.TabIndex = 3;
+            tableLayoutPanel14.ColumnCount = 3;
+            tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel14.Controls.Add(tradeUnchangedCheck, 1, 0);
+            tableLayoutPanel14.Controls.Add(tradeRandomGivenCheck, 1, 1);
+            tableLayoutPanel14.Controls.Add(tradeBothRandomCheck, 1, 3);
+            tableLayoutPanel14.Controls.Add(tradeRequestedRandomCheck, 1, 2);
+            tableLayoutPanel14.Controls.Add(tradeUsePokeSpotCheck, 2, 0);
+            tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel14.Location = new System.Drawing.Point(3, 19);
+            tableLayoutPanel14.Name = "tableLayoutPanel14";
+            tableLayoutPanel14.RowCount = 4;
+            tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel14.Size = new System.Drawing.Size(344, 109);
+            tableLayoutPanel14.TabIndex = 3;
             // 
             // tradeUnchangedCheck
             // 
-            this.tradeUnchangedCheck.AutoSize = true;
-            this.tradeUnchangedCheck.Checked = true;
-            this.tradeUnchangedCheck.Location = new System.Drawing.Point(37, 3);
-            this.tradeUnchangedCheck.Name = "tradeUnchangedCheck";
-            this.tradeUnchangedCheck.Size = new System.Drawing.Size(86, 19);
-            this.tradeUnchangedCheck.TabIndex = 3;
-            this.tradeUnchangedCheck.TabStop = true;
-            this.tradeUnchangedCheck.Text = "Unchanged";
-            this.tradeUnchangedCheck.UseVisualStyleBackColor = true;
+            tradeUnchangedCheck.AutoSize = true;
+            tradeUnchangedCheck.Checked = true;
+            tradeUnchangedCheck.Location = new System.Drawing.Point(37, 3);
+            tradeUnchangedCheck.Name = "tradeUnchangedCheck";
+            tradeUnchangedCheck.Size = new System.Drawing.Size(86, 19);
+            tradeUnchangedCheck.TabIndex = 3;
+            tradeUnchangedCheck.TabStop = true;
+            tradeUnchangedCheck.Text = "Unchanged";
+            tradeUnchangedCheck.UseVisualStyleBackColor = true;
             // 
             // tradeRandomGivenCheck
             // 
-            this.tradeRandomGivenCheck.AutoSize = true;
-            this.tradeRandomGivenCheck.Location = new System.Drawing.Point(37, 30);
-            this.tradeRandomGivenCheck.Name = "tradeRandomGivenCheck";
-            this.tradeRandomGivenCheck.Size = new System.Drawing.Size(131, 19);
-            this.tradeRandomGivenCheck.TabIndex = 4;
-            this.tradeRandomGivenCheck.Text = "Randomize Given Pokemon Only";
-            this.infoToolTip.SetToolTip(this.tradeRandomGivenCheck, "Randomize the Pokemon given in trade.\r\nThis randomizes the Duking/Hordel trades i" +
-        "n XD\r\nand Duking\'s Plusle in Colosseum");
-            this.tradeRandomGivenCheck.UseVisualStyleBackColor = true;
+            tradeRandomGivenCheck.AutoSize = true;
+            tradeRandomGivenCheck.Location = new System.Drawing.Point(37, 30);
+            tradeRandomGivenCheck.Name = "tradeRandomGivenCheck";
+            tradeRandomGivenCheck.Size = new System.Drawing.Size(131, 19);
+            tradeRandomGivenCheck.TabIndex = 4;
+            tradeRandomGivenCheck.Text = "Randomize Given Pokemon Only";
+            infoToolTip.SetToolTip(tradeRandomGivenCheck, "Randomize the Pokemon given in trade.\r\nThis randomizes the Duking/Hordel trades in XD\r\nand Duking's Plusle in Colosseum");
+            tradeRandomGivenCheck.UseVisualStyleBackColor = true;
             // 
             // tradeBothRandomCheck
             // 
-            this.tradeBothRandomCheck.AutoSize = true;
-            this.tradeBothRandomCheck.Location = new System.Drawing.Point(37, 84);
-            this.tradeBothRandomCheck.Name = "tradeBothRandomCheck";
-            this.tradeBothRandomCheck.Size = new System.Drawing.Size(131, 19);
-            this.tradeBothRandomCheck.TabIndex = 5;
-            this.tradeBothRandomCheck.Text = "Randomize Both Requested And Given";
-            this.infoToolTip.SetToolTip(this.tradeBothRandomCheck, "Randomize both the requested and given Pokemon in a trade.\r\nNote: You can enable " +
-        "logging to see what Pokemon he wants but you will see what everything has been r" +
-        "andomized to.");
-            this.tradeBothRandomCheck.UseVisualStyleBackColor = true;
+            tradeBothRandomCheck.AutoSize = true;
+            tradeBothRandomCheck.Location = new System.Drawing.Point(37, 84);
+            tradeBothRandomCheck.Name = "tradeBothRandomCheck";
+            tradeBothRandomCheck.Size = new System.Drawing.Size(131, 19);
+            tradeBothRandomCheck.TabIndex = 5;
+            tradeBothRandomCheck.Text = "Randomize Both Requested And Given";
+            infoToolTip.SetToolTip(tradeBothRandomCheck, "Randomize both the requested and given Pokemon in a trade.\r\nNote: You can enable logging to see what Pokemon he wants but you will see what everything has been randomized to.");
+            tradeBothRandomCheck.UseVisualStyleBackColor = true;
             // 
             // tradeRequestedRandomCheck
             // 
-            this.tradeRequestedRandomCheck.AutoSize = true;
-            this.tableLayoutPanel14.SetColumnSpan(this.tradeRequestedRandomCheck, 2);
-            this.tradeRequestedRandomCheck.Location = new System.Drawing.Point(37, 57);
-            this.tradeRequestedRandomCheck.Name = "tradeRequestedRandomCheck";
-            this.tradeRequestedRandomCheck.Size = new System.Drawing.Size(142, 19);
-            this.tradeRequestedRandomCheck.TabIndex = 6;
-            this.tradeRequestedRandomCheck.TabStop = true;
-            this.tradeRequestedRandomCheck.Text = "Randomize Requested";
-            this.infoToolTip.SetToolTip(this.tradeRequestedRandomCheck, "Randomize the requested Pokemon in a trade.\r\nNote: You can enable logging to see " +
-        "what Pokemon he wants but you will see what everything has been randomized to.");
-            this.tradeRequestedRandomCheck.UseVisualStyleBackColor = true;
+            tradeRequestedRandomCheck.AutoSize = true;
+            tableLayoutPanel14.SetColumnSpan(tradeRequestedRandomCheck, 2);
+            tradeRequestedRandomCheck.Location = new System.Drawing.Point(37, 57);
+            tradeRequestedRandomCheck.Name = "tradeRequestedRandomCheck";
+            tradeRequestedRandomCheck.Size = new System.Drawing.Size(142, 19);
+            tradeRequestedRandomCheck.TabIndex = 6;
+            tradeRequestedRandomCheck.TabStop = true;
+            tradeRequestedRandomCheck.Text = "Randomize Requested";
+            infoToolTip.SetToolTip(tradeRequestedRandomCheck, "Randomize the requested Pokemon in a trade.\r\nNote: You can enable logging to see what Pokemon he wants but you will see what everything has been randomized to.");
+            tradeRequestedRandomCheck.UseVisualStyleBackColor = true;
             // 
             // tradeUsePokeSpotCheck
             // 
-            this.tradeUsePokeSpotCheck.AutoSize = true;
-            this.tradeUsePokeSpotCheck.Location = new System.Drawing.Point(174, 3);
-            this.tradeUsePokeSpotCheck.Name = "tradeUsePokeSpotCheck";
-            this.tradeUsePokeSpotCheck.Size = new System.Drawing.Size(152, 19);
-            this.tradeUsePokeSpotCheck.TabIndex = 7;
-            this.tradeUsePokeSpotCheck.Text = "Use PokeSpot Pokemon";
-            this.infoToolTip.SetToolTip(this.tradeUsePokeSpotCheck, resources.GetString("tradeUsePokeSpotCheck.ToolTip"));
-            this.tradeUsePokeSpotCheck.UseVisualStyleBackColor = true;
+            tradeUsePokeSpotCheck.AutoSize = true;
+            tradeUsePokeSpotCheck.Location = new System.Drawing.Point(174, 3);
+            tradeUsePokeSpotCheck.Name = "tradeUsePokeSpotCheck";
+            tradeUsePokeSpotCheck.Size = new System.Drawing.Size(152, 19);
+            tradeUsePokeSpotCheck.TabIndex = 7;
+            tradeUsePokeSpotCheck.Text = "Use PokeSpot Pokemon";
+            infoToolTip.SetToolTip(tradeUsePokeSpotCheck, resources.GetString("tradeUsePokeSpotCheck.ToolTip"));
+            tradeUsePokeSpotCheck.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.tableLayoutPanel13);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(359, 3);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(350, 131);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Custom Starters";
+            groupBox3.Controls.Add(tableLayoutPanel13);
+            groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBox3.Location = new System.Drawing.Point(359, 3);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new System.Drawing.Size(350, 131);
+            groupBox3.TabIndex = 2;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Custom Starters";
             // 
             // tableLayoutPanel13
             // 
-            this.tableLayoutPanel13.ColumnCount = 4;
-            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel13.Controls.Add(this.starterLabel, 1, 0);
-            this.tableLayoutPanel13.Controls.Add(this.starter2Label, 1, 2);
-            this.tableLayoutPanel13.Controls.Add(this.starterComboBox, 1, 1);
-            this.tableLayoutPanel13.Controls.Add(this.starter2ComboBox, 1, 3);
-            this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel13.Location = new System.Drawing.Point(3, 19);
-            this.tableLayoutPanel13.Name = "tableLayoutPanel13";
-            this.tableLayoutPanel13.RowCount = 4;
-            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel13.Size = new System.Drawing.Size(344, 109);
-            this.tableLayoutPanel13.TabIndex = 3;
+            tableLayoutPanel13.ColumnCount = 4;
+            tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel13.Controls.Add(starterLabel, 1, 0);
+            tableLayoutPanel13.Controls.Add(starter2Label, 1, 2);
+            tableLayoutPanel13.Controls.Add(starterComboBox, 1, 1);
+            tableLayoutPanel13.Controls.Add(starter2ComboBox, 1, 3);
+            tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel13.Location = new System.Drawing.Point(3, 19);
+            tableLayoutPanel13.Name = "tableLayoutPanel13";
+            tableLayoutPanel13.RowCount = 4;
+            tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            tableLayoutPanel13.Size = new System.Drawing.Size(344, 109);
+            tableLayoutPanel13.TabIndex = 3;
             // 
             // starterLabel
             // 
-            this.starterLabel.AutoSize = true;
-            this.starterLabel.Enabled = false;
-            this.starterLabel.Location = new System.Drawing.Point(89, 0);
-            this.starterLabel.Name = "starterLabel";
-            this.starterLabel.Size = new System.Drawing.Size(44, 15);
-            this.starterLabel.TabIndex = 0;
-            this.starterLabel.Text = "Starter:";
+            starterLabel.AutoSize = true;
+            starterLabel.Enabled = false;
+            starterLabel.Location = new System.Drawing.Point(89, 0);
+            starterLabel.Name = "starterLabel";
+            starterLabel.Size = new System.Drawing.Size(44, 15);
+            starterLabel.TabIndex = 0;
+            starterLabel.Text = "Starter:";
             // 
             // starter2Label
             // 
-            this.starter2Label.AutoSize = true;
-            this.starter2Label.Enabled = false;
-            this.starter2Label.Location = new System.Drawing.Point(89, 53);
-            this.starter2Label.Name = "starter2Label";
-            this.starter2Label.Size = new System.Drawing.Size(53, 15);
-            this.starter2Label.TabIndex = 2;
-            this.starter2Label.Text = "Starter 2:";
+            starter2Label.AutoSize = true;
+            starter2Label.Enabled = false;
+            starter2Label.Location = new System.Drawing.Point(89, 53);
+            starter2Label.Name = "starter2Label";
+            starter2Label.Size = new System.Drawing.Size(53, 15);
+            starter2Label.TabIndex = 2;
+            starter2Label.Text = "Starter 2:";
             // 
             // starterComboBox
             // 
-            this.tableLayoutPanel13.SetColumnSpan(this.starterComboBox, 2);
-            this.starterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.starterComboBox.Enabled = false;
-            this.starterComboBox.FormattingEnabled = true;
-            this.starterComboBox.Items.AddRange(new object[] {
-            "BULBASAUR",
-            "IVYSAUR",
-            "VENUSAUR",
-            "CHARMANDER",
-            "CHARMELEON",
-            "CHARIZARD",
-            "SQUIRTLE",
-            "WARTORTLE",
-            "BLASTOISE",
-            "CATERPIE",
-            "METAPOD",
-            "BUTTERFREE",
-            "WEEDLE",
-            "KAKUNA",
-            "BEEDRILL",
-            "PIDGEY",
-            "PIDGEOTTO",
-            "PIDGEOT",
-            "RATTATA",
-            "RATICATE",
-            "SPEAROW",
-            "FEAROW",
-            "EKANS",
-            "ARBOK",
-            "PIKACHU",
-            "RAICHU",
-            "SANDSHREW",
-            "SANDSLASH",
-            "NIDORAN♀",
-            "NIDORINA",
-            "NIDOQUEEN",
-            "NIDORAN♂",
-            "NIDORINO",
-            "NIDOKING",
-            "CLEFAIRY",
-            "CLEFABLE",
-            "VULPIX",
-            "NINETALES",
-            "JIGGLYPUFF",
-            "WIGGLYTUFF",
-            "ZUBAT",
-            "GOLBAT",
-            "ODDISH",
-            "GLOOM",
-            "VILEPLUME",
-            "PARAS",
-            "PARASECT",
-            "VENONAT",
-            "VENOMOTH",
-            "DIGLETT",
-            "DUGTRIO",
-            "MEOWTH",
-            "PERSIAN",
-            "PSYDUCK",
-            "GOLDUCK",
-            "MANKEY",
-            "PRIMEAPE",
-            "GROWLITHE",
-            "ARCANINE",
-            "POLIWAG",
-            "POLIWHIRL",
-            "POLIWRATH",
-            "ABRA",
-            "KADABRA",
-            "ALAKAZAM",
-            "MACHOP",
-            "MACHOKE",
-            "MACHAMP",
-            "BELLSPROUT",
-            "WEEPINBELL",
-            "VICTREEBEL",
-            "TENTACOOL",
-            "TENTACRUEL",
-            "GEODUDE",
-            "GRAVELER",
-            "GOLEM",
-            "PONYTA",
-            "RAPIDASH",
-            "SLOWPOKE",
-            "SLOWBRO",
-            "MAGNEMITE",
-            "MAGNETON",
-            "FARFETCH\'D",
-            "DODUO",
-            "DODRIO",
-            "SEEL",
-            "DEWGONG",
-            "GRIMER",
-            "MUK",
-            "SHELLDER",
-            "CLOYSTER",
-            "GASTLY",
-            "HAUNTER",
-            "GENGAR",
-            "ONIX",
-            "DROWZEE",
-            "HYPNO",
-            "KRABBY",
-            "KINGLER",
-            "VOLTORB",
-            "ELECTRODE",
-            "EXEGGCUTE",
-            "EXEGGUTOR",
-            "CUBONE",
-            "MAROWAK",
-            "HITMONLEE",
-            "HITMONCHAN",
-            "LICKITUNG",
-            "KOFFING",
-            "WEEZING",
-            "RHYHORN",
-            "RHYDON",
-            "CHANSEY",
-            "TANGELA",
-            "KANGASKHAN",
-            "HORSEA",
-            "SEADRA",
-            "GOLDEEN",
-            "SEAKING",
-            "STARYU",
-            "STARMIE",
-            "MR. MIME",
-            "SCYTHER",
-            "JYNX",
-            "ELECTABUZZ",
-            "MAGMAR",
-            "PINSIR",
-            "TAUROS",
-            "MAGIKARP",
-            "GYARADOS",
-            "LAPRAS",
-            "DITTO",
-            "EEVEE",
-            "VAPOREON",
-            "JOLTEON",
-            "FLAREON",
-            "PORYGON",
-            "OMANYTE",
-            "OMASTAR",
-            "KABUTO",
-            "KABUTOPS",
-            "AERODACTYL",
-            "SNORLAX",
-            "ARTICUNO",
-            "ZAPDOS",
-            "MOLTRES",
-            "DRATINI",
-            "DRAGONAIR",
-            "DRAGONITE",
-            "MEWTWO",
-            "MEW",
-            "CHIKORITA",
-            "BAYLEEF",
-            "MEGANIUM",
-            "CYNDAQUIL",
-            "QUILAVA",
-            "TYPHLOSION",
-            "TOTODILE",
-            "CROCONAW",
-            "FERALIGATR",
-            "SENTRET",
-            "FURRET",
-            "HOOTHOOT",
-            "NOCTOWL",
-            "LEDYBA",
-            "LEDIAN",
-            "SPINARAK",
-            "ARIADOS",
-            "CROBAT",
-            "CHINCHOU",
-            "LANTURN",
-            "PICHU",
-            "CLEFFA",
-            "IGGLYBUFF",
-            "TOGEPI",
-            "TOGETIC",
-            "NATU",
-            "XATU",
-            "MAREEP",
-            "FLAAFFY",
-            "AMPHAROS",
-            "BELLOSSOM",
-            "MARILL",
-            "AZUMARILL",
-            "SUDOWOODO",
-            "POLITOED",
-            "HOPPIP",
-            "SKIPLOOM",
-            "JUMPLUFF",
-            "AIPOM",
-            "SUNKERN",
-            "SUNFLORA",
-            "YANMA",
-            "WOOPER",
-            "QUAGSIRE",
-            "ESPEON",
-            "UMBREON",
-            "MURKROW",
-            "SLOWKING",
-            "MISDREAVUS",
-            "UNOWN",
-            "WOBBUFFET",
-            "GIRAFARIG",
-            "PINECO",
-            "FORRETRESS",
-            "DUNSPARCE",
-            "GLIGAR",
-            "STEELIX",
-            "SNUBBULL",
-            "GRANBULL",
-            "QWILFISH",
-            "SCIZOR",
-            "SHUCKLE",
-            "HERACROSS",
-            "SNEASEL",
-            "TEDDIURSA",
-            "URSARING",
-            "SLUGMA",
-            "MAGCARGO",
-            "SWINUB",
-            "PILOSWINE",
-            "CORSOLA",
-            "REMORAID",
-            "OCTILLERY",
-            "DELIBIRD",
-            "MANTINE",
-            "SKARMORY",
-            "HOUNDOUR",
-            "HOUNDOOM",
-            "KINGDRA",
-            "PHANPY",
-            "DONPHAN",
-            "PORYGON2",
-            "STANTLER",
-            "SMEARGLE",
-            "TYROGUE",
-            "HITMONTOP",
-            "SMOOCHUM",
-            "ELEKID",
-            "MAGBY",
-            "MILTANK",
-            "BLISSEY",
-            "RAIKOU",
-            "ENTEI",
-            "SUICUNE",
-            "LARVITAR",
-            "PUPITAR",
-            "TYRANITAR",
-            "LUGIA",
-            "HO-OH",
-            "CELEBI",
-            "TREECKO",
-            "GROVYLE",
-            "SCEPTILE",
-            "TORCHIC",
-            "COMBUSKEN",
-            "BLAZIKEN",
-            "MUDKIP",
-            "MARSHTOMP",
-            "SWAMPERT",
-            "POOCHYENA",
-            "MIGHTYENA",
-            "ZIGZAGOON",
-            "LINOONE",
-            "WURMPLE",
-            "SILCOON",
-            "BEAUTIFLY",
-            "CASCOON",
-            "DUSTOX",
-            "LOTAD",
-            "LOMBRE",
-            "LUDICOLO",
-            "SEEDOT",
-            "NUZLEAF",
-            "SHIFTRY",
-            "NINCADA",
-            "NINJASK",
-            "SHEDINJA",
-            "TAILLOW",
-            "SWELLOW",
-            "SHROOMISH",
-            "BRELOOM",
-            "SPINDA",
-            "WINGULL",
-            "PELIPPER",
-            "SURSKIT",
-            "MASQUERAIN",
-            "WAILMER",
-            "WAILORD",
-            "SKITTY",
-            "DELCATTY",
-            "KECLEON",
-            "BALTOY",
-            "CLAYDOL",
-            "NOSEPASS",
-            "TORKOAL",
-            "SABLEYE",
-            "BARBOACH",
-            "WHISCASH",
-            "LUVDISC",
-            "CORPHISH",
-            "CRAWDAUNT",
-            "FEEBAS",
-            "MILOTIC",
-            "CARVANHA",
-            "SHARPEDO",
-            "TRAPINCH",
-            "VIBRAVA",
-            "FLYGON",
-            "MAKUHITA",
-            "HARIYAMA",
-            "ELECTRIKE",
-            "MANECTRIC",
-            "NUMEL",
-            "CAMERUPT",
-            "SPHEAL",
-            "SEALEO",
-            "WALREIN",
-            "CACNEA",
-            "CACTURNE",
-            "SNORUNT",
-            "GLALIE",
-            "LUNATONE",
-            "SOLROCK",
-            "AZURILL",
-            "SPOINK",
-            "GRUMPIG",
-            "PLUSLE",
-            "MINUN",
-            "MAWILE",
-            "MEDITITE",
-            "MEDICHAM",
-            "SWABLU",
-            "ALTARIA",
-            "WYNAUT",
-            "DUSKULL",
-            "DUSCLOPS",
-            "ROSELIA",
-            "SLAKOTH",
-            "VIGOROTH",
-            "SLAKING",
-            "GULPIN",
-            "SWALOT",
-            "TROPIUS",
-            "WHISMUR",
-            "LOUDRED",
-            "EXPLOUD",
-            "CLAMPERL",
-            "HUNTAIL",
-            "GOREBYSS",
-            "ABSOL",
-            "SHUPPET",
-            "BANETTE",
-            "SEVIPER",
-            "ZANGOOSE",
-            "RELICANTH",
-            "ARON",
-            "LAIRON",
-            "AGGRON",
-            "CASTFORM",
-            "VOLBEAT",
-            "ILLUMISE",
-            "LILEEP",
-            "CRADILY",
-            "ANORITH",
-            "ARMALDO",
-            "RALTS",
-            "KIRLIA",
-            "GARDEVOIR",
-            "BAGON",
-            "SHELGON",
-            "SALAMENCE",
-            "BELDUM",
-            "METANG",
-            "METAGROSS",
-            "REGIROCK",
-            "REGICE",
-            "REGISTEEL",
-            "KYOGRE",
-            "GROUDON",
-            "RAYQUAZA",
-            "LATIAS",
-            "LATIOS",
-            "JIRACHI",
-            "DEOXYS",
-            "CHIMECHO",
-            "BONSLY"});
-            this.starterComboBox.Location = new System.Drawing.Point(89, 24);
-            this.starterComboBox.Name = "starterComboBox";
-            this.starterComboBox.Size = new System.Drawing.Size(166, 23);
-            this.starterComboBox.TabIndex = 1;
+            tableLayoutPanel13.SetColumnSpan(starterComboBox, 2);
+            starterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            starterComboBox.Enabled = false;
+            starterComboBox.FormattingEnabled = true;
+            starterComboBox.Items.AddRange(new object[] { "BULBASAUR", "IVYSAUR", "VENUSAUR", "CHARMANDER", "CHARMELEON", "CHARIZARD", "SQUIRTLE", "WARTORTLE", "BLASTOISE", "CATERPIE", "METAPOD", "BUTTERFREE", "WEEDLE", "KAKUNA", "BEEDRILL", "PIDGEY", "PIDGEOTTO", "PIDGEOT", "RATTATA", "RATICATE", "SPEAROW", "FEAROW", "EKANS", "ARBOK", "PIKACHU", "RAICHU", "SANDSHREW", "SANDSLASH", "NIDORAN♀", "NIDORINA", "NIDOQUEEN", "NIDORAN♂", "NIDORINO", "NIDOKING", "CLEFAIRY", "CLEFABLE", "VULPIX", "NINETALES", "JIGGLYPUFF", "WIGGLYTUFF", "ZUBAT", "GOLBAT", "ODDISH", "GLOOM", "VILEPLUME", "PARAS", "PARASECT", "VENONAT", "VENOMOTH", "DIGLETT", "DUGTRIO", "MEOWTH", "PERSIAN", "PSYDUCK", "GOLDUCK", "MANKEY", "PRIMEAPE", "GROWLITHE", "ARCANINE", "POLIWAG", "POLIWHIRL", "POLIWRATH", "ABRA", "KADABRA", "ALAKAZAM", "MACHOP", "MACHOKE", "MACHAMP", "BELLSPROUT", "WEEPINBELL", "VICTREEBEL", "TENTACOOL", "TENTACRUEL", "GEODUDE", "GRAVELER", "GOLEM", "PONYTA", "RAPIDASH", "SLOWPOKE", "SLOWBRO", "MAGNEMITE", "MAGNETON", "FARFETCH'D", "DODUO", "DODRIO", "SEEL", "DEWGONG", "GRIMER", "MUK", "SHELLDER", "CLOYSTER", "GASTLY", "HAUNTER", "GENGAR", "ONIX", "DROWZEE", "HYPNO", "KRABBY", "KINGLER", "VOLTORB", "ELECTRODE", "EXEGGCUTE", "EXEGGUTOR", "CUBONE", "MAROWAK", "HITMONLEE", "HITMONCHAN", "LICKITUNG", "KOFFING", "WEEZING", "RHYHORN", "RHYDON", "CHANSEY", "TANGELA", "KANGASKHAN", "HORSEA", "SEADRA", "GOLDEEN", "SEAKING", "STARYU", "STARMIE", "MR. MIME", "SCYTHER", "JYNX", "ELECTABUZZ", "MAGMAR", "PINSIR", "TAUROS", "MAGIKARP", "GYARADOS", "LAPRAS", "DITTO", "EEVEE", "VAPOREON", "JOLTEON", "FLAREON", "PORYGON", "OMANYTE", "OMASTAR", "KABUTO", "KABUTOPS", "AERODACTYL", "SNORLAX", "ARTICUNO", "ZAPDOS", "MOLTRES", "DRATINI", "DRAGONAIR", "DRAGONITE", "MEWTWO", "MEW", "CHIKORITA", "BAYLEEF", "MEGANIUM", "CYNDAQUIL", "QUILAVA", "TYPHLOSION", "TOTODILE", "CROCONAW", "FERALIGATR", "SENTRET", "FURRET", "HOOTHOOT", "NOCTOWL", "LEDYBA", "LEDIAN", "SPINARAK", "ARIADOS", "CROBAT", "CHINCHOU", "LANTURN", "PICHU", "CLEFFA", "IGGLYBUFF", "TOGEPI", "TOGETIC", "NATU", "XATU", "MAREEP", "FLAAFFY", "AMPHAROS", "BELLOSSOM", "MARILL", "AZUMARILL", "SUDOWOODO", "POLITOED", "HOPPIP", "SKIPLOOM", "JUMPLUFF", "AIPOM", "SUNKERN", "SUNFLORA", "YANMA", "WOOPER", "QUAGSIRE", "ESPEON", "UMBREON", "MURKROW", "SLOWKING", "MISDREAVUS", "UNOWN", "WOBBUFFET", "GIRAFARIG", "PINECO", "FORRETRESS", "DUNSPARCE", "GLIGAR", "STEELIX", "SNUBBULL", "GRANBULL", "QWILFISH", "SCIZOR", "SHUCKLE", "HERACROSS", "SNEASEL", "TEDDIURSA", "URSARING", "SLUGMA", "MAGCARGO", "SWINUB", "PILOSWINE", "CORSOLA", "REMORAID", "OCTILLERY", "DELIBIRD", "MANTINE", "SKARMORY", "HOUNDOUR", "HOUNDOOM", "KINGDRA", "PHANPY", "DONPHAN", "PORYGON2", "STANTLER", "SMEARGLE", "TYROGUE", "HITMONTOP", "SMOOCHUM", "ELEKID", "MAGBY", "MILTANK", "BLISSEY", "RAIKOU", "ENTEI", "SUICUNE", "LARVITAR", "PUPITAR", "TYRANITAR", "LUGIA", "HO-OH", "CELEBI", "TREECKO", "GROVYLE", "SCEPTILE", "TORCHIC", "COMBUSKEN", "BLAZIKEN", "MUDKIP", "MARSHTOMP", "SWAMPERT", "POOCHYENA", "MIGHTYENA", "ZIGZAGOON", "LINOONE", "WURMPLE", "SILCOON", "BEAUTIFLY", "CASCOON", "DUSTOX", "LOTAD", "LOMBRE", "LUDICOLO", "SEEDOT", "NUZLEAF", "SHIFTRY", "NINCADA", "NINJASK", "SHEDINJA", "TAILLOW", "SWELLOW", "SHROOMISH", "BRELOOM", "SPINDA", "WINGULL", "PELIPPER", "SURSKIT", "MASQUERAIN", "WAILMER", "WAILORD", "SKITTY", "DELCATTY", "KECLEON", "BALTOY", "CLAYDOL", "NOSEPASS", "TORKOAL", "SABLEYE", "BARBOACH", "WHISCASH", "LUVDISC", "CORPHISH", "CRAWDAUNT", "FEEBAS", "MILOTIC", "CARVANHA", "SHARPEDO", "TRAPINCH", "VIBRAVA", "FLYGON", "MAKUHITA", "HARIYAMA", "ELECTRIKE", "MANECTRIC", "NUMEL", "CAMERUPT", "SPHEAL", "SEALEO", "WALREIN", "CACNEA", "CACTURNE", "SNORUNT", "GLALIE", "LUNATONE", "SOLROCK", "AZURILL", "SPOINK", "GRUMPIG", "PLUSLE", "MINUN", "MAWILE", "MEDITITE", "MEDICHAM", "SWABLU", "ALTARIA", "WYNAUT", "DUSKULL", "DUSCLOPS", "ROSELIA", "SLAKOTH", "VIGOROTH", "SLAKING", "GULPIN", "SWALOT", "TROPIUS", "WHISMUR", "LOUDRED", "EXPLOUD", "CLAMPERL", "HUNTAIL", "GOREBYSS", "ABSOL", "SHUPPET", "BANETTE", "SEVIPER", "ZANGOOSE", "RELICANTH", "ARON", "LAIRON", "AGGRON", "CASTFORM", "VOLBEAT", "ILLUMISE", "LILEEP", "CRADILY", "ANORITH", "ARMALDO", "RALTS", "KIRLIA", "GARDEVOIR", "BAGON", "SHELGON", "SALAMENCE", "BELDUM", "METANG", "METAGROSS", "REGIROCK", "REGICE", "REGISTEEL", "KYOGRE", "GROUDON", "RAYQUAZA", "LATIAS", "LATIOS", "JIRACHI", "DEOXYS", "CHIMECHO", "BONSLY" });
+            starterComboBox.Location = new System.Drawing.Point(89, 24);
+            starterComboBox.Name = "starterComboBox";
+            starterComboBox.Size = new System.Drawing.Size(166, 23);
+            starterComboBox.TabIndex = 1;
             // 
             // starter2ComboBox
             // 
-            this.tableLayoutPanel13.SetColumnSpan(this.starter2ComboBox, 2);
-            this.starter2ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.starter2ComboBox.Enabled = false;
-            this.starter2ComboBox.FormattingEnabled = true;
-            this.starter2ComboBox.Items.AddRange(new object[] {
-            "BULBASAUR",
-            "IVYSAUR",
-            "VENUSAUR",
-            "CHARMANDER",
-            "CHARMELEON",
-            "CHARIZARD",
-            "SQUIRTLE",
-            "WARTORTLE",
-            "BLASTOISE",
-            "CATERPIE",
-            "METAPOD",
-            "BUTTERFREE",
-            "WEEDLE",
-            "KAKUNA",
-            "BEEDRILL",
-            "PIDGEY",
-            "PIDGEOTTO",
-            "PIDGEOT",
-            "RATTATA",
-            "RATICATE",
-            "SPEAROW",
-            "FEAROW",
-            "EKANS",
-            "ARBOK",
-            "PIKACHU",
-            "RAICHU",
-            "SANDSHREW",
-            "SANDSLASH",
-            "NIDORAN♀",
-            "NIDORINA",
-            "NIDOQUEEN",
-            "NIDORAN♂",
-            "NIDORINO",
-            "NIDOKING",
-            "CLEFAIRY",
-            "CLEFABLE",
-            "VULPIX",
-            "NINETALES",
-            "JIGGLYPUFF",
-            "WIGGLYTUFF",
-            "ZUBAT",
-            "GOLBAT",
-            "ODDISH",
-            "GLOOM",
-            "VILEPLUME",
-            "PARAS",
-            "PARASECT",
-            "VENONAT",
-            "VENOMOTH",
-            "DIGLETT",
-            "DUGTRIO",
-            "MEOWTH",
-            "PERSIAN",
-            "PSYDUCK",
-            "GOLDUCK",
-            "MANKEY",
-            "PRIMEAPE",
-            "GROWLITHE",
-            "ARCANINE",
-            "POLIWAG",
-            "POLIWHIRL",
-            "POLIWRATH",
-            "ABRA",
-            "KADABRA",
-            "ALAKAZAM",
-            "MACHOP",
-            "MACHOKE",
-            "MACHAMP",
-            "BELLSPROUT",
-            "WEEPINBELL",
-            "VICTREEBEL",
-            "TENTACOOL",
-            "TENTACRUEL",
-            "GEODUDE",
-            "GRAVELER",
-            "GOLEM",
-            "PONYTA",
-            "RAPIDASH",
-            "SLOWPOKE",
-            "SLOWBRO",
-            "MAGNEMITE",
-            "MAGNETON",
-            "FARFETCH\'D",
-            "DODUO",
-            "DODRIO",
-            "SEEL",
-            "DEWGONG",
-            "GRIMER",
-            "MUK",
-            "SHELLDER",
-            "CLOYSTER",
-            "GASTLY",
-            "HAUNTER",
-            "GENGAR",
-            "ONIX",
-            "DROWZEE",
-            "HYPNO",
-            "KRABBY",
-            "KINGLER",
-            "VOLTORB",
-            "ELECTRODE",
-            "EXEGGCUTE",
-            "EXEGGUTOR",
-            "CUBONE",
-            "MAROWAK",
-            "HITMONLEE",
-            "HITMONCHAN",
-            "LICKITUNG",
-            "KOFFING",
-            "WEEZING",
-            "RHYHORN",
-            "RHYDON",
-            "CHANSEY",
-            "TANGELA",
-            "KANGASKHAN",
-            "HORSEA",
-            "SEADRA",
-            "GOLDEEN",
-            "SEAKING",
-            "STARYU",
-            "STARMIE",
-            "MR. MIME",
-            "SCYTHER",
-            "JYNX",
-            "ELECTABUZZ",
-            "MAGMAR",
-            "PINSIR",
-            "TAUROS",
-            "MAGIKARP",
-            "GYARADOS",
-            "LAPRAS",
-            "DITTO",
-            "EEVEE",
-            "VAPOREON",
-            "JOLTEON",
-            "FLAREON",
-            "PORYGON",
-            "OMANYTE",
-            "OMASTAR",
-            "KABUTO",
-            "KABUTOPS",
-            "AERODACTYL",
-            "SNORLAX",
-            "ARTICUNO",
-            "ZAPDOS",
-            "MOLTRES",
-            "DRATINI",
-            "DRAGONAIR",
-            "DRAGONITE",
-            "MEWTWO",
-            "MEW",
-            "CHIKORITA",
-            "BAYLEEF",
-            "MEGANIUM",
-            "CYNDAQUIL",
-            "QUILAVA",
-            "TYPHLOSION",
-            "TOTODILE",
-            "CROCONAW",
-            "FERALIGATR",
-            "SENTRET",
-            "FURRET",
-            "HOOTHOOT",
-            "NOCTOWL",
-            "LEDYBA",
-            "LEDIAN",
-            "SPINARAK",
-            "ARIADOS",
-            "CROBAT",
-            "CHINCHOU",
-            "LANTURN",
-            "PICHU",
-            "CLEFFA",
-            "IGGLYBUFF",
-            "TOGEPI",
-            "TOGETIC",
-            "NATU",
-            "XATU",
-            "MAREEP",
-            "FLAAFFY",
-            "AMPHAROS",
-            "BELLOSSOM",
-            "MARILL",
-            "AZUMARILL",
-            "SUDOWOODO",
-            "POLITOED",
-            "HOPPIP",
-            "SKIPLOOM",
-            "JUMPLUFF",
-            "AIPOM",
-            "SUNKERN",
-            "SUNFLORA",
-            "YANMA",
-            "WOOPER",
-            "QUAGSIRE",
-            "ESPEON",
-            "UMBREON",
-            "MURKROW",
-            "SLOWKING",
-            "MISDREAVUS",
-            "UNOWN",
-            "WOBBUFFET",
-            "GIRAFARIG",
-            "PINECO",
-            "FORRETRESS",
-            "DUNSPARCE",
-            "GLIGAR",
-            "STEELIX",
-            "SNUBBULL",
-            "GRANBULL",
-            "QWILFISH",
-            "SCIZOR",
-            "SHUCKLE",
-            "HERACROSS",
-            "SNEASEL",
-            "TEDDIURSA",
-            "URSARING",
-            "SLUGMA",
-            "MAGCARGO",
-            "SWINUB",
-            "PILOSWINE",
-            "CORSOLA",
-            "REMORAID",
-            "OCTILLERY",
-            "DELIBIRD",
-            "MANTINE",
-            "SKARMORY",
-            "HOUNDOUR",
-            "HOUNDOOM",
-            "KINGDRA",
-            "PHANPY",
-            "DONPHAN",
-            "PORYGON2",
-            "STANTLER",
-            "SMEARGLE",
-            "TYROGUE",
-            "HITMONTOP",
-            "SMOOCHUM",
-            "ELEKID",
-            "MAGBY",
-            "MILTANK",
-            "BLISSEY",
-            "RAIKOU",
-            "ENTEI",
-            "SUICUNE",
-            "LARVITAR",
-            "PUPITAR",
-            "TYRANITAR",
-            "LUGIA",
-            "HO-OH",
-            "CELEBI",
-            "TREECKO",
-            "GROVYLE",
-            "SCEPTILE",
-            "TORCHIC",
-            "COMBUSKEN",
-            "BLAZIKEN",
-            "MUDKIP",
-            "MARSHTOMP",
-            "SWAMPERT",
-            "POOCHYENA",
-            "MIGHTYENA",
-            "ZIGZAGOON",
-            "LINOONE",
-            "WURMPLE",
-            "SILCOON",
-            "BEAUTIFLY",
-            "CASCOON",
-            "DUSTOX",
-            "LOTAD",
-            "LOMBRE",
-            "LUDICOLO",
-            "SEEDOT",
-            "NUZLEAF",
-            "SHIFTRY",
-            "NINCADA",
-            "NINJASK",
-            "SHEDINJA",
-            "TAILLOW",
-            "SWELLOW",
-            "SHROOMISH",
-            "BRELOOM",
-            "SPINDA",
-            "WINGULL",
-            "PELIPPER",
-            "SURSKIT",
-            "MASQUERAIN",
-            "WAILMER",
-            "WAILORD",
-            "SKITTY",
-            "DELCATTY",
-            "KECLEON",
-            "BALTOY",
-            "CLAYDOL",
-            "NOSEPASS",
-            "TORKOAL",
-            "SABLEYE",
-            "BARBOACH",
-            "WHISCASH",
-            "LUVDISC",
-            "CORPHISH",
-            "CRAWDAUNT",
-            "FEEBAS",
-            "MILOTIC",
-            "CARVANHA",
-            "SHARPEDO",
-            "TRAPINCH",
-            "VIBRAVA",
-            "FLYGON",
-            "MAKUHITA",
-            "HARIYAMA",
-            "ELECTRIKE",
-            "MANECTRIC",
-            "NUMEL",
-            "CAMERUPT",
-            "SPHEAL",
-            "SEALEO",
-            "WALREIN",
-            "CACNEA",
-            "CACTURNE",
-            "SNORUNT",
-            "GLALIE",
-            "LUNATONE",
-            "SOLROCK",
-            "AZURILL",
-            "SPOINK",
-            "GRUMPIG",
-            "PLUSLE",
-            "MINUN",
-            "MAWILE",
-            "MEDITITE",
-            "MEDICHAM",
-            "SWABLU",
-            "ALTARIA",
-            "WYNAUT",
-            "DUSKULL",
-            "DUSCLOPS",
-            "ROSELIA",
-            "SLAKOTH",
-            "VIGOROTH",
-            "SLAKING",
-            "GULPIN",
-            "SWALOT",
-            "TROPIUS",
-            "WHISMUR",
-            "LOUDRED",
-            "EXPLOUD",
-            "CLAMPERL",
-            "HUNTAIL",
-            "GOREBYSS",
-            "ABSOL",
-            "SHUPPET",
-            "BANETTE",
-            "SEVIPER",
-            "ZANGOOSE",
-            "RELICANTH",
-            "ARON",
-            "LAIRON",
-            "AGGRON",
-            "CASTFORM",
-            "VOLBEAT",
-            "ILLUMISE",
-            "LILEEP",
-            "CRADILY",
-            "ANORITH",
-            "ARMALDO",
-            "RALTS",
-            "KIRLIA",
-            "GARDEVOIR",
-            "BAGON",
-            "SHELGON",
-            "SALAMENCE",
-            "BELDUM",
-            "METANG",
-            "METAGROSS",
-            "REGIROCK",
-            "REGICE",
-            "REGISTEEL",
-            "KYOGRE",
-            "GROUDON",
-            "RAYQUAZA",
-            "LATIAS",
-            "LATIOS",
-            "JIRACHI",
-            "DEOXYS",
-            "CHIMECHO",
-            "BONSLY",
-            "MUNCHLAX"});
-            this.starter2ComboBox.Location = new System.Drawing.Point(89, 77);
-            this.starter2ComboBox.Name = "starter2ComboBox";
-            this.starter2ComboBox.Size = new System.Drawing.Size(166, 23);
-            this.starter2ComboBox.TabIndex = 3;
+            tableLayoutPanel13.SetColumnSpan(starter2ComboBox, 2);
+            starter2ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            starter2ComboBox.Enabled = false;
+            starter2ComboBox.FormattingEnabled = true;
+            starter2ComboBox.Items.AddRange(new object[] { "BULBASAUR", "IVYSAUR", "VENUSAUR", "CHARMANDER", "CHARMELEON", "CHARIZARD", "SQUIRTLE", "WARTORTLE", "BLASTOISE", "CATERPIE", "METAPOD", "BUTTERFREE", "WEEDLE", "KAKUNA", "BEEDRILL", "PIDGEY", "PIDGEOTTO", "PIDGEOT", "RATTATA", "RATICATE", "SPEAROW", "FEAROW", "EKANS", "ARBOK", "PIKACHU", "RAICHU", "SANDSHREW", "SANDSLASH", "NIDORAN♀", "NIDORINA", "NIDOQUEEN", "NIDORAN♂", "NIDORINO", "NIDOKING", "CLEFAIRY", "CLEFABLE", "VULPIX", "NINETALES", "JIGGLYPUFF", "WIGGLYTUFF", "ZUBAT", "GOLBAT", "ODDISH", "GLOOM", "VILEPLUME", "PARAS", "PARASECT", "VENONAT", "VENOMOTH", "DIGLETT", "DUGTRIO", "MEOWTH", "PERSIAN", "PSYDUCK", "GOLDUCK", "MANKEY", "PRIMEAPE", "GROWLITHE", "ARCANINE", "POLIWAG", "POLIWHIRL", "POLIWRATH", "ABRA", "KADABRA", "ALAKAZAM", "MACHOP", "MACHOKE", "MACHAMP", "BELLSPROUT", "WEEPINBELL", "VICTREEBEL", "TENTACOOL", "TENTACRUEL", "GEODUDE", "GRAVELER", "GOLEM", "PONYTA", "RAPIDASH", "SLOWPOKE", "SLOWBRO", "MAGNEMITE", "MAGNETON", "FARFETCH'D", "DODUO", "DODRIO", "SEEL", "DEWGONG", "GRIMER", "MUK", "SHELLDER", "CLOYSTER", "GASTLY", "HAUNTER", "GENGAR", "ONIX", "DROWZEE", "HYPNO", "KRABBY", "KINGLER", "VOLTORB", "ELECTRODE", "EXEGGCUTE", "EXEGGUTOR", "CUBONE", "MAROWAK", "HITMONLEE", "HITMONCHAN", "LICKITUNG", "KOFFING", "WEEZING", "RHYHORN", "RHYDON", "CHANSEY", "TANGELA", "KANGASKHAN", "HORSEA", "SEADRA", "GOLDEEN", "SEAKING", "STARYU", "STARMIE", "MR. MIME", "SCYTHER", "JYNX", "ELECTABUZZ", "MAGMAR", "PINSIR", "TAUROS", "MAGIKARP", "GYARADOS", "LAPRAS", "DITTO", "EEVEE", "VAPOREON", "JOLTEON", "FLAREON", "PORYGON", "OMANYTE", "OMASTAR", "KABUTO", "KABUTOPS", "AERODACTYL", "SNORLAX", "ARTICUNO", "ZAPDOS", "MOLTRES", "DRATINI", "DRAGONAIR", "DRAGONITE", "MEWTWO", "MEW", "CHIKORITA", "BAYLEEF", "MEGANIUM", "CYNDAQUIL", "QUILAVA", "TYPHLOSION", "TOTODILE", "CROCONAW", "FERALIGATR", "SENTRET", "FURRET", "HOOTHOOT", "NOCTOWL", "LEDYBA", "LEDIAN", "SPINARAK", "ARIADOS", "CROBAT", "CHINCHOU", "LANTURN", "PICHU", "CLEFFA", "IGGLYBUFF", "TOGEPI", "TOGETIC", "NATU", "XATU", "MAREEP", "FLAAFFY", "AMPHAROS", "BELLOSSOM", "MARILL", "AZUMARILL", "SUDOWOODO", "POLITOED", "HOPPIP", "SKIPLOOM", "JUMPLUFF", "AIPOM", "SUNKERN", "SUNFLORA", "YANMA", "WOOPER", "QUAGSIRE", "ESPEON", "UMBREON", "MURKROW", "SLOWKING", "MISDREAVUS", "UNOWN", "WOBBUFFET", "GIRAFARIG", "PINECO", "FORRETRESS", "DUNSPARCE", "GLIGAR", "STEELIX", "SNUBBULL", "GRANBULL", "QWILFISH", "SCIZOR", "SHUCKLE", "HERACROSS", "SNEASEL", "TEDDIURSA", "URSARING", "SLUGMA", "MAGCARGO", "SWINUB", "PILOSWINE", "CORSOLA", "REMORAID", "OCTILLERY", "DELIBIRD", "MANTINE", "SKARMORY", "HOUNDOUR", "HOUNDOOM", "KINGDRA", "PHANPY", "DONPHAN", "PORYGON2", "STANTLER", "SMEARGLE", "TYROGUE", "HITMONTOP", "SMOOCHUM", "ELEKID", "MAGBY", "MILTANK", "BLISSEY", "RAIKOU", "ENTEI", "SUICUNE", "LARVITAR", "PUPITAR", "TYRANITAR", "LUGIA", "HO-OH", "CELEBI", "TREECKO", "GROVYLE", "SCEPTILE", "TORCHIC", "COMBUSKEN", "BLAZIKEN", "MUDKIP", "MARSHTOMP", "SWAMPERT", "POOCHYENA", "MIGHTYENA", "ZIGZAGOON", "LINOONE", "WURMPLE", "SILCOON", "BEAUTIFLY", "CASCOON", "DUSTOX", "LOTAD", "LOMBRE", "LUDICOLO", "SEEDOT", "NUZLEAF", "SHIFTRY", "NINCADA", "NINJASK", "SHEDINJA", "TAILLOW", "SWELLOW", "SHROOMISH", "BRELOOM", "SPINDA", "WINGULL", "PELIPPER", "SURSKIT", "MASQUERAIN", "WAILMER", "WAILORD", "SKITTY", "DELCATTY", "KECLEON", "BALTOY", "CLAYDOL", "NOSEPASS", "TORKOAL", "SABLEYE", "BARBOACH", "WHISCASH", "LUVDISC", "CORPHISH", "CRAWDAUNT", "FEEBAS", "MILOTIC", "CARVANHA", "SHARPEDO", "TRAPINCH", "VIBRAVA", "FLYGON", "MAKUHITA", "HARIYAMA", "ELECTRIKE", "MANECTRIC", "NUMEL", "CAMERUPT", "SPHEAL", "SEALEO", "WALREIN", "CACNEA", "CACTURNE", "SNORUNT", "GLALIE", "LUNATONE", "SOLROCK", "AZURILL", "SPOINK", "GRUMPIG", "PLUSLE", "MINUN", "MAWILE", "MEDITITE", "MEDICHAM", "SWABLU", "ALTARIA", "WYNAUT", "DUSKULL", "DUSCLOPS", "ROSELIA", "SLAKOTH", "VIGOROTH", "SLAKING", "GULPIN", "SWALOT", "TROPIUS", "WHISMUR", "LOUDRED", "EXPLOUD", "CLAMPERL", "HUNTAIL", "GOREBYSS", "ABSOL", "SHUPPET", "BANETTE", "SEVIPER", "ZANGOOSE", "RELICANTH", "ARON", "LAIRON", "AGGRON", "CASTFORM", "VOLBEAT", "ILLUMISE", "LILEEP", "CRADILY", "ANORITH", "ARMALDO", "RALTS", "KIRLIA", "GARDEVOIR", "BAGON", "SHELGON", "SALAMENCE", "BELDUM", "METANG", "METAGROSS", "REGIROCK", "REGICE", "REGISTEEL", "KYOGRE", "GROUDON", "RAYQUAZA", "LATIAS", "LATIOS", "JIRACHI", "DEOXYS", "CHIMECHO", "BONSLY", "MUNCHLAX" });
+            starter2ComboBox.Location = new System.Drawing.Point(89, 77);
+            starter2ComboBox.Name = "starter2ComboBox";
+            starter2ComboBox.Size = new System.Drawing.Size(166, 23);
+            starter2ComboBox.TabIndex = 3;
             // 
             // tmsTabPage
             // 
-            this.tmsTabPage.Controls.Add(this.tableLayoutPanel5);
-            this.tmsTabPage.Location = new System.Drawing.Point(4, 24);
-            this.tmsTabPage.Name = "tmsTabPage";
-            this.tmsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.tmsTabPage.Size = new System.Drawing.Size(718, 280);
-            this.tmsTabPage.TabIndex = 2;
-            this.tmsTabPage.Text = "TMs & Tutors";
-            this.tmsTabPage.UseVisualStyleBackColor = true;
+            tmsTabPage.Controls.Add(tableLayoutPanel5);
+            tmsTabPage.Location = new System.Drawing.Point(4, 24);
+            tmsTabPage.Name = "tmsTabPage";
+            tmsTabPage.Padding = new System.Windows.Forms.Padding(3);
+            tmsTabPage.Size = new System.Drawing.Size(718, 280);
+            tmsTabPage.TabIndex = 2;
+            tmsTabPage.Text = "TMs & Tutors";
+            tmsTabPage.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel5
             // 
-            this.tableLayoutPanel5.ColumnCount = 2;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Controls.Add(this.groupBox8, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.tmCompatibilityGroupBox, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.tutorCompatibilityGroupBox, 1, 1);
-            this.tableLayoutPanel5.Controls.Add(this.panel16, 0, 1);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 2;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(712, 274);
-            this.tableLayoutPanel5.TabIndex = 21;
+            tableLayoutPanel5.ColumnCount = 2;
+            tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel5.Controls.Add(groupBox8, 0, 0);
+            tableLayoutPanel5.Controls.Add(tmCompatibilityGroupBox, 1, 0);
+            tableLayoutPanel5.Controls.Add(tutorCompatibilityGroupBox, 1, 1);
+            tableLayoutPanel5.Controls.Add(panel16, 0, 1);
+            tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
+            tableLayoutPanel5.Name = "tableLayoutPanel5";
+            tableLayoutPanel5.RowCount = 2;
+            tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            tableLayoutPanel5.Size = new System.Drawing.Size(712, 274);
+            tableLayoutPanel5.TabIndex = 21;
             // 
             // groupBox8
             // 
-            this.groupBox8.Controls.Add(this.tableLayoutPanel16);
-            this.groupBox8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox8.Location = new System.Drawing.Point(3, 3);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(350, 131);
-            this.groupBox8.TabIndex = 23;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "TMs";
+            groupBox8.Controls.Add(tableLayoutPanel16);
+            groupBox8.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBox8.Location = new System.Drawing.Point(3, 3);
+            groupBox8.Name = "groupBox8";
+            groupBox8.Size = new System.Drawing.Size(350, 131);
+            groupBox8.TabIndex = 23;
+            groupBox8.TabStop = false;
+            groupBox8.Text = "TMs";
             // 
             // tableLayoutPanel16
             // 
-            this.tableLayoutPanel16.ColumnCount = 3;
-            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel16.Controls.Add(this.randomizeTMsCheck, 1, 0);
-            this.tableLayoutPanel16.Controls.Add(this.forceGoodDamagingTMPercent, 2, 1);
-            this.tableLayoutPanel16.Controls.Add(this.forceGoodDamagingTMsCheck, 1, 1);
-            this.tableLayoutPanel16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel16.Location = new System.Drawing.Point(3, 19);
-            this.tableLayoutPanel16.Name = "tableLayoutPanel16";
-            this.tableLayoutPanel16.RowCount = 4;
-            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel16.Size = new System.Drawing.Size(344, 109);
-            this.tableLayoutPanel16.TabIndex = 8;
+            tableLayoutPanel16.ColumnCount = 3;
+            tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            tableLayoutPanel16.Controls.Add(randomizeTMsCheck, 1, 0);
+            tableLayoutPanel16.Controls.Add(forceGoodDamagingTMPercent, 2, 1);
+            tableLayoutPanel16.Controls.Add(forceGoodDamagingTMsCheck, 1, 1);
+            tableLayoutPanel16.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel16.Location = new System.Drawing.Point(3, 19);
+            tableLayoutPanel16.Name = "tableLayoutPanel16";
+            tableLayoutPanel16.RowCount = 4;
+            tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel16.Size = new System.Drawing.Size(344, 109);
+            tableLayoutPanel16.TabIndex = 8;
             // 
             // randomizeTMsCheck
             // 
-            this.randomizeTMsCheck.AutoSize = true;
-            this.randomizeTMsCheck.Location = new System.Drawing.Point(37, 3);
-            this.randomizeTMsCheck.Name = "randomizeTMsCheck";
-            this.randomizeTMsCheck.Size = new System.Drawing.Size(110, 19);
-            this.randomizeTMsCheck.TabIndex = 5;
-            this.randomizeTMsCheck.Text = "Randomize TMs";
-            this.randomizeTMsCheck.UseVisualStyleBackColor = true;
-            this.randomizeTMsCheck.CheckedChanged += new System.EventHandler(this.randomizeTMsCheck_CheckedChanged);
+            randomizeTMsCheck.AutoSize = true;
+            randomizeTMsCheck.Location = new System.Drawing.Point(37, 3);
+            randomizeTMsCheck.Name = "randomizeTMsCheck";
+            randomizeTMsCheck.Size = new System.Drawing.Size(110, 19);
+            randomizeTMsCheck.TabIndex = 5;
+            randomizeTMsCheck.Text = "Randomize TMs";
+            randomizeTMsCheck.UseVisualStyleBackColor = true;
+            randomizeTMsCheck.CheckedChanged += randomizeTMsCheck_CheckedChanged;
             // 
             // forceGoodDamagingTMPercent
             // 
-            this.forceGoodDamagingTMPercent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.forceGoodDamagingTMPercent.Enabled = false;
-            this.forceGoodDamagingTMPercent.Location = new System.Drawing.Point(277, 30);
-            this.forceGoodDamagingTMPercent.Name = "forceGoodDamagingTMPercent";
-            this.forceGoodDamagingTMPercent.Size = new System.Drawing.Size(64, 23);
-            this.forceGoodDamagingTMPercent.TabIndex = 7;
-            this.infoToolTip.SetToolTip(this.forceGoodDamagingTMPercent, "Force a percentage of TMs to \"good\" damaging moves. What qualifies as good is con" +
-        "figurable in the Options menu.");
+            forceGoodDamagingTMPercent.Dock = System.Windows.Forms.DockStyle.Fill;
+            forceGoodDamagingTMPercent.Enabled = false;
+            forceGoodDamagingTMPercent.Location = new System.Drawing.Point(277, 30);
+            forceGoodDamagingTMPercent.Name = "forceGoodDamagingTMPercent";
+            forceGoodDamagingTMPercent.Size = new System.Drawing.Size(64, 23);
+            forceGoodDamagingTMPercent.TabIndex = 7;
+            infoToolTip.SetToolTip(forceGoodDamagingTMPercent, "Force a percentage of TMs to \"good\" damaging moves. What qualifies as good is configurable in the Options menu.");
             // 
             // forceGoodDamagingTMsCheck
             // 
-            this.forceGoodDamagingTMsCheck.AutoSize = true;
-            this.forceGoodDamagingTMsCheck.Enabled = false;
-            this.forceGoodDamagingTMsCheck.Location = new System.Drawing.Point(37, 30);
-            this.forceGoodDamagingTMsCheck.Name = "forceGoodDamagingTMsCheck";
-            this.forceGoodDamagingTMsCheck.Size = new System.Drawing.Size(212, 19);
-            this.forceGoodDamagingTMsCheck.TabIndex = 6;
-            this.forceGoodDamagingTMsCheck.Text = "Force % Of Good Damaging Moves";
-            this.infoToolTip.SetToolTip(this.forceGoodDamagingTMsCheck, "Force a percentage of TMs to be \"good\" damaging moves. \r\nWhat qualifies as good i" +
-        "s configurable in the Options menu.");
-            this.forceGoodDamagingTMsCheck.UseVisualStyleBackColor = true;
-            this.forceGoodDamagingTMsCheck.CheckedChanged += new System.EventHandler(this.forceGoodDamagingTMsCheck_CheckedChanged);
+            forceGoodDamagingTMsCheck.AutoSize = true;
+            forceGoodDamagingTMsCheck.Enabled = false;
+            forceGoodDamagingTMsCheck.Location = new System.Drawing.Point(37, 30);
+            forceGoodDamagingTMsCheck.Name = "forceGoodDamagingTMsCheck";
+            forceGoodDamagingTMsCheck.Size = new System.Drawing.Size(212, 19);
+            forceGoodDamagingTMsCheck.TabIndex = 6;
+            forceGoodDamagingTMsCheck.Text = "Force % Of Good Damaging Moves";
+            infoToolTip.SetToolTip(forceGoodDamagingTMsCheck, "Force a percentage of TMs to be \"good\" damaging moves. \r\nWhat qualifies as good is configurable in the Options menu.");
+            forceGoodDamagingTMsCheck.UseVisualStyleBackColor = true;
+            forceGoodDamagingTMsCheck.CheckedChanged += forceGoodDamagingTMsCheck_CheckedChanged;
             // 
             // tmCompatibilityGroupBox
             // 
-            this.tmCompatibilityGroupBox.Controls.Add(this.tableLayoutPanel17);
-            this.tmCompatibilityGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tmCompatibilityGroupBox.Location = new System.Drawing.Point(359, 3);
-            this.tmCompatibilityGroupBox.Name = "tmCompatibilityGroupBox";
-            this.tmCompatibilityGroupBox.Size = new System.Drawing.Size(350, 131);
-            this.tmCompatibilityGroupBox.TabIndex = 19;
-            this.tmCompatibilityGroupBox.TabStop = false;
-            this.tmCompatibilityGroupBox.Text = "Compatibility:";
+            tmCompatibilityGroupBox.Controls.Add(tableLayoutPanel17);
+            tmCompatibilityGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            tmCompatibilityGroupBox.Location = new System.Drawing.Point(359, 3);
+            tmCompatibilityGroupBox.Name = "tmCompatibilityGroupBox";
+            tmCompatibilityGroupBox.Size = new System.Drawing.Size(350, 131);
+            tmCompatibilityGroupBox.TabIndex = 19;
+            tmCompatibilityGroupBox.TabStop = false;
+            tmCompatibilityGroupBox.Text = "Compatibility:";
             // 
             // tableLayoutPanel17
             // 
-            this.tableLayoutPanel17.ColumnCount = 2;
-            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
-            this.tableLayoutPanel17.Controls.Add(this.tmCompatibilityUnchangedCheck, 1, 0);
-            this.tableLayoutPanel17.Controls.Add(this.tmFullCompatibilityCheck, 1, 3);
-            this.tableLayoutPanel17.Controls.Add(this.tmCompatibilityRandomCheck, 1, 2);
-            this.tableLayoutPanel17.Controls.Add(this.tmCompatibilityPreferTypeCheck, 1, 1);
-            this.tableLayoutPanel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel17.Location = new System.Drawing.Point(3, 19);
-            this.tableLayoutPanel17.Name = "tableLayoutPanel17";
-            this.tableLayoutPanel17.RowCount = 4;
-            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel17.Size = new System.Drawing.Size(344, 109);
-            this.tableLayoutPanel17.TabIndex = 9;
+            tableLayoutPanel17.ColumnCount = 2;
+            tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            tableLayoutPanel17.Controls.Add(tmCompatibilityUnchangedCheck, 1, 0);
+            tableLayoutPanel17.Controls.Add(tmFullCompatibilityCheck, 1, 3);
+            tableLayoutPanel17.Controls.Add(tmCompatibilityRandomCheck, 1, 2);
+            tableLayoutPanel17.Controls.Add(tmCompatibilityPreferTypeCheck, 1, 1);
+            tableLayoutPanel17.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel17.Location = new System.Drawing.Point(3, 19);
+            tableLayoutPanel17.Name = "tableLayoutPanel17";
+            tableLayoutPanel17.RowCount = 4;
+            tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel17.Size = new System.Drawing.Size(344, 109);
+            tableLayoutPanel17.TabIndex = 9;
             // 
             // tmCompatibilityUnchangedCheck
             // 
-            this.tmCompatibilityUnchangedCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tmCompatibilityUnchangedCheck.AutoSize = true;
-            this.tmCompatibilityUnchangedCheck.Checked = true;
-            this.tmCompatibilityUnchangedCheck.Location = new System.Drawing.Point(37, 3);
-            this.tmCompatibilityUnchangedCheck.Name = "tmCompatibilityUnchangedCheck";
-            this.tmCompatibilityUnchangedCheck.Size = new System.Drawing.Size(304, 21);
-            this.tmCompatibilityUnchangedCheck.TabIndex = 5;
-            this.tmCompatibilityUnchangedCheck.TabStop = true;
-            this.tmCompatibilityUnchangedCheck.Text = "Unchanged";
-            this.tmCompatibilityUnchangedCheck.UseVisualStyleBackColor = true;
+            tmCompatibilityUnchangedCheck.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            tmCompatibilityUnchangedCheck.AutoSize = true;
+            tmCompatibilityUnchangedCheck.Checked = true;
+            tmCompatibilityUnchangedCheck.Location = new System.Drawing.Point(37, 3);
+            tmCompatibilityUnchangedCheck.Name = "tmCompatibilityUnchangedCheck";
+            tmCompatibilityUnchangedCheck.Size = new System.Drawing.Size(304, 21);
+            tmCompatibilityUnchangedCheck.TabIndex = 5;
+            tmCompatibilityUnchangedCheck.TabStop = true;
+            tmCompatibilityUnchangedCheck.Text = "Unchanged";
+            tmCompatibilityUnchangedCheck.UseVisualStyleBackColor = true;
             // 
             // tmFullCompatibilityCheck
             // 
-            this.tmFullCompatibilityCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tmFullCompatibilityCheck.AutoSize = true;
-            this.tmFullCompatibilityCheck.Location = new System.Drawing.Point(37, 84);
-            this.tmFullCompatibilityCheck.Name = "tmFullCompatibilityCheck";
-            this.tmFullCompatibilityCheck.Size = new System.Drawing.Size(304, 22);
-            this.tmFullCompatibilityCheck.TabIndex = 8;
-            this.tmFullCompatibilityCheck.Text = "Full Compatibility";
-            this.infoToolTip.SetToolTip(this.tmFullCompatibilityCheck, "All TMs can be learned by every Pokemon");
-            this.tmFullCompatibilityCheck.UseVisualStyleBackColor = true;
+            tmFullCompatibilityCheck.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            tmFullCompatibilityCheck.AutoSize = true;
+            tmFullCompatibilityCheck.Location = new System.Drawing.Point(37, 84);
+            tmFullCompatibilityCheck.Name = "tmFullCompatibilityCheck";
+            tmFullCompatibilityCheck.Size = new System.Drawing.Size(304, 22);
+            tmFullCompatibilityCheck.TabIndex = 8;
+            tmFullCompatibilityCheck.Text = "Full Compatibility";
+            infoToolTip.SetToolTip(tmFullCompatibilityCheck, "All TMs can be learned by every Pokemon");
+            tmFullCompatibilityCheck.UseVisualStyleBackColor = true;
             // 
             // tmCompatibilityRandomCheck
             // 
-            this.tmCompatibilityRandomCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tmCompatibilityRandomCheck.AutoSize = true;
-            this.tmCompatibilityRandomCheck.Location = new System.Drawing.Point(37, 57);
-            this.tmCompatibilityRandomCheck.Name = "tmCompatibilityRandomCheck";
-            this.tmCompatibilityRandomCheck.Size = new System.Drawing.Size(304, 21);
-            this.tmCompatibilityRandomCheck.TabIndex = 7;
-            this.tmCompatibilityRandomCheck.Text = "Completely Random";
-            this.infoToolTip.SetToolTip(this.tmCompatibilityRandomCheck, "Randomize what TMs can be taught to a Pokemon.");
-            this.tmCompatibilityRandomCheck.UseVisualStyleBackColor = true;
+            tmCompatibilityRandomCheck.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            tmCompatibilityRandomCheck.AutoSize = true;
+            tmCompatibilityRandomCheck.Location = new System.Drawing.Point(37, 57);
+            tmCompatibilityRandomCheck.Name = "tmCompatibilityRandomCheck";
+            tmCompatibilityRandomCheck.Size = new System.Drawing.Size(304, 21);
+            tmCompatibilityRandomCheck.TabIndex = 7;
+            tmCompatibilityRandomCheck.Text = "Completely Random";
+            infoToolTip.SetToolTip(tmCompatibilityRandomCheck, "Randomize what TMs can be taught to a Pokemon.");
+            tmCompatibilityRandomCheck.UseVisualStyleBackColor = true;
             // 
             // tmCompatibilityPreferTypeCheck
             // 
-            this.tmCompatibilityPreferTypeCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tmCompatibilityPreferTypeCheck.AutoSize = true;
-            this.tmCompatibilityPreferTypeCheck.Enabled = false;
-            this.tmCompatibilityPreferTypeCheck.Location = new System.Drawing.Point(37, 30);
-            this.tmCompatibilityPreferTypeCheck.Name = "tmCompatibilityPreferTypeCheck";
-            this.tmCompatibilityPreferTypeCheck.Size = new System.Drawing.Size(304, 21);
-            this.tmCompatibilityPreferTypeCheck.TabIndex = 6;
-            this.tmCompatibilityPreferTypeCheck.Text = "Random Preferring Type";
-            this.infoToolTip.SetToolTip(this.tmCompatibilityPreferTypeCheck, "Set compatibility based on the type of the move and Pokemon.\r\nSmall chance to lea" +
-        "rn a move not of the same type.");
-            this.tmCompatibilityPreferTypeCheck.UseVisualStyleBackColor = true;
+            tmCompatibilityPreferTypeCheck.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            tmCompatibilityPreferTypeCheck.AutoSize = true;
+            tmCompatibilityPreferTypeCheck.Enabled = false;
+            tmCompatibilityPreferTypeCheck.Location = new System.Drawing.Point(37, 30);
+            tmCompatibilityPreferTypeCheck.Name = "tmCompatibilityPreferTypeCheck";
+            tmCompatibilityPreferTypeCheck.Size = new System.Drawing.Size(304, 21);
+            tmCompatibilityPreferTypeCheck.TabIndex = 6;
+            tmCompatibilityPreferTypeCheck.Text = "Random Preferring Type";
+            infoToolTip.SetToolTip(tmCompatibilityPreferTypeCheck, "Set compatibility based on the type of the move and Pokemon.\r\nSmall chance to learn a move not of the same type.");
+            tmCompatibilityPreferTypeCheck.UseVisualStyleBackColor = true;
             // 
             // tutorCompatibilityGroupBox
             // 
-            this.tutorCompatibilityGroupBox.Controls.Add(this.tableLayoutPanel18);
-            this.tutorCompatibilityGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tutorCompatibilityGroupBox.Location = new System.Drawing.Point(359, 140);
-            this.tutorCompatibilityGroupBox.Name = "tutorCompatibilityGroupBox";
-            this.tutorCompatibilityGroupBox.Size = new System.Drawing.Size(350, 131);
-            this.tutorCompatibilityGroupBox.TabIndex = 20;
-            this.tutorCompatibilityGroupBox.TabStop = false;
-            this.tutorCompatibilityGroupBox.Text = "Compatibility:";
+            tutorCompatibilityGroupBox.Controls.Add(tableLayoutPanel18);
+            tutorCompatibilityGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            tutorCompatibilityGroupBox.Location = new System.Drawing.Point(359, 140);
+            tutorCompatibilityGroupBox.Name = "tutorCompatibilityGroupBox";
+            tutorCompatibilityGroupBox.Size = new System.Drawing.Size(350, 131);
+            tutorCompatibilityGroupBox.TabIndex = 20;
+            tutorCompatibilityGroupBox.TabStop = false;
+            tutorCompatibilityGroupBox.Text = "Compatibility:";
             // 
             // tableLayoutPanel18
             // 
-            this.tableLayoutPanel18.ColumnCount = 2;
-            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
-            this.tableLayoutPanel18.Controls.Add(this.tutorCompatibilityUnchangedCheck, 1, 0);
-            this.tableLayoutPanel18.Controls.Add(this.tutorFullCompatibilityCheck, 1, 3);
-            this.tableLayoutPanel18.Controls.Add(this.tutorCompatibilityPreferTypeCheck, 1, 1);
-            this.tableLayoutPanel18.Controls.Add(this.tutorCompatibilityRandomCheck, 1, 2);
-            this.tableLayoutPanel18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel18.Location = new System.Drawing.Point(3, 19);
-            this.tableLayoutPanel18.Name = "tableLayoutPanel18";
-            this.tableLayoutPanel18.RowCount = 4;
-            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel18.Size = new System.Drawing.Size(344, 109);
-            this.tableLayoutPanel18.TabIndex = 19;
+            tableLayoutPanel18.ColumnCount = 2;
+            tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            tableLayoutPanel18.Controls.Add(tutorCompatibilityUnchangedCheck, 1, 0);
+            tableLayoutPanel18.Controls.Add(tutorFullCompatibilityCheck, 1, 3);
+            tableLayoutPanel18.Controls.Add(tutorCompatibilityPreferTypeCheck, 1, 1);
+            tableLayoutPanel18.Controls.Add(tutorCompatibilityRandomCheck, 1, 2);
+            tableLayoutPanel18.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel18.Location = new System.Drawing.Point(3, 19);
+            tableLayoutPanel18.Name = "tableLayoutPanel18";
+            tableLayoutPanel18.RowCount = 4;
+            tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel18.Size = new System.Drawing.Size(344, 109);
+            tableLayoutPanel18.TabIndex = 19;
             // 
             // tutorCompatibilityUnchangedCheck
             // 
-            this.tutorCompatibilityUnchangedCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tutorCompatibilityUnchangedCheck.AutoSize = true;
-            this.tutorCompatibilityUnchangedCheck.Checked = true;
-            this.tutorCompatibilityUnchangedCheck.Location = new System.Drawing.Point(37, 3);
-            this.tutorCompatibilityUnchangedCheck.Name = "tutorCompatibilityUnchangedCheck";
-            this.tutorCompatibilityUnchangedCheck.Size = new System.Drawing.Size(304, 21);
-            this.tutorCompatibilityUnchangedCheck.TabIndex = 10;
-            this.tutorCompatibilityUnchangedCheck.TabStop = true;
-            this.tutorCompatibilityUnchangedCheck.Text = "Unchanged";
-            this.tutorCompatibilityUnchangedCheck.UseVisualStyleBackColor = true;
+            tutorCompatibilityUnchangedCheck.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            tutorCompatibilityUnchangedCheck.AutoSize = true;
+            tutorCompatibilityUnchangedCheck.Checked = true;
+            tutorCompatibilityUnchangedCheck.Location = new System.Drawing.Point(37, 3);
+            tutorCompatibilityUnchangedCheck.Name = "tutorCompatibilityUnchangedCheck";
+            tutorCompatibilityUnchangedCheck.Size = new System.Drawing.Size(304, 21);
+            tutorCompatibilityUnchangedCheck.TabIndex = 10;
+            tutorCompatibilityUnchangedCheck.TabStop = true;
+            tutorCompatibilityUnchangedCheck.Text = "Unchanged";
+            tutorCompatibilityUnchangedCheck.UseVisualStyleBackColor = true;
             // 
             // tutorFullCompatibilityCheck
             // 
-            this.tutorFullCompatibilityCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tutorFullCompatibilityCheck.AutoSize = true;
-            this.tutorFullCompatibilityCheck.Location = new System.Drawing.Point(37, 84);
-            this.tutorFullCompatibilityCheck.Name = "tutorFullCompatibilityCheck";
-            this.tutorFullCompatibilityCheck.Size = new System.Drawing.Size(304, 22);
-            this.tutorFullCompatibilityCheck.TabIndex = 18;
-            this.tutorFullCompatibilityCheck.Text = "Full Compatibility";
-            this.infoToolTip.SetToolTip(this.tutorFullCompatibilityCheck, "All Tutor moves can be taught to any Pokemon.");
-            this.tutorFullCompatibilityCheck.UseVisualStyleBackColor = true;
+            tutorFullCompatibilityCheck.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            tutorFullCompatibilityCheck.AutoSize = true;
+            tutorFullCompatibilityCheck.Location = new System.Drawing.Point(37, 84);
+            tutorFullCompatibilityCheck.Name = "tutorFullCompatibilityCheck";
+            tutorFullCompatibilityCheck.Size = new System.Drawing.Size(304, 22);
+            tutorFullCompatibilityCheck.TabIndex = 18;
+            tutorFullCompatibilityCheck.Text = "Full Compatibility";
+            infoToolTip.SetToolTip(tutorFullCompatibilityCheck, "All Tutor moves can be taught to any Pokemon.");
+            tutorFullCompatibilityCheck.UseVisualStyleBackColor = true;
             // 
             // tutorCompatibilityPreferTypeCheck
             // 
-            this.tutorCompatibilityPreferTypeCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tutorCompatibilityPreferTypeCheck.AutoSize = true;
-            this.tutorCompatibilityPreferTypeCheck.Enabled = false;
-            this.tutorCompatibilityPreferTypeCheck.Location = new System.Drawing.Point(37, 30);
-            this.tutorCompatibilityPreferTypeCheck.Name = "tutorCompatibilityPreferTypeCheck";
-            this.tutorCompatibilityPreferTypeCheck.Size = new System.Drawing.Size(304, 21);
-            this.tutorCompatibilityPreferTypeCheck.TabIndex = 11;
-            this.tutorCompatibilityPreferTypeCheck.Text = "Random Preferring Type";
-            this.infoToolTip.SetToolTip(this.tutorCompatibilityPreferTypeCheck, "Set compatibility based on the type of the move and Pokemon. \r\nSmall chance to le" +
-        "arn a move not of the same type.");
-            this.tutorCompatibilityPreferTypeCheck.UseVisualStyleBackColor = true;
+            tutorCompatibilityPreferTypeCheck.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            tutorCompatibilityPreferTypeCheck.AutoSize = true;
+            tutorCompatibilityPreferTypeCheck.Enabled = false;
+            tutorCompatibilityPreferTypeCheck.Location = new System.Drawing.Point(37, 30);
+            tutorCompatibilityPreferTypeCheck.Name = "tutorCompatibilityPreferTypeCheck";
+            tutorCompatibilityPreferTypeCheck.Size = new System.Drawing.Size(304, 21);
+            tutorCompatibilityPreferTypeCheck.TabIndex = 11;
+            tutorCompatibilityPreferTypeCheck.Text = "Random Preferring Type";
+            infoToolTip.SetToolTip(tutorCompatibilityPreferTypeCheck, "Set compatibility based on the type of the move and Pokemon. \r\nSmall chance to learn a move not of the same type.");
+            tutorCompatibilityPreferTypeCheck.UseVisualStyleBackColor = true;
             // 
             // tutorCompatibilityRandomCheck
             // 
-            this.tutorCompatibilityRandomCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tutorCompatibilityRandomCheck.AutoSize = true;
-            this.tutorCompatibilityRandomCheck.Location = new System.Drawing.Point(37, 57);
-            this.tutorCompatibilityRandomCheck.Name = "tutorCompatibilityRandomCheck";
-            this.tutorCompatibilityRandomCheck.Size = new System.Drawing.Size(304, 21);
-            this.tutorCompatibilityRandomCheck.TabIndex = 12;
-            this.tutorCompatibilityRandomCheck.Text = "Completely Random";
-            this.infoToolTip.SetToolTip(this.tutorCompatibilityRandomCheck, "Randomize what Tutor moves can be taught to a Pokemon.");
-            this.tutorCompatibilityRandomCheck.UseVisualStyleBackColor = true;
+            tutorCompatibilityRandomCheck.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            tutorCompatibilityRandomCheck.AutoSize = true;
+            tutorCompatibilityRandomCheck.Location = new System.Drawing.Point(37, 57);
+            tutorCompatibilityRandomCheck.Name = "tutorCompatibilityRandomCheck";
+            tutorCompatibilityRandomCheck.Size = new System.Drawing.Size(304, 21);
+            tutorCompatibilityRandomCheck.TabIndex = 12;
+            tutorCompatibilityRandomCheck.Text = "Completely Random";
+            infoToolTip.SetToolTip(tutorCompatibilityRandomCheck, "Randomize what Tutor moves can be taught to a Pokemon.");
+            tutorCompatibilityRandomCheck.UseVisualStyleBackColor = true;
             // 
             // panel16
             // 
-            this.panel16.Controls.Add(this.tutorMoveGroupBox);
-            this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel16.Location = new System.Drawing.Point(3, 140);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(350, 131);
-            this.panel16.TabIndex = 22;
+            panel16.Controls.Add(tutorMoveGroupBox);
+            panel16.Dock = System.Windows.Forms.DockStyle.Fill;
+            panel16.Location = new System.Drawing.Point(3, 140);
+            panel16.Name = "panel16";
+            panel16.Size = new System.Drawing.Size(350, 131);
+            panel16.TabIndex = 22;
             // 
             // tutorMoveGroupBox
             // 
-            this.tutorMoveGroupBox.Controls.Add(this.tableLayoutPanel19);
-            this.tutorMoveGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tutorMoveGroupBox.Location = new System.Drawing.Point(0, 0);
-            this.tutorMoveGroupBox.Name = "tutorMoveGroupBox";
-            this.tutorMoveGroupBox.Size = new System.Drawing.Size(350, 131);
-            this.tutorMoveGroupBox.TabIndex = 18;
-            this.tutorMoveGroupBox.TabStop = false;
-            this.tutorMoveGroupBox.Text = "Tutor Moves";
+            tutorMoveGroupBox.Controls.Add(tableLayoutPanel19);
+            tutorMoveGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            tutorMoveGroupBox.Location = new System.Drawing.Point(0, 0);
+            tutorMoveGroupBox.Name = "tutorMoveGroupBox";
+            tutorMoveGroupBox.Size = new System.Drawing.Size(350, 131);
+            tutorMoveGroupBox.TabIndex = 18;
+            tutorMoveGroupBox.TabStop = false;
+            tutorMoveGroupBox.Text = "Tutor Moves";
             // 
             // tableLayoutPanel19
             // 
-            this.tableLayoutPanel19.ColumnCount = 3;
-            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel19.Controls.Add(this.randomizeTutorMoveCheck, 1, 0);
-            this.tableLayoutPanel19.Controls.Add(this.forceGoodDamagingTutorMoveCheck, 1, 1);
-            this.tableLayoutPanel19.Controls.Add(this.forceGoodDamagingTutorMovePercent, 2, 1);
-            this.tableLayoutPanel19.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel19.Location = new System.Drawing.Point(3, 19);
-            this.tableLayoutPanel19.Name = "tableLayoutPanel19";
-            this.tableLayoutPanel19.RowCount = 4;
-            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel19.Size = new System.Drawing.Size(344, 109);
-            this.tableLayoutPanel19.TabIndex = 18;
+            tableLayoutPanel19.ColumnCount = 3;
+            tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            tableLayoutPanel19.Controls.Add(randomizeTutorMoveCheck, 1, 0);
+            tableLayoutPanel19.Controls.Add(forceGoodDamagingTutorMoveCheck, 1, 1);
+            tableLayoutPanel19.Controls.Add(forceGoodDamagingTutorMovePercent, 2, 1);
+            tableLayoutPanel19.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel19.Location = new System.Drawing.Point(3, 19);
+            tableLayoutPanel19.Name = "tableLayoutPanel19";
+            tableLayoutPanel19.RowCount = 4;
+            tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel19.Size = new System.Drawing.Size(344, 109);
+            tableLayoutPanel19.TabIndex = 18;
             // 
             // randomizeTutorMoveCheck
             // 
-            this.randomizeTutorMoveCheck.AutoSize = true;
-            this.randomizeTutorMoveCheck.Location = new System.Drawing.Point(37, 3);
-            this.randomizeTutorMoveCheck.Name = "randomizeTutorMoveCheck";
-            this.randomizeTutorMoveCheck.Size = new System.Drawing.Size(187, 19);
-            this.randomizeTutorMoveCheck.TabIndex = 15;
-            this.randomizeTutorMoveCheck.Text = "Randomize Move Tutor Moves";
-            this.randomizeTutorMoveCheck.UseVisualStyleBackColor = true;
-            this.randomizeTutorMoveCheck.CheckedChanged += new System.EventHandler(this.randomizeTutorMoveCheck_CheckedChanged);
+            randomizeTutorMoveCheck.AutoSize = true;
+            randomizeTutorMoveCheck.Location = new System.Drawing.Point(37, 3);
+            randomizeTutorMoveCheck.Name = "randomizeTutorMoveCheck";
+            randomizeTutorMoveCheck.Size = new System.Drawing.Size(187, 19);
+            randomizeTutorMoveCheck.TabIndex = 15;
+            randomizeTutorMoveCheck.Text = "Randomize Move Tutor Moves";
+            randomizeTutorMoveCheck.UseVisualStyleBackColor = true;
+            randomizeTutorMoveCheck.CheckedChanged += randomizeTutorMoveCheck_CheckedChanged;
             // 
             // forceGoodDamagingTutorMoveCheck
             // 
-            this.forceGoodDamagingTutorMoveCheck.AutoSize = true;
-            this.forceGoodDamagingTutorMoveCheck.Enabled = false;
-            this.forceGoodDamagingTutorMoveCheck.Location = new System.Drawing.Point(37, 30);
-            this.forceGoodDamagingTutorMoveCheck.Name = "forceGoodDamagingTutorMoveCheck";
-            this.forceGoodDamagingTutorMoveCheck.Size = new System.Drawing.Size(212, 19);
-            this.forceGoodDamagingTutorMoveCheck.TabIndex = 16;
-            this.forceGoodDamagingTutorMoveCheck.Text = "Force % Of Good Damaging Moves";
-            this.infoToolTip.SetToolTip(this.forceGoodDamagingTutorMoveCheck, "Force a percentage of Tutor moves to be \"good\" damaging moves. \r\nWhat qualifies a" +
-        "s good is configurable in the Options menu.");
-            this.forceGoodDamagingTutorMoveCheck.UseVisualStyleBackColor = true;
-            this.forceGoodDamagingTutorMoveCheck.CheckedChanged += new System.EventHandler(this.forceGoodDamagingTutorMoveCheck_CheckedChanged);
+            forceGoodDamagingTutorMoveCheck.AutoSize = true;
+            forceGoodDamagingTutorMoveCheck.Enabled = false;
+            forceGoodDamagingTutorMoveCheck.Location = new System.Drawing.Point(37, 30);
+            forceGoodDamagingTutorMoveCheck.Name = "forceGoodDamagingTutorMoveCheck";
+            forceGoodDamagingTutorMoveCheck.Size = new System.Drawing.Size(212, 19);
+            forceGoodDamagingTutorMoveCheck.TabIndex = 16;
+            forceGoodDamagingTutorMoveCheck.Text = "Force % Of Good Damaging Moves";
+            infoToolTip.SetToolTip(forceGoodDamagingTutorMoveCheck, "Force a percentage of Tutor moves to be \"good\" damaging moves. \r\nWhat qualifies as good is configurable in the Options menu.");
+            forceGoodDamagingTutorMoveCheck.UseVisualStyleBackColor = true;
+            forceGoodDamagingTutorMoveCheck.CheckedChanged += forceGoodDamagingTutorMoveCheck_CheckedChanged;
             // 
             // forceGoodDamagingTutorMovePercent
             // 
-            this.forceGoodDamagingTutorMovePercent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.forceGoodDamagingTutorMovePercent.Enabled = false;
-            this.forceGoodDamagingTutorMovePercent.Location = new System.Drawing.Point(277, 30);
-            this.forceGoodDamagingTutorMovePercent.Name = "forceGoodDamagingTutorMovePercent";
-            this.forceGoodDamagingTutorMovePercent.Size = new System.Drawing.Size(64, 23);
-            this.forceGoodDamagingTutorMovePercent.TabIndex = 17;
-            this.infoToolTip.SetToolTip(this.forceGoodDamagingTutorMovePercent, "Force a percentage of Tutor moves to \"good\" damaging moves. What qualifies as goo" +
-        "d is configurable in the Options menu.");
+            forceGoodDamagingTutorMovePercent.Dock = System.Windows.Forms.DockStyle.Fill;
+            forceGoodDamagingTutorMovePercent.Enabled = false;
+            forceGoodDamagingTutorMovePercent.Location = new System.Drawing.Point(277, 30);
+            forceGoodDamagingTutorMovePercent.Name = "forceGoodDamagingTutorMovePercent";
+            forceGoodDamagingTutorMovePercent.Size = new System.Drawing.Size(64, 23);
+            forceGoodDamagingTutorMovePercent.TabIndex = 17;
+            infoToolTip.SetToolTip(forceGoodDamagingTutorMovePercent, "Force a percentage of Tutor moves to \"good\" damaging moves. What qualifies as good is configurable in the Options menu.");
             // 
             // moveSetsTabPage
             // 
-            this.moveSetsTabPage.Controls.Add(this.tableLayoutPanel6);
-            this.moveSetsTabPage.Location = new System.Drawing.Point(4, 24);
-            this.moveSetsTabPage.Name = "moveSetsTabPage";
-            this.moveSetsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.moveSetsTabPage.Size = new System.Drawing.Size(718, 280);
-            this.moveSetsTabPage.TabIndex = 8;
-            this.moveSetsTabPage.Text = "Moves & Movesets";
-            this.moveSetsTabPage.UseVisualStyleBackColor = true;
+            moveSetsTabPage.Controls.Add(tableLayoutPanel6);
+            moveSetsTabPage.Location = new System.Drawing.Point(4, 24);
+            moveSetsTabPage.Name = "moveSetsTabPage";
+            moveSetsTabPage.Padding = new System.Windows.Forms.Padding(3);
+            moveSetsTabPage.Size = new System.Drawing.Size(718, 280);
+            moveSetsTabPage.TabIndex = 8;
+            moveSetsTabPage.Text = "Moves & Movesets";
+            moveSetsTabPage.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel6
             // 
-            this.tableLayoutPanel6.ColumnCount = 2;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Controls.Add(this.groupBox9, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.groupBox10, 0, 1);
-            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 2;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(712, 274);
-            this.tableLayoutPanel6.TabIndex = 28;
+            tableLayoutPanel6.ColumnCount = 2;
+            tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel6.Controls.Add(groupBox9, 0, 0);
+            tableLayoutPanel6.Controls.Add(groupBox10, 0, 1);
+            tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel6.Location = new System.Drawing.Point(3, 3);
+            tableLayoutPanel6.Name = "tableLayoutPanel6";
+            tableLayoutPanel6.RowCount = 2;
+            tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            tableLayoutPanel6.Size = new System.Drawing.Size(712, 274);
+            tableLayoutPanel6.TabIndex = 28;
             // 
             // groupBox9
             // 
-            this.tableLayoutPanel6.SetColumnSpan(this.groupBox9, 2);
-            this.groupBox9.Controls.Add(this.tableLayoutPanel11);
-            this.groupBox9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox9.Location = new System.Drawing.Point(3, 3);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(706, 131);
-            this.groupBox9.TabIndex = 3;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Moves";
+            tableLayoutPanel6.SetColumnSpan(groupBox9, 2);
+            groupBox9.Controls.Add(tableLayoutPanel11);
+            groupBox9.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBox9.Location = new System.Drawing.Point(3, 3);
+            groupBox9.Name = "groupBox9";
+            groupBox9.Size = new System.Drawing.Size(706, 131);
+            groupBox9.TabIndex = 3;
+            groupBox9.TabStop = false;
+            groupBox9.Text = "Moves";
             // 
             // tableLayoutPanel11
             // 
-            this.tableLayoutPanel11.ColumnCount = 4;
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel11.Controls.Add(this.moveCategoryCheck, 2, 1);
-            this.tableLayoutPanel11.Controls.Add(this.movePowerCheck, 1, 0);
-            this.tableLayoutPanel11.Controls.Add(this.moveTypeCheck, 2, 0);
-            this.tableLayoutPanel11.Controls.Add(this.movePPCheck, 1, 1);
-            this.tableLayoutPanel11.Controls.Add(this.moveAccCheck, 1, 2);
-            this.tableLayoutPanel11.Controls.Add(this.ignoreOHKOMovesAccuracyCheck, 1, 3);
-            this.tableLayoutPanel11.Controls.Add(this.turnOffAnimationCheck, 2, 3);
-            this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel11.Location = new System.Drawing.Point(3, 19);
-            this.tableLayoutPanel11.Name = "tableLayoutPanel11";
-            this.tableLayoutPanel11.RowCount = 4;
-            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(700, 109);
-            this.tableLayoutPanel11.TabIndex = 14;
+            tableLayoutPanel11.ColumnCount = 4;
+            tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel11.Controls.Add(moveCategoryCheck, 2, 1);
+            tableLayoutPanel11.Controls.Add(movePowerCheck, 1, 0);
+            tableLayoutPanel11.Controls.Add(moveTypeCheck, 2, 0);
+            tableLayoutPanel11.Controls.Add(movePPCheck, 1, 1);
+            tableLayoutPanel11.Controls.Add(moveAccCheck, 1, 2);
+            tableLayoutPanel11.Controls.Add(ignoreOHKOMovesAccuracyCheck, 1, 3);
+            tableLayoutPanel11.Controls.Add(turnOffAnimationCheck, 2, 3);
+            tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel11.Location = new System.Drawing.Point(3, 19);
+            tableLayoutPanel11.Name = "tableLayoutPanel11";
+            tableLayoutPanel11.RowCount = 4;
+            tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel11.Size = new System.Drawing.Size(700, 109);
+            tableLayoutPanel11.TabIndex = 14;
             // 
             // moveCategoryCheck
             // 
-            this.moveCategoryCheck.AutoSize = true;
-            this.moveCategoryCheck.Location = new System.Drawing.Point(353, 30);
-            this.moveCategoryCheck.Name = "moveCategoryCheck";
-            this.moveCategoryCheck.Size = new System.Drawing.Size(169, 19);
-            this.moveCategoryCheck.TabIndex = 19;
-            this.moveCategoryCheck.Text = "Randomize Move Category";
-            this.infoToolTip.SetToolTip(this.moveCategoryCheck, "Randomize whether a move is physical or special.\r\nXD only unless you\'ve patched C" +
-        "olosseum.");
-            this.moveCategoryCheck.UseVisualStyleBackColor = true;
+            moveCategoryCheck.AutoSize = true;
+            moveCategoryCheck.Location = new System.Drawing.Point(353, 30);
+            moveCategoryCheck.Name = "moveCategoryCheck";
+            moveCategoryCheck.Size = new System.Drawing.Size(169, 19);
+            moveCategoryCheck.TabIndex = 19;
+            moveCategoryCheck.Text = "Randomize Move Category";
+            infoToolTip.SetToolTip(moveCategoryCheck, "Randomize whether a move is physical or special.\r\nXD only unless you've patched Colosseum.");
+            moveCategoryCheck.UseVisualStyleBackColor = true;
             // 
             // movePowerCheck
             // 
-            this.movePowerCheck.AutoSize = true;
-            this.movePowerCheck.Location = new System.Drawing.Point(38, 3);
-            this.movePowerCheck.Name = "movePowerCheck";
-            this.movePowerCheck.Size = new System.Drawing.Size(154, 19);
-            this.movePowerCheck.TabIndex = 10;
-            this.movePowerCheck.Text = "Randomize Move Power";
-            this.infoToolTip.SetToolTip(this.movePowerCheck, "Randomize move power such that they have on average 80 power.\r\nUses high variance" +
-        ", so it could be between 10 and 150.");
-            this.movePowerCheck.UseVisualStyleBackColor = true;
+            movePowerCheck.AutoSize = true;
+            movePowerCheck.Location = new System.Drawing.Point(38, 3);
+            movePowerCheck.Name = "movePowerCheck";
+            movePowerCheck.Size = new System.Drawing.Size(154, 19);
+            movePowerCheck.TabIndex = 10;
+            movePowerCheck.Text = "Randomize Move Power";
+            infoToolTip.SetToolTip(movePowerCheck, "Randomize move power such that they have on average 80 power.\r\nUses high variance, so it could be between 10 and 150.");
+            movePowerCheck.UseVisualStyleBackColor = true;
             // 
             // moveTypeCheck
             // 
-            this.moveTypeCheck.AutoSize = true;
-            this.moveTypeCheck.Location = new System.Drawing.Point(353, 3);
-            this.moveTypeCheck.Name = "moveTypeCheck";
-            this.moveTypeCheck.Size = new System.Drawing.Size(150, 19);
-            this.moveTypeCheck.TabIndex = 18;
-            this.moveTypeCheck.Text = "Randomize Move Types";
-            this.moveTypeCheck.UseVisualStyleBackColor = true;
+            moveTypeCheck.AutoSize = true;
+            moveTypeCheck.Location = new System.Drawing.Point(353, 3);
+            moveTypeCheck.Name = "moveTypeCheck";
+            moveTypeCheck.Size = new System.Drawing.Size(150, 19);
+            moveTypeCheck.TabIndex = 18;
+            moveTypeCheck.Text = "Randomize Move Types";
+            moveTypeCheck.UseVisualStyleBackColor = true;
             // 
             // movePPCheck
             // 
-            this.movePPCheck.AutoSize = true;
-            this.movePPCheck.Location = new System.Drawing.Point(38, 30);
-            this.movePPCheck.Name = "movePPCheck";
-            this.movePPCheck.Size = new System.Drawing.Size(135, 19);
-            this.movePPCheck.TabIndex = 13;
-            this.movePPCheck.Text = "Randomize Move PP";
-            this.infoToolTip.SetToolTip(this.movePPCheck, "Randomize move PP from 5 to 40 in intervals of 5.");
-            this.movePPCheck.UseVisualStyleBackColor = true;
+            movePPCheck.AutoSize = true;
+            movePPCheck.Location = new System.Drawing.Point(38, 30);
+            movePPCheck.Name = "movePPCheck";
+            movePPCheck.Size = new System.Drawing.Size(135, 19);
+            movePPCheck.TabIndex = 13;
+            movePPCheck.Text = "Randomize Move PP";
+            infoToolTip.SetToolTip(movePPCheck, "Randomize move PP from 5 to 40 in intervals of 5.");
+            movePPCheck.UseVisualStyleBackColor = true;
             // 
             // moveAccCheck
             // 
-            this.moveAccCheck.AutoSize = true;
-            this.moveAccCheck.Location = new System.Drawing.Point(38, 57);
-            this.moveAccCheck.Name = "moveAccCheck";
-            this.moveAccCheck.Size = new System.Drawing.Size(170, 19);
-            this.moveAccCheck.TabIndex = 12;
-            this.moveAccCheck.Text = "Randomize Move Accuracy";
-            this.infoToolTip.SetToolTip(this.moveAccCheck, "Randomize move accuracy between 0 and 100.\r\nOHKO moves will be re-rolled until th" +
-        "ey\'re not 100% accurate.");
-            this.moveAccCheck.UseVisualStyleBackColor = true;
-            this.moveAccCheck.CheckedChanged += new System.EventHandler(this.moveAccCheck_CheckedChanged);
+            moveAccCheck.AutoSize = true;
+            moveAccCheck.Location = new System.Drawing.Point(38, 57);
+            moveAccCheck.Name = "moveAccCheck";
+            moveAccCheck.Size = new System.Drawing.Size(170, 19);
+            moveAccCheck.TabIndex = 12;
+            moveAccCheck.Text = "Randomize Move Accuracy";
+            infoToolTip.SetToolTip(moveAccCheck, "Randomize move accuracy between 0 and 100.\r\nOHKO moves will be re-rolled until they're not 100% accurate.");
+            moveAccCheck.UseVisualStyleBackColor = true;
+            moveAccCheck.CheckedChanged += moveAccCheck_CheckedChanged;
             // 
             // ignoreOHKOMovesAccuracyCheck
             // 
-            this.ignoreOHKOMovesAccuracyCheck.AutoSize = true;
-            this.ignoreOHKOMovesAccuracyCheck.Enabled = false;
-            this.ignoreOHKOMovesAccuracyCheck.Location = new System.Drawing.Point(38, 84);
-            this.ignoreOHKOMovesAccuracyCheck.Name = "ignoreOHKOMovesAccuracyCheck";
-            this.ignoreOHKOMovesAccuracyCheck.Size = new System.Drawing.Size(134, 19);
-            this.ignoreOHKOMovesAccuracyCheck.TabIndex = 20;
-            this.ignoreOHKOMovesAccuracyCheck.Text = "Ignore OHKO Moves";
-            this.ignoreOHKOMovesAccuracyCheck.UseVisualStyleBackColor = true;
+            ignoreOHKOMovesAccuracyCheck.AutoSize = true;
+            ignoreOHKOMovesAccuracyCheck.Enabled = false;
+            ignoreOHKOMovesAccuracyCheck.Location = new System.Drawing.Point(38, 84);
+            ignoreOHKOMovesAccuracyCheck.Name = "ignoreOHKOMovesAccuracyCheck";
+            ignoreOHKOMovesAccuracyCheck.Size = new System.Drawing.Size(134, 19);
+            ignoreOHKOMovesAccuracyCheck.TabIndex = 20;
+            ignoreOHKOMovesAccuracyCheck.Text = "Ignore OHKO Moves";
+            ignoreOHKOMovesAccuracyCheck.UseVisualStyleBackColor = true;
             // 
             // turnOffAnimationCheck
             // 
-            this.turnOffAnimationCheck.AutoSize = true;
-            this.turnOffAnimationCheck.Location = new System.Drawing.Point(353, 84);
-            this.turnOffAnimationCheck.Name = "turnOffAnimationCheck";
-            this.turnOffAnimationCheck.Size = new System.Drawing.Size(134, 19);
-            this.turnOffAnimationCheck.TabIndex = 21;
-            this.turnOffAnimationCheck.Text = "Turn Off Animations";
-            this.infoToolTip.SetToolTip(this.turnOffAnimationCheck, "Makes the game faster at the cost of its soul");
-            this.turnOffAnimationCheck.UseVisualStyleBackColor = true;
+            turnOffAnimationCheck.AutoSize = true;
+            turnOffAnimationCheck.Location = new System.Drawing.Point(353, 84);
+            turnOffAnimationCheck.Name = "turnOffAnimationCheck";
+            turnOffAnimationCheck.Size = new System.Drawing.Size(134, 19);
+            turnOffAnimationCheck.TabIndex = 21;
+            turnOffAnimationCheck.Text = "Turn Off Animations";
+            infoToolTip.SetToolTip(turnOffAnimationCheck, "Makes the game faster at the cost of its soul");
+            turnOffAnimationCheck.UseVisualStyleBackColor = true;
             // 
             // groupBox10
             // 
-            this.tableLayoutPanel6.SetColumnSpan(this.groupBox10, 2);
-            this.groupBox10.Controls.Add(this.tableLayoutPanel12);
-            this.groupBox10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox10.Location = new System.Drawing.Point(3, 140);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(706, 131);
-            this.groupBox10.TabIndex = 4;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Movesets";
+            tableLayoutPanel6.SetColumnSpan(groupBox10, 2);
+            groupBox10.Controls.Add(tableLayoutPanel12);
+            groupBox10.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBox10.Location = new System.Drawing.Point(3, 140);
+            groupBox10.Name = "groupBox10";
+            groupBox10.Size = new System.Drawing.Size(706, 131);
+            groupBox10.TabIndex = 4;
+            groupBox10.TabStop = false;
+            groupBox10.Text = "Movesets";
             // 
             // tableLayoutPanel12
             // 
-            this.tableLayoutPanel12.ColumnCount = 6;
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel12.Controls.Add(this.movesetsForceGoodDamagingMoveCheck, 3, 1);
-            this.tableLayoutPanel12.Controls.Add(this.forceFourMoveCheck, 3, 0);
-            this.tableLayoutPanel12.Controls.Add(this.movesetsForceGoodDamagingMovePercent, 5, 1);
-            this.tableLayoutPanel12.Controls.Add(this.pokemonShareMovesetsCheck, 3, 2);
-            this.tableLayoutPanel12.Controls.Add(this.banShadowMovesCheck, 3, 3);
-            this.tableLayoutPanel12.Controls.Add(this.banEarlyDragonRageCheck, 4, 3);
-            this.tableLayoutPanel12.Controls.Add(this.unchangedMovesetsCheck, 1, 0);
-            this.tableLayoutPanel12.Controls.Add(this.randomizeMovesetsPreferType, 1, 1);
-            this.tableLayoutPanel12.Controls.Add(this.randomizeMovesets, 1, 2);
-            this.tableLayoutPanel12.Controls.Add(this.movesetsMetronomeOnlyCheck, 1, 3);
-            this.tableLayoutPanel12.Controls.Add(this.randomizeMovesetsOnlyLegal, 2, 0);
-            this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel12.Location = new System.Drawing.Point(3, 19);
-            this.tableLayoutPanel12.Name = "tableLayoutPanel12";
-            this.tableLayoutPanel12.RowCount = 4;
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel12.Size = new System.Drawing.Size(700, 109);
-            this.tableLayoutPanel12.TabIndex = 5;
+            tableLayoutPanel12.ColumnCount = 6;
+            tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            tableLayoutPanel12.Controls.Add(movesetsForceGoodDamagingMoveCheck, 3, 1);
+            tableLayoutPanel12.Controls.Add(forceFourMoveCheck, 3, 0);
+            tableLayoutPanel12.Controls.Add(movesetsForceGoodDamagingMovePercent, 5, 1);
+            tableLayoutPanel12.Controls.Add(pokemonShareMovesetsCheck, 3, 2);
+            tableLayoutPanel12.Controls.Add(banShadowMovesCheck, 3, 3);
+            tableLayoutPanel12.Controls.Add(banEarlyDragonRageCheck, 4, 3);
+            tableLayoutPanel12.Controls.Add(unchangedMovesetsCheck, 1, 0);
+            tableLayoutPanel12.Controls.Add(randomizeMovesetsPreferType, 1, 1);
+            tableLayoutPanel12.Controls.Add(randomizeMovesets, 1, 2);
+            tableLayoutPanel12.Controls.Add(movesetsMetronomeOnlyCheck, 1, 3);
+            tableLayoutPanel12.Controls.Add(randomizeMovesetsOnlyLegal, 2, 0);
+            tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel12.Location = new System.Drawing.Point(3, 19);
+            tableLayoutPanel12.Name = "tableLayoutPanel12";
+            tableLayoutPanel12.RowCount = 4;
+            tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel12.Size = new System.Drawing.Size(700, 109);
+            tableLayoutPanel12.TabIndex = 5;
             // 
             // movesetsForceGoodDamagingMoveCheck
             // 
-            this.movesetsForceGoodDamagingMoveCheck.AutoSize = true;
-            this.tableLayoutPanel12.SetColumnSpan(this.movesetsForceGoodDamagingMoveCheck, 2);
-            this.movesetsForceGoodDamagingMoveCheck.Location = new System.Drawing.Point(388, 30);
-            this.movesetsForceGoodDamagingMoveCheck.Name = "movesetsForceGoodDamagingMoveCheck";
-            this.movesetsForceGoodDamagingMoveCheck.Size = new System.Drawing.Size(183, 19);
-            this.movesetsForceGoodDamagingMoveCheck.TabIndex = 22;
-            this.movesetsForceGoodDamagingMoveCheck.Text = "Force Good Damaging Moves";
-            this.infoToolTip.SetToolTip(this.movesetsForceGoodDamagingMoveCheck, "If selected, this number of moves will forced to be \"good\" damaging moves. \r\nFrom" +
-        " 0 to 4. What is considered good is configurable in the options menu.");
-            this.movesetsForceGoodDamagingMoveCheck.UseVisualStyleBackColor = true;
-            this.movesetsForceGoodDamagingMoveCheck.CheckedChanged += new System.EventHandler(this.movesetsForceGoodDamagingMoveCheck_CheckedChanged);
+            movesetsForceGoodDamagingMoveCheck.AutoSize = true;
+            tableLayoutPanel12.SetColumnSpan(movesetsForceGoodDamagingMoveCheck, 2);
+            movesetsForceGoodDamagingMoveCheck.Location = new System.Drawing.Point(388, 30);
+            movesetsForceGoodDamagingMoveCheck.Name = "movesetsForceGoodDamagingMoveCheck";
+            movesetsForceGoodDamagingMoveCheck.Size = new System.Drawing.Size(183, 19);
+            movesetsForceGoodDamagingMoveCheck.TabIndex = 22;
+            movesetsForceGoodDamagingMoveCheck.Text = "Force Good Damaging Moves";
+            infoToolTip.SetToolTip(movesetsForceGoodDamagingMoveCheck, "If selected, this number of moves will forced to be \"good\" damaging moves. \r\nFrom 0 to 4. What is considered good is configurable in the options menu.");
+            movesetsForceGoodDamagingMoveCheck.UseVisualStyleBackColor = true;
+            movesetsForceGoodDamagingMoveCheck.CheckedChanged += movesetsForceGoodDamagingMoveCheck_CheckedChanged;
             // 
             // forceFourMoveCheck
             // 
-            this.forceFourMoveCheck.AutoSize = true;
-            this.tableLayoutPanel12.SetColumnSpan(this.forceFourMoveCheck, 2);
-            this.forceFourMoveCheck.Location = new System.Drawing.Point(388, 3);
-            this.forceFourMoveCheck.Name = "forceFourMoveCheck";
-            this.forceFourMoveCheck.Size = new System.Drawing.Size(215, 19);
-            this.forceFourMoveCheck.TabIndex = 20;
-            this.forceFourMoveCheck.Text = "Every Pokemon Starts With 4 Moves";
-            this.infoToolTip.SetToolTip(this.forceFourMoveCheck, resources.GetString("forceFourMoveCheck.ToolTip"));
-            this.forceFourMoveCheck.UseVisualStyleBackColor = true;
+            forceFourMoveCheck.AutoSize = true;
+            tableLayoutPanel12.SetColumnSpan(forceFourMoveCheck, 2);
+            forceFourMoveCheck.Location = new System.Drawing.Point(388, 3);
+            forceFourMoveCheck.Name = "forceFourMoveCheck";
+            forceFourMoveCheck.Size = new System.Drawing.Size(215, 19);
+            forceFourMoveCheck.TabIndex = 20;
+            forceFourMoveCheck.Text = "Every Pokemon Starts With 4 Moves";
+            infoToolTip.SetToolTip(forceFourMoveCheck, resources.GetString("forceFourMoveCheck.ToolTip"));
+            forceFourMoveCheck.UseVisualStyleBackColor = true;
             // 
             // movesetsForceGoodDamagingMovePercent
             // 
-            this.movesetsForceGoodDamagingMovePercent.Enabled = false;
-            this.movesetsForceGoodDamagingMovePercent.Location = new System.Drawing.Point(633, 30);
-            this.movesetsForceGoodDamagingMovePercent.Maximum = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
-            this.movesetsForceGoodDamagingMovePercent.Name = "movesetsForceGoodDamagingMovePercent";
-            this.movesetsForceGoodDamagingMovePercent.Size = new System.Drawing.Size(64, 23);
-            this.movesetsForceGoodDamagingMovePercent.TabIndex = 28;
+            movesetsForceGoodDamagingMovePercent.Enabled = false;
+            movesetsForceGoodDamagingMovePercent.Location = new System.Drawing.Point(633, 30);
+            movesetsForceGoodDamagingMovePercent.Maximum = new decimal(new int[] { 4, 0, 0, 0 });
+            movesetsForceGoodDamagingMovePercent.Name = "movesetsForceGoodDamagingMovePercent";
+            movesetsForceGoodDamagingMovePercent.Size = new System.Drawing.Size(64, 23);
+            movesetsForceGoodDamagingMovePercent.TabIndex = 28;
             // 
             // pokemonShareMovesetsCheck
             // 
-            this.pokemonShareMovesetsCheck.AutoSize = true;
-            this.tableLayoutPanel12.SetColumnSpan(this.pokemonShareMovesetsCheck, 2);
-            this.pokemonShareMovesetsCheck.Enabled = false;
-            this.pokemonShareMovesetsCheck.Location = new System.Drawing.Point(388, 57);
-            this.pokemonShareMovesetsCheck.Name = "pokemonShareMovesetsCheck";
-            this.pokemonShareMovesetsCheck.Size = new System.Drawing.Size(162, 19);
-            this.pokemonShareMovesetsCheck.TabIndex = 30;
-            this.pokemonShareMovesetsCheck.Text = "Pokemon Share Movesets";
-            this.infoToolTip.SetToolTip(this.pokemonShareMovesetsCheck, "Trainer Pokemon movesets and level up moves are different from each other,\r\nso ch" +
-        "ecking this will make all Pokemon use level up moves to generate their movesets." +
-        "");
-            this.pokemonShareMovesetsCheck.UseVisualStyleBackColor = true;
+            pokemonShareMovesetsCheck.AutoSize = true;
+            tableLayoutPanel12.SetColumnSpan(pokemonShareMovesetsCheck, 2);
+            pokemonShareMovesetsCheck.Enabled = false;
+            pokemonShareMovesetsCheck.Location = new System.Drawing.Point(388, 57);
+            pokemonShareMovesetsCheck.Name = "pokemonShareMovesetsCheck";
+            pokemonShareMovesetsCheck.Size = new System.Drawing.Size(162, 19);
+            pokemonShareMovesetsCheck.TabIndex = 30;
+            pokemonShareMovesetsCheck.Text = "Pokemon Share Movesets";
+            infoToolTip.SetToolTip(pokemonShareMovesetsCheck, "Trainer Pokemon movesets and level up moves are different from each other,\r\nso checking this will make all Pokemon use level up moves to generate their movesets.");
+            pokemonShareMovesetsCheck.UseVisualStyleBackColor = true;
             // 
             // banShadowMovesCheck
             // 
-            this.banShadowMovesCheck.AutoSize = true;
-            this.banShadowMovesCheck.Enabled = false;
-            this.banShadowMovesCheck.Location = new System.Drawing.Point(388, 84);
-            this.banShadowMovesCheck.Name = "banShadowMovesCheck";
-            this.banShadowMovesCheck.Size = new System.Drawing.Size(129, 19);
-            this.banShadowMovesCheck.TabIndex = 29;
-            this.banShadowMovesCheck.Text = "Ban Shadow Moves";
-            this.infoToolTip.SetToolTip(this.banShadowMovesCheck, "Checking this will ensure normal Pokemon don\'t learn shadow moves.");
-            this.banShadowMovesCheck.UseVisualStyleBackColor = true;
+            banShadowMovesCheck.AutoSize = true;
+            banShadowMovesCheck.Enabled = false;
+            banShadowMovesCheck.Location = new System.Drawing.Point(388, 84);
+            banShadowMovesCheck.Name = "banShadowMovesCheck";
+            banShadowMovesCheck.Size = new System.Drawing.Size(129, 19);
+            banShadowMovesCheck.TabIndex = 29;
+            banShadowMovesCheck.Text = "Ban Shadow Moves";
+            infoToolTip.SetToolTip(banShadowMovesCheck, "Checking this will ensure normal Pokemon don't learn shadow moves.");
+            banShadowMovesCheck.UseVisualStyleBackColor = true;
             // 
             // banEarlyDragonRageCheck
             // 
-            this.banEarlyDragonRageCheck.AutoSize = true;
-            this.tableLayoutPanel12.SetColumnSpan(this.banEarlyDragonRageCheck, 2);
-            this.banEarlyDragonRageCheck.Enabled = false;
-            this.banEarlyDragonRageCheck.Location = new System.Drawing.Point(528, 84);
-            this.banEarlyDragonRageCheck.Name = "banEarlyDragonRageCheck";
-            this.banEarlyDragonRageCheck.Size = new System.Drawing.Size(145, 19);
-            this.banEarlyDragonRageCheck.TabIndex = 31;
-            this.banEarlyDragonRageCheck.Text = "Ban Early Dragon Rage";
-            this.infoToolTip.SetToolTip(this.banEarlyDragonRageCheck, "Ban Dragon Rage from the move pool until Pokemon are over lvl 20.");
-            this.banEarlyDragonRageCheck.UseVisualStyleBackColor = true;
+            banEarlyDragonRageCheck.AutoSize = true;
+            tableLayoutPanel12.SetColumnSpan(banEarlyDragonRageCheck, 2);
+            banEarlyDragonRageCheck.Enabled = false;
+            banEarlyDragonRageCheck.Location = new System.Drawing.Point(528, 84);
+            banEarlyDragonRageCheck.Name = "banEarlyDragonRageCheck";
+            banEarlyDragonRageCheck.Size = new System.Drawing.Size(145, 19);
+            banEarlyDragonRageCheck.TabIndex = 31;
+            banEarlyDragonRageCheck.Text = "Ban Early Dragon Rage";
+            infoToolTip.SetToolTip(banEarlyDragonRageCheck, "Ban Dragon Rage from the move pool until Pokemon are over lvl 20.");
+            banEarlyDragonRageCheck.UseVisualStyleBackColor = true;
             // 
             // unchangedMovesetsCheck
             // 
-            this.unchangedMovesetsCheck.AutoSize = true;
-            this.unchangedMovesetsCheck.Checked = true;
-            this.unchangedMovesetsCheck.Location = new System.Drawing.Point(38, 3);
-            this.unchangedMovesetsCheck.Name = "unchangedMovesetsCheck";
-            this.unchangedMovesetsCheck.Size = new System.Drawing.Size(86, 19);
-            this.unchangedMovesetsCheck.TabIndex = 24;
-            this.unchangedMovesetsCheck.TabStop = true;
-            this.unchangedMovesetsCheck.Text = "Unchanged";
-            this.unchangedMovesetsCheck.UseVisualStyleBackColor = true;
+            unchangedMovesetsCheck.AutoSize = true;
+            unchangedMovesetsCheck.Checked = true;
+            unchangedMovesetsCheck.Location = new System.Drawing.Point(38, 3);
+            unchangedMovesetsCheck.Name = "unchangedMovesetsCheck";
+            unchangedMovesetsCheck.Size = new System.Drawing.Size(86, 19);
+            unchangedMovesetsCheck.TabIndex = 24;
+            unchangedMovesetsCheck.TabStop = true;
+            unchangedMovesetsCheck.Text = "Unchanged";
+            unchangedMovesetsCheck.UseVisualStyleBackColor = true;
             // 
             // randomizeMovesetsPreferType
             // 
-            this.randomizeMovesetsPreferType.AutoSize = true;
-            this.randomizeMovesetsPreferType.Location = new System.Drawing.Point(38, 30);
-            this.randomizeMovesetsPreferType.Name = "randomizeMovesetsPreferType";
-            this.randomizeMovesetsPreferType.Size = new System.Drawing.Size(152, 19);
-            this.randomizeMovesetsPreferType.TabIndex = 25;
-            this.randomizeMovesetsPreferType.Text = "Random Preferring Type";
-            this.infoToolTip.SetToolTip(this.randomizeMovesetsPreferType, "Moves will be selected so that same type moves are preferred. \r\nWill pick a rando" +
-        "m move if you force good damging moves and there are none that are the same type" +
-        ".");
-            this.randomizeMovesetsPreferType.UseVisualStyleBackColor = true;
-            this.randomizeMovesetsPreferType.CheckedChanged += new System.EventHandler(this.randomizeMovesetsPreferType_CheckedChanged);
+            randomizeMovesetsPreferType.AutoSize = true;
+            randomizeMovesetsPreferType.Location = new System.Drawing.Point(38, 30);
+            randomizeMovesetsPreferType.Name = "randomizeMovesetsPreferType";
+            randomizeMovesetsPreferType.Size = new System.Drawing.Size(152, 19);
+            randomizeMovesetsPreferType.TabIndex = 25;
+            randomizeMovesetsPreferType.Text = "Random Preferring Type";
+            infoToolTip.SetToolTip(randomizeMovesetsPreferType, "Moves will be selected so that same type moves are preferred. \r\nWill pick a random move if you force good damging moves and there are none that are the same type.");
+            randomizeMovesetsPreferType.UseVisualStyleBackColor = true;
+            randomizeMovesetsPreferType.CheckedChanged += randomizeMovesetsPreferType_CheckedChanged;
             // 
             // randomizeMovesets
             // 
-            this.randomizeMovesets.AutoSize = true;
-            this.randomizeMovesets.Location = new System.Drawing.Point(38, 57);
-            this.randomizeMovesets.Name = "randomizeMovesets";
-            this.randomizeMovesets.Size = new System.Drawing.Size(134, 19);
-            this.randomizeMovesets.TabIndex = 26;
-            this.randomizeMovesets.Text = "Completely Random";
-            this.randomizeMovesets.UseVisualStyleBackColor = true;
-            this.randomizeMovesets.CheckedChanged += new System.EventHandler(this.randomizeMovesets_CheckedChanged);
+            randomizeMovesets.AutoSize = true;
+            randomizeMovesets.Location = new System.Drawing.Point(38, 57);
+            randomizeMovesets.Name = "randomizeMovesets";
+            randomizeMovesets.Size = new System.Drawing.Size(134, 19);
+            randomizeMovesets.TabIndex = 26;
+            randomizeMovesets.Text = "Completely Random";
+            randomizeMovesets.UseVisualStyleBackColor = true;
+            randomizeMovesets.CheckedChanged += randomizeMovesets_CheckedChanged;
             // 
             // movesetsMetronomeOnlyCheck
             // 
-            this.movesetsMetronomeOnlyCheck.AutoSize = true;
-            this.movesetsMetronomeOnlyCheck.Location = new System.Drawing.Point(38, 84);
-            this.movesetsMetronomeOnlyCheck.Name = "movesetsMetronomeOnlyCheck";
-            this.movesetsMetronomeOnlyCheck.Size = new System.Drawing.Size(116, 19);
-            this.movesetsMetronomeOnlyCheck.TabIndex = 27;
-            this.movesetsMetronomeOnlyCheck.Text = "Metronome Only";
-            this.infoToolTip.SetToolTip(this.movesetsMetronomeOnlyCheck, "Every Pokemon has all their moves set to metronome.");
-            this.movesetsMetronomeOnlyCheck.UseVisualStyleBackColor = true;
+            movesetsMetronomeOnlyCheck.AutoSize = true;
+            movesetsMetronomeOnlyCheck.Location = new System.Drawing.Point(38, 84);
+            movesetsMetronomeOnlyCheck.Name = "movesetsMetronomeOnlyCheck";
+            movesetsMetronomeOnlyCheck.Size = new System.Drawing.Size(116, 19);
+            movesetsMetronomeOnlyCheck.TabIndex = 27;
+            movesetsMetronomeOnlyCheck.Text = "Metronome Only";
+            infoToolTip.SetToolTip(movesetsMetronomeOnlyCheck, "Every Pokemon has all their moves set to metronome.");
+            movesetsMetronomeOnlyCheck.UseVisualStyleBackColor = true;
             // 
             // randomizeMovesetsOnlyLegal
             // 
-            this.randomizeMovesetsOnlyLegal.AutoSize = true;
-            this.randomizeMovesetsOnlyLegal.Location = new System.Drawing.Point(213, 3);
-            this.randomizeMovesetsOnlyLegal.Name = "randomizeMovesetsOnlyLegal";
-            this.randomizeMovesetsOnlyLegal.Size = new System.Drawing.Size(139, 19);
-            this.randomizeMovesetsOnlyLegal.TabIndex = 32;
-            this.randomizeMovesetsOnlyLegal.TabStop = true;
-            this.randomizeMovesetsOnlyLegal.Text = "Random Legal Moves";
-            this.infoToolTip.SetToolTip(this.randomizeMovesetsOnlyLegal, resources.GetString("randomizeMovesetsOnlyLegal.ToolTip"));
-            this.randomizeMovesetsOnlyLegal.UseVisualStyleBackColor = true;
-            this.randomizeMovesetsOnlyLegal.CheckedChanged += new System.EventHandler(this.randomizeMovesetsOnlyLegal_CheckedChanged);
+            randomizeMovesetsOnlyLegal.AutoSize = true;
+            randomizeMovesetsOnlyLegal.Location = new System.Drawing.Point(213, 3);
+            randomizeMovesetsOnlyLegal.Name = "randomizeMovesetsOnlyLegal";
+            randomizeMovesetsOnlyLegal.Size = new System.Drawing.Size(139, 19);
+            randomizeMovesetsOnlyLegal.TabIndex = 32;
+            randomizeMovesetsOnlyLegal.TabStop = true;
+            randomizeMovesetsOnlyLegal.Text = "Random Legal Moves";
+            infoToolTip.SetToolTip(randomizeMovesetsOnlyLegal, resources.GetString("randomizeMovesetsOnlyLegal.ToolTip"));
+            randomizeMovesetsOnlyLegal.UseVisualStyleBackColor = true;
+            randomizeMovesetsOnlyLegal.CheckedChanged += randomizeMovesetsOnlyLegal_CheckedChanged;
             // 
             // itemsTabPage
             // 
-            this.itemsTabPage.Controls.Add(this.tableLayoutPanel8);
-            this.itemsTabPage.Location = new System.Drawing.Point(4, 24);
-            this.itemsTabPage.Name = "itemsTabPage";
-            this.itemsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.itemsTabPage.Size = new System.Drawing.Size(718, 280);
-            this.itemsTabPage.TabIndex = 4;
-            this.itemsTabPage.Text = "Items";
-            this.itemsTabPage.UseVisualStyleBackColor = true;
+            itemsTabPage.Controls.Add(tableLayoutPanel8);
+            itemsTabPage.Location = new System.Drawing.Point(4, 24);
+            itemsTabPage.Name = "itemsTabPage";
+            itemsTabPage.Padding = new System.Windows.Forms.Padding(3);
+            itemsTabPage.Size = new System.Drawing.Size(718, 280);
+            itemsTabPage.TabIndex = 4;
+            itemsTabPage.Text = "Items";
+            itemsTabPage.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel8
             // 
-            this.tableLayoutPanel8.ColumnCount = 2;
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Controls.Add(this.overworldItemGroupBox, 0, 0);
-            this.tableLayoutPanel8.Controls.Add(this.martGroupBox, 1, 0);
-            this.tableLayoutPanel8.Controls.Add(this.pokemonItemGroupBox, 0, 1);
-            this.tableLayoutPanel8.Controls.Add(this.miscItemGroupBox, 1, 1);
-            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
-            this.tableLayoutPanel8.RowCount = 2;
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(712, 274);
-            this.tableLayoutPanel8.TabIndex = 0;
+            tableLayoutPanel8.ColumnCount = 2;
+            tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel8.Controls.Add(overworldItemGroupBox, 0, 0);
+            tableLayoutPanel8.Controls.Add(martGroupBox, 1, 0);
+            tableLayoutPanel8.Controls.Add(pokemonItemGroupBox, 0, 1);
+            tableLayoutPanel8.Controls.Add(miscItemGroupBox, 1, 1);
+            tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel8.Location = new System.Drawing.Point(3, 3);
+            tableLayoutPanel8.Name = "tableLayoutPanel8";
+            tableLayoutPanel8.RowCount = 2;
+            tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel8.Size = new System.Drawing.Size(712, 274);
+            tableLayoutPanel8.TabIndex = 0;
             // 
             // overworldItemGroupBox
             // 
-            this.overworldItemGroupBox.Controls.Add(this.tableLayoutPanel24);
-            this.overworldItemGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.overworldItemGroupBox.Location = new System.Drawing.Point(3, 3);
-            this.overworldItemGroupBox.Name = "overworldItemGroupBox";
-            this.overworldItemGroupBox.Size = new System.Drawing.Size(350, 131);
-            this.overworldItemGroupBox.TabIndex = 0;
-            this.overworldItemGroupBox.TabStop = false;
-            this.overworldItemGroupBox.Text = "Overworld Items";
+            overworldItemGroupBox.Controls.Add(tableLayoutPanel24);
+            overworldItemGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            overworldItemGroupBox.Location = new System.Drawing.Point(3, 3);
+            overworldItemGroupBox.Name = "overworldItemGroupBox";
+            overworldItemGroupBox.Size = new System.Drawing.Size(350, 131);
+            overworldItemGroupBox.TabIndex = 0;
+            overworldItemGroupBox.TabStop = false;
+            overworldItemGroupBox.Text = "Overworld Items";
             // 
             // tableLayoutPanel24
             // 
-            this.tableLayoutPanel24.ColumnCount = 2;
-            this.tableLayoutPanel24.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel24.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
-            this.tableLayoutPanel24.Controls.Add(this.randomizeItemQuantityCheck, 1, 1);
-            this.tableLayoutPanel24.Controls.Add(this.randomizeOverworldItemsCheck, 1, 0);
-            this.tableLayoutPanel24.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel24.Location = new System.Drawing.Point(3, 19);
-            this.tableLayoutPanel24.Name = "tableLayoutPanel24";
-            this.tableLayoutPanel24.RowCount = 4;
-            this.tableLayoutPanel24.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel24.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel24.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel24.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel24.Size = new System.Drawing.Size(344, 109);
-            this.tableLayoutPanel24.TabIndex = 2;
+            tableLayoutPanel24.ColumnCount = 2;
+            tableLayoutPanel24.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            tableLayoutPanel24.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            tableLayoutPanel24.Controls.Add(randomizeItemQuantityCheck, 1, 1);
+            tableLayoutPanel24.Controls.Add(randomizeOverworldItemsCheck, 1, 0);
+            tableLayoutPanel24.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel24.Location = new System.Drawing.Point(3, 19);
+            tableLayoutPanel24.Name = "tableLayoutPanel24";
+            tableLayoutPanel24.RowCount = 4;
+            tableLayoutPanel24.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel24.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel24.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel24.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel24.Size = new System.Drawing.Size(344, 109);
+            tableLayoutPanel24.TabIndex = 2;
             // 
             // randomizeItemQuantityCheck
             // 
-            this.randomizeItemQuantityCheck.AutoSize = true;
-            this.randomizeItemQuantityCheck.Location = new System.Drawing.Point(37, 30);
-            this.randomizeItemQuantityCheck.Name = "randomizeItemQuantityCheck";
-            this.randomizeItemQuantityCheck.Size = new System.Drawing.Size(161, 19);
-            this.randomizeItemQuantityCheck.TabIndex = 2;
-            this.randomizeItemQuantityCheck.Text = "Randomize Item Quantity";
-            this.infoToolTip.SetToolTip(this.randomizeItemQuantityCheck, "Items will give a random quantity from 1 to 5.\r\nNote: this may make the game subs" +
-        "tantially easier.");
-            this.randomizeItemQuantityCheck.UseVisualStyleBackColor = true;
+            randomizeItemQuantityCheck.AutoSize = true;
+            randomizeItemQuantityCheck.Location = new System.Drawing.Point(37, 30);
+            randomizeItemQuantityCheck.Name = "randomizeItemQuantityCheck";
+            randomizeItemQuantityCheck.Size = new System.Drawing.Size(161, 19);
+            randomizeItemQuantityCheck.TabIndex = 2;
+            randomizeItemQuantityCheck.Text = "Randomize Item Quantity";
+            infoToolTip.SetToolTip(randomizeItemQuantityCheck, "Items will give a random quantity from 1 to 5.\r\nNote: this may make the game substantially easier.");
+            randomizeItemQuantityCheck.UseVisualStyleBackColor = true;
             // 
             // randomizeOverworldItemsCheck
             // 
-            this.randomizeOverworldItemsCheck.AutoSize = true;
-            this.randomizeOverworldItemsCheck.Location = new System.Drawing.Point(37, 3);
-            this.randomizeOverworldItemsCheck.Name = "randomizeOverworldItemsCheck";
-            this.randomizeOverworldItemsCheck.Size = new System.Drawing.Size(175, 19);
-            this.randomizeOverworldItemsCheck.TabIndex = 0;
-            this.randomizeOverworldItemsCheck.Text = "Randomize Overworld Items";
-            this.randomizeOverworldItemsCheck.UseVisualStyleBackColor = true;
+            randomizeOverworldItemsCheck.AutoSize = true;
+            randomizeOverworldItemsCheck.Location = new System.Drawing.Point(37, 3);
+            randomizeOverworldItemsCheck.Name = "randomizeOverworldItemsCheck";
+            randomizeOverworldItemsCheck.Size = new System.Drawing.Size(175, 19);
+            randomizeOverworldItemsCheck.TabIndex = 0;
+            randomizeOverworldItemsCheck.Text = "Randomize Overworld Items";
+            randomizeOverworldItemsCheck.UseVisualStyleBackColor = true;
             // 
             // martGroupBox
             // 
-            this.martGroupBox.Controls.Add(this.tableLayoutPanel25);
-            this.martGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.martGroupBox.Location = new System.Drawing.Point(359, 3);
-            this.martGroupBox.Name = "martGroupBox";
-            this.martGroupBox.Size = new System.Drawing.Size(350, 131);
-            this.martGroupBox.TabIndex = 1;
-            this.martGroupBox.TabStop = false;
-            this.martGroupBox.Text = "Marts";
+            martGroupBox.Controls.Add(tableLayoutPanel25);
+            martGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            martGroupBox.Location = new System.Drawing.Point(359, 3);
+            martGroupBox.Name = "martGroupBox";
+            martGroupBox.Size = new System.Drawing.Size(350, 131);
+            martGroupBox.TabIndex = 1;
+            martGroupBox.TabStop = false;
+            martGroupBox.Text = "Marts";
             // 
             // tableLayoutPanel25
             // 
-            this.tableLayoutPanel25.ColumnCount = 2;
-            this.tableLayoutPanel25.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel25.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
-            this.tableLayoutPanel25.Controls.Add(this.martsSellXItemsCheck, 1, 2);
-            this.tableLayoutPanel25.Controls.Add(this.randomizeMartItems, 1, 0);
-            this.tableLayoutPanel25.Controls.Add(this.martsSellEvoStonesCheck, 1, 1);
-            this.tableLayoutPanel25.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel25.Location = new System.Drawing.Point(3, 19);
-            this.tableLayoutPanel25.Name = "tableLayoutPanel25";
-            this.tableLayoutPanel25.RowCount = 4;
-            this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel25.Size = new System.Drawing.Size(344, 109);
-            this.tableLayoutPanel25.TabIndex = 2;
+            tableLayoutPanel25.ColumnCount = 2;
+            tableLayoutPanel25.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            tableLayoutPanel25.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            tableLayoutPanel25.Controls.Add(martsSellXItemsCheck, 1, 2);
+            tableLayoutPanel25.Controls.Add(randomizeMartItems, 1, 0);
+            tableLayoutPanel25.Controls.Add(martsSellEvoStonesCheck, 1, 1);
+            tableLayoutPanel25.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel25.Location = new System.Drawing.Point(3, 19);
+            tableLayoutPanel25.Name = "tableLayoutPanel25";
+            tableLayoutPanel25.RowCount = 4;
+            tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel25.Size = new System.Drawing.Size(344, 109);
+            tableLayoutPanel25.TabIndex = 2;
             // 
             // martsSellXItemsCheck
             // 
-            this.martsSellXItemsCheck.AutoSize = true;
-            this.martsSellXItemsCheck.Location = new System.Drawing.Point(37, 57);
-            this.martsSellXItemsCheck.Name = "martsSellXItemsCheck";
-            this.martsSellXItemsCheck.Size = new System.Drawing.Size(138, 19);
-            this.martsSellXItemsCheck.TabIndex = 2;
-            this.martsSellXItemsCheck.Text = "All Marts Sell X-Items";
-            this.infoToolTip.SetToolTip(this.martsSellXItemsCheck, "Every mart will sell X-Items at regular price.");
-            this.martsSellXItemsCheck.UseVisualStyleBackColor = true;
-            this.martsSellXItemsCheck.Visible = false;
+            martsSellXItemsCheck.AutoSize = true;
+            martsSellXItemsCheck.Location = new System.Drawing.Point(37, 57);
+            martsSellXItemsCheck.Name = "martsSellXItemsCheck";
+            martsSellXItemsCheck.Size = new System.Drawing.Size(138, 19);
+            martsSellXItemsCheck.TabIndex = 2;
+            martsSellXItemsCheck.Text = "All Marts Sell X-Items";
+            infoToolTip.SetToolTip(martsSellXItemsCheck, "Every mart will sell X-Items at regular price.");
+            martsSellXItemsCheck.UseVisualStyleBackColor = true;
+            martsSellXItemsCheck.Visible = false;
             // 
             // randomizeMartItems
             // 
-            this.randomizeMartItems.AutoSize = true;
-            this.randomizeMartItems.Location = new System.Drawing.Point(37, 3);
-            this.randomizeMartItems.Name = "randomizeMartItems";
-            this.randomizeMartItems.Size = new System.Drawing.Size(145, 19);
-            this.randomizeMartItems.TabIndex = 3;
-            this.randomizeMartItems.Text = "Randomize Mart Items";
-            this.randomizeMartItems.UseVisualStyleBackColor = true;
+            randomizeMartItems.AutoSize = true;
+            randomizeMartItems.Location = new System.Drawing.Point(37, 3);
+            randomizeMartItems.Name = "randomizeMartItems";
+            randomizeMartItems.Size = new System.Drawing.Size(145, 19);
+            randomizeMartItems.TabIndex = 3;
+            randomizeMartItems.Text = "Randomize Mart Items";
+            randomizeMartItems.UseVisualStyleBackColor = true;
             // 
             // martsSellEvoStonesCheck
             // 
-            this.martsSellEvoStonesCheck.AutoSize = true;
-            this.martsSellEvoStonesCheck.Location = new System.Drawing.Point(37, 30);
-            this.martsSellEvoStonesCheck.Name = "martsSellEvoStonesCheck";
-            this.martsSellEvoStonesCheck.Size = new System.Drawing.Size(202, 19);
-            this.martsSellEvoStonesCheck.TabIndex = 0;
-            this.martsSellEvoStonesCheck.Text = "Agate Mart Sells Evolution Stones";
-            this.infoToolTip.SetToolTip(this.martsSellEvoStonesCheck, resources.GetString("martsSellEvoStonesCheck.ToolTip"));
-            this.martsSellEvoStonesCheck.UseVisualStyleBackColor = true;
+            martsSellEvoStonesCheck.AutoSize = true;
+            martsSellEvoStonesCheck.Location = new System.Drawing.Point(37, 30);
+            martsSellEvoStonesCheck.Name = "martsSellEvoStonesCheck";
+            martsSellEvoStonesCheck.Size = new System.Drawing.Size(202, 19);
+            martsSellEvoStonesCheck.TabIndex = 0;
+            martsSellEvoStonesCheck.Text = "Agate Mart Sells Evolution Stones";
+            infoToolTip.SetToolTip(martsSellEvoStonesCheck, resources.GetString("martsSellEvoStonesCheck.ToolTip"));
+            martsSellEvoStonesCheck.UseVisualStyleBackColor = true;
             // 
             // pokemonItemGroupBox
             // 
-            this.pokemonItemGroupBox.Controls.Add(this.tableLayoutPanel30);
-            this.pokemonItemGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pokemonItemGroupBox.Location = new System.Drawing.Point(3, 140);
-            this.pokemonItemGroupBox.Name = "pokemonItemGroupBox";
-            this.pokemonItemGroupBox.Size = new System.Drawing.Size(350, 131);
-            this.pokemonItemGroupBox.TabIndex = 2;
-            this.pokemonItemGroupBox.TabStop = false;
-            this.pokemonItemGroupBox.Text = "Pokemon";
+            pokemonItemGroupBox.Controls.Add(tableLayoutPanel30);
+            pokemonItemGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            pokemonItemGroupBox.Location = new System.Drawing.Point(3, 140);
+            pokemonItemGroupBox.Name = "pokemonItemGroupBox";
+            pokemonItemGroupBox.Size = new System.Drawing.Size(350, 131);
+            pokemonItemGroupBox.TabIndex = 2;
+            pokemonItemGroupBox.TabStop = false;
+            pokemonItemGroupBox.Text = "Pokemon";
             // 
             // tableLayoutPanel30
             // 
-            this.tableLayoutPanel30.ColumnCount = 2;
-            this.tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
-            this.tableLayoutPanel30.Controls.Add(this.randomHeldItemCheck, 1, 0);
-            this.tableLayoutPanel30.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel30.Location = new System.Drawing.Point(3, 19);
-            this.tableLayoutPanel30.Name = "tableLayoutPanel30";
-            this.tableLayoutPanel30.RowCount = 4;
-            this.tableLayoutPanel30.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel30.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel30.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel30.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel30.Size = new System.Drawing.Size(344, 109);
-            this.tableLayoutPanel30.TabIndex = 0;
+            tableLayoutPanel30.ColumnCount = 2;
+            tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            tableLayoutPanel30.Controls.Add(randomHeldItemCheck, 1, 0);
+            tableLayoutPanel30.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel30.Location = new System.Drawing.Point(3, 19);
+            tableLayoutPanel30.Name = "tableLayoutPanel30";
+            tableLayoutPanel30.RowCount = 4;
+            tableLayoutPanel30.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel30.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel30.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel30.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel30.Size = new System.Drawing.Size(344, 109);
+            tableLayoutPanel30.TabIndex = 0;
             // 
             // randomHeldItemCheck
             // 
-            this.randomHeldItemCheck.AutoSize = true;
-            this.randomHeldItemCheck.Location = new System.Drawing.Point(37, 3);
-            this.randomHeldItemCheck.Name = "randomHeldItemCheck";
-            this.randomHeldItemCheck.Size = new System.Drawing.Size(145, 19);
-            this.randomHeldItemCheck.TabIndex = 11;
-            this.randomHeldItemCheck.Text = "Randomize Held Items";
-            this.infoToolTip.SetToolTip(this.randomHeldItemCheck, "All Pokemon will have their held item randomized.");
-            this.randomHeldItemCheck.UseVisualStyleBackColor = true;
+            randomHeldItemCheck.AutoSize = true;
+            randomHeldItemCheck.Location = new System.Drawing.Point(37, 3);
+            randomHeldItemCheck.Name = "randomHeldItemCheck";
+            randomHeldItemCheck.Size = new System.Drawing.Size(145, 19);
+            randomHeldItemCheck.TabIndex = 11;
+            randomHeldItemCheck.Text = "Randomize Held Items";
+            infoToolTip.SetToolTip(randomHeldItemCheck, "All Pokemon will have their held item randomized.");
+            randomHeldItemCheck.UseVisualStyleBackColor = true;
             // 
             // miscItemGroupBox
             // 
-            this.miscItemGroupBox.Controls.Add(this.tableLayoutPanel31);
-            this.miscItemGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.miscItemGroupBox.Location = new System.Drawing.Point(359, 140);
-            this.miscItemGroupBox.Name = "miscItemGroupBox";
-            this.miscItemGroupBox.Size = new System.Drawing.Size(350, 131);
-            this.miscItemGroupBox.TabIndex = 3;
-            this.miscItemGroupBox.TabStop = false;
-            this.miscItemGroupBox.Text = "Misc";
+            miscItemGroupBox.Controls.Add(tableLayoutPanel31);
+            miscItemGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            miscItemGroupBox.Location = new System.Drawing.Point(359, 140);
+            miscItemGroupBox.Name = "miscItemGroupBox";
+            miscItemGroupBox.Size = new System.Drawing.Size(350, 131);
+            miscItemGroupBox.TabIndex = 3;
+            miscItemGroupBox.TabStop = false;
+            miscItemGroupBox.Text = "Misc";
             // 
             // tableLayoutPanel31
             // 
-            this.tableLayoutPanel31.ColumnCount = 2;
-            this.tableLayoutPanel31.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel31.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
-            this.tableLayoutPanel31.Controls.Add(this.banBadItemsCheck, 1, 0);
-            this.tableLayoutPanel31.Controls.Add(this.banBattleCDsCheck, 1, 1);
-            this.tableLayoutPanel31.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel31.Location = new System.Drawing.Point(3, 19);
-            this.tableLayoutPanel31.Name = "tableLayoutPanel31";
-            this.tableLayoutPanel31.RowCount = 4;
-            this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel31.Size = new System.Drawing.Size(344, 109);
-            this.tableLayoutPanel31.TabIndex = 1;
+            tableLayoutPanel31.ColumnCount = 2;
+            tableLayoutPanel31.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            tableLayoutPanel31.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            tableLayoutPanel31.Controls.Add(banBadItemsCheck, 1, 0);
+            tableLayoutPanel31.Controls.Add(banBattleCDsCheck, 1, 1);
+            tableLayoutPanel31.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel31.Location = new System.Drawing.Point(3, 19);
+            tableLayoutPanel31.Name = "tableLayoutPanel31";
+            tableLayoutPanel31.RowCount = 4;
+            tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel31.Size = new System.Drawing.Size(344, 109);
+            tableLayoutPanel31.TabIndex = 1;
             // 
             // banBadItemsCheck
             // 
-            this.banBadItemsCheck.AutoSize = true;
-            this.banBadItemsCheck.Location = new System.Drawing.Point(37, 3);
-            this.banBadItemsCheck.Name = "banBadItemsCheck";
-            this.banBadItemsCheck.Size = new System.Drawing.Size(101, 19);
-            this.banBadItemsCheck.TabIndex = 12;
-            this.banBadItemsCheck.Text = "Ban Bad Items";
-            this.infoToolTip.SetToolTip(this.banBadItemsCheck, resources.GetString("banBadItemsCheck.ToolTip"));
-            this.banBadItemsCheck.UseVisualStyleBackColor = true;
+            banBadItemsCheck.AutoSize = true;
+            banBadItemsCheck.Location = new System.Drawing.Point(37, 3);
+            banBadItemsCheck.Name = "banBadItemsCheck";
+            banBadItemsCheck.Size = new System.Drawing.Size(101, 19);
+            banBadItemsCheck.TabIndex = 12;
+            banBadItemsCheck.Text = "Ban Bad Items";
+            infoToolTip.SetToolTip(banBadItemsCheck, resources.GetString("banBadItemsCheck.ToolTip"));
+            banBadItemsCheck.UseVisualStyleBackColor = true;
             // 
             // banBattleCDsCheck
             // 
-            this.banBattleCDsCheck.AutoSize = true;
-            this.banBattleCDsCheck.Location = new System.Drawing.Point(37, 30);
-            this.banBattleCDsCheck.Name = "banBattleCDsCheck";
-            this.banBattleCDsCheck.Size = new System.Drawing.Size(103, 19);
-            this.banBattleCDsCheck.TabIndex = 3;
-            this.banBattleCDsCheck.Text = "Ban Battle CDs";
-            this.infoToolTip.SetToolTip(this.banBattleCDsCheck, "Bans Battle CDs from the item pool.\r\nNote: This means you won\'t be able to do Sim" +
-        " Battles at Realgam Tower");
-            this.banBattleCDsCheck.UseVisualStyleBackColor = true;
+            banBattleCDsCheck.AutoSize = true;
+            banBattleCDsCheck.Location = new System.Drawing.Point(37, 30);
+            banBattleCDsCheck.Name = "banBattleCDsCheck";
+            banBattleCDsCheck.Size = new System.Drawing.Size(103, 19);
+            banBattleCDsCheck.TabIndex = 3;
+            banBattleCDsCheck.Text = "Ban Battle CDs";
+            infoToolTip.SetToolTip(banBattleCDsCheck, "Bans Battle CDs from the item pool.\r\nNote: This means you won't be able to do Sim Battles at Realgam Tower");
+            banBattleCDsCheck.UseVisualStyleBackColor = true;
             // 
             // battleBingoTabPage
             // 
-            this.battleBingoTabPage.Controls.Add(this.tableLayoutPanel10);
-            this.battleBingoTabPage.Location = new System.Drawing.Point(4, 24);
-            this.battleBingoTabPage.Name = "battleBingoTabPage";
-            this.battleBingoTabPage.Size = new System.Drawing.Size(718, 280);
-            this.battleBingoTabPage.TabIndex = 6;
-            this.battleBingoTabPage.Text = "Battle Bingo";
-            this.battleBingoTabPage.UseVisualStyleBackColor = true;
+            battleBingoTabPage.Controls.Add(tableLayoutPanel10);
+            battleBingoTabPage.Location = new System.Drawing.Point(4, 24);
+            battleBingoTabPage.Name = "battleBingoTabPage";
+            battleBingoTabPage.Size = new System.Drawing.Size(718, 280);
+            battleBingoTabPage.TabIndex = 6;
+            battleBingoTabPage.Text = "Battle Bingo";
+            battleBingoTabPage.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel10
             // 
-            this.tableLayoutPanel10.ColumnCount = 2;
-            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel10.Controls.Add(this.groupBox6, 0, 0);
-            this.tableLayoutPanel10.Controls.Add(this.bingoPokemonGroupBox, 1, 0);
-            this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel10.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel10.Name = "tableLayoutPanel10";
-            this.tableLayoutPanel10.RowCount = 2;
-            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(718, 280);
-            this.tableLayoutPanel10.TabIndex = 0;
+            tableLayoutPanel10.ColumnCount = 2;
+            tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel10.Controls.Add(groupBox6, 0, 0);
+            tableLayoutPanel10.Controls.Add(bingoPokemonGroupBox, 1, 0);
+            tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel10.Location = new System.Drawing.Point(0, 0);
+            tableLayoutPanel10.Name = "tableLayoutPanel10";
+            tableLayoutPanel10.RowCount = 2;
+            tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel10.Size = new System.Drawing.Size(718, 280);
+            tableLayoutPanel10.TabIndex = 0;
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.tableLayoutPanel26);
-            this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox6.Location = new System.Drawing.Point(3, 3);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(353, 134);
-            this.groupBox6.TabIndex = 0;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Moves";
+            groupBox6.Controls.Add(tableLayoutPanel26);
+            groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBox6.Location = new System.Drawing.Point(3, 3);
+            groupBox6.Name = "groupBox6";
+            groupBox6.Size = new System.Drawing.Size(353, 134);
+            groupBox6.TabIndex = 0;
+            groupBox6.TabStop = false;
+            groupBox6.Text = "Moves";
             // 
             // tableLayoutPanel26
             // 
-            this.tableLayoutPanel26.ColumnCount = 2;
-            this.tableLayoutPanel26.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel26.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
-            this.tableLayoutPanel26.Controls.Add(this.bingoBanShadowMovesCheck, 1, 3);
-            this.tableLayoutPanel26.Controls.Add(this.bingoUseStabMoveCheck, 1, 2);
-            this.tableLayoutPanel26.Controls.Add(this.bingoUseDamagingMoveCheck, 1, 1);
-            this.tableLayoutPanel26.Controls.Add(this.randomizeBattleBingoMovesetsCheck, 1, 0);
-            this.tableLayoutPanel26.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel26.Location = new System.Drawing.Point(3, 19);
-            this.tableLayoutPanel26.Name = "tableLayoutPanel26";
-            this.tableLayoutPanel26.RowCount = 4;
-            this.tableLayoutPanel26.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel26.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel26.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel26.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel26.Size = new System.Drawing.Size(347, 112);
-            this.tableLayoutPanel26.TabIndex = 2;
+            tableLayoutPanel26.ColumnCount = 2;
+            tableLayoutPanel26.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            tableLayoutPanel26.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            tableLayoutPanel26.Controls.Add(bingoBanShadowMovesCheck, 1, 3);
+            tableLayoutPanel26.Controls.Add(bingoUseStabMoveCheck, 1, 2);
+            tableLayoutPanel26.Controls.Add(bingoUseDamagingMoveCheck, 1, 1);
+            tableLayoutPanel26.Controls.Add(randomizeBattleBingoMovesetsCheck, 1, 0);
+            tableLayoutPanel26.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel26.Location = new System.Drawing.Point(3, 19);
+            tableLayoutPanel26.Name = "tableLayoutPanel26";
+            tableLayoutPanel26.RowCount = 4;
+            tableLayoutPanel26.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel26.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel26.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel26.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel26.Size = new System.Drawing.Size(347, 112);
+            tableLayoutPanel26.TabIndex = 2;
             // 
             // bingoBanShadowMovesCheck
             // 
-            this.bingoBanShadowMovesCheck.AutoSize = true;
-            this.bingoBanShadowMovesCheck.Enabled = false;
-            this.bingoBanShadowMovesCheck.Location = new System.Drawing.Point(37, 87);
-            this.bingoBanShadowMovesCheck.Name = "bingoBanShadowMovesCheck";
-            this.bingoBanShadowMovesCheck.Size = new System.Drawing.Size(129, 19);
-            this.bingoBanShadowMovesCheck.TabIndex = 30;
-            this.bingoBanShadowMovesCheck.Text = "Ban Shadow Moves";
-            this.infoToolTip.SetToolTip(this.bingoBanShadowMovesCheck, "Prevent shadow moves from being selected for bingo.\r\nNote: this affects both star" +
-        "ter and card Pokemon.");
-            this.bingoBanShadowMovesCheck.UseVisualStyleBackColor = true;
+            bingoBanShadowMovesCheck.AutoSize = true;
+            bingoBanShadowMovesCheck.Enabled = false;
+            bingoBanShadowMovesCheck.Location = new System.Drawing.Point(37, 87);
+            bingoBanShadowMovesCheck.Name = "bingoBanShadowMovesCheck";
+            bingoBanShadowMovesCheck.Size = new System.Drawing.Size(129, 19);
+            bingoBanShadowMovesCheck.TabIndex = 30;
+            bingoBanShadowMovesCheck.Text = "Ban Shadow Moves";
+            infoToolTip.SetToolTip(bingoBanShadowMovesCheck, "Prevent shadow moves from being selected for bingo.\r\nNote: this affects both starter and card Pokemon.");
+            bingoBanShadowMovesCheck.UseVisualStyleBackColor = true;
             // 
             // bingoUseStabMoveCheck
             // 
-            this.bingoUseStabMoveCheck.AutoSize = true;
-            this.bingoUseStabMoveCheck.Enabled = false;
-            this.bingoUseStabMoveCheck.Location = new System.Drawing.Point(37, 59);
-            this.bingoUseStabMoveCheck.Name = "bingoUseStabMoveCheck";
-            this.bingoUseStabMoveCheck.Size = new System.Drawing.Size(112, 19);
-            this.bingoUseStabMoveCheck.TabIndex = 1;
-            this.bingoUseStabMoveCheck.Text = "Use STAB Moves";
-            this.infoToolTip.SetToolTip(this.bingoUseStabMoveCheck, "Select a move that\'s the same type as the Pokemon on the card.\r\nNote: this affect" +
-        "s both starter and card Pokemon.");
-            this.bingoUseStabMoveCheck.UseVisualStyleBackColor = true;
+            bingoUseStabMoveCheck.AutoSize = true;
+            bingoUseStabMoveCheck.Enabled = false;
+            bingoUseStabMoveCheck.Location = new System.Drawing.Point(37, 59);
+            bingoUseStabMoveCheck.Name = "bingoUseStabMoveCheck";
+            bingoUseStabMoveCheck.Size = new System.Drawing.Size(112, 19);
+            bingoUseStabMoveCheck.TabIndex = 1;
+            bingoUseStabMoveCheck.Text = "Use STAB Moves";
+            infoToolTip.SetToolTip(bingoUseStabMoveCheck, "Select a move that's the same type as the Pokemon on the card.\r\nNote: this affects both starter and card Pokemon.");
+            bingoUseStabMoveCheck.UseVisualStyleBackColor = true;
             // 
             // bingoUseDamagingMoveCheck
             // 
-            this.bingoUseDamagingMoveCheck.AutoSize = true;
-            this.bingoUseDamagingMoveCheck.Enabled = false;
-            this.bingoUseDamagingMoveCheck.Location = new System.Drawing.Point(37, 31);
-            this.bingoUseDamagingMoveCheck.Name = "bingoUseDamagingMoveCheck";
-            this.bingoUseDamagingMoveCheck.Size = new System.Drawing.Size(168, 19);
-            this.bingoUseDamagingMoveCheck.TabIndex = 0;
-            this.bingoUseDamagingMoveCheck.Text = "Use Good Damaging Move";
-            this.infoToolTip.SetToolTip(this.bingoUseDamagingMoveCheck, "Note: this affects both starter and card Pokemon.\r\nWhat qualifies as good is conf" +
-        "igurable in the Options menu.");
-            this.bingoUseDamagingMoveCheck.UseVisualStyleBackColor = true;
+            bingoUseDamagingMoveCheck.AutoSize = true;
+            bingoUseDamagingMoveCheck.Enabled = false;
+            bingoUseDamagingMoveCheck.Location = new System.Drawing.Point(37, 31);
+            bingoUseDamagingMoveCheck.Name = "bingoUseDamagingMoveCheck";
+            bingoUseDamagingMoveCheck.Size = new System.Drawing.Size(168, 19);
+            bingoUseDamagingMoveCheck.TabIndex = 0;
+            bingoUseDamagingMoveCheck.Text = "Use Good Damaging Move";
+            infoToolTip.SetToolTip(bingoUseDamagingMoveCheck, "Note: this affects both starter and card Pokemon.\r\nWhat qualifies as good is configurable in the Options menu.");
+            bingoUseDamagingMoveCheck.UseVisualStyleBackColor = true;
             // 
             // randomizeBattleBingoMovesetsCheck
             // 
-            this.randomizeBattleBingoMovesetsCheck.AutoSize = true;
-            this.randomizeBattleBingoMovesetsCheck.Location = new System.Drawing.Point(37, 3);
-            this.randomizeBattleBingoMovesetsCheck.Name = "randomizeBattleBingoMovesetsCheck";
-            this.randomizeBattleBingoMovesetsCheck.Size = new System.Drawing.Size(138, 19);
-            this.randomizeBattleBingoMovesetsCheck.TabIndex = 31;
-            this.randomizeBattleBingoMovesetsCheck.Text = "Randomize Movesets";
-            this.randomizeBattleBingoMovesetsCheck.UseVisualStyleBackColor = true;
-            this.randomizeBattleBingoMovesetsCheck.CheckedChanged += new System.EventHandler(this.randomizeBattleBingoMovesetsCheck_CheckedChanged);
+            randomizeBattleBingoMovesetsCheck.AutoSize = true;
+            randomizeBattleBingoMovesetsCheck.Location = new System.Drawing.Point(37, 3);
+            randomizeBattleBingoMovesetsCheck.Name = "randomizeBattleBingoMovesetsCheck";
+            randomizeBattleBingoMovesetsCheck.Size = new System.Drawing.Size(138, 19);
+            randomizeBattleBingoMovesetsCheck.TabIndex = 31;
+            randomizeBattleBingoMovesetsCheck.Text = "Randomize Movesets";
+            randomizeBattleBingoMovesetsCheck.UseVisualStyleBackColor = true;
+            randomizeBattleBingoMovesetsCheck.CheckedChanged += randomizeBattleBingoMovesetsCheck_CheckedChanged;
             // 
             // bingoPokemonGroupBox
             // 
-            this.bingoPokemonGroupBox.Controls.Add(this.tableLayoutPanel27);
-            this.bingoPokemonGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bingoPokemonGroupBox.Location = new System.Drawing.Point(362, 3);
-            this.bingoPokemonGroupBox.Name = "bingoPokemonGroupBox";
-            this.bingoPokemonGroupBox.Size = new System.Drawing.Size(353, 134);
-            this.bingoPokemonGroupBox.TabIndex = 1;
-            this.bingoPokemonGroupBox.TabStop = false;
-            this.bingoPokemonGroupBox.Text = "Pokemon";
+            bingoPokemonGroupBox.Controls.Add(tableLayoutPanel27);
+            bingoPokemonGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            bingoPokemonGroupBox.Location = new System.Drawing.Point(362, 3);
+            bingoPokemonGroupBox.Name = "bingoPokemonGroupBox";
+            bingoPokemonGroupBox.Size = new System.Drawing.Size(353, 134);
+            bingoPokemonGroupBox.TabIndex = 1;
+            bingoPokemonGroupBox.TabStop = false;
+            bingoPokemonGroupBox.Text = "Pokemon";
             // 
             // tableLayoutPanel27
             // 
-            this.tableLayoutPanel27.ColumnCount = 2;
-            this.tableLayoutPanel27.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel27.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
-            this.tableLayoutPanel27.Controls.Add(this.bingoUseStrongPokemon, 1, 1);
-            this.tableLayoutPanel27.Controls.Add(this.randomizeBattleBingoPokemonCheck, 1, 0);
-            this.tableLayoutPanel27.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel27.Location = new System.Drawing.Point(3, 19);
-            this.tableLayoutPanel27.Name = "tableLayoutPanel27";
-            this.tableLayoutPanel27.RowCount = 4;
-            this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel27.Size = new System.Drawing.Size(347, 112);
-            this.tableLayoutPanel27.TabIndex = 3;
+            tableLayoutPanel27.ColumnCount = 2;
+            tableLayoutPanel27.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            tableLayoutPanel27.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            tableLayoutPanel27.Controls.Add(bingoUseStrongPokemon, 1, 1);
+            tableLayoutPanel27.Controls.Add(randomizeBattleBingoPokemonCheck, 1, 0);
+            tableLayoutPanel27.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel27.Location = new System.Drawing.Point(3, 19);
+            tableLayoutPanel27.Name = "tableLayoutPanel27";
+            tableLayoutPanel27.RowCount = 4;
+            tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel27.Size = new System.Drawing.Size(347, 112);
+            tableLayoutPanel27.TabIndex = 3;
             // 
             // bingoUseStrongPokemon
             // 
-            this.bingoUseStrongPokemon.AutoSize = true;
-            this.bingoUseStrongPokemon.Enabled = false;
-            this.bingoUseStrongPokemon.Location = new System.Drawing.Point(37, 31);
-            this.bingoUseStrongPokemon.Name = "bingoUseStrongPokemon";
-            this.bingoUseStrongPokemon.Size = new System.Drawing.Size(137, 19);
-            this.bingoUseStrongPokemon.TabIndex = 0;
-            this.bingoUseStrongPokemon.Text = "Use Strong Pokemon";
-            this.infoToolTip.SetToolTip(this.bingoUseStrongPokemon, "Only pick Pokemon with a BST greater than what\'s defined in the configuration.");
-            this.bingoUseStrongPokemon.UseVisualStyleBackColor = true;
+            bingoUseStrongPokemon.AutoSize = true;
+            bingoUseStrongPokemon.Enabled = false;
+            bingoUseStrongPokemon.Location = new System.Drawing.Point(37, 31);
+            bingoUseStrongPokemon.Name = "bingoUseStrongPokemon";
+            bingoUseStrongPokemon.Size = new System.Drawing.Size(137, 19);
+            bingoUseStrongPokemon.TabIndex = 0;
+            bingoUseStrongPokemon.Text = "Use Strong Pokemon";
+            infoToolTip.SetToolTip(bingoUseStrongPokemon, "Only pick Pokemon with a BST greater than what's defined in the configuration.");
+            bingoUseStrongPokemon.UseVisualStyleBackColor = true;
             // 
             // randomizeBattleBingoPokemonCheck
             // 
-            this.randomizeBattleBingoPokemonCheck.AutoSize = true;
-            this.randomizeBattleBingoPokemonCheck.Location = new System.Drawing.Point(37, 3);
-            this.randomizeBattleBingoPokemonCheck.Name = "randomizeBattleBingoPokemonCheck";
-            this.randomizeBattleBingoPokemonCheck.Size = new System.Drawing.Size(139, 19);
-            this.randomizeBattleBingoPokemonCheck.TabIndex = 1;
-            this.randomizeBattleBingoPokemonCheck.Text = "Randomize Pokemon";
-            this.randomizeBattleBingoPokemonCheck.UseVisualStyleBackColor = true;
-            this.randomizeBattleBingoPokemonCheck.CheckedChanged += new System.EventHandler(this.randomizeBattleBingoPokemonCheck_CheckedChanged);
+            randomizeBattleBingoPokemonCheck.AutoSize = true;
+            randomizeBattleBingoPokemonCheck.Location = new System.Drawing.Point(37, 3);
+            randomizeBattleBingoPokemonCheck.Name = "randomizeBattleBingoPokemonCheck";
+            randomizeBattleBingoPokemonCheck.Size = new System.Drawing.Size(139, 19);
+            randomizeBattleBingoPokemonCheck.TabIndex = 1;
+            randomizeBattleBingoPokemonCheck.Text = "Randomize Pokemon";
+            randomizeBattleBingoPokemonCheck.UseVisualStyleBackColor = true;
+            randomizeBattleBingoPokemonCheck.CheckedChanged += randomizeBattleBingoPokemonCheck_CheckedChanged;
             // 
             // miscTabPage
             // 
-            this.miscTabPage.Controls.Add(this.noEXPCheck);
-            this.miscTabPage.Location = new System.Drawing.Point(4, 24);
-            this.miscTabPage.Name = "miscTabPage";
-            this.miscTabPage.Size = new System.Drawing.Size(718, 280);
-            this.miscTabPage.TabIndex = 7;
-            this.miscTabPage.Text = "Misc";
-            this.miscTabPage.UseVisualStyleBackColor = true;
+            miscTabPage.Controls.Add(noEXPCheck);
+            miscTabPage.Location = new System.Drawing.Point(4, 24);
+            miscTabPage.Name = "miscTabPage";
+            miscTabPage.Size = new System.Drawing.Size(718, 280);
+            miscTabPage.TabIndex = 7;
+            miscTabPage.Text = "Misc";
+            miscTabPage.UseVisualStyleBackColor = true;
             // 
             // noEXPCheck
             // 
-            this.noEXPCheck.AutoSize = true;
-            this.noEXPCheck.Location = new System.Drawing.Point(25, 26);
-            this.noEXPCheck.Name = "noEXPCheck";
-            this.noEXPCheck.Size = new System.Drawing.Size(65, 19);
-            this.noEXPCheck.TabIndex = 0;
-            this.noEXPCheck.Text = "No EXP";
-            this.infoToolTip.SetToolTip(this.noEXPCheck, "Only for masochists...");
-            this.noEXPCheck.UseVisualStyleBackColor = true;
+            noEXPCheck.AutoSize = true;
+            noEXPCheck.Location = new System.Drawing.Point(25, 26);
+            noEXPCheck.Name = "noEXPCheck";
+            noEXPCheck.Size = new System.Drawing.Size(65, 19);
+            noEXPCheck.TabIndex = 0;
+            noEXPCheck.Text = "No EXP";
+            infoToolTip.SetToolTip(noEXPCheck, "Only for masochists...");
+            noEXPCheck.UseVisualStyleBackColor = true;
             // 
             // progressBar
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.progressBar, 2);
-            this.progressBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.progressBar.Location = new System.Drawing.Point(186, 555);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(543, 24);
-            this.progressBar.TabIndex = 8;
+            tableLayoutPanel1.SetColumnSpan(progressBar, 2);
+            progressBar.Dock = System.Windows.Forms.DockStyle.Top;
+            progressBar.Location = new System.Drawing.Point(186, 555);
+            progressBar.Name = "progressBar";
+            progressBar.Size = new System.Drawing.Size(543, 24);
+            progressBar.TabIndex = 8;
             // 
             // tableLayoutPanel9
             // 
-            this.tableLayoutPanel9.ColumnCount = 1;
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel9.Controls.Add(this.progressLabel, 0, 0);
-            this.tableLayoutPanel9.Controls.Add(this.progressMessageLabel, 0, 1);
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 555);
-            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
-            this.tableLayoutPanel9.RowCount = 2;
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(172, 42);
-            this.tableLayoutPanel9.TabIndex = 11;
+            tableLayoutPanel9.ColumnCount = 1;
+            tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            tableLayoutPanel9.Controls.Add(progressLabel, 0, 0);
+            tableLayoutPanel9.Controls.Add(progressMessageLabel, 0, 1);
+            tableLayoutPanel9.Location = new System.Drawing.Point(3, 555);
+            tableLayoutPanel9.Name = "tableLayoutPanel9";
+            tableLayoutPanel9.RowCount = 2;
+            tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel9.Size = new System.Drawing.Size(172, 42);
+            tableLayoutPanel9.TabIndex = 11;
             // 
             // progressLabel
             // 
-            this.progressLabel.AutoSize = true;
-            this.progressLabel.Location = new System.Drawing.Point(3, 0);
-            this.progressLabel.Name = "progressLabel";
-            this.progressLabel.Size = new System.Drawing.Size(55, 15);
-            this.progressLabel.TabIndex = 10;
-            this.progressLabel.Text = "Progress:";
+            progressLabel.AutoSize = true;
+            progressLabel.Location = new System.Drawing.Point(3, 0);
+            progressLabel.Name = "progressLabel";
+            progressLabel.Size = new System.Drawing.Size(55, 15);
+            progressLabel.TabIndex = 10;
+            progressLabel.Text = "Progress:";
             // 
             // progressMessageLabel
             // 
-            this.progressMessageLabel.AutoSize = true;
-            this.progressMessageLabel.Location = new System.Drawing.Point(3, 21);
-            this.progressMessageLabel.Name = "progressMessageLabel";
-            this.progressMessageLabel.Size = new System.Drawing.Size(57, 15);
-            this.progressMessageLabel.TabIndex = 11;
-            this.progressMessageLabel.Text = "Waiting...";
+            progressMessageLabel.AutoSize = true;
+            progressMessageLabel.Location = new System.Drawing.Point(3, 21);
+            progressMessageLabel.Name = "progressMessageLabel";
+            progressMessageLabel.Size = new System.Drawing.Size(57, 15);
+            progressMessageLabel.TabIndex = 11;
+            progressMessageLabel.Text = "Waiting...";
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Controls.Add(this.label3, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.label13, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.gameLabel, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.regionLabel, 1, 2);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(186, 147);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 4;
-            this.tableLayoutPanel1.SetRowSpan(this.tableLayoutPanel2, 2);
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(360, 90);
-            this.tableLayoutPanel2.TabIndex = 12;
+            tableLayoutPanel2.ColumnCount = 2;
+            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            tableLayoutPanel2.Controls.Add(label3, 0, 1);
+            tableLayoutPanel2.Controls.Add(label13, 0, 2);
+            tableLayoutPanel2.Controls.Add(gameLabel, 1, 1);
+            tableLayoutPanel2.Controls.Add(regionLabel, 1, 2);
+            tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel2.Location = new System.Drawing.Point(186, 147);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 4;
+            tableLayoutPanel1.SetRowSpan(tableLayoutPanel2, 2);
+            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel2.Size = new System.Drawing.Size(360, 90);
+            tableLayoutPanel2.TabIndex = 12;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 22);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 15);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Game:";
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(3, 22);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(41, 15);
+            label3.TabIndex = 0;
+            label3.Text = "Game:";
             // 
             // label13
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(3, 44);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(47, 15);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "Region:";
+            label13.AutoSize = true;
+            label13.Location = new System.Drawing.Point(3, 44);
+            label13.Name = "label13";
+            label13.Size = new System.Drawing.Size(47, 15);
+            label13.TabIndex = 1;
+            label13.Text = "Region:";
             // 
             // gameLabel
             // 
-            this.gameLabel.AutoSize = true;
-            this.gameLabel.Location = new System.Drawing.Point(183, 22);
-            this.gameLabel.Name = "gameLabel";
-            this.gameLabel.Size = new System.Drawing.Size(0, 15);
-            this.gameLabel.TabIndex = 2;
+            gameLabel.AutoSize = true;
+            gameLabel.Location = new System.Drawing.Point(183, 22);
+            gameLabel.Name = "gameLabel";
+            gameLabel.Size = new System.Drawing.Size(0, 15);
+            gameLabel.TabIndex = 2;
             // 
             // regionLabel
             // 
-            this.regionLabel.AutoSize = true;
-            this.regionLabel.Location = new System.Drawing.Point(183, 44);
-            this.regionLabel.Name = "regionLabel";
-            this.regionLabel.Size = new System.Drawing.Size(0, 15);
-            this.regionLabel.TabIndex = 3;
+            regionLabel.AutoSize = true;
+            regionLabel.Location = new System.Drawing.Point(183, 44);
+            regionLabel.Name = "regionLabel";
+            regionLabel.Size = new System.Drawing.Size(0, 15);
+            regionLabel.TabIndex = 3;
             // 
             // tableLayoutPanel32
             // 
-            this.tableLayoutPanel32.ColumnCount = 1;
-            this.tableLayoutPanel32.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel32.Controls.Add(this.prngDropDown, 0, 1);
-            this.tableLayoutPanel32.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel32.Location = new System.Drawing.Point(3, 99);
-            this.tableLayoutPanel32.Name = "tableLayoutPanel32";
-            this.tableLayoutPanel32.RowCount = 2;
-            this.tableLayoutPanel32.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.47619F));
-            this.tableLayoutPanel32.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 59.52381F));
-            this.tableLayoutPanel32.Size = new System.Drawing.Size(177, 42);
-            this.tableLayoutPanel32.TabIndex = 13;
+            tableLayoutPanel32.ColumnCount = 1;
+            tableLayoutPanel32.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanel32.Controls.Add(prngDropDown, 0, 1);
+            tableLayoutPanel32.Controls.Add(label1, 0, 0);
+            tableLayoutPanel32.Location = new System.Drawing.Point(3, 99);
+            tableLayoutPanel32.Name = "tableLayoutPanel32";
+            tableLayoutPanel32.RowCount = 2;
+            tableLayoutPanel32.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.47619F));
+            tableLayoutPanel32.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 59.52381F));
+            tableLayoutPanel32.Size = new System.Drawing.Size(177, 42);
+            tableLayoutPanel32.TabIndex = 13;
             // 
             // prngDropDown
             // 
-            this.prngDropDown.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.prngDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.prngDropDown.FormattingEnabled = true;
-            this.prngDropDown.Location = new System.Drawing.Point(3, 19);
-            this.prngDropDown.Name = "prngDropDown";
-            this.prngDropDown.Size = new System.Drawing.Size(171, 23);
-            this.prngDropDown.TabIndex = 0;
-            this.infoToolTip.SetToolTip(this.prngDropDown, resources.GetString("prngDropDown.ToolTip"));
-            this.prngDropDown.SelectedIndexChanged += new System.EventHandler(this.prngDropDown_SelectedIndexChanged);
+            prngDropDown.Dock = System.Windows.Forms.DockStyle.Fill;
+            prngDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            prngDropDown.FormattingEnabled = true;
+            prngDropDown.Location = new System.Drawing.Point(3, 19);
+            prngDropDown.Name = "prngDropDown";
+            prngDropDown.Size = new System.Drawing.Size(171, 23);
+            prngDropDown.TabIndex = 0;
+            infoToolTip.SetToolTip(prngDropDown, resources.GetString("prngDropDown.ToolTip"));
+            prngDropDown.SelectedIndexChanged += prngDropDown_SelectedIndexChanged;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(157, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Random Number Generator:";
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(3, 0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(157, 15);
+            label1.TabIndex = 1;
+            label1.Text = "Random Number Generator:";
             // 
             // generateLogCheck
             // 
-            this.generateLogCheck.AutoSize = true;
-            this.generateLogCheck.Dock = System.Windows.Forms.DockStyle.Top;
-            this.generateLogCheck.Location = new System.Drawing.Point(552, 195);
-            this.generateLogCheck.Name = "generateLogCheck";
-            this.generateLogCheck.Size = new System.Drawing.Size(177, 19);
-            this.generateLogCheck.TabIndex = 14;
-            this.generateLogCheck.Text = "Log to file";
-            this.generateLogCheck.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.infoToolTip.SetToolTip(this.generateLogCheck, "When checked, a log will be generated of what values were randomized and their ne" +
-        "w values.");
-            this.generateLogCheck.UseVisualStyleBackColor = true;
-            this.generateLogCheck.CheckedChanged += new System.EventHandler(this.generateLogCheck_CheckedChanged);
+            generateLogCheck.AutoSize = true;
+            generateLogCheck.Dock = System.Windows.Forms.DockStyle.Top;
+            generateLogCheck.Location = new System.Drawing.Point(552, 195);
+            generateLogCheck.Name = "generateLogCheck";
+            generateLogCheck.Size = new System.Drawing.Size(177, 19);
+            generateLogCheck.TabIndex = 14;
+            generateLogCheck.Text = "Log to file";
+            generateLogCheck.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            infoToolTip.SetToolTip(generateLogCheck, "When checked, a log will be generated of what values were randomized and their new values.");
+            generateLogCheck.UseVisualStyleBackColor = true;
+            generateLogCheck.CheckedChanged += generateLogCheck_CheckedChanged;
             // 
             // infoToolTip
             // 
-            this.infoToolTip.AutoPopDelay = 50000;
-            this.infoToolTip.InitialDelay = 500;
-            this.infoToolTip.ReshowDelay = 100;
+            infoToolTip.AutoPopDelay = 50000;
+            infoToolTip.InitialDelay = 500;
+            infoToolTip.ReshowDelay = 100;
             // 
             // backgroundWorker
             // 
-            this.backgroundWorker.WorkerReportsProgress = true;
+            backgroundWorker.WorkerReportsProgress = true;
             // 
             // tmGroupBox
             // 
-            this.tmGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tmGroupBox.Location = new System.Drawing.Point(3, 3);
-            this.tmGroupBox.Name = "tmGroupBox";
-            this.tmGroupBox.Size = new System.Drawing.Size(350, 131);
-            this.tmGroupBox.TabIndex = 24;
-            this.tmGroupBox.TabStop = false;
-            this.tmGroupBox.Text = "TMs";
+            tmGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            tmGroupBox.Location = new System.Drawing.Point(3, 3);
+            tmGroupBox.Name = "tmGroupBox";
+            tmGroupBox.Size = new System.Drawing.Size(350, 131);
+            tmGroupBox.TabIndex = 24;
+            tmGroupBox.TabStop = false;
+            tmGroupBox.Text = "TMs";
             // 
             // openSettingsDialog
             // 
-            this.openSettingsDialog.DefaultExt = "settings";
-            this.openSettingsDialog.Filter = "Settings File|*.settings";
+            openSettingsDialog.DefaultExt = "settings";
+            openSettingsDialog.Filter = "Settings File|*.settings";
             // 
             // saveSettingsDialog
             // 
-            this.saveSettingsDialog.DefaultExt = "settings";
-            this.saveSettingsDialog.Filter = "Settings File|*.settings";
+            saveSettingsDialog.DefaultExt = "settings";
+            saveSettingsDialog.Filter = "Settings File|*.settings";
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(753, 618);
-            this.Controls.Add(this.tableLayoutPanel1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "MainForm";
-            this.Text = "Randomizer";
-            this.Load += new System.EventHandler(this.MainForm_Load);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gamePictureBox)).EndInit();
-            this.settingsTab.ResumeLayout(false);
-            this.encountersTabPage.ResumeLayout(false);
-            this.encountersTabPage.PerformLayout();
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.battlePokemonGroupBox.ResumeLayout(false);
-            this.trainersTabPage.ResumeLayout(false);
-            this.tableLayoutPanel28.ResumeLayout(false);
-            this.tableLayoutPanel28.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.boostTrainerLevelPercent)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.forceFullyEvolvedLevel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.shadowCatchMinimum)).EndInit();
-            this.pokeSpotTabPage.ResumeLayout(false);
-            this.tableLayoutPanel29.ResumeLayout(false);
-            this.tableLayoutPanel29.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.boostPokeSpotLevelPercent)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pokeSpotCatchMinimum)).EndInit();
-            this.pokemonTabPage.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.groupBox11.ResumeLayout(false);
-            this.tableLayoutPanel20.ResumeLayout(false);
-            this.tableLayoutPanel20.PerformLayout();
-            this.evolutionsGroupBox.ResumeLayout(false);
-            this.tableLayoutPanel23.ResumeLayout(false);
-            this.tableLayoutPanel23.PerformLayout();
-            this.baseStatsGroupBox.ResumeLayout(false);
-            this.tableLayoutPanel21.ResumeLayout(false);
-            this.tableLayoutPanel21.PerformLayout();
-            this.typesGroupBox.ResumeLayout(false);
-            this.tableLayoutPanel22.ResumeLayout(false);
-            this.tableLayoutPanel22.PerformLayout();
-            this.staticPokemonTab.ResumeLayout(false);
-            this.tableLayoutPanel7.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.tableLayoutPanel15.ResumeLayout(false);
-            this.tableLayoutPanel15.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.tableLayoutPanel14.ResumeLayout(false);
-            this.tableLayoutPanel14.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.tableLayoutPanel13.ResumeLayout(false);
-            this.tableLayoutPanel13.PerformLayout();
-            this.tmsTabPage.ResumeLayout(false);
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.groupBox8.ResumeLayout(false);
-            this.tableLayoutPanel16.ResumeLayout(false);
-            this.tableLayoutPanel16.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.forceGoodDamagingTMPercent)).EndInit();
-            this.tmCompatibilityGroupBox.ResumeLayout(false);
-            this.tableLayoutPanel17.ResumeLayout(false);
-            this.tableLayoutPanel17.PerformLayout();
-            this.tutorCompatibilityGroupBox.ResumeLayout(false);
-            this.tableLayoutPanel18.ResumeLayout(false);
-            this.tableLayoutPanel18.PerformLayout();
-            this.panel16.ResumeLayout(false);
-            this.tutorMoveGroupBox.ResumeLayout(false);
-            this.tableLayoutPanel19.ResumeLayout(false);
-            this.tableLayoutPanel19.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.forceGoodDamagingTutorMovePercent)).EndInit();
-            this.moveSetsTabPage.ResumeLayout(false);
-            this.tableLayoutPanel6.ResumeLayout(false);
-            this.groupBox9.ResumeLayout(false);
-            this.tableLayoutPanel11.ResumeLayout(false);
-            this.tableLayoutPanel11.PerformLayout();
-            this.groupBox10.ResumeLayout(false);
-            this.tableLayoutPanel12.ResumeLayout(false);
-            this.tableLayoutPanel12.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.movesetsForceGoodDamagingMovePercent)).EndInit();
-            this.itemsTabPage.ResumeLayout(false);
-            this.tableLayoutPanel8.ResumeLayout(false);
-            this.overworldItemGroupBox.ResumeLayout(false);
-            this.tableLayoutPanel24.ResumeLayout(false);
-            this.tableLayoutPanel24.PerformLayout();
-            this.martGroupBox.ResumeLayout(false);
-            this.tableLayoutPanel25.ResumeLayout(false);
-            this.tableLayoutPanel25.PerformLayout();
-            this.pokemonItemGroupBox.ResumeLayout(false);
-            this.tableLayoutPanel30.ResumeLayout(false);
-            this.tableLayoutPanel30.PerformLayout();
-            this.miscItemGroupBox.ResumeLayout(false);
-            this.tableLayoutPanel31.ResumeLayout(false);
-            this.tableLayoutPanel31.PerformLayout();
-            this.battleBingoTabPage.ResumeLayout(false);
-            this.tableLayoutPanel10.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
-            this.tableLayoutPanel26.ResumeLayout(false);
-            this.tableLayoutPanel26.PerformLayout();
-            this.bingoPokemonGroupBox.ResumeLayout(false);
-            this.tableLayoutPanel27.ResumeLayout(false);
-            this.tableLayoutPanel27.PerformLayout();
-            this.miscTabPage.ResumeLayout(false);
-            this.miscTabPage.PerformLayout();
-            this.tableLayoutPanel9.ResumeLayout(false);
-            this.tableLayoutPanel9.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
-            this.tableLayoutPanel32.ResumeLayout(false);
-            this.tableLayoutPanel32.PerformLayout();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(753, 618);
+            Controls.Add(tableLayoutPanel1);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            Name = "MainForm";
+            Text = "Randomizer";
+            Load += MainForm_Load;
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)gamePictureBox).EndInit();
+            settingsTab.ResumeLayout(false);
+            encountersTabPage.ResumeLayout(false);
+            encountersTabPage.PerformLayout();
+            tableLayoutPanel4.ResumeLayout(false);
+            battlePokemonGroupBox.ResumeLayout(false);
+            trainersTabPage.ResumeLayout(false);
+            tableLayoutPanel28.ResumeLayout(false);
+            tableLayoutPanel28.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)boostTrainerLevelPercent).EndInit();
+            ((System.ComponentModel.ISupportInitialize)forceFullyEvolvedLevel).EndInit();
+            ((System.ComponentModel.ISupportInitialize)shadowCatchMinimum).EndInit();
+            pokeSpotTabPage.ResumeLayout(false);
+            tableLayoutPanel29.ResumeLayout(false);
+            tableLayoutPanel29.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)boostPokeSpotLevelPercent).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pokeSpotCatchMinimum).EndInit();
+            pokemonTabPage.ResumeLayout(false);
+            tableLayoutPanel3.ResumeLayout(false);
+            groupBox11.ResumeLayout(false);
+            tableLayoutPanel20.ResumeLayout(false);
+            tableLayoutPanel20.PerformLayout();
+            evolutionsGroupBox.ResumeLayout(false);
+            tableLayoutPanel23.ResumeLayout(false);
+            tableLayoutPanel23.PerformLayout();
+            baseStatsGroupBox.ResumeLayout(false);
+            tableLayoutPanel21.ResumeLayout(false);
+            tableLayoutPanel21.PerformLayout();
+            typesGroupBox.ResumeLayout(false);
+            tableLayoutPanel22.ResumeLayout(false);
+            tableLayoutPanel22.PerformLayout();
+            staticPokemonTab.ResumeLayout(false);
+            tableLayoutPanel7.ResumeLayout(false);
+            groupBox1.ResumeLayout(false);
+            tableLayoutPanel15.ResumeLayout(false);
+            tableLayoutPanel15.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            tableLayoutPanel14.ResumeLayout(false);
+            tableLayoutPanel14.PerformLayout();
+            groupBox3.ResumeLayout(false);
+            tableLayoutPanel13.ResumeLayout(false);
+            tableLayoutPanel13.PerformLayout();
+            tmsTabPage.ResumeLayout(false);
+            tableLayoutPanel5.ResumeLayout(false);
+            groupBox8.ResumeLayout(false);
+            tableLayoutPanel16.ResumeLayout(false);
+            tableLayoutPanel16.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)forceGoodDamagingTMPercent).EndInit();
+            tmCompatibilityGroupBox.ResumeLayout(false);
+            tableLayoutPanel17.ResumeLayout(false);
+            tableLayoutPanel17.PerformLayout();
+            tutorCompatibilityGroupBox.ResumeLayout(false);
+            tableLayoutPanel18.ResumeLayout(false);
+            tableLayoutPanel18.PerformLayout();
+            panel16.ResumeLayout(false);
+            tutorMoveGroupBox.ResumeLayout(false);
+            tableLayoutPanel19.ResumeLayout(false);
+            tableLayoutPanel19.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)forceGoodDamagingTutorMovePercent).EndInit();
+            moveSetsTabPage.ResumeLayout(false);
+            tableLayoutPanel6.ResumeLayout(false);
+            groupBox9.ResumeLayout(false);
+            tableLayoutPanel11.ResumeLayout(false);
+            tableLayoutPanel11.PerformLayout();
+            groupBox10.ResumeLayout(false);
+            tableLayoutPanel12.ResumeLayout(false);
+            tableLayoutPanel12.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)movesetsForceGoodDamagingMovePercent).EndInit();
+            itemsTabPage.ResumeLayout(false);
+            tableLayoutPanel8.ResumeLayout(false);
+            overworldItemGroupBox.ResumeLayout(false);
+            tableLayoutPanel24.ResumeLayout(false);
+            tableLayoutPanel24.PerformLayout();
+            martGroupBox.ResumeLayout(false);
+            tableLayoutPanel25.ResumeLayout(false);
+            tableLayoutPanel25.PerformLayout();
+            pokemonItemGroupBox.ResumeLayout(false);
+            tableLayoutPanel30.ResumeLayout(false);
+            tableLayoutPanel30.PerformLayout();
+            miscItemGroupBox.ResumeLayout(false);
+            tableLayoutPanel31.ResumeLayout(false);
+            tableLayoutPanel31.PerformLayout();
+            battleBingoTabPage.ResumeLayout(false);
+            tableLayoutPanel10.ResumeLayout(false);
+            groupBox6.ResumeLayout(false);
+            tableLayoutPanel26.ResumeLayout(false);
+            tableLayoutPanel26.PerformLayout();
+            bingoPokemonGroupBox.ResumeLayout(false);
+            tableLayoutPanel27.ResumeLayout(false);
+            tableLayoutPanel27.PerformLayout();
+            miscTabPage.ResumeLayout(false);
+            miscTabPage.PerformLayout();
+            tableLayoutPanel9.ResumeLayout(false);
+            tableLayoutPanel9.PerformLayout();
+            tableLayoutPanel2.ResumeLayout(false);
+            tableLayoutPanel2.PerformLayout();
+            tableLayoutPanel32.ResumeLayout(false);
+            tableLayoutPanel32.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion

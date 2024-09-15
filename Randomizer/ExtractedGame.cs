@@ -35,6 +35,7 @@ namespace Randomizer
 
         public TM[] TMs { get; }
         public TutorMove[] TutorMoves { get; }
+        public PokeSpotPokemon[] PokeSpotPokemon { get; }
 
         public Game Game => TutorMoves.Length == 0 ? Game.Colosseum : Game.XD;
 
@@ -63,6 +64,7 @@ namespace Randomizer
             if (extractor is XDExtractor xd)
             {
                 TutorMoves = xd.ExtractTutorMoves();
+                PokeSpotPokemon = xd.ExtractPokeSpotPokemon();
             }
             else
             {
