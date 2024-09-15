@@ -46,7 +46,7 @@ namespace Randomizer.Shufflers
                 for (int i = 0; i < tms.Length; i++)
                 {
                     var tm = tms[i];
-                    var newMove = validMoves[newTMSet.ElementAt(i)];
+                    var newMove = extractedGame.MoveList[newTMSet.ElementAt(i)];
                     tm.Move = (ushort)newMove.MoveIndex;
                     tm.Description = newMove.Description;
 

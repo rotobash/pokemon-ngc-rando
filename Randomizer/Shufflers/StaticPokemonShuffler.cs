@@ -16,7 +16,7 @@ namespace Randomizer.Shufflers
             var extractedGame = shuffleSettings.ExtractedGame;
             var random = shuffleSettings.RNG;
 
-            RandomizeStarters(random, settings, extractedGame, starter);
+            RandomizeStarters(random, shuffleSettings, extractedGame, starter);
 
             Logger.Log("=============================== Trades ===============================\n\n");
             // set given
@@ -125,7 +125,7 @@ namespace Randomizer.Shufflers
             if (starters.Length != 2)
                 return;
 
-            RandomizeStarters(random, settings, extractedGame, starters[0], starters[1]);
+            RandomizeStarters(random, shuffleSettings, extractedGame, starters[0], starters[1]);
 
             List<Pokemon> newGivenPokemon = new List<Pokemon>();
             var pokemon = extractedGame.ValidPokemon;
@@ -149,10 +149,12 @@ namespace Randomizer.Shufflers
             Logger.Log($"Given Pokemon: {string.Join(", ", newGivenPokemon.Select(p => p.Name))}\n");
         }
 
-        private static void RandomizeStarters(AbstractRNG random, StaticPokemonShufflerSettings settings, ExtractedGame extractedGame, IGiftPokemon starter1, IGiftPokemon starter2 = null)
+        private static void RandomizeStarters(AbstractRNG random, ShuffleSettings shuffleSettings, ExtractedGame extractedGame, IGiftPokemon starter1, IGiftPokemon starter2 = null)
         {
+            var settings = shuffleSettings.RandomizerSettings.StaticPokemonShufflerSettings;
             Logger.Log("=============================== Starters ===============================\n\n");
 
+            Logger.Log($"Your new starter is:\n");
             if (settings.Starter == StarterRandomSetting.Custom)
             {
                 starter1.Pokemon = (ushort?)extractedGame.PokemonList.FirstOrDefault(p => p.Name.ToLower() == settings.Starter1.ToLower())?.Index ?? starter1.Pokemon;
@@ -161,121 +163,52 @@ namespace Randomizer.Shufflers
             }
             else
             {
-                RandomizeStarter(random, settings, extractedGame, starter1);
-                RandomizeStarter(random, settings, extractedGame, starter2);
-            }
-
-            Logger.Log($"Your new starter is {extractedGame.PokemonList[starter1.Pokemon].Name}\n");
-            UpdateStarterMoveset(random, settings, extractedGame, starter1);
-
-            if (starter2 != null)
-            {
-                Logger.Log($"Your new starter is {extractedGame.PokemonList[starter2.Pokemon].Name}\n");
-                UpdateStarterMoveset(random, settings, extractedGame, starter2);
+                RandomizeStarter(shuffleSettings, extractedGame, starter1);
+                RandomizeStarter(shuffleSettings, extractedGame, starter2);
             }
 
         }
 
-        private static void RandomizeStarter(AbstractRNG random, StaticPokemonShufflerSettings settings, ExtractedGame extractedGame, IGiftPokemon starter)
+        private static void RandomizeStarter(ShuffleSettings shuffleSettings, ExtractedGame extractedGame, IGiftPokemon starter)
         {
             if (starter == null)
                 return;
 
-            int index = 0;
             Evolution secondStage;
             bool condition = false;
+            var settings = shuffleSettings.RandomizerSettings.StaticPokemonShufflerSettings;
+            IEnumerable<Pokemon> pokeFilter;
+
             switch (settings.Starter)
             {
                 case StarterRandomSetting.Random:
                 {
-                    index = extractedGame.ValidPokemon[random.Next(0, extractedGame.ValidPokemon.Length)].Index;
+                    Helpers.RandomizePokemon(shuffleSettings, starter);
                 }
                 break;
                 case StarterRandomSetting.RandomThreeStage:
-                    while (!condition)
-                    {
-                        var newStarter = extractedGame.ValidPokemon[random.Next(0, extractedGame.ValidPokemon.Length)];
-                        index = newStarter.Index;
-                        secondStage = newStarter.Evolutions[0];
-                        condition = !Helpers.CheckForSplitOrEndEvolution(newStarter, out int _)
-                            && !Helpers.CheckForSplitOrEndEvolution(extractedGame.PokemonList[secondStage.EvolvesInto], out int _)
-                            // check if any pokemon evolve into this one, less likely for three stages but probably good to check anyway
-                            && !extractedGame.ValidPokemon.Any(p =>
-                            {
-                                for (int i = 0; i < p.Evolutions.Length; i++)
-                                {
-                                    if (p.Evolutions[i].EvolvesInto == index)
-                                        return true;
-                                }
-                                return false;
-                            });
-                    }
+                    pokeFilter = extractedGame.ValidPokemon.Where(p => p.Evolutions.Any(e => e.EvolvesInto > 0) 
+                                    && extractedGame.PokemonList
+                                            .Where(evo => p.Evolutions.Any(e => e.EvolvesInto == evo.Index))
+                                            .Any(evo => evo.Evolutions.Any(e => e.EvolvesInto > 0)));
+
+                    Helpers.RandomizePokemon(shuffleSettings, starter, pokeFilter);
                     break;
                 case StarterRandomSetting.RandomTwoStage:
-                    while (!condition)
-                    {
-                        var newStarter = extractedGame.ValidPokemon[random.Next(0, extractedGame.ValidPokemon.Length)];
-                        index = newStarter.Index;
-                        secondStage = newStarter.Evolutions[0];
-                        condition = !Helpers.CheckForSplitOrEndEvolution(newStarter, out int _)
-                            && Helpers.CheckForSplitOrEndEvolution(extractedGame.PokemonList[secondStage.EvolvesInto], out int count)
-                            && count == 0
-                            // check if any pokemon evolve into this one
-                            && !extractedGame.ValidPokemon.Any(p =>
-                            {
-                                for (int i = 0; i < p.Evolutions.Length; i++)
-                                {
-                                    if (p.Evolutions[i].EvolvesInto == index)
-                                        return true;
-                                }
-                                return false;
-                            });
-                    }
+                    pokeFilter = extractedGame.ValidPokemon
+                                    .Where(p => p.Evolutions.Any(e => e.EvolvesInto > 0)
+                                                && extractedGame.PokemonList.Where(evo => p.Evolutions.Any(e => e.EvolvesInto == evo.Index))
+                                                                .Any(evo => Helpers.CheckForSplitOrEndEvolution(evo, out int count) && count == 0));
+                    Helpers.RandomizePokemon(shuffleSettings, starter, pokeFilter);
                     break;
                 case StarterRandomSetting.RandomSingleStage:
-                    while (!condition)
-                    {
-                        var newStarter = extractedGame.ValidPokemon[random.Next(0, extractedGame.ValidPokemon.Length)];
-                        index = newStarter.Index;
-                        condition = Helpers.CheckForSplitOrEndEvolution(newStarter, out int count)
-                            && count == 0
-                            // check if any pokemon evolve into this one
-                            && !extractedGame.ValidPokemon.Any(p =>
-                            {
-                                for (int i = 0; i < p.Evolutions.Length; i++)
-                                {
-                                    if (p.Evolutions[i].EvolvesInto == index)
-                                        return true;
-                                }
-                                return false;
-                            });
-                    }
+                    pokeFilter = extractedGame.ValidPokemon
+                                    .Where(p => p.Evolutions.All(e => e.EvolvesInto == 0));
+                    Helpers.RandomizePokemon(shuffleSettings, starter, pokeFilter);
                     break;
                 default:
                 case StarterRandomSetting.Unchanged:
-                    index = starter.Pokemon;
                     break;
-            }
-            starter.Pokemon = (ushort)index;
-        }
-
-        private static void UpdateStarterMoveset(AbstractRNG random, StaticPokemonShufflerSettings settings, ExtractedGame extractedGame, IGiftPokemon starter)
-        {
-            // instance pokemon have separate movesets than the pool
-            // i.e. if you don't update the moveset than your starter will have Eevee's move set
-            ushort[] moves;
-            if (settings.MoveSetOptions.RandomizeMovesets || settings.Starter != StarterRandomSetting.Unchanged)
-            {
-                Logger.Log($"It knows:\n");
-                moves = Helpers.GetNewMoveset(random, settings.MoveSetOptions, starter, starter.Level, extractedGame);
-                if (moves == null) return;
-
-                for (int j = 0; j < moves.Length; j++)
-                {
-                    var move = moves[j];
-                    Logger.Log($"{extractedGame.MoveList[move].Name}\n");
-                    starter.SetMove(j, move);
-                }
             }
         }
     }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using XDCommon;
 using XDCommon.Contracts;
 using XDCommon.PokemonDefinitions;
+using static System.Windows.Forms.Design.AxImporter;
 
 namespace Randomizer.Shufflers
 {
@@ -50,6 +51,8 @@ namespace Randomizer.Shufflers
             var moveSet = new HashSet<ushort>();
             var levelUpMoves = extractedGame.PokemonList[pokemon.Pokemon].CurrentLevelMoves(level);
             var moveSetCount = options.ForceFourMoves ? 4 : pokemon.Moves.Where(m => m > 0).Count();
+            if (moveSetCount == 0) 
+                moveSetCount = 1;
 
             // increase the level until there's enough moves for them
             while (levelUpMoves.Count() < moveSetCount && level <= 100)
@@ -93,6 +96,9 @@ namespace Randomizer.Shufflers
             if (pokemon != null)
             {
                 pokemon.Pokemon = (ushort)newPoke.Index;
+                Logger.Log($"{newPoke.Name}\n");
+
+                RandomizeMoveSet(random, settings, pokemon, extractedGame);
             }
 
             return newPoke;
@@ -117,9 +123,10 @@ namespace Randomizer.Shufflers
                 for (int i = 0; i < Constants.NumberOfPokemonMoves; i++)
                 {
                     ushort move = i < moveSet.Length ? moveSet[i] : (ushort)0;
-                    Logger.Log($"{extractedGame.MoveList[move].Name}\n");
+                    if (move > 0) Logger.Log($"{extractedGame.MoveList[move].Name}\n");
                     pokemon.SetMove(i, move);
                 }
+                Logger.Log($"\n\n");
             }
         }
 
@@ -133,6 +140,22 @@ namespace Randomizer.Shufflers
             else if (options.RandomizeMovesets)
             {
                 return GetRandomMoveset(random, options, pokemon, level, extractedGame);
+            }
+            else if (options.LegalMovesOnly)
+            {
+                // change our move filter to only include learnable moves for this pokemon
+                var legalMoves = extractedGame.PokemonLegalMovePool[pokemon.Pokemon];
+                var moveSetCount = options.ForceFourMoves ? 4 : pokemon.Moves.Where(m => m > 0).Count();
+
+                if (moveSetCount == 0)
+                    moveSetCount = 1;
+
+                var moveSet = new ushort[moveSetCount];
+                for (int i = 0; i < moveSetCount; i++)
+                {
+                    moveSet[i] = random.NextElement(legalMoves);
+                }
+                return moveSet;
             }
             else
             {
@@ -150,17 +173,12 @@ namespace Randomizer.Shufflers
                 var moveFilter = options.BanShadowMoves ? extractedGame.ValidMoves.Where(m => !m.IsShadowMove) : extractedGame.ValidMoves;
                 var moveSetCount = options.ForceFourMoves ? 4 : pokemon.Moves.Where(m => m > 0).Count();
 
+                if (moveSetCount == 0)
+                    moveSetCount = 1;
+
                 if (options.BanEarlyDragonRage && level < ExtractorConstants.BanDragonRageUnderLevel)
                 {
                     moveFilter = moveFilter.Where(m => m.MoveIndex != ExtractorConstants.DragonRageIndex);
-                }
-
-                if (options.LegalMovesOnly)
-                {
-                    // change our move filter to only include learnable moves for this pokemon
-                    var legalMoves = extractedGame.PokemonLegalMovePool[poke.Index];
-
-                    moveFilter = moveFilter.Where(m => legalMoves.Contains((ushort)m.MoveIndex));
                 }
 
                 var potentialMoves = moveFilter.ToArray();
