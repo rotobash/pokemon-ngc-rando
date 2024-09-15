@@ -66,8 +66,16 @@ namespace XDCommon.PokemonDefinitions
         public int NameId => dataSource.ExtractedFile.GetIntAtOffset(StartOffset + ItemNameIDOffset);
         public int DescriptionId => dataSource.ExtractedFile.GetIntAtOffset(StartOffset + ItemDescriptionIDOffset);
         
-        public string Name => iso.CommonRelStringTable.GetStringWithId(NameId).ToString();
-        public string Description => pocketMenu.GetStringWithId(DescriptionId).ToString();
+        public UnicodeString Name
+        {
+            get => iso.CommonRelStringTable.GetStringWithId(NameId);
+            set => iso.CommonRelStringTable.ReplaceString(NameId, value);
+        }
+        public UnicodeString Description
+        {
+            get => pocketMenu.GetStringWithId(DescriptionId);
+            set => pocketMenu.ReplaceString(DescriptionId, value);
+        }
         
 
         protected ISO iso;
@@ -91,6 +99,7 @@ namespace XDCommon.PokemonDefinitions
                 itemTableLocation = Constants.ColItemTables[iso.Region].First();
             }
             pocketMenu = iso.GetFSysFile(itemTableLocation.Key).GetEntryByFileName(itemTableLocation.Value) as StringTable;
+
         }
 
         public BagSlots BagSlot

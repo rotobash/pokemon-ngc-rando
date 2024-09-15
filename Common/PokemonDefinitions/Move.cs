@@ -57,10 +57,18 @@ namespace XDCommon.PokemonDefinitions
         }
 
 		public int NameID => iso.CommonRel.ExtractedFile.GetIntAtOffset(StartOffset + MoveNameIDOffset);
-		public string Name => iso.CommonRelStringTable.GetStringWithId(NameID).ToString();
+		public UnicodeString Name
+        {
+            get => iso.CommonRelStringTable.GetStringWithId(NameID);
+            set => iso.CommonRelStringTable.ReplaceString(NameID, value);
+        }
 	
 		public int DescriptionID => iso.CommonRel.ExtractedFile.GetIntAtOffset(StartOffset + MoveDescriptionIDOffset);	
-		public string MDescription => iso.DolStringTable.GetStringWithId(DescriptionID).ToString();
+		public UnicodeString Description
+        {
+            get => iso.DolStringTable.GetStringWithId(DescriptionID);
+            set => iso.DolStringTable.ReplaceString(DescriptionID, value);
+        }
 		
 		public int StartOffset
 		{

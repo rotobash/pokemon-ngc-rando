@@ -125,7 +125,7 @@ namespace XDCommon.Utility
         public static readonly byte[] k5ByteChars = new byte[] { 0x08 };
 
         const string kBold = "Bold";
-        const string kNewLine = "New Line";
+        const string kNewLine = "\n";
         const string kDialogueEnd = "Dialogue End";
         const string kClearWindow = "Clear Window";
         const string kKanjiStart = "Kanji";

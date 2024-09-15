@@ -2,11 +2,28 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace XDCommon.Utility
 {
     public class FST : BaseExtractedFile
     {
+        public static string GetFSTString(Stream extractedFile, long offset)
+        {
+            List<byte> chars = new List<byte>();
+
+            var currentOffset = offset;
+            byte nextChar;
+
+            while ((nextChar = extractedFile.GetByteAtOffset(currentOffset)) != 0)
+            {
+                chars.Add(nextChar);
+                currentOffset++;
+            }
+
+            return Encoding.UTF8.GetString(chars.ToArray());
+        }
+
         const int TOCStartOffsetLocation = 0x424;
         const int TOCFileSizeLocation = 0x428;
         const int TOCMaxFileSizeLocation = 0x42C;
@@ -131,8 +148,7 @@ namespace XDCommon.Utility
                 if (nameOffset > LastNameOffset)
                     LastNameOffset = nameOffset;
 
-                var fileName = ExtractedFile.GetStringAtOffset(nameOffset + TOCFirstStringOffset);
-                fileEntry.Name = fileName;
+                fileEntry.Name = GetFSTString(ExtractedFile, nameOffset + TOCFirstStringOffset);
                 root.Children.Add(fileEntry);
             }
         }
@@ -155,14 +171,13 @@ namespace XDCommon.Utility
                 })
                 .Last() as FSTFileEntry;
 
-            var nameBytes = new UnicodeString(fileName.ToArray());
             var entryIndex = addDir.EndEntry + 1;
             var entryOffset = lastEntry.FileDataOffset + lastEntry.Size;
             var newEntry = new FSTFileEntry(entryIndex, LastNameOffset, entryOffset, size)
             {
-                Name = nameBytes
+                Name = fileName
             };
-            LastNameOffset += (uint)nameBytes.Count;
+            LastNameOffset += (uint)Encoding.UTF8.GetBytes(fileName).Length;
         }
 
         /// <summary>
@@ -240,7 +255,7 @@ namespace XDCommon.Utility
                     ExtractedFile.Write(dir.EndEntry.GetBytes());
                 }
 
-                var nameByteArray = entry.Name.ToByteArray();
+                var nameByteArray = Encoding.UTF8.GetBytes(entry.Name);
                 if (nameByteArray.Length > 0) 
                 {
                     nameBytes.AddRange(nameByteArray);

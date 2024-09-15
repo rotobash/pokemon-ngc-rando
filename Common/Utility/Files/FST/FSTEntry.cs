@@ -8,7 +8,7 @@ namespace XDCommon.Utility
     {
         public int FileEntry { get; protected set; }
         public uint NameOffset { get; protected set; }
-        public UnicodeString Name { get; set; }
+        public string Name { get; set; }
         public abstract FSTFileEntry SearchForFile(string fileName);
         public abstract FSTFileEntry SearchForFile(int fileEntry);
     }
