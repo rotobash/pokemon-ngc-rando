@@ -267,7 +267,7 @@ namespace Randomizer.Shufflers
             if (settings.MoveSetOptions.RandomizeMovesets || settings.Starter != StarterRandomSetting.Unchanged)
             {
                 Logger.Log($"It knows:\n");
-                moves = Helpers.GetNewMoveset(random, settings.MoveSetOptions, starter.Pokemon, starter.Level, extractedGame);
+                moves = Helpers.GetNewMoveset(random, settings.MoveSetOptions, starter, starter.Level, extractedGame);
                 if (moves == null) return;
 
                 for (int j = 0; j < moves.Length; j++)
