@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using XDCommon.Contracts;
 using XDCommon.PokemonDefinitions;
 using XDCommon;
+using XDCommon.Utility;
 
 namespace Randomizer
 {
@@ -34,10 +35,13 @@ namespace Randomizer
         public Items[] GoodHeldItems { get; }
 
         public TM[] TMs { get; }
+        public Move[] HMs { get; }
         public TutorMove[] TutorMoves { get; }
         public PokeSpotPokemon[] PokeSpotPokemon { get; }
 
         public Game Game => TutorMoves.Length == 0 ? Game.Colosseum : Game.XD;
+
+        public Dictionary<int, ushort[]> PokemonLegalMovePool = new Dictionary<int, ushort[]>();
 
         public ExtractedGame(IGameExtractor extractor)
         {
@@ -56,6 +60,17 @@ namespace Randomizer
 
             NonKeyItems = ValidItems.Where(i => i.BagSlot != BagSlots.KeyItems && i.BagSlot != BagSlots.None && i.BagSlot != BagSlots.Colognes).ToArray();
             TMs = ItemList.Where(i => i is TM).Select(i => i as TM).ToArray();
+            HMs = new[]
+            {
+                MoveList.First(m => m.Name.Equals(new UnicodeString(Encoding.UTF8.GetBytes("\0C\0U\0T")))),
+                MoveList.First(m => m.Name.Equals(new UnicodeString(Encoding.UTF8.GetBytes("\0F\0L\0Y")))),
+                MoveList.First(m => m.Name.Equals(new UnicodeString(Encoding.UTF8.GetBytes("\0S\0U\0R\0F")))),
+                MoveList.First(m => m.Name.Equals(new UnicodeString(Encoding.UTF8.GetBytes("\0S\0T\0R\0E\0N\0G\0T\0H")))),
+                MoveList.First(m => m.Name.Equals(new UnicodeString(Encoding.UTF8.GetBytes("\0F\0L\0A\0S\0H")))),
+                MoveList.First(m => m.Name.Equals(new UnicodeString(Encoding.UTF8.GetBytes("\0R\0O\0C\0K\0 \0S\0M\0A\0S\0H")))),
+                MoveList.First(m => m.Name.Equals(new UnicodeString(Encoding.UTF8.GetBytes("\0W\0A\0T\0E\0R\0F\0A\0L\0L")))),
+                MoveList.First(m => m.Name.Equals(new UnicodeString(Encoding.UTF8.GetBytes("\0D\0I\0V\0E")))),
+            };
 
             ValidHeldItems = NonKeyItems.Where(i => i.CanBeHeld == true).ToArray();
             GoodItems = NonKeyItems.Where(i => !ExtractorConstants.BadItemList.Contains(i.Index)).ToArray();
@@ -69,6 +84,38 @@ namespace Randomizer
             else
             {
                 TutorMoves = Array.Empty<TutorMove>();
+            }
+
+            BuildLegalMoveList();
+        }
+
+        void BuildLegalMoveList()
+        {
+            foreach (var pokemon in ValidPokemon)
+            {
+                var legalMoveList = pokemon.LevelUpMoves.Select(m => m.Move).ToList();
+
+                for (var i = 0; i < pokemon.LearnableTMs.Length; i++)
+                {
+                    if (pokemon.LearnableTMs[i])
+                    {
+                        ushort move = i < 50 ? TMs.First(m => m.TMIndex == i + 1).Move : (ushort)HMs[i - Constants.NumberOfTMs].MoveIndex;
+                        legalMoveList.Add(move);
+                    }
+                }
+
+                for (var i = 0; i < pokemon.TutorMoves.Length; i++)
+                {
+                    if (pokemon.TutorMoves[i])
+                    {
+                        var move = TutorMoves.First(m => m.Index == i).Move;
+                        legalMoveList.Add(move);
+                    }
+                }
+
+                legalMoveList.AddRange(MoveList.Where(m => m.IsShadowMove).Select(m => (ushort)m.MoveIndex));
+
+                PokemonLegalMovePool[pokemon.Index] = legalMoveList.ToArray();
             }
         }
     }
