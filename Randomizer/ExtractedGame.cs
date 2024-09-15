@@ -93,6 +93,12 @@ namespace Randomizer
         {
             foreach (var pokemon in ValidPokemon)
             {
+                if (pokemon.Index == ExtractorConstants.BonslyIndex)
+                {
+                    Logger.Log("Fixing Bonsly\n\n");
+                    XDPokemon.FixBonsly(pokemon);
+                }
+
                 var legalMoveList = pokemon.LevelUpMoves.Select(m => m.Move).ToList();
 
                 for (var i = 0; i < pokemon.LearnableTMs.Length; i++)
@@ -115,7 +121,7 @@ namespace Randomizer
 
                 legalMoveList.AddRange(MoveList.Where(m => m.IsShadowMove).Select(m => (ushort)m.MoveIndex));
 
-                PokemonLegalMovePool[pokemon.Index] = legalMoveList.ToArray();
+                PokemonLegalMovePool[pokemon.Index] = legalMoveList.Where(l => l > 0).ToArray();
             }
         }
     }

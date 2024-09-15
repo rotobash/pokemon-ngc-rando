@@ -72,7 +72,7 @@ namespace Randomizer
             else if (gameExtractor is ColoExtractor colo)
             {
                 var starters = colo.GetStarters();
-                StaticPokemonShuffler.RandomizeColoStatics(shuffleSettings, starters);
+                StaticPokemonShuffler.RandomizeColoStatics(shuffleSettings, starters, pickedShadows);
             }
         }
 

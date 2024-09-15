@@ -263,16 +263,16 @@ namespace Randomizer
                 randomizer.RandomizeMoves();
 
                 backgroundWorker.ReportProgress(20);
-                progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Randomizing Items..."));
-                randomizer.RandomizeItems();
-
-                backgroundWorker.ReportProgress(30);
                 progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Randomizing Pokemon Traits..."));
                 randomizer.RandomizePokemonTraits();
 
-                backgroundWorker.ReportProgress(40);
+                backgroundWorker.ReportProgress(30);
                 progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Randomizing Trainers..."));
                 var pickedshadows = randomizer.RandomizeTrainers();
+
+                backgroundWorker.ReportProgress(40);
+                progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Randomizing Items..."));
+                randomizer.RandomizeItems();
 
                 backgroundWorker.ReportProgress(50);
                 progressMessageLabel.BeginInvoke(new Action(() => progressMessageLabel.Text = "Randomizing PokeSpots..."));

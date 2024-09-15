@@ -46,34 +46,6 @@ namespace Randomizer.Shufflers
             return endOrSplitEvolution;
         }
 
-        public static ushort[] GetLevelUpMoveset(AbstractRNG random, RandomMoveSetOptions options, IPokemonInstance pokemon, ushort level, ExtractedGame extractedGame)
-        {
-            var moveSet = new HashSet<ushort>();
-            var levelUpMoves = extractedGame.PokemonList[pokemon.Pokemon].CurrentLevelMoves(level);
-            var moveSetCount = options.ForceFourMoves ? 4 : pokemon.Moves.Where(m => m > 0).Count();
-            if (moveSetCount == 0) 
-                moveSetCount = 1;
-
-            // increase the level until there's enough moves for them
-            while (levelUpMoves.Count() < moveSetCount && level <= 100)
-                levelUpMoves = extractedGame.PokemonList[pokemon.Pokemon].CurrentLevelMoves(++level);
-
-            // still nothing, add a random move
-            if (!levelUpMoves.Any())
-            {
-                var newMove = random.NextElement(extractedGame.ValidMoves);
-                moveSet.Add((ushort)newMove.MoveIndex);
-            }
-            else
-            {
-                foreach (var levelUpMove in levelUpMoves)
-                {
-                    moveSet.Add(levelUpMove.Move);
-                }
-            }
-            return moveSet.ToArray();
-        }
-
         public static Pokemon RandomizePokemon(ShuffleSettings shuffleSettings, IPokemonInstance pokemon = null, IEnumerable<Pokemon> pokeFilter = null)
         {
             AbstractRNG random = shuffleSettings.RNG;
@@ -98,23 +70,55 @@ namespace Randomizer.Shufflers
                 pokemon.Pokemon = (ushort)newPoke.Index;
                 Logger.Log($"{newPoke.Name}\n");
 
-                RandomizeMoveSet(random, settings, pokemon, extractedGame);
+                UpdateMoves(random, settings.MoveSetOptions, pokemon, extractedGame);
             }
 
             return newPoke;
         }
 
-        public static void RandomizeMoveSet(AbstractRNG random, TeamShufflerSettings settings, IPokemonInstance pokemon, ExtractedGame extractedGame)
-        {
-            ushort[] moveSet = null;
 
-            if (settings.MoveSetOptions.MetronomeOnly)
+        private static void UpdateMoves(AbstractRNG random, RandomMoveSetOptions options, IPokemonInstance pokemon, ExtractedGame extractedGame)
+        {
+            var moveSetCount = options.ForceFourMoves ? 4 : pokemon.Moves.Where(m => m > 0).Count();
+
+            if (moveSetCount == 0)
+                moveSetCount = 1;
+
+            var moveSet = new ushort[moveSetCount];
+            if (options.MetronomeOnly)
             {
-                moveSet = new ushort[] { ExtractorConstants.MetronomeIndex, 0, 0, 0 };
+                moveSet = Enumerable.Repeat(ExtractorConstants.MetronomeIndex, moveSetCount).ToArray();
             }
-            else if (settings.MoveSetOptions.RandomizeMovesets || settings.RandomizePokemon)
+            else if (options.UseLevelUpMoves)
             {
-                moveSet = GetNewMoveset(random, settings.MoveSetOptions, pokemon, pokemon.Level, extractedGame);
+                // not randomizing moves? pick level up moves then
+                moveSet = GetLevelUpMoveset(random, options, pokemon, extractedGame);
+            }
+            else if (options.LegalMovesOnly)
+            {
+                // change our move filter to only include learnable moves for this pokemon
+                IEnumerable<ushort> legalMoves = extractedGame.PokemonLegalMovePool[pokemon.Pokemon];
+                var pickedMoves = new HashSet<ushort>(moveSetCount);
+
+                if (options.BanShadowMoves)
+                {
+                    legalMoves = legalMoves.Where(l => !extractedGame.MoveList[l].IsShadowMove);
+                }
+
+                var breakoutCounter = 0;
+                while (pickedMoves.Count < moveSetCount && breakoutCounter++ < 10)
+                {
+                    pickedMoves.Add(random.NextElement(legalMoves));
+                }
+                moveSet = pickedMoves.ToArray();
+            }
+            else if (options.RandomizeMovesets)
+            {
+                moveSet = GetRandomMoveset(random, options, pokemon, extractedGame);
+            }
+            else
+            {
+                moveSet = null;
             }
 
             if (moveSet != null)
@@ -130,41 +134,36 @@ namespace Randomizer.Shufflers
             }
         }
 
-        public static ushort[] GetNewMoveset(AbstractRNG random, RandomMoveSetOptions options, IPokemonInstance pokemon, ushort level, ExtractedGame extractedGame)
+        public static ushort[] GetLevelUpMoveset(AbstractRNG random, RandomMoveSetOptions options, IPokemonInstance pokemon, ExtractedGame extractedGame)
         {
-            if (options.UseLevelUpMoves)
-            {
-                // not randomizing moves? pick level up moves then
-                return GetLevelUpMoveset(random, options, pokemon, level, extractedGame);
-            }
-            else if (options.RandomizeMovesets)
-            {
-                return GetRandomMoveset(random, options, pokemon, level, extractedGame);
-            }
-            else if (options.LegalMovesOnly)
-            {
-                // change our move filter to only include learnable moves for this pokemon
-                var legalMoves = extractedGame.PokemonLegalMovePool[pokemon.Pokemon];
-                var moveSetCount = options.ForceFourMoves ? 4 : pokemon.Moves.Where(m => m > 0).Count();
+            var moveSet = new HashSet<ushort>();
+            var level = pokemon.Level;
+            var levelUpMoves = extractedGame.PokemonList[pokemon.Pokemon].CurrentLevelMoves(level);
+            var moveSetCount = options.ForceFourMoves ? 4 : pokemon.Moves.Where(m => m > 0).Count();
+            if (moveSetCount == 0)
+                moveSetCount = 1;
 
-                if (moveSetCount == 0)
-                    moveSetCount = 1;
+            // increase the level until there's enough moves for them
+            while (levelUpMoves.Count() < moveSetCount && level <= 100)
+                levelUpMoves = extractedGame.PokemonList[pokemon.Pokemon].CurrentLevelMoves(++level);
 
-                var moveSet = new ushort[moveSetCount];
-                for (int i = 0; i < moveSetCount; i++)
-                {
-                    moveSet[i] = random.NextElement(legalMoves);
-                }
-                return moveSet;
+            // still nothing, add a random move
+            if (!levelUpMoves.Any())
+            {
+                var newMove = random.NextElement(extractedGame.ValidMoves);
+                moveSet.Add((ushort)newMove.MoveIndex);
             }
             else
             {
-                return null;
+                foreach (var levelUpMove in levelUpMoves)
+                {
+                    moveSet.Add(levelUpMove.Move);
+                }
             }
-
+            return moveSet.ToArray();
         }
 
-        private static ushort[] GetRandomMoveset(AbstractRNG random, RandomMoveSetOptions options, IPokemonInstance pokemon, ushort level, ExtractedGame extractedGame)
+        private static ushort[] GetRandomMoveset(AbstractRNG random, RandomMoveSetOptions options, IPokemonInstance pokemon,  ExtractedGame extractedGame)
         {
             if (options.RandomizeMovesets)
             {
@@ -176,7 +175,7 @@ namespace Randomizer.Shufflers
                 if (moveSetCount == 0)
                     moveSetCount = 1;
 
-                if (options.BanEarlyDragonRage && level < ExtractorConstants.BanDragonRageUnderLevel)
+                if (options.BanEarlyDragonRage && pokemon.Level < ExtractorConstants.BanDragonRageUnderLevel)
                 {
                     moveFilter = moveFilter.Where(m => m.MoveIndex != ExtractorConstants.DragonRageIndex);
                 }

@@ -16,7 +16,7 @@ namespace Randomizer.Shufflers
             var extractedGame = shuffleSettings.ExtractedGame;
             var random = shuffleSettings.RNG;
 
-            RandomizeStarters(random, shuffleSettings, extractedGame, starter);
+            RandomizeStarters(random, shuffleSettings, extractedGame, pickedShadows, starter);
 
             Logger.Log("=============================== Trades ===============================\n\n");
             // set given
@@ -116,7 +116,7 @@ namespace Randomizer.Shufflers
             return (newGivenPokemon?.ToArray(), newRequestedPokemon?.ToArray(), hordelGivenShadow, hordelTradePokemon);
         }
 
-        public static void RandomizeColoStatics(ShuffleSettings shuffleSettings, IGiftPokemon[] starters)
+        public static void RandomizeColoStatics(ShuffleSettings shuffleSettings, IGiftPokemon[] starters, int[] pickedShadows)
         {
             var settings = shuffleSettings.RandomizerSettings.StaticPokemonShufflerSettings;
             var extractedGame = shuffleSettings.ExtractedGame;
@@ -125,7 +125,7 @@ namespace Randomizer.Shufflers
             if (starters.Length != 2)
                 return;
 
-            RandomizeStarters(random, shuffleSettings, extractedGame, starters[0], starters[1]);
+            RandomizeStarters(random, shuffleSettings, extractedGame, pickedShadows, starters[0], starters[1]);
 
             List<Pokemon> newGivenPokemon = new List<Pokemon>();
             var pokemon = extractedGame.ValidPokemon;
@@ -149,7 +149,7 @@ namespace Randomizer.Shufflers
             Logger.Log($"Given Pokemon: {string.Join(", ", newGivenPokemon.Select(p => p.Name))}\n");
         }
 
-        private static void RandomizeStarters(AbstractRNG random, ShuffleSettings shuffleSettings, ExtractedGame extractedGame, IGiftPokemon starter1, IGiftPokemon starter2 = null)
+        private static void RandomizeStarters(AbstractRNG random, ShuffleSettings shuffleSettings, ExtractedGame extractedGame, int[] pickedShadows, IGiftPokemon starter1, IGiftPokemon starter2 = null)
         {
             var settings = shuffleSettings.RandomizerSettings.StaticPokemonShufflerSettings;
             Logger.Log("=============================== Starters ===============================\n\n");
@@ -163,13 +163,13 @@ namespace Randomizer.Shufflers
             }
             else
             {
-                RandomizeStarter(shuffleSettings, extractedGame, starter1);
-                RandomizeStarter(shuffleSettings, extractedGame, starter2);
+                RandomizeStarter(shuffleSettings, extractedGame, starter1, pickedShadows);
+                RandomizeStarter(shuffleSettings, extractedGame, starter2, pickedShadows);
             }
 
         }
 
-        private static void RandomizeStarter(ShuffleSettings shuffleSettings, ExtractedGame extractedGame, IGiftPokemon starter)
+        private static void RandomizeStarter(ShuffleSettings shuffleSettings, ExtractedGame extractedGame, IGiftPokemon starter, int[] pickedShadows)
         {
             if (starter == null)
                 return;
@@ -177,7 +177,12 @@ namespace Randomizer.Shufflers
             Evolution secondStage;
             bool condition = false;
             var settings = shuffleSettings.RandomizerSettings.StaticPokemonShufflerSettings;
-            IEnumerable<Pokemon> pokeFilter;
+            IEnumerable<Pokemon> pokeFilter = extractedGame.ValidPokemon;
+
+            if (shuffleSettings.RandomizerSettings.TeamShufflerSettings.NoDuplicateShadows)
+            {
+                pokeFilter = pokeFilter.Where(p => !pickedShadows.Contains(p.Index));
+            }
 
             switch (settings.Starter)
             {
