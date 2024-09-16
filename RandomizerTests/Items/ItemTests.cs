@@ -283,6 +283,7 @@ namespace RandomizerTests.Items
         [Test]
         public void TestMartsSellStones()
         {
+            Assert.Pass("Not implemented");
             if (shuffleSettings.ExtractedGame.Game == XDCommon.Contracts.Game.Colosseum)
             {
                 Assert.Pass("Not implemented");

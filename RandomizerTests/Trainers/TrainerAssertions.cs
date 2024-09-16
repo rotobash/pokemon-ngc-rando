@@ -98,7 +98,10 @@ namespace RandomizerTests.Trainers
                         {
                             foreach (var move in pokemon.Moves)
                             {
-                                Assert.That(extractedGame.PokemonLegalMovePool[pokemon.Pokemon], Does.Contain(move));
+                                if (move != 0)
+                                {
+                                    Assert.That(extractedGame.PokemonLegalMovePool[pokemon.Pokemon], Does.Contain(move));
+                                }
                             }
 
                             randomizedPokemon.Add(pokemon.Index);
