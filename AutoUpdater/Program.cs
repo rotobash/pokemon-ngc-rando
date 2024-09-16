@@ -18,94 +18,98 @@ namespace AutoUpdater
              * Basically, all this does is search for a zip file, if it finds one it extracts it in the working directory
              * Will also skip the AutoUpdater for the same reason this exists. The AutoUpdater shouldn't need an update after
              */
-            Console.WriteLine("Extracting zip file...");
-            var zipFileName = string.Empty;
-            var currentfileName = $"{AppDomain.CurrentDomain.FriendlyName}.exe";
-            var currentdllName = $"{AppDomain.CurrentDomain.FriendlyName}.dll";
-
-            foreach (var fileEntry in Directory.EnumerateFileSystemEntries("."))
-            {
-                if (Directory.Exists(fileEntry))
-                {
-                    Directory.Delete(fileEntry, true);
-                }
-                else if (Path.GetExtension(fileEntry).Contains("zip"))
-                {
-                    Console.WriteLine($"Found zip file {fileEntry}!");
-                    zipFileName = fileEntry;
-                }
-                else if (!(fileEntry.Contains(currentfileName) || fileEntry.Contains(currentdllName)))
-                {
-                    try
-                    {
-                        // Attempt to get a list of security permissions from the folder. 
-                        // This will raise an exception if the path is read only or do not have access to view the permissions. 
-                        File.Delete(fileEntry);
-                    }
-                    catch (UnauthorizedAccessException)
-                    {
-                        continue;
-                    }
-                }
-            }
-
+            var tempDir = Directory.CreateTempSubdirectory();
             try
             {
+                Console.WriteLine("Extracting zip file...");
+                Console.WriteLine($"Arguments: {string.Join(", ", args)}");
+                var zipFileName = args[0];
+
                 if (zipFileName != string.Empty)
                 {
-                    using var fileStream = File.Open(zipFileName, FileMode.Open);
+                    using var fileStream = File.Open($"{zipFileName}", FileMode.Open);
                     using (var zipFile = new ZipArchive(fileStream))
                     {
                         var root = zipFile.Entries.FirstOrDefault();
                         foreach (ZipArchiveEntry zipFileEntry in zipFile.Entries)
                         {
-                            string[] pathSplit = zipFileEntry.FullName.Split(root.FullName);
-                            if (pathSplit.All(p => p == string.Empty))
+                            var pathParts = zipFileEntry.FullName.Split(Path.DirectorySeparatorChar).Skip(1);
+                            if (pathParts.Count() > 1)
                             {
-                                continue;
+                                string directory = $"{string.Join(Path.DirectorySeparatorChar, pathParts.Take(pathParts.Count() - 1))}";
+
+                                if (!Directory.Exists($"{tempDir.FullName}{Path.DirectorySeparatorChar}{directory}"))
+                                    tempDir.CreateSubdirectory(directory);
                             }
 
-                            string path = string.Join(string.Empty, pathSplit);
-                            if (zipFileEntry.Name == string.Empty)
+                            if (zipFileEntry.Name == string.Empty) continue;
+
+                            string path = $"{string.Join(Path.DirectorySeparatorChar, pathParts)}";
+
+                            if (!path.Contains(AppDomain.CurrentDomain.FriendlyName))
                             {
-                                _ = Directory.CreateDirectory(path);
-                            }
-                            else if (!(path.Contains(currentfileName) || path.Contains(currentdllName)))
-                            {
-                                zipFileEntry.ExtractToFile(path, true);
+                                zipFileEntry.ExtractToFile($"{tempDir.FullName}{Path.DirectorySeparatorChar}{path}", true);
                             }
                             else
                             {
-                                var newPath = $"{Path.GetFileName(path)}.2{Path.GetExtension(path)}";
+                                var newPath = $"{tempDir.FullName}{Path.DirectorySeparatorChar}{Path.GetFileName(path)}.2{Path.GetExtension(path)}";
                                 zipFileEntry.ExtractToFile(newPath, true);
 
                                 var version = Assembly.GetExecutingAssembly().GetName().Version;
-                                var otherVersion = new Version(FileVersionInfo.GetVersionInfo(newPath).FileVersion);
+                                var otherVersion = FileVersionInfo.GetVersionInfo(newPath)?.FileVersion;
 
-                                if (otherVersion > version)
-                                {
-                                    Console.WriteLine($"There was an update to the AutoUpdater. Please delete AutoUpdater.exe and AutoUpdater.dll and rename AutoUpdater2 -> AutoUpdater.");
-                                }
-                                else
+                                if (otherVersion == null || new Version(otherVersion) <= version)
                                 {
                                     File.Delete(newPath);
                                 }
                             }
                         }
+
+                        MoveFiles(tempDir, Directory.GetCurrentDirectory());
                     }
 
                     File.Delete(zipFileName);
                 }
                 Console.WriteLine($"Done. Everything is up to date!");
+                Console.WriteLine($"Open randomizer now? Y/N");
+                var input = Console.ReadLine();
+                if (input.StartsWith("Y", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    using var process = new Process();
 
+                    process.StartInfo.FileName = $"{Directory.GetCurrentDirectory()}{Path.DirectorySeparatorChar}/Randomizer.exe";
+
+                    process.Start();
+
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"There was an error, you may have to re-download the program from GitHub. Error: {ex.Message}");
+
+                Console.WriteLine($"Hit any key to close this window.");
+                Console.ReadLine();
+            }
+            finally
+            {
+                tempDir.Delete(true);
+            }
+        }
+
+        public static void MoveFiles(DirectoryInfo directoryInfo, string destFolder)
+        {
+
+            foreach (var dir in directoryInfo.GetDirectories())
+            {
+                var dirName = $"{destFolder}{Path.DirectorySeparatorChar}{dir.Name}";
+                Directory.CreateDirectory(dirName);
+                MoveFiles(dir, dirName);
             }
 
-            Console.WriteLine($"Hit any key to close this window.");
-            Console.ReadLine();
+            foreach (var file in directoryInfo.GetFiles())
+            {
+                File.Copy(file.FullName, $"{destFolder}{Path.DirectorySeparatorChar}{file.Name}", true);
+            }
         }
     }
 }
