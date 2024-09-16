@@ -71,6 +71,7 @@ namespace XDCommon.PokemonDefinitions
 
         public void SetMove(int index, ushort move)
         {
+            Moves[index] = move;
             iso.DOL.ExtractedFile.WriteBytesAtOffset(StartOffset + Move1Offset + (index * Constants.ColSizeOfStarterMoveData), move.GetBytes());
         }
     }

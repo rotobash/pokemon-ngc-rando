@@ -22,7 +22,7 @@ namespace Randomizer.Shufflers
                 var tms = extractedGame.TMs;
                 // use set to avoid dupes
                 var newTMSet = new HashSet<ushort>();
-                var validMoves = extractedGame.ValidMoves;
+                IEnumerable<Move> moveFilter = extractedGame.ValidMoves;
 
                 if (settings.TMForceGoodDamagingMove)
                 {
@@ -38,9 +38,14 @@ namespace Randomizer.Shufflers
                     }
                 }
 
+                if (shuffleSettings.RandomizerSettings.TeamShufflerSettings.MoveSetOptions.BanShadowMoves)
+                {
+                    moveFilter = moveFilter.Where(m => !m.IsShadowMove);
+                }
+
                 // keep picking while we haven't picked enough TMs
                 while (newTMSet.Count < tms.Length)
-                    newTMSet.Add((ushort)random.NextElement(validMoves).MoveIndex);
+                    newTMSet.Add((ushort)random.NextElement(moveFilter).MoveIndex);
 
                 // set them to the actual TM item
                 for (int i = 0; i < tms.Length; i++)
@@ -66,7 +71,7 @@ namespace Randomizer.Shufflers
             {
                 Logger.Log("=============================== Tutor Moves ===============================\n\n");
                 var newTutorMoveSet = new HashSet<ushort>();
-                var validMoves = extractedGame.ValidMoves;
+                IEnumerable<Move> moveFilter = extractedGame.ValidMoves;
 
                 if (settings.TutorForceGoodDamagingMove)
                 {
@@ -81,9 +86,14 @@ namespace Randomizer.Shufflers
                     }
                 }
 
+                if (shuffleSettings.RandomizerSettings.TeamShufflerSettings.MoveSetOptions.BanShadowMoves)
+                {
+                    moveFilter = moveFilter.Where(m => !m.IsShadowMove);
+                }
+
                 // keep picking while we haven't picked enough TMs or we picked a dupe
                 while (newTutorMoveSet.Count < tutorMoves.Length)
-                    newTutorMoveSet.Add((ushort)random.NextElement(validMoves).MoveIndex);
+                    newTutorMoveSet.Add((ushort)random.NextElement(moveFilter).MoveIndex);
 
                 // set them to the actual TM item
                 for (int i = 0; i < tutorMoves.Length; i++)

@@ -477,7 +477,7 @@ namespace Randomizer.Shufflers
                         for (int i = 0; i < pokemon.TutorMoves.Length; i++)
                         {
                             var isCompatible = tutorMoves[i].Type == pokemon.Type1 || tutorMoves[i].Type == pokemon.Type2 || random.Next(0, 10) >= 8;
-                            pokemon.SetTutorMove(i, isCompatible);
+                            pokemon.SetTutorMove(Constants.TutorMoveToPokemonOrderMapping[i], isCompatible);
                             Logger.Log($"{i + 1} - {isCompatible}\n");
                         }
                     }
@@ -486,6 +486,26 @@ namespace Randomizer.Shufflers
                 break;
                 default:
                 case MoveCompatibility.Unchanged:
+                    if (tms)
+                    {
+                        Logger.Log($"Update TM Compatibility based on legal moves\n");
+                        var tmMoves = extractedGame.TMs.Select(t => extractedGame.PokemonLegalMovePool[pokemon.Index].Contains(t.Move));
+                        var hmMoves = extractedGame.HMs.Select(t => extractedGame.PokemonLegalMovePool[pokemon.Index].Contains((ushort)t.MoveIndex));
+                        var tmsAndHms = tmMoves.Concat(hmMoves).ToArray();
+                        for (int i = 0; i < pokemon.LearnableTMs.Length; i++)
+                        {
+                            pokemon.SetLearnableTMS(i, tmsAndHms[i]);
+                        }
+                    }
+                    else
+                    {
+                        Logger.Log($"Update Tutor Move Compatibility based on legal moves\n");
+                        var tutorMoves = extractedGame.TutorMoves.Select(t => extractedGame.PokemonLegalMovePool[pokemon.Index].Contains(t.Move)).ToArray();
+                        for (int i = 0; i < pokemon.TutorMoves.Length; i++)
+                        {
+                            pokemon.SetTutorMove(Constants.TutorMoveToPokemonOrderMapping[i], tutorMoves[i]);
+                        }
+                    }
                     break;
             }
         }

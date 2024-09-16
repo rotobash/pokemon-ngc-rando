@@ -207,6 +207,22 @@ namespace XDCommon.PokemonDefinitions
             },
         };
 
+        public static Dictionary<int, int> TutorMoveToPokemonOrderMapping = new Dictionary<int, int>
+        {
+            { 0, 3 },
+            { 1, 5 },
+            { 2, 2 },
+            { 3, 7 },
+            { 4, 6 },
+            { 5, 4 },
+            { 6, 8 },
+            { 7, 0 },
+            { 8, 11 },
+            { 9, 9 },
+            { 10, 1 },
+            { 11, 10 },
+        };
+
         // COLO
         public const int ColNumberRelPointers = 0x6C;
         public const int ColPeopleIDs = 6; // 2 bytes at offset 0 person id 4 bytes at offset 4 string id for character name

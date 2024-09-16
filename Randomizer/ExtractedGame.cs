@@ -101,22 +101,21 @@ namespace Randomizer
 
                 var legalMoveList = pokemon.LevelUpMoves.Select(m => m.Move).ToList();
 
-                for (var i = 0; i < pokemon.LearnableTMs.Length; i++)
+                var tmMoves = TMs.Where(t => pokemon.LearnableTMs[t.TMIndex - 1]).Select(t => t.Move);
+                legalMoveList.AddRange(tmMoves);
+                
+                for (int i = 0; i < HMs.Length; i++)
                 {
-                    if (pokemon.LearnableTMs[i])
+                    if (pokemon.LearnableTMs[Constants.NumberOfTMs + i])
                     {
-                        ushort move = i < 50 ? TMs.First(m => m.TMIndex == i + 1).Move : (ushort)HMs[i - Constants.NumberOfTMs].MoveIndex;
-                        legalMoveList.Add(move);
+                        legalMoveList.Add((ushort)HMs[i].MoveIndex);
                     }
                 }
 
-                for (var i = 0; i < pokemon.TutorMoves.Length; i++)
+                if (Game == Game.XD)
                 {
-                    if (pokemon.TutorMoves[i])
-                    {
-                        var move = TutorMoves.First(m => m.Index == i).Move;
-                        legalMoveList.Add(move);
-                    }
+                    var tutorMoves = TutorMoves.Where(t => pokemon.TutorMoves[Constants.TutorMoveToPokemonOrderMapping[t.Index]]).Select(t => t.Move);
+                    legalMoveList.AddRange(tutorMoves);
                 }
 
                 legalMoveList.AddRange(MoveList.Where(m => m.IsShadowMove).Select(m => (ushort)m.MoveIndex));
