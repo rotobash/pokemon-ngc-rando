@@ -73,16 +73,13 @@ namespace AutoUpdater
                 Console.WriteLine($"Done. Everything is up to date!");
                 Console.WriteLine($"Open randomizer now? Y/N");
                 var input = Console.ReadLine();
-                if (input.StartsWith("Y"))
+                if (input.StartsWith("Y", StringComparison.CurrentCultureIgnoreCase))
                 {
                     using var process = new Process();
 
                     process.StartInfo.FileName = $"{Directory.GetCurrentDirectory()}{Path.DirectorySeparatorChar}/Randomizer.exe";
-                    var autoUpdaterFile = "AutoUpdater";
-                    if (File.Exists($"{Directory.GetCurrentDirectory()}{Path.DirectorySeparatorChar}{autoUpdaterFile}.exe.2.exe"))
-                    {
-                        process.StartInfo.Arguments = $"finsh-update {Directory.GetCurrentDirectory()}{Path.DirectorySeparatorChar}{autoUpdaterFile}";                        
-                    }
+
+                    process.Start();
 
                 }
             }

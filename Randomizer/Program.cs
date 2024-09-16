@@ -13,14 +13,13 @@ namespace Randomizer
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main(string[] args)
+        static void Main()
         {
-            if (args.Length == 2 && args[0] == "finish-update")
+            foreach (var file in Directory.EnumerateFiles(Directory.GetCurrentDirectory(), $"AutoUpdater.*.2.*"))
             {
-                foreach (var file in Directory.EnumerateFiles(Directory.GetCurrentDirectory(), $"{args[1]}*.2.*"))
-                {
-                    File.Move(file, $"{args[0]}{Path.GetExtension(file)}");
-                }
+                var fileName = string.Join(string.Empty, file.Split(".").Take(1));
+                File.Copy(file, $"{fileName}{Path.GetExtension(file)}", true);
+                File.Delete(file);
             }
 
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
