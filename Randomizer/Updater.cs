@@ -100,7 +100,8 @@ namespace Randomizer
             using var process = new Process();
 
             process.StartInfo.FileName = "AutoUpdater.exe";
-            process.StartInfo.WorkingDirectory = Directory.GetCurrentDirectory();
+            process.StartInfo.Arguments = $"{Directory.GetCurrentDirectory()}{Path.DirectorySeparatorChar}{releaseAsset.name}";
+
 
             if (process.Start())
             {
