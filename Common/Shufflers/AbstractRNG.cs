@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Randomizer.Shufflers
+namespace XDCommon.Shufflers
 {
     public abstract class AbstractRNG
     {

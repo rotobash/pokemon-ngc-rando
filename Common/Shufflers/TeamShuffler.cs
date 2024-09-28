@@ -7,7 +7,7 @@ using XDCommon;
 using XDCommon.Contracts;
 using XDCommon.PokemonDefinitions;
 
-namespace Randomizer.Shufflers
+namespace XDCommon.Shufflers
 {
     public static class TeamShuffler
     {

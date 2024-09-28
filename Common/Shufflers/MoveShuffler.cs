@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using XDCommon;
 using XDCommon.PokemonDefinitions;
 
-namespace Randomizer.Shufflers
+namespace XDCommon.Shufflers
 {
     public struct RandomMoveSetOptions
     {

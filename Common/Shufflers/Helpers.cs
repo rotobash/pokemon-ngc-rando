@@ -8,7 +8,7 @@ using XDCommon.Contracts;
 using XDCommon.PokemonDefinitions;
 using static System.Windows.Forms.Design.AxImporter;
 
-namespace Randomizer.Shufflers
+namespace XDCommon.Shufflers
 {
     internal static class Helpers
     {

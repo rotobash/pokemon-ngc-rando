@@ -8,7 +8,7 @@ using XDCommon.PokemonDefinitions;
 using XDCommon;
 using XDCommon.Utility;
 
-namespace Randomizer
+namespace XDCommon
 {
     public class ExtractedGame
     {

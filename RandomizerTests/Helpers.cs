@@ -1,4 +1,4 @@
-﻿using Randomizer.Shufflers;
+﻿using XDCommon.Shufflers;
 using System;
 using System.Collections.Generic;
 using System.Linq;

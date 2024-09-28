@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
-using Randomizer;
-using Randomizer.Shufflers;
+using XDCommon;
+using XDCommon.Shufflers;
 using RandomizerTests.ReferenceData;
 using System;
 using System.Collections.Generic;

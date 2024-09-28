@@ -1,5 +1,5 @@
-﻿using Randomizer.Shufflers;
-using Randomizer;
+﻿using XDCommon.Shufflers;
+using XDCommon;
 using System;
 using System.Collections.Generic;
 using System.Linq;
