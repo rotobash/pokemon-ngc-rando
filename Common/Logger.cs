@@ -1,4 +1,4 @@
-﻿using Randomizer.Shufflers;
+﻿using XDCommon.Shufflers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using XDCommon;
 using XDCommon.Utility;
 
-namespace Randomizer
+namespace XDCommon
 {
     public static class Logger
     {

@@ -1,4 +1,4 @@
-﻿using Randomizer.Shufflers;
+﻿using XDCommon.Shufflers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -253,8 +253,8 @@ namespace Randomizer
                 var extractor = EndInvoke(extractorInvoke) as ISOExtractor;
                 var gameFile = EndInvoke(isoInvoke) as ISO;
 
-                var randoInvoke = BeginInvoke(new Func<Randomizer>(() => new Randomizer(gameExtractor, settings, prng, seed)));
-                using var randomizer = EndInvoke(randoInvoke) as Randomizer;
+                var randoInvoke = BeginInvoke(new Func<XDCommon.Randomizer>(() => new XDCommon.Randomizer(gameExtractor, settings, prng, seed)));
+                using var randomizer = EndInvoke(randoInvoke) as XDCommon.Randomizer;
 
                 Logger.CreateNewLogFile(path, settings);
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using XDCommon.PokemonDefinitions;
 using XDCommon.Utility;
 
-namespace Randomizer.Shufflers
+namespace XDCommon.Shufflers
 {
     public static class StaticPokemonShuffler
     {
