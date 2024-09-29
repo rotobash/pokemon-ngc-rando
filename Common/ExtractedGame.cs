@@ -62,14 +62,14 @@ namespace XDCommon
             TMs = ItemList.Where(i => i is TM).Select(i => i as TM).ToArray();
             HMs = new[]
             {
-                MoveList.First(m => m.Name.Equals(new UnicodeString(Encoding.UTF8.GetBytes("\0C\0U\0T")))),
-                MoveList.First(m => m.Name.Equals(new UnicodeString(Encoding.UTF8.GetBytes("\0F\0L\0Y")))),
-                MoveList.First(m => m.Name.Equals(new UnicodeString(Encoding.UTF8.GetBytes("\0S\0U\0R\0F")))),
-                MoveList.First(m => m.Name.Equals(new UnicodeString(Encoding.UTF8.GetBytes("\0S\0T\0R\0E\0N\0G\0T\0H")))),
-                MoveList.First(m => m.Name.Equals(new UnicodeString(Encoding.UTF8.GetBytes("\0F\0L\0A\0S\0H")))),
-                MoveList.First(m => m.Name.Equals(new UnicodeString(Encoding.UTF8.GetBytes("\0R\0O\0C\0K\0 \0S\0M\0A\0S\0H")))),
-                MoveList.First(m => m.Name.Equals(new UnicodeString(Encoding.UTF8.GetBytes("\0W\0A\0T\0E\0R\0F\0A\0L\0L")))),
-                MoveList.First(m => m.Name.Equals(new UnicodeString(Encoding.UTF8.GetBytes("\0D\0I\0V\0E")))),
+                MoveList.First(m => m.Name.Equals(UnicodeString.FromString("CUT"))),
+                MoveList.First(m => m.Name.Equals(UnicodeString.FromString("FLY"))),
+                MoveList.First(m => m.Name.Equals(UnicodeString.FromString("SURF"))),
+                MoveList.First(m => m.Name.Equals(UnicodeString.FromString("STRENGTH"))),
+                MoveList.First(m => m.Name.Equals(UnicodeString.FromString("FLASH"))),
+                MoveList.First(m => m.Name.Equals(UnicodeString.FromString("ROCK SMASH"))),
+                MoveList.First(m => m.Name.Equals(UnicodeString.FromString("WATERFALL"))),
+                MoveList.First(m => m.Name.Equals(UnicodeString.FromString("DIVE"))),
             };
 
             ValidHeldItems = NonKeyItems.Where(i => i.CanBeHeld == true).ToArray();
