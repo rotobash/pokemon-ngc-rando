@@ -33,8 +33,8 @@ namespace XDCommon.Shufflers
                     XDTradePokemon.UpdateDukingTrades(iso, newRequestedPokemon, newGivenPokemon);
                     XDTradePokemon.UpdateHordelTrade(iso, hordelGivenShadow, hordelTrade);
 
-                    Logger.Log($"Requested Pokemon: {string.Join(", ", newRequestedPokemon?.Select(p => p.Name) ?? ["None"])}\n");
-                    Logger.Log($"Given Pokemon: {string.Join(", ", newGivenPokemon?.Select(p => p.Name) ?? ["None"])}\n");
+                    Logger.Log($"Requested Pokemon: {string.Join(", ", newRequestedPokemon?.Select(p => p.Name) ?? new string[] { "None" })}\n");
+                    Logger.Log($"Given Pokemon: {string.Join(", ", newGivenPokemon?.Select(p => p.Name) ?? new string[] { "None" })}\n");
 
                     Logger.Log($"Hordel Shadow Pokemon: {string.Join(", ", hordelGivenShadow?.Name ?? "None")}\n");
                     Logger.Log($"Hordel Trade Pokemon: {string.Join(", ", hordelTrade?.Name ?? "None")}\n");

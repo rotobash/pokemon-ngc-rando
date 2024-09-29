@@ -240,7 +240,7 @@ namespace Randomizer
             }
         }
 
-        private void StartRandomizing(object? sender, DoWorkEventArgs e) 
+        private void StartRandomizing(object sender, DoWorkEventArgs e) 
         {
             if (e.Argument is string path)
             {
