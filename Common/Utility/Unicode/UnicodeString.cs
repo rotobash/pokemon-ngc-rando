@@ -21,6 +21,13 @@ namespace XDCommon.Utility
             return this.SelectMany(u => u.ByteStream).ToArray();
         }
 
+        public static UnicodeString FromString(string text)
+        {
+            var twoByteStr = text.SelectMany(c => new char[] { '\0', c });
+            var byteStream = Encoding.UTF8.GetBytes(twoByteStr.ToArray());
+            return new UnicodeString(byteStream);
+        }
+
         public UnicodeString()
         {
         }

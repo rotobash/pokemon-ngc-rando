@@ -178,9 +178,9 @@ namespace XDCommon.PokemonDefinitions
                     }
                 }
 
-                var endMessageLine1 = new UnicodeString(Encoding.UTF8.GetBytes($"{newRequestedPokemon[0].UnicodeName}, {newRequestedPokemon[1].UnicodeName}").SelectMany(b => new byte[] { 0, b }));
+                var endMessageLine1 = UnicodeString.FromString($"{newRequestedPokemon[0].UnicodeName}, {newRequestedPokemon[1].UnicodeName}");
                 var lineBreak = new[] { new SpecialUnicodeCharacters(SpecialCharacters.NewLine) };
-                var endMessageLine2 = new UnicodeString(Encoding.UTF8.GetBytes($"or a {newRequestedPokemon[2].UnicodeName}?").SelectMany(b => new byte[] { 0, b }));
+                var endMessageLine2 = UnicodeString.FromString($"or a {newRequestedPokemon[2].UnicodeName}?");
 
                 var str = new UnicodeString(message.GetStringWithId(TradeMessageStringId).Take(TradeMessageCharacterCopyIndex).Concat(endMessageLine1).Concat(lineBreak).Concat(endMessageLine2));
 
@@ -206,8 +206,8 @@ namespace XDCommon.PokemonDefinitions
             var tradeScript = fsysFile.GetEntryByFileName("S1_shop_1F.scd");
             var message = fsysFile.GetEntryByFileName("S1_shop_1F.msg") as StringTable;
 
-            var togepiStr = new UnicodeString(Encoding.UTF8.GetBytes("\0T\0O\0G\0E\0P\0I"));
-            var elekidStr = new UnicodeString(Encoding.UTF8.GetBytes("\0E\0L\0E\0K\0I\0D"));
+            var togepiStr = UnicodeString.FromString("TOGEPI");
+            var elekidStr = UnicodeString.FromString("ELEKID");
 
             if (shadowGivenPokemon != null)
             {
