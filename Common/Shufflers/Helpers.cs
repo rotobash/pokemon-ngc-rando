@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using XDCommon;
 using XDCommon.Contracts;
 using XDCommon.PokemonDefinitions;
-using static System.Windows.Forms.Design.AxImporter;
 
 namespace XDCommon.Shufflers
 {

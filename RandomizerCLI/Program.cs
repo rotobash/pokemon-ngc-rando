@@ -1,71 +1,65 @@
 ﻿using CommandLine;
+using RandomizerCLI.Manipulators;
+using RandomizerCLI.Options;
+using System.ComponentModel;
+using System.IO;
+using System.Net.NetworkInformation;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using XDCommon;
+using XDCommon.PokemonDefinitions;
+using XDCommon.Shufflers;
+using XDCommon.Utility;
 
 namespace RandomizerCLI
 {
     internal class Program
     {
-        public enum ItemTypes { Overworld }
-
-        [Verb("extract", HelpText = "Set output to verbose messages.")]
-        public class ExtractOptions
-        {
-            [Option('o', "output", Required = true, HelpText = "Where to extract the JSON files too.")]
-            public string OutputPath { get; set; }
-
-            [Option('i', "items", Required = true, HelpText = "The item types to extract.")]
-            public IEnumerable<string> Items { get; set; }
-
-            public IEnumerable<ItemTypes> ItemTypes
-            { 
-                get => Items.Select(i => Enum.Parse<ItemTypes>(i));
-            }
-        }
-
-        [Verb("randomize", HelpText = "Set output to verbose messages.")]
-        public class RandomizeOptions
-        {
-
-            [Option('g', "game", Required = true, HelpText = "The path to the game we're swapping.")]
-            public string ISOPath { get; set; }
-            [Option('s', "settings", Required = false, HelpText = "Set output to verbose messages.")]
-            public Random Settings { get; set; }
-
-        }
-
-        [Verb("swap", HelpText = "Set output to verbose messages.")]
-        public class SwapOptions
-        {
-            [Option('s', "swapfile", Required = true, HelpText = "The JSON file that defines which items to swap.")]
-            public string SwapFile { get; set; }
-
-            [Option('g', "game", Required = true, HelpText = "The path to the game we're swapping.")]
-            public string ISOPath { get; set; }
-        }
-
         static int Main(string[] args)
         {
-            return Parser.Default.ParseArguments<RandomizeOptions, ExtractOptions, SwapOptions>(args)
-                .MapResult(
-                    (RandomizeOptions randOpts) => Randomize(randOpts),
-                    (ExtractOptions exOpts) => ExtractItems(exOpts),
-                    (SwapOptions swapOpts) => SwapItems(swapOpts),
-                    errs => 1
-                );
+            try
+            {
+                return Parser.Default.ParseArguments<RandomizeOptions, ExtractOptions, SwapOptions, TestSwapOptions>(args)
+                    .MapResult(
+                        (RandomizeOptions randOpts) => Randomize(randOpts),
+                        (ExtractOptions exOpts) => ExtractItems(exOpts),
+                        (SwapOptions swapOpts) => SwapItems(swapOpts),
+                        (TestSwapOptions swapOpts) => GenerateSwapFile(swapOpts),
+                        errs => 1
+                    );
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine(ex.Message);
+                return 1;
+            }
         }
 
 
         static int SwapItems(SwapOptions swapOptions)
         {
+            using var itemSwap = new ItemSwap(swapOptions);
+            itemSwap.Swap();
+            return 0;
+        }
+        static int GenerateSwapFile(TestSwapOptions swapOptions)
+        {
+            using var generateSwpFile = new GenerateSwapFile(swapOptions);
+            generateSwpFile.Generate();
             return 0;
         }
 
         static int Randomize(RandomizeOptions randomizeOptions)
         {
+            var cliRandomizer = new CommandLineRandomizer(randomizeOptions);
+            cliRandomizer.Randomize();
             return 0;
         }
 
         static int ExtractItems(ExtractOptions extractOptions)
         {
+            using var jsonExtractor = new JsonExtractor(extractOptions);
+            jsonExtractor.Extract();
             return 0;
         }
     }
