@@ -82,5 +82,79 @@ namespace XDCommon.Utility
             streamCopy.Seek(0, SeekOrigin.Begin);
             return streamCopy;
         }
+
+        private uint DolToRAMOffset(Game game)
+        {
+            return game switch
+            {
+                Game.Colosseum => 0x3000,
+                Game.XD => 0x30a0,
+                _ => throw new Exception("Unsupported game!")
+            };
+        }
+
+        private uint DOLFreeSpaceStart(Game game, Region region)
+        {
+            return game switch
+            {
+                Game.Colosseum => region switch
+                {
+                    Region.US => 0xbe348 - DolToRAMOffset(game),
+                    Region.Europe => 0xc1948 - DolToRAMOffset(game),
+                    Region.Japan => 0xbb4a8 - DolToRAMOffset(game),
+                    _ => throw new Exception("Unknown region!")
+                },
+                Game.XD => region switch
+                {
+                    Region.US => 0xd39d0 - DolToRAMOffset(game),
+                    Region.Europe => 0xd4fec - DolToRAMOffset(game),
+                    Region.Japan => 0xcfef4 - DolToRAMOffset(game),
+                    _ => throw new Exception("Unsupported game!")
+                },
+            };
+        }
+
+        private uint DOLFreeSpaceEnd(Game game, Region region)
+        {
+            return game switch
+            {
+                Game.Colosseum => region switch
+                {
+                    Region.US => 0xc459c - DolToRAMOffset(game),
+                    Region.Europe => 0xc7b9c - DolToRAMOffset(game),
+                    Region.Japan => 0xc16f8 - DolToRAMOffset(game),
+                    _ => throw new Exception("Unknown region!")
+                },
+                Game.XD => region switch
+                {
+                    Region.US => 0xd9c2c - DolToRAMOffset(game),
+                    Region.Europe => 0xdb23c - DolToRAMOffset(game),
+                    Region.Japan => 0x30a0 - DolToRAMOffset(game),
+                    _ => throw new Exception("Unsupported game!")
+                },
+            };
+        }
+
+        public uint FindFreeSpace(Game game, Region region)
+        {
+            var startPointer = DOLFreeSpaceStart(game, region);
+            var endPointer = DOLFreeSpaceEnd(game, region);
+
+            var offset = startPointer;
+            while (offset < endPointer)
+            {
+                if (ExtractedFile.GetUIntAtOffset(offset) != 0)
+                {
+                    offset += 4;
+                    continue;
+                }
+                else
+                {
+                    return offset;
+                }
+            }
+
+            return 0;
+        }
     }
 }
