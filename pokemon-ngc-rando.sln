@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RandomizerTests", "Randomiz
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomizerCLI", "RandomizerCLI\RandomizerCLI.csproj", "{3F748170-8375-4B7C-8FE7-7BF2E3A7433E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DolphinMemoryAccess", "DolphinMemoryAccess\DolphinMemoryAccess.csproj", "{506F59A8-3ABD-4075-B46D-612FE0BC09B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{3F748170-8375-4B7C-8FE7-7BF2E3A7433E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F748170-8375-4B7C-8FE7-7BF2E3A7433E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F748170-8375-4B7C-8FE7-7BF2E3A7433E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{506F59A8-3ABD-4075-B46D-612FE0BC09B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{506F59A8-3ABD-4075-B46D-612FE0BC09B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{506F59A8-3ABD-4075-B46D-612FE0BC09B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{506F59A8-3ABD-4075-B46D-612FE0BC09B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
