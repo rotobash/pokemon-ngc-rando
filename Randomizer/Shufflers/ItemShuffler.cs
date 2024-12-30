@@ -61,11 +61,12 @@ namespace Randomizer.Shufflers
             }
         }
 
-        public static void ShuffleTutorMoves(ShuffleSettings shuffleSettings, TutorMove[] tutorMoves)
+        public static void ShuffleTutorMoves(ShuffleSettings shuffleSettings)
         {
             var settings = shuffleSettings.RandomizerSettings.ItemShufflerSettings;
             var extractedGame = shuffleSettings.ExtractedGame;
             var random = shuffleSettings.RNG;
+            var tutorMoves = extractedGame.TutorMoves;
 
             if (settings.RandomizeTutorMoves)
             {

@@ -273,7 +273,7 @@ namespace XDCommon.PokemonDefinitions
 
         public void SetTutorMove(int index, bool canLearn)
         {
-            iso.CommonRel.ExtractedFile.WriteByteAtOffset(StartOffset + FirstTMOffset + index, canLearn ? (byte)1 : (byte)0);
+            iso.CommonRel.ExtractedFile.WriteByteAtOffset(StartOffset + FirstTutorMoveOffset + index, canLearn ? (byte)1 : (byte)0);
             TutorMoves[index] = canLearn;
         }
 

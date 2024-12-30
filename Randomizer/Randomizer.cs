@@ -57,8 +57,7 @@ namespace Randomizer
 
             if (gameExtractor is XDExtractor xd)
             {
-                var tutorMoves = xd.ExtractTutorMoves();
-                ItemShuffler.ShuffleTutorMoves(shuffleSettings, tutorMoves);
+                ItemShuffler.ShuffleTutorMoves(shuffleSettings);
             }
         }
 
