@@ -15,7 +15,7 @@ namespace RandomizerTests
         protected IGameExtractor gameExtractor { get; set; }
         protected ShuffleSettings shuffleSettings { get; set; } = new ShuffleSettings
         {
-            RNG = new Cryptographic()
+            RNG = new Xoroshiro128StarStar((ulong)DateTime.UtcNow.Ticks)
         };
         protected Pokemon[] pokemon;
         protected Move[] moves;

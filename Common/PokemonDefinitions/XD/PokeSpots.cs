@@ -57,14 +57,12 @@ namespace XDCommon.PokemonDefinitions
 
     public class PokeSpotPokemon
     {
-        const int FirstPokeSpotOffset = 0x2FAC;
         const byte SizeOfPokeSpotData = 0x0C;
-        const byte NumberOfPokeSpotEntries = 0x0B;
         const byte MinLevelOffset = 0x00;
         const byte MaxLevelOffset = 0x01;
         const byte PokeSpotSpeciesOffset = 0x02;
-        const byte EncounterPercentageOffset = 0x07;
-        const byte StepsPerPokeSnackOffset = 0x0A;
+        const byte EncounterPercentageOffset = 0x04;
+        const byte StepsPerPokeSnackOffset = 0x08;
 
         int index;
         ISO iso;
@@ -97,21 +95,21 @@ namespace XDCommon.PokemonDefinitions
             get => iso.CommonRel.ExtractedFile.GetByteAtOffset(StartOffset + MaxLevelOffset);
             set => iso.CommonRel.ExtractedFile.WriteByteAtOffset(StartOffset + MaxLevelOffset, value);
         }
-
-        public byte EncounterPercentage
-        {
-            get => iso.CommonRel.ExtractedFile.GetByteAtOffset(StartOffset + EncounterPercentageOffset);
-            set => iso.CommonRel.ExtractedFile.WriteByteAtOffset(StartOffset + EncounterPercentageOffset, value);
-        }
-        
         public ushort Pokemon
         {
             get => iso.CommonRel.ExtractedFile.GetUShortAtOffset(StartOffset + PokeSpotSpeciesOffset);
             set => iso.CommonRel.ExtractedFile.WriteBytesAtOffset(StartOffset + PokeSpotSpeciesOffset, value.GetBytes());
         }
-        public ushort StepsPerSnack
+
+        public uint EncounterPercentage
         {
-            get => iso.CommonRel.ExtractedFile.GetUShortAtOffset(StartOffset + StepsPerPokeSnackOffset);
+            get => iso.CommonRel.ExtractedFile.GetUIntAtOffset(StartOffset + EncounterPercentageOffset);
+            set => iso.CommonRel.ExtractedFile.WriteBytesAtOffset(StartOffset + EncounterPercentageOffset, value.GetBytes());
+        }
+        
+        public uint StepsPerSnack
+        {
+            get => iso.CommonRel.ExtractedFile.GetUIntAtOffset(StartOffset + StepsPerPokeSnackOffset);
             set => iso.CommonRel.ExtractedFile.WriteBytesAtOffset(StartOffset + StepsPerPokeSnackOffset, value.GetBytes());
         }
     }
