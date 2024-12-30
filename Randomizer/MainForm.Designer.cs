@@ -214,6 +214,7 @@ namespace Randomizer
             prngDropDown = new System.Windows.Forms.ComboBox();
             label1 = new System.Windows.Forms.Label();
             generateLogCheck = new System.Windows.Forms.CheckBox();
+            openApClient = new System.Windows.Forms.Button();
             openISODialog = new System.Windows.Forms.OpenFileDialog();
             saveISODialog = new System.Windows.Forms.SaveFileDialog();
             infoToolTip = new System.Windows.Forms.ToolTip(components);
@@ -314,8 +315,9 @@ namespace Randomizer
             tableLayoutPanel1.Controls.Add(progressBar, 1, 6);
             tableLayoutPanel1.Controls.Add(tableLayoutPanel9, 0, 6);
             tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 1, 3);
-            tableLayoutPanel1.Controls.Add(tableLayoutPanel32, 0, 2);
+            tableLayoutPanel1.Controls.Add(tableLayoutPanel32, 0, 3);
             tableLayoutPanel1.Controls.Add(generateLogCheck, 2, 4);
+            tableLayoutPanel1.Controls.Add(openApClient, 0, 2);
             tableLayoutPanel1.Location = new System.Drawing.Point(10, 9);
             tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -2669,7 +2671,7 @@ namespace Randomizer
             tableLayoutPanel32.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             tableLayoutPanel32.Controls.Add(prngDropDown, 0, 1);
             tableLayoutPanel32.Controls.Add(label1, 0, 0);
-            tableLayoutPanel32.Location = new System.Drawing.Point(3, 99);
+            tableLayoutPanel32.Location = new System.Drawing.Point(3, 147);
             tableLayoutPanel32.Name = "tableLayoutPanel32";
             tableLayoutPanel32.RowCount = 2;
             tableLayoutPanel32.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.47619F));
@@ -2711,6 +2713,17 @@ namespace Randomizer
             infoToolTip.SetToolTip(generateLogCheck, "When checked, a log will be generated of what values were randomized and their new values.");
             generateLogCheck.UseVisualStyleBackColor = true;
             generateLogCheck.CheckedChanged += generateLogCheck_CheckedChanged;
+            // 
+            // openApClient
+            // 
+            openApClient.Dock = System.Windows.Forms.DockStyle.Fill;
+            openApClient.Location = new System.Drawing.Point(3, 99);
+            openApClient.Name = "openApClient";
+            openApClient.Size = new System.Drawing.Size(177, 42);
+            openApClient.TabIndex = 15;
+            openApClient.Text = "Open AP Client";
+            openApClient.UseVisualStyleBackColor = true;
+            openApClient.Click += openApClient_Click;
             // 
             // infoToolTip
             // 
@@ -3048,6 +3061,7 @@ namespace Randomizer
         private System.Windows.Forms.CheckBox minimumPokeSpotCatchRate;
         private System.Windows.Forms.CheckBox useSimilarBSTsPokeSpotCheck;
         private System.Windows.Forms.CheckBox turnOffAnimationCheck;
+        private System.Windows.Forms.Button openApClient;
     }
 }
 

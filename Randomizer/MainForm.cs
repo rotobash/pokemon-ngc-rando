@@ -37,7 +37,7 @@ namespace Randomizer
             backgroundWorker.ProgressChanged += reportProgress;
             backgroundWorker.RunWorkerCompleted += doneTask;
 
-            foreach (var choice in Enum.GetValues<PRNGChoice>()) 
+            foreach (var choice in Enum.GetValues<PRNGChoice>())
             {
                 prngDropDown.Items.Add(choice);
                 prngDropDown.SelectedItem = choice;
@@ -240,7 +240,7 @@ namespace Randomizer
             }
         }
 
-        private void StartRandomizing(object sender, DoWorkEventArgs e) 
+        private void StartRandomizing(object sender, DoWorkEventArgs e)
         {
             if (e.Argument is string path)
             {
@@ -902,6 +902,12 @@ namespace Randomizer
                     Close();
                 }
             }
+        }
+
+        private void openApClient_Click(object sender, EventArgs e)
+        {
+            APClient client = new APClient();
+            client.Show();
         }
     }
 }
