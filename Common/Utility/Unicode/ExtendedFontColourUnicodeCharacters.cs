@@ -21,7 +21,7 @@ namespace XDCommon.Utility
 
         public override byte[] ByteStream { get; }
 
-        public override byte Unicode { get; }
+        public override bool Unicode { get; }
 
         public override int ExtraBytes { get; }
 
@@ -34,7 +34,7 @@ namespace XDCommon.Utility
         {
             specialUnicode = new SpecialUnicodeCharacters(SpecialCharacters.ChangeColourExtended, GetBytes());
             ByteStream = specialUnicode.ByteStream;
-            Unicode = 0xFF;
+            Unicode = true;
             ExtraBytes = 4;
             IsFormattingChar = true;
             this.colour = colour;
@@ -44,7 +44,7 @@ namespace XDCommon.Utility
         {
             specialUnicode = new SpecialUnicodeCharacters(SpecialCharacters.ChangeColourExtended, colour);
             ByteStream = specialUnicode.ByteStream;
-            Unicode = 0xFF;
+            Unicode = true;
             ExtraBytes = 4;
             IsFormattingChar = true;
             this.colour = ExtendedFontColours.Custom;

@@ -16,7 +16,7 @@ namespace XDCommon.PokemonDefinitions
         const byte Move3Offset = 0x36;
         const byte Move4Offset = 0x46;
 
-        public byte Index => 0;
+        public int Index => 0;
 
         public int StartOffset
         {
@@ -71,6 +71,7 @@ namespace XDCommon.PokemonDefinitions
 
         public void SetMove(int index, ushort move)
         {
+            Moves[index] = move;
             iso.DOL.ExtractedFile.WriteBytesAtOffset(StartOffset + Move1Offset + (index * Constants.ColSizeOfStarterMoveData), move.GetBytes());
         }
     }

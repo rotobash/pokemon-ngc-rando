@@ -9,7 +9,7 @@ namespace XDCommon.Utility
     {
         public override byte[] ByteStream { get; }
 
-        public override byte Unicode { get; }
+        public override bool Unicode { get; }
 
         public override int ExtraBytes { get; }
 
@@ -35,7 +35,7 @@ namespace XDCommon.Utility
             }
 
             ByteStream = bs.ToArray();
-            Unicode = 0xFF;
+            Unicode = true;
             chars = specialChars;
         }
 

@@ -47,7 +47,7 @@ namespace Randomizer.Shufflers
                     pokemon = newPokemon;
                 }
 
-                if (settings.RandomizeHeldItems)
+                if (settings.RandomizeHeldItems && pokemon.HeldItem != 0)
                 {
                     var newItem = validItems[random.Next(0, validItems.Length)];
                     Logger.Log($"Pokemon {pokemon.HeldItem} -> {newItem.Name}\n");

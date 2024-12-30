@@ -35,6 +35,7 @@ namespace XDCommon.PokemonDefinitions
         public const int FirstTMItemIndex = 0x121;
         public const byte NumberOfTMsandHMs = 0x3A;
         public const byte NumberOfTutorMoves = 0x0C; // XD only
+        public const byte TutorMoves = 126; // XD only
 
         public const byte NumberOfLevelUpMoves = 0x13;
         public const byte SizeOfLevelUpData = 0x4;
@@ -174,6 +175,8 @@ namespace XDCommon.PokemonDefinitions
 
         public const int XDMoves = 124;
         public const int XDNumberOfMoves = 125;
+        public const int XDWorldMapLocations = 128;
+        public const int XDNumberOfWorldMapLocations = 129;
 
         public static Dictionary<Region, Dictionary<string, string>> XDItemTables = new Dictionary<Region, Dictionary<string, string>>()
         {
@@ -202,6 +205,22 @@ namespace XDCommon.PokemonDefinitions
                     { "pocket_menu.fsys", "pocket_menu.msg" }
                 }
             },
+        };
+
+        public static Dictionary<int, int> TutorMoveToPokemonOrderMapping = new Dictionary<int, int>
+        {
+            { 0, 3 },
+            { 1, 5 },
+            { 2, 2 },
+            { 3, 7 },
+            { 4, 6 },
+            { 5, 4 },
+            { 6, 8 },
+            { 7, 0 },
+            { 8, 11 },
+            { 9, 9 },
+            { 10, 1 },
+            { 11, 10 },
         };
 
         // COLO

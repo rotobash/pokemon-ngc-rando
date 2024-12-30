@@ -18,7 +18,7 @@ namespace XDCommon.PokemonDefinitions
         const byte TreasureYCoordOffset = 0x14;
         const byte TreasureZCoordOffset = 0x18;
 
-        int index;
+        public int index;
         ISO iso;
         public int StartOffset => (int)(iso.CommonRel.GetPointer(iso.Game == Game.XD ? Constants.XDTreasureBoxData : Constants.ColTreasureBoxData) + index * Constants.SizeOfTreasure);
 
@@ -33,6 +33,12 @@ namespace XDCommon.PokemonDefinitions
             get => iso.CommonRel.ExtractedFile.GetByteAtOffset(StartOffset + TreasureModelIDOffset);
             set => iso.CommonRel.ExtractedFile.WriteByteAtOffset(StartOffset + TreasureModelIDOffset, value);
         }
+        public ushort TreasureRoom
+        {
+            get => iso.CommonRel.ExtractedFile.GetUShortAtOffset(StartOffset + TreasureRoomIDOffset);
+            set => iso.CommonRel.ExtractedFile.WriteBytesAtOffset(StartOffset + TreasureRoomIDOffset, value.GetBytes());
+        }
+        
         public ushort Item
         {
             get => iso.CommonRel.ExtractedFile.GetUShortAtOffset(StartOffset + TreasureItemIDOffset);

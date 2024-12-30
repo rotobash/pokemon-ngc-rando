@@ -11,7 +11,7 @@ namespace XDCommon.Utility
     {
         static byte[] MysteryBytes = new byte[] { 0x80, 0, 0, 0 };
 
-        public UnicodeString FileName { get; set; }
+        public string FileName { get; set; }
         public ushort Identifier { get; set; }
         public FileTypes Filetype { get; set; }
 
@@ -163,7 +163,7 @@ namespace XDCommon.Utility
                     NameOffset = ExtractedFile.GetUIntAtOffset(start + FileDetailsFilenameOffset)
                 };
 
-                fileDetails.FileName = ExtractedFile.GetStringAtOffset(fileDetails.NameOffset);
+                fileDetails.FileName = FST.GetFSTString(ExtractedFile, fileDetails.NameOffset);
                 fSysDetailsHeaders.Add(fileDetails);
             }
         }
@@ -257,7 +257,7 @@ namespace XDCommon.Utility
             var startDataOffset = uint.MaxValue;
             foreach (var detailHeader in fSysDetailsHeaders)
             {
-                fSysStream.Write(detailHeader.FileName.ToByteArray());
+                fSysStream.Write(Encoding.UTF8.GetBytes(detailHeader.FileName));
                 fSysStream.WriteByte(0);
 
                 if (detailHeader.StartOffset < startDataOffset)

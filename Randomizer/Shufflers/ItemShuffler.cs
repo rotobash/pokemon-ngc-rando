@@ -22,7 +22,7 @@ namespace Randomizer.Shufflers
                 var tms = extractedGame.TMs;
                 // use set to avoid dupes
                 var newTMSet = new HashSet<ushort>();
-                var validMoves = extractedGame.ValidMoves;
+                IEnumerable<Move> moveFilter = extractedGame.ValidMoves;
 
                 if (settings.TMForceGoodDamagingMove)
                 {
@@ -33,37 +33,46 @@ namespace Randomizer.Shufflers
                     var goodDamagingMoves = extractedGame.GoodDamagingMoves;
                     while (newTMSet.Count < count)
                     {
-                        var newMove = goodDamagingMoves[random.Next(0, goodDamagingMoves.Length)];
+                        var newMove = random.NextElement(goodDamagingMoves);
                         newTMSet.Add((ushort)newMove.MoveIndex);
                     }
                 }
 
+                if (shuffleSettings.RandomizerSettings.TeamShufflerSettings.MoveSetOptions.BanShadowMoves)
+                {
+                    moveFilter = moveFilter.Where(m => !m.IsShadowMove);
+                }
+
                 // keep picking while we haven't picked enough TMs
                 while (newTMSet.Count < tms.Length)
-                    newTMSet.Add((ushort)validMoves[random.Next(0, validMoves.Length)].MoveIndex);
+                    newTMSet.Add((ushort)random.NextElement(moveFilter).MoveIndex);
 
                 // set them to the actual TM item
                 for (int i = 0; i < tms.Length; i++)
                 {
                     var tm = tms[i];
-                    tm.Move = newTMSet.ElementAt(i);
+                    var newMove = extractedGame.MoveList[newTMSet.ElementAt(i)];
+                    tm.Move = (ushort)newMove.MoveIndex;
+                    tm.Description = newMove.Description;
+
                     Logger.Log($"TM{tm.TMIndex}: {extractedGame.MoveList[tm.Move].Name}\n");
                 }
                 Logger.Log($"\n\n");
             }
         }
 
-        public static void ShuffleTutorMoves(ShuffleSettings shuffleSettings, TutorMove[] tutorMoves)
+        public static void ShuffleTutorMoves(ShuffleSettings shuffleSettings)
         {
             var settings = shuffleSettings.RandomizerSettings.ItemShufflerSettings;
             var extractedGame = shuffleSettings.ExtractedGame;
             var random = shuffleSettings.RNG;
+            var tutorMoves = extractedGame.TutorMoves;
 
             if (settings.RandomizeTutorMoves)
             {
                 Logger.Log("=============================== Tutor Moves ===============================\n\n");
                 var newTutorMoveSet = new HashSet<ushort>();
-                var validMoves = extractedGame.ValidMoves;
+                IEnumerable<Move> moveFilter = extractedGame.ValidMoves;
 
                 if (settings.TutorForceGoodDamagingMove)
                 {
@@ -73,19 +82,27 @@ namespace Randomizer.Shufflers
                     var goodDamagingMoves = extractedGame.GoodDamagingMoves;
                     while (newTutorMoveSet.Count < count)
                     {
-                        var newMove = goodDamagingMoves[random.Next(0, goodDamagingMoves.Length)];
+                        var newMove = random.NextElement(goodDamagingMoves);
                         newTutorMoveSet.Add((ushort)newMove.MoveIndex);
                     }
                 }
 
+                if (shuffleSettings.RandomizerSettings.TeamShufflerSettings.MoveSetOptions.BanShadowMoves)
+                {
+                    moveFilter = moveFilter.Where(m => !m.IsShadowMove);
+                }
+
                 // keep picking while we haven't picked enough TMs or we picked a dupe
                 while (newTutorMoveSet.Count < tutorMoves.Length)
-                    newTutorMoveSet.Add((ushort)validMoves[random.Next(0, validMoves.Length)].MoveIndex);
+                    newTutorMoveSet.Add((ushort)random.NextElement(moveFilter).MoveIndex);
 
                 // set them to the actual TM item
                 for (int i = 0; i < tutorMoves.Length; i++)
                 {
-                    tutorMoves[i].Move = newTutorMoveSet.ElementAt(i);
+                    var tutorMove = tutorMoves[i];
+                    var newMove = extractedGame.MoveList[newTutorMoveSet.ElementAt(i)];
+                    tutorMove.Move = (ushort)newMove.MoveIndex;
+
                     Logger.Log($"Tutor Move {i + 1}: {extractedGame.MoveList[tutorMoves[i].Move].Name}\n");
                 }
                 Logger.Log($"\n\n");
@@ -175,9 +192,9 @@ namespace Randomizer.Shufflers
 
                         Logger.Log($"{martItem?.Name} -> ");
 
-                        var nextItem = potentialItems[random.Next(0, potentialItems.Length)];
-                        if (nextItem.Name.Contains("master", StringComparison.CurrentCultureIgnoreCase))
-                            nextItem.Price = 30000;
+                        var nextItem = random.NextElement(potentialItems);
+                        if (nextItem.Index == 1)
+                            nextItem.Price = 10000;
 
                         mart.Items[i] = nextItem.OriginalIndex;
                         Logger.Log($"{nextItem.Name}\n");

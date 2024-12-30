@@ -164,16 +164,39 @@ namespace XDCommon.Utility
 
         public static UnicodeString GetStringAtOffset(this Stream stream, long offset)
         {
-            byte currentByte;
+            ushort currentByte;
+            List<IUnicodeCharacters> stringBytes = new List<IUnicodeCharacters>();
             var currentOffset = offset;
-            UnicodeString chars = new UnicodeString();
 
-            while ((currentByte = GetByteAtOffset(stream, currentOffset)) != 0)
+            while (true)
             {
-                chars.Add(new UnicodeCharacters(currentByte));
-                currentOffset += 1;
+                currentByte = GetUShortAtOffset(stream, currentOffset);
+
+                currentOffset += 2;
+
+                if (currentByte == 0) break;
+
+                else if (currentByte == 0xFFFF)
+                {
+                    var unicodeByte = (SpecialCharacters)GetByteAtOffset(stream, currentOffset);
+                    currentOffset += 1;
+
+                    byte[] extraBytes = new byte[unicodeByte.ExtraBytes()];
+                    for (int i = 0; i < extraBytes.Length; i++)
+                    {
+                        extraBytes[i] = GetByteAtOffset(stream, currentOffset + i);
+                    }
+
+                    stringBytes.Add(new SpecialUnicodeCharacters(unicodeByte, extraBytes));
+                    currentOffset += extraBytes.Length;
+                }
+                else
+                {
+                    stringBytes.Add(new UnicodeCharacters(currentByte));
+                }
             }
-            return chars;
+
+            return new UnicodeString(stringBytes);
         }
 
         // write helpers

@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <None Update="App.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Images\colo-logo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

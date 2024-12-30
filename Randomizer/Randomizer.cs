@@ -44,9 +44,9 @@ namespace Randomizer
             PokemonTraitShuffler.RandomizePokemonTraits(shuffleSettings);
         }
 
-        public void RandomizeTrainers()
+        public int[] RandomizeTrainers()
         {
-            TeamShuffler.ShuffleTeams(shuffleSettings);
+            return TeamShuffler.ShuffleTeams(shuffleSettings);
         }
 
         public void RandomizeItems()
@@ -57,22 +57,21 @@ namespace Randomizer
 
             if (gameExtractor is XDExtractor xd)
             {
-                var tutorMoves = xd.ExtractTutorMoves();
-                ItemShuffler.ShuffleTutorMoves(shuffleSettings, tutorMoves);
+                ItemShuffler.ShuffleTutorMoves(shuffleSettings);
             }
         }
 
-        public void RandomizeStatics()
+        public void RandomizeStatics(int[] pickedShadows)
         {
             if (gameExtractor is XDExtractor xd)
             {
                 var starter = xd.GetStarter();
-                StaticPokemonShuffler.RandomizeXDStatics(shuffleSettings, starter, gameExtractor.ISO);
+                StaticPokemonShuffler.RandomizeXDStatics(shuffleSettings, starter, gameExtractor.ISO, pickedShadows);
             }
             else if (gameExtractor is ColoExtractor colo)
             {
                 var starters = colo.GetStarters();
-                StaticPokemonShuffler.RandomizeColoStatics(shuffleSettings, starters);
+                StaticPokemonShuffler.RandomizeColoStatics(shuffleSettings, starters, pickedShadows);
             }
         }
 

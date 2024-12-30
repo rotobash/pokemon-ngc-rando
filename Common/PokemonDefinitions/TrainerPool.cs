@@ -17,7 +17,7 @@ namespace XDCommon.PokemonDefinitions
     public abstract class TrainerPool : ITrainerPool
     {
         public TrainerPoolType TeamType { get; }
-        public IEnumerable<ITrainer> AllTrainers { get; protected set; }
+        public IEnumerable<ITrainer> AllTrainers { get; protected set; } = Array.Empty<ITrainer>();
 
         public Stream ExtractedFile { get; protected set; }
         internal Pokemon[] PokemonList { get; }

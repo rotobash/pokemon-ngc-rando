@@ -5,22 +5,33 @@ using XDCommon.Utility;
 
 namespace XDCommon.PokemonDefinitions
 {
-    public interface ITrainerPokemon
+    public interface IPokemonInstance
     {
         int Index { get; }
-        ushort Pokemon { get; set; }
-        bool IsShadow { get; }
-        bool IsSet { get; }
-        byte ShadowCatchRate { get; set; }
         byte Level { get; set; }
-        byte ShadowLevel { get; set; }
-        ushort Item { get; set; }
+        ushort Pokemon { get; set; }
         ushort[] Moves { get; }
+
         void SetMove(int index, ushort moveNum);
+    }
+
+    public interface IShadowPokemon : IPokemonInstance
+    {
+        byte ShadowCatchRate { get; set; }
+        byte ShadowLevel { get; set; }
         void SetShadowMove(int index, ushort moveNum);
     }
 
-    public abstract class TrainerPokemon : ITrainerPokemon
+    // inherits IShadowPokemon because it *could* be a shadow
+    // its not great design should use a "has a" relationship instead
+    public interface ITrainerPokemon : IPokemonInstance
+    {
+        bool IsSet { get; }
+        bool IsShadow { get; }
+        ushort Item { get; set; }
+    }
+
+    public abstract class TrainerPokemon : ITrainerPokemon, IShadowPokemon
     {
         protected abstract uint StartOffset { get; }
         protected abstract uint ShadowStartOffset { get; }

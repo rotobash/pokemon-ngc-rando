@@ -62,7 +62,7 @@ namespace XDCommon.PokemonDefinitions
 			var tutorMoves = new TutorMove[Constants.NumberOfTutorMoves];
 			for (int i = 0; i < tutorMoves.Length; i++)
 			{
-				tutorMoves[i] = new TutorMove(i + 1, ISO);
+				tutorMoves[i] = new TutorMove(i, ISO);
 			}
 			return tutorMoves;
 		}
@@ -182,6 +182,27 @@ namespace XDCommon.PokemonDefinitions
 				abilities[i] = new Ability(i, ISO);
             }
 			return abilities;
+        }
+        public Room[] ExtractRooms()
+        {
+            var numRooms = ISO.CommonRel.GetValueAtPointer(Constants.XDNumberOfRooms);
+            var rooms = new Room[numRooms];
+            for (int i = 0; i < rooms.Length; i++)
+            {
+                rooms[i] = new Room(i, ISO);
+            }
+            return rooms;
+        }
+
+        public Area[] ExtractAreas()
+        {
+            var areaNum = ISO.CommonRel.GetValueAtPointer(Constants.XDNumberOfWorldMapLocations);
+			var areas = new Area[areaNum];
+			for (int i = 0; i < areas.Length; i++)
+            {
+				areas[i] = new Area(i, ISO);
+            }
+			return areas;
         }
     }
 }

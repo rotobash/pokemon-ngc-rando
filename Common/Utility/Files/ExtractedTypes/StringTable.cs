@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace XDCommon.Utility
 {
@@ -15,7 +17,7 @@ namespace XDCommon.Utility
         Spanish
     }
 
-    public class StringTable: FSysFileEntry
+    public class StringTable : FSysFileEntry
     {
         const int kNumberOfStringsOffset = 0x04;
         const int kEndOfHeader = 0x10;
@@ -24,7 +26,10 @@ namespace XDCommon.Utility
 
         Dictionary<int, int> stringOffsets = new Dictionary<int, int>();
 
+        Dictionary<int, UnicodeString> strings = new Dictionary<int, UnicodeString>();
+
         public int NumberOfEntries => ExtractedFile.GetUShortAtOffset(kNumberOfStringsOffset);
+        public IEnumerable<int> StringIds => strings.Keys;
 
         public StringTable(Stream stream)
         {
@@ -56,76 +61,75 @@ namespace XDCommon.Utility
                 var id = ExtractedFile.GetIntAtOffset(currentOffset) & 0xFFFFF;
                 var offset = ExtractedFile.GetIntAtOffset(currentOffset + 4);
                 if (!stringOffsets.ContainsKey(id))
+                {
                     stringOffsets.Add(id, offset);
+                    strings.Add(id, GetStringAtOffset(offset));
+                }
                 currentOffset += 8;
             }
         }
 
         public UnicodeString GetStringAtOffset(int offset)
         {
-            var currentOffset = offset;
-            var currChar = 0x0;
-            var nextChar = 0x1;
-            var str = new UnicodeString();
-
-            while (nextChar != 0)
-            {
-                if (currentOffset + 2 > ExtractedFile.Length)
-                {
-                    break;
-                }
-                currChar = ExtractedFile.GetUShortAtOffset(currentOffset);
-                currentOffset += 2;
-
-                if (currChar == 0xFFFF)
-                {
-                    var specChar = (SpecialCharacters)ExtractedFile.GetByteAtOffset(currentOffset);
-                    currentOffset += 1;
-
-                    var extra = specChar.ExtraBytes();
-                    var bytes = new byte[extra];
-                    ExtractedFile.Seek(currentOffset, SeekOrigin.Begin);
-                    currentOffset += ExtractedFile.Read(bytes);
-
-                    str.Add(new SpecialUnicodeCharacters(specChar, bytes));
-                }
-                else
-                {
-                    str.Add(new UnicodeCharacters(currChar));
-                }
-                nextChar = ExtractedFile.GetUShortAtOffset(currentOffset);
-            }
-            return str;
+            return ExtractedFile.GetStringAtOffset(offset);
         }
 
         public UnicodeString GetStringWithId(int id)
         {
             UnicodeString str;
-            if (!stringOffsets.ContainsKey(id))
+            if (stringOffsets.TryGetValue(id, out var offset) && offset + 2 <= ExtractedFile.Length)
             {
-                str = null;
+                if (!strings.TryGetValue(id, out str))
+                {
+                    str = ExtractedFile.GetStringAtOffset(offset);
+                    strings[id] = str;
+                }
             }
             else
             {
-                var offset = stringOffsets[id];
-                if (offset + 2 > ExtractedFile.Length)
-                    str = null;
-                else
-                    str = GetStringAtOffset(offset);
-
+                str = null;
             }
             return str ?? new UnicodeString();
         }
 
-        public IEnumerable<UnicodeString> GetAllStrings
+        public void ReplaceString(int id, UnicodeString newString)
         {
-            get
+            strings[id] = newString;
+        }
+
+        public override Stream Encode(bool isCompressed)
+        {
+            Stream stringFile = string.Empty.GetNewStream();
+            ExtractedFile.CopySubStream(stringFile, 0, kEndOfHeader);
+
+            var firstOffset = strings.Count * 8;
+            var newOffsetDict = new Dictionary<int, int>();
+
+            var strOffset = firstOffset;
+            foreach (var strKvp in strings)
             {
-                foreach (var offset in stringOffsets.Values)
-                {
-                    yield return GetStringAtOffset(offset);
-                }
+                var strBytes = strKvp.Value.ToByteArray();
+                stringFile.WriteBytesAtOffset(strOffset, strBytes);
+                stringFile.WriteBytesAtOffset(strOffset + strBytes.Length, new byte[] { 0, 0 });
+                newOffsetDict.Add(strKvp.Key, strOffset);
+
+                strOffset += strBytes.Length + 2;
             }
+
+            var pointerOffset = kEndOfHeader;
+            foreach (var offsetKvp in newOffsetDict)
+            {
+                stringFile.WriteBytesAtOffset(pointerOffset, offsetKvp.Key.GetBytes());
+                stringFile.WriteBytesAtOffset(pointerOffset + 4, offsetKvp.Value.GetBytes());
+                pointerOffset += 8;
+            }
+
+            stringFile.Seek(0, SeekOrigin.Begin);
+            ExtractedFile.Dispose();
+            ExtractedFile = stringFile;
+            stringOffsets = newOffsetDict;
+
+            return base.Encode(isCompressed);
         }
     }
 }

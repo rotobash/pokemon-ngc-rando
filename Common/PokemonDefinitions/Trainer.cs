@@ -7,6 +7,7 @@ namespace XDCommon.PokemonDefinitions
 {
     public interface ITrainer
     {
+        int Index { get; }
         string Name { get; }
         ITrainerPokemon[] Pokemon { get; }
         bool IsSet { get; }
@@ -19,6 +20,7 @@ namespace XDCommon.PokemonDefinitions
         const byte TrainerCameraEffectOffset = 0x12;
         public ITrainerPokemon[] Pokemon { get; }
 
+        public int Index => index;
         public abstract bool IsSet { get; }
         public abstract int SizeOfTrainerData { get; }
         public abstract ushort NameID { get; set; }

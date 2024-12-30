@@ -33,7 +33,7 @@ namespace XDCommon.PokemonDefinitions
 
         public string GiftType => "Shadow Pokemon";
 
-        public byte Index { get; }
+        public int Index { get; }
         public ushort Exp { get; }
 
         int TogepiOffset

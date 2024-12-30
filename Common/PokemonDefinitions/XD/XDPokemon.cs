@@ -51,5 +51,53 @@ namespace XDCommon.PokemonDefinitions
         {
 
         }
+
+
+        public static void FixBonsly(Pokemon bonsly)
+        {
+            var levelUpMoves = new LevelUpMove[]
+            {
+                new LevelUpMove(1, 313),
+                new LevelUpMove(6, 175),
+                new LevelUpMove(9, 67),
+                new LevelUpMove(14, 88),
+                new LevelUpMove(17, 102),
+                new LevelUpMove(22, 335),
+                new LevelUpMove(25, 185),
+                new LevelUpMove(30, 317),
+                new LevelUpMove(33, 157),
+                new LevelUpMove(38, 21),
+                new LevelUpMove(46, 38),
+            };
+
+            for (int i = 0; i < levelUpMoves.Length; i++)
+            {
+                var levelUpMove = levelUpMoves[i];
+                bonsly.SetLevelUpMove(1, levelUpMove.Level, levelUpMove.Move);
+            }
+
+            var tmCompatibility = new int[]
+            {
+                4, 6, 10, 11, 17, 21, 27, 28,
+                31, 32, 37, 39, 42, 43, 44, 45, 46
+            };
+
+            foreach (int i in tmCompatibility)
+            {
+                bonsly.SetLearnableTMS(i - 1, true);
+            }
+
+            var tutorMoveCompatibility = new int[]
+            {
+                1, 5, 7, 11, 12
+            };
+
+            foreach (int i in tutorMoveCompatibility)
+            {
+                bonsly.SetTutorMove(i - 1, true);
+            }
+
+            bonsly.SetEvolution(0, (byte)EvolutionMethods.LevelUp, 18, 185);
+        }
     }
 }

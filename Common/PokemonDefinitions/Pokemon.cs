@@ -54,7 +54,8 @@ namespace XDCommon.PokemonDefinitions
 
         public int Index => dexNum;
         public int NameID => iso.CommonRel.ExtractedFile.GetIntAtOffset(StartOffset + PokemonNameIDOFfset);
-        public string Name => iso.CommonRelStringTable.GetStringWithId(NameID).ToString();
+        public UnicodeString UnicodeName => iso.CommonRelStringTable.GetStringWithId(NameID);
+        public string Name => UnicodeName.ToString();
         public int SpeciesNameID => iso.CommonRel.ExtractedFile.GetIntAtOffset(StartOffset + Constants.SpeciesNameIDOffset);
         public double Height => (double)iso.CommonRel.ExtractedFile.GetUShortAtOffset(StartOffset + HeightOffset) / 10;
         public double Weight => (double)iso.CommonRel.ExtractedFile.GetUShortAtOffset(StartOffset + WeightOffset) / 10;
@@ -270,9 +271,9 @@ namespace XDCommon.PokemonDefinitions
             LearnableTMs[index] = canLearn;
         }
 
-        public void SetTutorMoves(int index, bool canLearn)
+        public void SetTutorMove(int index, bool canLearn)
         {
-            iso.CommonRel.ExtractedFile.WriteByteAtOffset(StartOffset + FirstTMOffset + index, canLearn ? (byte)1 : (byte)0);
+            iso.CommonRel.ExtractedFile.WriteByteAtOffset(StartOffset + FirstTutorMoveOffset + index, canLearn ? (byte)1 : (byte)0);
             TutorMoves[index] = canLearn;
         }
 

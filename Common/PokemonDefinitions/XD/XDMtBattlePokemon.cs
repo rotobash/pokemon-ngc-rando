@@ -10,7 +10,7 @@ namespace XDCommon.PokemonDefinitions
     {
         const byte MtBattlePokemonSpeciesOffset = 0x02;
         const byte MtBattlePokemonMoveOffset = 0x06;
-        public byte Index { get; set; }
+        public int Index { get; set; }
 
         public ushort Exp { get; set; }
 
