@@ -158,6 +158,67 @@ namespace XDCommon
                 AddOrUpdateAppSettings(nameof(ExtractDirectory), value.ToString());
             }
         }
+
+        public static string DolphinDirectory
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings.Get(nameof(DolphinDirectory));
+            }
+            set
+            {
+                AddOrUpdateAppSettings(nameof(DolphinDirectory), value.ToString());
+            }
+        }
+
+        public static string GameFilePath
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings.Get(nameof(GameFilePath));
+            }
+            set
+            {
+                AddOrUpdateAppSettings(nameof(GameFilePath), value.ToString());
+            }
+        }
+
+        public static string APUrl
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings.Get(nameof(APUrl));
+            }
+            set
+            {
+                AddOrUpdateAppSettings(nameof(APUrl), value.ToString());
+            }
+        }
+
+        public static string APSlotname
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings.Get(nameof(APSlotname));
+            }
+            set
+            {
+                AddOrUpdateAppSettings(nameof(APSlotname), value.ToString());
+            }
+        }
+
+        public static string APPassword
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings.Get(nameof(APPassword));
+            }
+            set
+            {
+                AddOrUpdateAppSettings(nameof(APPassword), value.ToString());
+            }
+        }
+
         public static void AddOrUpdateAppSettings(string key, string value)
         {
             try
