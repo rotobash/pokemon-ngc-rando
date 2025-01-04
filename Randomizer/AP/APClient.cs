@@ -24,20 +24,18 @@ using Color = System.Drawing.Color;
 using System.Buffers.Binary;
 using XDCommon.PokemonDefinitions.XD.SaveData;
 using XDCommon.Utility;
+using XDCommon.Contracts;
 
 namespace Randomizer
 {
     public partial class APClient : Form
     {
-        private const long XDSaveDataRAMPointerAddress = 0x80444d5c;
-
         bool connectedToAP = false;
         ArchipelagoSession apSession = null;
         Dolphin dolphinProcess;
-        long baseSaveDataPointer;
+        XDState xdProcess;
 
         BackgroundWorker dolphinSetupWorker;
-        SaveDataLayout saveData;
         PokemonDisplay[] pokemonDisplays = new PokemonDisplay[6];
         GameManipulator gameManipulator;
         ExtractedGame extractedGame;
@@ -109,12 +107,36 @@ namespace Randomizer
             }
         }
 
+        private string CreateRandomizedIso()
+        {
+            var gameManipInvoke = BeginInvoke(() => gameManipulator);
+            var gameManip = EndInvoke(gameManipInvoke) as GameManipulator;
+            var newFileName = $"{Path.GetRandomFileName()}.iso";
+            // TODO: Randomize the game based on the AP server settings
+            gameManip.ISOExtractor.RepackISO(gameManip.ISO, newFileName);
+
+            gameManip.Dispose();
+            Invoke(() => gameManipulator = new GameManipulator(newFileName));
+            return newFileName;
+        }
+
         private void SetupDolphinBackgroundWorker(object sender, EventArgs e)
         {
-            var dolphinProcInvoke = BeginInvoke(() => dolphinProcess);
-            var dolphinProc = EndInvoke(dolphinProcInvoke) as Dolphin;
+            var dolphinProcInvoke = BeginInvoke(() => xdProcess);
+            var dolphinProc = EndInvoke(dolphinProcInvoke) as XDState;
+            var shouldRandomize = false;
 
-            var started = dolphinProc.SetupDolphin().GetAwaiter().GetResult();
+            var fileToRun = Configuration.GameFilePath; // use AP settings for this instead
+            if (shouldRandomize)
+            {
+                fileToRun = CreateRandomizedIso();
+        }
+
+            var gameManipInvoke = BeginInvoke(() => gameManipulator);
+            var gameManip = EndInvoke(gameManipInvoke) as GameManipulator;
+            gameManip.ReleaseGameFile();
+
+            var started = dolphinProc.Setup(fileToRun).GetAwaiter().GetResult();
         }
 
         private void OnDolphinSetup(object sender, EventArgs e)
@@ -122,8 +144,8 @@ namespace Randomizer
             if (dolphinProcess?.IsRunning == true)
             {
                 dolphinPollTimer.Start();
-                connectionStatusLabel.Text = $"Connected to Dolphin (Running {dolphinProcess.RunningGameCode})";
-                connectionStatusLabel.ForeColor = connectedToAP ? Color.Green : Color.Yellow;
+                connectionStatusLabel.Text = $"Connected to Dolphin (Running {(Game)dolphinProcess.GameTitleCode})";
+                connectionStatusLabel.ForeColor = connectedToAP ? Color.Green : Color.Orange;
             }
             else
             {
@@ -150,9 +172,10 @@ namespace Randomizer
                 {
                     gameManipulator = new GameManipulator(Configuration.GameFilePath);
                     extractedGame = new ExtractedGame(gameManipulator.GameExtractor);
-                    gameManipulator.ReleaseGameFile();
 
-                    dolphinProcess = new Dolphin(Configuration.DolphinDirectory, Configuration.GameFilePath);
+                    dolphinProcess = new Dolphin(Configuration.DolphinDirectory);
+                    xdProcess = new XDState(dolphinProcess, gameManipulator.ISO);
+
                     dolphinSetupWorker.RunWorkerAsync();
                 }
                 catch (Exception ex)
@@ -172,24 +195,29 @@ namespace Randomizer
                 {
                     connectedToAP = true;
                     connectionStatusLabel.Text = "Connected to AP";
-                    //connectionStatusLabel.ForeColor = dolphinProcess?.IsRunning == true ? Color.Green : Color.Yellow;
+                    connectionStatusLabel.ForeColor = dolphinProcess?.IsRunning == true ? Color.Green : Color.Orange;
                 }
             }
         }
 
-        private bool LoadBaseAddress()
-        {
-            var buf = dolphinProcess.ReadData(XDSaveDataRAMPointerAddress, 4);
-            baseSaveDataPointer = BinaryPrimitives.ReadUInt32BigEndian(buf);
-
-            return baseSaveDataPointer != 0;
-        }
-
         private void dolphinPollTimer_Tick(object sender, EventArgs e)
         {
-            if (CheckDolphinHealth())
+            var dolphinState = xdProcess.Update();
+            DisplayDolphinHealth(dolphinState);
+
+            if (dolphinState != DolphinState.Hooked)
             {
-                saveData = SaveDataLayout.LoadFromMemory(dolphinProcess, baseSaveDataPointer);
+                return;
+        }
+
+            var flags = xdProcess.FlagData.StoryProgress();
+            storyFlagLabel.Text = flags.ToString();
+            inBattleLabel.Text = xdProcess.InBattle ? "Yes" : "No";
+            currentRoomLabel.Text = xdProcess.CurrentRoom.Name.ToString();
+
+            var saveData = new PlayerSaveData();
+            saveData.LoadFromMemory(dolphinProcess);
+
                 for (int i = 0; i < 6; i++)
                 {
                     if (saveData.Party[i].Species < extractedGame.PokemonList.Length)
@@ -202,7 +230,7 @@ namespace Randomizer
                 {
                     "----------------- Items -----------------"
                 };
-                foreach (var item in saveData.Inventory)
+            foreach (var item in saveData.BattleItems)
                 {
                     if (item.Index < extractedGame.ItemList.Length)
                     {
@@ -220,6 +248,15 @@ namespace Randomizer
                     }
                 }
 
+            newDisplay.Add("----------------- Pokeballs -----------------");
+            foreach (var item in saveData.Pokeballs)
+            {
+                if (item.Index < extractedGame.ItemList.Length)
+                {
+                    newDisplay.Add($"{extractedGame.ItemList[item.Index].Name} x{item.Quantity}");
+                }
+            }
+
                 newDisplay.Add("----------------- TM Items -----------------");
                 foreach (var item in saveData.TMItemInventory)
                 {
@@ -229,45 +266,48 @@ namespace Randomizer
                     }
                 }
 
+            newDisplay.Add("----------------- Berries -----------------");
+            foreach (var item in saveData.Berries)
+            {
+                if (item.Index < extractedGame.ItemList.Length)
+                {
+                    newDisplay.Add($"{extractedGame.ItemList[item.Index].Name} x{item.Quantity}");
+                }
+            }
+
                 if (!newDisplay.SequenceEqual(inventoryListBox.Items.Cast<string>()))
                 {
                     inventoryListBox.Items.Clear();
                     inventoryListBox.Items.AddRange(newDisplay.Cast<object>().ToArray());
                 }
             }
-        }
 
-        private bool CheckDolphinHealth()
+        private void DisplayDolphinHealth(DolphinState dolphinState)
         {
-            if (dolphinProcess?.IsRunning != true)
+            switch (dolphinState)
             {
-                baseSaveDataPointer = 0;
-                connectionStatusLabel.Text = "Disconnected from Dolphin";
-                connectionStatusLabel.ForeColor = Color.Yellow;
-                dolphinPollTimer.Stop();
-                return false;
-            }
-            else
-            {
-                if (baseSaveDataPointer == 0 && !LoadBaseAddress())
-                {
+                case DolphinState.Hooked:
+                    connectionStatusLabel.Text = "Hooked!";
+                    connectionStatusLabel.ForeColor = Color.Green;
+                    return;
+                case DolphinState.NotRunning:
+                    connectionStatusLabel.Text = "Dolphin not running";
+                    connectionStatusLabel.ForeColor = Color.Orange;
+                    return;
+                case DolphinState.ProcessRunning:
                     connectionStatusLabel.Text = "Waiting for game to boot";
-                    return false;
-                }
-
-                var saveDataStart = dolphinProcess.ReadData(baseSaveDataPointer + 1, 15);
-                if (saveDataStart.All(b => b == 0))
-                {
+                    connectionStatusLabel.ForeColor = Color.Orange;
+                    return;
+                case DolphinState.GameBooted:
                     connectionStatusLabel.Text = "Waiting for save game to load";
-                    return false;
-                }
-                else
-                {
-                    connectionStatusLabel.Text = "Listening...";
-                }
+                    connectionStatusLabel.ForeColor = Color.Orange;
+                    return;
+                default:
+                connectionStatusLabel.Text = "Disconnected from Dolphin";
+                    connectionStatusLabel.ForeColor = Color.Orange;
+                dolphinPollTimer.Stop();
+                    return;
             }
-
-            return true;
         }
 
         private void APClient_FormClosed(object sender, FormClosedEventArgs e)

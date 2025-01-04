@@ -11,41 +11,23 @@ using XDCommon.Utility;
 
 namespace XDCommon.PokemonDefinitions.XD.SaveData
 {
-    public class SaveDataLayout
+    public abstract class SaveDataLayout
     {
-        const byte FirstPokemonOffset = 0x30;
-        const ushort InventoryOffset = FirstPCPokemonOffset + (6 * PokemonInstance.SizeOfData);
-        const ushort TMInventoryOffset = InventoryOffset + 0x164;
+        // offset after save data pointer
+        const ushort FirstPokemonOffset = 0x170;
+        protected const byte BufferRow = 0x10;
+        const ushort MaxInventorySize = InventoryItem.SizeOfData * 75;
+        const ushort MaxPokeballInventorySize = InventoryItem.SizeOfData * 12;
+        const ushort MaxTMInventorySize = InventoryItem.SizeOfData * 64;
+        const ushort MaxBerryInventorySize = InventoryItem.SizeOfData * 44;
+        const ushort MaxCologneInventorySize = InventoryItem.SizeOfData * 4;
 
-        static byte[] PCByteMarker = new byte[] 
-        { 
-            0x20, 0x00, 0xFF, 0xA7,
-            0xC0, 0x3D, 0x8E, 0x84,
-            0x00, 0x00, 0x00, 0x00,
-            0xC1, 0xD0, 0xEC, 0x62,
-            0x00, 0x00, 0x92, 0xD4,
-            0x00, 0x00, 0x00, 0x65,
-            0x00, 0x00, 0x00, 0x00,
-            0x16, 0xC7, 0x04, 0x00,
-            0x00, 0x02, 0x00, 0x8A,
-            0x02, 0x00, 0x00, 0x00,
-            0x00, 0x00, 0x00, 0x00,
-            0x00, 0x00, 0x00, 0x00,
-            0x00, 0x00, 0x00, 0x00,
-            0x00, 0x00, 0x00, 0x00,
-            0x00, 0x00, 0x00, 0x00,
-            0x00, 0x00, 0x00, 0x00,
-            0x00, 0x00, 0x00, 0x00,
-            0x00, 0x00, 0x00, 0x00,
-            0x00, 0x00, 0x00, 0x00,
-            0x00, 0x00, 0x00, 0x00,
-            0x00, 0x00, 0x00, 0x00,
-            0x00, 0x00, 0x00, 0x00 
-        };
+        protected uint NextSectionOffset
+        {
+            get;
+            private set;
+        }
 
-        const byte FirstPCPokemonOffset = 0x18;
-
-        const ushort BoxPokemonSize = 0x170;
 
         public XDStoryFlags StoryFlag
         {
@@ -57,12 +39,13 @@ namespace XDCommon.PokemonDefinitions.XD.SaveData
             get;
         } = new PokemonInstance[6];
 
-        public PokemonInstance[] PC
+        public InventoryItem[] BattleItems
         {
             get;
-        } = new PokemonInstance[30];
+            private set;
+        }
 
-        public InventoryItem[] Inventory
+        public InventoryItem[] Pokeballs
         {
             get;
             private set;
@@ -79,42 +62,64 @@ namespace XDCommon.PokemonDefinitions.XD.SaveData
             get;
             private set;
         }
+        public InventoryItem[] Berries
+        {
+            get;
+            private set;
+        }
+        public InventoryItem[] CologneCase
+        {
+            get;
+            private set;
+        } = new InventoryItem[3];
 
-        public InventoryItem[] PCInventory
+        public InventoryItem[] MysteryInventory
         {
             get;
             private set;
         }
 
-        public static SaveDataLayout LoadFromMemory(Dolphin dolphin, long saveDataPointer)
+        public virtual void LoadFromMemory(Dolphin dolphin)
         {
-            var saveData = new SaveDataLayout();
-
-            var offset = FirstPokemonOffset;
-            var party = new PokemonInstance[6];
-            for (int i = 0; i < 6; i++) 
+            var saveDataPointer = PointerLocations.GetR13RelativePointer(dolphin, PointerLocations.SaveDataR13Offset) + FirstPokemonOffset;
+            if (saveDataPointer <= 0)
             {
-                var pokemonData = dolphin.ReadData(saveDataPointer + FirstPokemonOffset + (PokemonInstance.SizeOfData * i), PokemonInstance.SizeOfData);
-                saveData.Party[i] = new PokemonInstance(pokemonData);
+                return;
             }
 
-            var firstItemOffset = FirstPokemonOffset + (PokemonInstance.SizeOfData * 6);
-            var itemIventory = ReadItemData(dolphin, saveDataPointer + firstItemOffset);
+            for (int i = 0; i < Party.Length; i++) 
+            {
+                var pokemonData = dolphin.ReadData(saveDataPointer + (PokemonInstance.SizeOfData * i), PokemonInstance.SizeOfData);
+                Party[i] = new PokemonInstance(pokemonData);
+            }
 
-            var keyItemOffset = firstItemOffset + (itemIventory.Length * 4) + 0x10;
-            saveData.KeyItemInventory = ReadItemData(dolphin, saveDataPointer + keyItemOffset);
+            var firstItemOffset = (PokemonInstance.SizeOfData * Party.Length);
+            BattleItems = ReadItemData(dolphin, saveDataPointer + firstItemOffset);
 
-            var pokeballItemOffset = keyItemOffset + (saveData.KeyItemInventory.Length * 4) + 0x88;
-            var pokeballInventory = ReadItemData(dolphin, saveDataPointer + pokeballItemOffset);
+            var keyItemOffset = firstItemOffset + (BattleItems.Length * 4) + BufferRow;
+            KeyItemInventory = ReadItemData(dolphin, saveDataPointer + keyItemOffset);
 
-            var tmItemOffset = pokeballItemOffset + (pokeballInventory.Length * 4) + 0x10;
-            saveData.TMItemInventory = ReadItemData(dolphin, saveDataPointer + tmItemOffset);
-            saveData.Inventory = itemIventory.Concat(pokeballInventory).ToArray();
+            var pokeballItemOffset = firstItemOffset + MaxInventorySize;
+            Pokeballs = ReadItemData(dolphin, saveDataPointer + pokeballItemOffset);
 
-            return saveData;
+            var tmItemOffset = pokeballItemOffset + MaxPokeballInventorySize + BufferRow;
+            TMItemInventory = ReadItemData(dolphin, saveDataPointer + tmItemOffset);
+
+            var berriesOffset = tmItemOffset + MaxTMInventorySize;
+            Berries = ReadItemData(dolphin, saveDataPointer + berriesOffset);
+
+            var cologneCaseOffset = berriesOffset + MaxBerryInventorySize;
+            if (KeyItemInventory.Any(i => i.Index == 0x200))
+            {
+                var cologne = ReadItemData(dolphin, saveDataPointer + cologneCaseOffset);
+            }
+
+            var mysteryInventory = cologneCaseOffset + MaxCologneInventorySize;
+            MysteryInventory = ReadItemData(dolphin, saveDataPointer + mysteryInventory);
+            NextSectionOffset = (uint)(saveDataPointer + mysteryInventory + (MysteryInventory.Length * 4) + 0x98);
         }
 
-        private static InventoryItem[] ReadItemData(Dolphin dolphin, long offset)
+        private InventoryItem[] ReadItemData(Dolphin dolphin, long offset)
         {
             var inventory = new List<InventoryItem>();
 

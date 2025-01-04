@@ -13,8 +13,8 @@ namespace XDCommon.Utility
     {
         private bool disposedValue;
 
-        protected ISO ISO {  get; private set; }
-        protected ISOExtractor ISOExtractor { get; private set; }
+        public ISOExtractor ISOExtractor { get; private set; }
+        public ISO ISO {  get; private set; }
         public IGameExtractor GameExtractor { get; private set; }
 
         public GameManipulator(string pathToGameFile)

@@ -5,9 +5,9 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
 using System;
-using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Buffers.Binary;
 
 namespace DolphinMemoryAccess
 {
@@ -19,34 +19,60 @@ namespace DolphinMemoryAccess
     public class Dolphin
     {
         private const long EmulatedMemorySize = 0x2000000;
-        private const long EmulatedMemoryBase = 0x80000000;
+        public const long EmulatedMemoryBase = 0x80000000;
 
-        private ICanReadWriteMemory memoryAccessor;
+        private ICanReadWriteMemory? memoryAccessor;
         Process dolphinProcess;
         private IntPtr pointerToEmulatedMemory = IntPtr.Zero;
         private IntPtr dolphinBaseAddress;
         private IntPtr dolphinEmulatedBaseAddress;
         private int dolphinModuleSize;
         BigEndianReader reader;
-        ProcessStartInfo startInfo;
 
-        public string RunningGameCode
+        public ushort GameTitleCode
         {
-            get;
-            private set;
+            get 
+            {
+                if (IsRunning) 
+                {
+                    var data = ReadData(EmulatedMemoryBase + 2, 2);
+                    return data.Length > 0 ? BinaryPrimitives.ReadUInt16BigEndian(data) : (byte)0;
+                }
+                return 0; 
+            }
+        }
+
+        public byte GameRegionCode 
+        {
+            get 
+            {
+                if (IsRunning) 
+                {
+                    var data = ReadData(EmulatedMemoryBase + 3, 1);
+                    return data.Length > 0 ? data[0] : (byte)0;
+                }
+                return 0; 
+            }
         }
 
         public bool IsRunning => dolphinProcess != null && !dolphinProcess.HasExited;
 
-        public Dolphin(string dolphinPath, string gamePath)
+        public Dolphin(string dolphinPath)
         {
-            startInfo = new ProcessStartInfo
+            dolphinProcess = new Process
             {
-                Arguments = $"-b -e \"{gamePath}\"",
-                FileName = dolphinPath,
-                WorkingDirectory = Path.GetDirectoryName(dolphinPath),
-                UseShellExecute = true,
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = dolphinPath,
+                    WorkingDirectory = Path.GetDirectoryName(dolphinPath),
+                    UseShellExecute = true,
+                }
             };
+        }
+
+        private void SetDolphinStartArguments(string gamePath)
+        {
+            dolphinProcess.StartInfo.Arguments = $"-b -e \"{gamePath}\"";
         }
 
         /// <summary>
@@ -55,6 +81,9 @@ namespace DolphinMemoryAccess
         /// <returns></returns>
         public unsafe bool TryGetBaseAddress(out IntPtr emulatedBaseAddress)
         {
+            if (memoryAccessor is null)
+                throw new AccessViolationException("Dolphin process has not been setup.");
+
             // Check cached page address for potential valid page.
             if (pointerToEmulatedMemory != IntPtr.Zero)
             {
@@ -150,12 +179,9 @@ namespace DolphinMemoryAccess
             return false;
         }
 
-        public async Task<bool> SetupDolphin()
+        public async Task<bool> SetupDolphin(string gamePath)
         {
-            dolphinProcess = new Process
-            {
-                StartInfo = startInfo
-            };
+            SetDolphinStartArguments(gamePath);
             dolphinProcess.Start();
             await Task.Delay(5000).ConfigureAwait(false);
 
@@ -173,7 +199,6 @@ namespace DolphinMemoryAccess
                     {
                         if (TryGetBaseAddress(out dolphinEmulatedBaseAddress))
                         {
-                            RunningGameCode = Encoding.UTF8.GetString(memoryAccessor.ReadRaw((nuint)dolphinEmulatedBaseAddress.ToInt64(), 4));
                             return true;
                         }
                     }
@@ -193,11 +218,14 @@ namespace DolphinMemoryAccess
 
         private long TranslateAddressToOffset(long dolphinAddress)
         {
-            return dolphinAddress - EmulatedMemoryBase;
+            return dolphinAddress > EmulatedMemoryBase ? dolphinAddress - EmulatedMemoryBase : dolphinAddress;
         }
 
         public byte[] GuardedReadData(long guardDolphinAddress, int guardLength, byte[] guardValue, long dolphinAddress, int size)
         {
+            if (memoryAccessor is null)
+                throw new AccessViolationException("Dolphin process has not been setup.");
+
             var translatedGuardAddress = TranslateAddressToOffset(guardDolphinAddress);
             var guard = memoryAccessor.ReadRaw((nuint)(dolphinEmulatedBaseAddress.ToInt64() + translatedGuardAddress), guardLength);
             if (guard.SequenceEqual(guardValue))
@@ -208,6 +236,9 @@ namespace DolphinMemoryAccess
 
         public byte[] ReadData(long dolphinAddress, int size)
         {
+            if (memoryAccessor is null)
+                throw new AccessViolationException("Dolphin process has not been setup.");
+
             try
             {
                 var translatedAddress = TranslateAddressToOffset(dolphinAddress);
@@ -223,6 +254,9 @@ namespace DolphinMemoryAccess
 
         public void WriteData(long dolphinAddress, byte[] buffer)
         {
+            if (memoryAccessor is null)
+                throw new AccessViolationException("Dolphin process has not been setup.");
+
             try
             {
                 var translatedAddress = TranslateAddressToOffset(dolphinAddress);
@@ -236,6 +270,9 @@ namespace DolphinMemoryAccess
 
         public void GuardedWriteData(long guardDolphinAddress, int guardLength, byte[] guardValue, long dolphinAddress, byte[] buffer)
         {
+            if (memoryAccessor is null)
+                throw new AccessViolationException("Dolphin process has not been setup.");
+
             var guard = memoryAccessor.ReadRaw((nuint)(dolphinEmulatedBaseAddress.ToInt64() + guardDolphinAddress), guardLength);
             if (guard.SequenceEqual(guardValue))
                 WriteData(dolphinAddress, buffer);
