@@ -1,15 +1,55 @@
-﻿using System;
+﻿using DolphinMemoryAccess;
+using System;
+using System.Buffers.Binary;
 using System.Collections.Generic;
 using System.IO;
 using XDCommon.Contracts;
+using XDCommon.Patches;
+using XDCommon.PokemonDefinitions;
 
 namespace XDCommon.Utility
 {
+    public class DOLSection
+    {
+        public uint SectionNumber { get; set; }
+        public uint LoadAddress { get; set; }
+        public uint DOLOffset { get; set; }
+        public uint Size { get; set; }
+    }
+
+    public class DOLDataSection : DOLSection
+    {
+    }
+
+    public class DOLTextSection : DOLSection
+    {
+
+        public static DOLTextSection Create(uint sectionNumber, uint loadAddress, uint atOffset, byte[] contents)
+        {
+            return new DOLTextSection
+            {
+                SectionNumber = sectionNumber,
+                LoadAddress = loadAddress,
+                DOLOffset = atOffset,
+                Size = (uint)contents.Length
+            };
+        }
+    }
+
     public class DOL : BaseExtractedFile
     {
         public const int DOLStartOffsetLocation = 0x420;
-        const int DolSectionSizesStart = 0x90;
-        const int DolSectionSizesCount = 18;
+
+        const int TextSectionStart = 0x00;
+        const int DataSectionStart = 0x1C;
+        const int TextAddressStart = 0x48;
+        const int DataAddressStart = 0x64;
+        const int TextSectionSizeStart = 0x90;
+        const int DataSectionSizeStart = 0xAC;
+        const int BSSAddressStart = 0xD8;
+        const int BSSSizeStart = 0xDC;
+        const int EntryPoint = 0xE0;
+
         const int DolHeaderSize = 0x100;
 
         public override FileTypes FileType => FileTypes.DOL;
@@ -21,11 +61,31 @@ namespace XDCommon.Utility
             private set;
         }
         
-        public int Size
+        public uint Size
         {
             get;
             private set;
         }
+
+        public uint BSSAddress
+        {
+            get => ExtractedFile.GetUIntAtOffset(BSSAddressStart);
+        }
+        
+        public uint BSSSize
+        {
+            get => ExtractedFile.GetUIntAtOffset(BSSSizeStart);
+        }
+
+        public uint Entrypoint
+        {
+            get => ExtractedFile.GetUIntAtOffset(EntryPoint);
+        }
+
+        public uint RAMOffset => (uint)(Entrypoint - Dolphin.EmulatedMemoryBase - 0xB4);
+
+        DOLDataSection[] dataSections = new DOLDataSection[11];
+        DOLTextSection[] textSections = new DOLTextSection[7];
 
         public DOL(string pathToExtractDirectory, int offset)
         {
@@ -47,7 +107,8 @@ namespace XDCommon.Utility
                 ExtractedFile = file;
             }
             Offset = offset;
-            Size = (int)ExtractedFile.Length;
+
+            ReadDOLFile(ExtractedFile.GetBytesAtOffset(0, DolHeaderSize));
         }
 
         public DOL(string pathToExtractDirectory, ISOExtractor extractor)
@@ -57,13 +118,8 @@ namespace XDCommon.Utility
             ExtractedFile = fileName.GetNewStream();
             Offset = (int)extractor.ISOStream.GetUIntAtOffset(DOLStartOffsetLocation);
 
-            var size = DolHeaderSize;
-            for (int i = 0; i < DolSectionSizesCount; i++)
-            {
-                var offset = Offset + (i * 4) + DolSectionSizesStart;
-                size += (int)extractor.ISOStream.GetUIntAtOffset(offset);
-            }
-            Size = size;
+
+            ReadDOLFile(extractor.ISOStream.GetBytesAtOffset(Offset, DolHeaderSize));
 
             if (Configuration.Verbose)
             {
@@ -72,6 +128,46 @@ namespace XDCommon.Utility
 
             extractor.ISOStream.CopySubStream(ExtractedFile, Offset, Size);
             ExtractedFile.Flush();
+        }
+
+        void ReadDOLFile(byte[] header)
+        {
+            using var dolHeader = new MemoryStream(header);
+            uint size = DolHeaderSize;
+
+            for (int i = 0; i < textSections.Length; i++)
+            {
+                var offset = dolHeader.GetUIntAtOffset(TextSectionStart + (i * 4));
+                var load_address = dolHeader.GetUIntAtOffset(TextAddressStart + (i * 4));
+                var section_size = dolHeader.GetUIntAtOffset(TextSectionSizeStart + (i * 4));
+                textSections[i] = new DOLTextSection()
+                {
+                    SectionNumber = (uint)i,
+                    LoadAddress = load_address,
+                    DOLOffset = offset,
+                    Size = section_size
+                };
+
+                size += section_size;
+            }
+
+            for (int i = 0; i < dataSections.Length; i++)
+            {
+                var offset = dolHeader.GetUIntAtOffset(DataSectionStart + (i * 4));
+                var load_address = dolHeader.GetUIntAtOffset(DataAddressStart + (i * 4));
+                var section_size = dolHeader.GetUIntAtOffset(DataSectionSizeStart + (i * 4));
+                dataSections[i] = new DOLDataSection()
+                {
+                    SectionNumber = (uint)i,
+                    LoadAddress = load_address,
+                    DOLOffset = offset,
+                    Size = section_size
+                };
+
+                size += section_size;
+            }
+
+            Size = size;
         }
 
         public override Stream Encode(bool _ = false)
@@ -83,77 +179,8 @@ namespace XDCommon.Utility
             return streamCopy;
         }
 
-        private uint DolToRAMOffset(Game game)
+        public uint CreateASMSection(byte[] asmContent)
         {
-            return game switch
-            {
-                Game.Colosseum => 0x3000,
-                Game.XD => 0x30a0,
-                _ => throw new Exception("Unsupported game!")
-            };
-        }
-
-        private uint DOLFreeSpaceStart(Game game, Region region)
-        {
-            return game switch
-            {
-                Game.Colosseum => region switch
-                {
-                    Region.US => 0xbe348 - DolToRAMOffset(game),
-                    Region.Europe => 0xc1948 - DolToRAMOffset(game),
-                    Region.Japan => 0xbb4a8 - DolToRAMOffset(game),
-                    _ => throw new Exception("Unknown region!")
-                },
-                Game.XD => region switch
-                {
-                    Region.US => 0xd39d0 - DolToRAMOffset(game),
-                    Region.Europe => 0xd4fec - DolToRAMOffset(game),
-                    Region.Japan => 0xcfef4 - DolToRAMOffset(game),
-                    _ => throw new Exception("Unsupported game!")
-                },
-            };
-        }
-
-        private uint DOLFreeSpaceEnd(Game game, Region region)
-        {
-            return game switch
-            {
-                Game.Colosseum => region switch
-                {
-                    Region.US => 0xc459c - DolToRAMOffset(game),
-                    Region.Europe => 0xc7b9c - DolToRAMOffset(game),
-                    Region.Japan => 0xc16f8 - DolToRAMOffset(game),
-                    _ => throw new Exception("Unknown region!")
-                },
-                Game.XD => region switch
-                {
-                    Region.US => 0xd9c2c - DolToRAMOffset(game),
-                    Region.Europe => 0xdb23c - DolToRAMOffset(game),
-                    Region.Japan => 0x30a0 - DolToRAMOffset(game),
-                    _ => throw new Exception("Unsupported game!")
-                },
-            };
-        }
-
-        public uint FindFreeSpace(Game game, Region region)
-        {
-            var startPointer = DOLFreeSpaceStart(game, region);
-            var endPointer = DOLFreeSpaceEnd(game, region);
-
-            var offset = startPointer;
-            while (offset < endPointer)
-            {
-                if (ExtractedFile.GetUIntAtOffset(offset) != 0)
-                {
-                    offset += 4;
-                    continue;
-                }
-                else
-                {
-                    return offset;
-                }
-            }
-
             return 0;
         }
     }
