@@ -41,5 +41,19 @@ namespace XDCommon.PokemonDefinitions
             this.index = index;
             this.iso = iso;
         }
+
+        public static Room FromId(int roomId, ISO iso)
+        {
+            var numOfRooms = iso.CommonRel.GetValueAtPointer(Constants.XDNumberOfRooms);
+            for (int i = 0; i < numOfRooms; i++)
+            {
+                var room = new Room(i, iso);
+                if (room.RoomId == roomId)
+                {
+                    return room;
+                }
+            }
+            return null;
+        }
     }
 }

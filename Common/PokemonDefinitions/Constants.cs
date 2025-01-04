@@ -156,6 +156,20 @@ namespace XDCommon.PokemonDefinitions
 
         public const int XDBattles = 26;
         public const int XDNumberOfBattles = 27;
+        public const int XDGeneralFlags = 44;
+        public const int XDNumberOfGeneralFlags = 45;
+        public const int XDStoryProgressFlags = 46;
+        public const int XDNumberOfStoryProgressFlags = 47;
+        public const int XDFlagItemData = 48;
+        public const int XDNumberOfFlagItemData = 49;
+        public const int XDFlagsMetaData = 50;
+        public const int XDNumberOfFlagsMetaData = 51;
+        public const int XDFlagPartyData = 52;
+        public const int XDNumberOfFlagPartyData = 53;
+        public const int XDFlagPokemonData = 54;
+        public const int XDNumberOfFlagPokemonData = 55;
+        public const int XDFlagValues = 56;
+        public const int XDNumberOfFlagValues = 57;
         public const int XDRooms = 58; // same as maps;
         public const int XDNumberOfRooms = 59;
         public const int XDDoors = 60; // doors that open when player is near
@@ -254,14 +268,14 @@ namespace XDCommon.PokemonDefinitions
 
         public static Dictionary<Region, Dictionary<string, string>> ColItemTables = new Dictionary<Region, Dictionary<string, string>>()
         {
-            {  
+            {
                 Region.US, 
                 new Dictionary<string, string> 
                 {
                     { "pocket_menu.fsys", "pocket_menu.msg" }
                 } 
             },
-            {  
+            {
                 Region.Europe, 
                 new Dictionary<string, string>
                 {
@@ -272,7 +286,7 @@ namespace XDCommon.PokemonDefinitions
                     { "pocket_menu_sp.fsys", "pocket_menu_sp.msg" }
                 } 
             },
-            {  
+            {
                 Region.Japan, 
                 new Dictionary<string, string>
                 {

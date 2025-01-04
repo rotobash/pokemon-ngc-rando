@@ -45,16 +45,24 @@
             inventoryListBox = new System.Windows.Forms.ListBox();
             pcInventoryPage = new System.Windows.Forms.TabPage();
             storyFlags = new System.Windows.Forms.TabPage();
+            tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            label1 = new System.Windows.Forms.Label();
+            storyFlagLabel = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            inBattleLabel = new System.Windows.Forms.Label();
             statusStrip1 = new System.Windows.Forms.StatusStrip();
             connectionStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             dolphinPollTimer = new System.Windows.Forms.Timer(components);
             openGameFileDialog = new System.Windows.Forms.OpenFileDialog();
             openDolphinDialog = new System.Windows.Forms.OpenFileDialog();
+            label3 = new System.Windows.Forms.Label();
+            currentRoomLabel = new System.Windows.Forms.Label();
             tableLayoutPanel1.SuspendLayout();
             tabControl1.SuspendLayout();
             partyPage.SuspendLayout();
             partyTabPage.SuspendLayout();
             inventoryPage.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -76,6 +84,7 @@
             tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             tableLayoutPanel1.Controls.Add(listBox1, 0, 2);
             tableLayoutPanel1.Controls.Add(tabControl1, 0, 1);
+            tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 0, 0);
             tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -233,6 +242,63 @@
             storyFlags.Text = "Story";
             storyFlags.UseVisualStyleBackColor = true;
             // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 2;
+            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel2.Controls.Add(label1, 0, 0);
+            tableLayoutPanel2.Controls.Add(storyFlagLabel, 1, 0);
+            tableLayoutPanel2.Controls.Add(label2, 0, 1);
+            tableLayoutPanel2.Controls.Add(inBattleLabel, 1, 1);
+            tableLayoutPanel2.Controls.Add(label3, 0, 2);
+            tableLayoutPanel2.Controls.Add(currentRoomLabel, 1, 2);
+            tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel2.Location = new System.Drawing.Point(13, 13);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 3;
+            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F));
+            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F));
+            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F));
+            tableLayoutPanel2.Size = new System.Drawing.Size(364, 45);
+            tableLayoutPanel2.TabIndex = 3;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(3, 0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(60, 15);
+            label1.TabIndex = 3;
+            label1.Text = "Story flag:";
+            // 
+            // storyFlagLabel
+            // 
+            storyFlagLabel.AutoSize = true;
+            storyFlagLabel.Location = new System.Drawing.Point(185, 0);
+            storyFlagLabel.Name = "storyFlagLabel";
+            storyFlagLabel.Size = new System.Drawing.Size(45, 15);
+            storyFlagLabel.TabIndex = 2;
+            storyFlagLabel.Text = "Not set";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(3, 15);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(53, 15);
+            label2.TabIndex = 4;
+            label2.Text = "In Battle:";
+            // 
+            // inBattleLabel
+            // 
+            inBattleLabel.AutoSize = true;
+            inBattleLabel.Location = new System.Drawing.Point(185, 15);
+            inBattleLabel.Name = "inBattleLabel";
+            inBattleLabel.Size = new System.Drawing.Size(23, 15);
+            inBattleLabel.TabIndex = 5;
+            inBattleLabel.Text = "No";
+            // 
             // statusStrip1
             // 
             statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { connectionStatusLabel });
@@ -263,6 +329,24 @@
             // 
             openDolphinDialog.FileName = "openFileDialog1";
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(3, 30);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(85, 15);
+            label3.TabIndex = 6;
+            label3.Text = "Current Room:";
+            // 
+            // currentRoomLabel
+            // 
+            currentRoomLabel.AutoSize = true;
+            currentRoomLabel.Location = new System.Drawing.Point(185, 30);
+            currentRoomLabel.Name = "currentRoomLabel";
+            currentRoomLabel.Size = new System.Drawing.Size(46, 15);
+            currentRoomLabel.TabIndex = 7;
+            currentRoomLabel.Text = "Not Set";
+            // 
             // APClient
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -279,6 +363,8 @@
             partyPage.ResumeLayout(false);
             partyTabPage.ResumeLayout(false);
             inventoryPage.ResumeLayout(false);
+            tableLayoutPanel2.ResumeLayout(false);
+            tableLayoutPanel2.PerformLayout();
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
             ResumeLayout(false);
@@ -308,5 +394,12 @@
         private System.Windows.Forms.TabPage partyPokemon5TabPage;
         private System.Windows.Forms.TabPage partyPokemon6TabPage;
         private System.Windows.Forms.ListBox inventoryListBox;
+        private System.Windows.Forms.Label storyFlagLabel;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label inBattleLabel;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label currentRoomLabel;
     }
 }

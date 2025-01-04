@@ -133,6 +133,21 @@ namespace XDCommon.Utility
             byte[] bytes = GetBytesAtOffset(stream, offset, 8);
             return BitConverter.ToUInt64(bytes);
         }
+
+        public static ushort GetUShort(this byte[] bytes)
+        {
+            return BinaryPrimitives.ReadUInt16BigEndian(bytes);
+        }
+
+        public static uint GetUInt(this byte[] bytes)
+        {
+            return BinaryPrimitives.ReadUInt32BigEndian(bytes);
+        }
+
+        public static ulong GetULong(this byte[] bytes)
+        {
+            return BinaryPrimitives.ReadUInt64BigEndian(bytes);
+        }
         
         public static sbyte GetSByteAtOffset(this Stream stream, long offset)
         {
@@ -155,6 +170,26 @@ namespace XDCommon.Utility
         {
             byte[] bytes = GetBytesAtOffset(stream, offset, 8);
             return BitConverter.ToInt64(bytes);
+        }
+
+        public static sbyte GetSByte(this byte bytes)
+        {
+            return (sbyte)bytes;
+        }
+
+        public static short GetShort(this byte[] bytes)
+        {
+            return BinaryPrimitives.ReadInt16BigEndian(bytes);
+        }
+
+        public static int GetInt(this byte[] bytes)
+        {
+            return BinaryPrimitives.ReadInt32BigEndian(bytes);
+        }
+
+        public static long GetLong(this byte[] bytes)
+        {
+            return BinaryPrimitives.ReadInt64BigEndian(bytes);
         }
         
         public static char GetCharAtOffset(this Stream stream, long offset)
