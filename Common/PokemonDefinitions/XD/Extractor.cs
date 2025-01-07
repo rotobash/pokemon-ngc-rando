@@ -204,5 +204,27 @@ namespace XDCommon.PokemonDefinitions
             }
 			return areas;
         }
+
+        public BattleField[] ExtractBattleFields()
+        {
+            var fieldNum = ISO.CommonRel.GetValueAtPointer(Constants.NumberOfBattleFields);
+            var battleFields = new BattleField[fieldNum];
+            for (int i = 0; i < battleFields.Length; i++)
+            {
+                battleFields[i] = new BattleField(i, ISO);
+            }
+            return battleFields;
+        }
+
+        public Battle[] ExtractBattles()
+        {
+            var battleNum = ISO.CommonRel.GetValueAtPointer(Constants.XDNumberOfBattles);
+            var battle = new Battle[battleNum];
+            for (int i = 0; i < battle.Length; i++)
+            {
+                battle[i] = new XDBattle(i, ISO);
+            }
+            return battle;
+        }
     }
 }
