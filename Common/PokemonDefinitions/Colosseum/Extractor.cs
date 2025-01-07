@@ -144,5 +144,15 @@ namespace XDCommon.PokemonDefinitions
         {
             throw new NotImplementedException();
         }
+
+        public BattleField[] ExtractBattleFields()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Battle[] ExtractBattles()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

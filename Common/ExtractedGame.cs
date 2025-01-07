@@ -39,6 +39,9 @@ namespace XDCommon
         public TutorMove[] TutorMoves { get; }
         public PokeSpotPokemon[] PokeSpotPokemon { get; }
 
+        public BattleField[] BattleFields { get; }
+        public Battle[] Battles { get; }
+
         public Game Game => TutorMoves.Length == 0 ? Game.Colosseum : Game.XD;
 
         public Dictionary<int, ushort[]> PokemonLegalMovePool = new Dictionary<int, ushort[]>();
