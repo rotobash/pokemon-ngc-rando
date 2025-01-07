@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using XDCommon.PokemonDefinitions;
 using XDCommon.PokemonDefinitions.XD.SaveData;
 
-namespace Randomizer.AP
+namespace ArchipelagoClient.Controls
 {
     public partial class PokemonDisplay : UserControl
     {

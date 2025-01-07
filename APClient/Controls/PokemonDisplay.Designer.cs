@@ -1,4 +1,4 @@
-﻿namespace Randomizer.AP
+﻿namespace ArchipelagoClient.Controls
 {
     partial class PokemonDisplay
     {

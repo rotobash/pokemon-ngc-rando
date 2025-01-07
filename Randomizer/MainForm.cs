@@ -906,8 +906,7 @@ namespace Randomizer
 
         private void openApClient_Click(object sender, EventArgs e)
         {
-            APClient client = new APClient();
-            client.Show();
+
         }
     }
 }

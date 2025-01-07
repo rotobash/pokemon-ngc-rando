@@ -1,6 +1,6 @@
-﻿namespace Randomizer
+﻿namespace ArchipelagoClient
 {
-    partial class APClient
+    partial class ArchipelagoClientForm
     {
         /// <summary>
         /// Required designer variable.

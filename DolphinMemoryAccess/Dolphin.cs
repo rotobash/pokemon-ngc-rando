@@ -23,6 +23,7 @@ namespace DolphinMemoryAccess
 
         private ICanReadWriteMemory? memoryAccessor;
         Process dolphinProcess;
+        ProcessStartInfo dolphinProcessInfo;
         private IntPtr pointerToEmulatedMemory = IntPtr.Zero;
         private IntPtr dolphinBaseAddress;
         private IntPtr dolphinEmulatedBaseAddress;
@@ -55,24 +56,47 @@ namespace DolphinMemoryAccess
             }
         }
 
-        public bool IsRunning => dolphinProcess != null && !dolphinProcess.HasExited;
+        public bool IsRunning
+        {
+            get
+            {
+                try
+                {
+                    return dolphinProcess != null && !dolphinProcess.HasExited;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
 
         public Dolphin(string dolphinPath)
         {
-            dolphinProcess = new Process
+            dolphinProcessInfo = new ProcessStartInfo
             {
-                StartInfo = new ProcessStartInfo
-                {
-                    FileName = dolphinPath,
-                    WorkingDirectory = Path.GetDirectoryName(dolphinPath),
-                    UseShellExecute = true,
-                }
+                FileName = dolphinPath,
+                WorkingDirectory = Path.GetDirectoryName(dolphinPath),
+                UseShellExecute = true,
             };
+
+            RestartProcess();
+        }
+
+        public void RestartProcess()
+        {
+            if (!IsRunning)
+            {
+                dolphinProcess = new Process
+                {
+                    StartInfo = dolphinProcessInfo
+                };
+            }
         }
 
         private void SetDolphinStartArguments(string gamePath)
         {
-            dolphinProcess.StartInfo.Arguments = $"-b -e \"{gamePath}\"";
+            dolphinProcess.StartInfo.Arguments = $"-e \"{gamePath}\"";
         }
 
         /// <summary>
