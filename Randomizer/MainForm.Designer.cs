@@ -214,7 +214,6 @@ namespace Randomizer
             prngDropDown = new System.Windows.Forms.ComboBox();
             label1 = new System.Windows.Forms.Label();
             generateLogCheck = new System.Windows.Forms.CheckBox();
-            openApClient = new System.Windows.Forms.Button();
             openISODialog = new System.Windows.Forms.OpenFileDialog();
             saveISODialog = new System.Windows.Forms.SaveFileDialog();
             infoToolTip = new System.Windows.Forms.ToolTip(components);
@@ -317,7 +316,6 @@ namespace Randomizer
             tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 1, 3);
             tableLayoutPanel1.Controls.Add(tableLayoutPanel32, 0, 3);
             tableLayoutPanel1.Controls.Add(generateLogCheck, 2, 4);
-            tableLayoutPanel1.Controls.Add(openApClient, 0, 2);
             tableLayoutPanel1.Location = new System.Drawing.Point(10, 9);
             tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -2714,17 +2712,6 @@ namespace Randomizer
             generateLogCheck.UseVisualStyleBackColor = true;
             generateLogCheck.CheckedChanged += generateLogCheck_CheckedChanged;
             // 
-            // openApClient
-            // 
-            openApClient.Dock = System.Windows.Forms.DockStyle.Fill;
-            openApClient.Location = new System.Drawing.Point(3, 99);
-            openApClient.Name = "openApClient";
-            openApClient.Size = new System.Drawing.Size(177, 42);
-            openApClient.TabIndex = 15;
-            openApClient.Text = "Open AP Client";
-            openApClient.UseVisualStyleBackColor = true;
-            openApClient.Click += openApClient_Click;
-            // 
             // infoToolTip
             // 
             infoToolTip.AutoPopDelay = 50000;
@@ -3061,7 +3048,6 @@ namespace Randomizer
         private System.Windows.Forms.CheckBox minimumPokeSpotCatchRate;
         private System.Windows.Forms.CheckBox useSimilarBSTsPokeSpotCheck;
         private System.Windows.Forms.CheckBox turnOffAnimationCheck;
-        private System.Windows.Forms.Button openApClient;
     }
 }
 

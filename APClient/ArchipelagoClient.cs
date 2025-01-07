@@ -21,14 +21,14 @@ using Archipelago.MultiClient.Net.Enums;
 using DolphinMemoryAccess;
 using Archipelago.MultiClient.Net.Models;
 using Color = System.Drawing.Color;
-using System.Buffers.Binary;
+using ArchipelagoClient.Controls;
 using XDCommon.PokemonDefinitions.XD.SaveData;
 using XDCommon.Utility;
 using XDCommon.Contracts;
 
-namespace Randomizer
+namespace ArchipelagoClient
 {
-    public partial class APClient : Form
+    public partial class ArchipelagoClientForm : Form
     {
         bool connectedToAP = false;
         ArchipelagoSession apSession = null;
@@ -40,12 +40,13 @@ namespace Randomizer
         GameManipulator gameManipulator;
         ExtractedGame extractedGame;
 
-        public APClient()
+        public ArchipelagoClientForm()
         {
             InitializeComponent();
             dolphinSetupWorker = new BackgroundWorker();
             dolphinSetupWorker.DoWork += SetupDolphinBackgroundWorker;
             dolphinSetupWorker.RunWorkerCompleted += OnDolphinSetup;
+            xdProcess = new XDState(gameManipulator.ISO);
         }
 
         private void APClient_Load(object sender, EventArgs e)
@@ -107,36 +108,42 @@ namespace Randomizer
             }
         }
 
-        private string CreateRandomizedIso()
+        private string CreateAPIso()
         {
             var gameManipInvoke = BeginInvoke(() => gameManipulator);
             var gameManip = EndInvoke(gameManipInvoke) as GameManipulator;
             var newFileName = $"{Path.GetRandomFileName()}.iso";
             // TODO: Randomize the game based on the AP server settings
+            gameManip.ISO.DOL = new DOL("ASM");
+
             gameManip.ISOExtractor.RepackISO(gameManip.ISO, newFileName);
 
             gameManip.Dispose();
-            Invoke(() => gameManipulator = new GameManipulator(newFileName));
+            Invoke(() => 
+            {
+                gameManipulator = new GameManipulator(newFileName);
+                extractedGame = new ExtractedGame(gameManipulator.GameExtractor);
+            });
             return newFileName;
         }
 
         private void SetupDolphinBackgroundWorker(object sender, EventArgs e)
         {
-            var dolphinProcInvoke = BeginInvoke(() => xdProcess);
-            var dolphinProc = EndInvoke(dolphinProcInvoke) as XDState;
-            var shouldRandomize = false;
+            var shouldRandomize = true;
 
             var fileToRun = Configuration.GameFilePath; // use AP settings for this instead
             if (shouldRandomize)
             {
-                fileToRun = CreateRandomizedIso();
-        }
+                fileToRun = $"{Directory.GetCurrentDirectory()}{Path.DirectorySeparatorChar}{CreateAPIso()}";
+            }
 
+            var xdStateInvoke = BeginInvoke(() => xdProcess);
             var gameManipInvoke = BeginInvoke(() => gameManipulator);
+            var xdState = EndInvoke(xdStateInvoke) as XDState;
             var gameManip = EndInvoke(gameManipInvoke) as GameManipulator;
-            gameManip.ReleaseGameFile();
 
-            var started = dolphinProc.Setup(fileToRun).GetAwaiter().GetResult();
+            gameManip.ReleaseGameFile();
+            var started = xdState.StartNewInstance(Configuration.DolphinDirectory, fileToRun).GetAwaiter().GetResult();
         }
 
         private void OnDolphinSetup(object sender, EventArgs e)
@@ -174,7 +181,6 @@ namespace Randomizer
                     extractedGame = new ExtractedGame(gameManipulator.GameExtractor);
 
                     dolphinProcess = new Dolphin(Configuration.DolphinDirectory);
-                    xdProcess = new XDState(dolphinProcess, gameManipulator.ISO);
 
                     dolphinSetupWorker.RunWorkerAsync();
                 }
