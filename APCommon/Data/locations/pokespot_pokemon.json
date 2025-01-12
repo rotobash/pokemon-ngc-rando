@@ -1,0 +1,83 @@
+[
+  {
+    "TrainerIndex": 0,
+    "ShadowIndex": 0,
+    "PokemonIndex": 27,
+    "Index": 1616,
+    "AreaName": "ROCK",
+    "RoomId": 90,
+    "Name": "Rock PokeSpot - Capture SANDSHREW"
+  },
+  {
+    "TrainerIndex": 0,
+    "ShadowIndex": 0,
+    "PokemonIndex": 207,
+    "Index": 1617,
+    "AreaName": "ROCK",
+    "RoomId": 90,
+    "Name": "Rock PokeSpot - Capture GLIGAR"
+  },
+  {
+    "TrainerIndex": 0,
+    "ShadowIndex": 0,
+    "PokemonIndex": 332,
+    "Index": 1618,
+    "AreaName": "ROCK",
+    "RoomId": 90,
+    "Name": "Rock PokeSpot - Capture TRAPINCH"
+  },
+  {
+    "TrainerIndex": 0,
+    "ShadowIndex": 0,
+    "PokemonIndex": 187,
+    "Index": 1619,
+    "AreaName": "OASIS",
+    "RoomId": 91,
+    "Name": "Oasis PokeSpot - Capture HOPPIP"
+  },
+  {
+    "TrainerIndex": 0,
+    "ShadowIndex": 0,
+    "PokemonIndex": 231,
+    "Index": 1620,
+    "AreaName": "OASIS",
+    "RoomId": 91,
+    "Name": "Oasis PokeSpot - Capture PHANPY"
+  },
+  {
+    "TrainerIndex": 0,
+    "ShadowIndex": 0,
+    "PokemonIndex": 311,
+    "Index": 1621,
+    "AreaName": "OASIS",
+    "RoomId": 91,
+    "Name": "Oasis PokeSpot - Capture SURSKIT"
+  },
+  {
+    "TrainerIndex": 0,
+    "ShadowIndex": 0,
+    "PokemonIndex": 41,
+    "Index": 1622,
+    "AreaName": "CAVE",
+    "RoomId": 92,
+    "Name": "Cave PokeSpot - Capture ZUBAT"
+  },
+  {
+    "TrainerIndex": 0,
+    "ShadowIndex": 0,
+    "PokemonIndex": 382,
+    "Index": 1623,
+    "AreaName": "CAVE",
+    "RoomId": 92,
+    "Name": "Cave PokeSpot - Capture ARON"
+  },
+  {
+    "TrainerIndex": 0,
+    "ShadowIndex": 0,
+    "PokemonIndex": 194,
+    "Index": 1624,
+    "AreaName": "CAVE",
+    "RoomId": 92,
+    "Name": "Cave PokeSpot - Capture WOOPER"
+  }
+]

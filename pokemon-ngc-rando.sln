@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DolphinMemoryAccess", "Dolp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DolphinArchipelagoClient", "APClient\DolphinArchipelagoClient.csproj", "{2F033122-FF00-4E12-A513-789E15D3F70B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APCommon", "APCommon\APCommon.csproj", "{5C5729ED-4681-47E2-AECF-13EE0F2D655A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{2F033122-FF00-4E12-A513-789E15D3F70B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F033122-FF00-4E12-A513-789E15D3F70B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F033122-FF00-4E12-A513-789E15D3F70B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C5729ED-4681-47E2-AECF-13EE0F2D655A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C5729ED-4681-47E2-AECF-13EE0F2D655A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C5729ED-4681-47E2-AECF-13EE0F2D655A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C5729ED-4681-47E2-AECF-13EE0F2D655A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

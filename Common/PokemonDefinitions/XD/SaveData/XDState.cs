@@ -55,8 +55,8 @@ namespace XDCommon.PokemonDefinitions.XD.SaveData
             var started = await Dolphin.SetupDolphin(gamePath);
             if (started)
             {
-                //Dolphin.WriteData(0x803ee7C0, File.ReadAllBytes("ASM/archipelago.bin"));
-                //Dolphin.WriteData(0x81500000, new byte[] { 0xFF, 0xFF });
+                Dolphin.WriteData(0x803ee7C0, File.ReadAllBytes("ASM/archipelago.bin"));
+                Dolphin.WriteData(0x81500000, new byte[] { 0xFF, 0xFF });
             }
             return started;
         }

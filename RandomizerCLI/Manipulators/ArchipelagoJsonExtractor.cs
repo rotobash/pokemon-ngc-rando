@@ -12,9 +12,7 @@ using XDCommon.Utility;
 using RandomizerCLI.Options;
 using System.Runtime.InteropServices;
 using XDCommon.Shufflers;
-using RandomizerCLI.AP.Locations;
-using RandomizerCLI.AP.Items;
-using RandomizerCLI.AP;
+using APCommon.JSON;
 using XDCommon;
 using XDCommon.PokemonDefinitions.XD;
 using System.Text.RegularExpressions;
@@ -167,7 +165,7 @@ namespace RandomizerCLI.Manipulators
                         TutorMoveIndex = tutorMove.Index, 
                         MoveId = tutorMove.Move, 
                         Availability = tutorMove.Availability, 
-                        Name = $"Tutor Move {tutorMove.Index} ({moves[tutorMove.Move].Name})" 
+                        Name = $"Tutor Move {tutorMove.Index + 1} ({moves[tutorMove.Move].Name})" 
                     });
 
                     tutorMoveItems.Add(new TutorMoveItemJson 
@@ -198,7 +196,7 @@ namespace RandomizerCLI.Manipulators
             if (GameExtractor is XDExtractor xd)
             {
                 var pokeSpots = xd.ExtractPokeSpotPokemon().SkipLast(2);
-                var pokeSpotLocations = new List<PokeSpotLocationJson>();
+                var pokeSpotLocations = new List<PokemonLocationJson>();
                 var pokeSpotItems = new List<PokeSpotItemJson>();
                 var itemClass = new[] { ItemClassification.Useful.ToString() };
                 var pokeSpotRooms = Enum.GetValues<PokeSpotType>().SkipLast(1).Select(p => Room.FromId(90 + (int)p, ISO)).ToList();
@@ -207,14 +205,12 @@ namespace RandomizerCLI.Manipulators
                 {
                     var room = pokeSpotRooms[(int)pokeSpot.PokeSpot.PokeSpotType];
                     var roomName = ReplaceInvalidCharacters(room.Name);
-                    pokeSpotLocations.Add(new PokeSpotLocationJson 
+                    pokeSpotLocations.Add(new PokemonLocationJson
                     { 
                         Index = offset,
                         AreaName = roomName, 
                         RoomId = room.RoomId, 
-                        PokemonIndex = pokeSpot.Pokemon, 
-                        PokeSpot = pokeSpot.PokeSpot.PokeSpotType.ToString(), 
-                        PokeSpotIndex = pokeSpot.PokeSpot.Index, 
+                        PokemonIndex = pokeSpot.Pokemon,
                         Name = $"{pokeSpot.PokeSpot.PokeSpotType.ToString()} PokeSpot - Capture {pokemon[pokeSpot.Pokemon].Name}" 
                     });
                     pokeSpotItems.Add(new PokeSpotItemJson 
@@ -241,7 +237,7 @@ namespace RandomizerCLI.Manipulators
         private int ExtractTrainerLocations(Pokemon[] pokemonReference, Move[] moveReference, Items[] items, List<RegionsJson> areas, int offset)
         {
             List<TrainerBattleLocationJson> battleLocationJsons = new List<TrainerBattleLocationJson>();
-            List<ShadowPokemonLocationJson> shadowPokemonLocationJsons = new List<ShadowPokemonLocationJson>();
+            List<PokemonLocationJson> shadowPokemonLocationJsons = new List<PokemonLocationJson>();
             List<PurifyShadowPokemonLocationJson> purifyPokemonLocationJsons = new List<PurifyShadowPokemonLocationJson>();
 
             List<TrainerBattleItemJson> battleItemJsons = new List<TrainerBattleItemJson>();
@@ -251,6 +247,7 @@ namespace RandomizerCLI.Manipulators
             var trainerPools = GameExtractor.ExtractPools(pokemonReference, moveReference);
             var battlesRandomized = new List<int>();
             var itemClass = new[] { ItemClassification.Useful.ToString() };
+
             foreach (var trainerPool in trainerPools)
             {
                 BattleTypes[] battleTypes = GetBattleTypesForTrainerPool(trainerPool);
@@ -326,12 +323,12 @@ namespace RandomizerCLI.Manipulators
                         {
                             if (pokemon.IsSet && pokemon.IsShadow)
                             {
-                                var shadowPokemonLocation = new ShadowPokemonLocationJson
+                                var shadowPokemonLocation = new PokemonLocationJson
                                 {
                                     Index = offset,
                                     AreaName = battleTypeName,
                                     RoomId = room.RoomId,
-                                    TrainerIndex = trainer.Index,
+                                    PokemonIndex = trainer.Index,
                                     Name = $"Capture {trainer.Name}s Shadow {pokemonReference[pokemon.Pokemon].Name}",
                                     ShadowIndex = ((XDTrainerPokemon)pokemon).DPKMIndex
                                 };
@@ -365,6 +362,8 @@ namespace RandomizerCLI.Manipulators
                                     Name = $"{pokemonReference[pokemon.Pokemon].Name}",
                                     ItemClassification = itemClass
                                 };
+
+                                offset++;
 
                                 // zook vs ardos gets picked up as a story battle with shadow pokemon
                                 // chec
