@@ -1,23 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using ArchipelagoClient.Controls;
 using XDCommon;
 
 namespace Randomizer.AP
 {
     public partial class EnterCredential : Form
     {
-        public APCredential Credential { get; set; }
+        public Credential Credential { get; set; }
         public EnterCredential()
         {
             InitializeComponent();
-            Credential = new APCredential();
+            Credential = new Credential();
         }
 
         private void urlTextBox_TextChanged(object sender, EventArgs e)
