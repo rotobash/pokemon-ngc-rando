@@ -1,0 +1,3476 @@
+[
+  {
+    "TrainerIndex": 2,
+    "BattleIndex": 423,
+    "TrainerBattleType": "Story",
+    "Index": 113,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 534,
+    "Name": "Defeat MIROR B. at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 8,
+    "BattleIndex": 216,
+    "TrainerBattleType": "Story",
+    "Index": 114,
+    "AreaName": "POKEMON HQ LAB",
+    "RoomId": 541,
+    "Name": "Defeat AFERD at POKEMON HQ LAB"
+  },
+  {
+    "TrainerIndex": 9,
+    "BattleIndex": 217,
+    "TrainerBattleType": "Story",
+    "Index": 115,
+    "AreaName": "GATEON PORT",
+    "RoomId": 542,
+    "Name": "Defeat ZOOK at GATEON PORT"
+  },
+  {
+    "TrainerIndex": 11,
+    "BattleIndex": 218,
+    "TrainerBattleType": "Story",
+    "Index": 118,
+    "AreaName": "GATEON PORT",
+    "RoomId": 542,
+    "Name": "Defeat BERK at GATEON PORT"
+  },
+  {
+    "TrainerIndex": 12,
+    "BattleIndex": 219,
+    "TrainerBattleType": "Story",
+    "Index": 119,
+    "AreaName": "GATEON PORT",
+    "RoomId": 542,
+    "Name": "Defeat CYLE at GATEON PORT"
+  },
+  {
+    "TrainerIndex": 13,
+    "BattleIndex": 220,
+    "TrainerBattleType": "Story",
+    "Index": 122,
+    "AreaName": "GATEON PORT",
+    "RoomId": 542,
+    "Name": "Defeat BOST at GATEON PORT"
+  },
+  {
+    "TrainerIndex": 14,
+    "BattleIndex": 221,
+    "TrainerBattleType": "Story",
+    "Index": 123,
+    "AreaName": "GATEON PORT",
+    "RoomId": 543,
+    "Name": "Defeat KILEN at GATEON PORT"
+  },
+  {
+    "TrainerIndex": 15,
+    "BattleIndex": 222,
+    "TrainerBattleType": "Story",
+    "Index": 126,
+    "AreaName": "KAMINKOS HOUSE",
+    "RoomId": 544,
+    "Name": "Defeat CHOBIN at KAMINKOS HOUSE"
+  },
+  {
+    "TrainerIndex": 16,
+    "BattleIndex": 223,
+    "TrainerBattleType": "Story",
+    "Index": 127,
+    "AreaName": "GATEON PORT",
+    "RoomId": 542,
+    "Name": "Defeat LAKEN at GATEON PORT"
+  },
+  {
+    "TrainerIndex": 17,
+    "BattleIndex": 224,
+    "TrainerBattleType": "Story",
+    "Index": 128,
+    "AreaName": "POKEMON HQ LAB",
+    "RoomId": 541,
+    "Name": "Defeat NAPS at POKEMON HQ LAB"
+  },
+  {
+    "TrainerIndex": 18,
+    "BattleIndex": 225,
+    "TrainerBattleType": "Story",
+    "Index": 131,
+    "AreaName": "KAMINKOS HOUSE",
+    "RoomId": 544,
+    "Name": "Defeat CHOBIN at KAMINKOS HOUSE"
+  },
+  {
+    "TrainerIndex": 19,
+    "BattleIndex": 226,
+    "TrainerBattleType": "Story",
+    "Index": 132,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 508,
+    "Name": "Defeat CLERR at AGATE VILLAGE"
+  },
+  {
+    "TrainerIndex": 20,
+    "BattleIndex": 227,
+    "TrainerBattleType": "Story",
+    "Index": 133,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 508,
+    "Name": "Defeat BELISH at AGATE VILLAGE"
+  },
+  {
+    "TrainerIndex": 21,
+    "BattleIndex": 228,
+    "TrainerBattleType": "Story",
+    "Index": 134,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 508,
+    "Name": "Defeat CIDA at AGATE VILLAGE"
+  },
+  {
+    "TrainerIndex": 22,
+    "BattleIndex": 229,
+    "TrainerBattleType": "Story",
+    "Index": 135,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 508,
+    "Name": "Defeat DOSK at AGATE VILLAGE"
+  },
+  {
+    "TrainerIndex": 23,
+    "BattleIndex": 230,
+    "TrainerBattleType": "Story",
+    "Index": 136,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 508,
+    "Name": "Defeat HEBON at AGATE VILLAGE"
+  },
+  {
+    "TrainerIndex": 24,
+    "BattleIndex": 231,
+    "TrainerBattleType": "Story",
+    "Index": 137,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 510,
+    "Name": "Defeat GORPS at AGATE VILLAGE"
+  },
+  {
+    "TrainerIndex": 25,
+    "BattleIndex": 232,
+    "TrainerBattleType": "Story",
+    "Index": 138,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 510,
+    "Name": "Defeat JOLS at AGATE VILLAGE"
+  },
+  {
+    "TrainerIndex": 26,
+    "BattleIndex": 233,
+    "TrainerBattleType": "Story",
+    "Index": 139,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 510,
+    "Name": "Defeat LADI at AGATE VILLAGE"
+  },
+  {
+    "TrainerIndex": 27,
+    "BattleIndex": 234,
+    "TrainerBattleType": "Story",
+    "Index": 140,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 510,
+    "Name": "Defeat CRON at AGATE VILLAGE"
+  },
+  {
+    "TrainerIndex": 28,
+    "BattleIndex": 235,
+    "TrainerBattleType": "Story",
+    "Index": 141,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 509,
+    "Name": "Defeat EAGUN at AGATE VILLAGE"
+  },
+  {
+    "TrainerIndex": 29,
+    "BattleIndex": 236,
+    "TrainerBattleType": "Story",
+    "Index": 142,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 508,
+    "Name": "Defeat CIDA at AGATE VILLAGE"
+  },
+  {
+    "TrainerIndex": 30,
+    "BattleIndex": 237,
+    "TrainerBattleType": "Story",
+    "Index": 143,
+    "AreaName": "MT. BATTLE",
+    "RoomId": 517,
+    "Name": "Defeat MIRU at MT. BATTLE"
+  },
+  {
+    "TrainerIndex": 31,
+    "BattleIndex": 238,
+    "TrainerBattleType": "Story",
+    "Index": 144,
+    "AreaName": "MT. BATTLE",
+    "RoomId": 517,
+    "Name": "Defeat CRIDEL at MT. BATTLE"
+  },
+  {
+    "TrainerIndex": 32,
+    "BattleIndex": 239,
+    "TrainerBattleType": "Story",
+    "Index": 145,
+    "AreaName": "MT. BATTLE",
+    "RoomId": 517,
+    "Name": "Defeat BARDO at MT. BATTLE"
+  },
+  {
+    "TrainerIndex": 33,
+    "BattleIndex": 240,
+    "TrainerBattleType": "Story",
+    "Index": 146,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 514,
+    "Name": "Defeat RESIX at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 34,
+    "BattleIndex": 241,
+    "TrainerBattleType": "Story",
+    "Index": 149,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 514,
+    "Name": "Defeat BLUSIX at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 35,
+    "BattleIndex": 242,
+    "TrainerBattleType": "Story",
+    "Index": 152,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 514,
+    "Name": "Defeat BROWSIX at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 36,
+    "BattleIndex": 243,
+    "TrainerBattleType": "Story",
+    "Index": 155,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 514,
+    "Name": "Defeat YELLOSIX at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 37,
+    "BattleIndex": 244,
+    "TrainerBattleType": "Story",
+    "Index": 158,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 514,
+    "Name": "Defeat PURPSIX at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 38,
+    "BattleIndex": 245,
+    "TrainerBattleType": "Story",
+    "Index": 161,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 514,
+    "Name": "Defeat GREESIX at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 39,
+    "BattleIndex": 246,
+    "TrainerBattleType": "Story",
+    "Index": 164,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 514,
+    "Name": "Defeat RESIX at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 40,
+    "BattleIndex": 247,
+    "TrainerBattleType": "Story",
+    "Index": 165,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 514,
+    "Name": "Defeat BLUSIX at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 41,
+    "BattleIndex": 248,
+    "TrainerBattleType": "Story",
+    "Index": 166,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 514,
+    "Name": "Defeat BROWSIX at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 42,
+    "BattleIndex": 249,
+    "TrainerBattleType": "Story",
+    "Index": 167,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 514,
+    "Name": "Defeat YELLOSIX at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 43,
+    "BattleIndex": 250,
+    "TrainerBattleType": "Story",
+    "Index": 168,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 514,
+    "Name": "Defeat PURPSIX at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 44,
+    "BattleIndex": 251,
+    "TrainerBattleType": "Story",
+    "Index": 169,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 514,
+    "Name": "Defeat GREESIX at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 45,
+    "BattleIndex": 252,
+    "TrainerBattleType": "Story",
+    "Index": 170,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 515,
+    "Name": "Defeat CORLA at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 46,
+    "BattleIndex": 253,
+    "TrainerBattleType": "Story",
+    "Index": 171,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 515,
+    "Name": "Defeat JAVION at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 47,
+    "BattleIndex": 254,
+    "TrainerBattleType": "Story",
+    "Index": 172,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 515,
+    "Name": "Defeat TEKOT at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 48,
+    "BattleIndex": 255,
+    "TrainerBattleType": "Story",
+    "Index": 173,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 515,
+    "Name": "Defeat MESAK at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 49,
+    "BattleIndex": 256,
+    "TrainerBattleType": "Story",
+    "Index": 174,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 515,
+    "Name": "Defeat NEXIR at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 50,
+    "BattleIndex": 257,
+    "TrainerBattleType": "Story",
+    "Index": 177,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 515,
+    "Name": "Defeat SOLOX at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 51,
+    "BattleIndex": 258,
+    "TrainerBattleType": "Story",
+    "Index": 180,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 515,
+    "Name": "Defeat DIGOR at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 52,
+    "BattleIndex": 259,
+    "TrainerBattleType": "Story",
+    "Index": 181,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 515,
+    "Name": "Defeat CRINK at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 53,
+    "BattleIndex": 260,
+    "TrainerBattleType": "Story",
+    "Index": 182,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 515,
+    "Name": "Defeat MORBIT at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 54,
+    "BattleIndex": 261,
+    "TrainerBattleType": "Story",
+    "Index": 183,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 515,
+    "Name": "Defeat MEDA at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 55,
+    "BattleIndex": 262,
+    "TrainerBattleType": "Story",
+    "Index": 184,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 515,
+    "Name": "Defeat ELROK at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 56,
+    "BattleIndex": 263,
+    "TrainerBattleType": "Story",
+    "Index": 185,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 515,
+    "Name": "Defeat COFFY at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 57,
+    "BattleIndex": 264,
+    "TrainerBattleType": "Story",
+    "Index": 186,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 515,
+    "Name": "Defeat CABOL at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 58,
+    "BattleIndex": 265,
+    "TrainerBattleType": "Story",
+    "Index": 189,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 515,
+    "Name": "Defeat NOPIA at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 59,
+    "BattleIndex": 266,
+    "TrainerBattleType": "Story",
+    "Index": 190,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 515,
+    "Name": "Defeat KLOTS at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 60,
+    "BattleIndex": 267,
+    "TrainerBattleType": "Story",
+    "Index": 193,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 515,
+    "Name": "Defeat NAPS at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 61,
+    "BattleIndex": 268,
+    "TrainerBattleType": "Story",
+    "Index": 194,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 515,
+    "Name": "Defeat LOVRINA at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 62,
+    "BattleIndex": 269,
+    "TrainerBattleType": "Story",
+    "Index": 197,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 505,
+    "Name": "Defeat CAIL at PYRITE TOWN"
+  },
+  {
+    "TrainerIndex": 63,
+    "BattleIndex": 270,
+    "TrainerBattleType": "Story",
+    "Index": 198,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 505,
+    "Name": "Defeat DOBIT at PYRITE TOWN"
+  },
+  {
+    "TrainerIndex": 64,
+    "BattleIndex": 271,
+    "TrainerBattleType": "Story",
+    "Index": 199,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 505,
+    "Name": "Defeat FINOL at PYRITE TOWN"
+  },
+  {
+    "TrainerIndex": 65,
+    "BattleIndex": 272,
+    "TrainerBattleType": "Story",
+    "Index": 200,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 505,
+    "Name": "Defeat DERT at PYRITE TOWN"
+  },
+  {
+    "TrainerIndex": 66,
+    "BattleIndex": 273,
+    "TrainerBattleType": "Story",
+    "Index": 201,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 505,
+    "Name": "Defeat RALING at PYRITE TOWN"
+  },
+  {
+    "TrainerIndex": 67,
+    "BattleIndex": 274,
+    "TrainerBattleType": "Story",
+    "Index": 202,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 505,
+    "Name": "Defeat LABET at PYRITE TOWN"
+  },
+  {
+    "TrainerIndex": 68,
+    "BattleIndex": 275,
+    "TrainerBattleType": "Story",
+    "Index": 203,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 505,
+    "Name": "Defeat DOBY at PYRITE TOWN"
+  },
+  {
+    "TrainerIndex": 69,
+    "BattleIndex": 276,
+    "TrainerBattleType": "Story",
+    "Index": 204,
+    "AreaName": "POKEMON HQ LAB",
+    "RoomId": 541,
+    "Name": "Defeat AFERD at POKEMON HQ LAB"
+  },
+  {
+    "TrainerIndex": 70,
+    "BattleIndex": 277,
+    "TrainerBattleType": "Story",
+    "Index": 205,
+    "AreaName": "POKEMON HQ LAB",
+    "RoomId": 541,
+    "Name": "Defeat AFERD at POKEMON HQ LAB"
+  },
+  {
+    "TrainerIndex": 71,
+    "BattleIndex": 426,
+    "TrainerBattleType": "Story",
+    "Index": 206,
+    "AreaName": "GATEON PORT",
+    "RoomId": 542,
+    "Name": "Defeat LAKEN at GATEON PORT"
+  },
+  {
+    "TrainerIndex": 72,
+    "BattleIndex": 278,
+    "TrainerBattleType": "Story",
+    "Index": 207,
+    "AreaName": "CAVE",
+    "RoomId": 547,
+    "Name": "Defeat MIROR B. at CAVE"
+  },
+  {
+    "TrainerIndex": 73,
+    "BattleIndex": 279,
+    "TrainerBattleType": "Story",
+    "Index": 210,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 507,
+    "Name": "Defeat RETT at PYRITE TOWN"
+  },
+  {
+    "TrainerIndex": 74,
+    "BattleIndex": 280,
+    "TrainerBattleType": "Story",
+    "Index": 211,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 507,
+    "Name": "Defeat MOCOR at PYRITE TOWN"
+  },
+  {
+    "TrainerIndex": 75,
+    "BattleIndex": 281,
+    "TrainerBattleType": "Story",
+    "Index": 212,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 507,
+    "Name": "Defeat MESIN at PYRITE TOWN"
+  },
+  {
+    "TrainerIndex": 76,
+    "BattleIndex": 282,
+    "TrainerBattleType": "Story",
+    "Index": 215,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 507,
+    "Name": "Defeat ELOX at PYRITE TOWN"
+  },
+  {
+    "TrainerIndex": 77,
+    "BattleIndex": 283,
+    "TrainerBattleType": "Story",
+    "Index": 216,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 507,
+    "Name": "Defeat RIXOR at PYRITE TOWN"
+  },
+  {
+    "TrainerIndex": 78,
+    "BattleIndex": 284,
+    "TrainerBattleType": "Story",
+    "Index": 217,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 507,
+    "Name": "Defeat TORKIN at PYRITE TOWN"
+  },
+  {
+    "TrainerIndex": 79,
+    "BattleIndex": 285,
+    "TrainerBattleType": "Story",
+    "Index": 220,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 507,
+    "Name": "Defeat DILLY at PYRITE TOWN"
+  },
+  {
+    "TrainerIndex": 80,
+    "BattleIndex": 427,
+    "TrainerBattleType": "Story",
+    "Index": 221,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 508,
+    "Name": "Defeat CLERR at AGATE VILLAGE"
+  },
+  {
+    "TrainerIndex": 81,
+    "BattleIndex": 428,
+    "TrainerBattleType": "Story",
+    "Index": 222,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 508,
+    "Name": "Defeat BELISH at AGATE VILLAGE"
+  },
+  {
+    "TrainerIndex": 82,
+    "BattleIndex": 429,
+    "TrainerBattleType": "Story",
+    "Index": 223,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 508,
+    "Name": "Defeat DOSK at AGATE VILLAGE"
+  },
+  {
+    "TrainerIndex": 83,
+    "BattleIndex": 430,
+    "TrainerBattleType": "Story",
+    "Index": 224,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 508,
+    "Name": "Defeat HEBON at AGATE VILLAGE"
+  },
+  {
+    "TrainerIndex": 84,
+    "BattleIndex": 286,
+    "TrainerBattleType": "Story",
+    "Index": 225,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 507,
+    "Name": "Defeat LOBAR at PYRITE TOWN"
+  },
+  {
+    "TrainerIndex": 85,
+    "BattleIndex": 287,
+    "TrainerBattleType": "Story",
+    "Index": 228,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 507,
+    "Name": "Defeat EDLOS at PYRITE TOWN"
+  },
+  {
+    "TrainerIndex": 86,
+    "BattleIndex": 288,
+    "TrainerBattleType": "Story",
+    "Index": 229,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 505,
+    "Name": "Defeat FELDAS at PYRITE TOWN"
+  },
+  {
+    "TrainerIndex": 87,
+    "BattleIndex": 289,
+    "TrainerBattleType": "Story",
+    "Index": 232,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 507,
+    "Name": "Defeat EXOL at PYRITE TOWN"
+  },
+  {
+    "TrainerIndex": 88,
+    "BattleIndex": 290,
+    "TrainerBattleType": "Story",
+    "Index": 235,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 504,
+    "Name": "Defeat EXINN at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 89,
+    "BattleIndex": 291,
+    "TrainerBattleType": "Story",
+    "Index": 238,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 504,
+    "Name": "Defeat GONRAG at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 90,
+    "BattleIndex": 292,
+    "TrainerBattleType": "Story",
+    "Index": 241,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 505,
+    "Name": "Defeat CAIL at PYRITE TOWN"
+  },
+  {
+    "TrainerIndex": 91,
+    "BattleIndex": 293,
+    "TrainerBattleType": "Story",
+    "Index": 242,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 502,
+    "Name": "Defeat PELLIM at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 92,
+    "BattleIndex": 294,
+    "TrainerBattleType": "Story",
+    "Index": 243,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 502,
+    "Name": "Defeat FENTON at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 93,
+    "BattleIndex": 295,
+    "TrainerBattleType": "Story",
+    "Index": 244,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 502,
+    "Name": "Defeat FORGS at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 94,
+    "BattleIndex": 296,
+    "TrainerBattleType": "Story",
+    "Index": 245,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 502,
+    "Name": "Defeat KAPEN at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 95,
+    "BattleIndex": 297,
+    "TrainerBattleType": "Story",
+    "Index": 246,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 502,
+    "Name": "Defeat EZOOR at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 96,
+    "BattleIndex": 298,
+    "TrainerBattleType": "Story",
+    "Index": 247,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 502,
+    "Name": "Defeat ERTLIG at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 97,
+    "BattleIndex": 299,
+    "TrainerBattleType": "Story",
+    "Index": 248,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 502,
+    "Name": "Defeat GRECK at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 98,
+    "BattleIndex": 300,
+    "TrainerBattleType": "Story",
+    "Index": 251,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 503,
+    "Name": "Defeat ELOIN at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 99,
+    "BattleIndex": 301,
+    "TrainerBattleType": "Story",
+    "Index": 254,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 503,
+    "Name": "Defeat FASIN at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 100,
+    "BattleIndex": 302,
+    "TrainerBattleType": "Story",
+    "Index": 257,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 503,
+    "Name": "Defeat FOSTIN at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 101,
+    "BattleIndex": 303,
+    "TrainerBattleType": "Story",
+    "Index": 260,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 106,
+    "Name": "Defeat EZIN at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 102,
+    "BattleIndex": 304,
+    "TrainerBattleType": "Story",
+    "Index": 263,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 106,
+    "Name": "Defeat FALTLY at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 103,
+    "BattleIndex": 305,
+    "TrainerBattleType": "Story",
+    "Index": 266,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 106,
+    "Name": "Defeat EGROG at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 104,
+    "BattleIndex": 306,
+    "TrainerBattleType": "Story",
+    "Index": 269,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 106,
+    "Name": "Defeat SNATTLE at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 105,
+    "BattleIndex": 307,
+    "TrainerBattleType": "Story",
+    "Index": 272,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 502,
+    "Name": "Defeat EROLL at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 106,
+    "BattleIndex": 308,
+    "TrainerBattleType": "Story",
+    "Index": 273,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 106,
+    "Name": "Defeat EQUIN at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 107,
+    "BattleIndex": 309,
+    "TrainerBattleType": "Story",
+    "Index": 274,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 505,
+    "Name": "Defeat FINOL at PYRITE TOWN"
+  },
+  {
+    "TrainerIndex": 108,
+    "BattleIndex": 310,
+    "TrainerBattleType": "Story",
+    "Index": 275,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 505,
+    "Name": "Defeat DERT at PYRITE TOWN"
+  },
+  {
+    "TrainerIndex": 109,
+    "BattleIndex": 311,
+    "TrainerBattleType": "Story",
+    "Index": 276,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 505,
+    "Name": "Defeat RALING at PYRITE TOWN"
+  },
+  {
+    "TrainerIndex": 110,
+    "BattleIndex": 312,
+    "TrainerBattleType": "Story",
+    "Index": 277,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 505,
+    "Name": "Defeat LABET at PYRITE TOWN"
+  },
+  {
+    "TrainerIndex": 111,
+    "BattleIndex": 313,
+    "TrainerBattleType": "Story",
+    "Index": 278,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 505,
+    "Name": "Defeat DOBY at PYRITE TOWN"
+  },
+  {
+    "TrainerIndex": 112,
+    "BattleIndex": 314,
+    "TrainerBattleType": "Story",
+    "Index": 279,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 502,
+    "Name": "Defeat RESIX at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 113,
+    "BattleIndex": 315,
+    "TrainerBattleType": "Story",
+    "Index": 282,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 502,
+    "Name": "Defeat BLUSIX at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 114,
+    "BattleIndex": 316,
+    "TrainerBattleType": "Story",
+    "Index": 285,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 504,
+    "Name": "Defeat BROWSIX at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 115,
+    "BattleIndex": 317,
+    "TrainerBattleType": "Story",
+    "Index": 288,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 504,
+    "Name": "Defeat YELLOSIX at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 116,
+    "BattleIndex": 318,
+    "TrainerBattleType": "Story",
+    "Index": 291,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 502,
+    "Name": "Defeat PURPSIX at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 117,
+    "BattleIndex": 319,
+    "TrainerBattleType": "Story",
+    "Index": 294,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 502,
+    "Name": "Defeat GREESIX at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 118,
+    "BattleIndex": 320,
+    "TrainerBattleType": "Story",
+    "Index": 297,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 502,
+    "Name": "Defeat RESIX at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 119,
+    "BattleIndex": 321,
+    "TrainerBattleType": "Story",
+    "Index": 298,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 502,
+    "Name": "Defeat BLUSIX at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 120,
+    "BattleIndex": 322,
+    "TrainerBattleType": "Story",
+    "Index": 299,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 504,
+    "Name": "Defeat BROWSIX at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 121,
+    "BattleIndex": 323,
+    "TrainerBattleType": "Story",
+    "Index": 300,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 504,
+    "Name": "Defeat YELLOSIX at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 122,
+    "BattleIndex": 324,
+    "TrainerBattleType": "Story",
+    "Index": 301,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 502,
+    "Name": "Defeat PURPSIX at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 123,
+    "BattleIndex": 325,
+    "TrainerBattleType": "Story",
+    "Index": 302,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 502,
+    "Name": "Defeat GREESIX at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 124,
+    "BattleIndex": 326,
+    "TrainerBattleType": "Story",
+    "Index": 303,
+    "AreaName": "KAMINKOS HOUSE",
+    "RoomId": 544,
+    "Name": "Defeat CHOBIN at KAMINKOS HOUSE"
+  },
+  {
+    "TrainerIndex": 125,
+    "BattleIndex": 327,
+    "TrainerBattleType": "Story",
+    "Index": 304,
+    "AreaName": "KAMINKOS HOUSE",
+    "RoomId": 544,
+    "Name": "Defeat CHOBIN at KAMINKOS HOUSE"
+  },
+  {
+    "TrainerIndex": 126,
+    "BattleIndex": 328,
+    "TrainerBattleType": "Story",
+    "Index": 305,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 505,
+    "Name": "Defeat CAIL at PYRITE TOWN"
+  },
+  {
+    "TrainerIndex": 127,
+    "BattleIndex": 329,
+    "TrainerBattleType": "Story",
+    "Index": 306,
+    "AreaName": "KAMINKOS HOUSE",
+    "RoomId": 544,
+    "Name": "Defeat CHOBIN at KAMINKOS HOUSE"
+  },
+  {
+    "TrainerIndex": 128,
+    "BattleIndex": 330,
+    "TrainerBattleType": "Story",
+    "Index": 307,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 530,
+    "Name": "Defeat SMARTON at CIPHER KEY LAIR"
+  },
+  {
+    "TrainerIndex": 129,
+    "BattleIndex": 331,
+    "TrainerBattleType": "Story",
+    "Index": 308,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 503,
+    "Name": "Defeat QUELOR at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 130,
+    "BattleIndex": 332,
+    "TrainerBattleType": "Story",
+    "Index": 309,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 503,
+    "Name": "Defeat TESLOR at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 131,
+    "BattleIndex": 333,
+    "TrainerBattleType": "Story",
+    "Index": 310,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 503,
+    "Name": "Defeat NOPEL at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 132,
+    "BattleIndex": 334,
+    "TrainerBattleType": "Story",
+    "Index": 311,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 503,
+    "Name": "Defeat KALUS at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 133,
+    "BattleIndex": 335,
+    "TrainerBattleType": "Story",
+    "Index": 312,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 503,
+    "Name": "Defeat JUSTY at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 134,
+    "BattleIndex": 336,
+    "TrainerBattleType": "Story",
+    "Index": 313,
+    "AreaName": "OUTSKIRT STAND",
+    "RoomId": 500,
+    "Name": "Defeat MIROR B. at OUTSKIRT STAND"
+  },
+  {
+    "TrainerIndex": 135,
+    "BattleIndex": 337,
+    "TrainerBattleType": "Story",
+    "Index": 316,
+    "AreaName": "OUTSKIRT STAND",
+    "RoomId": 500,
+    "Name": "Defeat WILLIE at OUTSKIRT STAND"
+  },
+  {
+    "TrainerIndex": 136,
+    "BattleIndex": 338,
+    "TrainerBattleType": "Story",
+    "Index": 317,
+    "AreaName": "SNAGEM HIDEOUT",
+    "RoomId": 501,
+    "Name": "Defeat FUDLO at SNAGEM HIDEOUT"
+  },
+  {
+    "TrainerIndex": 137,
+    "BattleIndex": 339,
+    "TrainerBattleType": "Story",
+    "Index": 318,
+    "AreaName": "SNAGEM HIDEOUT",
+    "RoomId": 501,
+    "Name": "Defeat GAPLY at SNAGEM HIDEOUT"
+  },
+  {
+    "TrainerIndex": 138,
+    "BattleIndex": 340,
+    "TrainerBattleType": "Story",
+    "Index": 319,
+    "AreaName": "SNAGEM HIDEOUT",
+    "RoomId": 501,
+    "Name": "Defeat JINOK at SNAGEM HIDEOUT"
+  },
+  {
+    "TrainerIndex": 139,
+    "BattleIndex": 341,
+    "TrainerBattleType": "Story",
+    "Index": 320,
+    "AreaName": "SNAGEM HIDEOUT",
+    "RoomId": 501,
+    "Name": "Defeat AGREV at SNAGEM HIDEOUT"
+  },
+  {
+    "TrainerIndex": 140,
+    "BattleIndex": 342,
+    "TrainerBattleType": "Story",
+    "Index": 321,
+    "AreaName": "SNAGEM HIDEOUT",
+    "RoomId": 501,
+    "Name": "Defeat JEDO at SNAGEM HIDEOUT"
+  },
+  {
+    "TrainerIndex": 141,
+    "BattleIndex": 343,
+    "TrainerBattleType": "Story",
+    "Index": 322,
+    "AreaName": "SNAGEM HIDEOUT",
+    "RoomId": 501,
+    "Name": "Defeat GOLIT at SNAGEM HIDEOUT"
+  },
+  {
+    "TrainerIndex": 142,
+    "BattleIndex": 344,
+    "TrainerBattleType": "Story",
+    "Index": 323,
+    "AreaName": "SNAGEM HIDEOUT",
+    "RoomId": 501,
+    "Name": "Defeat HOBBLE at SNAGEM HIDEOUT"
+  },
+  {
+    "TrainerIndex": 143,
+    "BattleIndex": 345,
+    "TrainerBattleType": "Story",
+    "Index": 324,
+    "AreaName": "SNAGEM HIDEOUT",
+    "RoomId": 501,
+    "Name": "Defeat BIDEN at SNAGEM HIDEOUT"
+  },
+  {
+    "TrainerIndex": 144,
+    "BattleIndex": 346,
+    "TrainerBattleType": "Story",
+    "Index": 325,
+    "AreaName": "SNAGEM HIDEOUT",
+    "RoomId": 501,
+    "Name": "Defeat WAKIN at SNAGEM HIDEOUT"
+  },
+  {
+    "TrainerIndex": 145,
+    "BattleIndex": 347,
+    "TrainerBattleType": "Story",
+    "Index": 326,
+    "AreaName": "SNAGEM HIDEOUT",
+    "RoomId": 501,
+    "Name": "Defeat GONZAP at SNAGEM HIDEOUT"
+  },
+  {
+    "TrainerIndex": 146,
+    "BattleIndex": 348,
+    "TrainerBattleType": "Story",
+    "Index": 327,
+    "AreaName": "POKEMON HQ LAB",
+    "RoomId": 541,
+    "Name": "Defeat AFERD at POKEMON HQ LAB"
+  },
+  {
+    "TrainerIndex": 147,
+    "BattleIndex": 349,
+    "TrainerBattleType": "Story",
+    "Index": 328,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 533,
+    "Name": "Defeat ZOOK at CIPHER KEY LAIR"
+  },
+  {
+    "TrainerIndex": 148,
+    "BattleIndex": 350,
+    "TrainerBattleType": "Story",
+    "Index": 331,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 533,
+    "Name": "Defeat BIDEN at CIPHER KEY LAIR"
+  },
+  {
+    "TrainerIndex": 149,
+    "BattleIndex": 351,
+    "TrainerBattleType": "Story",
+    "Index": 332,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 531,
+    "Name": "Defeat GREZLE at CIPHER KEY LAIR"
+  },
+  {
+    "TrainerIndex": 150,
+    "BattleIndex": 352,
+    "TrainerBattleType": "Story",
+    "Index": 333,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 531,
+    "Name": "Defeat HUMAH at CIPHER KEY LAIR"
+  },
+  {
+    "TrainerIndex": 151,
+    "BattleIndex": 353,
+    "TrainerBattleType": "Story",
+    "Index": 338,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 531,
+    "Name": "Defeat IBSOL at CIPHER KEY LAIR"
+  },
+  {
+    "TrainerIndex": 152,
+    "BattleIndex": 354,
+    "TrainerBattleType": "Story",
+    "Index": 339,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 531,
+    "Name": "Defeat KOLLO at CIPHER KEY LAIR"
+  },
+  {
+    "TrainerIndex": 153,
+    "BattleIndex": 355,
+    "TrainerBattleType": "Story",
+    "Index": 340,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 531,
+    "Name": "Defeat GOROG at CIPHER KEY LAIR"
+  },
+  {
+    "TrainerIndex": 154,
+    "BattleIndex": 356,
+    "TrainerBattleType": "Story",
+    "Index": 343,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 531,
+    "Name": "Defeat JELSTIN at CIPHER KEY LAIR"
+  },
+  {
+    "TrainerIndex": 155,
+    "BattleIndex": 357,
+    "TrainerBattleType": "Story",
+    "Index": 344,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 531,
+    "Name": "Defeat LOK at CIPHER KEY LAIR"
+  },
+  {
+    "TrainerIndex": 156,
+    "BattleIndex": 358,
+    "TrainerBattleType": "Story",
+    "Index": 349,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 531,
+    "Name": "Defeat KLETO at CIPHER KEY LAIR"
+  },
+  {
+    "TrainerIndex": 157,
+    "BattleIndex": 359,
+    "TrainerBattleType": "Story",
+    "Index": 350,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 531,
+    "Name": "Defeat FLIPIS at CIPHER KEY LAIR"
+  },
+  {
+    "TrainerIndex": 158,
+    "BattleIndex": 360,
+    "TrainerBattleType": "Story",
+    "Index": 351,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 531,
+    "Name": "Defeat TARG at CIPHER KEY LAIR"
+  },
+  {
+    "TrainerIndex": 159,
+    "BattleIndex": 361,
+    "TrainerBattleType": "Story",
+    "Index": 356,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 531,
+    "Name": "Defeat HOSPEL at CIPHER KEY LAIR"
+  },
+  {
+    "TrainerIndex": 160,
+    "BattleIndex": 362,
+    "TrainerBattleType": "Story",
+    "Index": 357,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 531,
+    "Name": "Defeat SNIDLE at CIPHER KEY LAIR"
+  },
+  {
+    "TrainerIndex": 161,
+    "BattleIndex": 363,
+    "TrainerBattleType": "Story",
+    "Index": 360,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 532,
+    "Name": "Defeat FUDLER at CIPHER KEY LAIR"
+  },
+  {
+    "TrainerIndex": 162,
+    "BattleIndex": 364,
+    "TrainerBattleType": "Story",
+    "Index": 361,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 532,
+    "Name": "Defeat ANGIC at CIPHER KEY LAIR"
+  },
+  {
+    "TrainerIndex": 163,
+    "BattleIndex": 365,
+    "TrainerBattleType": "Story",
+    "Index": 366,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 532,
+    "Name": "Defeat ACROD at CIPHER KEY LAIR"
+  },
+  {
+    "TrainerIndex": 164,
+    "BattleIndex": 366,
+    "TrainerBattleType": "Story",
+    "Index": 367,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 532,
+    "Name": "Defeat SMARTON at CIPHER KEY LAIR"
+  },
+  {
+    "TrainerIndex": 165,
+    "BattleIndex": 367,
+    "TrainerBattleType": "Story",
+    "Index": 370,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 550,
+    "Name": "Defeat GORIGAN at CIPHER KEY LAIR"
+  },
+  {
+    "TrainerIndex": 166,
+    "BattleIndex": 368,
+    "TrainerBattleType": "Story",
+    "Index": 375,
+    "AreaName": "KAMINKOS HOUSE",
+    "RoomId": 544,
+    "Name": "Defeat CHOBIN at KAMINKOS HOUSE"
+  },
+  {
+    "TrainerIndex": 167,
+    "BattleIndex": 369,
+    "TrainerBattleType": "Story",
+    "Index": 376,
+    "AreaName": "KAMINKOS HOUSE",
+    "RoomId": 544,
+    "Name": "Defeat CHOBIN at KAMINKOS HOUSE"
+  },
+  {
+    "TrainerIndex": 168,
+    "BattleIndex": 370,
+    "TrainerBattleType": "Story",
+    "Index": 377,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 538,
+    "Name": "Defeat ABSON at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 169,
+    "BattleIndex": 371,
+    "TrainerBattleType": "Story",
+    "Index": 382,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 536,
+    "Name": "Defeat HABEN at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 170,
+    "BattleIndex": 372,
+    "TrainerBattleType": "Story",
+    "Index": 383,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 536,
+    "Name": "Defeat FURGY at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 171,
+    "BattleIndex": 373,
+    "TrainerBattleType": "Story",
+    "Index": 388,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 536,
+    "Name": "Defeat GOLOS at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 172,
+    "BattleIndex": 374,
+    "TrainerBattleType": "Story",
+    "Index": 389,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 536,
+    "Name": "Defeat JETSAL at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 173,
+    "BattleIndex": 375,
+    "TrainerBattleType": "Story",
+    "Index": 390,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 536,
+    "Name": "Defeat LOVRINA at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 174,
+    "BattleIndex": 376,
+    "TrainerBattleType": "Story",
+    "Index": 395,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 536,
+    "Name": "Defeat BASTIL at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 175,
+    "BattleIndex": 377,
+    "TrainerBattleType": "Story",
+    "Index": 396,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 536,
+    "Name": "Defeat LITNAR at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 176,
+    "BattleIndex": 378,
+    "TrainerBattleType": "Story",
+    "Index": 401,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 536,
+    "Name": "Defeat GRASON at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 177,
+    "BattleIndex": 379,
+    "TrainerBattleType": "Story",
+    "Index": 402,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 535,
+    "Name": "Defeat GRUPEL at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 178,
+    "BattleIndex": 380,
+    "TrainerBattleType": "Story",
+    "Index": 407,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 536,
+    "Name": "Defeat KIMLY at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 179,
+    "BattleIndex": 381,
+    "TrainerBattleType": "Story",
+    "Index": 408,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 535,
+    "Name": "Defeat NALIX at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 180,
+    "BattleIndex": 382,
+    "TrainerBattleType": "Story",
+    "Index": 409,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 535,
+    "Name": "Defeat IBRAN at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 181,
+    "BattleIndex": 383,
+    "TrainerBattleType": "Story",
+    "Index": 410,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 535,
+    "Name": "Defeat KULIG at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 182,
+    "BattleIndex": 384,
+    "TrainerBattleType": "Story",
+    "Index": 411,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 535,
+    "Name": "Defeat JARGO at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 183,
+    "BattleIndex": 385,
+    "TrainerBattleType": "Story",
+    "Index": 412,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 535,
+    "Name": "Defeat KOLEST at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 184,
+    "BattleIndex": 386,
+    "TrainerBattleType": "Story",
+    "Index": 417,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 535,
+    "Name": "Defeat KOLIN at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 185,
+    "BattleIndex": 387,
+    "TrainerBattleType": "Story",
+    "Index": 418,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 535,
+    "Name": "Defeat KARBON at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 186,
+    "BattleIndex": 388,
+    "TrainerBattleType": "Story",
+    "Index": 421,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 535,
+    "Name": "Defeat PETRO at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 187,
+    "BattleIndex": 389,
+    "TrainerBattleType": "Story",
+    "Index": 424,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 535,
+    "Name": "Defeat JAYMI at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 188,
+    "BattleIndex": 390,
+    "TrainerBattleType": "Story",
+    "Index": 425,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 535,
+    "Name": "Defeat GROMLET at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 189,
+    "BattleIndex": 391,
+    "TrainerBattleType": "Story",
+    "Index": 426,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 536,
+    "Name": "Defeat GEFTAL at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 190,
+    "BattleIndex": 392,
+    "TrainerBattleType": "Story",
+    "Index": 429,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 536,
+    "Name": "Defeat LEDEN at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 191,
+    "BattleIndex": 393,
+    "TrainerBattleType": "Story",
+    "Index": 434,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 537,
+    "Name": "Defeat SNATTLE at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 192,
+    "BattleIndex": 394,
+    "TrainerBattleType": "Story",
+    "Index": 439,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 538,
+    "Name": "Defeat KLEEF at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 193,
+    "BattleIndex": 395,
+    "TrainerBattleType": "Story",
+    "Index": 440,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 537,
+    "Name": "Defeat ARDOS at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 194,
+    "BattleIndex": 396,
+    "TrainerBattleType": "Story",
+    "Index": 447,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 537,
+    "Name": "Defeat GORIGAN at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 195,
+    "BattleIndex": 397,
+    "TrainerBattleType": "Story",
+    "Index": 452,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 536,
+    "Name": "Defeat KOLAX at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 196,
+    "BattleIndex": 398,
+    "TrainerBattleType": "Story",
+    "Index": 455,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 536,
+    "Name": "Defeat ELDES at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 197,
+    "BattleIndex": 399,
+    "TrainerBattleType": "Story",
+    "Index": 464,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 536,
+    "Name": "Defeat KALLER at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 198,
+    "BattleIndex": 400,
+    "TrainerBattleType": "Story",
+    "Index": 465,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 536,
+    "Name": "Defeat LOKET at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 199,
+    "BattleIndex": 401,
+    "TrainerBattleType": "Story",
+    "Index": 466,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 534,
+    "Name": "Defeat GREEVIL at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 200,
+    "BattleIndex": 402,
+    "TrainerBattleType": "Story",
+    "Index": 469,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 534,
+    "Name": "Defeat GREEVIL at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 201,
+    "BattleIndex": 425,
+    "TrainerBattleType": "Story",
+    "Index": 482,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 534,
+    "Name": "Defeat GREEVIL at CITADARK ISLE"
+  },
+  {
+    "TrainerIndex": 202,
+    "BattleIndex": 403,
+    "TrainerBattleType": "Story",
+    "Index": 483,
+    "AreaName": "GATEON PORT",
+    "RoomId": 542,
+    "Name": "Defeat LAKEN at GATEON PORT"
+  },
+  {
+    "TrainerIndex": 203,
+    "BattleIndex": 404,
+    "TrainerBattleType": "Story",
+    "Index": 484,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 514,
+    "Name": "Defeat RESIX at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 204,
+    "BattleIndex": 405,
+    "TrainerBattleType": "Story",
+    "Index": 487,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 514,
+    "Name": "Defeat BLUSIX at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 205,
+    "BattleIndex": 406,
+    "TrainerBattleType": "Story",
+    "Index": 490,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 514,
+    "Name": "Defeat BROWSIX at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 206,
+    "BattleIndex": 407,
+    "TrainerBattleType": "Story",
+    "Index": 493,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 514,
+    "Name": "Defeat YELLOSIX at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 207,
+    "BattleIndex": 408,
+    "TrainerBattleType": "Story",
+    "Index": 496,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 514,
+    "Name": "Defeat PURPSIX at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 208,
+    "BattleIndex": 409,
+    "TrainerBattleType": "Story",
+    "Index": 499,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 514,
+    "Name": "Defeat GREESIX at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 209,
+    "BattleIndex": 410,
+    "TrainerBattleType": "Story",
+    "Index": 502,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 514,
+    "Name": "Defeat RESIX at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 210,
+    "BattleIndex": 411,
+    "TrainerBattleType": "Story",
+    "Index": 503,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 514,
+    "Name": "Defeat BLUSIX at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 211,
+    "BattleIndex": 412,
+    "TrainerBattleType": "Story",
+    "Index": 504,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 514,
+    "Name": "Defeat BROWSIX at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 212,
+    "BattleIndex": 413,
+    "TrainerBattleType": "Story",
+    "Index": 505,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 514,
+    "Name": "Defeat YELLOSIX at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 213,
+    "BattleIndex": 414,
+    "TrainerBattleType": "Story",
+    "Index": 506,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 514,
+    "Name": "Defeat PURPSIX at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 214,
+    "BattleIndex": 415,
+    "TrainerBattleType": "Story",
+    "Index": 507,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 514,
+    "Name": "Defeat GREESIX at CIPHER LAB"
+  },
+  {
+    "TrainerIndex": 215,
+    "BattleIndex": 416,
+    "TrainerBattleType": "Story",
+    "Index": 508,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 505,
+    "Name": "Defeat CAIL at PYRITE TOWN"
+  },
+  {
+    "TrainerIndex": 216,
+    "BattleIndex": 417,
+    "TrainerBattleType": "Story",
+    "Index": 509,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 505,
+    "Name": "Defeat FINOL at PYRITE TOWN"
+  },
+  {
+    "TrainerIndex": 217,
+    "BattleIndex": 418,
+    "TrainerBattleType": "Story",
+    "Index": 510,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 505,
+    "Name": "Defeat DERT at PYRITE TOWN"
+  },
+  {
+    "TrainerIndex": 218,
+    "BattleIndex": 419,
+    "TrainerBattleType": "Story",
+    "Index": 511,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 505,
+    "Name": "Defeat RALING at PYRITE TOWN"
+  },
+  {
+    "TrainerIndex": 219,
+    "BattleIndex": 420,
+    "TrainerBattleType": "Story",
+    "Index": 512,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 505,
+    "Name": "Defeat LABET at PYRITE TOWN"
+  },
+  {
+    "TrainerIndex": 220,
+    "BattleIndex": 421,
+    "TrainerBattleType": "Story",
+    "Index": 513,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 505,
+    "Name": "Defeat DOBY at PYRITE TOWN"
+  },
+  {
+    "TrainerIndex": 221,
+    "BattleIndex": 422,
+    "TrainerBattleType": "Story",
+    "Index": 514,
+    "AreaName": "GATEON PORT",
+    "RoomId": 543,
+    "Name": "Defeat MIROR B. at GATEON PORT"
+  },
+  {
+    "TrainerIndex": 222,
+    "BattleIndex": 424,
+    "TrainerBattleType": "Story",
+    "Index": 517,
+    "AreaName": "POKEMON HQ LAB",
+    "RoomId": 541,
+    "Name": "Defeat EAGUN at POKEMON HQ LAB"
+  },
+  {
+    "TrainerIndex": 223,
+    "BattleIndex": 431,
+    "TrainerBattleType": "Story",
+    "Index": 518,
+    "AreaName": "POKEMON HQ LAB",
+    "RoomId": 541,
+    "Name": "Defeat AFERD at POKEMON HQ LAB"
+  },
+  {
+    "TrainerIndex": 224,
+    "BattleIndex": 432,
+    "TrainerBattleType": "Story",
+    "Index": 519,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 502,
+    "Name": "Defeat EROLL at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 225,
+    "BattleIndex": 433,
+    "TrainerBattleType": "Story",
+    "Index": 520,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 106,
+    "Name": "Defeat EQUIN at PHENAC CITY"
+  },
+  {
+    "TrainerIndex": 226,
+    "BattleIndex": 434,
+    "TrainerBattleType": "Story",
+    "Index": 521,
+    "AreaName": "OUTSKIRT STAND",
+    "RoomId": 500,
+    "Name": "Defeat WILLIE at OUTSKIRT STAND"
+  },
+  {
+    "TrainerIndex": 227,
+    "BattleIndex": 435,
+    "TrainerBattleType": "Story",
+    "Index": 522,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 508,
+    "Name": "Defeat CIDA at AGATE VILLAGE"
+  },
+  {
+    "TrainerIndex": 228,
+    "BattleIndex": 436,
+    "TrainerBattleType": "Story",
+    "Index": 523,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 508,
+    "Name": "Defeat CLERR at AGATE VILLAGE"
+  },
+  {
+    "TrainerIndex": 229,
+    "BattleIndex": 437,
+    "TrainerBattleType": "Story",
+    "Index": 524,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 508,
+    "Name": "Defeat BELISH at AGATE VILLAGE"
+  },
+  {
+    "TrainerIndex": 230,
+    "BattleIndex": 438,
+    "TrainerBattleType": "Story",
+    "Index": 525,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 508,
+    "Name": "Defeat DOSK at AGATE VILLAGE"
+  },
+  {
+    "TrainerIndex": 231,
+    "BattleIndex": 439,
+    "TrainerBattleType": "Story",
+    "Index": 526,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 508,
+    "Name": "Defeat HEBON at AGATE VILLAGE"
+  },
+  {
+    "TrainerIndex": 232,
+    "BattleIndex": 440,
+    "TrainerBattleType": "Story",
+    "Index": 527,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 505,
+    "Name": "Defeat DOBIT at PYRITE TOWN"
+  },
+  {
+    "TrainerIndex": 1,
+    "BattleIndex": 115,
+    "TrainerBattleType": "Colosseum",
+    "Index": 528,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 112,
+    "Name": "Defeat MIROR B. at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 9,
+    "BattleIndex": 55,
+    "TrainerBattleType": "Colosseum",
+    "Index": 529,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 112,
+    "Name": "Defeat RESILA at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 10,
+    "BattleIndex": 56,
+    "TrainerBattleType": "Colosseum",
+    "Index": 530,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 112,
+    "Name": "Defeat MONAR at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 11,
+    "BattleIndex": 57,
+    "TrainerBattleType": "Colosseum",
+    "Index": 531,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 112,
+    "Name": "Defeat RAFERT at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 12,
+    "BattleIndex": 58,
+    "TrainerBattleType": "Colosseum",
+    "Index": 532,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 112,
+    "Name": "Defeat JUPEX at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 13,
+    "BattleIndex": 59,
+    "TrainerBattleType": "Colosseum",
+    "Index": 533,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 112,
+    "Name": "Defeat HAXER at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 14,
+    "BattleIndex": 60,
+    "TrainerBattleType": "Colosseum",
+    "Index": 534,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 112,
+    "Name": "Defeat MESTIL at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 15,
+    "BattleIndex": 61,
+    "TrainerBattleType": "Colosseum",
+    "Index": 535,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 112,
+    "Name": "Defeat NOVIL at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 16,
+    "BattleIndex": 62,
+    "TrainerBattleType": "Colosseum",
+    "Index": 536,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 112,
+    "Name": "Defeat ORILL at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 17,
+    "BattleIndex": 63,
+    "TrainerBattleType": "Colosseum",
+    "Index": 537,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 112,
+    "Name": "Defeat NOSTAL at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 18,
+    "BattleIndex": 64,
+    "TrainerBattleType": "Colosseum",
+    "Index": 538,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 112,
+    "Name": "Defeat OSTIX at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 19,
+    "BattleIndex": 65,
+    "TrainerBattleType": "Colosseum",
+    "Index": 539,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 112,
+    "Name": "Defeat TARBIL at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 20,
+    "BattleIndex": 66,
+    "TrainerBattleType": "Colosseum",
+    "Index": 540,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 112,
+    "Name": "Defeat TEBU at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 21,
+    "BattleIndex": 67,
+    "TrainerBattleType": "Colosseum",
+    "Index": 541,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 112,
+    "Name": "Defeat SELLIS at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 22,
+    "BattleIndex": 68,
+    "TrainerBattleType": "Colosseum",
+    "Index": 542,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 112,
+    "Name": "Defeat MIFIS at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 23,
+    "BattleIndex": 69,
+    "TrainerBattleType": "Colosseum",
+    "Index": 543,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 112,
+    "Name": "Defeat TIRUK at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 24,
+    "BattleIndex": 70,
+    "TrainerBattleType": "Colosseum",
+    "Index": 544,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 112,
+    "Name": "Defeat FOSS at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 25,
+    "BattleIndex": 71,
+    "TrainerBattleType": "Colosseum",
+    "Index": 545,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 527,
+    "Name": "Defeat AFTIN at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 26,
+    "BattleIndex": 72,
+    "TrainerBattleType": "Colosseum",
+    "Index": 546,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 527,
+    "Name": "Defeat FEPER at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 27,
+    "BattleIndex": 73,
+    "TrainerBattleType": "Colosseum",
+    "Index": 547,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 527,
+    "Name": "Defeat HALSION at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 28,
+    "BattleIndex": 74,
+    "TrainerBattleType": "Colosseum",
+    "Index": 548,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 527,
+    "Name": "Defeat MALEX at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 29,
+    "BattleIndex": 75,
+    "TrainerBattleType": "Colosseum",
+    "Index": 549,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 527,
+    "Name": "Defeat RELZA at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 30,
+    "BattleIndex": 76,
+    "TrainerBattleType": "Colosseum",
+    "Index": 550,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 527,
+    "Name": "Defeat HEBSON at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 31,
+    "BattleIndex": 77,
+    "TrainerBattleType": "Colosseum",
+    "Index": 551,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 527,
+    "Name": "Defeat TOKO at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 32,
+    "BattleIndex": 78,
+    "TrainerBattleType": "Colosseum",
+    "Index": 552,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 527,
+    "Name": "Defeat ARULE at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 33,
+    "BattleIndex": 79,
+    "TrainerBattleType": "Colosseum",
+    "Index": 553,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 527,
+    "Name": "Defeat AGOLL at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 34,
+    "BattleIndex": 80,
+    "TrainerBattleType": "Colosseum",
+    "Index": 554,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 527,
+    "Name": "Defeat AXON at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 35,
+    "BattleIndex": 81,
+    "TrainerBattleType": "Colosseum",
+    "Index": 555,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 527,
+    "Name": "Defeat POLOT at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 36,
+    "BattleIndex": 82,
+    "TrainerBattleType": "Colosseum",
+    "Index": 556,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 527,
+    "Name": "Defeat BESTOL at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 37,
+    "BattleIndex": 83,
+    "TrainerBattleType": "Colosseum",
+    "Index": 557,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 527,
+    "Name": "Defeat PILIOT at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 38,
+    "BattleIndex": 84,
+    "TrainerBattleType": "Colosseum",
+    "Index": 558,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 527,
+    "Name": "Defeat NISTIL at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 39,
+    "BattleIndex": 85,
+    "TrainerBattleType": "Colosseum",
+    "Index": 559,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 527,
+    "Name": "Defeat HILEON at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 40,
+    "BattleIndex": 86,
+    "TrainerBattleType": "Colosseum",
+    "Index": 560,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 527,
+    "Name": "Defeat CARBEN at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 41,
+    "BattleIndex": 87,
+    "TrainerBattleType": "Colosseum",
+    "Index": 561,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 549,
+    "Name": "Defeat GREEL at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 42,
+    "BattleIndex": 88,
+    "TrainerBattleType": "Colosseum",
+    "Index": 562,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 549,
+    "Name": "Defeat HERLAM at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 43,
+    "BattleIndex": 89,
+    "TrainerBattleType": "Colosseum",
+    "Index": 563,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 549,
+    "Name": "Defeat LESTOR at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 44,
+    "BattleIndex": 90,
+    "TrainerBattleType": "Colosseum",
+    "Index": 564,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 549,
+    "Name": "Defeat LOVRINA at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 45,
+    "BattleIndex": 91,
+    "TrainerBattleType": "Colosseum",
+    "Index": 565,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 549,
+    "Name": "Defeat LOBEL at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 46,
+    "BattleIndex": 92,
+    "TrainerBattleType": "Colosseum",
+    "Index": 566,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 549,
+    "Name": "Defeat MAKEL at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 47,
+    "BattleIndex": 93,
+    "TrainerBattleType": "Colosseum",
+    "Index": 567,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 549,
+    "Name": "Defeat LIMAR at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 48,
+    "BattleIndex": 94,
+    "TrainerBattleType": "Colosseum",
+    "Index": 568,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 549,
+    "Name": "Defeat SNATTLE at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 49,
+    "BattleIndex": 95,
+    "TrainerBattleType": "Colosseum",
+    "Index": 569,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 549,
+    "Name": "Defeat NAVU at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 50,
+    "BattleIndex": 96,
+    "TrainerBattleType": "Colosseum",
+    "Index": 570,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 549,
+    "Name": "Defeat PIXEN at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 51,
+    "BattleIndex": 97,
+    "TrainerBattleType": "Colosseum",
+    "Index": 571,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 549,
+    "Name": "Defeat DAKS at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 52,
+    "BattleIndex": 98,
+    "TrainerBattleType": "Colosseum",
+    "Index": 572,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 549,
+    "Name": "Defeat GORIGAN at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 53,
+    "BattleIndex": 99,
+    "TrainerBattleType": "Colosseum",
+    "Index": 573,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 549,
+    "Name": "Defeat REKIX at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 54,
+    "BattleIndex": 100,
+    "TrainerBattleType": "Colosseum",
+    "Index": 574,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 549,
+    "Name": "Defeat DARGS at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 55,
+    "BattleIndex": 101,
+    "TrainerBattleType": "Colosseum",
+    "Index": 575,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 549,
+    "Name": "Defeat NAONO at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 56,
+    "BattleIndex": 102,
+    "TrainerBattleType": "Colosseum",
+    "Index": 576,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 549,
+    "Name": "Defeat CHOBIN at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 57,
+    "BattleIndex": 103,
+    "TrainerBattleType": "Colosseum",
+    "Index": 577,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 549,
+    "Name": "Defeat BIDEN at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 58,
+    "BattleIndex": 104,
+    "TrainerBattleType": "Colosseum",
+    "Index": 578,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 549,
+    "Name": "Defeat JEDO at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 59,
+    "BattleIndex": 105,
+    "TrainerBattleType": "Colosseum",
+    "Index": 579,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 549,
+    "Name": "Defeat WAKIN at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 60,
+    "BattleIndex": 106,
+    "TrainerBattleType": "Colosseum",
+    "Index": 580,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 549,
+    "Name": "Defeat GONZAP at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 61,
+    "BattleIndex": 107,
+    "TrainerBattleType": "Colosseum",
+    "Index": 581,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 549,
+    "Name": "Defeat JEBOL at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 62,
+    "BattleIndex": 108,
+    "TrainerBattleType": "Colosseum",
+    "Index": 582,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 549,
+    "Name": "Defeat LOAR at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 63,
+    "BattleIndex": 109,
+    "TrainerBattleType": "Colosseum",
+    "Index": 583,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 549,
+    "Name": "Defeat FELPS at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 64,
+    "BattleIndex": 110,
+    "TrainerBattleType": "Colosseum",
+    "Index": 584,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 549,
+    "Name": "Defeat ARDOS at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 65,
+    "BattleIndex": 111,
+    "TrainerBattleType": "Colosseum",
+    "Index": 585,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 549,
+    "Name": "Defeat LEST at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 66,
+    "BattleIndex": 112,
+    "TrainerBattleType": "Colosseum",
+    "Index": 586,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 549,
+    "Name": "Defeat EBSON at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 67,
+    "BattleIndex": 113,
+    "TrainerBattleType": "Colosseum",
+    "Index": 587,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 549,
+    "Name": "Defeat KLEPT at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 68,
+    "BattleIndex": 114,
+    "TrainerBattleType": "Colosseum",
+    "Index": 588,
+    "AreaName": "THE COLOSSEUM",
+    "RoomId": 549,
+    "Name": "Defeat ELDES at THE COLOSSEUM"
+  },
+  {
+    "TrainerIndex": 1,
+    "BattleIndex": 116,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 589,
+    "AreaName": "MT. BATTLE (Round 1)",
+    "RoomId": 517,
+    "Name": "Defeat MIRU at MT. BATTLE (Round 1)"
+  },
+  {
+    "TrainerIndex": 2,
+    "BattleIndex": 117,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 590,
+    "AreaName": "MT. BATTLE (Round 2)",
+    "RoomId": 517,
+    "Name": "Defeat CRIDEL at MT. BATTLE (Round 2)"
+  },
+  {
+    "TrainerIndex": 3,
+    "BattleIndex": 118,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 591,
+    "AreaName": "MT. BATTLE (Round 3)",
+    "RoomId": 517,
+    "Name": "Defeat BARDO at MT. BATTLE (Round 3)"
+  },
+  {
+    "TrainerIndex": 4,
+    "BattleIndex": 119,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 592,
+    "AreaName": "MT. BATTLE (Round 4)",
+    "RoomId": 517,
+    "Name": "Defeat ROBELL at MT. BATTLE (Round 4)"
+  },
+  {
+    "TrainerIndex": 5,
+    "BattleIndex": 120,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 593,
+    "AreaName": "MT. BATTLE (Round 5)",
+    "RoomId": 517,
+    "Name": "Defeat KABIN at MT. BATTLE (Round 5)"
+  },
+  {
+    "TrainerIndex": 6,
+    "BattleIndex": 121,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 594,
+    "AreaName": "MT. BATTLE (Round 6)",
+    "RoomId": 517,
+    "Name": "Defeat EZELLA at MT. BATTLE (Round 6)"
+  },
+  {
+    "TrainerIndex": 7,
+    "BattleIndex": 122,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 595,
+    "AreaName": "MT. BATTLE (Round 7)",
+    "RoomId": 517,
+    "Name": "Defeat HORBIT at MT. BATTLE (Round 7)"
+  },
+  {
+    "TrainerIndex": 8,
+    "BattleIndex": 123,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 596,
+    "AreaName": "MT. BATTLE (Round 8)",
+    "RoomId": 517,
+    "Name": "Defeat ELOFF at MT. BATTLE (Round 8)"
+  },
+  {
+    "TrainerIndex": 9,
+    "BattleIndex": 124,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 597,
+    "AreaName": "MT. BATTLE (Round 9)",
+    "RoomId": 517,
+    "Name": "Defeat DIBSIN at MT. BATTLE (Round 9)"
+  },
+  {
+    "TrainerIndex": 10,
+    "BattleIndex": 125,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 598,
+    "AreaName": "MT. BATTLE (Round 10)",
+    "RoomId": 517,
+    "Name": "Defeat VANDER at MT. BATTLE (Round 10)"
+  },
+  {
+    "TrainerIndex": 11,
+    "BattleIndex": 126,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 599,
+    "AreaName": "MT. BATTLE (Round 11)",
+    "RoomId": 517,
+    "Name": "Defeat DABIL at MT. BATTLE (Round 11)"
+  },
+  {
+    "TrainerIndex": 12,
+    "BattleIndex": 127,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 600,
+    "AreaName": "MT. BATTLE (Round 12)",
+    "RoomId": 517,
+    "Name": "Defeat CIDLOR at MT. BATTLE (Round 12)"
+  },
+  {
+    "TrainerIndex": 13,
+    "BattleIndex": 128,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 601,
+    "AreaName": "MT. BATTLE (Round 13)",
+    "RoomId": 517,
+    "Name": "Defeat GRATIN at MT. BATTLE (Round 13)"
+  },
+  {
+    "TrainerIndex": 14,
+    "BattleIndex": 129,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 602,
+    "AreaName": "MT. BATTLE (Round 14)",
+    "RoomId": 517,
+    "Name": "Defeat HARDIG at MT. BATTLE (Round 14)"
+  },
+  {
+    "TrainerIndex": 15,
+    "BattleIndex": 130,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 603,
+    "AreaName": "MT. BATTLE (Round 15)",
+    "RoomId": 517,
+    "Name": "Defeat GOLING at MT. BATTLE (Round 15)"
+  },
+  {
+    "TrainerIndex": 16,
+    "BattleIndex": 131,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 604,
+    "AreaName": "MT. BATTLE (Round 16)",
+    "RoomId": 517,
+    "Name": "Defeat JEOL at MT. BATTLE (Round 16)"
+  },
+  {
+    "TrainerIndex": 17,
+    "BattleIndex": 132,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 605,
+    "AreaName": "MT. BATTLE (Round 17)",
+    "RoomId": 517,
+    "Name": "Defeat ECHART at MT. BATTLE (Round 17)"
+  },
+  {
+    "TrainerIndex": 18,
+    "BattleIndex": 133,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 606,
+    "AreaName": "MT. BATTLE (Round 18)",
+    "RoomId": 517,
+    "Name": "Defeat DELF at MT. BATTLE (Round 18)"
+  },
+  {
+    "TrainerIndex": 19,
+    "BattleIndex": 134,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 607,
+    "AreaName": "MT. BATTLE (Round 19)",
+    "RoomId": 517,
+    "Name": "Defeat DOLAM at MT. BATTLE (Round 19)"
+  },
+  {
+    "TrainerIndex": 20,
+    "BattleIndex": 135,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 608,
+    "AreaName": "MT. BATTLE (Round 20)",
+    "RoomId": 517,
+    "Name": "Defeat ELDOF at MT. BATTLE (Round 20)"
+  },
+  {
+    "TrainerIndex": 21,
+    "BattleIndex": 136,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 609,
+    "AreaName": "MT. BATTLE (Round 21)",
+    "RoomId": 517,
+    "Name": "Defeat GRESTLY at MT. BATTLE (Round 21)"
+  },
+  {
+    "TrainerIndex": 22,
+    "BattleIndex": 137,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 610,
+    "AreaName": "MT. BATTLE (Round 22)",
+    "RoomId": 517,
+    "Name": "Defeat FOLOP at MT. BATTLE (Round 22)"
+  },
+  {
+    "TrainerIndex": 23,
+    "BattleIndex": 138,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 611,
+    "AreaName": "MT. BATTLE (Round 23)",
+    "RoomId": 517,
+    "Name": "Defeat KWANE at MT. BATTLE (Round 23)"
+  },
+  {
+    "TrainerIndex": 24,
+    "BattleIndex": 139,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 612,
+    "AreaName": "MT. BATTLE (Round 24)",
+    "RoomId": 517,
+    "Name": "Defeat NAPOL at MT. BATTLE (Round 24)"
+  },
+  {
+    "TrainerIndex": 25,
+    "BattleIndex": 140,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 613,
+    "AreaName": "MT. BATTLE (Round 25)",
+    "RoomId": 517,
+    "Name": "Defeat KOIYT at MT. BATTLE (Round 25)"
+  },
+  {
+    "TrainerIndex": 26,
+    "BattleIndex": 141,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 614,
+    "AreaName": "MT. BATTLE (Round 26)",
+    "RoomId": 517,
+    "Name": "Defeat ATILL at MT. BATTLE (Round 26)"
+  },
+  {
+    "TrainerIndex": 27,
+    "BattleIndex": 142,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 615,
+    "AreaName": "MT. BATTLE (Round 27)",
+    "RoomId": 517,
+    "Name": "Defeat METSON at MT. BATTLE (Round 27)"
+  },
+  {
+    "TrainerIndex": 28,
+    "BattleIndex": 143,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 616,
+    "AreaName": "MT. BATTLE (Round 28)",
+    "RoomId": 517,
+    "Name": "Defeat JESPON at MT. BATTLE (Round 28)"
+  },
+  {
+    "TrainerIndex": 29,
+    "BattleIndex": 144,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 617,
+    "AreaName": "MT. BATTLE (Round 29)",
+    "RoomId": 517,
+    "Name": "Defeat MOPAR at MT. BATTLE (Round 29)"
+  },
+  {
+    "TrainerIndex": 30,
+    "BattleIndex": 145,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 618,
+    "AreaName": "MT. BATTLE (Round 30)",
+    "RoomId": 517,
+    "Name": "Defeat TARIA at MT. BATTLE (Round 30)"
+  },
+  {
+    "TrainerIndex": 31,
+    "BattleIndex": 146,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 619,
+    "AreaName": "MT. BATTLE (Round 31)",
+    "RoomId": 520,
+    "Name": "Defeat ATLES at MT. BATTLE (Round 31)"
+  },
+  {
+    "TrainerIndex": 32,
+    "BattleIndex": 147,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 620,
+    "AreaName": "MT. BATTLE (Round 32)",
+    "RoomId": 520,
+    "Name": "Defeat NIVEN at MT. BATTLE (Round 32)"
+  },
+  {
+    "TrainerIndex": 33,
+    "BattleIndex": 148,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 621,
+    "AreaName": "MT. BATTLE (Round 33)",
+    "RoomId": 520,
+    "Name": "Defeat FOPAW at MT. BATTLE (Round 33)"
+  },
+  {
+    "TrainerIndex": 34,
+    "BattleIndex": 149,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 622,
+    "AreaName": "MT. BATTLE (Round 34)",
+    "RoomId": 520,
+    "Name": "Defeat PETIL at MT. BATTLE (Round 34)"
+  },
+  {
+    "TrainerIndex": 35,
+    "BattleIndex": 150,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 623,
+    "AreaName": "MT. BATTLE (Round 35)",
+    "RoomId": 520,
+    "Name": "Defeat NEVAH at MT. BATTLE (Round 35)"
+  },
+  {
+    "TrainerIndex": 36,
+    "BattleIndex": 151,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 624,
+    "AreaName": "MT. BATTLE (Round 36)",
+    "RoomId": 520,
+    "Name": "Defeat SELOR at MT. BATTLE (Round 36)"
+  },
+  {
+    "TrainerIndex": 37,
+    "BattleIndex": 152,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 625,
+    "AreaName": "MT. BATTLE (Round 37)",
+    "RoomId": 520,
+    "Name": "Defeat PIXEN at MT. BATTLE (Round 37)"
+  },
+  {
+    "TrainerIndex": 38,
+    "BattleIndex": 153,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 626,
+    "AreaName": "MT. BATTLE (Round 38)",
+    "RoomId": 520,
+    "Name": "Defeat EDIN at MT. BATTLE (Round 38)"
+  },
+  {
+    "TrainerIndex": 39,
+    "BattleIndex": 154,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 627,
+    "AreaName": "MT. BATTLE (Round 39)",
+    "RoomId": 520,
+    "Name": "Defeat ROZE at MT. BATTLE (Round 39)"
+  },
+  {
+    "TrainerIndex": 40,
+    "BattleIndex": 155,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 628,
+    "AreaName": "MT. BATTLE (Round 40)",
+    "RoomId": 520,
+    "Name": "Defeat BOYDEN at MT. BATTLE (Round 40)"
+  },
+  {
+    "TrainerIndex": 41,
+    "BattleIndex": 156,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 629,
+    "AreaName": "MT. BATTLE (Round 41)",
+    "RoomId": 520,
+    "Name": "Defeat HOMBOL at MT. BATTLE (Round 41)"
+  },
+  {
+    "TrainerIndex": 42,
+    "BattleIndex": 157,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 630,
+    "AreaName": "MT. BATTLE (Round 42)",
+    "RoomId": 520,
+    "Name": "Defeat JILER at MT. BATTLE (Round 42)"
+  },
+  {
+    "TrainerIndex": 43,
+    "BattleIndex": 158,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 631,
+    "AreaName": "MT. BATTLE (Round 43)",
+    "RoomId": 520,
+    "Name": "Defeat CARLON at MT. BATTLE (Round 43)"
+  },
+  {
+    "TrainerIndex": 44,
+    "BattleIndex": 159,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 632,
+    "AreaName": "MT. BATTLE (Round 44)",
+    "RoomId": 520,
+    "Name": "Defeat KUXOR at MT. BATTLE (Round 44)"
+  },
+  {
+    "TrainerIndex": 45,
+    "BattleIndex": 160,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 633,
+    "AreaName": "MT. BATTLE (Round 45)",
+    "RoomId": 520,
+    "Name": "Defeat LESK at MT. BATTLE (Round 45)"
+  },
+  {
+    "TrainerIndex": 46,
+    "BattleIndex": 161,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 634,
+    "AreaName": "MT. BATTLE (Round 46)",
+    "RoomId": 520,
+    "Name": "Defeat MOBID at MT. BATTLE (Round 46)"
+  },
+  {
+    "TrainerIndex": 47,
+    "BattleIndex": 162,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 635,
+    "AreaName": "MT. BATTLE (Round 47)",
+    "RoomId": 520,
+    "Name": "Defeat BLIST at MT. BATTLE (Round 47)"
+  },
+  {
+    "TrainerIndex": 48,
+    "BattleIndex": 163,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 636,
+    "AreaName": "MT. BATTLE (Round 48)",
+    "RoomId": 520,
+    "Name": "Defeat KNOOK at MT. BATTLE (Round 48)"
+  },
+  {
+    "TrainerIndex": 49,
+    "BattleIndex": 164,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 637,
+    "AreaName": "MT. BATTLE (Round 49)",
+    "RoomId": 520,
+    "Name": "Defeat BURDON at MT. BATTLE (Round 49)"
+  },
+  {
+    "TrainerIndex": 50,
+    "BattleIndex": 165,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 638,
+    "AreaName": "MT. BATTLE (Round 50)",
+    "RoomId": 520,
+    "Name": "Defeat CALUS at MT. BATTLE (Round 50)"
+  },
+  {
+    "TrainerIndex": 51,
+    "BattleIndex": 166,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 639,
+    "AreaName": "MT. BATTLE (Round 51)",
+    "RoomId": 520,
+    "Name": "Defeat DOOST at MT. BATTLE (Round 51)"
+  },
+  {
+    "TrainerIndex": 52,
+    "BattleIndex": 167,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 640,
+    "AreaName": "MT. BATTLE (Round 52)",
+    "RoomId": 520,
+    "Name": "Defeat JIMER at MT. BATTLE (Round 52)"
+  },
+  {
+    "TrainerIndex": 53,
+    "BattleIndex": 168,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 641,
+    "AreaName": "MT. BATTLE (Round 53)",
+    "RoomId": 520,
+    "Name": "Defeat CREX at MT. BATTLE (Round 53)"
+  },
+  {
+    "TrainerIndex": 54,
+    "BattleIndex": 169,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 642,
+    "AreaName": "MT. BATTLE (Round 54)",
+    "RoomId": 520,
+    "Name": "Defeat FEEPLY at MT. BATTLE (Round 54)"
+  },
+  {
+    "TrainerIndex": 55,
+    "BattleIndex": 170,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 643,
+    "AreaName": "MT. BATTLE (Round 55)",
+    "RoomId": 520,
+    "Name": "Defeat JACEN at MT. BATTLE (Round 55)"
+  },
+  {
+    "TrainerIndex": 56,
+    "BattleIndex": 171,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 644,
+    "AreaName": "MT. BATTLE (Round 56)",
+    "RoomId": 520,
+    "Name": "Defeat DIBEL at MT. BATTLE (Round 56)"
+  },
+  {
+    "TrainerIndex": 57,
+    "BattleIndex": 172,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 645,
+    "AreaName": "MT. BATTLE (Round 57)",
+    "RoomId": 520,
+    "Name": "Defeat KEVY at MT. BATTLE (Round 57)"
+  },
+  {
+    "TrainerIndex": 58,
+    "BattleIndex": 173,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 646,
+    "AreaName": "MT. BATTLE (Round 58)",
+    "RoomId": 520,
+    "Name": "Defeat GABSEN at MT. BATTLE (Round 58)"
+  },
+  {
+    "TrainerIndex": 59,
+    "BattleIndex": 174,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 647,
+    "AreaName": "MT. BATTLE (Round 59)",
+    "RoomId": 520,
+    "Name": "Defeat DEGIN at MT. BATTLE (Round 59)"
+  },
+  {
+    "TrainerIndex": 60,
+    "BattleIndex": 175,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 648,
+    "AreaName": "MT. BATTLE (Round 60)",
+    "RoomId": 520,
+    "Name": "Defeat HAMPY at MT. BATTLE (Round 60)"
+  },
+  {
+    "TrainerIndex": 61,
+    "BattleIndex": 176,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 649,
+    "AreaName": "MT. BATTLE (Round 61)",
+    "RoomId": 518,
+    "Name": "Defeat MELIN at MT. BATTLE (Round 61)"
+  },
+  {
+    "TrainerIndex": 62,
+    "BattleIndex": 177,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 650,
+    "AreaName": "MT. BATTLE (Round 62)",
+    "RoomId": 518,
+    "Name": "Defeat GIBSON at MT. BATTLE (Round 62)"
+  },
+  {
+    "TrainerIndex": 63,
+    "BattleIndex": 178,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 651,
+    "AreaName": "MT. BATTLE (Round 63)",
+    "RoomId": 518,
+    "Name": "Defeat IDLON at MT. BATTLE (Round 63)"
+  },
+  {
+    "TrainerIndex": 64,
+    "BattleIndex": 179,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 652,
+    "AreaName": "MT. BATTLE (Round 64)",
+    "RoomId": 518,
+    "Name": "Defeat HOBOL at MT. BATTLE (Round 64)"
+  },
+  {
+    "TrainerIndex": 65,
+    "BattleIndex": 180,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 653,
+    "AreaName": "MT. BATTLE (Round 65)",
+    "RoomId": 518,
+    "Name": "Defeat KELLER at MT. BATTLE (Round 65)"
+  },
+  {
+    "TrainerIndex": 66,
+    "BattleIndex": 181,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 654,
+    "AreaName": "MT. BATTLE (Round 66)",
+    "RoomId": 518,
+    "Name": "Defeat EBILO at MT. BATTLE (Round 66)"
+  },
+  {
+    "TrainerIndex": 67,
+    "BattleIndex": 182,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 655,
+    "AreaName": "MT. BATTLE (Round 67)",
+    "RoomId": 518,
+    "Name": "Defeat TULON at MT. BATTLE (Round 67)"
+  },
+  {
+    "TrainerIndex": 68,
+    "BattleIndex": 183,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 656,
+    "AreaName": "MT. BATTLE (Round 68)",
+    "RoomId": 518,
+    "Name": "Defeat OKOR at MT. BATTLE (Round 68)"
+  },
+  {
+    "TrainerIndex": 69,
+    "BattleIndex": 184,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 657,
+    "AreaName": "MT. BATTLE (Round 69)",
+    "RoomId": 518,
+    "Name": "Defeat EBZOR at MT. BATTLE (Round 69)"
+  },
+  {
+    "TrainerIndex": 70,
+    "BattleIndex": 185,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 658,
+    "AreaName": "MT. BATTLE (Round 70)",
+    "RoomId": 518,
+    "Name": "Defeat NOCON at MT. BATTLE (Round 70)"
+  },
+  {
+    "TrainerIndex": 71,
+    "BattleIndex": 186,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 659,
+    "AreaName": "MT. BATTLE (Round 71)",
+    "RoomId": 518,
+    "Name": "Defeat ORDES at MT. BATTLE (Round 71)"
+  },
+  {
+    "TrainerIndex": 72,
+    "BattleIndex": 187,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 660,
+    "AreaName": "MT. BATTLE (Round 72)",
+    "RoomId": 518,
+    "Name": "Defeat OVUN at MT. BATTLE (Round 72)"
+  },
+  {
+    "TrainerIndex": 73,
+    "BattleIndex": 188,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 661,
+    "AreaName": "MT. BATTLE (Round 73)",
+    "RoomId": 518,
+    "Name": "Defeat ADESON at MT. BATTLE (Round 73)"
+  },
+  {
+    "TrainerIndex": 74,
+    "BattleIndex": 189,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 662,
+    "AreaName": "MT. BATTLE (Round 74)",
+    "RoomId": 518,
+    "Name": "Defeat ROBIT at MT. BATTLE (Round 74)"
+  },
+  {
+    "TrainerIndex": 75,
+    "BattleIndex": 190,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 663,
+    "AreaName": "MT. BATTLE (Round 75)",
+    "RoomId": 518,
+    "Name": "Defeat NOXON at MT. BATTLE (Round 75)"
+  },
+  {
+    "TrainerIndex": 76,
+    "BattleIndex": 191,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 664,
+    "AreaName": "MT. BATTLE (Round 76)",
+    "RoomId": 518,
+    "Name": "Defeat RELEO at MT. BATTLE (Round 76)"
+  },
+  {
+    "TrainerIndex": 77,
+    "BattleIndex": 192,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 665,
+    "AreaName": "MT. BATTLE (Round 77)",
+    "RoomId": 518,
+    "Name": "Defeat CARK at MT. BATTLE (Round 77)"
+  },
+  {
+    "TrainerIndex": 78,
+    "BattleIndex": 193,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 666,
+    "AreaName": "MT. BATTLE (Round 78)",
+    "RoomId": 518,
+    "Name": "Defeat MINOT at MT. BATTLE (Round 78)"
+  },
+  {
+    "TrainerIndex": 79,
+    "BattleIndex": 194,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 667,
+    "AreaName": "MT. BATTLE (Round 79)",
+    "RoomId": 518,
+    "Name": "Defeat LASK at MT. BATTLE (Round 79)"
+  },
+  {
+    "TrainerIndex": 80,
+    "BattleIndex": 195,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 668,
+    "AreaName": "MT. BATTLE (Round 80)",
+    "RoomId": 518,
+    "Name": "Defeat NADAY at MT. BATTLE (Round 80)"
+  },
+  {
+    "TrainerIndex": 81,
+    "BattleIndex": 196,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 669,
+    "AreaName": "MT. BATTLE (Round 81)",
+    "RoomId": 518,
+    "Name": "Defeat HOLS at MT. BATTLE (Round 81)"
+  },
+  {
+    "TrainerIndex": 82,
+    "BattleIndex": 197,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 670,
+    "AreaName": "MT. BATTLE (Round 82)",
+    "RoomId": 518,
+    "Name": "Defeat ALBAH at MT. BATTLE (Round 82)"
+  },
+  {
+    "TrainerIndex": 83,
+    "BattleIndex": 198,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 671,
+    "AreaName": "MT. BATTLE (Round 83)",
+    "RoomId": 518,
+    "Name": "Defeat GINNER at MT. BATTLE (Round 83)"
+  },
+  {
+    "TrainerIndex": 84,
+    "BattleIndex": 199,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 672,
+    "AreaName": "MT. BATTLE (Round 84)",
+    "RoomId": 518,
+    "Name": "Defeat COPIN at MT. BATTLE (Round 84)"
+  },
+  {
+    "TrainerIndex": 85,
+    "BattleIndex": 200,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 673,
+    "AreaName": "MT. BATTLE (Round 85)",
+    "RoomId": 518,
+    "Name": "Defeat KOREN at MT. BATTLE (Round 85)"
+  },
+  {
+    "TrainerIndex": 86,
+    "BattleIndex": 201,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 674,
+    "AreaName": "MT. BATTLE (Round 86)",
+    "RoomId": 518,
+    "Name": "Defeat LAKS at MT. BATTLE (Round 86)"
+  },
+  {
+    "TrainerIndex": 87,
+    "BattleIndex": 202,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 675,
+    "AreaName": "MT. BATTLE (Round 87)",
+    "RoomId": 518,
+    "Name": "Defeat KIPPEN at MT. BATTLE (Round 87)"
+  },
+  {
+    "TrainerIndex": 88,
+    "BattleIndex": 203,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 676,
+    "AreaName": "MT. BATTLE (Round 88)",
+    "RoomId": 518,
+    "Name": "Defeat NASOM at MT. BATTLE (Round 88)"
+  },
+  {
+    "TrainerIndex": 89,
+    "BattleIndex": 204,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 677,
+    "AreaName": "MT. BATTLE (Round 89)",
+    "RoomId": 518,
+    "Name": "Defeat NIMBLIS at MT. BATTLE (Round 89)"
+  },
+  {
+    "TrainerIndex": 90,
+    "BattleIndex": 205,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 678,
+    "AreaName": "MT. BATTLE (Round 90)",
+    "RoomId": 518,
+    "Name": "Defeat RAGEN at MT. BATTLE (Round 90)"
+  },
+  {
+    "TrainerIndex": 91,
+    "BattleIndex": 206,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 679,
+    "AreaName": "MT. BATTLE (Round 91)",
+    "RoomId": 518,
+    "Name": "Defeat NEWIN at MT. BATTLE (Round 91)"
+  },
+  {
+    "TrainerIndex": 92,
+    "BattleIndex": 207,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 680,
+    "AreaName": "MT. BATTLE (Round 92)",
+    "RoomId": 518,
+    "Name": "Defeat ROBEN at MT. BATTLE (Round 92)"
+  },
+  {
+    "TrainerIndex": 93,
+    "BattleIndex": 208,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 681,
+    "AreaName": "MT. BATTLE (Round 93)",
+    "RoomId": 518,
+    "Name": "Defeat RILLIAN at MT. BATTLE (Round 93)"
+  },
+  {
+    "TrainerIndex": 94,
+    "BattleIndex": 209,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 682,
+    "AreaName": "MT. BATTLE (Round 94)",
+    "RoomId": 518,
+    "Name": "Defeat SOLOG at MT. BATTLE (Round 94)"
+  },
+  {
+    "TrainerIndex": 95,
+    "BattleIndex": 210,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 683,
+    "AreaName": "MT. BATTLE (Round 95)",
+    "RoomId": 518,
+    "Name": "Defeat SAKEN at MT. BATTLE (Round 95)"
+  },
+  {
+    "TrainerIndex": 96,
+    "BattleIndex": 211,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 684,
+    "AreaName": "MT. BATTLE (Round 96)",
+    "RoomId": 518,
+    "Name": "Defeat SIVIL at MT. BATTLE (Round 96)"
+  },
+  {
+    "TrainerIndex": 97,
+    "BattleIndex": 212,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 685,
+    "AreaName": "MT. BATTLE (Round 97)",
+    "RoomId": 518,
+    "Name": "Defeat FLOSTIN at MT. BATTLE (Round 97)"
+  },
+  {
+    "TrainerIndex": 98,
+    "BattleIndex": 213,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 686,
+    "AreaName": "MT. BATTLE (Round 98)",
+    "RoomId": 518,
+    "Name": "Defeat TETIL at MT. BATTLE (Round 98)"
+  },
+  {
+    "TrainerIndex": 99,
+    "BattleIndex": 214,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 687,
+    "AreaName": "MT. BATTLE (Round 99)",
+    "RoomId": 518,
+    "Name": "Defeat LIBAL at MT. BATTLE (Round 99)"
+  },
+  {
+    "TrainerIndex": 100,
+    "BattleIndex": 215,
+    "TrainerBattleType": "Mt. Battle",
+    "Index": 688,
+    "AreaName": "MT. BATTLE (Round 100)",
+    "RoomId": 528,
+    "Name": "Defeat BATTLUS at MT. BATTLE (Round 100)"
+  }
+]

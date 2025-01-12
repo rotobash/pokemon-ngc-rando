@@ -26,6 +26,7 @@ using XDCommon.PokemonDefinitions.XD.SaveData;
 using XDCommon.Utility;
 using XDCommon.Contracts;
 using XDCommon.Shufflers;
+using APCommon.Memory;
 
 namespace ArchipelagoClient
 {
@@ -33,10 +34,11 @@ namespace ArchipelagoClient
     {
         bool connectedToAP = false;
         ArchipelagoSession apSession = null;
+        APDataStructure memoryData = new APDataStructure();
+        APLocationReferences locationReferences = new APLocationReferences();
         XDState xdProcess;
 
         BackgroundWorker dolphinSetupWorker;
-        PokemonDisplay[] pokemonDisplays = new PokemonDisplay[6];
         GameManipulator gameManipulator;
         ExtractedGame extractedGame;
 
@@ -50,17 +52,6 @@ namespace ArchipelagoClient
 
         private void APClient_Load(object sender, EventArgs e)
         {
-            for (int i = 0; i < 6; i++)
-            {
-                var pokemonDisplay = new PokemonDisplay
-                {
-                    AutoSize = true,
-                    Dock = DockStyle.Fill
-                };
-
-                partyTabPage.TabPages[i].Controls.Add(pokemonDisplay);
-                pokemonDisplays[i] = pokemonDisplay;
-            }
         }
 
         private void FindDolphinExe()
@@ -221,69 +212,71 @@ namespace ArchipelagoClient
             inBattleLabel.Text = xdProcess.InBattle ? "Yes" : "No";
             currentRoomLabel.Text = $"{xdProcess.CurrentRoom.Name} - {xdProcess.CurrentRoom.RoomId}".ToString();
 
-            var saveData = xdProcess.SaveData;
+            memoryData.ReadFromBytes(xdProcess.Dolphin.ReadData(APDataStructure.APMemoryAddress, APDataStructure.SizeOfAPData));
 
-            for (int i = 0; i < 6; i++)
+            var idsToCheck = new List<long>();
+            var checkedItems = memoryData.GetCheckedItems();
+
+            if (checkedItems.CheckedNewItems)
             {
-                if (saveData.Party[i].Species < extractedGame.PokemonList.Length)
+                var newCheckedItems = checkedItems.GetNewItemChecks();
+                foreach (var item in newCheckedItems)
                 {
-                    pokemonDisplays[i].UpdatePokemon(saveData.Party[i], extractedGame.PokemonList[saveData.Party[i].Species], extractedGame.MoveList);
+                    var id = locationReferences.LookupItem(item);
+                    if (id > 0)
+                    {
+                        idsToCheck.Add(id);
+                    }
                 }
             }
 
-            var newDisplay = new List<string>
-                {
-                    "----------------- Items -----------------"
-                };
-            foreach (var item in saveData.BattleItems)
+            if (checkedItems.CheckedNewPokemon)
             {
-                if (item.Index < extractedGame.ItemList.Length)
+                var newCheckedItems = checkedItems.GetNewPokemonChecks();
+                foreach (var item in newCheckedItems)
                 {
-                    newDisplay.Add($"{extractedGame.ItemList[item.Index].Name} x{item.Quantity}");
+                    var id = locationReferences.LookupPokemon(item);
+                    if (id > 0)
+                    {
+                        idsToCheck.Add(id);
+                    }
                 }
             }
 
-            newDisplay.Add("----------------- Key Items -----------------");
-            foreach (var item in saveData.KeyItemInventory)
+            if (checkedItems.CheckedNewBattles)
             {
-                var adjustedIndex = item.Index - 150;
-                if (adjustedIndex < extractedGame.ItemList.Length)
+                var newCheckedItems = checkedItems.GetNewBattleChecks();
+                foreach (var item in newCheckedItems)
                 {
-                    newDisplay.Add($"{extractedGame.ItemList[adjustedIndex].Name} x{item.Quantity}");
+                    var id = locationReferences.LookupTrainer(item);
+                    if (id > 0)
+                    {
+                        idsToCheck.Add(id);
+                    }
                 }
             }
 
-            newDisplay.Add("----------------- Pokeballs -----------------");
-            foreach (var item in saveData.Pokeballs)
+            if (checkedItems.CheckedNewPurifications)
             {
-                if (item.Index < extractedGame.ItemList.Length)
+                var newCheckedItems = checkedItems.GetNewShadowPurifyChecks();
+                foreach (var item in newCheckedItems)
                 {
-                    newDisplay.Add($"{extractedGame.ItemList[item.Index].Name} x{item.Quantity}");
+                    var id = locationReferences.LookupPurify(item);
+                    if (id > 0)
+                    {
+                        idsToCheck.Add(id);
+                    }
                 }
             }
 
-            newDisplay.Add("----------------- TM Items -----------------");
-            foreach (var item in saveData.TMItemInventory)
+            if (idsToCheck.Count > 0)
             {
-                if (item.Index < extractedGame.ItemList.Length)
+                foreach (var id in idsToCheck)
                 {
-                    newDisplay.Add($"{extractedGame.ItemList[item.Index].Name} x{item.Quantity}");
+                    var name = locationReferences.nameToId[(int)id];
+                    listBox1.Items.Add($"Checked {name}");
                 }
-            }
-
-            newDisplay.Add("----------------- Berries -----------------");
-            foreach (var item in saveData.Berries)
-            {
-                if (item.Index < extractedGame.ItemList.Length)
-                {
-                    newDisplay.Add($"{extractedGame.ItemList[item.Index].Name} x{item.Quantity}");
-                }
-            }
-
-            if (!newDisplay.SequenceEqual(inventoryListBox.Items.Cast<string>()))
-            {
-                inventoryListBox.Items.Clear();
-                inventoryListBox.Items.AddRange(newDisplay.Cast<object>().ToArray());
+                //apSession.Locations.CompleteLocationChecks(idsToCheck.ToArray());
             }
         }
 

@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\APCommon\APCommon.csproj" />
     <ProjectReference Include="..\Common\Common.csproj" />
   </ItemGroup>
 

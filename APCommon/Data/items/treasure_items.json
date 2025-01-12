@@ -1,0 +1,1062 @@
+[
+  {
+    "ItemIndex": 14,
+    "Index": 0,
+    "Quantity": 2,
+    "Name": "ANTIDOTE x 2",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 1,
+    "Index": 1,
+    "Quantity": 1,
+    "Name": "MASTER BALL x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 13,
+    "Index": 2,
+    "Quantity": 3,
+    "Name": "POTION x 3",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 4,
+    "Index": 3,
+    "Quantity": 3,
+    "Name": "POK\uFFFD BALL x 3",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 22,
+    "Index": 4,
+    "Quantity": 1,
+    "Name": "SUPER POTION x 1",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 13,
+    "Index": 5,
+    "Quantity": 1,
+    "Name": "POTION x 1",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 18,
+    "Index": 6,
+    "Quantity": 1,
+    "Name": "PARLYZ HEAL x 1",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 17,
+    "Index": 7,
+    "Quantity": 1,
+    "Name": "AWAKENING x 1",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 539,
+    "Index": 8,
+    "Quantity": 1,
+    "Name": "BATTLE CD 06 x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 4,
+    "Index": 9,
+    "Quantity": 1,
+    "Name": "POK\uFFFD BALL x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 34,
+    "Index": 10,
+    "Quantity": 1,
+    "Name": "ETHER x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 4,
+    "Index": 11,
+    "Quantity": 1,
+    "Name": "POK\uFFFD BALL x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 22,
+    "Index": 12,
+    "Quantity": 1,
+    "Name": "SUPER POTION x 1",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 13,
+    "Index": 13,
+    "Quantity": 3,
+    "Name": "POTION x 3",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 15,
+    "Index": 14,
+    "Quantity": 2,
+    "Name": "BURN HEAL x 2",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 22,
+    "Index": 15,
+    "Quantity": 1,
+    "Name": "SUPER POTION x 1",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 505,
+    "Index": 16,
+    "Quantity": 1,
+    "Name": "DATA ROM x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Progression"
+    ]
+  },
+  {
+    "ItemIndex": 506,
+    "Index": 17,
+    "Quantity": 1,
+    "Name": "ID CARD x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Progression"
+    ]
+  },
+  {
+    "ItemIndex": 34,
+    "Index": 18,
+    "Quantity": 1,
+    "Name": "ETHER x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 4,
+    "Index": 19,
+    "Quantity": 3,
+    "Name": "POK\uFFFD BALL x 3",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 23,
+    "Index": 20,
+    "Quantity": 1,
+    "Name": "FULL HEAL x 1",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 3,
+    "Index": 21,
+    "Quantity": 1,
+    "Name": "GREAT BALL x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 98,
+    "Index": 22,
+    "Quantity": 1,
+    "Name": "LEAF STONE x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 22,
+    "Index": 23,
+    "Quantity": 3,
+    "Name": "SUPER POTION x 3",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 3,
+    "Index": 24,
+    "Quantity": 1,
+    "Name": "GREAT BALL x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 24,
+    "Index": 25,
+    "Quantity": 1,
+    "Name": "REVIVE x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 34,
+    "Index": 26,
+    "Quantity": 1,
+    "Name": "ETHER x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 575,
+    "Index": 27,
+    "Quantity": 1,
+    "Name": "BATTLE CD 42 x 1",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 23,
+    "Index": 28,
+    "Quantity": 1,
+    "Name": "FULL HEAL x 1",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 200,
+    "Index": 29,
+    "Quantity": 1,
+    "Name": "LEFTOVERS x 1",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 40,
+    "Index": 30,
+    "Quantity": 1,
+    "Name": "YELLOW FLUTE x 1",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 95,
+    "Index": 31,
+    "Quantity": 1,
+    "Name": "FIRE STONE x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 69,
+    "Index": 32,
+    "Quantity": 2,
+    "Name": "PP UP x 2",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 65,
+    "Index": 33,
+    "Quantity": 1,
+    "Name": "IRON x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 35,
+    "Index": 34,
+    "Quantity": 1,
+    "Name": "MAX ETHER x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 323,
+    "Index": 35,
+    "Quantity": 1,
+    "Name": "TM35 x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 551,
+    "Index": 36,
+    "Quantity": 1,
+    "Name": "BATTLE CD 18 x 1",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 11,
+    "Index": 37,
+    "Quantity": 1,
+    "Name": "LUXURY BALL x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 64,
+    "Index": 38,
+    "Quantity": 1,
+    "Name": "PROTEIN x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 66,
+    "Index": 39,
+    "Quantity": 1,
+    "Name": "CARBOS x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 2,
+    "Index": 40,
+    "Quantity": 1,
+    "Name": "ULTRA BALL x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 508,
+    "Index": 41,
+    "Quantity": 1,
+    "Name": "SYSTEM LEVER x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Progression"
+    ]
+  },
+  {
+    "ItemIndex": 68,
+    "Index": 42,
+    "Quantity": 1,
+    "Name": "RARE CANDY x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 2,
+    "Index": 43,
+    "Quantity": 3,
+    "Name": "ULTRA BALL x 3",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 36,
+    "Index": 44,
+    "Quantity": 1,
+    "Name": "ELIXIR x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 19,
+    "Index": 45,
+    "Quantity": 1,
+    "Name": "FULL RESTORE x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 23,
+    "Index": 46,
+    "Quantity": 3,
+    "Name": "FULL HEAL x 3",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 314,
+    "Index": 47,
+    "Quantity": 1,
+    "Name": "TM26 x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 21,
+    "Index": 48,
+    "Quantity": 3,
+    "Name": "HYPER POTION x 3",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 69,
+    "Index": 49,
+    "Quantity": 1,
+    "Name": "PP UP x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 25,
+    "Index": 50,
+    "Quantity": 1,
+    "Name": "MAX REVIVE x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 63,
+    "Index": 51,
+    "Quantity": 1,
+    "Name": "HP UP x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 21,
+    "Index": 52,
+    "Quantity": 2,
+    "Name": "HYPER POTION x 2",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 312,
+    "Index": 53,
+    "Quantity": 1,
+    "Name": "TM24 x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 580,
+    "Index": 54,
+    "Quantity": 1,
+    "Name": "BATTLE CD 47 x 1",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 24,
+    "Index": 55,
+    "Quantity": 2,
+    "Name": "REVIVE x 2",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 68,
+    "Index": 56,
+    "Quantity": 3,
+    "Name": "RARE CANDY x 3",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 71,
+    "Index": 57,
+    "Quantity": 1,
+    "Name": "PP MAX x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 37,
+    "Index": 58,
+    "Quantity": 1,
+    "Name": "MAX ELIXIR x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 24,
+    "Index": 59,
+    "Quantity": 2,
+    "Name": "REVIVE x 2",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 180,
+    "Index": 60,
+    "Quantity": 2,
+    "Name": "WHITE HERB x 2",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 36,
+    "Index": 61,
+    "Quantity": 1,
+    "Name": "ELIXIR x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 19,
+    "Index": 62,
+    "Quantity": 2,
+    "Name": "FULL RESTORE x 2",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 21,
+    "Index": 63,
+    "Quantity": 2,
+    "Name": "HYPER POTION x 2",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 20,
+    "Index": 64,
+    "Quantity": 2,
+    "Name": "MAX POTION x 2",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 69,
+    "Index": 65,
+    "Quantity": 1,
+    "Name": "PP UP x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 25,
+    "Index": 66,
+    "Quantity": 1,
+    "Name": "MAX REVIVE x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 10,
+    "Index": 67,
+    "Quantity": 3,
+    "Name": "TIMER BALL x 3",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 24,
+    "Index": 68,
+    "Quantity": 2,
+    "Name": "REVIVE x 2",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 35,
+    "Index": 69,
+    "Quantity": 3,
+    "Name": "MAX ETHER x 3",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 23,
+    "Index": 70,
+    "Quantity": 4,
+    "Name": "FULL HEAL x 4",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 21,
+    "Index": 71,
+    "Quantity": 3,
+    "Name": "HYPER POTION x 3",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 19,
+    "Index": 72,
+    "Quantity": 2,
+    "Name": "FULL RESTORE x 2",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 2,
+    "Index": 73,
+    "Quantity": 5,
+    "Name": "ULTRA BALL x 5",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 25,
+    "Index": 74,
+    "Quantity": 1,
+    "Name": "MAX REVIVE x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 579,
+    "Index": 75,
+    "Quantity": 1,
+    "Name": "BATTLE CD 46 x 1",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 510,
+    "Index": 76,
+    "Quantity": 1,
+    "Name": "MIROR RADAR x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Progression"
+    ]
+  },
+  {
+    "ItemIndex": 509,
+    "Index": 77,
+    "Quantity": 1,
+    "Name": "MAYOR\u0027S NOTE x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Progression"
+    ]
+  },
+  {
+    "ItemIndex": 501,
+    "Index": 78,
+    "Quantity": 1,
+    "Name": "ELEVATOR KEY x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Progression"
+    ]
+  },
+  {
+    "ItemIndex": 507,
+    "Index": 79,
+    "Quantity": 1,
+    "Name": "MUSIC DISC x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Progression"
+    ]
+  },
+  {
+    "ItemIndex": 552,
+    "Index": 80,
+    "Quantity": 1,
+    "Name": "BATTLE CD 19 x 1",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 549,
+    "Index": 81,
+    "Quantity": 1,
+    "Name": "BATTLE CD 16 x 1",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 561,
+    "Index": 82,
+    "Quantity": 1,
+    "Name": "BATTLE CD 28 x 1",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 541,
+    "Index": 83,
+    "Quantity": 1,
+    "Name": "BATTLE CD 08 x 1",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 560,
+    "Index": 84,
+    "Quantity": 1,
+    "Name": "BATTLE CD 27 x 1",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 565,
+    "Index": 85,
+    "Quantity": 1,
+    "Name": "BATTLE CD 32 x 1",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 21,
+    "Index": 86,
+    "Quantity": 2,
+    "Name": "HYPER POTION x 2",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 2,
+    "Index": 87,
+    "Quantity": 3,
+    "Name": "ULTRA BALL x 3",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 301,
+    "Index": 88,
+    "Quantity": 1,
+    "Name": "TM13 x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 97,
+    "Index": 89,
+    "Quantity": 1,
+    "Name": "WATER STONE x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 69,
+    "Index": 90,
+    "Quantity": 1,
+    "Name": "PP UP x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 577,
+    "Index": 91,
+    "Quantity": 1,
+    "Name": "BATTLE CD 44 x 1",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 3,
+    "Index": 92,
+    "Quantity": 1,
+    "Name": "GREAT BALL x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 21,
+    "Index": 93,
+    "Quantity": 1,
+    "Name": "HYPER POTION x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 3,
+    "Index": 94,
+    "Quantity": 3,
+    "Name": "GREAT BALL x 3",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 18,
+    "Index": 95,
+    "Quantity": 1,
+    "Name": "PARLYZ HEAL x 1",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 196,
+    "Index": 96,
+    "Quantity": 1,
+    "Name": "FOCUS BAND x 1",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 24,
+    "Index": 97,
+    "Quantity": 1,
+    "Name": "REVIVE x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 63,
+    "Index": 98,
+    "Quantity": 1,
+    "Name": "HP UP x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 34,
+    "Index": 99,
+    "Quantity": 1,
+    "Name": "ETHER x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 2,
+    "Index": 100,
+    "Quantity": 3,
+    "Name": "ULTRA BALL x 3",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 317,
+    "Index": 101,
+    "Quantity": 1,
+    "Name": "TM29 x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 23,
+    "Index": 102,
+    "Quantity": 2,
+    "Name": "FULL HEAL x 2",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 21,
+    "Index": 103,
+    "Quantity": 2,
+    "Name": "HYPER POTION x 2",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 69,
+    "Index": 104,
+    "Quantity": 1,
+    "Name": "PP UP x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 24,
+    "Index": 105,
+    "Quantity": 2,
+    "Name": "REVIVE x 2",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 68,
+    "Index": 106,
+    "Quantity": 1,
+    "Name": "RARE CANDY x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 68,
+    "Index": 107,
+    "Quantity": 1,
+    "Name": "RARE CANDY x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 556,
+    "Index": 108,
+    "Quantity": 1,
+    "Name": "BATTLE CD 23 x 1",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 538,
+    "Index": 109,
+    "Quantity": 1,
+    "Name": "BATTLE CD 05 x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "ItemIndex": 544,
+    "Index": 110,
+    "Quantity": 1,
+    "Name": "BATTLE CD 11 x 1",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 562,
+    "Index": 111,
+    "Quantity": 1,
+    "Name": "BATTLE CD 29 x 1",
+    "Progression": false,
+    "ItemClassification": []
+  },
+  {
+    "ItemIndex": 68,
+    "Index": 112,
+    "Quantity": 1,
+    "Name": "RARE CANDY x 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  }
+]

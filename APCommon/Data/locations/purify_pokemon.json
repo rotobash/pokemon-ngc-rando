@@ -1,0 +1,576 @@
+[
+  {
+    "ShadowIndex": 460,
+    "Index": 330,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 533,
+    "Name": "Purify ZOOKs Shadow ZANGOOSE"
+  },
+  {
+    "ShadowIndex": 20,
+    "Index": 121,
+    "AreaName": "GATEON PORT",
+    "RoomId": 542,
+    "Name": "Purify CYLEs Shadow LEDYBA"
+  },
+  {
+    "ShadowIndex": 24,
+    "Index": 125,
+    "AreaName": "GATEON PORT",
+    "RoomId": 543,
+    "Name": "Purify KILENs Shadow POOCHYENA"
+  },
+  {
+    "ShadowIndex": 28,
+    "Index": 130,
+    "AreaName": "POKEMON HQ LAB",
+    "RoomId": 541,
+    "Name": "Purify NAPSs Shadow TEDDIURSA"
+  },
+  {
+    "ShadowIndex": 715,
+    "Index": 486,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 514,
+    "Name": "Purify RESIXs Shadow HOUNDOUR"
+  },
+  {
+    "ShadowIndex": 721,
+    "Index": 489,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 514,
+    "Name": "Purify BLUSIXs Shadow SPHEAL"
+  },
+  {
+    "ShadowIndex": 722,
+    "Index": 492,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 514,
+    "Name": "Purify BROWSIXs Shadow BALTOY"
+  },
+  {
+    "ShadowIndex": 725,
+    "Index": 495,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 514,
+    "Name": "Purify YELLOSIXs Shadow MAREEP"
+  },
+  {
+    "ShadowIndex": 731,
+    "Index": 498,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 514,
+    "Name": "Purify PURPSIXs Shadow GULPIN"
+  },
+  {
+    "ShadowIndex": 739,
+    "Index": 501,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 514,
+    "Name": "Purify GREESIXs Shadow SEEDOT"
+  },
+  {
+    "ShadowIndex": 114,
+    "Index": 176,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 515,
+    "Name": "Purify NEXIRs Shadow SPINARAK"
+  },
+  {
+    "ShadowIndex": 118,
+    "Index": 179,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 515,
+    "Name": "Purify SOLOXs Shadow NUMEL"
+  },
+  {
+    "ShadowIndex": 138,
+    "Index": 188,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 515,
+    "Name": "Purify CABOLs Shadow CARVANHA"
+  },
+  {
+    "ShadowIndex": 147,
+    "Index": 192,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 515,
+    "Name": "Purify KLOTSs Shadow SHROOMISH"
+  },
+  {
+    "ShadowIndex": 155,
+    "Index": 196,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 515,
+    "Name": "Purify LOVRINAs Shadow DELCATTY"
+  },
+  {
+    "ShadowIndex": 191,
+    "Index": 209,
+    "AreaName": "CAVE",
+    "RoomId": 547,
+    "Name": "Purify MIROR B.s Shadow VOLTORB"
+  },
+  {
+    "ShadowIndex": 200,
+    "Index": 214,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 507,
+    "Name": "Purify MESINs Shadow VULPIX"
+  },
+  {
+    "ShadowIndex": 210,
+    "Index": 219,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 507,
+    "Name": "Purify TORKINs Shadow MAKUHITA"
+  },
+  {
+    "ShadowIndex": 228,
+    "Index": 227,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 507,
+    "Name": "Purify LOBARs Shadow DUSKULL"
+  },
+  {
+    "ShadowIndex": 236,
+    "Index": 231,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 505,
+    "Name": "Purify FELDASs Shadow RALTS"
+  },
+  {
+    "ShadowIndex": 239,
+    "Index": 234,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 507,
+    "Name": "Purify EXOLs Shadow MAWILE"
+  },
+  {
+    "ShadowIndex": 242,
+    "Index": 237,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 504,
+    "Name": "Purify EXINNs Shadow SNORUNT"
+  },
+  {
+    "ShadowIndex": 246,
+    "Index": 240,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 504,
+    "Name": "Purify GONRAGs Shadow PINECO"
+  },
+  {
+    "ShadowIndex": 275,
+    "Index": 250,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 502,
+    "Name": "Purify GRECKs Shadow SWINUB"
+  },
+  {
+    "ShadowIndex": 278,
+    "Index": 253,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 503,
+    "Name": "Purify ELOINs Shadow NATU"
+  },
+  {
+    "ShadowIndex": 281,
+    "Index": 256,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 503,
+    "Name": "Purify FASINs Shadow ROSELIA"
+  },
+  {
+    "ShadowIndex": 285,
+    "Index": 259,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 503,
+    "Name": "Purify FOSTINs Shadow MEOWTH"
+  },
+  {
+    "ShadowIndex": 288,
+    "Index": 262,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 106,
+    "Name": "Purify EZINs Shadow SPEAROW"
+  },
+  {
+    "ShadowIndex": 291,
+    "Index": 265,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 106,
+    "Name": "Purify FALTLYs Shadow GRIMER"
+  },
+  {
+    "ShadowIndex": 295,
+    "Index": 268,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 106,
+    "Name": "Purify EGROGs Shadow SEEL"
+  },
+  {
+    "ShadowIndex": 298,
+    "Index": 271,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 106,
+    "Name": "Purify SNATTLEs Shadow LUNATONE"
+  },
+  {
+    "ShadowIndex": 405,
+    "Index": 315,
+    "AreaName": "OUTSKIRT STAND",
+    "RoomId": 500,
+    "Name": "Purify MIROR B.s Shadow NOSEPASS"
+  },
+  {
+    "ShadowIndex": 472,
+    "Index": 335,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 531,
+    "Name": "Purify HUMAHs Shadow PARAS"
+  },
+  {
+    "ShadowIndex": 473,
+    "Index": 337,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 531,
+    "Name": "Purify HUMAHs Shadow GROWLITHE"
+  },
+  {
+    "ShadowIndex": 482,
+    "Index": 342,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 531,
+    "Name": "Purify GOROGs Shadow SHELLDER"
+  },
+  {
+    "ShadowIndex": 491,
+    "Index": 346,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 531,
+    "Name": "Purify LOKs Shadow BEEDRILL"
+  },
+  {
+    "ShadowIndex": 494,
+    "Index": 348,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 531,
+    "Name": "Purify LOKs Shadow PIDGEOTTO"
+  },
+  {
+    "ShadowIndex": 507,
+    "Index": 353,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 531,
+    "Name": "Purify TARGs Shadow TANGELA"
+  },
+  {
+    "ShadowIndex": 508,
+    "Index": 355,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 531,
+    "Name": "Purify TARGs Shadow BUTTERFREE"
+  },
+  {
+    "ShadowIndex": 517,
+    "Index": 359,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 531,
+    "Name": "Purify SNIDLEs Shadow MAGNETON"
+  },
+  {
+    "ShadowIndex": 526,
+    "Index": 363,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 532,
+    "Name": "Purify ANGICs Shadow VENOMOTH"
+  },
+  {
+    "ShadowIndex": 527,
+    "Index": 365,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 532,
+    "Name": "Purify ANGICs Shadow WEEPINBELL"
+  },
+  {
+    "ShadowIndex": 537,
+    "Index": 369,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 532,
+    "Name": "Purify SMARTONs Shadow ARBOK"
+  },
+  {
+    "ShadowIndex": 542,
+    "Index": 372,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 550,
+    "Name": "Purify GORIGANs Shadow PRIMEAPE"
+  },
+  {
+    "ShadowIndex": 543,
+    "Index": 374,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 550,
+    "Name": "Purify GORIGANs Shadow HYPNO"
+  },
+  {
+    "ShadowIndex": 555,
+    "Index": 379,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 538,
+    "Name": "Purify ABSONs Shadow GOLDUCK"
+  },
+  {
+    "ShadowIndex": 556,
+    "Index": 381,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 538,
+    "Name": "Purify ABSONs Shadow SABLEYE"
+  },
+  {
+    "ShadowIndex": 562,
+    "Index": 385,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 536,
+    "Name": "Purify FURGYs Shadow DODRIO"
+  },
+  {
+    "ShadowIndex": 564,
+    "Index": 387,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 536,
+    "Name": "Purify FURGYs Shadow RATICATE"
+  },
+  {
+    "ShadowIndex": 575,
+    "Index": 392,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 536,
+    "Name": "Purify LOVRINAs Shadow FARFETCH\u0027D"
+  },
+  {
+    "ShadowIndex": 576,
+    "Index": 394,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 536,
+    "Name": "Purify LOVRINAs Shadow ALTARIA"
+  },
+  {
+    "ShadowIndex": 584,
+    "Index": 398,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 536,
+    "Name": "Purify LITNARs Shadow KANGASKHAN"
+  },
+  {
+    "ShadowIndex": 585,
+    "Index": 400,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 536,
+    "Name": "Purify LITNARs Shadow BANETTE"
+  },
+  {
+    "ShadowIndex": 593,
+    "Index": 404,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 535,
+    "Name": "Purify GRUPELs Shadow MAGMAR"
+  },
+  {
+    "ShadowIndex": 594,
+    "Index": 406,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 535,
+    "Name": "Purify GRUPELs Shadow PINSIR"
+  },
+  {
+    "ShadowIndex": 624,
+    "Index": 414,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 535,
+    "Name": "Purify KOLESTs Shadow RAPIDASH"
+  },
+  {
+    "ShadowIndex": 625,
+    "Index": 416,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 535,
+    "Name": "Purify KOLESTs Shadow MAGCARGO"
+  },
+  {
+    "ShadowIndex": 634,
+    "Index": 420,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 535,
+    "Name": "Purify KARBONs Shadow HITMONCHAN"
+  },
+  {
+    "ShadowIndex": 639,
+    "Index": 423,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 535,
+    "Name": "Purify PETROs Shadow HITMONLEE"
+  },
+  {
+    "ShadowIndex": 652,
+    "Index": 428,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 536,
+    "Name": "Purify GEFTALs Shadow LICKITUNG"
+  },
+  {
+    "ShadowIndex": 655,
+    "Index": 431,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 536,
+    "Name": "Purify LEDENs Shadow SCYTHER"
+  },
+  {
+    "ShadowIndex": 656,
+    "Index": 433,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 536,
+    "Name": "Purify LEDENs Shadow CHANSEY"
+  },
+  {
+    "ShadowIndex": 660,
+    "Index": 436,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 537,
+    "Name": "Purify SNATTLEs Shadow SOLROCK"
+  },
+  {
+    "ShadowIndex": 662,
+    "Index": 438,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 537,
+    "Name": "Purify SNATTLEs Shadow STARMIE"
+  },
+  {
+    "ShadowIndex": 666,
+    "Index": 442,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 537,
+    "Name": "Purify ARDOSs Shadow SWELLOW"
+  },
+  {
+    "ShadowIndex": 670,
+    "Index": 444,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 537,
+    "Name": "Purify ARDOSs Shadow ELECTABUZZ"
+  },
+  {
+    "ShadowIndex": 671,
+    "Index": 446,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 537,
+    "Name": "Purify ARDOSs Shadow SNORLAX"
+  },
+  {
+    "ShadowIndex": 676,
+    "Index": 449,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 537,
+    "Name": "Purify GORIGANs Shadow POLIWRATH"
+  },
+  {
+    "ShadowIndex": 677,
+    "Index": 451,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 537,
+    "Name": "Purify GORIGANs Shadow MR. MIME"
+  },
+  {
+    "ShadowIndex": 682,
+    "Index": 454,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 536,
+    "Name": "Purify KOLAXs Shadow DUGTRIO"
+  },
+  {
+    "ShadowIndex": 684,
+    "Index": 457,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 536,
+    "Name": "Purify ELDESs Shadow MANECTRIC"
+  },
+  {
+    "ShadowIndex": 685,
+    "Index": 459,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 536,
+    "Name": "Purify ELDESs Shadow SALAMENCE"
+  },
+  {
+    "ShadowIndex": 687,
+    "Index": 461,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 536,
+    "Name": "Purify ELDESs Shadow MAROWAK"
+  },
+  {
+    "ShadowIndex": 688,
+    "Index": 463,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 536,
+    "Name": "Purify ELDESs Shadow LAPRAS"
+  },
+  {
+    "ShadowIndex": 699,
+    "Index": 468,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 534,
+    "Name": "Purify GREEVILs Shadow LUGIA"
+  },
+  {
+    "ShadowIndex": 700,
+    "Index": 471,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 534,
+    "Name": "Purify GREEVILs Shadow RHYDON"
+  },
+  {
+    "ShadowIndex": 701,
+    "Index": 473,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 534,
+    "Name": "Purify GREEVILs Shadow MOLTRES"
+  },
+  {
+    "ShadowIndex": 702,
+    "Index": 475,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 534,
+    "Name": "Purify GREEVILs Shadow EXEGGUTOR"
+  },
+  {
+    "ShadowIndex": 703,
+    "Index": 477,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 534,
+    "Name": "Purify GREEVILs Shadow TAUROS"
+  },
+  {
+    "ShadowIndex": 704,
+    "Index": 479,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 534,
+    "Name": "Purify GREEVILs Shadow ARTICUNO"
+  },
+  {
+    "ShadowIndex": 705,
+    "Index": 481,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 534,
+    "Name": "Purify GREEVILs Shadow ZAPDOS"
+  },
+  {
+    "ShadowIndex": 785,
+    "Index": 516,
+    "AreaName": "GATEON PORT",
+    "RoomId": 543,
+    "Name": "Purify MIROR B.s Shadow DRAGONITE"
+  }
+]

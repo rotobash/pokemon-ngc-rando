@@ -1,0 +1,122 @@
+[
+  {
+    "TutorMoveIndex": 0,
+    "Index": 802,
+    "Quantity": 1,
+    "Name": "Tutor Move 0",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "TutorMoveIndex": 1,
+    "Index": 803,
+    "Quantity": 1,
+    "Name": "Tutor Move 1",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "TutorMoveIndex": 2,
+    "Index": 804,
+    "Quantity": 1,
+    "Name": "Tutor Move 2",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "TutorMoveIndex": 3,
+    "Index": 805,
+    "Quantity": 1,
+    "Name": "Tutor Move 3",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "TutorMoveIndex": 4,
+    "Index": 806,
+    "Quantity": 1,
+    "Name": "Tutor Move 4",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "TutorMoveIndex": 5,
+    "Index": 807,
+    "Quantity": 1,
+    "Name": "Tutor Move 5",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "TutorMoveIndex": 6,
+    "Index": 808,
+    "Quantity": 1,
+    "Name": "Tutor Move 6",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "TutorMoveIndex": 7,
+    "Index": 809,
+    "Quantity": 1,
+    "Name": "Tutor Move 7",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "TutorMoveIndex": 8,
+    "Index": 810,
+    "Quantity": 1,
+    "Name": "Tutor Move 8",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "TutorMoveIndex": 9,
+    "Index": 811,
+    "Quantity": 1,
+    "Name": "Tutor Move 9",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "TutorMoveIndex": 10,
+    "Index": 812,
+    "Quantity": 1,
+    "Name": "Tutor Move 10",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  },
+  {
+    "TutorMoveIndex": 11,
+    "Index": 813,
+    "Quantity": 1,
+    "Name": "Tutor Move 11",
+    "Progression": false,
+    "ItemClassification": [
+      "Useful"
+    ]
+  }
+]

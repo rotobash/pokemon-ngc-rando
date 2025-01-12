@@ -1,0 +1,906 @@
+[
+  {
+    "TreasureIndex": 1,
+    "IsSparkling": false,
+    "Index": 0,
+    "AreaName": "POKEMON HQ LAB",
+    "RoomId": 143,
+    "Name": "POKEMON HQ LAB - Treasure Chest Item (ANTIDOTE x 2)"
+  },
+  {
+    "TreasureIndex": 2,
+    "IsSparkling": false,
+    "Index": 1,
+    "AreaName": "POKEMON HQ LAB",
+    "RoomId": 142,
+    "Name": "POKEMON HQ LAB - Treasure Chest Item (MASTER BALL x 1)"
+  },
+  {
+    "TreasureIndex": 3,
+    "IsSparkling": false,
+    "Index": 2,
+    "AreaName": "POKEMON HQ LAB",
+    "RoomId": 138,
+    "Name": "POKEMON HQ LAB - Treasure Chest Item (POTION x 3)"
+  },
+  {
+    "TreasureIndex": 4,
+    "IsSparkling": false,
+    "Index": 3,
+    "AreaName": "GATEON PORT",
+    "RoomId": 153,
+    "Name": "GATEON PORT - Treasure Chest Item (POKE BALL x 3)"
+  },
+  {
+    "TreasureIndex": 5,
+    "IsSparkling": false,
+    "Index": 4,
+    "AreaName": "GATEON PORT",
+    "RoomId": 146,
+    "Name": "GATEON PORT - Treasure Chest Item (SUPER POTION x 1)"
+  },
+  {
+    "TreasureIndex": 6,
+    "IsSparkling": false,
+    "Index": 5,
+    "AreaName": "GATEON PORT",
+    "RoomId": 158,
+    "Name": "GATEON PORT - Treasure Chest Item (POTION x 1)"
+  },
+  {
+    "TreasureIndex": 7,
+    "IsSparkling": false,
+    "Index": 6,
+    "AreaName": "GATEON PORT",
+    "RoomId": 158,
+    "Name": "GATEON PORT - Treasure Chest Item (PARLYZ HEAL x 1)"
+  },
+  {
+    "TreasureIndex": 8,
+    "IsSparkling": false,
+    "Index": 7,
+    "AreaName": "GATEON PORT",
+    "RoomId": 160,
+    "Name": "GATEON PORT - Treasure Chest Item (AWAKENING x 1)"
+  },
+  {
+    "TreasureIndex": 9,
+    "IsSparkling": true,
+    "Index": 8,
+    "AreaName": "GATEON PORT",
+    "RoomId": 145,
+    "Name": "GATEON PORT - Sparkling Item (BATTLE CD 06 x 1)"
+  },
+  {
+    "TreasureIndex": 10,
+    "IsSparkling": false,
+    "Index": 9,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 132,
+    "Name": "AGATE VILLAGE - Treasure Chest Item (POKE BALL x 1)"
+  },
+  {
+    "TreasureIndex": 11,
+    "IsSparkling": false,
+    "Index": 10,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 132,
+    "Name": "AGATE VILLAGE - Treasure Chest Item (ETHER x 1)"
+  },
+  {
+    "TreasureIndex": 12,
+    "IsSparkling": false,
+    "Index": 11,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 126,
+    "Name": "AGATE VILLAGE - Treasure Chest Item (POKE BALL x 1)"
+  },
+  {
+    "TreasureIndex": 13,
+    "IsSparkling": false,
+    "Index": 12,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 126,
+    "Name": "AGATE VILLAGE - Treasure Chest Item (SUPER POTION x 1)"
+  },
+  {
+    "TreasureIndex": 14,
+    "IsSparkling": false,
+    "Index": 13,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 132,
+    "Name": "AGATE VILLAGE - Treasure Chest Item (POTION x 3)"
+  },
+  {
+    "TreasureIndex": 15,
+    "IsSparkling": false,
+    "Index": 14,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 125,
+    "Name": "AGATE VILLAGE - Treasure Chest Item (BURN HEAL x 2)"
+  },
+  {
+    "TreasureIndex": 16,
+    "IsSparkling": false,
+    "Index": 15,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 1,
+    "Name": "CIPHER LAB - Treasure Chest Item (SUPER POTION x 1)"
+  },
+  {
+    "TreasureIndex": 17,
+    "IsSparkling": true,
+    "Index": 16,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 8,
+    "Name": "CIPHER LAB - Sparkling Item (DATA ROM x 1)"
+  },
+  {
+    "TreasureIndex": 18,
+    "IsSparkling": true,
+    "Index": 17,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 8,
+    "Name": "CIPHER LAB - Sparkling Item (ID CARD x 1)"
+  },
+  {
+    "TreasureIndex": 19,
+    "IsSparkling": false,
+    "Index": 18,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 8,
+    "Name": "CIPHER LAB - Treasure Chest Item (ETHER x 1)"
+  },
+  {
+    "TreasureIndex": 20,
+    "IsSparkling": false,
+    "Index": 19,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 1,
+    "Name": "CIPHER LAB - Treasure Chest Item (POKE BALL x 3)"
+  },
+  {
+    "TreasureIndex": 21,
+    "IsSparkling": false,
+    "Index": 20,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 8,
+    "Name": "CIPHER LAB - Treasure Chest Item (FULL HEAL x 1)"
+  },
+  {
+    "TreasureIndex": 22,
+    "IsSparkling": false,
+    "Index": 21,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 8,
+    "Name": "CIPHER LAB - Treasure Chest Item (GREAT BALL x 1)"
+  },
+  {
+    "TreasureIndex": 23,
+    "IsSparkling": false,
+    "Index": 22,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 9,
+    "Name": "CIPHER LAB - Treasure Chest Item (LEAF STONE x 1)"
+  },
+  {
+    "TreasureIndex": 24,
+    "IsSparkling": false,
+    "Index": 23,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 10,
+    "Name": "CIPHER LAB - Treasure Chest Item (SUPER POTION x 3)"
+  },
+  {
+    "TreasureIndex": 25,
+    "IsSparkling": false,
+    "Index": 24,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 10,
+    "Name": "CIPHER LAB - Treasure Chest Item (GREAT BALL x 1)"
+  },
+  {
+    "TreasureIndex": 26,
+    "IsSparkling": false,
+    "Index": 25,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 10,
+    "Name": "CIPHER LAB - Treasure Chest Item (REVIVE x 1)"
+  },
+  {
+    "TreasureIndex": 27,
+    "IsSparkling": false,
+    "Index": 26,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 10,
+    "Name": "CIPHER LAB - Treasure Chest Item (ETHER x 1)"
+  },
+  {
+    "TreasureIndex": 28,
+    "IsSparkling": true,
+    "Index": 27,
+    "AreaName": "CIPHER LAB",
+    "RoomId": 9,
+    "Name": "CIPHER LAB - Sparkling Item (BATTLE CD 42 x 1)"
+  },
+  {
+    "TreasureIndex": 29,
+    "IsSparkling": false,
+    "Index": 28,
+    "AreaName": "MT. BATTLE",
+    "RoomId": 20,
+    "Name": "MT. BATTLE - Treasure Chest Item (FULL HEAL x 1)"
+  },
+  {
+    "TreasureIndex": 30,
+    "IsSparkling": true,
+    "Index": 29,
+    "AreaName": "S.S. LIBRA",
+    "RoomId": 38,
+    "Name": "S.S. LIBRA - Sparkling Item (LEFTOVERS x 1)"
+  },
+  {
+    "TreasureIndex": 31,
+    "IsSparkling": false,
+    "Index": 30,
+    "AreaName": "S.S. LIBRA",
+    "RoomId": 41,
+    "Name": "S.S. LIBRA - Treasure Chest Item (YELLOW FLUTE x 1)"
+  },
+  {
+    "TreasureIndex": 32,
+    "IsSparkling": false,
+    "Index": 31,
+    "AreaName": "S.S. LIBRA",
+    "RoomId": 37,
+    "Name": "S.S. LIBRA - Treasure Chest Item (FIRE STONE x 1)"
+  },
+  {
+    "TreasureIndex": 33,
+    "IsSparkling": false,
+    "Index": 32,
+    "AreaName": "S.S. LIBRA",
+    "RoomId": 37,
+    "Name": "S.S. LIBRA - Treasure Chest Item (PP UP x 2)"
+  },
+  {
+    "TreasureIndex": 34,
+    "IsSparkling": false,
+    "Index": 33,
+    "AreaName": "S.S. LIBRA",
+    "RoomId": 39,
+    "Name": "S.S. LIBRA - Treasure Chest Item (IRON x 1)"
+  },
+  {
+    "TreasureIndex": 35,
+    "IsSparkling": false,
+    "Index": 34,
+    "AreaName": "S.S. LIBRA",
+    "RoomId": 40,
+    "Name": "S.S. LIBRA - Treasure Chest Item (MAX ETHER x 1)"
+  },
+  {
+    "TreasureIndex": 36,
+    "IsSparkling": false,
+    "Index": 35,
+    "AreaName": "S.S. LIBRA",
+    "RoomId": 41,
+    "Name": "S.S. LIBRA - Treasure Chest Item (TM35 x 1)"
+  },
+  {
+    "TreasureIndex": 37,
+    "IsSparkling": true,
+    "Index": 36,
+    "AreaName": "S.S. LIBRA",
+    "RoomId": 43,
+    "Name": "S.S. LIBRA - Sparkling Item (BATTLE CD 18 x 1)"
+  },
+  {
+    "TreasureIndex": 38,
+    "IsSparkling": false,
+    "Index": 37,
+    "AreaName": "S.S. LIBRA",
+    "RoomId": 38,
+    "Name": "S.S. LIBRA - Treasure Chest Item (LUXURY BALL x 1)"
+  },
+  {
+    "TreasureIndex": 39,
+    "IsSparkling": false,
+    "Index": 38,
+    "AreaName": "REALGAM TOWER",
+    "RoomId": 58,
+    "Name": "REALGAM TOWER - Treasure Chest Item (PROTEIN x 1)"
+  },
+  {
+    "TreasureIndex": 40,
+    "IsSparkling": false,
+    "Index": 39,
+    "AreaName": "REALGAM TOWER",
+    "RoomId": 49,
+    "Name": "REALGAM TOWER - Treasure Chest Item (CARBOS x 1)"
+  },
+  {
+    "TreasureIndex": 41,
+    "IsSparkling": false,
+    "Index": 40,
+    "AreaName": "REALGAM TOWER",
+    "RoomId": 59,
+    "Name": "REALGAM TOWER - Treasure Chest Item (ULTRA BALL x 1)"
+  },
+  {
+    "TreasureIndex": 42,
+    "IsSparkling": true,
+    "Index": 41,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 67,
+    "Name": "CIPHER KEY LAIR - Sparkling Item (SYSTEM LEVER x 1)"
+  },
+  {
+    "TreasureIndex": 43,
+    "IsSparkling": false,
+    "Index": 42,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 64,
+    "Name": "CIPHER KEY LAIR - Treasure Chest Item (RARE CANDY x 1)"
+  },
+  {
+    "TreasureIndex": 44,
+    "IsSparkling": false,
+    "Index": 43,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 64,
+    "Name": "CIPHER KEY LAIR - Treasure Chest Item (ULTRA BALL x 3)"
+  },
+  {
+    "TreasureIndex": 45,
+    "IsSparkling": false,
+    "Index": 44,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 65,
+    "Name": "CIPHER KEY LAIR - Treasure Chest Item (ELIXIR x 1)"
+  },
+  {
+    "TreasureIndex": 46,
+    "IsSparkling": false,
+    "Index": 45,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 65,
+    "Name": "CIPHER KEY LAIR - Treasure Chest Item (FULL RESTORE x 1)"
+  },
+  {
+    "TreasureIndex": 47,
+    "IsSparkling": false,
+    "Index": 46,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 66,
+    "Name": "CIPHER KEY LAIR - Treasure Chest Item (FULL HEAL x 3)"
+  },
+  {
+    "TreasureIndex": 48,
+    "IsSparkling": false,
+    "Index": 47,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 70,
+    "Name": "CIPHER KEY LAIR - Treasure Chest Item (TM26 x 1)"
+  },
+  {
+    "TreasureIndex": 49,
+    "IsSparkling": false,
+    "Index": 48,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 64,
+    "Name": "CIPHER KEY LAIR - Treasure Chest Item (HYPER POTION x 3)"
+  },
+  {
+    "TreasureIndex": 50,
+    "IsSparkling": false,
+    "Index": 49,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 65,
+    "Name": "CIPHER KEY LAIR - Treasure Chest Item (PP UP x 1)"
+  },
+  {
+    "TreasureIndex": 51,
+    "IsSparkling": false,
+    "Index": 50,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 66,
+    "Name": "CIPHER KEY LAIR - Treasure Chest Item (MAX REVIVE x 1)"
+  },
+  {
+    "TreasureIndex": 52,
+    "IsSparkling": false,
+    "Index": 51,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 67,
+    "Name": "CIPHER KEY LAIR - Treasure Chest Item (HP UP x 1)"
+  },
+  {
+    "TreasureIndex": 53,
+    "IsSparkling": false,
+    "Index": 52,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 67,
+    "Name": "CIPHER KEY LAIR - Treasure Chest Item (HYPER POTION x 2)"
+  },
+  {
+    "TreasureIndex": 54,
+    "IsSparkling": false,
+    "Index": 53,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 68,
+    "Name": "CIPHER KEY LAIR - Treasure Chest Item (TM24 x 1)"
+  },
+  {
+    "TreasureIndex": 55,
+    "IsSparkling": true,
+    "Index": 54,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 68,
+    "Name": "CIPHER KEY LAIR - Sparkling Item (BATTLE CD 47 x 1)"
+  },
+  {
+    "TreasureIndex": 56,
+    "IsSparkling": false,
+    "Index": 55,
+    "AreaName": "CIPHER KEY LAIR",
+    "RoomId": 64,
+    "Name": "CIPHER KEY LAIR - Treasure Chest Item (REVIVE x 2)"
+  },
+  {
+    "TreasureIndex": 57,
+    "IsSparkling": false,
+    "Index": 56,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 82,
+    "Name": "CITADARK ISLE - Treasure Chest Item (RARE CANDY x 3)"
+  },
+  {
+    "TreasureIndex": 58,
+    "IsSparkling": false,
+    "Index": 57,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 88,
+    "Name": "CITADARK ISLE - Treasure Chest Item (PP MAX x 1)"
+  },
+  {
+    "TreasureIndex": 59,
+    "IsSparkling": false,
+    "Index": 58,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 76,
+    "Name": "CITADARK ISLE - Treasure Chest Item (MAX ELIXIR x 1)"
+  },
+  {
+    "TreasureIndex": 60,
+    "IsSparkling": false,
+    "Index": 59,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 77,
+    "Name": "CITADARK ISLE - Treasure Chest Item (REVIVE x 2)"
+  },
+  {
+    "TreasureIndex": 61,
+    "IsSparkling": false,
+    "Index": 60,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 77,
+    "Name": "CITADARK ISLE - Treasure Chest Item (WHITE HERB x 2)"
+  },
+  {
+    "TreasureIndex": 62,
+    "IsSparkling": false,
+    "Index": 61,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 80,
+    "Name": "CITADARK ISLE - Treasure Chest Item (ELIXIR x 1)"
+  },
+  {
+    "TreasureIndex": 63,
+    "IsSparkling": false,
+    "Index": 62,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 80,
+    "Name": "CITADARK ISLE - Treasure Chest Item (FULL RESTORE x 2)"
+  },
+  {
+    "TreasureIndex": 64,
+    "IsSparkling": false,
+    "Index": 63,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 80,
+    "Name": "CITADARK ISLE - Treasure Chest Item (HYPER POTION x 2)"
+  },
+  {
+    "TreasureIndex": 65,
+    "IsSparkling": false,
+    "Index": 64,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 81,
+    "Name": "CITADARK ISLE - Treasure Chest Item (MAX POTION x 2)"
+  },
+  {
+    "TreasureIndex": 66,
+    "IsSparkling": false,
+    "Index": 65,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 81,
+    "Name": "CITADARK ISLE - Treasure Chest Item (PP UP x 1)"
+  },
+  {
+    "TreasureIndex": 67,
+    "IsSparkling": false,
+    "Index": 66,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 83,
+    "Name": "CITADARK ISLE - Treasure Chest Item (MAX REVIVE x 1)"
+  },
+  {
+    "TreasureIndex": 68,
+    "IsSparkling": false,
+    "Index": 67,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 83,
+    "Name": "CITADARK ISLE - Treasure Chest Item (TIMER BALL x 3)"
+  },
+  {
+    "TreasureIndex": 69,
+    "IsSparkling": false,
+    "Index": 68,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 83,
+    "Name": "CITADARK ISLE - Treasure Chest Item (REVIVE x 2)"
+  },
+  {
+    "TreasureIndex": 70,
+    "IsSparkling": false,
+    "Index": 69,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 84,
+    "Name": "CITADARK ISLE - Treasure Chest Item (MAX ETHER x 3)"
+  },
+  {
+    "TreasureIndex": 71,
+    "IsSparkling": false,
+    "Index": 70,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 84,
+    "Name": "CITADARK ISLE - Treasure Chest Item (FULL HEAL x 4)"
+  },
+  {
+    "TreasureIndex": 72,
+    "IsSparkling": false,
+    "Index": 71,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 85,
+    "Name": "CITADARK ISLE - Treasure Chest Item (HYPER POTION x 3)"
+  },
+  {
+    "TreasureIndex": 73,
+    "IsSparkling": false,
+    "Index": 72,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 85,
+    "Name": "CITADARK ISLE - Treasure Chest Item (FULL RESTORE x 2)"
+  },
+  {
+    "TreasureIndex": 74,
+    "IsSparkling": false,
+    "Index": 73,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 85,
+    "Name": "CITADARK ISLE - Treasure Chest Item (ULTRA BALL x 5)"
+  },
+  {
+    "TreasureIndex": 75,
+    "IsSparkling": false,
+    "Index": 74,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 73,
+    "Name": "CITADARK ISLE - Treasure Chest Item (MAX REVIVE x 1)"
+  },
+  {
+    "TreasureIndex": 76,
+    "IsSparkling": true,
+    "Index": 75,
+    "AreaName": "CITADARK ISLE",
+    "RoomId": 73,
+    "Name": "CITADARK ISLE - Sparkling Item (BATTLE CD 46 x 1)"
+  },
+  {
+    "TreasureIndex": 77,
+    "IsSparkling": true,
+    "Index": 76,
+    "AreaName": "CAVE",
+    "RoomId": 92,
+    "Name": "CAVE - Sparkling Item (MIROR RADAR x 1)"
+  },
+  {
+    "TreasureIndex": 78,
+    "IsSparkling": true,
+    "Index": 77,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 97,
+    "Name": "PHENAC CITY - Sparkling Item (MAYORS NOTE x 1)"
+  },
+  {
+    "TreasureIndex": 79,
+    "IsSparkling": true,
+    "Index": 78,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 107,
+    "Name": "PHENAC CITY - Sparkling Item (ELEVATOR KEY x 1)"
+  },
+  {
+    "TreasureIndex": 80,
+    "IsSparkling": true,
+    "Index": 79,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 98,
+    "Name": "PHENAC CITY - Sparkling Item (MUSIC DISC x 1)"
+  },
+  {
+    "TreasureIndex": 81,
+    "IsSparkling": true,
+    "Index": 80,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 100,
+    "Name": "PHENAC CITY - Sparkling Item (BATTLE CD 19 x 1)"
+  },
+  {
+    "TreasureIndex": 82,
+    "IsSparkling": true,
+    "Index": 81,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 100,
+    "Name": "PHENAC CITY - Sparkling Item (BATTLE CD 16 x 1)"
+  },
+  {
+    "TreasureIndex": 83,
+    "IsSparkling": true,
+    "Index": 82,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 100,
+    "Name": "PHENAC CITY - Sparkling Item (BATTLE CD 28 x 1)"
+  },
+  {
+    "TreasureIndex": 84,
+    "IsSparkling": true,
+    "Index": 83,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 100,
+    "Name": "PHENAC CITY - Sparkling Item (BATTLE CD 08 x 1)"
+  },
+  {
+    "TreasureIndex": 85,
+    "IsSparkling": true,
+    "Index": 84,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 96,
+    "Name": "PHENAC CITY - Sparkling Item (BATTLE CD 27 x 1)"
+  },
+  {
+    "TreasureIndex": 86,
+    "IsSparkling": true,
+    "Index": 85,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 96,
+    "Name": "PHENAC CITY - Sparkling Item (BATTLE CD 32 x 1)"
+  },
+  {
+    "TreasureIndex": 87,
+    "IsSparkling": false,
+    "Index": 86,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 100,
+    "Name": "PHENAC CITY - Treasure Chest Item (HYPER POTION x 2)"
+  },
+  {
+    "TreasureIndex": 88,
+    "IsSparkling": false,
+    "Index": 87,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 100,
+    "Name": "PHENAC CITY - Treasure Chest Item (ULTRA BALL x 3)"
+  },
+  {
+    "TreasureIndex": 89,
+    "IsSparkling": false,
+    "Index": 88,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 107,
+    "Name": "PHENAC CITY - Treasure Chest Item (TM13 x 1)"
+  },
+  {
+    "TreasureIndex": 90,
+    "IsSparkling": false,
+    "Index": 89,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 107,
+    "Name": "PHENAC CITY - Treasure Chest Item (WATER STONE x 1)"
+  },
+  {
+    "TreasureIndex": 91,
+    "IsSparkling": false,
+    "Index": 90,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 107,
+    "Name": "PHENAC CITY - Treasure Chest Item (PP UP x 1)"
+  },
+  {
+    "TreasureIndex": 92,
+    "IsSparkling": true,
+    "Index": 91,
+    "AreaName": "PHENAC CITY",
+    "RoomId": 107,
+    "Name": "PHENAC CITY - Sparkling Item (BATTLE CD 44 x 1)"
+  },
+  {
+    "TreasureIndex": 93,
+    "IsSparkling": false,
+    "Index": 92,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 119,
+    "Name": "PYRITE TOWN - Treasure Chest Item (GREAT BALL x 1)"
+  },
+  {
+    "TreasureIndex": 94,
+    "IsSparkling": false,
+    "Index": 93,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 120,
+    "Name": "PYRITE TOWN - Treasure Chest Item (HYPER POTION x 1)"
+  },
+  {
+    "TreasureIndex": 95,
+    "IsSparkling": false,
+    "Index": 94,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 117,
+    "Name": "PYRITE TOWN - Treasure Chest Item (GREAT BALL x 3)"
+  },
+  {
+    "TreasureIndex": 96,
+    "IsSparkling": false,
+    "Index": 95,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 117,
+    "Name": "PYRITE TOWN - Treasure Chest Item (PARLYZ HEAL x 1)"
+  },
+  {
+    "TreasureIndex": 97,
+    "IsSparkling": false,
+    "Index": 96,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 117,
+    "Name": "PYRITE TOWN - Treasure Chest Item (FOCUS BAND x 1)"
+  },
+  {
+    "TreasureIndex": 98,
+    "IsSparkling": false,
+    "Index": 97,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 110,
+    "Name": "PYRITE TOWN - Treasure Chest Item (REVIVE x 1)"
+  },
+  {
+    "TreasureIndex": 99,
+    "IsSparkling": false,
+    "Index": 98,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 110,
+    "Name": "PYRITE TOWN - Treasure Chest Item (HP UP x 1)"
+  },
+  {
+    "TreasureIndex": 100,
+    "IsSparkling": false,
+    "Index": 99,
+    "AreaName": "PYRITE TOWN",
+    "RoomId": 109,
+    "Name": "PYRITE TOWN - Treasure Chest Item (ETHER x 1)"
+  },
+  {
+    "TreasureIndex": 101,
+    "IsSparkling": false,
+    "Index": 100,
+    "AreaName": "SNAGEM HIDEOUT",
+    "RoomId": 165,
+    "Name": "SNAGEM HIDEOUT - Treasure Chest Item (ULTRA BALL x 3)"
+  },
+  {
+    "TreasureIndex": 102,
+    "IsSparkling": false,
+    "Index": 101,
+    "AreaName": "SNAGEM HIDEOUT",
+    "RoomId": 165,
+    "Name": "SNAGEM HIDEOUT - Treasure Chest Item (TM29 x 1)"
+  },
+  {
+    "TreasureIndex": 103,
+    "IsSparkling": false,
+    "Index": 102,
+    "AreaName": "SNAGEM HIDEOUT",
+    "RoomId": 166,
+    "Name": "SNAGEM HIDEOUT - Treasure Chest Item (FULL HEAL x 2)"
+  },
+  {
+    "TreasureIndex": 104,
+    "IsSparkling": false,
+    "Index": 103,
+    "AreaName": "SNAGEM HIDEOUT",
+    "RoomId": 166,
+    "Name": "SNAGEM HIDEOUT - Treasure Chest Item (HYPER POTION x 2)"
+  },
+  {
+    "TreasureIndex": 105,
+    "IsSparkling": false,
+    "Index": 104,
+    "AreaName": "SNAGEM HIDEOUT",
+    "RoomId": 166,
+    "Name": "SNAGEM HIDEOUT - Treasure Chest Item (PP UP x 1)"
+  },
+  {
+    "TreasureIndex": 106,
+    "IsSparkling": false,
+    "Index": 105,
+    "AreaName": "SNAGEM HIDEOUT",
+    "RoomId": 167,
+    "Name": "SNAGEM HIDEOUT - Treasure Chest Item (REVIVE x 2)"
+  },
+  {
+    "TreasureIndex": 107,
+    "IsSparkling": false,
+    "Index": 106,
+    "AreaName": "SNAGEM HIDEOUT",
+    "RoomId": 167,
+    "Name": "SNAGEM HIDEOUT - Treasure Chest Item (RARE CANDY x 1)"
+  },
+  {
+    "TreasureIndex": 108,
+    "IsSparkling": false,
+    "Index": 107,
+    "AreaName": "KAMINKOS HOUSE",
+    "RoomId": 171,
+    "Name": "KAMINKOS HOUSE - Treasure Chest Item (RARE CANDY x 1)"
+  },
+  {
+    "TreasureIndex": 109,
+    "IsSparkling": true,
+    "Index": 108,
+    "AreaName": "KAMINKOS HOUSE",
+    "RoomId": 171,
+    "Name": "KAMINKOS HOUSE - Sparkling Item (BATTLE CD 23 x 1)"
+  },
+  {
+    "TreasureIndex": 110,
+    "IsSparkling": true,
+    "Index": 109,
+    "AreaName": "KAMINKOS HOUSE",
+    "RoomId": 172,
+    "Name": "KAMINKOS HOUSE - Sparkling Item (BATTLE CD 05 x 1)"
+  },
+  {
+    "TreasureIndex": 111,
+    "IsSparkling": true,
+    "Index": 110,
+    "AreaName": "KAMINKOS HOUSE",
+    "RoomId": 172,
+    "Name": "KAMINKOS HOUSE - Sparkling Item (BATTLE CD 11 x 1)"
+  },
+  {
+    "TreasureIndex": 112,
+    "IsSparkling": true,
+    "Index": 111,
+    "AreaName": "KAMINKOS HOUSE",
+    "RoomId": 172,
+    "Name": "KAMINKOS HOUSE - Sparkling Item (BATTLE CD 29 x 1)"
+  },
+  {
+    "TreasureIndex": 113,
+    "IsSparkling": false,
+    "Index": 112,
+    "AreaName": "KAMINKOS HOUSE",
+    "RoomId": 172,
+    "Name": "KAMINKOS HOUSE - Treasure Chest Item (RARE CANDY x 1)"
+  }
+]

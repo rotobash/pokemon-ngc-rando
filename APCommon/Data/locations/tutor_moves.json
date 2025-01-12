@@ -1,0 +1,110 @@
+[
+  {
+    "TutorMoveIndex": 0,
+    "Availability": 256,
+    "MoveId": 102,
+    "Index": 802,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 135,
+    "Name": "Tutor Move 0 (MIMIC)"
+  },
+  {
+    "TutorMoveIndex": 1,
+    "Availability": 256,
+    "MoveId": 86,
+    "Index": 803,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 135,
+    "Name": "Tutor Move 1 (THUNDER WAVE)"
+  },
+  {
+    "TutorMoveIndex": 2,
+    "Availability": 256,
+    "MoveId": 69,
+    "Index": 804,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 135,
+    "Name": "Tutor Move 2 (SEISMIC TOSS)"
+  },
+  {
+    "TutorMoveIndex": 3,
+    "Availability": 9216,
+    "MoveId": 196,
+    "Index": 805,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 135,
+    "Name": "Tutor Move 3 (ICY WIND)"
+  },
+  {
+    "TutorMoveIndex": 4,
+    "Availability": 9216,
+    "MoveId": 164,
+    "Index": 806,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 135,
+    "Name": "Tutor Move 4 (SUBSTITUTE)"
+  },
+  {
+    "TutorMoveIndex": 5,
+    "Availability": 9216,
+    "MoveId": 138,
+    "Index": 807,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 135,
+    "Name": "Tutor Move 5 (DREAM EATER)"
+  },
+  {
+    "TutorMoveIndex": 6,
+    "Availability": 12800,
+    "MoveId": 207,
+    "Index": 808,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 135,
+    "Name": "Tutor Move 6 (SWAGGER)"
+  },
+  {
+    "TutorMoveIndex": 7,
+    "Availability": 12800,
+    "MoveId": 34,
+    "Index": 809,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 135,
+    "Name": "Tutor Move 7 (BODY SLAM)"
+  },
+  {
+    "TutorMoveIndex": 8,
+    "Availability": 12800,
+    "MoveId": 171,
+    "Index": 810,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 135,
+    "Name": "Tutor Move 8 (NIGHTMARE)"
+  },
+  {
+    "TutorMoveIndex": 9,
+    "Availability": 20480,
+    "MoveId": 143,
+    "Index": 811,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 135,
+    "Name": "Tutor Move 9 (SKY ATTACK)"
+  },
+  {
+    "TutorMoveIndex": 10,
+    "Availability": 21760,
+    "MoveId": 38,
+    "Index": 812,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 135,
+    "Name": "Tutor Move 10 (DOUBLE-EDGE)"
+  },
+  {
+    "TutorMoveIndex": 11,
+    "Availability": 23040,
+    "MoveId": 120,
+    "Index": 813,
+    "AreaName": "AGATE VILLAGE",
+    "RoomId": 135,
+    "Name": "Tutor Move 11 (SELFDESTRUCT)"
+  }
+]
