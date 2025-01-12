@@ -74,11 +74,11 @@ namespace RandomizerTests.Items
                 {
                     return $"Item {reference.Name} is banned but was selected for randomization.";
                 }
-                else if (settings.ItemShufflerSettings.MakeItemsBoxes && item.Model == (byte)TreasureTypes.Sparkle)
+                else if (settings.ItemShufflerSettings.MakeItemsBoxes && item.Model == TreasureTypes.Sparkle)
                 {
                     return $"Item {reference?.Name} was set as a sparkle.";
                 }
-                else if (settings.ItemShufflerSettings.MakeItemsSparkles && item.Model == (byte)TreasureTypes.Chest)
+                else if (settings.ItemShufflerSettings.MakeItemsSparkles && item.Model == TreasureTypes.Chest)
                 {
                     return $"Item {reference?.Name} was set as a chest.";
                 }

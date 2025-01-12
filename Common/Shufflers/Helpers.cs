@@ -9,7 +9,7 @@ using XDCommon.PokemonDefinitions;
 
 namespace XDCommon.Shufflers
 {
-    internal static class Helpers
+    public static class Helpers
     {
         public static IEnumerable<Pokemon> GetSimilarBsts(int initialPokeIndex, IEnumerable<Pokemon> currentPokeFilter, Pokemon[] pokemonList)
         {
