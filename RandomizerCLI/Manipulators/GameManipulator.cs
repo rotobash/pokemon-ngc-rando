@@ -27,7 +27,7 @@ namespace RandomizerCLI.Manipulators
 
             if (!Directory.Exists(options.OutputPath))
             {
-                throw new ArgumentException(options.OutputPath);
+                Directory.CreateDirectory(options.OutputPath);
             }
 
             ISOExtractor = new ISOExtractor(options.ISOPath);
