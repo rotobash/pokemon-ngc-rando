@@ -25,6 +25,7 @@ using ArchipelagoClient.Controls;
 using XDCommon.PokemonDefinitions.XD.SaveData;
 using XDCommon.Utility;
 using XDCommon.Contracts;
+using XDCommon.Shufflers;
 
 namespace ArchipelagoClient
 {
@@ -32,7 +33,6 @@ namespace ArchipelagoClient
     {
         bool connectedToAP = false;
         ArchipelagoSession apSession = null;
-        Dolphin dolphinProcess;
         XDState xdProcess;
 
         BackgroundWorker dolphinSetupWorker;
@@ -46,14 +46,13 @@ namespace ArchipelagoClient
             dolphinSetupWorker = new BackgroundWorker();
             dolphinSetupWorker.DoWork += SetupDolphinBackgroundWorker;
             dolphinSetupWorker.RunWorkerCompleted += OnDolphinSetup;
-            xdProcess = new XDState(gameManipulator.ISO);
         }
 
         private void APClient_Load(object sender, EventArgs e)
         {
             for (int i = 0; i < 6; i++)
             {
-                var pokemonDisplay = new PokemonDisplay 
+                var pokemonDisplay = new PokemonDisplay
                 {
                     AutoSize = true,
                     Dock = DockStyle.Fill
@@ -116,13 +115,20 @@ namespace ArchipelagoClient
             // TODO: Randomize the game based on the AP server settings
             gameManip.ISO.DOL = new DOL("ASM");
 
+            foreach (var move in extractedGame.ValidMoves)
+            {
+                move.AnimationID = 0;
+            }
+
             gameManip.ISOExtractor.RepackISO(gameManip.ISO, newFileName);
 
             gameManip.Dispose();
-            Invoke(() => 
+            Invoke(() =>
             {
                 gameManipulator = new GameManipulator(newFileName);
                 extractedGame = new ExtractedGame(gameManipulator.GameExtractor);
+                xdProcess = new XDState(gameManipulator.ISO);
+                gameManipulator.ReleaseGameFile();
             });
             return newFileName;
         }
@@ -138,20 +144,16 @@ namespace ArchipelagoClient
             }
 
             var xdStateInvoke = BeginInvoke(() => xdProcess);
-            var gameManipInvoke = BeginInvoke(() => gameManipulator);
             var xdState = EndInvoke(xdStateInvoke) as XDState;
-            var gameManip = EndInvoke(gameManipInvoke) as GameManipulator;
-
-            gameManip.ReleaseGameFile();
-            var started = xdState.StartNewInstance(Configuration.DolphinDirectory, fileToRun).GetAwaiter().GetResult();
+            xdState.StartNewInstance(Configuration.DolphinDirectory, fileToRun).GetAwaiter().GetResult();
         }
 
         private void OnDolphinSetup(object sender, EventArgs e)
         {
-            if (dolphinProcess?.IsRunning == true)
+            if (xdProcess?.Dolphin?.IsRunning == true)
             {
                 dolphinPollTimer.Start();
-                connectionStatusLabel.Text = $"Connected to Dolphin (Running {(Game)dolphinProcess.GameTitleCode})";
+                connectionStatusLabel.Text = $"Connected to Dolphin (Running {(Game)xdProcess.Dolphin.GameTitleCode})";
                 connectionStatusLabel.ForeColor = connectedToAP ? Color.Green : Color.Orange;
             }
             else
@@ -163,7 +165,7 @@ namespace ArchipelagoClient
 
         private void connectionStatusLabel_Click(object sender, EventArgs e)
         {
-            if (dolphinProcess?.IsRunning != true)
+            if (xdProcess?.Dolphin?.IsRunning != true)
             {
                 if (string.IsNullOrEmpty(Configuration.GameFilePath) || !File.Exists(Configuration.GameFilePath))
                 {
@@ -179,8 +181,6 @@ namespace ArchipelagoClient
                 {
                     gameManipulator = new GameManipulator(Configuration.GameFilePath);
                     extractedGame = new ExtractedGame(gameManipulator.GameExtractor);
-
-                    dolphinProcess = new Dolphin(Configuration.DolphinDirectory);
 
                     dolphinSetupWorker.RunWorkerAsync();
                 }
@@ -201,7 +201,7 @@ namespace ArchipelagoClient
                 {
                     connectedToAP = true;
                     connectionStatusLabel.Text = "Connected to AP";
-                    connectionStatusLabel.ForeColor = dolphinProcess?.IsRunning == true ? Color.Green : Color.Orange;
+                    connectionStatusLabel.ForeColor = xdProcess?.Dolphin?.IsRunning == true ? Color.Green : Color.Orange;
                 }
             }
         }
@@ -214,45 +214,44 @@ namespace ArchipelagoClient
             if (dolphinState != DolphinState.Hooked)
             {
                 return;
-        }
+            }
 
             var flags = xdProcess.FlagData.StoryProgress();
             storyFlagLabel.Text = flags.ToString();
             inBattleLabel.Text = xdProcess.InBattle ? "Yes" : "No";
-            currentRoomLabel.Text = xdProcess.CurrentRoom.Name.ToString();
+            currentRoomLabel.Text = $"{xdProcess.CurrentRoom.Name} - {xdProcess.CurrentRoom.RoomId}".ToString();
 
-            var saveData = new PlayerSaveData();
-            saveData.LoadFromMemory(dolphinProcess);
+            var saveData = xdProcess.SaveData;
 
-                for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 6; i++)
+            {
+                if (saveData.Party[i].Species < extractedGame.PokemonList.Length)
                 {
-                    if (saveData.Party[i].Species < extractedGame.PokemonList.Length)
-                    {
-                        pokemonDisplays[i].UpdatePokemon(saveData.Party[i], extractedGame.PokemonList[saveData.Party[i].Species], extractedGame.MoveList);
-                    }
+                    pokemonDisplays[i].UpdatePokemon(saveData.Party[i], extractedGame.PokemonList[saveData.Party[i].Species], extractedGame.MoveList);
                 }
+            }
 
-                var newDisplay = new List<string>
+            var newDisplay = new List<string>
                 {
                     "----------------- Items -----------------"
                 };
             foreach (var item in saveData.BattleItems)
+            {
+                if (item.Index < extractedGame.ItemList.Length)
                 {
-                    if (item.Index < extractedGame.ItemList.Length)
-                    {
-                        newDisplay.Add($"{extractedGame.ItemList[item.Index].Name} x{item.Quantity}");
-                    }
+                    newDisplay.Add($"{extractedGame.ItemList[item.Index].Name} x{item.Quantity}");
                 }
+            }
 
-                newDisplay.Add("----------------- Key Items -----------------");
-                foreach (var item in saveData.KeyItemInventory)
+            newDisplay.Add("----------------- Key Items -----------------");
+            foreach (var item in saveData.KeyItemInventory)
+            {
+                var adjustedIndex = item.Index - 150;
+                if (adjustedIndex < extractedGame.ItemList.Length)
                 {
-                    var adjustedIndex = item.Index - 150;
-                    if (adjustedIndex < extractedGame.ItemList.Length)
-                    {
-                        newDisplay.Add($"{extractedGame.ItemList[adjustedIndex].Name} x{item.Quantity}");
-                    }
+                    newDisplay.Add($"{extractedGame.ItemList[adjustedIndex].Name} x{item.Quantity}");
                 }
+            }
 
             newDisplay.Add("----------------- Pokeballs -----------------");
             foreach (var item in saveData.Pokeballs)
@@ -263,14 +262,14 @@ namespace ArchipelagoClient
                 }
             }
 
-                newDisplay.Add("----------------- TM Items -----------------");
-                foreach (var item in saveData.TMItemInventory)
+            newDisplay.Add("----------------- TM Items -----------------");
+            foreach (var item in saveData.TMItemInventory)
+            {
+                if (item.Index < extractedGame.ItemList.Length)
                 {
-                    if (item.Index < extractedGame.ItemList.Length)
-                    {
-                        newDisplay.Add($"{extractedGame.ItemList[item.Index].Name} x{item.Quantity}");
-                    }
+                    newDisplay.Add($"{extractedGame.ItemList[item.Index].Name} x{item.Quantity}");
                 }
+            }
 
             newDisplay.Add("----------------- Berries -----------------");
             foreach (var item in saveData.Berries)
@@ -281,12 +280,12 @@ namespace ArchipelagoClient
                 }
             }
 
-                if (!newDisplay.SequenceEqual(inventoryListBox.Items.Cast<string>()))
-                {
-                    inventoryListBox.Items.Clear();
-                    inventoryListBox.Items.AddRange(newDisplay.Cast<object>().ToArray());
-                }
+            if (!newDisplay.SequenceEqual(inventoryListBox.Items.Cast<string>()))
+            {
+                inventoryListBox.Items.Clear();
+                inventoryListBox.Items.AddRange(newDisplay.Cast<object>().ToArray());
             }
+        }
 
         private void DisplayDolphinHealth(DolphinState dolphinState)
         {
@@ -309,9 +308,9 @@ namespace ArchipelagoClient
                     connectionStatusLabel.ForeColor = Color.Orange;
                     return;
                 default:
-                connectionStatusLabel.Text = "Disconnected from Dolphin";
+                    connectionStatusLabel.Text = "Disconnected from Dolphin";
                     connectionStatusLabel.ForeColor = Color.Orange;
-                dolphinPollTimer.Stop();
+                    dolphinPollTimer.Stop();
                     return;
             }
         }
@@ -322,7 +321,7 @@ namespace ArchipelagoClient
             {
                 apSession.SetClientState(ArchipelagoClientState.ClientUnknown);
             }
-            dolphinProcess?.CloseDolphinProcess();
+            xdProcess?.Dolphin?.CloseDolphinProcess();
         }
     }
 }

@@ -8,8 +8,8 @@ namespace ArchipelagoClient.Controls
 {
     public class Credential
     {
-        public required string Url { get; set; }
-        public required string Slotname { get; set; }
+        public string Url { get; set; }
+        public string Slotname { get; set; }
         public string? Password { get; set; } = null;
     }
 }
