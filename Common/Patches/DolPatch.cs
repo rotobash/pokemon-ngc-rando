@@ -22,17 +22,7 @@ namespace XDCommon.Patches
             var entryPoints = GameEntryPoints[game][region];
             foreach (EntryPoint entry in entryPoints)
             {
-                var freeSpacePointer = dol.FindFreeSpace(game, region);
-
-                dol.ExtractedFile.WriteBytesAtOffset(entry.Pointer, PowerPCInstruction.Branch(freeSpacePointer));
-
-                dol.ExtractedFile.WriteBytesAtOffset(freeSpacePointer, PatchInstructions);
-                freeSpacePointer += (uint)PatchInstructions.Length;
-
-                if (entry.Next is uint returnAdr)
-                {
-                    dol.ExtractedFile.WriteBytesAtOffset(freeSpacePointer, PowerPCInstruction.Return(returnAdr));
-                }
+                var freeSpacePointer = dol.CreateASMSection(PatchInstructions);
             }
         }
     }

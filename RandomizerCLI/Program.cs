@@ -58,8 +58,6 @@ namespace RandomizerCLI
 
         static int ExtractItems(ExtractOptions extractOptions)
         {
-            using var jsonExtractor = new ArchipelagoJsonExtractor(extractOptions);
-            jsonExtractor.Extract();
             return 0;
         }
     }

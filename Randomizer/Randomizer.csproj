@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj" />
-    <ProjectReference Include="..\DolphinMemoryAccess\DolphinMemoryAccess.csproj" />
   </ItemGroup>
 
   <ItemGroup>
