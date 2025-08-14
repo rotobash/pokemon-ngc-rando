@@ -51,9 +51,16 @@ namespace Randomizer.Shufflers
                         {
 
                             IEnumerable<Pokemon> pokeFilter = extractedGame.ValidPokemon;
-                            if (settings.RandomizeLegendaryIntoLegendary && ExtractorConstants.Legendaries.Contains(pokemon.Pokemon))
+                            if (settings.RandomizeLegendaryIntoLegendary)
                             {
-                                pokeFilter = ExtractorConstants.Legendaries.Select(i => extractedGame.PokemonList[i]);
+                                if (ExtractorConstants.Legendaries.Contains(pokemon.Pokemon))
+                                {
+                                    pokeFilter = ExtractorConstants.Legendaries.Select(i => extractedGame.PokemonList[i]);
+                                }
+                                else
+                                {
+                                    pokeFilter = extractedGame.NoLegendaryPokemon;
+                                }
                             }
 
                             if (settings.NoDuplicateShadows && pokemon.IsShadow)
