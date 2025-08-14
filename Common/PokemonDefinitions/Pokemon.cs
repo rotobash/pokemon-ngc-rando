@@ -70,6 +70,7 @@ namespace XDCommon.PokemonDefinitions
         }
 
         public bool[] LearnableTMs { get; }
+        public bool[] LearnableHMs { get; }
         public bool[] TutorMoves { get; }
         public LevelUpMove[] LevelUpMoves { get; }
 
@@ -217,10 +218,16 @@ namespace XDCommon.PokemonDefinitions
             dexNum = dexNumber;
             this.iso = iso;
 
-            LearnableTMs = new bool[Constants.NumberOfTMsandHMs];
-            for (int i = 0; i < Constants.NumberOfTMsandHMs; i++)
+            LearnableTMs = new bool[Constants.NumberOfTMs];
+            for (int i = 0; i < Constants.NumberOfTMs; i++)
             {
                 LearnableTMs[i] = iso.CommonRel.ExtractedFile.GetByteAtOffset(StartOffset + FirstTMOffset + i) == 1;
+            }
+
+            LearnableHMs = new bool[Constants.NumberOfHMs];
+            for (int i = 0; i < Constants.NumberOfHMs; i++)
+            {
+                LearnableHMs[i] = iso.CommonRel.ExtractedFile.GetByteAtOffset(StartOffset + FirstTMOffset + i + Constants.NumberOfTMs) == 1;
             }
 
             if (iso.Game == Game.XD)

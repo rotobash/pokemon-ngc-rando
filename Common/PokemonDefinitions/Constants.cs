@@ -55,8 +55,9 @@ namespace XDCommon.PokemonDefinitions
         // items
         public const int LastPokeballIndex = 0xC;
         public const byte SizeOfItemData = 0x28;
-        public const byte NumberOfTMsAndHMs = 0x3A;
         public const byte NumberOfTMs = 0x32;
+        public const byte NumberOfHMs = 0x8;
+        public const byte NumberOfTMsAndHMs = 0x3A;
 
         // overworld items
 
