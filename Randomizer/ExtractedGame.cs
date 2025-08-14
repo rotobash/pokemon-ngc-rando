@@ -106,7 +106,7 @@ namespace Randomizer
                 
                 for (int i = 0; i < HMs.Length; i++)
                 {
-                    if (pokemon.LearnableTMs[Constants.NumberOfTMs + i])
+                    if (pokemon.LearnableHMs[i])
                     {
                         legalMoveList.Add((ushort)HMs[i].MoveIndex);
                     }
