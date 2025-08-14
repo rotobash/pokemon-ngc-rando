@@ -118,7 +118,7 @@ namespace Randomizer.Shufflers
             }
             else
             {
-                moveSet = null;
+                moveSet = GetLevelUpMoveset(random, options, pokemon, extractedGame);
             }
 
             if (moveSet != null)

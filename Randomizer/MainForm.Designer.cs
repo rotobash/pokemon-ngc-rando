@@ -614,7 +614,7 @@ namespace Randomizer
             useSimilarBSTsCheck.Enabled = false;
             useSimilarBSTsCheck.Location = new System.Drawing.Point(37, 143);
             useSimilarBSTsCheck.Name = "useSimilarBSTsCheck";
-            useSimilarBSTsCheck.Size = new System.Drawing.Size(110, 19);
+            useSimilarBSTsCheck.Size = new System.Drawing.Size(111, 19);
             useSimilarBSTsCheck.TabIndex = 29;
             useSimilarBSTsCheck.Text = "Use Similar BSTs";
             infoToolTip.SetToolTip(useSimilarBSTsCheck, resources.GetString("useSimilarBSTsCheck.ToolTip"));
@@ -652,7 +652,7 @@ namespace Randomizer
             tableLayoutPanel28.SetColumnSpan(boostTrainerLevelCheck, 2);
             boostTrainerLevelCheck.Location = new System.Drawing.Point(382, 38);
             boostTrainerLevelCheck.Name = "boostTrainerLevelCheck";
-            boostTrainerLevelCheck.Size = new System.Drawing.Size(207, 19);
+            boostTrainerLevelCheck.Size = new System.Drawing.Size(208, 19);
             boostTrainerLevelCheck.TabIndex = 26;
             boostTrainerLevelCheck.Text = "Boost Trainer Pokemon Level By %";
             infoToolTip.SetToolTip(boostTrainerLevelCheck, "All trainer Pokemon will have their levels boosted/decreased by this percent.\r\nFrom -50 to 50.");
@@ -784,7 +784,7 @@ namespace Randomizer
             useSimilarBSTsPokeSpotCheck.Enabled = false;
             useSimilarBSTsPokeSpotCheck.Location = new System.Drawing.Point(382, 3);
             useSimilarBSTsPokeSpotCheck.Name = "useSimilarBSTsPokeSpotCheck";
-            useSimilarBSTsPokeSpotCheck.Size = new System.Drawing.Size(110, 19);
+            useSimilarBSTsPokeSpotCheck.Size = new System.Drawing.Size(111, 19);
             useSimilarBSTsPokeSpotCheck.TabIndex = 26;
             useSimilarBSTsPokeSpotCheck.Text = "Use Similar BSTs";
             infoToolTip.SetToolTip(useSimilarBSTsPokeSpotCheck, "When picking a new random pokemon, use one that has a similar BST to the current pokemon.\r\nNote: This will gradually widen the BST range to search for if none are found.");
@@ -804,7 +804,7 @@ namespace Randomizer
             checkBox19.AutoSize = true;
             checkBox19.Location = new System.Drawing.Point(165, -41);
             checkBox19.Name = "checkBox19";
-            checkBox19.Size = new System.Drawing.Size(89, 19);
+            checkBox19.Size = new System.Drawing.Size(88, 19);
             checkBox19.TabIndex = 24;
             checkBox19.Text = "checkBox19";
             checkBox19.UseVisualStyleBackColor = true;
@@ -1276,7 +1276,7 @@ namespace Randomizer
             randomStarterThreeStageCheck.AutoSize = true;
             randomStarterThreeStageCheck.Location = new System.Drawing.Point(174, 3);
             randomStarterThreeStageCheck.Name = "randomStarterThreeStageCheck";
-            randomStarterThreeStageCheck.Size = new System.Drawing.Size(134, 19);
+            randomStarterThreeStageCheck.Size = new System.Drawing.Size(135, 19);
             randomStarterThreeStageCheck.TabIndex = 3;
             randomStarterThreeStageCheck.Text = "Random Three Stage";
             infoToolTip.SetToolTip(randomStarterThreeStageCheck, "Pick a Pokemon with only two evolutions.");
@@ -1287,7 +1287,7 @@ namespace Randomizer
             randomStarterTwoStageCheck.AutoSize = true;
             randomStarterTwoStageCheck.Location = new System.Drawing.Point(174, 30);
             randomStarterTwoStageCheck.Name = "randomStarterTwoStageCheck";
-            randomStarterTwoStageCheck.Size = new System.Drawing.Size(126, 19);
+            randomStarterTwoStageCheck.Size = new System.Drawing.Size(127, 19);
             randomStarterTwoStageCheck.TabIndex = 4;
             randomStarterTwoStageCheck.Text = "Random Two Stage";
             infoToolTip.SetToolTip(randomStarterTwoStageCheck, "Pick a Pokemon that only has one evolution.");
@@ -1574,7 +1574,7 @@ namespace Randomizer
             randomizeTMsCheck.AutoSize = true;
             randomizeTMsCheck.Location = new System.Drawing.Point(37, 3);
             randomizeTMsCheck.Name = "randomizeTMsCheck";
-            randomizeTMsCheck.Size = new System.Drawing.Size(110, 19);
+            randomizeTMsCheck.Size = new System.Drawing.Size(111, 19);
             randomizeTMsCheck.TabIndex = 5;
             randomizeTMsCheck.Text = "Randomize TMs";
             randomizeTMsCheck.UseVisualStyleBackColor = true;
@@ -1810,7 +1810,7 @@ namespace Randomizer
             randomizeTutorMoveCheck.AutoSize = true;
             randomizeTutorMoveCheck.Location = new System.Drawing.Point(37, 3);
             randomizeTutorMoveCheck.Name = "randomizeTutorMoveCheck";
-            randomizeTutorMoveCheck.Size = new System.Drawing.Size(187, 19);
+            randomizeTutorMoveCheck.Size = new System.Drawing.Size(188, 19);
             randomizeTutorMoveCheck.TabIndex = 15;
             randomizeTutorMoveCheck.Text = "Randomize Move Tutor Moves";
             randomizeTutorMoveCheck.UseVisualStyleBackColor = true;
@@ -1931,7 +1931,7 @@ namespace Randomizer
             moveTypeCheck.AutoSize = true;
             moveTypeCheck.Location = new System.Drawing.Point(353, 3);
             moveTypeCheck.Name = "moveTypeCheck";
-            moveTypeCheck.Size = new System.Drawing.Size(150, 19);
+            moveTypeCheck.Size = new System.Drawing.Size(151, 19);
             moveTypeCheck.TabIndex = 18;
             moveTypeCheck.Text = "Randomize Move Types";
             moveTypeCheck.UseVisualStyleBackColor = true;
@@ -1975,7 +1975,7 @@ namespace Randomizer
             turnOffAnimationCheck.AutoSize = true;
             turnOffAnimationCheck.Location = new System.Drawing.Point(353, 84);
             turnOffAnimationCheck.Name = "turnOffAnimationCheck";
-            turnOffAnimationCheck.Size = new System.Drawing.Size(134, 19);
+            turnOffAnimationCheck.Size = new System.Drawing.Size(135, 19);
             turnOffAnimationCheck.TabIndex = 21;
             turnOffAnimationCheck.Text = "Turn Off Animations";
             infoToolTip.SetToolTip(turnOffAnimationCheck, "Makes the game faster at the cost of its soul");
@@ -2106,6 +2106,7 @@ namespace Randomizer
             unchangedMovesetsCheck.TabIndex = 24;
             unchangedMovesetsCheck.TabStop = true;
             unchangedMovesetsCheck.Text = "Unchanged";
+            infoToolTip.SetToolTip(unchangedMovesetsCheck, "If randomizing Pokemon, the last four level up moves will be used instead.");
             unchangedMovesetsCheck.UseVisualStyleBackColor = true;
             // 
             // randomizeMovesetsPreferType
@@ -2113,7 +2114,7 @@ namespace Randomizer
             randomizeMovesetsPreferType.AutoSize = true;
             randomizeMovesetsPreferType.Location = new System.Drawing.Point(38, 30);
             randomizeMovesetsPreferType.Name = "randomizeMovesetsPreferType";
-            randomizeMovesetsPreferType.Size = new System.Drawing.Size(152, 19);
+            randomizeMovesetsPreferType.Size = new System.Drawing.Size(153, 19);
             randomizeMovesetsPreferType.TabIndex = 25;
             randomizeMovesetsPreferType.Text = "Random Preferring Type";
             infoToolTip.SetToolTip(randomizeMovesetsPreferType, "Moves will be selected so that same type moves are preferred. \r\nWill pick a random move if you force good damging moves and there are none that are the same type.");
@@ -2462,7 +2463,7 @@ namespace Randomizer
             bingoUseStabMoveCheck.Enabled = false;
             bingoUseStabMoveCheck.Location = new System.Drawing.Point(37, 59);
             bingoUseStabMoveCheck.Name = "bingoUseStabMoveCheck";
-            bingoUseStabMoveCheck.Size = new System.Drawing.Size(112, 19);
+            bingoUseStabMoveCheck.Size = new System.Drawing.Size(113, 19);
             bingoUseStabMoveCheck.TabIndex = 1;
             bingoUseStabMoveCheck.Text = "Use STAB Moves";
             infoToolTip.SetToolTip(bingoUseStabMoveCheck, "Select a move that's the same type as the Pokemon on the card.\r\nNote: this affects both starter and card Pokemon.");
