@@ -152,6 +152,7 @@ namespace Randomizer.Shufflers
         private static void RandomizeStarters(AbstractRNG random, ShuffleSettings shuffleSettings, ExtractedGame extractedGame, int[] pickedShadows, IGiftPokemon starter1, IGiftPokemon starter2 = null)
         {
             var settings = shuffleSettings.RandomizerSettings.StaticPokemonShufflerSettings;
+            var moveSetOptions = shuffleSettings.RandomizerSettings.TeamShufflerSettings.MoveSetOptions;
             Logger.Log("=============================== Starters ===============================\n\n");
 
             Logger.Log($"Your new starter is:\n");
@@ -160,6 +161,9 @@ namespace Randomizer.Shufflers
                 starter1.Pokemon = (ushort?)extractedGame.PokemonList.FirstOrDefault(p => p.Name.ToLower() == settings.Starter1.ToLower())?.Index ?? starter1.Pokemon;
                 if (starter2 != null)
                     starter2.Pokemon = (ushort?)extractedGame.PokemonList.FirstOrDefault(p => p.Name.ToLower() == settings.Starter2.ToLower())?.Index ?? starter2.Pokemon;
+
+                Helpers.UpdateMoves(random, moveSetOptions, starter1, extractedGame);
+                Helpers.UpdateMoves(random, moveSetOptions, starter2, extractedGame);
             }
             else
             {

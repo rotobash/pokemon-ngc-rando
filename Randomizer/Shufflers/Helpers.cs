@@ -77,7 +77,7 @@ namespace Randomizer.Shufflers
         }
 
 
-        private static void UpdateMoves(AbstractRNG random, RandomMoveSetOptions options, IPokemonInstance pokemon, ExtractedGame extractedGame)
+        public static void UpdateMoves(AbstractRNG random, RandomMoveSetOptions options, IPokemonInstance pokemon, ExtractedGame extractedGame)
         {
             var moveSetCount = options.ForceFourMoves ? 4 : pokemon.Moves.Where(m => m > 0).Count();
 
