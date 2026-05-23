@@ -37,6 +37,14 @@ namespace XDCommon.Utility
             GetOffsets();
         }
 
+        public override void ReplaceFile(Stream newFile)
+        {
+            base.ReplaceFile(newFile);
+            stringOffsets.Clear();
+            strings.Clear();
+            GetOffsets();
+        }
+
         public int ExtraChracters()
         {
             var currentChar = 0;

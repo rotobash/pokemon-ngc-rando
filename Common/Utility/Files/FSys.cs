@@ -120,6 +120,7 @@ namespace XDCommon.Utility
         List<FSysDetailsHeader> fSysDetailsHeaders = new List<FSysDetailsHeader>();
 
         public override FileTypes FileType => FileTypes.FSYS;
+        public Game Game { get; private set; }
 
         public int Offset { get; private set; }
         public int Size { get; private set; }
@@ -143,8 +144,18 @@ namespace XDCommon.Utility
             ExtractedFile = $"{Path}/{FileName}".GetNewStream();
             iso.ExtractedFile.CopySubStream(ExtractedFile, Offset, Size);
 
+            Game = iso.Game;
             sizeOfFileDetails = iso.Game == Game.XD ? 0x70 : 0x50;
             LoadFileDetails(iso.Game);
+        }
+
+        public override void ReplaceFile(Stream newFile)
+        {
+            base.ReplaceFile(newFile);
+            // reset the entries
+            ExtractedEntries.Clear();
+            fSysDetailsHeaders.Clear();
+            LoadFileDetails(Game); // or whatever game this is for
         }
 
         void LoadFileDetails(Game game)

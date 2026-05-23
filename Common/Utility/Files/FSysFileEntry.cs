@@ -58,11 +58,10 @@ namespace XDCommon.Utility
                 {
                     if (fileType == FileTypes.GSW)
                     {
-                        return new GSWTexture
+                        return new GSWTexture(extractedFile)
                         {
                             Path = extractDir,
-                            FileName = fileName,
-                            ExtractedFile = extractedFile
+                            FileName = fileName
                         };
                     }
                     else

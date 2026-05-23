@@ -27,8 +27,9 @@ namespace XDCommon.Utility
     public class GSWTexture: FSysFileEntry
     {
         List<GSWMetadata> metadata;
-        public GSWTexture()
+        public GSWTexture(Stream extractedfile)
         {
+            ExtractedFile = extractedfile;
             FileType = FileTypes.GSW;
             var numberOfIds = ExtractedFile.GetUShortAtOffset(0x18);
             metadata = new List<GSWMetadata>();

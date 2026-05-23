@@ -1,8 +1,8 @@
-﻿using DolphinMemoryAccess;
-using System;
+﻿using System;
 using System.Buffers.Binary;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using XDCommon.Contracts;
 using XDCommon.Patches;
 using XDCommon.PokemonDefinitions;
@@ -15,6 +15,11 @@ namespace XDCommon.Utility
         public uint LoadAddress { get; set; }
         public uint DOLOffset { get; set; }
         public uint Size { get; set; }
+
+        public byte[] GetSection(DOL dol)
+        {
+            return dol.ExtractedFile.GetBytesAtOffset(DOLOffset, (int)Size);
+        }
     }
 
     public class DOLDataSection : DOLSection
@@ -38,8 +43,6 @@ namespace XDCommon.Utility
 
     public class DOL : BaseExtractedFile
     {
-        public const int DOLStartOffsetLocation = 0x420;
-
         const int TextSectionStart = 0x00;
         const int DataSectionStart = 0x1C;
         const int TextAddressStart = 0x48;
@@ -53,14 +56,14 @@ namespace XDCommon.Utility
         const int DolHeaderSize = 0x100;
 
         public override FileTypes FileType => FileTypes.DOL;
-        public override string FileName => "Start.dol"; 
+        public override string FileName => "Start.dol";
 
-        public int Offset
+        public uint Offset
         {
             get;
             private set;
         }
-        
+
         public uint Size
         {
             get;
@@ -71,7 +74,7 @@ namespace XDCommon.Utility
         {
             get => ExtractedFile.GetUIntAtOffset(BSSAddressStart);
         }
-        
+
         public uint BSSSize
         {
             get => ExtractedFile.GetUIntAtOffset(BSSSizeStart);
@@ -82,12 +85,10 @@ namespace XDCommon.Utility
             get => ExtractedFile.GetUIntAtOffset(EntryPoint);
         }
 
-        public uint RAMOffset => (uint)(Entrypoint - Dolphin.EmulatedMemoryBase - 0xB4);
-
         DOLDataSection[] dataSections = new DOLDataSection[11];
         DOLTextSection[] textSections = new DOLTextSection[7];
 
-        public DOL(string pathToExtractDirectory, int offset)
+        public DOL(string pathToExtractDirectory, uint offset)
         {
             Path = pathToExtractDirectory;
             var fileName = $"{Path}/{FileName}";
@@ -104,19 +105,18 @@ namespace XDCommon.Utility
             }
             else
             {
-                ExtractedFile = file;
-            }
-            Offset = offset;
 
-            ReadDOLFile(ExtractedFile.GetBytesAtOffset(0, DolHeaderSize));
+                ReadDOLFile(ExtractedFile.GetBytesAtOffset(offset, DolHeaderSize));
+                Offset = offset;
+            }
         }
 
-        public DOL(string pathToExtractDirectory, ISOExtractor extractor)
+        public DOL(string pathToExtractDirectory, uint offset, ISOExtractor extractor)
         {
             Path = pathToExtractDirectory;
             var fileName = $"{Path}/{FileName}";
             ExtractedFile = fileName.GetNewStream();
-            Offset = (int)extractor.ISOStream.GetUIntAtOffset(DOLStartOffsetLocation);
+            Offset = offset;
 
 
             ReadDOLFile(extractor.ISOStream.GetBytesAtOffset(Offset, DolHeaderSize));
@@ -181,7 +181,104 @@ namespace XDCommon.Utility
 
         public uint CreateASMSection(byte[] asmContent)
         {
-            return 0;
+            var (dolOffset, loadAddress) = FindFreeSpace((uint)asmContent.Length);
+            ExtractedFile.WriteBytesAtOffset(dolOffset, asmContent);
+            return loadAddress;
+        }
+
+        private (uint, uint) FindFreeSpace(uint size)
+        {
+            DOLTextSection freeTextSection = null;
+            // iterate through code sections, if there's space use that
+            foreach (var section in textSections)
+            {
+                if (section.Size == 0)
+                {
+                    freeTextSection = section;
+                    break;
+                }
+
+                var sectionContents = section.GetSection(this);
+                var freeSpace = HasSpace(sectionContents, (int)size);
+
+                if (freeSpace > 0)
+                {
+                    return ((uint)(section.DOLOffset + freeSpace), (uint)(section.LoadAddress + freeSpace));
+                }
+            }
+
+
+            // iterate through data sections, if there's space use that
+            // we will need to split the section into a text section though
+            var foundSpace = false;
+            for (int i = 0; i < dataSections.Length; i++)
+            {
+                var section = dataSections[i];
+                if (section.Size == 0)
+                {
+                    break;
+                }
+
+                if (foundSpace)
+                {
+                    section.LoadAddress += size;
+                    continue;
+                }
+
+                var sectionContents = section.GetSection(this);
+                var freeSpace = HasSpace(sectionContents, (int)size);
+                if (freeSpace > 0)
+                {
+                    section.Size = (uint)freeSpace;
+
+
+                    if (i + 1 < dataSections.Length)
+                    {
+                        var nextSection = dataSections[i + 1];
+
+                        return ((uint)(section.DOLOffset + freeSpace), (uint)(section.LoadAddress + freeSpace));
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+
+            throw new Exception("No free space found in DOL");
+        }
+
+        private void SplitDataSection()
+        {
+
+        }
+
+        private int HasSpace(byte[] contents, int size)
+        {
+            for (int byteIndex = 0; byteIndex < contents.Length; byteIndex += 4)
+            {
+                var instruction = contents.Skip(byteIndex).Take(4).ToArray().GetUShort();
+                if (instruction == 0)
+                {
+                    var enoughSpace = true;
+                    for (int i = 0; i < size; i += 4)
+                    {
+                        instruction = contents.Skip(byteIndex + i).Take(4).ToArray().GetUShort();
+                        if (instruction != 0)
+                        {
+                            byteIndex += i;
+                            break;
+                        }
+                    }
+
+                    if (enoughSpace)
+                    {
+                        return byteIndex;
+                    }
+                }
+            }
+
+            return -1;
         }
     }
 }

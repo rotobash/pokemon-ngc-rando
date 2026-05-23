@@ -24,7 +24,7 @@ namespace XDCommon.Utility
         uint pointerStart;
         uint firstPointer;
         
-        public int NumberOfPointers { get; }
+        public int NumberOfPointers { get; private set; }
 
         public REL(string fileName, string path, Stream extractedFile)
         {
@@ -32,7 +32,11 @@ namespace XDCommon.Utility
             Path = path;
             FileType = FileTypes.REL;
             ExtractedFile = extractedFile;
+            Initialize();
+        }
 
+        private void Initialize()
+        {
             if (FileName.Contains("common_rel"))
             {
                 dataStart = ExtractedFile.GetUIntAtOffset(CommonRELDataStartOffsetLocation);
@@ -58,6 +62,12 @@ namespace XDCommon.Utility
             }
 
             NumberOfPointers = numberOfPointers;
+        }
+
+        public override void ReplaceFile(Stream newFile)
+        {
+            base.ReplaceFile(newFile);
+            Initialize();
         }
 
         public uint GetPointerOffset(int index)
