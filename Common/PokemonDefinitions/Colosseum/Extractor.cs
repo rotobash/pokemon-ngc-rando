@@ -33,7 +33,7 @@ namespace XDCommon.PokemonDefinitions
 				{
 					items[i] = new Pokeballs(i, ISO);
 				}
-				else if (i >= Constants.FirstTMItemIndex && i <  Constants.FirstTMItemIndex + Constants.NumberOfTMsAndHMs)
+				else if (i >= Constants.FirstTMItemIndex && i <  Constants.FirstTMItemIndex + Constants.NumberOfTMs)
 				{
 					items[i] = new TM(i, ISO);
                 }
