@@ -28,10 +28,10 @@ namespace XDCommon.PokemonDefinitions
             set => iso.CommonRel.ExtractedFile.WriteByteAtOffset(StartOffset + TreasureQuantityOffset, value);
         }
 
-        public byte Model
+        public TreasureTypes Model
         {
-            get => iso.CommonRel.ExtractedFile.GetByteAtOffset(StartOffset + TreasureModelIDOffset);
-            set => iso.CommonRel.ExtractedFile.WriteByteAtOffset(StartOffset + TreasureModelIDOffset, value);
+            get => (TreasureTypes)iso.CommonRel.ExtractedFile.GetByteAtOffset(StartOffset + TreasureModelIDOffset);
+            set => iso.CommonRel.ExtractedFile.WriteByteAtOffset(StartOffset + TreasureModelIDOffset, (byte)value);
         }
         public ushort TreasureRoom
         {

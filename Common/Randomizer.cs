@@ -1,4 +1,4 @@
-﻿using Randomizer.Shufflers;
+﻿using XDCommon.Shufflers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using XDCommon.PokemonDefinitions;
 using XDCommon.Utility;
 
-namespace Randomizer
+namespace XDCommon
 {
     public enum PRNGChoice { Net, Cryptographic, Xoroshiro128 }
     public class Randomizer : IDisposable

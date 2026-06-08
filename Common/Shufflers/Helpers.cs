@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 using XDCommon;
 using XDCommon.Contracts;
 using XDCommon.PokemonDefinitions;
-using static System.Windows.Forms.Design.AxImporter;
 
-namespace Randomizer.Shufflers
+namespace XDCommon.Shufflers
 {
-    internal static class Helpers
+    public static class Helpers
     {
         public static IEnumerable<Pokemon> GetSimilarBsts(int initialPokeIndex, IEnumerable<Pokemon> currentPokeFilter, Pokemon[] pokemonList)
         {

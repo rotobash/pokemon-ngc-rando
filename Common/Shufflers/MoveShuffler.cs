@@ -5,8 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using XDCommon;
 using XDCommon.PokemonDefinitions;
+using XDCommon.Utility.Extensions;
 
-namespace Randomizer.Shufflers
+namespace XDCommon.Shufflers
 {
     public struct RandomMoveSetOptions
     {
@@ -81,7 +82,7 @@ namespace Randomizer.Shufflers
 
                 if (settings.RandomMoveTypes && move.Type != PokemonTypes.None)
                 {
-                    var typesCount = Enum.GetValues<PokemonTypes>();
+                    var typesCount = EnumExtensions.GetValues<PokemonTypes>();
                     PokemonTypes newType;
                     // pick new move type but not the none type
                     do

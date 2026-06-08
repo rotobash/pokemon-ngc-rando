@@ -28,6 +28,15 @@ namespace XDCommon.Utility
             }
         }
 
+        public virtual void ReplaceFile(Stream newFile)
+        {
+            if (newFile == null || newFile.Length <= 0)
+                throw new ArgumentException("New file stream cannot be null or empty.");
+            ExtractedFile.Dispose();
+            ExtractedFile = newFile;
+            ExtractedFile.Seek(0, SeekOrigin.Begin);
+        }
+
         ~BaseExtractedFile()
         {
             // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method

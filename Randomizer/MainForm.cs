@@ -1,4 +1,4 @@
-﻿using Randomizer.Shufflers;
+﻿using XDCommon.Shufflers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,7 +37,7 @@ namespace Randomizer
             backgroundWorker.ProgressChanged += reportProgress;
             backgroundWorker.RunWorkerCompleted += doneTask;
 
-            foreach (var choice in Enum.GetValues<PRNGChoice>()) 
+            foreach (var choice in Enum.GetValues<PRNGChoice>())
             {
                 prngDropDown.Items.Add(choice);
                 prngDropDown.SelectedItem = choice;
@@ -240,7 +240,7 @@ namespace Randomizer
             }
         }
 
-        private void StartRandomizing(object? sender, DoWorkEventArgs e) 
+        private void StartRandomizing(object sender, DoWorkEventArgs e)
         {
             if (e.Argument is string path)
             {
@@ -253,8 +253,8 @@ namespace Randomizer
                 var extractor = EndInvoke(extractorInvoke) as ISOExtractor;
                 var gameFile = EndInvoke(isoInvoke) as ISO;
 
-                var randoInvoke = BeginInvoke(new Func<Randomizer>(() => new Randomizer(gameExtractor, settings, prng, seed)));
-                using var randomizer = EndInvoke(randoInvoke) as Randomizer;
+                var randoInvoke = BeginInvoke(new Func<XDCommon.Randomizer>(() => new XDCommon.Randomizer(gameExtractor, settings, prng, seed)));
+                using var randomizer = EndInvoke(randoInvoke) as XDCommon.Randomizer;
 
                 Logger.CreateNewLogFile(path, settings);
 
@@ -902,6 +902,11 @@ namespace Randomizer
                     Close();
                 }
             }
+        }
+
+        private void openApClient_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

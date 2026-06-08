@@ -24,7 +24,7 @@ namespace XDCommon.Utility
         uint pointerStart;
         uint firstPointer;
         
-        public int NumberOfPointers { get; }
+        public int NumberOfPointers { get; private set; }
 
         public REL(string fileName, string path, Stream extractedFile)
         {
@@ -32,7 +32,11 @@ namespace XDCommon.Utility
             Path = path;
             FileType = FileTypes.REL;
             ExtractedFile = extractedFile;
+            Initialize();
+        }
 
+        private void Initialize()
+        {
             if (FileName.Contains("common_rel"))
             {
                 dataStart = ExtractedFile.GetUIntAtOffset(CommonRELDataStartOffsetLocation);
@@ -58,6 +62,12 @@ namespace XDCommon.Utility
             }
 
             NumberOfPointers = numberOfPointers;
+        }
+
+        public override void ReplaceFile(Stream newFile)
+        {
+            base.ReplaceFile(newFile);
+            Initialize();
         }
 
         public uint GetPointerOffset(int index)
@@ -104,6 +114,19 @@ namespace XDCommon.Utility
             ExtractedFile.WriteBytesAtOffset(pointerHeaderStart + 0x4, newPointerStart.GetBytes());
             ExtractedFile.WriteBytesAtOffset(pointerHeaderStart + 0xC, newPointerHeaderEnd.GetBytes());
             firstPointer = newPointerStart + RELPointersFirstPointerOffset;
+        }
+
+        public static uint RELtoRAMOffset(Region region, Game game)
+        {
+            return region switch
+            {
+                Region.US => game switch
+                {
+                    Game.XD => 0xb18dc0, // add this value to a common_rel offset to get it's offset in RAM,  XD US
+                    Game.Colosseum => 0x7628A0,
+                },
+                _ => 0,
+            };
         }
     }
 }

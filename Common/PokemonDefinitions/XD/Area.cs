@@ -8,24 +8,31 @@ namespace XDCommon.PokemonDefinitions
 {
     public class Area
     {
-        const byte AreaIDOffset = 0x0;
+        const byte CameraIDOffset = 0x0;
         const byte CharacterIDOffset = 0x2;
+        const byte AvailabilityFlagOffset = 0x4;
         const byte NameIDOffset = 0x1C;
-        const byte RoomIDOffset = 0x20;
+        const byte RoomIDOffset = 0x22;
+        const byte SizeOfArea = 0x24;
 
-        int index;
+        public int Index;
         ISO iso;
-        public int StartOffset => (int)(iso.CommonRel.GetPointer(Constants.XDWorldMapLocations) + index * 36);
+        public int StartOffset => (int)(iso.CommonRel.GetPointer(Constants.XDWorldMapLocations) + Index * SizeOfArea);
 
-        public ushort AreaID
+        public ushort CameraID
         {
-            get => iso.CommonRel.ExtractedFile.GetUShortAtOffset(StartOffset + AreaIDOffset);
-            set => iso.CommonRel.ExtractedFile.WriteBytesAtOffset(StartOffset + AreaIDOffset, value.GetBytes());
+            get => iso.CommonRel.ExtractedFile.GetUShortAtOffset(StartOffset + CameraIDOffset);
+            set => iso.CommonRel.ExtractedFile.WriteBytesAtOffset(StartOffset + CameraIDOffset, value.GetBytes());
         }
         public ushort CharacterID
         {
             get => iso.CommonRel.ExtractedFile.GetUShortAtOffset(StartOffset + CharacterIDOffset);
             set => iso.CommonRel.ExtractedFile.WriteBytesAtOffset(StartOffset + CharacterIDOffset, value.GetBytes());
+        }
+        public uint AvailabilityFlag
+        {
+            get => iso.CommonRel.ExtractedFile.GetUIntAtOffset(StartOffset + AvailabilityFlagOffset);
+            set => iso.CommonRel.ExtractedFile.WriteBytesAtOffset(StartOffset + AvailabilityFlagOffset, value.GetBytes());
         }
 
         public int NameID
@@ -34,10 +41,10 @@ namespace XDCommon.PokemonDefinitions
             set => iso.CommonRel.ExtractedFile.WriteBytesAtOffset(StartOffset + NameIDOffset, value.GetBytes());
         }
         
-        public int RoomId
+        public ushort RoomId
         {
-            get => iso.CommonRel.ExtractedFile.GetIntAtOffset(StartOffset + RoomIDOffset);
-            set => iso.CommonRel.ExtractedFile.WriteBytesAtOffset(StartOffset + RoomIDOffset, value.GetBytes());
+            get => iso.CommonRel.ExtractedFile.GetUShortAtOffset(StartOffset + RoomIDOffset + 2);
+            set => iso.CommonRel.ExtractedFile.WriteBytesAtOffset(StartOffset + RoomIDOffset + 2, value.GetBytes());
         }
 
         public string Name
@@ -47,7 +54,7 @@ namespace XDCommon.PokemonDefinitions
 
         public Area(int index, ISO iso)
         {
-            this.index = index;
+            this.Index = index;
             this.iso = iso;
         }
     }

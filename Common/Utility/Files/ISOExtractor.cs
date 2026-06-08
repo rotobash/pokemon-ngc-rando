@@ -8,11 +8,15 @@ namespace XDCommon.Utility
 {
     public class ISOExtractor : IDisposable
     {
+        public const int DOLStartOffsetLocation = 0x420;
+        public const int DOLHeaderSize = 0x100;
+
         private bool disposedValue;
 
         public Stream ISOStream { get; }
         public string ExtractPath { get; private set; }
 
+        private uint DolOffset { get; set; }
 
         // keep a list of the original offsets in the ISO stream in case we just need to copy something back
         private Dictionary<string, uint> oldOffsets;
@@ -70,11 +74,14 @@ namespace XDCommon.Utility
                 Directory.CreateDirectory(ExtractPath);
             }
 
+            DolOffset = ISOStream.GetUIntAtOffset(DOLStartOffsetLocation);
+            var dolHeader = ISOStream.GetBytesAtOffset(DolOffset, DOLHeaderSize);
+
             var iso = new ISO(ISOStream, ExtractPath)
             {
                 Game = gameEnum,
                 Region = regionEnum,
-                DOL = new DOL(ExtractPath, this),
+                DOL = new DOL(ExtractPath, DolOffset, this),
                 TOC = new FST(ExtractPath, this)
             };
 
@@ -94,13 +101,13 @@ namespace XDCommon.Utility
 
             // boot.bin, bi2.bin, appldr.bin
             ISOStream.Seek(0, SeekOrigin.Begin);
-            ISOStream.CopySubStream(isoStream, 0, iso.DOL.Offset);
+            ISOStream.CopySubStream(isoStream, 0, DolOffset);
 
             // pack dol
-            isoStream.Seek(iso.DOL.Offset, SeekOrigin.Begin);
+            isoStream.Seek(DolOffset, SeekOrigin.Begin);
             using var dolStream = iso.DOL.Encode();
             dolStream.CopyTo(isoStream);
-            int alignment = AlignByteCount(iso.DOL.Offset + (int)iso.DOL.ExtractedFile.Length);
+            int alignment = AlignByteCount((int)(DolOffset + iso.DOL.ExtractedFile.Length));
             isoStream.WriteBytesAtOffset(isoStream.Position, new byte[alignment]);
 
             if (iso.TOC.StartDataOffset == uint.MaxValue)

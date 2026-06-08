@@ -17,7 +17,7 @@ namespace XDCommon.Utility
 
         public Region Region { get; internal set; }
         public Game Game { get; internal set; }
-        public DOL DOL { get; internal set; }
+        public DOL DOL { get; set; }
         public FST TOC { get; internal set; }
         public REL CommonRel { get; internal set; }
         public StringTable DolStringTable { get; internal set; }

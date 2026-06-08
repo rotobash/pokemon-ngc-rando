@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
 
-namespace Randomizer.Shufflers
+namespace XDCommon.Shufflers
 {
     public class Cryptographic : AbstractRNG, IDisposable
     {

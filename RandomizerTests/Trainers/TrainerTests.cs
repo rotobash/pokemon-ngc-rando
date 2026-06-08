@@ -3,7 +3,7 @@ using System.IO.Compression;
 using XDCommon;
 using XDCommon.PokemonDefinitions;
 using XDCommon.Utility;
-using Randomizer.Shufflers;
+using XDCommon.Shufflers;
 using Randomizer;
 using RandomizerTests.ReferenceData;
 

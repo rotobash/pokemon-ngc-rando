@@ -314,7 +314,7 @@ namespace Randomizer
             tableLayoutPanel1.Controls.Add(progressBar, 1, 6);
             tableLayoutPanel1.Controls.Add(tableLayoutPanel9, 0, 6);
             tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 1, 3);
-            tableLayoutPanel1.Controls.Add(tableLayoutPanel32, 0, 2);
+            tableLayoutPanel1.Controls.Add(tableLayoutPanel32, 0, 3);
             tableLayoutPanel1.Controls.Add(generateLogCheck, 2, 4);
             tableLayoutPanel1.Location = new System.Drawing.Point(10, 9);
             tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -2670,7 +2670,7 @@ namespace Randomizer
             tableLayoutPanel32.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             tableLayoutPanel32.Controls.Add(prngDropDown, 0, 1);
             tableLayoutPanel32.Controls.Add(label1, 0, 0);
-            tableLayoutPanel32.Location = new System.Drawing.Point(3, 99);
+            tableLayoutPanel32.Location = new System.Drawing.Point(3, 147);
             tableLayoutPanel32.Name = "tableLayoutPanel32";
             tableLayoutPanel32.RowCount = 2;
             tableLayoutPanel32.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.47619F));

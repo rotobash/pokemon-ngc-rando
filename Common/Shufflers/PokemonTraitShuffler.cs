@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 using XDCommon;
 using XDCommon.PokemonDefinitions;
 using XDCommon.Utility;
+using XDCommon.Utility.Extensions;
 
-namespace Randomizer.Shufflers
+namespace XDCommon.Shufflers
 {
     public static class PokemonTraitShuffler
     {
@@ -351,7 +352,7 @@ namespace Randomizer.Shufflers
         private static void RandomizeTypes(AbstractRNG random, Pokemon poke)
         {
 
-            var types = Enum.GetValues<PokemonTypes>();
+            var types = EnumExtensions.GetValues<PokemonTypes>();
             PokemonTypes originalType = poke.Type1;
             PokemonTypes type;
             PokemonTypes type2 = PokemonTypes.None;
