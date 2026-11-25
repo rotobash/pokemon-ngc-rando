@@ -375,5 +375,19 @@ namespace XDCommon.Utility
 
             return offsets;
         }
+
+        // GameCube data is big-endian; BitConverter-based readers above are little-endian (x86).
+        // Needed for tables read straight out of the DOL (e.g. the Colosseum item table).
+        public static ushort GetUShortBEAtOffset(this Stream stream, long offset)
+        {
+            byte[] bytes = GetBytesAtOffset(stream, offset, 2);
+            return (ushort)((bytes[0] << 8) | bytes[1]);
+        }
+
+        public static int GetIntBEAtOffset(this Stream stream, long offset)
+        {
+            byte[] bytes = GetBytesAtOffset(stream, offset, 4);
+            return (bytes[0] << 24) | (bytes[1] << 16) | (bytes[2] << 8) | bytes[3];
+        }
     }
 }

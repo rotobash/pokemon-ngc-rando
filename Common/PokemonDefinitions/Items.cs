@@ -32,7 +32,9 @@ namespace XDCommon.PokemonDefinitions
         uint ColFirstItemOffset => iso.Region switch
         {
             Region.US => 0x360CE8,
-            Region.Europe => 0x34D428,
+            // Europe offset verified: 0x34D428 points at 24KB of zeros; the real table
+            // sits at 0x3ADDA0 (DOL-relative), confirmed by sequential name ids + ball prices
+            Region.Europe => 0x3ADDA0,
             _ => 0x3ADDA0,
         };
 
@@ -63,8 +65,12 @@ namespace XDCommon.PokemonDefinitions
             }
         }
 
-        public int NameId => dataSource.ExtractedFile.GetIntAtOffset(StartOffset + ItemNameIDOffset);
-        public int DescriptionId => dataSource.ExtractedFile.GetIntAtOffset(StartOffset + ItemDescriptionIDOffset);
+        public int NameId => iso.Game == Game.Colosseum
+            ? dataSource.ExtractedFile.GetIntBEAtOffset(StartOffset + ItemNameIDOffset)
+            : dataSource.ExtractedFile.GetIntAtOffset(StartOffset + ItemNameIDOffset);
+        public int DescriptionId => iso.Game == Game.Colosseum
+            ? dataSource.ExtractedFile.GetIntBEAtOffset(StartOffset + ItemDescriptionIDOffset)
+            : dataSource.ExtractedFile.GetIntAtOffset(StartOffset + ItemDescriptionIDOffset);
         
         public UnicodeString Name
         {
@@ -115,7 +121,9 @@ namespace XDCommon.PokemonDefinitions
         }
         public ushort Price
         {
-            get => dataSource.ExtractedFile.GetUShortAtOffset(StartOffset + ItemPriceOffset);
+            get => iso.Game == Game.Colosseum
+                ? dataSource.ExtractedFile.GetUShortBEAtOffset(StartOffset + ItemPriceOffset)
+                : dataSource.ExtractedFile.GetUShortAtOffset(StartOffset + ItemPriceOffset);
             set => dataSource.ExtractedFile.WriteBytesAtOffset(StartOffset + ItemPriceOffset, value.GetBytes());
         }
         public ushort CouponPrice
