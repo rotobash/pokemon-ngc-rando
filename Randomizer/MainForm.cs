@@ -682,7 +682,15 @@ namespace Randomizer
         }
         private void doneTask(object sender, RunWorkerCompletedEventArgs e)
         {
-            MessageBox.Show("Done!");
+            if (e.Error != null)
+            {
+                MessageBox.Show($"Randomization failed: {e.Error.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                progressMessageLabel.Text = "Failed";
+            }
+            else
+            {
+                MessageBox.Show("Done!");
+            }
         }
 
         private void generateLogCheck_CheckedChanged(object sender, EventArgs e)

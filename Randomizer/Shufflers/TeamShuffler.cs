@@ -86,7 +86,8 @@ namespace Randomizer.Shufflers
                         Logger.Log($"{extractedGame.PokemonList[pokemon.Pokemon].Name}\n");
                         Logger.Log($"Is a shadow Pokemon: {pokemon.IsShadow}\n");
 
-                        if (settings.RandomizeHeldItems && pokemon.Item != 0)
+                        // skip if there are no valid items to pick from (e.g. when the item pool is empty)
+                        if (settings.RandomizeHeldItems && potentialItems.Length > 0 && pokemon.Item != 0)
                         {
                             var item = potentialItems[random.Next(0, potentialItems.Length)];
                             pokemon.Item = item.OriginalIndex;
